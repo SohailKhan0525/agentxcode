@@ -48,17 +48,17 @@ type Cell = {
 function cells(line: string): Cell[] {
   const list: Cell[] = []
   for (const char of line) {
-    if (char === "_") {
-      list.push({ char: " ", mark: "full" })
+    if (char === "█" || char === "_") {
+      list.push({ char: char === "_" ? " " : "█", mark: "full" })
       continue
     }
 
-    if (char === "^") {
-      list.push({ char: "▀", mark: "mix" })
+    if (char === "^" || char === "▄") {
+      list.push({ char: char === "^" ? "▀" : "▄", mark: "mix" })
       continue
     }
 
-    if (char === "~") {
+    if (char === "~" || char === "▀") {
       list.push({ char: "▀", mark: "top" })
       continue
     }
@@ -194,7 +194,7 @@ function build(input: SplashWriterInput, kind: "entry" | "exit", ctx: Scrollback
       })
     }
 
-    push(lines, body_left, top, "OpenCode", right, undefined, TextAttributes.BOLD)
+    push(lines, body_left, top, "AgentX Code", right, undefined, TextAttributes.BOLD)
     if (input.detail) {
       push(
         lines,

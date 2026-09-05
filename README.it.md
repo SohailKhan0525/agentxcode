@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://agentx.js.org">
     <picture>
-      <source srcset="agentx-logo.svg" media="(prefers-color-scheme: dark)">
-      <source srcset="agentx-logo.svg" media="(prefers-color-scheme: light)">
-      <img src="agentx-logo.svg" alt="Logo AgentX Code">
+      <source srcset="agentx_code.png" media="(prefers-color-scheme: dark)">
+      <source srcset="agentx_code.png" media="(prefers-color-scheme: light)">
+      <img src="agentx_code.png" alt="Logo AgentX Code">
     </picture>
   </a>
 </p>

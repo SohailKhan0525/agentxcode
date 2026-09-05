@@ -20,7 +20,8 @@ async function publish(dir: string, name: string, version: string) {
     return
   }
   await $`bun pm pack`.cwd(dir)
-  await $`npm publish *.tgz --access public --tag ${Script.channel}`.cwd(dir)
+  const flags = process.env.GITHUB_ACTIONS === "true" ? ["--provenance"] : []
+  await $`npm publish *.tgz --access public --tag ${Script.channel} ${flags}`.cwd(dir)
 }
 
 const binaries: Record<string, string> = {}

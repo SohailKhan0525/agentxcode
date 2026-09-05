@@ -1,46 +1,39 @@
-import { RGBA, TextAttributes } from "@opentui/core"
+import { RGBA } from "@opentui/core"
 import { For, type JSX } from "solid-js"
-import { tint, useTheme } from "../context/theme"
+import { useTheme } from "../context/theme"
 import { logo } from "../logo"
 
 export function Logo() {
   const { theme } = useTheme()
+  const yellow = RGBA.fromHex("#F5FB03")
+  const bg = RGBA.fromHex("#121212")
 
-  const renderLine = (line: string, fg: RGBA, bold: boolean): JSX.Element[] => {
-    const shadow = tint(theme.background, fg, 0.25)
-    const attrs = bold ? TextAttributes.BOLD : undefined
+  const renderLine = (line: string): JSX.Element[] => {
     return Array.from(line).map((char) => {
-      if (char === "_") {
+      if (char === "█") {
         return (
-          <text fg={fg} bg={shadow} attributes={attrs} selectable={false}>
-            {" "}
+          <text fg={yellow} bg={yellow} selectable={false}>
+            █
           </text>
         )
       }
-      if (char === "^") {
+      if (char === "▀") {
         return (
-          <text fg={fg} bg={shadow} attributes={attrs} selectable={false}>
+          <text fg={yellow} bg={bg} selectable={false}>
             ▀
           </text>
         )
       }
-      if (char === "~") {
+      if (char === "▄") {
         return (
-          <text fg={shadow} attributes={attrs} selectable={false}>
-            ▀
-          </text>
-        )
-      }
-      if (char === ",") {
-        return (
-          <text fg={shadow} attributes={attrs} selectable={false}>
+          <text fg={bg} bg={yellow} selectable={false}>
             ▄
           </text>
         )
       }
       return (
-        <text fg={fg} attributes={attrs} selectable={false}>
-          {char}
+        <text fg={bg} bg={bg} selectable={false}>
+          {" "}
         </text>
       )
     })
@@ -50,12 +43,13 @@ export function Logo() {
     <box>
       <For each={logo.left}>
         {(line, index) => (
-          <box flexDirection="row" gap={1}>
-            <box flexDirection="row">{renderLine(line, RGBA.fromHex("#00E5FF"), false)}</box>
-            <box flexDirection="row">{renderLine(logo.right[index()], theme.text, true)}</box>
+          <box flexDirection="row">
+            <box flexDirection="row">{renderLine(line)}</box>
+            <box flexDirection="row">{renderLine(logo.right[index()])}</box>
           </box>
         )}
       </For>
     </box>
   )
 }
+

@@ -1,12 +1,14 @@
 name: "Setup Git Committer"
 description: "Create app token and configure git user"
 inputs:
-  opencode-app-id:
-    description: "OpenCode GitHub App ID"
-    required: true
-  opencode-app-secret:
-    description: "OpenCode GitHub App private key"
-    required: true
+  agentx-app-id:
+    description: "AgentX GitHub App ID"
+    required: false
+    default: ""
+  agentx-app-secret:
+    description: "AgentX GitHub App private key"
+    required: false
+    default: ""
 outputs:
   token:
     description: "GitHub App token"
@@ -19,17 +21,26 @@ runs:
   steps:
     - name: Create app token
       id: apptoken
+      if: inputs.agentx-app-id != ''
       uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2
       with:
-        app-id: ${{ inputs.opencode-app-id }}
-        private-key: ${{ inputs.opencode-app-secret }}
+        app-id: ${{ inputs.agentx-app-id }}
+        private-key: ${{ inputs.agentx-app-secret }}
         owner: ${{ github.repository_owner }}
 
-    - name: Configure git user
+    - name: Configure git user (app token)
+      if: inputs.agentx-app-id != ''
       run: |
         slug="${{ steps.apptoken.outputs.app-slug }}"
         git config --global user.name "${slug}[bot]"
         git config --global user.email "${slug}[bot]@users.noreply.github.com"
+      shell: bash
+
+    - name: Configure git user (GITHUB_TOKEN fallback)
+      if: inputs.agentx-app-id == ''
+      run: |
+        git config --global user.name "AgentX Bot"
+        git config --global user.email "bot@agentx.js.org"
       shell: bash
 
     - name: Clear checkout auth
@@ -37,7 +48,8 @@ runs:
         git config --local --unset-all http.https://github.com/.extraheader || true
       shell: bash
 
-    - name: Configure git remote
+    - name: Configure git remote (app token)
+      if: inputs.agentx-app-id != ''
       run: |
         git remote set-url origin https://x-access-token:${{ steps.apptoken.outputs.token }}@github.com/${{ github.repository }}
       shell: bash

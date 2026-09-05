@@ -62,7 +62,7 @@ jobs:
 
       - name: Run unit tests
         timeout-minutes: 15
-        run: bun test packages/core/test/
+        run: bun --cwd packages/core test
         env:
           AGENTX_TEST_HOME: ${{ runner.temp }}/agentx-test
 

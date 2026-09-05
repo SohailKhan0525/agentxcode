@@ -11,7 +11,7 @@ env:
 jobs:
   update-docs:
     if: github.repository == 'SohailKhan0525/agentxcode'
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: write
@@ -45,7 +45,7 @@ jobs:
         if: steps.commits.outputs.has_commits == 'true'
         uses: SohailKhan0525/agentxcode/github@latest
         env:
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          OPENCODE_API_KEY: ${{ secrets.AGENTX_API_KEY || secrets.OPENCODE_API_KEY }}
         with:
           model: opencode/gpt-5.2
           agent: docs
