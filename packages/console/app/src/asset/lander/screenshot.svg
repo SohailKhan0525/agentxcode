@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0c10" />
+      <stop offset="50%" stop-color="#0e1117" />
+      <stop offset="100%" stop-color="#060709" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.75" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1280" height="800" fill="url(#bgGrad)" />
+
+  <!-- Terminal Window Frame -->
+  <g filter="url(#shadow)" transform="translate(64, 40)">
+    <!-- Terminal Outer Frame -->
+    <rect width="1152" height="720" rx="12" fill="#0d1117" stroke="#252c38" stroke-width="1.5" />
+
+    <!-- Title Bar -->
+    <path d="M 0,12 A 12,12 0 0,1 12,0 L 1140,0 A 12,12 0 0,1 1152,12 L 1152,44 L 0,44 Z" fill="#161b22" />
+    <line x1="0" y1="44" x2="1152" y2="44" stroke="#252c38" stroke-width="1" />
+
+    <!-- Window Dots -->
+    <circle cx="24" cy="22" r="6" fill="#ff5f56" />
+    <circle cx="44" cy="22" r="6" fill="#ffbd2e" />
+    <circle cx="64" cy="22" r="6" fill="#27c93f" />
+
+    <!-- Window Title -->
+    <text x="576" y="27" fill="#8b949e" font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="13" text-anchor="middle" font-weight="500">
+      agentx — AgentX Code v3.0.0
+    </text>
+
+    <!-- Terminal Interior -->
+    <rect x="0" y="45" width="1152" height="675" fill="#0a0a0a" rx="0" />
+
+    <!-- Brand Header / Logo ASCII Art Area -->
+    <g transform="translate(48, 75)">
+      <!-- AGENTX (Cyan) + CODE (White) Block Letters -->
+      <g font-family="'JetBrains Mono', 'Fira Code', 'Courier New', monospace" font-size="14" font-weight="bold">
+        <!-- Line 1 -->
+        <text x="0" y="20">
+          <tspan fill="#00e5ff">█▀▀█ █▀▀▀ █▀▀█ █▀▀▄ ▀▀█▀ █  █</tspan>
+          <tspan fill="#ffffff">   █▀▀▀ █▀▀█ █▀▀█ █▀▀█</tspan>
+        </text>
+        <!-- Line 2 -->
+        <text x="0" y="38">
+          <tspan fill="#00e5ff">█▀▀█ █ ▀█ █▀▀▀ █  █   █   ▀▀ </tspan>
+          <tspan fill="#ffffff">   █    █  █ █  █ █▀▀▀</tspan>
+        </text>
+        <!-- Line 3 -->
+        <text x="0" y="56">
+          <tspan fill="#00e5ff">▀  ▀ ▀▀▀▀ ▀▀▀▀ ▀  ▀   ▀  ▀  ▀</tspan>
+          <tspan fill="#ffffff">   ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀</tspan>
+        </text>
+      </g>
+
+      <!-- Badge / Subtitle -->
+      <rect x="680" y="8" width="190" height="26" rx="4" fill="#141c2b" stroke="#00e5ff" stroke-width="1" />
+      <text x="775" y="25" fill="#00e5ff" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">
+        AI CODING AGENT
+      </text>
+
+      <rect x="880" y="8" width="90" height="26" rx="4" fill="#25210a" stroke="#f5fb03" stroke-width="1" />
+      <text x="925" y="25" fill="#f5fb03" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">
+        v3.0.0
+      </text>
+
+      <!-- Horizontal Divider -->
+      <line x1="0" y1="80" x2="1056" y2="80" stroke="#22272e" stroke-width="1" />
+    </g>
+
+    <!-- Session Body -->
+    <g transform="translate(48, 185)" font-family="'JetBrains Mono', 'Fira Code', monospace">
+      <!-- Session metadata -->
+      <text x="0" y="0" font-size="12" fill="#58a6ff">● Session: <tspan fill="#c9d1d9">local-development</tspan> <tspan fill="#8b949e">| Workspace:</tspan> <tspan fill="#c9d1d9">~/agentxcode</tspan> <tspan fill="#8b949e">| Mode:</tspan> <tspan fill="#7ee787">agent</tspan></text>
+
+      <!-- User prompt box -->
+      <rect x="0" y="20" width="1056" height="42" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" />
+      <text x="16" y="46" font-size="14" fill="#f5fb03" font-weight="bold">❯</text>
+      <text x="36" y="46" font-size="13" fill="#ffffff">Refactor provider system to support local LLMs (Ollama, LM Studio) and compile native binary</text>
+
+      <!-- Agent Activity Steps -->
+      <g transform="translate(0, 85)">
+        <!-- Step 1 -->
+        <circle cx="12" cy="10" r="8" fill="#1f3527" stroke="#238636" stroke-width="1" />
+        <text x="12" y="14" font-size="11" fill="#7ee787" text-anchor="middle">✓</text>
+        <text x="32" y="14" font-size="13" fill="#c9d1d9">Hardware Scan: <tspan fill="#8b949e">AMD Ryzen 9 / 32GB RAM / NVIDIA RTX 4080 (16GB VRAM) — Tier: Quality</tspan></text>
+
+        <!-- Step 2 -->
+        <circle cx="12" cy="40" r="8" fill="#1f3527" stroke="#238636" stroke-width="1" />
+        <text x="12" y="44" font-size="11" fill="#7ee787" text-anchor="middle">✓</text>
+        <text x="32" y="44" font-size="13" fill="#c9d1d9">Discovered Local Providers: <tspan fill="#00e5ff">Ollama (127.0.0.1:11434)</tspan> <tspan fill="#8b949e">| LM Studio (127.0.0.1:1234)</tspan></text>
+
+        <!-- Step 3 -->
+        <circle cx="12" cy="70" r="8" fill="#1f3527" stroke="#238636" stroke-width="1" />
+        <text x="12" y="74" font-size="11" fill="#7ee787" text-anchor="middle">✓</text>
+        <text x="32" y="74" font-size="13" fill="#c9d1d9">Loaded Model: <tspan fill="#f5fb03">deepseek-coder-v2:16b</tspan> <tspan fill="#8b949e">(context: 64k, quantization: Q4_K_M)</tspan></text>
+
+        <!-- Step 4 -->
+        <circle cx="12" cy="100" r="8" fill="#1f3527" stroke="#238636" stroke-width="1" />
+        <text x="12" y="104" font-size="11" fill="#7ee787" text-anchor="middle">✓</text>
+        <text x="32" y="104" font-size="13" fill="#c9d1d9">Binary Targets: <tspan fill="#79c0ff">Windows x64/arm64</tspan>, <tspan fill="#79c0ff">macOS arm64/x64</tspan>, <tspan fill="#79c0ff">Linux x64/arm64/musl</tspan></text>
+      </g>
+
+      <!-- Code Diff View -->
+      <g transform="translate(0, 220)">
+        <rect width="1056" height="155" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1" />
+
+        <!-- Diff Header -->
+        <rect width="1056" height="30" rx="6" fill="#161b22" />
+        <text x="16" y="20" font-size="12" fill="#8b949e">packages/core/src/provider/local.ts</text>
+        <text x="960" y="20" font-size="12" fill="#7ee787">+248 -12</text>
+
+        <!-- Code lines -->
+        <g font-size="12" font-family="'JetBrains Mono', monospace" transform="translate(16, 50)">
+          <text x="0" y="0" fill="#6e7681">42  export const LocalProvider = {</text>
+          <text x="0" y="20" fill="#6e7681">43    name: "local",</text>
+          <text x="0" y="40" fill="#7ee787">+   detect: async () =&gt; Promise.allSettled([detectOllama(), detectLMStudio(), detectJan()]),</text>
+          <text x="0" y="60" fill="#7ee787">+   hardware: async () =&gt; getHardwareProfile({ vram: true, tier: "quality" }),</text>
+          <text x="0" y="80" fill="#6e7681">46  }</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Bottom Command Line Bar -->
+    <g transform="translate(48, 620)" font-family="'JetBrains Mono', monospace">
+      <rect x="0" y="0" width="1056" height="42" rx="6" fill="#161b22" stroke="#00e5ff" stroke-width="1.5" />
+      <text x="16" y="26" font-size="14" fill="#00e5ff" font-weight="bold">❯</text>
+      <text x="36" y="26" font-size="13" fill="#f0f6fc">agentx</text>
+      <rect x="94" y="12" width="8" height="18" fill="#00e5ff" />
+
+      <!-- Footer Hotkeys -->
+      <g transform="translate(0, 62)" font-size="11" fill="#6e7681">
+        <text x="0" y="0"><tspan fill="#c9d1d9">Tab</tspan> agent mode   <tspan fill="#c9d1d9">Ctrl+P</tspan> select provider   <tspan fill="#c9d1d9">/local</tspan> local models   <tspan fill="#c9d1d9">Ctrl+C</tspan> interrupt</text>
+        <text x="930" y="0" fill="#8b949e">Press <tspan fill="#f5fb03">Enter</tspan> to run</text>
+      </g>
+    </g>
+  </g>
+</svg>

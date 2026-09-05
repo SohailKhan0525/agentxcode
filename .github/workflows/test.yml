@@ -1,0 +1,84 @@
+name: test
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  AGENTX_VERSION: "3.0.0"
+
+jobs:
+  test:
+    name: test (${{ matrix.settings.name }})
+    strategy:
+      fail-fast: false
+      matrix:
+        settings:
+          - name: linux
+            os: ubuntu-latest
+            platform: linux
+          - name: windows
+            os: windows-latest
+            platform: windows
+          - name: macos
+            os: macos-latest
+            platform: darwin
+    runs-on: ${{ matrix.settings.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Setup Bun
+        uses: ./.github/actions/setup-bun
+
+      - name: Configure git identity
+        run: |
+          git config --global user.email "bot@agentx.js.org"
+          git config --global user.name "AgentX Bot"
+
+      - name: Typecheck
+        run: bun --cwd packages/opencode typecheck
+
+      - name: Run unit tests
+        timeout-minutes: 15
+        run: bun test packages/core/test/
+        env:
+          AGENTX_TEST_HOME: ${{ runner.temp }}/agentx-test
+
+      - name: Build binary for current platform
+        run: bun run --cwd packages/opencode build --single
+
+      - name: Smoke test (agentx --version, agentx local --scan)
+        run: |
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            BIN=$(find packages/opencode/dist/agentx-windows-*/bin -name "agentx.exe" | head -n 1)
+          elif [ "${{ runner.os }}" = "macOS" ]; then
+            BIN=$(find packages/opencode/dist/agentx-darwin-*/bin -name "agentx" -type f | head -n 1)
+          else
+            BIN=$(find packages/opencode/dist/agentx-linux-*/bin -name "agentx" -type f | head -n 1)
+          fi
+          echo "Found binary at: $BIN"
+          chmod +x "$BIN" || true
+          "$BIN" --version
+          "$BIN" local --scan

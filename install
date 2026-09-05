@@ -1,0 +1,169 @@
+﻿#!/usr/bin/env bash
+set -euo pipefail
+
+# AgentX Code Installer
+# https://agentx.js.org
+# Repository: https://github.com/SohailKhan0525/agentxcode
+
+REPO="SohailKhan0525/agentxcode"
+INSTALL_DIR="${AGENTX_INSTALL_DIR:-$HOME/.agentx/bin}"
+
+CYAN='\033[96m'
+GREEN='\033[92m'
+YELLOW='\033[93m'
+RED='\033[91m'
+BOLD='\033[1m'
+NC='\033[0m'
+
+echo -e "${CYAN}${BOLD}"
+cat << "EOF"
+   /\   /----\  |----\ |\   | ----- \    /     ▄▀▀▀ ▄▀▀█ █▀▀▄ █▀▀▀
+  /  \  |    -- |    | | \  |   |    \  /      █    █  █ █  █ █▀▀▀
+ /----\ |  ---| |----/ |  \ |   |     \/       ▀▄▄▄ ▀▄▄▀ █▄▄▀ ▀▀▀▀
+/      \\-----/ |----/ |   \|   |    /  \
+EOF
+echo -e "${NC}"
+echo -e "${BOLD}Installing AgentX Code — The autonomous AI coding agent for your terminal...${NC}\n"
+
+# 1. Detect OS
+OS="$(uname -s | tr '[:upper:]' '[:lower:]')"
+case "$OS" in
+  darwin*)  PLATFORM="darwin" ;;
+  linux*)   PLATFORM="linux" ;;
+  msys*|mingw*|cygwin*) PLATFORM="windows" ;;
+  *) echo -e "${RED}Unsupported OS: $OS${NC}" >&2; exit 1 ;;
+esac
+
+# 2. Detect Arch
+ARCH="$(uname -m)"
+case "$ARCH" in
+  x86_64|amd64) TARGET_ARCH="x64" ;;
+  arm64|aarch64) TARGET_ARCH="arm64" ;;
+  *) echo -e "${RED}Unsupported architecture: $ARCH${NC}" >&2; exit 1 ;;
+esac
+
+# 3. Detect AVX2 for x64
+BASELINE=""
+if [ "$TARGET_ARCH" = "x64" ]; then
+  HAS_AVX2=false
+  if [ "$PLATFORM" = "linux" ]; then
+    if grep -q "avx2" /proc/cpuinfo 2>/dev/null; then HAS_AVX2=true; fi
+  elif [ "$PLATFORM" = "darwin" ]; then
+    if [ "$(sysctl -n hw.optional.avx2_0 2>/dev/null || echo 0)" = "1" ]; then HAS_AVX2=true; fi
+  fi
+  if [ "$HAS_AVX2" = false ]; then
+    BASELINE="-baseline"
+  fi
+fi
+
+# 4. Detect libc on Linux (glibc vs musl)
+LIBC=""
+if [ "$PLATFORM" = "linux" ]; then
+  if [ -f /etc/alpine-release ] || ldd --version 2>&1 | grep -iq "musl"; then
+    LIBC="-musl"
+  fi
+fi
+
+# 5. Determine asset name & format
+EXT="tar.gz"
+if [ "$PLATFORM" = "windows" ]; then
+  EXT="zip"
+  ARCHIVE_NAME="agentx-windows-${TARGET_ARCH}${BASELINE}.${EXT}"
+else
+  ARCHIVE_NAME="agentx-${PLATFORM}-${TARGET_ARCH}${BASELINE}${LIBC}.${EXT}"
+fi
+
+# 6. Fetch latest version tag
+echo -e "Fetching latest release information..."
+TAG="${AGENTX_VERSION:-}"
+if [ -z "$TAG" ]; then
+  TAG=$(curl -sSL "https://api.github.com/repos/${REPO}/releases/latest" 2>/dev/null | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' || true)
+fi
+if [ -z "$TAG" ]; then
+  TAG="v3.0.0"
+fi
+
+DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${TAG}/${ARCHIVE_NAME}"
+CHECKSUMS_URL="https://github.com/${REPO}/releases/download/${TAG}/SHA256SUMS.txt"
+
+echo -e "Downloading ${CYAN}${ARCHIVE_NAME}${NC} (${TAG})..."
+TMP_DIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'agentx-install')
+trap 'rm -rf "$TMP_DIR"' EXIT
+
+if ! curl -fsSL "$DOWNLOAD_URL" -o "$TMP_DIR/$ARCHIVE_NAME"; then
+  echo -e "${RED}Failed to download release archive from $DOWNLOAD_URL${NC}" >&2
+  exit 1
+fi
+
+# Optional checksum verification
+if curl -fsSL "$CHECKSUMS_URL" -o "$TMP_DIR/SHA256SUMS.txt" 2>/dev/null; then
+  echo -e "Verifying SHA256 checksum..."
+  EXPECTED_SHA=$(grep "$ARCHIVE_NAME" "$TMP_DIR/SHA256SUMS.txt" | awk '{print $1}' || true)
+  if [ -n "$EXPECTED_SHA" ]; then
+    if command -v sha256sum >/dev/null 2>&1; then
+      ACTUAL_SHA=$(sha256sum "$TMP_DIR/$ARCHIVE_NAME" | awk '{print $1}')
+    elif command -v shasum >/dev/null 2>&1; then
+      ACTUAL_SHA=$(shasum -a 256 "$TMP_DIR/$ARCHIVE_NAME" | awk '{print $1}')
+    fi
+    if [ -n "${ACTUAL_SHA:-}" ] && [ "$EXPECTED_SHA" = "$ACTUAL_SHA" ]; then
+      echo -e "${GREEN}✓ Checksum verified.${NC}"
+    fi
+  fi
+fi
+
+# 7. Extract binary
+echo -e "Installing to ${INSTALL_DIR}..."
+mkdir -p "$INSTALL_DIR"
+
+if [ "$EXT" = "zip" ]; then
+  unzip -q -o "$TMP_DIR/$ARCHIVE_NAME" -d "$TMP_DIR/extracted"
+  cp "$TMP_DIR/extracted/"* "$INSTALL_DIR/"
+else
+  tar -xzf "$TMP_DIR/$ARCHIVE_NAME" -C "$INSTALL_DIR"
+fi
+
+BIN="$INSTALL_DIR/agentx"
+if [ "$PLATFORM" = "windows" ]; then
+  BIN="$INSTALL_DIR/agentx.exe"
+fi
+
+chmod +x "$BIN" 2>/dev/null || true
+
+# Symlink opencode alias
+if [ "$PLATFORM" != "windows" ]; then
+  ln -sf "$INSTALL_DIR/agentx" "$INSTALL_DIR/opencode" 2>/dev/null || true
+fi
+
+# 8. Add to PATH
+SHELL_NAME=$(basename "${SHELL:-bash}")
+RC_FILE=""
+case "$SHELL_NAME" in
+  zsh)  RC_FILE="$HOME/.zshrc" ;;
+  bash) RC_FILE="$HOME/.bashrc" ;;
+  fish) RC_FILE="$HOME/.config/fish/config.fish" ;;
+  *)    RC_FILE="$HOME/.profile" ;;
+esac
+
+PATH_STR="export PATH=\"\$HOME/.agentx/bin:\$PATH\""
+if [ "$SHELL_NAME" = "fish" ]; then
+  PATH_STR="fish_add_path \$HOME/.agentx/bin"
+fi
+
+if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
+  if [ -n "$RC_FILE" ] && [ -f "$RC_FILE" ]; then
+    if ! grep -qs "\.agentx/bin" "$RC_FILE"; then
+      echo "" >> "$RC_FILE"
+      echo "# AgentX Code" >> "$RC_FILE"
+      echo "$PATH_STR" >> "$RC_FILE"
+      echo -e "Added ${CYAN}$INSTALL_DIR${NC} to PATH in ${BOLD}$RC_FILE${NC}"
+    fi
+  fi
+fi
+
+echo -e "\n${GREEN}${BOLD}AgentX Code installed successfully!${NC}\n"
+echo -e "To get started, restart your shell or run:"
+echo -e "  ${CYAN}export PATH=\"\$HOME/.agentx/bin:\$PATH\"${NC}\n"
+echo -e "Run AgentX Code:"
+echo -e "  ${CYAN}agentx${NC}                Start interactive terminal TUI"
+echo -e "  ${CYAN}agentx local --scan${NC}   Detect local hardware & AI models (Ollama, LM Studio)"
+echo -e "  ${CYAN}agentx --help${NC}         Show full command help\n"

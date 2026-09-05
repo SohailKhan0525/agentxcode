@@ -1,0 +1,13 @@
+﻿{
+  "name": "@agent-qofeno/agentx-cli",
+  "version": "3.0.0",
+  "exports": "./packages/opencode/src/index.ts",
+  "publish": {
+    "include": [
+      "packages/opencode/src/**/*.ts",
+      "packages/core/src/**/*.ts",
+      "README.md",
+      "LICENSE"
+    ]
+  }
+}
