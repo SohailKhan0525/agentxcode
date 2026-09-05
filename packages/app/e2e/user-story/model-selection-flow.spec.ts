@@ -22,7 +22,7 @@ test("creates a session in a new project, connects OpenCode Go, and selects its 
     provider: () => ({
       all: [
         {
-          id: "opencode",
+          id: "local",
           name: "OpenCode",
           models: {
             "free-model": {
@@ -65,7 +65,7 @@ test("creates a session in a new project, connects OpenCode Go, and selects its 
   })
   await page.addInitScript(() => {
     localStorage.setItem("settings.v3", JSON.stringify({ general: { newLayoutDesigns: true } }))
-    localStorage.setItem("opencode.global.dat:server", JSON.stringify({ projects: { local: [] } }))
+    localStorage.setItem("agentx.global.dat:server", JSON.stringify({ projects: { local: [] } }))
   })
 
   await page.goto("/")

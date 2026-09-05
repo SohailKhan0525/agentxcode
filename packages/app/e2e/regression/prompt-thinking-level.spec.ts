@@ -21,7 +21,7 @@ test("shows the V2 thinking level control while relevant", async ({ page }) => {
     provider: {
       all: [
         {
-          id: "opencode",
+          id: "local",
           name: "OpenCode",
           models: {
             "thinking-model": {
@@ -33,8 +33,8 @@ test("shows the V2 thinking level control while relevant", async ({ page }) => {
           },
         },
       ],
-      connected: ["opencode"],
-      default: { providerID: "opencode", modelID: "thinking-model" },
+      connected: ["local"],
+      default: { providerID: "local", modelID: "thinking-model" },
     },
     sessions: [
       {

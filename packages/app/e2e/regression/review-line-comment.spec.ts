@@ -130,7 +130,7 @@ async function openReview(page: Page) {
             time: { created: 1700000000000 },
             summary: { diffs: [] },
             agent: "build",
-            model: { providerID: "opencode", modelID: "test" },
+            model: { providerID: "local", modelID: "test" },
           },
           parts: [
             {

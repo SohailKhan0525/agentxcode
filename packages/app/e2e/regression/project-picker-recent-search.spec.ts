@@ -28,7 +28,7 @@ async function openProjectDialog(page: Page) {
   })
   await page.addInitScript((dirs) => {
     localStorage.setItem(
-      "opencode.global.dat:server",
+      "agentx.global.dat:server",
       JSON.stringify({
         projects: { local: dirs.map((worktree: string) => ({ worktree, expanded: false })) },
         lastProject: {},
