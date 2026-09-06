@@ -13,6 +13,7 @@ const GO_UPSELL_FREE_TIER_DONT_SHOW = "go_upsell_dont_show"
 const GO_UPSELL_ACCOUNT_RATE_LIMIT_LAST_SEEN_AT = "go_upsell_account_rate_limit_last_seen_at"
 const GO_UPSELL_ACCOUNT_RATE_LIMIT_DONT_SHOW = "go_upsell_account_rate_limit_dont_show"
 const GO_UPSELL_PROVIDERS = new Set<string>()
+const GO_UPSELL_WINDOW = 24 * 60 * 60 * 1000
 
 function goUpsellKeys(status: SessionStatus) {
   if (status.type !== "retry" || !status.action) return

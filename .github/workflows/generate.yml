@@ -11,6 +11,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      workflows: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
@@ -30,6 +31,9 @@ jobs:
 
       - name: Commit and push
         run: |
+          # Never let the generate bot modify workflow files — that requires
+          # a special GitHub App permission we don't grant the bot.
+          git restore .github/workflows/ 2>/dev/null || true
           if [ -z "$(git status --porcelain)" ]; then
             echo "No changes to commit"
             exit 0
@@ -37,15 +41,3 @@ jobs:
           git add -A
           git commit -m "chore: generate" --allow-empty
           git push origin HEAD:${{ github.ref_name }} --no-verify
-          # if ! git push origin HEAD:${{ github.event.pull_request.head.ref || github.ref_name }} --no-verify; then
-          #   echo ""
-          #   echo "============================================"
-          #   echo "Failed to push generated code."
-          #   echo "Please run locally and push:"
-          #   echo ""
-          #   echo "  ./script/generate.ts"
-          #   echo "  git add -A && git commit -m \"chore: generate\" && git push"
-          #   echo ""
-          #   echo "============================================"
-          #   exit 1
-          # fi
