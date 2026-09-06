@@ -2101,7 +2101,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ScrollStack, { ScrollStackItem } from "./ScrollStack"
-
 ;<ScrollStack>
   <ScrollStackItem>
     <h2>Card 1</h2>
@@ -2532,7 +2531,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import MagicBento from "./MagicBento"
-
 ;<MagicBento
   textAutoHide={true}
   enableStars={true}
@@ -3480,7 +3478,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ReflectiveCard from "./ReflectiveCard"
-
 ;<div style={{ height: "600px", position: "relative" }}>
   <ReflectiveCard
     overlayColor="rgba(0, 0, 0, 0.2)"
@@ -4177,7 +4174,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import TiltedCard from "./TiltedCard"
-
 ;<TiltedCard
   imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
   altText="Kendrick Lamar - GNX Album Cover"
@@ -4445,7 +4441,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Folder from "./Folder"
-
 ;<div style={{ height: "600px", position: "relative" }}>
   <Folder size={2} color="#5227FF" className="custom-folder" />
 </div>
@@ -4724,7 +4719,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ProfileCard from "./ProfileCard"
-
 ;<ProfileCard
   name="Javi A. Torres"
   title="Software Engineer"
@@ -5735,7 +5729,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import PixelCard from "./PixelCard"
-
 ;<PixelCard variant="pink">// your card content (use position: absolute)</PixelCard>
 ```
 
@@ -6064,7 +6057,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import SpotlightCard from "./SpotlightCard"
-
 ;<SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
   // Content goes here
 </SpotlightCard>
@@ -6167,7 +6159,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import CardSwap, { Card } from "./CardSwap"
-
 ;<div style={{ height: "600px", position: "relative" }}>
   <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
     <Card>
@@ -6455,7 +6446,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import DecayCard from "./DecayCard"
-
 ;<DecayCard width={200} height={300} image="https://picsum.photos/300/400?grayscale">
   <h2>
     Decay

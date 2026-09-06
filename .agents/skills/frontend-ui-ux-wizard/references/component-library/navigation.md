@@ -1109,7 +1109,6 @@ You are helping integrate an open-source React component into an existing applic
 ```jsx
 import PillNav from "./PillNav"
 import logo from "/path/to/logo.svg"
-
 ;<PillNav
   logo={logo}
   logoAlt="Company Logo"
@@ -3392,7 +3391,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import DecayCard from "./DecayCard"
-
 ;<DecayCard width={200} height={300} image="https://picsum.photos/300/400?grayscale">
   <h2>
     Decay

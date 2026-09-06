@@ -1006,7 +1006,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import CircularGallery from "./CircularGallery"
-
 ;<div style={{ height: "600px", position: "relative" }}>
   <CircularGallery
     bend={3}
@@ -3003,7 +3002,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ModelViewer from "./ModelViewer"
-
 ;<ModelViewer
   url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/ToyCar/glTF-Binary/ToyCar.glb"
   width={400}
@@ -3948,7 +3946,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Carousel from "./Carousel"
-
 ;<div style={{ height: "600px", position: "relative" }}>
   <Carousel baseWidth={300} autoplay={true} autoplayDelay={3000} pauseOnHover={true} loop={true} round={false} />
 </div>

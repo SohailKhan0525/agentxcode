@@ -2392,7 +2392,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import AnimatedContent from "./AnimatedContent"
-
 ;<AnimatedContent
   distance={150}
   direction="horizontal"
@@ -2577,7 +2576,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import FadeContent from "./FadeContent"
-
 ;<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
   {/* Anything placed inside this container will be fade into view */}
 </FadeContent>

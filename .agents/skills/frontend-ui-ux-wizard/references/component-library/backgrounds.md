@@ -985,7 +985,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Strands from "./Strands"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Strands
     colors={["#F97316", "#7C3AED", "#06B6D4"]}
@@ -1440,7 +1439,6 @@ You are helping integrate an open-source React component into an existing applic
 // https://cantastemel.com
 
 import Cubes from "./Cubes"
-
 ;<div style={{ height: "600px", position: "relative" }}>
   <Cubes
     gridSize={8}
@@ -1877,7 +1875,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Noise from "./Noise;"
-
 ;<div style={{ width: "600px", height: "400px", position: "relative", overflow: "hidden" }}>
   <Noise patternSize={250} patternScaleX={1} patternScaleY={1} patternRefreshInterval={2} patternAlpha={15} />
 </div>
@@ -2007,7 +2004,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Ribbons from "./Ribbons"
-
 ;<div style={{ height: "500px", position: "relative", overflow: "hidden" }}>
   <Ribbons
     baseThickness={30}
@@ -2316,7 +2312,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import MetaBalls from "./MetaBalls"
-
 ;<MetaBalls
   color="#ffffff"
   cursorBallColor="#ffffff"
@@ -3432,7 +3427,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Ferrofluid from "./Ferrofluid"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Ferrofluid
     colors={["#ffffff", "#ffffff", "#ffffff"]}
@@ -3903,7 +3897,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Lightfall from "./Lightfall"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Lightfall
     colors={["#A6C8FF", "#5227FF", "#FF9FFC"]}
@@ -4355,7 +4348,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import LiquidEther from "./LiquidEther"
-
 ;<div style={{ width: "100%", height: 600, position: "relative" }}>
   <LiquidEther
     colors={["#5227FF", "#FF9FFC", "#B497CF"]}
@@ -5613,7 +5605,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Prism from "./Prism"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Prism
     animationType="rotate"
@@ -6127,7 +6118,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import DarkVeil from "./DarkVeil"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <DarkVeil />
 </div>
@@ -6334,7 +6324,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import LightPillar from "./LightPillar"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <LightPillar
     topColor="#5227FF"
@@ -6806,7 +6795,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Silk from "./Silk"
-
 ;<Silk speed={5} scale={1} color="#7B7481" noiseIntensity={1.5} rotation={0} />
 ```
 
@@ -6963,7 +6951,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import FloatingLines from "./FloatingLines"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <FloatingLines
     enabledWaves={["top", "middle", "bottom"]}
@@ -7533,7 +7520,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import SideRays from "./SideRays"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <SideRays
     speed={2.5}
@@ -7875,7 +7861,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import LightRays from "./LightRays"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <LightRays
     raysOrigin="top-center"
@@ -8356,7 +8341,6 @@ You are helping integrate an open-source React component into an existing applic
 // Component inspired by github.com/zavalit/bayer-dithering-webgl-demo
 
 import PixelBlast from "./PixelBlast"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <PixelBlast
     variant="circle"
@@ -9055,7 +9039,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ColorBends from "./ColorBends"
-
 ;<ColorBends
   colors={["#ff5c7a", "#8a5cff", "#00ffd1"]}
   rotation={90}
@@ -9466,7 +9449,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import EvilEye from "./EvilEye"
-
 ;<EvilEye
   eyeColor="#FF6F37"
   intensity={1.5}
@@ -9810,7 +9792,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import LineWaves from "./LineWaves"
-
 ;<LineWaves
   speed={0.3}
   innerLineCount={32}
@@ -10143,7 +10124,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Radar from "./Radar"
-
 ;<Radar
   speed={1.0}
   scale={0.5}
@@ -10439,7 +10419,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import SoftAurora from "./SoftAurora"
-
 ;<SoftAurora
   speed={0.6}
   scale={1.5}
@@ -10790,7 +10769,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Aurora from "./Aurora"
-
 ;<Aurora colorStops={["#7cff67", "#B497CF", "#5227FF"]} blend={0.5} amplitude={1.0} speed={0.5} />
 ```
 
@@ -11046,7 +11024,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Plasma from "./Plasma"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Plasma color="#ff6b35" speed={0.6} direction="forward" scale={1.1} opacity={0.8} mouseInteractive={true} />
 </div>
@@ -11349,7 +11326,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import PlasmaWave from "./PlasmaWave"
-
 ;<PlasmaWave
   colors={["#A855F7", "#06B6D4"]}
   speed1={0.05}
@@ -11657,7 +11633,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Particles from "./Particles"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Particles
     particleColors={["#ffffff"]}
@@ -11975,7 +11950,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import GradientBlinds from "./GradientBlinds"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <GradientBlinds
     gradientColors={["#FF9FFC", "#5227FF"]}
@@ -12406,7 +12380,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Grainient from "./Grainient"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Grainient
     color1="#FF9FFC"
@@ -12817,7 +12790,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import GridScan from "./GridScan"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <GridScan
     sensitivity={0.55}
@@ -13843,7 +13815,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Beams from "./Beams"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Beams
     beamWidth={2}
@@ -14221,7 +14192,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import PixelSnow from "./PixelSnow"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <PixelSnow
     color="#ffffff"
@@ -14662,7 +14632,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Lightning from "./Lightning"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Lightning hue={220} xOffset={0} speed={1} intensity={1} size={1} />
 </div>
@@ -14902,7 +14871,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import PrismaticBurst from "./PrismaticBurst"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <PrismaticBurst
     animationType="rotate3d"
@@ -15867,7 +15835,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Dither from "./Dither"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Dither
     waveColor={[0.5, 0.5, 0.5]}
@@ -16234,7 +16201,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import FaultyTerminal from "./FaultyTerminal"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <FaultyTerminal
     scale={1.5}
@@ -16725,7 +16691,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import RippleGrid from "./RippleGrid"
-
 ;<div style={{ position: "relative", height: "500px", overflow: "hidden" }}>
   <RippleGrid
     enableRainbow={false}
@@ -17063,7 +17028,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import DotField from "./DotField"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <DotField dotRadius={1.5} dotSpacing={14} bulgeStrength={67} glowRadius={160} sparkle={false} waveAmplitude={0} />
 </div>
@@ -17415,7 +17379,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import DotGrid from "./DotGrid"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <DotGrid
     dotSize={10}
@@ -17776,7 +17739,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Threads from "./Threads"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Threads amplitude={1} distance={0} enableMouseInteraction={true} />
 </div>
@@ -19334,7 +19296,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Iridescence from "./Iridescence"
-
 ;<Iridescence color={[1, 1, 1]} mouseReact={false} amplitude={0.1} speed={1.0} />
 ```
 
@@ -19513,7 +19474,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Waves from "./Waves"
-
 ;<Waves
   lineColor="#fff"
   backgroundColor="rgba(255, 255, 255, 0.2)"
@@ -19934,7 +19894,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import GridDistortion from "./GridDistortion"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <GridDistortion
     imageSrc="https://picsum.photos/1920/1080?grayscale"
@@ -20265,7 +20224,6 @@ You are helping integrate an open-source React component into an existing applic
 //https://x.com/soju22/status/1858925191671271801
 
 import Ballpit from "./Ballpit;"
-
 ;<div style={{ position: "relative", overflow: "hidden", minHeight: "500px", maxHeight: "500px", width: "100%" }}>
   <Ballpit count={200} gravity={0.7} friction={0.8} wallBounce={0.95} followCursor={true} />
 </div>
@@ -21067,7 +21025,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Orb from "./Orb"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Orb hoverIntensity={0.5} rotateOnHover={true} hue={0} forceHoverState={false} />
 </div>
@@ -21727,7 +21684,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ShapeGrid from "./ShapeGrid"
-
 ;<ShapeGrid
   speed={0.5}
   squareSize={40}
@@ -22165,7 +22121,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import LiquidChrome from "./LiquidChrome"
-
 ;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <LiquidChrome baseColor={[0.1, 0.1, 0.1]} speed={1} amplitude={0.6} interactive={true} />
 </div>
@@ -22384,7 +22339,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Balatro from "./Balatro"
-
 ;<Balatro isRotate={false} mouseInteraction={true} pixelFilter={700} />
 ```
 

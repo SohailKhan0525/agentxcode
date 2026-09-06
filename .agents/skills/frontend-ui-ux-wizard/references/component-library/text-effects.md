@@ -421,7 +421,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import CircularText from "./CircularText"
-
 ;<CircularText text="REACT*BITS*COMPONENTS*" onHover="speedUp" spinDuration={20} className="custom-class" />
 ```
 
@@ -606,7 +605,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import TextType from "./TextType"
-
 ;<TextType
   text={["Text typing effect", "for your websites", "Happy coding!"]}
   typingSpeed={75}
@@ -864,7 +862,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Shuffle from "./Shuffle"
-
 ;<Shuffle
   text="Hello World"
   shuffleDirection="right"
@@ -1370,7 +1367,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ShinyText from "./ShinyText"
-
 ;<ShinyText
   text="✨ Shiny Text Effect"
   speed={2}
@@ -1562,7 +1558,6 @@ import TextPressure from "./TextPressure"
 // Note:
 // Make sure the font you're using supports all the variable properties.
 // React Bits does not take responsibility for the fonts used
-
 ;<div style={{ position: "relative", height: "300px" }}>
   <TextPressure
     text="Hello!"
@@ -2101,7 +2096,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import FuzzyText from "./FuzzyText"
-
 ;<FuzzyText baseIntensity={0.2} hoverIntensity={hoverIntensity} enableHover={enableHover}>
   404
 </FuzzyText>
@@ -2497,7 +2491,6 @@ You are helping integrate an open-source React component into an existing applic
 import GradientText from "./GradientText"
 
 // For a smoother animation, the gradient should start and end with the same color
-
 ;<GradientText
   colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
   animationSpeed={3}
@@ -2711,7 +2704,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import FallingText from "./FallingText"
-
 ;<FallingText
   text={`React Bits is a library of animated and interactive React components designed to streamline UI development and simplify your workflow.`}
   highlightWords={["React", "Bits", "animated", "components", "simplify"]}
@@ -2998,7 +2990,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import TextCursor from "./TextCursor"
-
 ;<TextCursor
   text="Hello!"
   spacing={80}
@@ -3675,7 +3666,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import TrueFocus from "./TrueFocus"
-
 ;<TrueFocus
   sentence="True Focus"
   manualMode={false}
@@ -3928,7 +3918,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ScrollFloat from "./ScrollFloat"
-
 ;<ScrollFloat
   animationDuration={1}
   ease="back.inOut(2)"
@@ -4081,7 +4070,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ScrollReveal from "./ScrollReveal"
-
 ;<ScrollReveal baseOpacity={0} enableBlur={true} baseRotation={5} blurStrength={10}>
   When does a man die? When he is hit by a bullet? No! When he suffers a disease? No! When he ate a soup made out of a
   poisonous mushroom? No! A man dies when he is forgotten!
@@ -4262,7 +4250,6 @@ You are helping integrate an open-source React component into an existing applic
 // Component ported and enhanced from https://codepen.io/JuanFuentes/pen/eYEeoyE
 
 import ASCIIText from "./ASCIIText"
-
 ;<ASCIIText text="hello_world" enableWaves={true} asciiFontSize={8} />
 ```
 
@@ -4996,7 +4983,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import RotatingText from "./RotatingText"
-
 ;<RotatingText
   texts={["React", "Bits", "Is", "Cool!"]}
   mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
@@ -5292,7 +5278,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import GlitchText from "./GlitchText"
-
 ;<GlitchText speed={1} enableShadows={true} enableOnHover={true} className="custom-class">
   React Bits
 </GlitchText>
@@ -5485,7 +5470,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ScrollVelocity from "./ScrollVelocity"
-
 ;<ScrollVelocity texts={["React Bits", "Scroll Down"]} velocity={velocity} className="custom-scroll-text" />
 ```
 
@@ -5978,7 +5962,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import CountUp from "./CountUp"
-
 ;<CountUp from={0} to={100} separator="," direction="up" duration={1} className="count-up-text" />
 ```
 
@@ -6127,7 +6110,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import LetterGlitch from "./LetterGlitch"
-
 ;<LetterGlitch glitchSpeed={50} centerVignette={true} outerVignette={false} smooth={true} />
 ```
 

@@ -148,7 +148,6 @@ You are helping integrate an open-source React component into an existing applic
 // https://codepen.io/BalintFerenczy/pen/KwdoyEN
 
 import ElectricBorder from "./ElectricBorder"
-
 ;<ElectricBorder color="#7df9ff" speed={1} chaos={0.12} thickness={2} style={{ borderRadius: 16 }}>
   <div>
     <p style={{ margin: "6px 0 0", opacity: 0.8 }}>A glowing, animated border wrapper.</p>
@@ -564,7 +563,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import PixelTransition from "./PixelTransition"
-
 ;<PixelTransition
   firstContent={
     <img
@@ -814,7 +812,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import GlareHover from "./GlareHover"
-
 ;<div style={{ height: "600px", position: "relative" }}>
   <GlareHover
     glareColor="#ffffff"
@@ -993,7 +990,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Antigravity from "./Antigravity"
-
 ;<div style={{ width: "100%", height: "400px", position: "relative" }}>
   <Antigravity
     count={300}
@@ -1730,7 +1726,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import MagicRings from "./MagicRings"
-
 ;<div style={{ width: "600px", height: "400px", position: "relative" }}>
   <MagicRings
     color="#fc42ff"
@@ -2089,7 +2084,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import MagnetLines from "./MagnetLines"
-
 ;<MagnetLines
   rows={9}
   columns={9}
@@ -2251,7 +2245,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import GhostCursor from "./GhostCursor"
-
 ;<div style={{ height: 600, position: "relative" }}>
   <GhostCursor
     // Visuals
@@ -3230,7 +3223,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ClickSpark from "./ClickSpark"
-
 ;<ClickSpark sparkColor="#fff" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
   {/* Your content here */}
 </ClickSpark>
@@ -3439,7 +3431,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Magnet from "./Magnet"
-
 ;<Magnet padding={50} disabled={false} magnetStrength={50}>
   <p>Star React Bits on GitHub!</p>
 </Magnet>
@@ -3563,7 +3554,6 @@ You are helping integrate an open-source React component into an existing applic
 ```jsx
 import StickerPeel from "./StickerPeel"
 import logo from "./assets/sticker.png"
-
 ;<StickerPeel
   imageSrc={logo}
   width={200}
@@ -4050,7 +4040,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import PixelTrail from "./PixelTrail"
-
 ;<div style={{ height: "500px", position: "relative", overflow: "hidden" }}>
   <PixelTrail
     gridSize={50}
@@ -4877,7 +4866,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ShapeBlur from "./ShapeBlur"
-
 ;<div style={{ position: "relative", height: "500px", overflow: "hidden" }}>
   <ShapeBlur
     variation={0}
@@ -5132,7 +5120,6 @@ const ShapeBlur = ({
       time = performance.now() * 0.001
       const dt = time - lastTime
       lastTime = time
-
       ;["x", "y"].forEach((k) => {
         vMouseDamp[k] = THREE.MathUtils.damp(vMouseDamp[k], vMouse[k], 8, dt)
       })
@@ -5436,7 +5423,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ImageTrail from "./ImageTrail;"
-
 ;<div style={{ height: "500px", position: "relative", overflow: "hidden" }}>
   <ImageTrail
     key={key}
@@ -6607,7 +6593,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import SplashCursor from "./SplashCursor"
-
 ;<SplashCursor />
 ```
 
@@ -7746,7 +7731,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import BlobCursor from "./BlobCursor"
-
 ;<BlobCursor
   blobType="circle"
   fillColor="#5227FF"
@@ -7967,7 +7951,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import StarBorder from "./StarBorder"
-
 ;<StarBorder as="button" className="custom-class" color="cyan" speed="5s">
   // content
 </StarBorder>
@@ -8545,7 +8528,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import BorderGlow from "./BorderGlow"
-
 ;<BorderGlow
   edgeSensitivity={30}
   glowColor="40 80 80"
@@ -9719,7 +9701,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import ElasticSlider from "./ElasticSlider"
-
 ;<ElasticSlider
   leftIcon={<>...your icon...</>}
   rightIcon={<>...your icon...</>}
@@ -10041,7 +10022,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Counter from "./Counter"
-
 ;<Counter value={1} places={[100, 10, 1]} fontSize={80} padding={5} gap={10} textColor="white" fontWeight={900} />
 ```
 
@@ -10272,7 +10252,6 @@ You are helping integrate an open-source React component into an existing applic
 
 ```jsx
 import Stepper, { Step } from "./Stepper"
-
 ;<Stepper
   initialStep={1}
   onStepChange={(step) => {
