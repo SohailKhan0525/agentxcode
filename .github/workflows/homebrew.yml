@@ -1,0 +1,53 @@
+﻿name: homebrew
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (e.g. v3.0.0)"
+        required: true
+        type: string
+
+jobs:
+  update-tap:
+    name: Update homebrew-agentx formula
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compute SHA256 of release tarball
+        id: sha
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ github.event.release.tag_name || inputs.tag }}"
+          TARBALL_URL="https://registry.npmjs.org/@agent-qofeno/agentx-cli/-/agentx-cli-${TAG#v}.tgz"
+          SHA256=$(curl -fsSL "$TARBALL_URL" | sha256sum | awk '{print $1}')
+          echo "sha256=$SHA256" >> $GITHUB_OUTPUT
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=${TAG#v}" >> $GITHUB_OUTPUT
+
+      - name: Update formula in homebrew-agentx tap
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.sha.outputs.tag }}"
+          VERSION="${{ steps.sha.outputs.version }}"
+          SHA256="${{ steps.sha.outputs.sha256 }}"
+          # Clone the tap repo
+          git clone https://x-access-token:${GH_TOKEN}@github.com/SohailKhan0525/homebrew-agentx.git tap
+          cd tap
+          git config user.email "bot@agentx.js.org"
+          git config user.name "AgentX Bot"
+          # Update version and sha256 in formula
+          sed -i "s|version \".*\"|version \"$VERSION\"|g" Formula/agentx.rb || true
+          sed -i "s|sha256 \".*\"|sha256 \"$SHA256\"|g" Formula/agentx.rb || true
+          sed -i "s|agentx-cli-[0-9][0-9.]*.tgz|agentx-cli-$VERSION.tgz|g" Formula/agentx.rb || true
+          git diff
+          git add Formula/agentx.rb
+          git diff --staged --quiet && echo "No changes to formula" && exit 0
+          git commit -m "chore: update agentx to $VERSION"
+          git push

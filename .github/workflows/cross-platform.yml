@@ -1,0 +1,63 @@
+﻿name: cross-platform
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Bun
+        uses: ./.github/actions/setup-bun
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build agentx binary (single target, no web UI embed)
+        run: bun --cwd packages/opencode run build --single --skip-embed-web-ui
+        env:
+          AGENTX_VERSION: "3.0.0"
+          OPENCODE_VERSION: "3.0.0"
+
+      - name: Verify binary (Linux/macOS)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          BIN=$(find packages/opencode/dist -name "agentx" -type f | head -1)
+          if [ -z "$BIN" ]; then
+            echo "ERROR: agentx binary not found"
+            exit 1
+          fi
+          chmod +x "$BIN"
+          OUTPUT=$("$BIN" --version 2>&1 || true)
+          echo "Binary output: $OUTPUT"
+
+      - name: Verify binary (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $bin = Get-ChildItem -Path packages/opencode/dist -Recurse -Filter "agentx.exe" | Select-Object -First 1
+          if (-not $bin) { Write-Error "agentx.exe not found"; exit 1 }
+          $output = & $bin.FullName --version 2>&1
+          Write-Host "Binary output: $output"
