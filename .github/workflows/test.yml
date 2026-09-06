@@ -67,7 +67,7 @@ jobs:
           AGENTX_TEST_HOME: ${{ runner.temp }}/agentx-test
 
       - name: Build binary for current platform
-        run: bun run --cwd packages/opencode build --single
+        run: bun run --cwd packages/opencode build --single --skip-embed-web-ui
 
       - name: Smoke test (agentx --version, agentx local --scan)
         run: |

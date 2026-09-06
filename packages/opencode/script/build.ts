@@ -137,7 +137,7 @@ const targets = singleFlag
 await $`rm -rf dist`
 
 const binaries: Record<string, string> = {}
-if (!skipInstall) {
+if (!skipInstall && !singleFlag) {
   await $`bun install --os="*" --cpu="*" --ignore-scripts @opentui/core@${pkg.dependencies["@opentui/core"]}`
   await $`bun install --os="*" --cpu="*" --ignore-scripts @parcel/watcher@${pkg.dependencies["@parcel/watcher"]}`
   await $`bun install --os="*" --cpu="*" --ignore-scripts @ff-labs/fff-bun@${pkg.dependencies["@ff-labs/fff-bun"]}`
