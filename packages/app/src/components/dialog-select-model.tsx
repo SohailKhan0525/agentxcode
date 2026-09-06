@@ -23,8 +23,7 @@ import { createMenuDismissController } from "@/utils/menu-dismiss-controller"
 import { createEventListener } from "@solid-primitives/event-listener"
 import { matchesModelSearch } from "./dialog-select-model-search"
 
-const isFree = (provider: string, cost: { input: number } | undefined) =>
-  (!cost || cost.input === 0)
+const isFree = (provider: string, cost: { input: number } | undefined) => !cost || cost.input === 0
 
 type ModelState = ReturnType<typeof useLocal>["model"]
 type ModelItem = ReturnType<ModelState["list"]>[number]

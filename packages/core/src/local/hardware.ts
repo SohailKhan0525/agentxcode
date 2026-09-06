@@ -11,8 +11,8 @@ export async function detectHardware(): Promise<HardwareProfile> {
   const cpuModel = cpus[0]?.model || "Unknown CPU"
   const cpuCores = cpus.length || 1
 
-  const totalRamGb = Math.round((os.totalmem() / (1024 ** 3)) * 10) / 10
-  const freeRamGb = Math.round((os.freemem() / (1024 ** 3)) * 10) / 10
+  const totalRamGb = Math.round((os.totalmem() / 1024 ** 3) * 10) / 10
+  const freeRamGb = Math.round((os.freemem() / 1024 ** 3) * 10) / 10
 
   const isAppleSilicon = osType === "darwin" && (process.arch === "arm64" || cpuModel.toLowerCase().includes("apple"))
 
@@ -24,8 +24,7 @@ export async function detectHardware(): Promise<HardwareProfile> {
     vramGb = totalRamGb // Unified memory on Apple Silicon
   } else if (osType === "windows") {
     try {
-      const psCmd =
-        'Get-CimInstance Win32_VideoController | Select-Object Name, AdapterRAM | ConvertTo-Json -Compress'
+      const psCmd = "Get-CimInstance Win32_VideoController | Select-Object Name, AdapterRAM | ConvertTo-Json -Compress"
       const res = childProcess.spawnSync("powershell.exe", ["-NoProfile", "-NonInteractive", "-Command", psCmd], {
         encoding: "utf8",
         timeout: 3000,
@@ -39,7 +38,7 @@ export async function detectHardware(): Promise<HardwareProfile> {
         if (primary && primary.Name) {
           gpuModel = primary.Name
           if (primary.AdapterRAM && primary.AdapterRAM > 0) {
-            vramGb = Math.round((primary.AdapterRAM / (1024 ** 3)) * 10) / 10
+            vramGb = Math.round((primary.AdapterRAM / 1024 ** 3) * 10) / 10
           }
         }
       }
@@ -87,9 +86,7 @@ export async function detectHardware(): Promise<HardwareProfile> {
     }
   }
 
-  const effectiveVramGb = isAppleSilicon
-    ? totalRamGb
-    : (vramGb && vramGb > 0 ? vramGb : Math.min(totalRamGb * 0.5, 8))
+  const effectiveVramGb = isAppleSilicon ? totalRamGb : vramGb && vramGb > 0 ? vramGb : Math.min(totalRamGb * 0.5, 8)
 
   let recommendedTier: HardwareTier = "fast"
   if (effectiveVramGb >= 14 || totalRamGb >= 28) {

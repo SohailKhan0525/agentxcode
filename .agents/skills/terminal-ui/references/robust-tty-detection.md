@@ -12,10 +12,10 @@ Check if stdin/stdout are TTYs and adjust behavior. Disable interactive features
 **Incorrect (assumes interactive terminal):**
 
 ```typescript
-import * as p from '@clack/prompts'
+import * as p from "@clack/prompts"
 
 async function main() {
-  const name = await p.text({ message: 'Name?' })
+  const name = await p.text({ message: "Name?" })
   // Hangs in CI waiting for input that never comes
 }
 ```
@@ -23,7 +23,7 @@ async function main() {
 **Correct (TTY-aware):**
 
 ```typescript
-import * as p from '@clack/prompts'
+import * as p from "@clack/prompts"
 
 async function main() {
   // Check for interactive terminal
@@ -32,14 +32,14 @@ async function main() {
   if (!isInteractive) {
     // Non-interactive: require flags
     if (!args.name) {
-      console.error('Error: --name is required in non-interactive mode')
+      console.error("Error: --name is required in non-interactive mode")
       process.exit(1)
     }
     return { name: args.name }
   }
 
   // Interactive: use prompts
-  const name = await p.text({ message: 'Name?' })
+  const name = await p.text({ message: "Name?" })
   return { name }
 }
 ```
@@ -59,20 +59,15 @@ function detectEnvironment(): Environment {
 
   const isCI = Boolean(
     process.env.CI ||
-    process.env.CONTINUOUS_INTEGRATION ||
-    process.env.GITHUB_ACTIONS ||
-    process.env.GITLAB_CI ||
-    process.env.JENKINS_URL
+      process.env.CONTINUOUS_INTEGRATION ||
+      process.env.GITHUB_ACTIONS ||
+      process.env.GITLAB_CI ||
+      process.env.JENKINS_URL,
   )
 
-  const hasColor = isTTY &&
-    !process.env.NO_COLOR &&
-    process.env.TERM !== 'dumb' &&
-    process.env.FORCE_COLOR !== '0'
+  const hasColor = isTTY && !process.env.NO_COLOR && process.env.TERM !== "dumb" && process.env.FORCE_COLOR !== "0"
 
-  const termWidth = isTTY
-    ? process.stdout.columns || 80
-    : 80
+  const termWidth = isTTY ? process.stdout.columns || 80 : 80
 
   return { isTTY, isCI, hasColor, termWidth }
 }
@@ -93,7 +88,7 @@ function log(message: string) {
   if (process.stdout.isTTY) {
     console.log(color.cyan(`ℹ ${message}`))
   } else {
-    console.log(`[INFO] ${message}`)  // Plain text for logs
+    console.log(`[INFO] ${message}`) // Plain text for logs
   }
 }
 ```

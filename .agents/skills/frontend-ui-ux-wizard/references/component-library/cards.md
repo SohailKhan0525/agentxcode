@@ -8,22 +8,24 @@ name: Bento card
 code: You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
-```tsx
-bento-card.tsx
-"use client";
 
-import React, { useState, useMemo } from "react";
-import { motion, AnimatePresence, LayoutGroup } from "motion/react";
-import { HugeiconsIcon } from "@hugeicons/react";
+```tsx
+bento - card.tsx
+;("use client")
+
+import React, { useState, useMemo } from "react"
+import { motion, AnimatePresence, LayoutGroup } from "motion/react"
+import { HugeiconsIcon } from "@hugeicons/react"
 import {
   DashboardSquare01Icon,
   UserGroupIcon,
@@ -40,16 +42,16 @@ import {
   Mail01Icon,
   LeftToRightListDashIcon,
   UserIcon,
-} from "@hugeicons/core-free-icons";
-import { cn } from "@/lib/utils";
+} from "@hugeicons/core-free-icons"
+import { cn } from "@/lib/utils"
 
 interface TabConfig {
-  id: string;
-  label: string;
-  icon: any;
-  badge?: string;
-  header: string;
-  description: string;
+  id: string
+  label: string
+  icon: any
+  badge?: string
+  header: string
+  description: string
 }
 
 const TABS: TabConfig[] = [
@@ -83,36 +85,33 @@ const TABS: TabConfig[] = [
     header: "System Assets",
     description: "Shared documentation and media logs.",
   },
-];
+]
 
 const BentoCard = () => {
-  const [activeTab, setActiveTab] = useState(TABS[0]);
+  const [activeTab, setActiveTab] = useState(TABS[0])
 
   const content = useMemo(() => {
     switch (activeTab.id) {
       case "dashboard":
-        return <OverviewDashboard />;
+        return <OverviewDashboard />
       case "management":
-        return <ManagementDashboard />;
+        return <ManagementDashboard />
       case "threads":
-        return <ThreadsDashboard />;
+        return <ThreadsDashboard />
       case "resources":
-        return <ResourcesDashboard />;
+        return <ResourcesDashboard />
       default:
-        return null;
+        return null
     }
-  }, [activeTab.id]);
+  }, [activeTab.id])
 
   return (
     <div className="flex items-center justify-center w-full antialiased">
       <div className="group relative w-full max-w-xl overflow-hidden rounded-3xl sm:rounded-4xl border bg-card shadow-2xl shadow-primary/5 transition-all duration-500 hover:shadow-primary/10 hover:-translate-y-1 m-0">
         <div className="p-4 sm:p-6 space-y-1.5 z-10 relative">
-          <h2 className="text-xs text-muted-foreground uppercase ">
-            Project Dashboard
-          </h2>
+          <h2 className="text-xs text-muted-foreground uppercase ">Project Dashboard</h2>
           <p className="text-lg sm:text-2xl text-foreground font-medium leading-snug max-w-[480px]">
-            High-performance analytics and team collaboration tools in one
-            place.
+            High-performance analytics and team collaboration tools in one place.
           </p>
         </div>
 
@@ -127,9 +126,7 @@ const BentoCard = () => {
                 <div className="w-2 h-2 rounded-full bg-muted-foreground/20" />
               </div>
               <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
-                <span className="text-xs  text-muted-foreground/50  uppercase">
-                  Workspace
-                </span>
+                <span className="text-xs  text-muted-foreground/50  uppercase">Workspace</span>
               </div>
             </div>
 
@@ -137,8 +134,8 @@ const BentoCard = () => {
               <div className="w-36 border-r border-border/30 p-2 flex flex-col gap-1 pt-6 bg-muted/5">
                 <LayoutGroup>
                   {TABS.map((tab) => {
-                    const isActive = activeTab.id === tab.id;
-                    const Icon = tab.icon;
+                    const isActive = activeTab.id === tab.id
+                    const Icon = tab.icon
 
                     return (
                       <button
@@ -146,19 +143,11 @@ const BentoCard = () => {
                         onClick={() => setActiveTab(tab)}
                         className={cn(
                           "relative flex items-center gap-1.5 p-2 rounded-xl text-xs transition-colors cursor-pointer",
-                          isActive
-                            ? "text-foreground"
-                            : "text-muted-foreground hover:text-foreground",
+                          isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                         )}
                       >
-                        <HugeiconsIcon
-                          icon={Icon}
-                          size={14}
-                          className="z-20 shrink-0 relative"
-                        />
-                        <span className="truncate z-20 relative font-medium">
-                          {tab.label}
-                        </span>
+                        <HugeiconsIcon icon={Icon} size={14} className="z-20 shrink-0 relative" />
+                        <span className="truncate z-20 relative font-medium">{tab.label}</span>
                         {tab.badge && (
                           <span
                             className={cn(
@@ -195,7 +184,7 @@ const BentoCard = () => {
                           />
                         )}
                       </button>
-                    );
+                    )
                   })}
                 </LayoutGroup>
               </div>
@@ -230,29 +219,21 @@ const BentoCard = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BentoCard;
+export default BentoCard
 
 const OverviewDashboard = () => (
   <div className="flex flex-col gap-3 h-full">
     <div className="relative p-3.5 rounded-xl border border-border/40 bg-linear-to-br from-background to-muted/20 overflow-hidden">
       <div className="flex flex-col gap-2 relative z-10">
         <div className="flex items-center justify-between">
-          <span className="text-[9px] font-medium text-muted-foreground">
-            Team Performance
-          </span>
-          <HugeiconsIcon
-            icon={CircleArrowUpRight02Icon}
-            size={12}
-            className="text-primary"
-          />
+          <span className="text-[9px] font-medium text-muted-foreground">Team Performance</span>
+          <HugeiconsIcon icon={CircleArrowUpRight02Icon} size={12} className="text-primary" />
         </div>
         <div className="flex flex-col gap-0.5">
-          <span className="text-xl font-medium tracking-tight text-foreground">
-            94.2%
-          </span>
+          <span className="text-xl font-medium tracking-tight text-foreground">94.2%</span>
           <div className="w-full h-1 bg-muted rounded-full overflow-hidden mt-1">
             <motion.div
               initial={{ width: 0 }}
@@ -261,9 +242,7 @@ const OverviewDashboard = () => (
             />
           </div>
         </div>
-        <span className="text-[9px] text-muted-foreground">
-          Score for Search & Delivery campaigns
-        </span>
+        <span className="text-[9px] text-muted-foreground">Score for Search & Delivery campaigns</span>
       </div>
       <div className="absolute -right-2 -bottom-2 opacity-5 scale-150 rotate-12">
         <HugeiconsIcon icon={BarChartIcon} size={64} />
@@ -274,45 +253,29 @@ const OverviewDashboard = () => (
       <div className="p-3 rounded-xl border border-border/40 bg-background/50 flex items-center justify-between">
         <div className="flex flex-col">
           <span className="text-[10px] font-medium text-foreground">1,070</span>
-          <span className="text-[8px] text-muted-foreground uppercase font-medium">
-            Keywords
-          </span>
+          <span className="text-[8px] text-muted-foreground uppercase font-medium">Keywords</span>
         </div>
         <HugeiconsIcon icon={Search01Icon} size={14} className="opacity-20" />
       </div>
       <div className="p-3 rounded-xl border border-border/40 bg-background/50 flex items-center justify-between">
         <div className="flex flex-col">
           <span className="text-[10px] font-medium text-foreground">2.3M</span>
-          <span className="text-[8px] text-muted-foreground uppercase font-medium">
-            Credits
-          </span>
+          <span className="text-[8px] text-muted-foreground uppercase font-medium">Credits</span>
         </div>
-        <HugeiconsIcon
-          icon={InformationCircleIcon}
-          size={14}
-          className="opacity-20"
-        />
+        <HugeiconsIcon icon={InformationCircleIcon} size={14} className="opacity-20" />
       </div>
     </div>
   </div>
-);
+)
 
 const ManagementDashboard = () => (
   <div className="flex flex-col h-full not-prose">
     <div className="rounded-xl border border-border/40 overflow-hidden flex flex-col h-full bg-background/50">
       <div className="bg-muted/30 px-3 py-2 border-b border-border/40 flex items-center justify-between">
-        <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wider">
-          Active Users
-        </span>
+        <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wider">Active Users</span>
         <div className="flex items-center gap-1.5 px-1.5 py-0.5 rounded-md bg-background border border-border/40">
-          <HugeiconsIcon
-            icon={Search01Icon}
-            size={10}
-            className="text-muted-foreground/50"
-          />
-          <span className="text-[8px] text-muted-foreground font-medium">
-            Search
-          </span>
+          <HugeiconsIcon icon={Search01Icon} size={10} className="text-muted-foreground/50" />
+          <span className="text-[8px] text-muted-foreground font-medium">Search</span>
         </div>
       </div>
       <div className="p-1 flex flex-col gap-0.5">
@@ -336,16 +299,9 @@ const ManagementDashboard = () => (
             color: "bg-emerald-400",
           },
         ].map((user, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/30 transition-colors group"
-          >
+          <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/30 transition-colors group">
             <div className="w-6 h-6 rounded-full bg-muted border border-border/40 flex items-center justify-center relative">
-              <HugeiconsIcon
-                icon={UserIcon}
-                size={10}
-                className="text-muted-foreground"
-              />
+              <HugeiconsIcon icon={UserIcon} size={10} className="text-muted-foreground" />
               <div
                 className={cn(
                   "absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full border border-background",
@@ -354,26 +310,18 @@ const ManagementDashboard = () => (
               />
             </div>
             <div className="flex flex-col min-w-0 flex-1">
-              <span className="text-[10px] font-medium text-foreground truncate">
-                {user.name}
-              </span>
-              <span className="text-[8px] text-muted-foreground truncate">
-                {user.role}
-              </span>
+              <span className="text-[10px] font-medium text-foreground truncate">{user.name}</span>
+              <span className="text-[8px] text-muted-foreground truncate">{user.role}</span>
             </div>
             <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-              <HugeiconsIcon
-                icon={Settings02Icon}
-                size={12}
-                className="text-muted-foreground"
-              />
+              <HugeiconsIcon icon={Settings02Icon} size={12} className="text-muted-foreground" />
             </div>
           </div>
         ))}
       </div>
     </div>
   </div>
-);
+)
 
 const ThreadsDashboard = () => (
   <div className="flex flex-col gap-3 h-full">
@@ -395,12 +343,8 @@ const ThreadsDashboard = () => (
           className="p-3.5 rounded-xl border border-border/40 bg-background/50 flex flex-col gap-3 relative overflow-hidden group"
         >
           <div className="flex flex-col gap-1 z-10">
-            <span className="text-[12px] font-medium text-foreground leading-tight">
-              {card.title}
-            </span>
-            <span className="text-[9px] text-muted-foreground leading-tight">
-              {card.desc}
-            </span>
+            <span className="text-[12px] font-medium text-foreground leading-tight">{card.title}</span>
+            <span className="text-[9px] text-muted-foreground leading-tight">{card.desc}</span>
           </div>
           <button className="w-fit flex items-center gap-1.5 px-2 py-1 rounded-md bg-foreground text-background text-[8px] font-semibold transition-transform active:scale-95 group-hover:bg-primary z-10">
             <HugeiconsIcon icon={Add01Icon} size={8} strokeWidth={3} />
@@ -413,37 +357,21 @@ const ThreadsDashboard = () => (
     <div className="mt-auto p-3 rounded-xl bg-muted/20 border border-border/30 flex items-center justify-between">
       <div className="flex items-center gap-2">
         <div className="p-1 px-1.5 rounded-md bg-background border border-border/40">
-          <HugeiconsIcon
-            icon={InformationCircleIcon}
-            size={10}
-            className="text-muted-foreground"
-          />
+          <HugeiconsIcon icon={InformationCircleIcon} size={10} className="text-muted-foreground" />
         </div>
-        <span className="text-[9px] text-muted-foreground font-medium">
-          Pin a new item
-        </span>
+        <span className="text-[9px] text-muted-foreground font-medium">Pin a new item</span>
       </div>
-      <HugeiconsIcon
-        icon={Add01Icon}
-        size={12}
-        className="text-muted-foreground/50"
-      />
+      <HugeiconsIcon icon={Add01Icon} size={12} className="text-muted-foreground/50" />
     </div>
   </div>
-);
+)
 
 const ResourcesDashboard = () => (
   <div className="flex flex-col gap-3 h-full overflow-hidden">
     <div className="flex-1 rounded-xl border border-border/40 flex flex-col bg-background/50 overflow-hidden">
       <div className="bg-muted/30 px-3 py-2 border-b border-border/40 flex items-center justify-between">
-        <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wider">
-          Archives & Logs
-        </span>
-        <HugeiconsIcon
-          icon={DatabaseIcon}
-          size={12}
-          className="text-muted-foreground/30"
-        />
+        <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wider">Archives & Logs</span>
+        <HugeiconsIcon icon={DatabaseIcon} size={12} className="text-muted-foreground/30" />
       </div>
       <div className="flex-1 p-1 overflow-y-auto scrollbar-hide">
         {[
@@ -480,9 +408,7 @@ const ResourcesDashboard = () => (
               <HugeiconsIcon icon={item.icon} size={12} />
             </div>
             <div className="flex flex-col min-w-0 flex-1">
-              <span className="text-[10px] font-medium text-foreground truncate">
-                {item.file}
-              </span>
+              <span className="text-[10px] font-medium text-foreground truncate">{item.file}</span>
               <span className="text-[8px] text-muted-foreground tabular-nums uppercase">
                 {item.size} • {item.type}
               </span>
@@ -497,44 +423,45 @@ const ResourcesDashboard = () => (
       </div>
     </div>
   </div>
-);
-
+)
 
 demo.tsx
-"use client";
-import BentoCard from "@/components/ui/bento-card";
+;("use client")
+import BentoCard from "@/components/ui/bento-card"
 
 export default function Demo() {
   return (
     <div className="flex items-center justify-center w-full min-h-screen bg-background p-8">
       <BentoCard />
     </div>
-  );
+  )
 }
-
 ```
 
 Install NPM dependencies:
+
 ```bash
 clsx, motion, tailwind-merge, @hugeicons/react, @hugeicons/core-free-icons
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -543,169 +470,144 @@ code :
 You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
-```tsx
-info-card.tsx
-"use client";
 
-import {
-  useState,
-  useRef,
-  useEffect,
-  createContext,
-  useContext,
-  useMemo,
-  useCallback,
-} from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { cn } from "@/lib/utils";
-import React from "react";
+```tsx
+info - card.tsx
+;("use client")
+
+import { useState, useRef, useEffect, createContext, useContext, useMemo, useCallback } from "react"
+import { motion, AnimatePresence } from "motion/react"
+import { cn } from "@/lib/utils"
+import React from "react"
 
 interface InfoCardTitleProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
-interface InfoCardDescriptionProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+interface InfoCardDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode
 }
 
-const InfoCardTitle = React.memo(
-  ({ children, className, ...props }: InfoCardTitleProps) => {
-    return (
-      <div className={cn("font-medium mb-1", className)} {...props}>
-        {children}
-      </div>
-    );
-  }
-);
-InfoCardTitle.displayName = "InfoCardTitle";
+const InfoCardTitle = React.memo(({ children, className, ...props }: InfoCardTitleProps) => {
+  return (
+    <div className={cn("font-medium mb-1", className)} {...props}>
+      {children}
+    </div>
+  )
+})
+InfoCardTitle.displayName = "InfoCardTitle"
 
-const InfoCardDescription = React.memo(
-  ({ children, className, ...props }: InfoCardDescriptionProps) => {
-    return (
-      <div
-        className={cn("text-muted-foreground leading-4", className)}
-        {...props}
-      >
-        {children}
-      </div>
-    );
-  }
-);
-InfoCardDescription.displayName = "InfoCardDescription";
+const InfoCardDescription = React.memo(({ children, className, ...props }: InfoCardDescriptionProps) => {
+  return (
+    <div className={cn("text-muted-foreground leading-4", className)} {...props}>
+      {children}
+    </div>
+  )
+})
+InfoCardDescription.displayName = "InfoCardDescription"
 
 interface CommonCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 interface InfoCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
-  storageKey?: string;
-  dismissType?: "once" | "forever";
+  children: React.ReactNode
+  storageKey?: string
+  dismissType?: "once" | "forever"
 }
 
-type InfoCardContentProps = CommonCardProps;
-type InfoCardFooterProps = CommonCardProps;
+type InfoCardContentProps = CommonCardProps
+type InfoCardFooterProps = CommonCardProps
 type InfoCardDismissProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
-  onDismiss?: () => void;
-};
-type InfoCardActionProps = CommonCardProps;
+  children: React.ReactNode
+  onDismiss?: () => void
+}
+type InfoCardActionProps = CommonCardProps
 
-const InfoCardContent = React.memo(
-  ({ children, className, ...props }: InfoCardContentProps) => {
-    return (
-      <div className={cn("flex flex-col gap-1 text-xs", className)} {...props}>
-        {children}
-      </div>
-    );
-  }
-);
-InfoCardContent.displayName = "InfoCardContent";
+const InfoCardContent = React.memo(({ children, className, ...props }: InfoCardContentProps) => {
+  return (
+    <div className={cn("flex flex-col gap-1 text-xs", className)} {...props}>
+      {children}
+    </div>
+  )
+})
+InfoCardContent.displayName = "InfoCardContent"
 
 interface MediaItem {
-  type?: "image" | "video";
-  src: string;
-  alt?: string;
-  className?: string;
-  [key: string]: any;
+  type?: "image" | "video"
+  src: string
+  alt?: string
+  className?: string
+  [key: string]: any
 }
 
 interface InfoCardMediaProps extends React.HTMLAttributes<HTMLDivElement> {
-  media: MediaItem[];
-  loading?: "eager" | "lazy";
-  shrinkHeight?: number;
-  expandHeight?: number;
+  media: MediaItem[]
+  loading?: "eager" | "lazy"
+  shrinkHeight?: number
+  expandHeight?: number
 }
 
 const InfoCardImageContext = createContext<{
-  handleMediaLoad: (mediaSrc: string) => void;
-  setAllImagesLoaded: (loaded: boolean) => void;
+  handleMediaLoad: (mediaSrc: string) => void
+  setAllImagesLoaded: (loaded: boolean) => void
 }>({
   handleMediaLoad: () => {},
   setAllImagesLoaded: () => {},
-});
+})
 
 const InfoCardContext = createContext<{
-  isHovered: boolean;
-  onDismiss: () => void;
+  isHovered: boolean
+  onDismiss: () => void
 }>({
   isHovered: false,
   onDismiss: () => {},
-});
+})
 
-function InfoCard({
-  children,
-  className,
-  storageKey,
-  dismissType = "once",
-}: InfoCardProps) {
+function InfoCard({ children, className, storageKey, dismissType = "once" }: InfoCardProps) {
   if (dismissType === "forever" && !storageKey) {
-    throw new Error(
-      'A storageKey must be provided when using dismissType="forever"'
-    );
+    throw new Error('A storageKey must be provided when using dismissType="forever"')
   }
 
-  const [isHovered, setIsHovered] = useState(false);
-  const [allImagesLoaded, setAllImagesLoaded] = useState(true);
+  const [isHovered, setIsHovered] = useState(false)
+  const [allImagesLoaded, setAllImagesLoaded] = useState(true)
   const [isDismissed, setIsDismissed] = useState(() => {
-    if (typeof window === "undefined" || dismissType === "once") return false;
-    return dismissType === "forever"
-      ? localStorage.getItem(storageKey!) === "dismissed"
-      : false;
-  });
+    if (typeof window === "undefined" || dismissType === "once") return false
+    return dismissType === "forever" ? localStorage.getItem(storageKey!) === "dismissed" : false
+  })
 
   const handleDismiss = useCallback(() => {
-    setIsDismissed(true);
+    setIsDismissed(true)
     if (dismissType === "forever") {
-      localStorage.setItem(storageKey!, "dismissed");
+      localStorage.setItem(storageKey!, "dismissed")
     }
-  }, [storageKey, dismissType]);
+  }, [storageKey, dismissType])
 
   const imageContextValue = useMemo(
     () => ({
       handleMediaLoad: () => {},
       setAllImagesLoaded,
     }),
-    [setAllImagesLoaded]
-  );
+    [setAllImagesLoaded],
+  )
 
   const cardContextValue = useMemo(
     () => ({
       isHovered,
       onDismiss: handleDismiss,
     }),
-    [isHovered, handleDismiss]
-  );
+    [isHovered, handleDismiss],
+  )
 
   return (
     <InfoCardContext.Provider value={cardContextValue}>
@@ -734,18 +636,15 @@ function InfoCard({
         </AnimatePresence>
       </InfoCardImageContext.Provider>
     </InfoCardContext.Provider>
-  );
+  )
 }
 
 const InfoCardFooter = ({ children, className }: InfoCardFooterProps) => {
-  const { isHovered } = useContext(InfoCardContext);
+  const { isHovered } = useContext(InfoCardContext)
 
   return (
     <motion.div
-      className={cn(
-        "flex justify-between text-xs text-muted-foreground",
-        className
-      )}
+      className={cn("flex justify-between text-xs text-muted-foreground", className)}
       initial={{ opacity: 0, height: "0px" }}
       animate={{
         opacity: isHovered ? 1 : 0,
@@ -760,42 +659,34 @@ const InfoCardFooter = ({ children, className }: InfoCardFooterProps) => {
     >
       {children}
     </motion.div>
-  );
-};
+  )
+}
 
-const InfoCardDismiss = React.memo(
-  ({ children, className, onDismiss, ...props }: InfoCardDismissProps) => {
-    const { onDismiss: contextDismiss } = useContext(InfoCardContext);
+const InfoCardDismiss = React.memo(({ children, className, onDismiss, ...props }: InfoCardDismissProps) => {
+  const { onDismiss: contextDismiss } = useContext(InfoCardContext)
 
-    const handleClick = (e: React.MouseEvent) => {
-      e.preventDefault();
-      onDismiss?.();
-      contextDismiss();
-    };
-
-    return (
-      <div
-        className={cn("cursor-pointer", className)}
-        onClick={handleClick}
-        {...props}
-      >
-        {children}
-      </div>
-    );
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    onDismiss?.()
+    contextDismiss()
   }
-);
-InfoCardDismiss.displayName = "InfoCardDismiss";
 
-const InfoCardAction = React.memo(
-  ({ children, className, ...props }: InfoCardActionProps) => {
-    return (
-      <div className={cn("", className)} {...props}>
-        {children}
-      </div>
-    );
-  }
-);
-InfoCardAction.displayName = "InfoCardAction";
+  return (
+    <div className={cn("cursor-pointer", className)} onClick={handleClick} {...props}>
+      {children}
+    </div>
+  )
+})
+InfoCardDismiss.displayName = "InfoCardDismiss"
+
+const InfoCardAction = React.memo(({ children, className, ...props }: InfoCardActionProps) => {
+  return (
+    <div className={cn("", className)} {...props}>
+      {children}
+    </div>
+  )
+})
+InfoCardAction.displayName = "InfoCardAction"
 
 const InfoCardMedia = ({
   media = [],
@@ -804,17 +695,17 @@ const InfoCardMedia = ({
   shrinkHeight = 75,
   expandHeight = 150,
 }: InfoCardMediaProps) => {
-  const { isHovered } = useContext(InfoCardContext);
-  const { setAllImagesLoaded } = useContext(InfoCardImageContext);
-  const [isOverflowVisible, setIsOverflowVisible] = useState(false);
-  const loadedMedia = useRef(new Set());
+  const { isHovered } = useContext(InfoCardContext)
+  const { setAllImagesLoaded } = useContext(InfoCardImageContext)
+  const [isOverflowVisible, setIsOverflowVisible] = useState(false)
+  const loadedMedia = useRef(new Set())
 
   const handleMediaLoad = (mediaSrc: string) => {
-    loadedMedia.current.add(mediaSrc);
+    loadedMedia.current.add(mediaSrc)
     if (loadedMedia.current.size === Math.min(3, media.slice(0, 3).length)) {
-      setAllImagesLoaded(true);
+      setAllImagesLoaded(true)
     }
-  };
+  }
 
   const processedMedia = useMemo(
     () =>
@@ -822,57 +713,54 @@ const InfoCardMedia = ({
         ...item,
         type: item.type || "image",
       })),
-    [media]
-  );
+    [media],
+  )
 
-  const displayMedia = useMemo(
-    () => processedMedia.slice(0, 3),
-    [processedMedia]
-  );
+  const displayMedia = useMemo(() => processedMedia.slice(0, 3), [processedMedia])
 
   useEffect(() => {
     if (media.length > 0) {
-      setAllImagesLoaded(false);
-      loadedMedia.current.clear();
+      setAllImagesLoaded(false)
+      loadedMedia.current.clear()
     } else {
-      setAllImagesLoaded(true); // No media to load
+      setAllImagesLoaded(true) // No media to load
     }
-  }, [media.length]);
+  }, [media.length])
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: NodeJS.Timeout
     if (isHovered) {
       timeoutId = setTimeout(() => {
-        setIsOverflowVisible(true);
-      }, 100);
+        setIsOverflowVisible(true)
+      }, 100)
     } else {
-      setIsOverflowVisible(false);
+      setIsOverflowVisible(false)
     }
-    return () => clearTimeout(timeoutId);
-  }, [isHovered]);
+    return () => clearTimeout(timeoutId)
+  }, [isHovered])
 
-  const mediaCount = displayMedia.length;
+  const mediaCount = displayMedia.length
 
   const getRotation = (index: number) => {
-    if (!isHovered || mediaCount === 1) return 0;
-    return (index - (mediaCount === 2 ? 0.5 : 1)) * 5;
-  };
+    if (!isHovered || mediaCount === 1) return 0
+    return (index - (mediaCount === 2 ? 0.5 : 1)) * 5
+  }
 
   const getTranslateX = (index: number) => {
-    if (!isHovered || mediaCount === 1) return 0;
-    return (index - (mediaCount === 2 ? 0.5 : 1)) * 20;
-  };
+    if (!isHovered || mediaCount === 1) return 0
+    return (index - (mediaCount === 2 ? 0.5 : 1)) * 20
+  }
 
   const getTranslateY = (index: number) => {
-    if (!isHovered) return 0;
-    if (mediaCount === 1) return -5;
-    return index === 0 ? -10 : index === 1 ? -5 : 0;
-  };
+    if (!isHovered) return 0
+    if (mediaCount === 1) return -5
+    return index === 0 ? -10 : index === 1 ? -5 : 0
+  }
 
   const getScale = (index: number) => {
-    if (!isHovered) return 1;
-    return mediaCount === 1 ? 1 : 0.95 + index * 0.02;
-  };
+    if (!isHovered) return 1
+    return mediaCount === 1 ? 1 : 0.95 + index * 0.02
+  }
 
   return (
     <InfoCardImageContext.Provider
@@ -884,12 +772,7 @@ const InfoCardMedia = ({
       <motion.div
         className={cn("relative mt-2 rounded-md", className)}
         animate={{
-          height:
-            media.length > 0
-              ? isHovered
-                ? expandHeight
-                : shrinkHeight
-              : "auto",
+          height: media.length > 0 ? (isHovered ? expandHeight : shrinkHeight) : "auto",
         }}
         style={{
           overflow: isOverflowVisible ? "visible" : "hidden",
@@ -901,20 +784,9 @@ const InfoCardMedia = ({
           duration: 0.3,
         }}
       >
-        <div
-          className={cn(
-            "relative",
-            media.length > 0 ? { height: shrinkHeight } : "h-auto"
-          )}
-        >
+        <div className={cn("relative", media.length > 0 ? { height: shrinkHeight } : "h-auto")}>
           {displayMedia.map((item, index) => {
-            const {
-              type,
-              src,
-              alt,
-              className: itemClassName,
-              ...mediaProps
-            } = item;
+            const { type, src, alt, className: itemClassName, ...mediaProps } = item
 
             return (
               <motion.div
@@ -935,10 +807,7 @@ const InfoCardMedia = ({
                 {type === "video" ? (
                   <video
                     src={src}
-                    className={cn(
-                      "w-full rounded-md border border-gray-200 object-cover shadow-lg",
-                      itemClassName
-                    )}
+                    className={cn("w-full rounded-md border border-gray-200 object-cover shadow-lg", itemClassName)}
                     onLoadedData={() => handleMediaLoad(src)}
                     preload="metadata"
                     muted
@@ -949,17 +818,14 @@ const InfoCardMedia = ({
                   <img
                     src={src}
                     alt={alt}
-                    className={cn(
-                      "w-full rounded-md border border-gray-200 object-cover shadow-lg",
-                      itemClassName
-                    )}
+                    className={cn("w-full rounded-md border border-gray-200 object-cover shadow-lg", itemClassName)}
                     onLoad={() => handleMediaLoad(src)}
                     loading={loading}
                     {...mediaProps}
                   />
                 )}
               </motion.div>
-            );
+            )
           })}
         </div>
 
@@ -975,8 +841,8 @@ const InfoCardMedia = ({
         />
       </motion.div>
     </InfoCardImageContext.Provider>
-  );
-};
+  )
+}
 
 export {
   InfoCard,
@@ -987,8 +853,7 @@ export {
   InfoCardFooter,
   InfoCardDismiss,
   InfoCardAction,
-};
-
+}
 
 demo.tsx
 import {
@@ -1000,7 +865,7 @@ import {
   InfoCardFooter,
   InfoCardDismiss,
   InfoCardAction,
-} from "@/components/ui/info-card";
+} from "@/components/ui/info-card"
 import {
   Sidebar,
   SidebarProvider,
@@ -1013,18 +878,9 @@ import {
   SidebarMenuButton,
   SidebarFooter,
   SidebarTrigger,
-} from "@/components/blocks/sidebar";
-import {
-  ExternalLink,
-  User,
-  ChevronsUpDown,
-  Calendar,
-  Home,
-  Inbox,
-  Search,
-  Settings,
-} from "lucide-react";
-import Link from "next/link";
+} from "@/components/blocks/sidebar"
+import { ExternalLink, User, ChevronsUpDown, Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import Link from "next/link"
 // Menu items.
 const items = [
   {
@@ -1052,7 +908,7 @@ const items = [
     url: "#",
     icon: Settings,
   },
-];
+]
 
 export function InfoCardDemo() {
   return (
@@ -1081,9 +937,7 @@ export function InfoCardDemo() {
           <InfoCard>
             <InfoCardContent>
               <InfoCardTitle>Introducing New Dashboard</InfoCardTitle>
-              <InfoCardDescription>
-                New Feature. New Platform. Same Feel.
-              </InfoCardDescription>
+              <InfoCardDescription>New Feature. New Platform. Same Feel.</InfoCardDescription>
               <InfoCardMedia
                 media={[
                   {
@@ -1100,10 +954,7 @@ export function InfoCardDemo() {
               <InfoCardFooter>
                 <InfoCardDismiss>Dismiss</InfoCardDismiss>
                 <InfoCardAction>
-                  <Link
-                    href="#"
-                    className="flex flex-row items-center gap-1 underline"
-                  >
+                  <Link href="#" className="flex flex-row items-center gap-1 underline">
                     Try it out <ExternalLink size={12} />
                   </Link>
                 </InfoCardAction>
@@ -1116,9 +967,7 @@ export function InfoCardDemo() {
                 <User className="h-5 w-5 rounded-md" />
                 <div className="flex flex-col items-start">
                   <span className="text-sm font-medium">KL</span>
-                  <span className="text-xs text-muted-foreground">
-                    kl@example.com
-                  </span>
+                  <span className="text-xs text-muted-foreground">kl@example.com</span>
                 </div>
               </div>
               <ChevronsUpDown className="h-5 w-5 rounded-md" />
@@ -1130,14 +979,15 @@ export function InfoCardDemo() {
         <SidebarTrigger className="size-3 pt-2" />
       </div>
     </SidebarProvider>
-  );
+  )
 }
 ```
 
 Copy-paste these files for dependencies:
+
 ```tsx
-shadcn/sidebar
-"use client"
+shadcn / sidebar
+;("use client")
 
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
@@ -1151,12 +1001,7 @@ import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { Skeleton } from "@/components/ui/skeleton"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -1193,106 +1038,85 @@ const SidebarProvider = React.forwardRef<
     open?: boolean
     onOpenChange?: (open: boolean) => void
   }
->(
-  (
-    {
-      defaultOpen = true,
-      open: openProp,
-      onOpenChange: setOpenProp,
-      className,
-      style,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const isMobile = useIsMobile()
-    const [openMobile, setOpenMobile] = React.useState(false)
+>(({ defaultOpen = true, open: openProp, onOpenChange: setOpenProp, className, style, children, ...props }, ref) => {
+  const isMobile = useIsMobile()
+  const [openMobile, setOpenMobile] = React.useState(false)
 
-    // This is the internal state of the sidebar.
-    // We use openProp and setOpenProp for control from outside the component.
-    const [_open, _setOpen] = React.useState(defaultOpen)
-    const open = openProp ?? _open
-    const setOpen = React.useCallback(
-      (value: boolean | ((value: boolean) => boolean)) => {
-        const openState = typeof value === "function" ? value(open) : value
-        if (setOpenProp) {
-          setOpenProp(openState)
-        } else {
-          _setOpen(openState)
-        }
-
-        // This sets the cookie to keep the sidebar state.
-        document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
-      },
-      [setOpenProp, open]
-    )
-
-    // Helper to toggle the sidebar.
-    const toggleSidebar = React.useCallback(() => {
-      return isMobile
-        ? setOpenMobile((open) => !open)
-        : setOpen((open) => !open)
-    }, [isMobile, setOpen, setOpenMobile])
-
-    // Adds a keyboard shortcut to toggle the sidebar.
-    React.useEffect(() => {
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (
-          event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
-          (event.metaKey || event.ctrlKey)
-        ) {
-          event.preventDefault()
-          toggleSidebar()
-        }
+  // This is the internal state of the sidebar.
+  // We use openProp and setOpenProp for control from outside the component.
+  const [_open, _setOpen] = React.useState(defaultOpen)
+  const open = openProp ?? _open
+  const setOpen = React.useCallback(
+    (value: boolean | ((value: boolean) => boolean)) => {
+      const openState = typeof value === "function" ? value(open) : value
+      if (setOpenProp) {
+        setOpenProp(openState)
+      } else {
+        _setOpen(openState)
       }
 
-      window.addEventListener("keydown", handleKeyDown)
-      return () => window.removeEventListener("keydown", handleKeyDown)
-    }, [toggleSidebar])
+      // This sets the cookie to keep the sidebar state.
+      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+    },
+    [setOpenProp, open],
+  )
 
-    // We add a state so that we can do data-state="expanded" or "collapsed".
-    // This makes it easier to style the sidebar with Tailwind classes.
-    const state = open ? "expanded" : "collapsed"
+  // Helper to toggle the sidebar.
+  const toggleSidebar = React.useCallback(() => {
+    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)
+  }, [isMobile, setOpen, setOpenMobile])
 
-    const contextValue = React.useMemo<SidebarContext>(
-      () => ({
-        state,
-        open,
-        setOpen,
-        isMobile,
-        openMobile,
-        setOpenMobile,
-        toggleSidebar,
-      }),
-      [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]
-    )
+  // Adds a keyboard shortcut to toggle the sidebar.
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault()
+        toggleSidebar()
+      }
+    }
 
-    return (
-      <SidebarContext.Provider value={contextValue}>
-        <TooltipProvider delayDuration={0}>
-          <div
-            style={
-              {
-                "--sidebar-width": SIDEBAR_WIDTH,
-                "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
-                ...style,
-              } as React.CSSProperties
-            }
-            className={cn(
-              "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar",
-              className
-            )}
-            ref={ref}
-            {...props}
-          >
-            {children}
-          </div>
-        </TooltipProvider>
-      </SidebarContext.Provider>
-    )
-  }
-)
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [toggleSidebar])
+
+  // We add a state so that we can do data-state="expanded" or "collapsed".
+  // This makes it easier to style the sidebar with Tailwind classes.
+  const state = open ? "expanded" : "collapsed"
+
+  const contextValue = React.useMemo<SidebarContext>(
+    () => ({
+      state,
+      open,
+      setOpen,
+      isMobile,
+      openMobile,
+      setOpenMobile,
+      toggleSidebar,
+    }),
+    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar],
+  )
+
+  return (
+    <SidebarContext.Provider value={contextValue}>
+      <TooltipProvider delayDuration={0}>
+        <div
+          style={
+            {
+              "--sidebar-width": SIDEBAR_WIDTH,
+              "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
+              ...style,
+            } as React.CSSProperties
+          }
+          className={cn("group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar", className)}
+          ref={ref}
+          {...props}
+        >
+          {children}
+        </div>
+      </TooltipProvider>
+    </SidebarContext.Provider>
+  )
+})
 SidebarProvider.displayName = "SidebarProvider"
 
 const Sidebar = React.forwardRef<
@@ -1302,168 +1126,148 @@ const Sidebar = React.forwardRef<
     variant?: "sidebar" | "floating" | "inset"
     collapsible?: "offcanvas" | "icon" | "none"
   }
->(
-  (
-    {
-      side = "left",
-      variant = "sidebar",
-      collapsible = "offcanvas",
-      className,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+>(({ side = "left", variant = "sidebar", collapsible = "offcanvas", className, children, ...props }, ref) => {
+  const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
 
-    if (collapsible === "none") {
-      return (
-        <div
-          className={cn(
-            "flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground",
-            className
-          )}
-          ref={ref}
-          {...props}
-        >
-          {children}
-        </div>
-      )
-    }
-
-    if (isMobile) {
-      return (
-        <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
-          <SheetContent
-            data-sidebar="sidebar"
-            data-mobile="true"
-            className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
-            style={
-              {
-                "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
-              } as React.CSSProperties
-            }
-            side={side}
-          >
-            <div className="flex h-full w-full flex-col">{children}</div>
-          </SheetContent>
-        </Sheet>
-      )
-    }
-
+  if (collapsible === "none") {
     return (
       <div
+        className={cn("flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground", className)}
         ref={ref}
-        className="group peer hidden md:block text-sidebar-foreground"
-        data-state={state}
-        data-collapsible={state === "collapsed" ? collapsible : ""}
-        data-variant={variant}
-        data-side={side}
+        {...props}
       >
-        {/* This is what handles the sidebar gap on desktop */}
-        <div
-          className={cn(
-            "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
-            "group-data-[collapsible=offcanvas]:w-0",
-            "group-data-[side=right]:rotate-180",
-            variant === "floating" || variant === "inset"
-              ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
-              : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]"
-          )}
-        />
-        <div
-          className={cn(
-            "duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex",
-            side === "left"
-              ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
-              : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
-            // Adjust the padding for floating and inset variants.
-            variant === "floating" || variant === "inset"
-              ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
-              : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l",
-            className
-          )}
-          {...props}
-        >
-          <div
-            data-sidebar="sidebar"
-            className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
-          >
-            {children}
-          </div>
-        </div>
+        {children}
       </div>
     )
   }
-)
+
+  if (isMobile) {
+    return (
+      <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+        <SheetContent
+          data-sidebar="sidebar"
+          data-mobile="true"
+          className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+          style={
+            {
+              "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
+            } as React.CSSProperties
+          }
+          side={side}
+        >
+          <div className="flex h-full w-full flex-col">{children}</div>
+        </SheetContent>
+      </Sheet>
+    )
+  }
+
+  return (
+    <div
+      ref={ref}
+      className="group peer hidden md:block text-sidebar-foreground"
+      data-state={state}
+      data-collapsible={state === "collapsed" ? collapsible : ""}
+      data-variant={variant}
+      data-side={side}
+    >
+      {/* This is what handles the sidebar gap on desktop */}
+      <div
+        className={cn(
+          "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
+          "group-data-[collapsible=offcanvas]:w-0",
+          "group-data-[side=right]:rotate-180",
+          variant === "floating" || variant === "inset"
+            ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
+            : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]",
+        )}
+      />
+      <div
+        className={cn(
+          "duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex",
+          side === "left"
+            ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
+            : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
+          // Adjust the padding for floating and inset variants.
+          variant === "floating" || variant === "inset"
+            ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
+            : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l",
+          className,
+        )}
+        {...props}
+      >
+        <div
+          data-sidebar="sidebar"
+          className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+        >
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+})
 Sidebar.displayName = "Sidebar"
 
-const SidebarTrigger = React.forwardRef<
-  React.ElementRef<typeof Button>,
-  React.ComponentProps<typeof Button>
->(({ className, onClick, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar()
+const SidebarTrigger = React.forwardRef<React.ElementRef<typeof Button>, React.ComponentProps<typeof Button>>(
+  ({ className, onClick, ...props }, ref) => {
+    const { toggleSidebar } = useSidebar()
 
-  return (
-    <Button
-      ref={ref}
-      data-sidebar="trigger"
-      variant="ghost"
-      size="icon"
-      className={cn("h-7 w-7", className)}
-      onClick={(event) => {
-        onClick?.(event)
-        toggleSidebar()
-      }}
-      {...props}
-    >
-      <PanelLeft />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>
-  )
-})
+    return (
+      <Button
+        ref={ref}
+        data-sidebar="trigger"
+        variant="ghost"
+        size="icon"
+        className={cn("h-7 w-7", className)}
+        onClick={(event) => {
+          onClick?.(event)
+          toggleSidebar()
+        }}
+        {...props}
+      >
+        <PanelLeft />
+        <span className="sr-only">Toggle Sidebar</span>
+      </Button>
+    )
+  },
+)
 SidebarTrigger.displayName = "SidebarTrigger"
 
-const SidebarRail = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<"button">
->(({ className, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar()
+const SidebarRail = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
+  ({ className, ...props }, ref) => {
+    const { toggleSidebar } = useSidebar()
 
-  return (
-    <button
-      ref={ref}
-      data-sidebar="rail"
-      aria-label="Toggle Sidebar"
-      tabIndex={-1}
-      onClick={toggleSidebar}
-      title="Toggle Sidebar"
-      className={cn(
-        "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
-        "[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize",
-        "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
-        "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-sidebar",
-        "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
-        "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
-        className
-      )}
-      {...props}
-    />
-  )
-})
+    return (
+      <button
+        ref={ref}
+        data-sidebar="rail"
+        aria-label="Toggle Sidebar"
+        tabIndex={-1}
+        onClick={toggleSidebar}
+        title="Toggle Sidebar"
+        className={cn(
+          "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
+          "[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize",
+          "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
+          "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-sidebar",
+          "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
+          "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
+          className,
+        )}
+        {...props}
+      />
+    )
+  },
+)
 SidebarRail.displayName = "SidebarRail"
 
-const SidebarInset = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"main">
->(({ className, ...props }, ref) => {
+const SidebarInset = React.forwardRef<HTMLDivElement, React.ComponentProps<"main">>(({ className, ...props }, ref) => {
   return (
     <main
       ref={ref}
       className={cn(
         "relative flex min-h-svh flex-1 flex-col bg-background",
         "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
-        className
+        className,
       )}
       {...props}
     />
@@ -1471,80 +1275,55 @@ const SidebarInset = React.forwardRef<
 })
 SidebarInset.displayName = "SidebarInset"
 
-const SidebarInput = React.forwardRef<
-  React.ElementRef<typeof Input>,
-  React.ComponentProps<typeof Input>
->(({ className, ...props }, ref) => {
-  return (
-    <Input
-      ref={ref}
-      data-sidebar="input"
-      className={cn(
-        "h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
-        className
-      )}
-      {...props}
-    />
-  )
-})
+const SidebarInput = React.forwardRef<React.ElementRef<typeof Input>, React.ComponentProps<typeof Input>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <Input
+        ref={ref}
+        data-sidebar="input"
+        className={cn(
+          "h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
+          className,
+        )}
+        {...props}
+      />
+    )
+  },
+)
 SidebarInput.displayName = "SidebarInput"
 
-const SidebarHeader = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      data-sidebar="header"
-      className={cn("flex flex-col gap-2 p-2", className)}
-      {...props}
-    />
-  )
+const SidebarHeader = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => {
+  return <div ref={ref} data-sidebar="header" className={cn("flex flex-col gap-2 p-2", className)} {...props} />
 })
 SidebarHeader.displayName = "SidebarHeader"
 
-const SidebarFooter = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      data-sidebar="footer"
-      className={cn("flex flex-col gap-2 p-2", className)}
-      {...props}
-    />
-  )
+const SidebarFooter = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => {
+  return <div ref={ref} data-sidebar="footer" className={cn("flex flex-col gap-2 p-2", className)} {...props} />
 })
 SidebarFooter.displayName = "SidebarFooter"
 
-const SidebarSeparator = React.forwardRef<
-  React.ElementRef<typeof Separator>,
-  React.ComponentProps<typeof Separator>
->(({ className, ...props }, ref) => {
-  return (
-    <Separator
-      ref={ref}
-      data-sidebar="separator"
-      className={cn("mx-2 w-auto bg-sidebar-border", className)}
-      {...props}
-    />
-  )
-})
+const SidebarSeparator = React.forwardRef<React.ElementRef<typeof Separator>, React.ComponentProps<typeof Separator>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <Separator
+        ref={ref}
+        data-sidebar="separator"
+        className={cn("mx-2 w-auto bg-sidebar-border", className)}
+        {...props}
+      />
+    )
+  },
+)
 SidebarSeparator.displayName = "SidebarSeparator"
 
-const SidebarContent = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => {
+const SidebarContent = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => {
   return (
     <div
       ref={ref}
       data-sidebar="content"
       className={cn(
         "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
-        className
+        className,
       )}
       {...props}
     />
@@ -1552,10 +1331,7 @@ const SidebarContent = React.forwardRef<
 })
 SidebarContent.displayName = "SidebarContent"
 
-const SidebarGroup = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => {
+const SidebarGroup = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(({ className, ...props }, ref) => {
   return (
     <div
       ref={ref}
@@ -1567,86 +1343,62 @@ const SidebarGroup = React.forwardRef<
 })
 SidebarGroup.displayName = "SidebarGroup"
 
-const SidebarGroupLabel = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div"> & { asChild?: boolean }
->(({ className, asChild = false, ...props }, ref) => {
-  const Comp = asChild ? Slot : "div"
+const SidebarGroupLabel = React.forwardRef<HTMLDivElement, React.ComponentProps<"div"> & { asChild?: boolean }>(
+  ({ className, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "div"
 
-  return (
-    <Comp
-      ref={ref}
-      data-sidebar="group-label"
-      className={cn(
-        "duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opacity] ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
-        "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
-        className
-      )}
-      {...props}
-    />
-  )
-})
+    return (
+      <Comp
+        ref={ref}
+        data-sidebar="group-label"
+        className={cn(
+          "duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opacity] ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+          "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
+          className,
+        )}
+        {...props}
+      />
+    )
+  },
+)
 SidebarGroupLabel.displayName = "SidebarGroupLabel"
 
-const SidebarGroupAction = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<"button"> & { asChild?: boolean }
->(({ className, asChild = false, ...props }, ref) => {
-  const Comp = asChild ? Slot : "button"
+const SidebarGroupAction = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button"> & { asChild?: boolean }>(
+  ({ className, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
 
-  return (
-    <Comp
-      ref={ref}
-      data-sidebar="group-action"
-      className={cn(
-        "absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
-        // Increases the hit area of the button on mobile.
-        "after:absolute after:-inset-2 after:md:hidden",
-        "group-data-[collapsible=icon]:hidden",
-        className
-      )}
-      {...props}
-    />
-  )
-})
+    return (
+      <Comp
+        ref={ref}
+        data-sidebar="group-action"
+        className={cn(
+          "absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+          // Increases the hit area of the button on mobile.
+          "after:absolute after:-inset-2 after:md:hidden",
+          "group-data-[collapsible=icon]:hidden",
+          className,
+        )}
+        {...props}
+      />
+    )
+  },
+)
 SidebarGroupAction.displayName = "SidebarGroupAction"
 
-const SidebarGroupContent = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-sidebar="group-content"
-    className={cn("w-full text-sm", className)}
-    {...props}
-  />
-))
+const SidebarGroupContent = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} data-sidebar="group-content" className={cn("w-full text-sm", className)} {...props} />
+  ),
+)
 SidebarGroupContent.displayName = "SidebarGroupContent"
 
-const SidebarMenu = React.forwardRef<
-  HTMLUListElement,
-  React.ComponentProps<"ul">
->(({ className, ...props }, ref) => (
-  <ul
-    ref={ref}
-    data-sidebar="menu"
-    className={cn("flex w-full min-w-0 flex-col gap-1", className)}
-    {...props}
-  />
+const SidebarMenu = React.forwardRef<HTMLUListElement, React.ComponentProps<"ul">>(({ className, ...props }, ref) => (
+  <ul ref={ref} data-sidebar="menu" className={cn("flex w-full min-w-0 flex-col gap-1", className)} {...props} />
 ))
 SidebarMenu.displayName = "SidebarMenu"
 
-const SidebarMenuItem = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentProps<"li">
->(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    data-sidebar="menu-item"
-    className={cn("group/menu-item relative", className)}
-    {...props}
-  />
+const SidebarMenuItem = React.forwardRef<HTMLLIElement, React.ComponentProps<"li">>(({ className, ...props }, ref) => (
+  <li ref={ref} data-sidebar="menu-item" className={cn("group/menu-item relative", className)} {...props} />
 ))
 SidebarMenuItem.displayName = "SidebarMenuItem"
 
@@ -1669,7 +1421,7 @@ const sidebarMenuButtonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 )
 
 const SidebarMenuButton = React.forwardRef<
@@ -1679,56 +1431,38 @@ const SidebarMenuButton = React.forwardRef<
     isActive?: boolean
     tooltip?: string | React.ComponentProps<typeof TooltipContent>
   } & VariantProps<typeof sidebarMenuButtonVariants>
->(
-  (
-    {
-      asChild = false,
-      isActive = false,
-      variant = "default",
-      size = "default",
-      tooltip,
-      className,
-      ...props
-    },
-    ref
-  ) => {
-    const Comp = asChild ? Slot : "button"
-    const { isMobile, state } = useSidebar()
+>(({ asChild = false, isActive = false, variant = "default", size = "default", tooltip, className, ...props }, ref) => {
+  const Comp = asChild ? Slot : "button"
+  const { isMobile, state } = useSidebar()
 
-    const button = (
-      <Comp
-        ref={ref}
-        data-sidebar="menu-button"
-        data-size={size}
-        data-active={isActive}
-        className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-        {...props}
-      />
-    )
+  const button = (
+    <Comp
+      ref={ref}
+      data-sidebar="menu-button"
+      data-size={size}
+      data-active={isActive}
+      className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+      {...props}
+    />
+  )
 
-    if (!tooltip) {
-      return button
-    }
-
-    if (typeof tooltip === "string") {
-      tooltip = {
-        children: tooltip,
-      }
-    }
-
-    return (
-      <Tooltip>
-        <TooltipTrigger asChild>{button}</TooltipTrigger>
-        <TooltipContent
-          side="right"
-          align="center"
-          hidden={state !== "collapsed" || isMobile}
-          {...tooltip}
-        />
-      </Tooltip>
-    )
+  if (!tooltip) {
+    return button
   }
-)
+
+  if (typeof tooltip === "string") {
+    tooltip = {
+      children: tooltip,
+    }
+  }
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>{button}</TooltipTrigger>
+      <TooltipContent side="right" align="center" hidden={state !== "collapsed" || isMobile} {...tooltip} />
+    </Tooltip>
+  )
+})
 SidebarMenuButton.displayName = "SidebarMenuButton"
 
 const SidebarMenuAction = React.forwardRef<
@@ -1754,7 +1488,7 @@ const SidebarMenuAction = React.forwardRef<
         "group-data-[collapsible=icon]:hidden",
         showOnHover &&
           "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0",
-        className
+        className,
       )}
       {...props}
     />
@@ -1762,25 +1496,24 @@ const SidebarMenuAction = React.forwardRef<
 })
 SidebarMenuAction.displayName = "SidebarMenuAction"
 
-const SidebarMenuBadge = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-sidebar="menu-badge"
-    className={cn(
-      "absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums text-sidebar-foreground select-none pointer-events-none",
-      "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground",
-      "peer-data-[size=sm]/menu-button:top-1",
-      "peer-data-[size=default]/menu-button:top-1.5",
-      "peer-data-[size=lg]/menu-button:top-2.5",
-      "group-data-[collapsible=icon]:hidden",
-      className
-    )}
-    {...props}
-  />
-))
+const SidebarMenuBadge = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-sidebar="menu-badge"
+      className={cn(
+        "absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums text-sidebar-foreground select-none pointer-events-none",
+        "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground",
+        "peer-data-[size=sm]/menu-button:top-1",
+        "peer-data-[size=default]/menu-button:top-1.5",
+        "peer-data-[size=lg]/menu-button:top-2.5",
+        "group-data-[collapsible=icon]:hidden",
+        className,
+      )}
+      {...props}
+    />
+  ),
+)
 SidebarMenuBadge.displayName = "SidebarMenuBadge"
 
 const SidebarMenuSkeleton = React.forwardRef<
@@ -1801,12 +1534,7 @@ const SidebarMenuSkeleton = React.forwardRef<
       className={cn("rounded-md h-8 flex gap-2 px-2 items-center", className)}
       {...props}
     >
-      {showIcon && (
-        <Skeleton
-          className="size-4 rounded-md"
-          data-sidebar="menu-skeleton-icon"
-        />
-      )}
+      {showIcon && <Skeleton className="size-4 rounded-md" data-sidebar="menu-skeleton-icon" />}
       <Skeleton
         className="h-4 flex-1 max-w-[--skeleton-width]"
         data-sidebar="menu-skeleton-text"
@@ -1821,27 +1549,25 @@ const SidebarMenuSkeleton = React.forwardRef<
 })
 SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton"
 
-const SidebarMenuSub = React.forwardRef<
-  HTMLUListElement,
-  React.ComponentProps<"ul">
->(({ className, ...props }, ref) => (
-  <ul
-    ref={ref}
-    data-sidebar="menu-sub"
-    className={cn(
-      "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5",
-      "group-data-[collapsible=icon]:hidden",
-      className
-    )}
-    {...props}
-  />
-))
+const SidebarMenuSub = React.forwardRef<HTMLUListElement, React.ComponentProps<"ul">>(
+  ({ className, ...props }, ref) => (
+    <ul
+      ref={ref}
+      data-sidebar="menu-sub"
+      className={cn(
+        "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5",
+        "group-data-[collapsible=icon]:hidden",
+        className,
+      )}
+      {...props}
+    />
+  ),
+)
 SidebarMenuSub.displayName = "SidebarMenuSub"
 
-const SidebarMenuSubItem = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentProps<"li">
->(({ ...props }, ref) => <li ref={ref} {...props} />)
+const SidebarMenuSubItem = React.forwardRef<HTMLLIElement, React.ComponentProps<"li">>(({ ...props }, ref) => (
+  <li ref={ref} {...props} />
+))
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem"
 
 const SidebarMenuSubButton = React.forwardRef<
@@ -1866,7 +1592,7 @@ const SidebarMenuSubButton = React.forwardRef<
         size === "sm" && "text-xs",
         size === "md" && "text-sm",
         "group-data-[collapsible=icon]:hidden",
-        className
+        className,
       )}
       {...props}
     />
@@ -1900,10 +1626,10 @@ export {
   SidebarTrigger,
   useSidebar,
 }
-
 ```
+
 ```tsx
-shadcn/use-mobile
+shadcn / use - mobile
 import * as React from "react"
 
 const MOBILE_BREAKPOINT = 768
@@ -1923,15 +1649,15 @@ export function useIsMobile() {
 
   return !!isMobile
 }
-
 ```
-```tsx
-originui/button
-import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
 
-import { cn } from "@/lib/utils";
+```tsx
+originui / button
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -1939,12 +1665,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground shadow-sm shadow-black/5 hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-sm shadow-black/5 hover:bg-destructive/90",
+        destructive: "bg-destructive text-destructive-foreground shadow-sm shadow-black/5 hover:bg-destructive/90",
         outline:
           "border border-input bg-background shadow-sm shadow-black/5 hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-sm shadow-black/5 hover:bg-secondary/80",
+        secondary: "bg-secondary text-secondary-foreground shadow-sm shadow-black/5 hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
@@ -1960,31 +1684,29 @@ const buttonVariants = cva(
       size: "default",
     },
   },
-);
+)
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
+  asChild?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
-    );
+    const Comp = asChild ? Slot : "button"
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
   },
-);
-Button.displayName = "Button";
+)
+Button.displayName = "Button"
 
-export { Button, buttonVariants };
-
+export { Button, buttonVariants }
 ```
+
 ```tsx
-originui/input
-import { cn } from "@/lib/utils";
-import * as React from "react";
+originui / input
+import { cn } from "@/lib/utils"
+import * as React from "react"
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, type, ...props }, ref) => {
@@ -2002,17 +1724,17 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
         ref={ref}
         {...props}
       />
-    );
+    )
   },
-);
-Input.displayName = "Input";
+)
+Input.displayName = "Input"
 
-export { Input };
-
+export { Input }
 ```
+
 ```tsx
-shadcn/separator
-"use client"
+shadcn / separator
+;("use client")
 
 import * as React from "react"
 import * as SeparatorPrimitive from "@radix-ui/react-separator"
@@ -2022,32 +1744,23 @@ import { cn } from "@/lib/utils"
 const Separator = React.forwardRef<
   React.ElementRef<typeof SeparatorPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
->(
-  (
-    { className, orientation = "horizontal", decorative = true, ...props },
-    ref
-  ) => (
-    <SeparatorPrimitive.Root
-      ref={ref}
-      decorative={decorative}
-      orientation={orientation}
-      className={cn(
-        "shrink-0 bg-border",
-        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
-        className
-      )}
-      {...props}
-    />
-  )
-)
+>(({ className, orientation = "horizontal", decorative = true, ...props }, ref) => (
+  <SeparatorPrimitive.Root
+    ref={ref}
+    decorative={decorative}
+    orientation={orientation}
+    className={cn("shrink-0 bg-border", orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]", className)}
+    {...props}
+  />
+))
 Separator.displayName = SeparatorPrimitive.Root.displayName
 
 export { Separator }
-
 ```
+
 ```tsx
-shadcn/sheet
-"use client"
+shadcn / sheet
+;("use client")
 
 import * as React from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
@@ -2102,52 +1815,29 @@ interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
     VariantProps<typeof sheetVariants> {}
 
-const SheetContent = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Content>,
-  SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => (
-  <SheetPortal>
-    <SheetOverlay />
-    <SheetPrimitive.Content
-      ref={ref}
-      className={cn(sheetVariants({ side }), className)}
-      {...props}
-    >
-      {children}
-      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
-        <X className="h-4 w-4" />
-        <span className="sr-only">Close</span>
-      </SheetPrimitive.Close>
-    </SheetPrimitive.Content>
-  </SheetPortal>
-))
+const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Content>, SheetContentProps>(
+  ({ side = "right", className, children, ...props }, ref) => (
+    <SheetPortal>
+      <SheetOverlay />
+      <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ side }), className)} {...props}>
+        {children}
+        <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+          <X className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </SheetPrimitive.Close>
+      </SheetPrimitive.Content>
+    </SheetPortal>
+  ),
+)
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
-const SheetHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col space-y-2 text-center sm:text-left",
-      className,
-    )}
-    {...props}
-  />
+const SheetHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col space-y-2 text-center sm:text-left", className)} {...props} />
 )
 SheetHeader.displayName = "SheetHeader"
 
-const SheetFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className,
-    )}
-    {...props}
-  />
+const SheetFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)} {...props} />
 )
 SheetFooter.displayName = "SheetFooter"
 
@@ -2155,11 +1845,7 @@ const SheetTitle = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >(({ className, ...props }, ref) => (
-  <SheetPrimitive.Title
-    ref={ref}
-    className={cn("text-lg font-semibold text-foreground", className)}
-    {...props}
-  />
+  <SheetPrimitive.Title ref={ref} className={cn("text-lg font-semibold text-foreground", className)} {...props} />
 ))
 SheetTitle.displayName = SheetPrimitive.Title.displayName
 
@@ -2167,11 +1853,7 @@ const SheetDescription = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(({ className, ...props }, ref) => (
-  <SheetPrimitive.Description
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
+  <SheetPrimitive.Description ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
 ))
 SheetDescription.displayName = SheetPrimitive.Description.displayName
 
@@ -2187,10 +1869,10 @@ export {
   SheetTitle,
   SheetDescription,
 }
-
 ```
+
 ```tsx
-shadcn/button
+shadcn / button
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -2203,12 +1885,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
@@ -2235,52 +1914,43 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
   },
 )
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
-
 ```
+
 ```tsx
-shadcn/input
+shadcn / input
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
-    return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
+const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type, ...props }, ref) => {
+  return (
+    <input
+      type={type}
+      className={cn(
+        "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        className,
+      )}
+      ref={ref}
+      {...props}
+    />
+  )
+})
 Input.displayName = "Input"
 
 export { Input }
-
 ```
+
 ```tsx
-shadcn/label
-"use client"
+shadcn / label
+;("use client")
 
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
@@ -2288,64 +1958,49 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-const labelVariants = cva(
-  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-)
+const labelVariants = cva("text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70")
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
-    VariantProps<typeof labelVariants>
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & VariantProps<typeof labelVariants>
 >(({ className, ...props }, ref) => (
-  <LabelPrimitive.Root
-    ref={ref}
-    className={cn(labelVariants(), className)}
-    {...props}
-  />
+  <LabelPrimitive.Root ref={ref} className={cn(labelVariants(), className)} {...props} />
 ))
 Label.displayName = LabelPrimitive.Root.displayName
 
 export { Label }
-
 ```
+
 ```tsx
-shadcn/skeleton
+shadcn / skeleton
 import { cn } from "@/lib/utils"
 
-function Skeleton({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={cn("animate-pulse rounded-md bg-muted", className)}
-      {...props}
-    />
-  )
+function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("animate-pulse rounded-md bg-muted", className)} {...props} />
 }
 
 export { Skeleton }
-
 ```
+
 ```tsx
-originui/tooltip
-"use client";
+originui / tooltip
+;("use client")
 
-import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import * as React from "react";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+import * as React from "react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-const TooltipProvider = TooltipPrimitive.Provider;
+const TooltipProvider = TooltipPrimitive.Provider
 
-const Tooltip = TooltipPrimitive.Root;
+const Tooltip = TooltipPrimitive.Root
 
-const TooltipTrigger = TooltipPrimitive.Trigger;
+const TooltipTrigger = TooltipPrimitive.Trigger
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> & {
-    showArrow?: boolean;
+    showArrow?: boolean
   }
 >(({ className, sideOffset = 4, showArrow = false, ...props }, ref) => (
   <TooltipPrimitive.Portal>
@@ -2359,20 +2014,18 @@ const TooltipContent = React.forwardRef<
       {...props}
     >
       {props.children}
-      {showArrow && (
-        <TooltipPrimitive.Arrow className="-my-px fill-popover drop-shadow-[0_1px_0_hsl(var(--border))]" />
-      )}
+      {showArrow && <TooltipPrimitive.Arrow className="-my-px fill-popover drop-shadow-[0_1px_0_hsl(var(--border))]" />}
     </TooltipPrimitive.Content>
   </TooltipPrimitive.Portal>
-));
-TooltipContent.displayName = TooltipPrimitive.Content.displayName;
+))
+TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
-export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };
-
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger }
 ```
+
 ```tsx
-shadcn/tooltip
-"use client"
+shadcn / tooltip
+;("use client")
 
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
@@ -2402,30 +2055,32 @@ const TooltipContent = React.forwardRef<
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
-
 ```
 
 Install NPM dependencies:
+
 ```bash
 motion, lucide-react, @radix-ui/react-slot, class-variance-authority, @radix-ui/react-separator, @radix-ui/react-dialog, @radix-ui/react-label, @radix-ui/react-tooltip
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -2435,16 +2090,19 @@ code: ## Integrate the <ScrollStack /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: ScrollStack
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: lenis
 
 ---
 
 ### Usage Example
-```jsx
-import ScrollStack, { ScrollStackItem } from './ScrollStack'
 
-<ScrollStack>
+```jsx
+import ScrollStack, { ScrollStackItem } from "./ScrollStack"
+
+;<ScrollStack>
   <ScrollStackItem>
     <h2>Card 1</h2>
     <p>This is the first card in the stack</p>
@@ -2461,189 +2119,191 @@ import ScrollStack, { ScrollStackItem } from './ScrollStack'
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | ReactNode | required | The content to be displayed in the scroll stack. Should contain ScrollStackItem components. |
-| className | string | "" | Additional CSS classes to apply to the scroll stack container. |
-| itemDistance | number | 100 | Distance between stacked items in pixels. |
-| itemScale | number | 0.03 | Scale increment for each stacked item. |
-| itemStackDistance | number | 30 | Distance between items when they start stacking. |
-| stackPosition | string | "20%" | Position where the stacking effect begins as a percentage of viewport height. |
-| scaleEndPosition | string | "10%" | Position where the scaling effect ends as a percentage of viewport height. |
-| baseScale | number | 0.85 | Base scale value for the first item in the stack. |
-| scaleDuration | number | 0.5 | Duration of the scaling animation in seconds. |
-| rotationAmount | number | 0 | Rotation amount for each item in degrees. |
-| blurAmount | number | 0 | Blur amount for items that are further back in the stack. |
-| useWindowScroll | boolean | false | Whether to use window scroll for the stack. |
-| onStackComplete | function | undefined | Callback function called when the stack animation is complete. |
+
+| Prop              | Type      | Default   | Description                                                                                 |
+| ----------------- | --------- | --------- | ------------------------------------------------------------------------------------------- |
+| children          | ReactNode | required  | The content to be displayed in the scroll stack. Should contain ScrollStackItem components. |
+| className         | string    | ""        | Additional CSS classes to apply to the scroll stack container.                              |
+| itemDistance      | number    | 100       | Distance between stacked items in pixels.                                                   |
+| itemScale         | number    | 0.03      | Scale increment for each stacked item.                                                      |
+| itemStackDistance | number    | 30        | Distance between items when they start stacking.                                            |
+| stackPosition     | string    | "20%"     | Position where the stacking effect begins as a percentage of viewport height.               |
+| scaleEndPosition  | string    | "10%"     | Position where the scaling effect ends as a percentage of viewport height.                  |
+| baseScale         | number    | 0.85      | Base scale value for the first item in the stack.                                           |
+| scaleDuration     | number    | 0.5       | Duration of the scaling animation in seconds.                                               |
+| rotationAmount    | number    | 0         | Rotation amount for each item in degrees.                                                   |
+| blurAmount        | number    | 0         | Blur amount for items that are further back in the stack.                                   |
+| useWindowScroll   | boolean   | false     | Whether to use window scroll for the stack.                                                 |
+| onStackComplete   | function  | undefined | Callback function called when the stack animation is complete.                              |
 
 ### Full Component Source
-```jsx
-import { useLayoutEffect, useRef, useCallback } from 'react';
-import Lenis from 'lenis';
-import './ScrollStack.css';
 
-export const ScrollStackItem = ({ children, itemClassName = '' }) => (
+```jsx
+import { useLayoutEffect, useRef, useCallback } from "react"
+import Lenis from "lenis"
+import "./ScrollStack.css"
+
+export const ScrollStackItem = ({ children, itemClassName = "" }) => (
   <div className={`scroll-stack-card ${itemClassName}`.trim()}>{children}</div>
-);
+)
 
 const ScrollStack = ({
   children,
-  className = '',
+  className = "",
   itemDistance = 100,
   itemScale = 0.03,
   itemStackDistance = 30,
-  stackPosition = '20%',
-  scaleEndPosition = '10%',
+  stackPosition = "20%",
+  scaleEndPosition = "10%",
   baseScale = 0.85,
   scaleDuration = 0.5,
   rotationAmount = 0,
   blurAmount = 0,
   useWindowScroll = false,
-  onStackComplete
+  onStackComplete,
 }) => {
-  const scrollerRef = useRef(null);
-  const stackCompletedRef = useRef(false);
-  const animationFrameRef = useRef(null);
-  const lenisRef = useRef(null);
-  const cardsRef = useRef([]);
-  const lastTransformsRef = useRef(new Map());
-  const isUpdatingRef = useRef(false);
+  const scrollerRef = useRef(null)
+  const stackCompletedRef = useRef(false)
+  const animationFrameRef = useRef(null)
+  const lenisRef = useRef(null)
+  const cardsRef = useRef([])
+  const lastTransformsRef = useRef(new Map())
+  const isUpdatingRef = useRef(false)
 
   const calculateProgress = useCallback((scrollTop, start, end) => {
-    if (scrollTop < start) return 0;
-    if (scrollTop > end) return 1;
-    return (scrollTop - start) / (end - start);
-  }, []);
+    if (scrollTop < start) return 0
+    if (scrollTop > end) return 1
+    return (scrollTop - start) / (end - start)
+  }, [])
 
   const parsePercentage = useCallback((value, containerHeight) => {
-    if (typeof value === 'string' && value.includes('%')) {
-      return (parseFloat(value) / 100) * containerHeight;
+    if (typeof value === "string" && value.includes("%")) {
+      return (parseFloat(value) / 100) * containerHeight
     }
-    return parseFloat(value);
-  }, []);
+    return parseFloat(value)
+  }, [])
 
   const getScrollData = useCallback(() => {
     if (useWindowScroll) {
       return {
         scrollTop: window.scrollY,
         containerHeight: window.innerHeight,
-        scrollContainer: document.documentElement
-      };
+        scrollContainer: document.documentElement,
+      }
     } else {
-      const scroller = scrollerRef.current;
+      const scroller = scrollerRef.current
       return {
         scrollTop: scroller.scrollTop,
         containerHeight: scroller.clientHeight,
-        scrollContainer: scroller
-      };
+        scrollContainer: scroller,
+      }
     }
-  }, [useWindowScroll]);
+  }, [useWindowScroll])
 
   const getElementOffset = useCallback(
-    element => {
+    (element) => {
       if (useWindowScroll) {
-        const rect = element.getBoundingClientRect();
-        return rect.top + window.scrollY;
+        const rect = element.getBoundingClientRect()
+        return rect.top + window.scrollY
       } else {
-        return element.offsetTop;
+        return element.offsetTop
       }
     },
-    [useWindowScroll]
-  );
+    [useWindowScroll],
+  )
 
   const updateCardTransforms = useCallback(() => {
-    if (!cardsRef.current.length || isUpdatingRef.current) return;
+    if (!cardsRef.current.length || isUpdatingRef.current) return
 
-    isUpdatingRef.current = true;
+    isUpdatingRef.current = true
 
-    const { scrollTop, containerHeight } = getScrollData();
-    const stackPositionPx = parsePercentage(stackPosition, containerHeight);
-    const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
+    const { scrollTop, containerHeight } = getScrollData()
+    const stackPositionPx = parsePercentage(stackPosition, containerHeight)
+    const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight)
 
     const endElement = useWindowScroll
-      ? document.querySelector('.scroll-stack-end')
-      : scrollerRef.current?.querySelector('.scroll-stack-end');
+      ? document.querySelector(".scroll-stack-end")
+      : scrollerRef.current?.querySelector(".scroll-stack-end")
 
-    const endElementTop = endElement ? getElementOffset(endElement) : 0;
+    const endElementTop = endElement ? getElementOffset(endElement) : 0
 
     cardsRef.current.forEach((card, i) => {
-      if (!card) return;
+      if (!card) return
 
-      const cardTop = getElementOffset(card);
-      const triggerStart = cardTop - stackPositionPx - itemStackDistance * i;
-      const triggerEnd = cardTop - scaleEndPositionPx;
-      const pinStart = cardTop - stackPositionPx - itemStackDistance * i;
-      const pinEnd = endElementTop - containerHeight / 2;
+      const cardTop = getElementOffset(card)
+      const triggerStart = cardTop - stackPositionPx - itemStackDistance * i
+      const triggerEnd = cardTop - scaleEndPositionPx
+      const pinStart = cardTop - stackPositionPx - itemStackDistance * i
+      const pinEnd = endElementTop - containerHeight / 2
 
-      const scaleProgress = calculateProgress(scrollTop, triggerStart, triggerEnd);
-      const targetScale = baseScale + i * itemScale;
-      const scale = 1 - scaleProgress * (1 - targetScale);
-      const rotation = rotationAmount ? i * rotationAmount * scaleProgress : 0;
+      const scaleProgress = calculateProgress(scrollTop, triggerStart, triggerEnd)
+      const targetScale = baseScale + i * itemScale
+      const scale = 1 - scaleProgress * (1 - targetScale)
+      const rotation = rotationAmount ? i * rotationAmount * scaleProgress : 0
 
-      let blur = 0;
+      let blur = 0
       if (blurAmount) {
-        let topCardIndex = 0;
+        let topCardIndex = 0
         for (let j = 0; j < cardsRef.current.length; j++) {
-          const jCardTop = getElementOffset(cardsRef.current[j]);
-          const jTriggerStart = jCardTop - stackPositionPx - itemStackDistance * j;
+          const jCardTop = getElementOffset(cardsRef.current[j])
+          const jTriggerStart = jCardTop - stackPositionPx - itemStackDistance * j
           if (scrollTop >= jTriggerStart) {
-            topCardIndex = j;
+            topCardIndex = j
           }
         }
 
         if (i < topCardIndex) {
-          const depthInStack = topCardIndex - i;
-          blur = Math.max(0, depthInStack * blurAmount);
+          const depthInStack = topCardIndex - i
+          blur = Math.max(0, depthInStack * blurAmount)
         }
       }
 
-      let translateY = 0;
-      const isPinned = scrollTop >= pinStart && scrollTop <= pinEnd;
+      let translateY = 0
+      const isPinned = scrollTop >= pinStart && scrollTop <= pinEnd
 
       if (isPinned) {
-        translateY = scrollTop - cardTop + stackPositionPx + itemStackDistance * i;
+        translateY = scrollTop - cardTop + stackPositionPx + itemStackDistance * i
       } else if (scrollTop > pinEnd) {
-        translateY = pinEnd - cardTop + stackPositionPx + itemStackDistance * i;
+        translateY = pinEnd - cardTop + stackPositionPx + itemStackDistance * i
       }
 
       const newTransform = {
         translateY: Math.round(translateY * 100) / 100,
         scale: Math.round(scale * 1000) / 1000,
         rotation: Math.round(rotation * 100) / 100,
-        blur: Math.round(blur * 100) / 100
-      };
+        blur: Math.round(blur * 100) / 100,
+      }
 
-      const lastTransform = lastTransformsRef.current.get(i);
+      const lastTransform = lastTransformsRef.current.get(i)
       const hasChanged =
         !lastTransform ||
         Math.abs(lastTransform.translateY - newTransform.translateY) > 0.1 ||
         Math.abs(lastTransform.scale - newTransform.scale) > 0.001 ||
         Math.abs(lastTransform.rotation - newTransform.rotation) > 0.1 ||
-        Math.abs(lastTransform.blur - newTransform.blur) > 0.1;
+        Math.abs(lastTransform.blur - newTransform.blur) > 0.1
 
       if (hasChanged) {
-        const transform = `translate3d(0, ${newTransform.translateY}px, 0) scale(${newTransform.scale}) rotate(${newTransform.rotation}deg)`;
-        const filter = newTransform.blur > 0 ? `blur(${newTransform.blur}px)` : '';
+        const transform = `translate3d(0, ${newTransform.translateY}px, 0) scale(${newTransform.scale}) rotate(${newTransform.rotation}deg)`
+        const filter = newTransform.blur > 0 ? `blur(${newTransform.blur}px)` : ""
 
-        card.style.transform = transform;
-        card.style.filter = filter;
+        card.style.transform = transform
+        card.style.filter = filter
 
-        lastTransformsRef.current.set(i, newTransform);
+        lastTransformsRef.current.set(i, newTransform)
       }
 
       if (i === cardsRef.current.length - 1) {
-        const isInView = scrollTop >= pinStart && scrollTop <= pinEnd;
+        const isInView = scrollTop >= pinStart && scrollTop <= pinEnd
         if (isInView && !stackCompletedRef.current) {
-          stackCompletedRef.current = true;
-          onStackComplete?.();
+          stackCompletedRef.current = true
+          onStackComplete?.()
         } else if (!isInView && stackCompletedRef.current) {
-          stackCompletedRef.current = false;
+          stackCompletedRef.current = false
         }
       }
-    });
+    })
 
-    isUpdatingRef.current = false;
+    isUpdatingRef.current = false
   }, [
     itemScale,
     itemStackDistance,
@@ -2657,46 +2317,46 @@ const ScrollStack = ({
     calculateProgress,
     parsePercentage,
     getScrollData,
-    getElementOffset
-  ]);
+    getElementOffset,
+  ])
 
   const handleScroll = useCallback(() => {
-    updateCardTransforms();
-  }, [updateCardTransforms]);
+    updateCardTransforms()
+  }, [updateCardTransforms])
 
   const setupLenis = useCallback(() => {
     if (useWindowScroll) {
       const lenis = new Lenis({
         duration: 1.2,
-        easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
         touchMultiplier: 2,
         infinite: false,
         wheelMultiplier: 1,
         lerp: 0.1,
         syncTouch: true,
-        syncTouchLerp: 0.075
-      });
+        syncTouchLerp: 0.075,
+      })
 
-      lenis.on('scroll', handleScroll);
+      lenis.on("scroll", handleScroll)
 
-      const raf = time => {
-        lenis.raf(time);
-        animationFrameRef.current = requestAnimationFrame(raf);
-      };
-      animationFrameRef.current = requestAnimationFrame(raf);
+      const raf = (time) => {
+        lenis.raf(time)
+        animationFrameRef.current = requestAnimationFrame(raf)
+      }
+      animationFrameRef.current = requestAnimationFrame(raf)
 
-      lenisRef.current = lenis;
-      return lenis;
+      lenisRef.current = lenis
+      return lenis
     } else {
-      const scroller = scrollerRef.current;
-      if (!scroller) return;
+      const scroller = scrollerRef.current
+      if (!scroller) return
 
       const lenis = new Lenis({
         wrapper: scroller,
-        content: scroller.querySelector('.scroll-stack-inner'),
+        content: scroller.querySelector(".scroll-stack-inner"),
         duration: 1.2,
-        easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
         touchMultiplier: 2,
         infinite: false,
@@ -2707,64 +2367,64 @@ const ScrollStack = ({
         lerp: 0.1,
         syncTouch: true,
         syncTouchLerp: 0.075,
-        touchInertia: 0.6
-      });
+        touchInertia: 0.6,
+      })
 
-      lenis.on('scroll', handleScroll);
+      lenis.on("scroll", handleScroll)
 
-      const raf = time => {
-        lenis.raf(time);
-        animationFrameRef.current = requestAnimationFrame(raf);
-      };
-      animationFrameRef.current = requestAnimationFrame(raf);
+      const raf = (time) => {
+        lenis.raf(time)
+        animationFrameRef.current = requestAnimationFrame(raf)
+      }
+      animationFrameRef.current = requestAnimationFrame(raf)
 
-      lenisRef.current = lenis;
-      return lenis;
+      lenisRef.current = lenis
+      return lenis
     }
-  }, [handleScroll, useWindowScroll]);
+  }, [handleScroll, useWindowScroll])
 
   useLayoutEffect(() => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
+    const scroller = scrollerRef.current
+    if (!scroller) return
 
     const cards = Array.from(
       useWindowScroll
-        ? document.querySelectorAll('.scroll-stack-card')
-        : scroller.querySelectorAll('.scroll-stack-card')
-    );
+        ? document.querySelectorAll(".scroll-stack-card")
+        : scroller.querySelectorAll(".scroll-stack-card"),
+    )
 
-    cardsRef.current = cards;
-    const transformsCache = lastTransformsRef.current;
+    cardsRef.current = cards
+    const transformsCache = lastTransformsRef.current
 
     cards.forEach((card, i) => {
       if (i < cards.length - 1) {
-        card.style.marginBottom = `${itemDistance}px`;
+        card.style.marginBottom = `${itemDistance}px`
       }
-      card.style.willChange = 'transform, filter';
-      card.style.transformOrigin = 'top center';
-      card.style.backfaceVisibility = 'hidden';
-      card.style.transform = 'translateZ(0)';
-      card.style.webkitTransform = 'translateZ(0)';
-      card.style.perspective = '1000px';
-      card.style.webkitPerspective = '1000px';
-    });
+      card.style.willChange = "transform, filter"
+      card.style.transformOrigin = "top center"
+      card.style.backfaceVisibility = "hidden"
+      card.style.transform = "translateZ(0)"
+      card.style.webkitTransform = "translateZ(0)"
+      card.style.perspective = "1000px"
+      card.style.webkitPerspective = "1000px"
+    })
 
-    setupLenis();
+    setupLenis()
 
-    updateCardTransforms();
+    updateCardTransforms()
 
     return () => {
       if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
+        cancelAnimationFrame(animationFrameRef.current)
       }
       if (lenisRef.current) {
-        lenisRef.current.destroy();
+        lenisRef.current.destroy()
       }
-      stackCompletedRef.current = false;
-      cardsRef.current = [];
-      transformsCache.clear();
-      isUpdatingRef.current = false;
-    };
+      stackCompletedRef.current = false
+      cardsRef.current = []
+      transformsCache.clear()
+      isUpdatingRef.current = false
+    }
   }, [
     itemDistance,
     itemScale,
@@ -2778,8 +2438,8 @@ const ScrollStack = ({
     useWindowScroll,
     onStackComplete,
     setupLenis,
-    updateCardTransforms
-  ]);
+    updateCardTransforms,
+  ])
 
   return (
     <div className={`scroll-stack-scroller ${className}`.trim()} ref={scrollerRef}>
@@ -2789,14 +2449,14 @@ const ScrollStack = ({
         <div className="scroll-stack-end" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ScrollStack;
-
+export default ScrollStack
 ```
 
 ### Component CSS
+
 ```css
 .scroll-stack-scroller {
   position: relative;
@@ -2843,10 +2503,10 @@ export default ScrollStack;
   width: 100%;
   height: 1px;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -2861,16 +2521,19 @@ code: ## Integrate the <MagicBento /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: MagicBento
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
-```jsx
-import MagicBento from './MagicBento'
 
-<MagicBento 
+```jsx
+import MagicBento from "./MagicBento"
+
+;<MagicBento
   textAutoHide={true}
   enableStars={true}
   enableSpotlight={true}
@@ -2885,73 +2548,75 @@ import MagicBento from './MagicBento'
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| textAutoHide | boolean | true | Whether text content should auto-hide on hover |
-| enableStars | boolean | true | Enable particle star animation effect |
-| enableSpotlight | boolean | true | Enable spotlight cursor following effect |
-| enableBorderGlow | boolean | true | Enable border glow effect that follows cursor |
-| disableAnimations | boolean | false | Disable all animations (automatically enabled on mobile) |
-| spotlightRadius | number | 300 | Radius of the spotlight effect in pixels |
-| particleCount | number | 12 | Number of particles in the star animation |
-| enableTilt | boolean | false | Enable 3D tilt effect on card hover |
-| glowColor | string | "132, 0, 255" | RGB color values for glow effects (without rgba wrapper) |
-| clickEffect | boolean | true | Enable ripple effect on card click |
-| enableMagnetism | boolean | true | Enable subtle card attraction to cursor |
+
+| Prop              | Type    | Default       | Description                                              |
+| ----------------- | ------- | ------------- | -------------------------------------------------------- |
+| textAutoHide      | boolean | true          | Whether text content should auto-hide on hover           |
+| enableStars       | boolean | true          | Enable particle star animation effect                    |
+| enableSpotlight   | boolean | true          | Enable spotlight cursor following effect                 |
+| enableBorderGlow  | boolean | true          | Enable border glow effect that follows cursor            |
+| disableAnimations | boolean | false         | Disable all animations (automatically enabled on mobile) |
+| spotlightRadius   | number  | 300           | Radius of the spotlight effect in pixels                 |
+| particleCount     | number  | 12            | Number of particles in the star animation                |
+| enableTilt        | boolean | false         | Enable 3D tilt effect on card hover                      |
+| glowColor         | string  | "132, 0, 255" | RGB color values for glow effects (without rgba wrapper) |
+| clickEffect       | boolean | true          | Enable ripple effect on card click                       |
+| enableMagnetism   | boolean | true          | Enable subtle card attraction to cursor                  |
 
 ### Full Component Source
-```jsx
-import { useRef, useEffect, useCallback, useState } from 'react';
-import { gsap } from 'gsap';
-import './MagicBento.css';
 
-const DEFAULT_PARTICLE_COUNT = 12;
-const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '132, 0, 255';
-const MOBILE_BREAKPOINT = 768;
+```jsx
+import { useRef, useEffect, useCallback, useState } from "react"
+import { gsap } from "gsap"
+import "./MagicBento.css"
+
+const DEFAULT_PARTICLE_COUNT = 12
+const DEFAULT_SPOTLIGHT_RADIUS = 300
+const DEFAULT_GLOW_COLOR = "132, 0, 255"
+const MOBILE_BREAKPOINT = 768
 
 const cardData = [
   {
-    color: '#120F17',
-    title: 'Analytics',
-    description: 'Track user behavior',
-    label: 'Insights'
+    color: "#120F17",
+    title: "Analytics",
+    description: "Track user behavior",
+    label: "Insights",
   },
   {
-    color: '#120F17',
-    title: 'Dashboard',
-    description: 'Centralized data view',
-    label: 'Overview'
+    color: "#120F17",
+    title: "Dashboard",
+    description: "Centralized data view",
+    label: "Overview",
   },
   {
-    color: '#120F17',
-    title: 'Collaboration',
-    description: 'Work together seamlessly',
-    label: 'Teamwork'
+    color: "#120F17",
+    title: "Collaboration",
+    description: "Work together seamlessly",
+    label: "Teamwork",
   },
   {
-    color: '#120F17',
-    title: 'Automation',
-    description: 'Streamline workflows',
-    label: 'Efficiency'
+    color: "#120F17",
+    title: "Automation",
+    description: "Streamline workflows",
+    label: "Efficiency",
   },
   {
-    color: '#120F17',
-    title: 'Integration',
-    description: 'Connect favorite tools',
-    label: 'Connectivity'
+    color: "#120F17",
+    title: "Integration",
+    description: "Connect favorite tools",
+    label: "Connectivity",
   },
   {
-    color: '#120F17',
-    title: 'Security',
-    description: 'Enterprise-grade protection',
-    label: 'Protection'
-  }
-];
+    color: "#120F17",
+    title: "Security",
+    description: "Enterprise-grade protection",
+    label: "Protection",
+  },
+]
 
 const createParticleElement = (x, y, color = DEFAULT_GLOW_COLOR) => {
-  const el = document.createElement('div');
-  el.className = 'particle';
+  const el = document.createElement("div")
+  el.className = "particle"
   el.style.cssText = `
     position: absolute;
     width: 4px;
@@ -2963,145 +2628,145 @@ const createParticleElement = (x, y, color = DEFAULT_GLOW_COLOR) => {
     z-index: 100;
     left: ${x}px;
     top: ${y}px;
-  `;
-  return el;
-};
+  `
+  return el
+}
 
-const calculateSpotlightValues = radius => ({
+const calculateSpotlightValues = (radius) => ({
   proximity: radius * 0.5,
-  fadeDistance: radius * 0.75
-});
+  fadeDistance: radius * 0.75,
+})
 
 const updateCardGlowProperties = (card, mouseX, mouseY, glow, radius) => {
-  const rect = card.getBoundingClientRect();
-  const relativeX = ((mouseX - rect.left) / rect.width) * 100;
-  const relativeY = ((mouseY - rect.top) / rect.height) * 100;
+  const rect = card.getBoundingClientRect()
+  const relativeX = ((mouseX - rect.left) / rect.width) * 100
+  const relativeY = ((mouseY - rect.top) / rect.height) * 100
 
-  card.style.setProperty('--glow-x', `${relativeX}%`);
-  card.style.setProperty('--glow-y', `${relativeY}%`);
-  card.style.setProperty('--glow-intensity', glow.toString());
-  card.style.setProperty('--glow-radius', `${radius}px`);
-};
+  card.style.setProperty("--glow-x", `${relativeX}%`)
+  card.style.setProperty("--glow-y", `${relativeY}%`)
+  card.style.setProperty("--glow-intensity", glow.toString())
+  card.style.setProperty("--glow-radius", `${radius}px`)
+}
 
 const ParticleCard = ({
   children,
-  className = '',
+  className = "",
   disableAnimations = false,
   style,
   particleCount = DEFAULT_PARTICLE_COUNT,
   glowColor = DEFAULT_GLOW_COLOR,
   enableTilt = true,
   clickEffect = false,
-  enableMagnetism = false
+  enableMagnetism = false,
 }) => {
-  const cardRef = useRef(null);
-  const particlesRef = useRef([]);
-  const timeoutsRef = useRef([]);
-  const isHoveredRef = useRef(false);
-  const memoizedParticles = useRef([]);
-  const particlesInitialized = useRef(false);
-  const magnetismAnimationRef = useRef(null);
+  const cardRef = useRef(null)
+  const particlesRef = useRef([])
+  const timeoutsRef = useRef([])
+  const isHoveredRef = useRef(false)
+  const memoizedParticles = useRef([])
+  const particlesInitialized = useRef(false)
+  const magnetismAnimationRef = useRef(null)
 
   const initializeParticles = useCallback(() => {
-    if (particlesInitialized.current || !cardRef.current) return;
+    if (particlesInitialized.current || !cardRef.current) return
 
-    const { width, height } = cardRef.current.getBoundingClientRect();
+    const { width, height } = cardRef.current.getBoundingClientRect()
     memoizedParticles.current = Array.from({ length: particleCount }, () =>
-      createParticleElement(Math.random() * width, Math.random() * height, glowColor)
-    );
-    particlesInitialized.current = true;
-  }, [particleCount, glowColor]);
+      createParticleElement(Math.random() * width, Math.random() * height, glowColor),
+    )
+    particlesInitialized.current = true
+  }, [particleCount, glowColor])
 
   const clearAllParticles = useCallback(() => {
-    timeoutsRef.current.forEach(clearTimeout);
-    timeoutsRef.current = [];
-    magnetismAnimationRef.current?.kill();
+    timeoutsRef.current.forEach(clearTimeout)
+    timeoutsRef.current = []
+    magnetismAnimationRef.current?.kill()
 
-    particlesRef.current.forEach(particle => {
+    particlesRef.current.forEach((particle) => {
       gsap.to(particle, {
         scale: 0,
         opacity: 0,
         duration: 0.3,
-        ease: 'back.in(1.7)',
+        ease: "back.in(1.7)",
         onComplete: () => {
-          particle.parentNode?.removeChild(particle);
-        }
-      });
-    });
-    particlesRef.current = [];
-  }, []);
+          particle.parentNode?.removeChild(particle)
+        },
+      })
+    })
+    particlesRef.current = []
+  }, [])
 
   const animateParticles = useCallback(() => {
-    if (!cardRef.current || !isHoveredRef.current) return;
+    if (!cardRef.current || !isHoveredRef.current) return
 
     if (!particlesInitialized.current) {
-      initializeParticles();
+      initializeParticles()
     }
 
     memoizedParticles.current.forEach((particle, index) => {
       const timeoutId = setTimeout(() => {
-        if (!isHoveredRef.current || !cardRef.current) return;
+        if (!isHoveredRef.current || !cardRef.current) return
 
-        const clone = particle.cloneNode(true);
-        cardRef.current.appendChild(clone);
-        particlesRef.current.push(clone);
+        const clone = particle.cloneNode(true)
+        cardRef.current.appendChild(clone)
+        particlesRef.current.push(clone)
 
-        gsap.fromTo(clone, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.7)' });
+        gsap.fromTo(clone, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.7)" })
 
         gsap.to(clone, {
           x: (Math.random() - 0.5) * 100,
           y: (Math.random() - 0.5) * 100,
           rotation: Math.random() * 360,
           duration: 2 + Math.random() * 2,
-          ease: 'none',
+          ease: "none",
           repeat: -1,
-          yoyo: true
-        });
+          yoyo: true,
+        })
 
         gsap.to(clone, {
           opacity: 0.3,
           duration: 1.5,
-          ease: 'power2.inOut',
+          ease: "power2.inOut",
           repeat: -1,
-          yoyo: true
-        });
-      }, index * 100);
+          yoyo: true,
+        })
+      }, index * 100)
 
-      timeoutsRef.current.push(timeoutId);
-    });
-  }, [initializeParticles]);
+      timeoutsRef.current.push(timeoutId)
+    })
+  }, [initializeParticles])
 
   useEffect(() => {
-    if (disableAnimations || !cardRef.current) return;
+    if (disableAnimations || !cardRef.current) return
 
-    const element = cardRef.current;
+    const element = cardRef.current
 
     const handleMouseEnter = () => {
-      isHoveredRef.current = true;
-      animateParticles();
+      isHoveredRef.current = true
+      animateParticles()
 
       if (enableTilt) {
         gsap.to(element, {
           rotateX: 5,
           rotateY: 5,
           duration: 0.3,
-          ease: 'power2.out',
-          transformPerspective: 1000
-        });
+          ease: "power2.out",
+          transformPerspective: 1000,
+        })
       }
-    };
+    }
 
     const handleMouseLeave = () => {
-      isHoveredRef.current = false;
-      clearAllParticles();
+      isHoveredRef.current = false
+      clearAllParticles()
 
       if (enableTilt) {
         gsap.to(element, {
           rotateX: 0,
           rotateY: 0,
           duration: 0.3,
-          ease: 'power2.out'
-        });
+          ease: "power2.out",
+        })
       }
 
       if (enableMagnetism) {
@@ -3109,61 +2774,61 @@ const ParticleCard = ({
           x: 0,
           y: 0,
           duration: 0.3,
-          ease: 'power2.out'
-        });
+          ease: "power2.out",
+        })
       }
-    };
+    }
 
-    const handleMouseMove = e => {
-      if (!enableTilt && !enableMagnetism) return;
+    const handleMouseMove = (e) => {
+      if (!enableTilt && !enableMagnetism) return
 
-      const rect = element.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+      const rect = element.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
 
       if (enableTilt) {
-        const rotateX = ((y - centerY) / centerY) * -10;
-        const rotateY = ((x - centerX) / centerX) * 10;
+        const rotateX = ((y - centerY) / centerY) * -10
+        const rotateY = ((x - centerX) / centerX) * 10
 
         gsap.to(element, {
           rotateX,
           rotateY,
           duration: 0.1,
-          ease: 'power2.out',
-          transformPerspective: 1000
-        });
+          ease: "power2.out",
+          transformPerspective: 1000,
+        })
       }
 
       if (enableMagnetism) {
-        const magnetX = (x - centerX) * 0.05;
-        const magnetY = (y - centerY) * 0.05;
+        const magnetX = (x - centerX) * 0.05
+        const magnetY = (y - centerY) * 0.05
 
         magnetismAnimationRef.current = gsap.to(element, {
           x: magnetX,
           y: magnetY,
           duration: 0.3,
-          ease: 'power2.out'
-        });
+          ease: "power2.out",
+        })
       }
-    };
+    }
 
-    const handleClick = e => {
-      if (!clickEffect) return;
+    const handleClick = (e) => {
+      if (!clickEffect) return
 
-      const rect = element.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const rect = element.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
 
       const maxDistance = Math.max(
         Math.hypot(x, y),
         Math.hypot(x - rect.width, y),
         Math.hypot(x, y - rect.height),
-        Math.hypot(x - rect.width, y - rect.height)
-      );
+        Math.hypot(x - rect.width, y - rect.height),
+      )
 
-      const ripple = document.createElement('div');
+      const ripple = document.createElement("div")
       ripple.style.cssText = `
         position: absolute;
         width: ${maxDistance * 2}px;
@@ -3174,67 +2839,67 @@ const ParticleCard = ({
         top: ${y - maxDistance}px;
         pointer-events: none;
         z-index: 1000;
-      `;
+      `
 
-      element.appendChild(ripple);
+      element.appendChild(ripple)
 
       gsap.fromTo(
         ripple,
         {
           scale: 0,
-          opacity: 1
+          opacity: 1,
         },
         {
           scale: 1,
           opacity: 0,
           duration: 0.8,
-          ease: 'power2.out',
-          onComplete: () => ripple.remove()
-        }
-      );
-    };
+          ease: "power2.out",
+          onComplete: () => ripple.remove(),
+        },
+      )
+    }
 
-    element.addEventListener('mouseenter', handleMouseEnter);
-    element.addEventListener('mouseleave', handleMouseLeave);
-    element.addEventListener('mousemove', handleMouseMove);
-    element.addEventListener('click', handleClick);
+    element.addEventListener("mouseenter", handleMouseEnter)
+    element.addEventListener("mouseleave", handleMouseLeave)
+    element.addEventListener("mousemove", handleMouseMove)
+    element.addEventListener("click", handleClick)
 
     return () => {
-      isHoveredRef.current = false;
-      element.removeEventListener('mouseenter', handleMouseEnter);
-      element.removeEventListener('mouseleave', handleMouseLeave);
-      element.removeEventListener('mousemove', handleMouseMove);
-      element.removeEventListener('click', handleClick);
-      clearAllParticles();
-    };
-  }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, clickEffect, glowColor]);
+      isHoveredRef.current = false
+      element.removeEventListener("mouseenter", handleMouseEnter)
+      element.removeEventListener("mouseleave", handleMouseLeave)
+      element.removeEventListener("mousemove", handleMouseMove)
+      element.removeEventListener("click", handleClick)
+      clearAllParticles()
+    }
+  }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, clickEffect, glowColor])
 
   return (
     <div
       ref={cardRef}
       className={`${className} particle-container`}
-      style={{ ...style, position: 'relative', overflow: 'hidden' }}
+      style={{ ...style, position: "relative", overflow: "hidden" }}
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
 const GlobalSpotlight = ({
   gridRef,
   disableAnimations = false,
   enabled = true,
   spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
-  glowColor = DEFAULT_GLOW_COLOR
+  glowColor = DEFAULT_GLOW_COLOR,
 }) => {
-  const spotlightRef = useRef(null);
-  const isInsideSection = useRef(false);
+  const spotlightRef = useRef(null)
+  const isInsideSection = useRef(false)
 
   useEffect(() => {
-    if (disableAnimations || !gridRef?.current || !enabled) return;
+    if (disableAnimations || !gridRef?.current || !enabled) return
 
-    const spotlight = document.createElement('div');
-    spotlight.className = 'global-spotlight';
+    const spotlight = document.createElement("div")
+    spotlight.className = "global-spotlight"
     spotlight.style.cssText = `
       position: fixed;
       width: 800px;
@@ -3253,125 +2918,125 @@ const GlobalSpotlight = ({
       opacity: 0;
       transform: translate(-50%, -50%);
       mix-blend-mode: screen;
-    `;
-    document.body.appendChild(spotlight);
-    spotlightRef.current = spotlight;
+    `
+    document.body.appendChild(spotlight)
+    spotlightRef.current = spotlight
 
-    const handleMouseMove = e => {
-      if (!spotlightRef.current || !gridRef.current) return;
+    const handleMouseMove = (e) => {
+      if (!spotlightRef.current || !gridRef.current) return
 
-      const section = gridRef.current.closest('.bento-section');
-      const rect = section?.getBoundingClientRect();
+      const section = gridRef.current.closest(".bento-section")
+      const rect = section?.getBoundingClientRect()
       const mouseInside =
-        rect && e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+        rect && e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom
 
-      isInsideSection.current = mouseInside || false;
-      const cards = gridRef.current.querySelectorAll('.magic-bento-card');
+      isInsideSection.current = mouseInside || false
+      const cards = gridRef.current.querySelectorAll(".magic-bento-card")
 
       if (!mouseInside) {
         gsap.to(spotlightRef.current, {
           opacity: 0,
           duration: 0.3,
-          ease: 'power2.out'
-        });
-        cards.forEach(card => {
-          card.style.setProperty('--glow-intensity', '0');
-        });
-        return;
+          ease: "power2.out",
+        })
+        cards.forEach((card) => {
+          card.style.setProperty("--glow-intensity", "0")
+        })
+        return
       }
 
-      const { proximity, fadeDistance } = calculateSpotlightValues(spotlightRadius);
-      let minDistance = Infinity;
+      const { proximity, fadeDistance } = calculateSpotlightValues(spotlightRadius)
+      let minDistance = Infinity
 
-      cards.forEach(card => {
-        const cardElement = card;
-        const cardRect = cardElement.getBoundingClientRect();
-        const centerX = cardRect.left + cardRect.width / 2;
-        const centerY = cardRect.top + cardRect.height / 2;
+      cards.forEach((card) => {
+        const cardElement = card
+        const cardRect = cardElement.getBoundingClientRect()
+        const centerX = cardRect.left + cardRect.width / 2
+        const centerY = cardRect.top + cardRect.height / 2
         const distance =
-          Math.hypot(e.clientX - centerX, e.clientY - centerY) - Math.max(cardRect.width, cardRect.height) / 2;
-        const effectiveDistance = Math.max(0, distance);
+          Math.hypot(e.clientX - centerX, e.clientY - centerY) - Math.max(cardRect.width, cardRect.height) / 2
+        const effectiveDistance = Math.max(0, distance)
 
-        minDistance = Math.min(minDistance, effectiveDistance);
+        minDistance = Math.min(minDistance, effectiveDistance)
 
-        let glowIntensity = 0;
+        let glowIntensity = 0
         if (effectiveDistance <= proximity) {
-          glowIntensity = 1;
+          glowIntensity = 1
         } else if (effectiveDistance <= fadeDistance) {
-          glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
+          glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity)
         }
 
-        updateCardGlowProperties(cardElement, e.clientX, e.clientY, glowIntensity, spotlightRadius);
-      });
+        updateCardGlowProperties(cardElement, e.clientX, e.clientY, glowIntensity, spotlightRadius)
+      })
 
       gsap.to(spotlightRef.current, {
         left: e.clientX,
         top: e.clientY,
         duration: 0.1,
-        ease: 'power2.out'
-      });
+        ease: "power2.out",
+      })
 
       const targetOpacity =
         minDistance <= proximity
           ? 0.8
           : minDistance <= fadeDistance
             ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8
-            : 0;
+            : 0
 
       gsap.to(spotlightRef.current, {
         opacity: targetOpacity,
         duration: targetOpacity > 0 ? 0.2 : 0.5,
-        ease: 'power2.out'
-      });
-    };
+        ease: "power2.out",
+      })
+    }
 
     const handleMouseLeave = () => {
-      isInsideSection.current = false;
-      gridRef.current?.querySelectorAll('.magic-bento-card').forEach(card => {
-        card.style.setProperty('--glow-intensity', '0');
-      });
+      isInsideSection.current = false
+      gridRef.current?.querySelectorAll(".magic-bento-card").forEach((card) => {
+        card.style.setProperty("--glow-intensity", "0")
+      })
       if (spotlightRef.current) {
         gsap.to(spotlightRef.current, {
           opacity: 0,
           duration: 0.3,
-          ease: 'power2.out'
-        });
+          ease: "power2.out",
+        })
       }
-    };
+    }
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener("mousemove", handleMouseMove)
+    document.addEventListener("mouseleave", handleMouseLeave)
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      spotlightRef.current?.parentNode?.removeChild(spotlightRef.current);
-    };
-  }, [gridRef, disableAnimations, enabled, spotlightRadius, glowColor]);
+      document.removeEventListener("mousemove", handleMouseMove)
+      document.removeEventListener("mouseleave", handleMouseLeave)
+      spotlightRef.current?.parentNode?.removeChild(spotlightRef.current)
+    }
+  }, [gridRef, disableAnimations, enabled, spotlightRadius, glowColor])
 
-  return null;
-};
+  return null
+}
 
 const BentoCardGrid = ({ children, gridRef }) => (
   <div className="card-grid bento-section" ref={gridRef}>
     {children}
   </div>
-);
+)
 
 const useMobileDetection = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    const checkMobile = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT)
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
 
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
-  return isMobile;
-};
+  return isMobile
+}
 
 const MagicBento = ({
   textAutoHide = true,
@@ -3384,11 +3049,11 @@ const MagicBento = ({
   enableTilt = false,
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
-  enableMagnetism = true
+  enableMagnetism = true,
 }) => {
-  const gridRef = useRef(null);
-  const isMobile = useMobileDetection();
-  const shouldDisableAnimations = disableAnimations || isMobile;
+  const gridRef = useRef(null)
+  const isMobile = useMobileDetection()
+  const shouldDisableAnimations = disableAnimations || isMobile
 
   return (
     <>
@@ -3404,14 +3069,14 @@ const MagicBento = ({
 
       <BentoCardGrid gridRef={gridRef}>
         {cardData.map((card, index) => {
-          const baseClassName = `magic-bento-card ${textAutoHide ? 'magic-bento-card--text-autohide' : ''} ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
+          const baseClassName = `magic-bento-card ${textAutoHide ? "magic-bento-card--text-autohide" : ""} ${enableBorderGlow ? "magic-bento-card--border-glow" : ""}`
           const cardProps = {
             className: baseClassName,
             style: {
               backgroundColor: card.color,
-              '--glow-color': glowColor
-            }
-          };
+              "--glow-color": glowColor,
+            },
+          }
 
           if (enableStars) {
             return (
@@ -3433,59 +3098,59 @@ const MagicBento = ({
                   <p className="magic-bento-card__description">{card.description}</p>
                 </div>
               </ParticleCard>
-            );
+            )
           }
 
           return (
             <div
               key={index}
               {...cardProps}
-              ref={el => {
-                if (!el) return;
+              ref={(el) => {
+                if (!el) return
 
-                const handleMouseMove = e => {
-                  if (shouldDisableAnimations) return;
+                const handleMouseMove = (e) => {
+                  if (shouldDisableAnimations) return
 
-                  const rect = el.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
+                  const rect = el.getBoundingClientRect()
+                  const x = e.clientX - rect.left
+                  const y = e.clientY - rect.top
+                  const centerX = rect.width / 2
+                  const centerY = rect.height / 2
 
                   if (enableTilt) {
-                    const rotateX = ((y - centerY) / centerY) * -10;
-                    const rotateY = ((x - centerX) / centerX) * 10;
+                    const rotateX = ((y - centerY) / centerY) * -10
+                    const rotateY = ((x - centerX) / centerX) * 10
                     gsap.to(el, {
                       rotateX,
                       rotateY,
                       duration: 0.1,
-                      ease: 'power2.out',
-                      transformPerspective: 1000
-                    });
+                      ease: "power2.out",
+                      transformPerspective: 1000,
+                    })
                   }
 
                   if (enableMagnetism) {
-                    const magnetX = (x - centerX) * 0.05;
-                    const magnetY = (y - centerY) * 0.05;
+                    const magnetX = (x - centerX) * 0.05
+                    const magnetY = (y - centerY) * 0.05
                     gsap.to(el, {
                       x: magnetX,
                       y: magnetY,
                       duration: 0.3,
-                      ease: 'power2.out'
-                    });
+                      ease: "power2.out",
+                    })
                   }
-                };
+                }
 
                 const handleMouseLeave = () => {
-                  if (shouldDisableAnimations) return;
+                  if (shouldDisableAnimations) return
 
                   if (enableTilt) {
                     gsap.to(el, {
                       rotateX: 0,
                       rotateY: 0,
                       duration: 0.3,
-                      ease: 'power2.out'
-                    });
+                      ease: "power2.out",
+                    })
                   }
 
                   if (enableMagnetism) {
@@ -3493,26 +3158,26 @@ const MagicBento = ({
                       x: 0,
                       y: 0,
                       duration: 0.3,
-                      ease: 'power2.out'
-                    });
+                      ease: "power2.out",
+                    })
                   }
-                };
+                }
 
-                const handleClick = e => {
-                  if (!clickEffect || shouldDisableAnimations) return;
+                const handleClick = (e) => {
+                  if (!clickEffect || shouldDisableAnimations) return
 
-                  const rect = el.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
+                  const rect = el.getBoundingClientRect()
+                  const x = e.clientX - rect.left
+                  const y = e.clientY - rect.top
 
                   const maxDistance = Math.max(
                     Math.hypot(x, y),
                     Math.hypot(x - rect.width, y),
                     Math.hypot(x, y - rect.height),
-                    Math.hypot(x - rect.width, y - rect.height)
-                  );
+                    Math.hypot(x - rect.width, y - rect.height),
+                  )
 
-                  const ripple = document.createElement('div');
+                  const ripple = document.createElement("div")
                   ripple.style.cssText = `
                     position: absolute;
                     width: ${maxDistance * 2}px;
@@ -3523,29 +3188,29 @@ const MagicBento = ({
                     top: ${y - maxDistance}px;
                     pointer-events: none;
                     z-index: 1000;
-                  `;
+                  `
 
-                  el.appendChild(ripple);
+                  el.appendChild(ripple)
 
                   gsap.fromTo(
                     ripple,
                     {
                       scale: 0,
-                      opacity: 1
+                      opacity: 1,
                     },
                     {
                       scale: 1,
                       opacity: 0,
                       duration: 0.8,
-                      ease: 'power2.out',
-                      onComplete: () => ripple.remove()
-                    }
-                  );
-                };
+                      ease: "power2.out",
+                      onComplete: () => ripple.remove(),
+                    },
+                  )
+                }
 
-                el.addEventListener('mousemove', handleMouseMove);
-                el.addEventListener('mouseleave', handleMouseLeave);
-                el.addEventListener('click', handleClick);
+                el.addEventListener("mousemove", handleMouseMove)
+                el.addEventListener("mouseleave", handleMouseLeave)
+                el.addEventListener("click", handleClick)
               }}
             >
               <div className="magic-bento-card__header">
@@ -3556,18 +3221,18 @@ const MagicBento = ({
                 <p className="magic-bento-card__description">{card.description}</p>
               </div>
             </div>
-          );
+          )
         })}
       </BentoCardGrid>
     </>
-  );
-};
+  )
+}
 
-export default MagicBento;
-
+export default MagicBento
 ```
 
 ### Component CSS
+
 ```css
 :root {
   --hue: 27;
@@ -3576,8 +3241,8 @@ export default MagicBento;
   --purple-primary: rgba(132, 0, 255, 1);
   --purple-glow: rgba(132, 0, 255, 0.2);
   --purple-border: rgba(132, 0, 255, 0.8);
-  --border-color: #2F293A;
-  --background-dark: #120F17;
+  --border-color: #2f293a;
+  --background-dark: #120f17;
   color-scheme: light dark;
 }
 
@@ -3716,7 +3381,7 @@ export default MagicBento;
 
 /* Border glow effect */
 .magic-bento-card--border-glow::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   padding: 6px;
@@ -3757,7 +3422,7 @@ export default MagicBento;
 }
 
 .particle::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -2px;
   left: -2px;
@@ -3786,10 +3451,10 @@ export default MagicBento;
   position: relative;
   user-select: none;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -3804,16 +3469,19 @@ code: ## Integrate the <ReflectiveCard /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: ReflectiveCard
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: lucide-react
 
 ---
 
 ### Usage Example
-```jsx
-import ReflectiveCard from './ReflectiveCard';
 
-<div style={{ height: '600px', position: 'relative' }}>
+```jsx
+import ReflectiveCard from "./ReflectiveCard"
+
+;<div style={{ height: "600px", position: "relative" }}>
   <ReflectiveCard
     overlayColor="rgba(0, 0, 0, 0.2)"
     blurStrength={10}
@@ -3827,47 +3495,48 @@ import ReflectiveCard from './ReflectiveCard';
     color="#ffffff"
   />
 </div>
-
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| blurStrength | number | 12 | The intensity of the blur effect (0-20px) |
-| metalness | number | 1 | The opacity of the metallic sheen (0-1) |
-| roughness | number | 0.4 | The opacity of the noise texture (0-1) |
-| displacementStrength | number | 20 | Strength of the displacement (how much it warps) |
-| noiseScale | number | 1 | Scale of the noise texture (size of the ripples) |
-| specularConstant | number | 1.2 | Specular constant for the lighting (shininess) |
-| grayscale | number | 1 | Grayscale intensity (0-1) |
-| glassDistortion | number | 0 | Strength of the glass edge distortion |
-| color | string | white | The base text color |
-| overlayColor | string | rgba(255, 255, 255, 0.1) | The color of the overlay tint |
+
+| Prop                 | Type   | Default                  | Description                                      |
+| -------------------- | ------ | ------------------------ | ------------------------------------------------ |
+| blurStrength         | number | 12                       | The intensity of the blur effect (0-20px)        |
+| metalness            | number | 1                        | The opacity of the metallic sheen (0-1)          |
+| roughness            | number | 0.4                      | The opacity of the noise texture (0-1)           |
+| displacementStrength | number | 20                       | Strength of the displacement (how much it warps) |
+| noiseScale           | number | 1                        | Scale of the noise texture (size of the ripples) |
+| specularConstant     | number | 1.2                      | Specular constant for the lighting (shininess)   |
+| grayscale            | number | 1                        | Grayscale intensity (0-1)                        |
+| glassDistortion      | number | 0                        | Strength of the glass edge distortion            |
+| color                | string | white                    | The base text color                              |
+| overlayColor         | string | rgba(255, 255, 255, 0.1) | The color of the overlay tint                    |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import './ReflectiveCard.css';
-import { Fingerprint, Activity, Lock } from 'lucide-react';
+import { useEffect, useRef } from "react"
+import "./ReflectiveCard.css"
+import { Fingerprint, Activity, Lock } from "lucide-react"
 
 const ReflectiveCard = ({
   blurStrength = 12,
-  color = 'white',
+  color = "white",
   metalness = 1,
   roughness = 0.4,
-  overlayColor = 'rgba(255, 255, 255, 0.1)',
+  overlayColor = "rgba(255, 255, 255, 0.1)",
   displacementStrength = 20,
   noiseScale = 1,
   specularConstant = 1.2,
   grayscale = 1,
   glassDistortion = 0,
-  className = '',
-  style = {}
+  className = "",
+  style = {},
 }) => {
-  const videoRef = useRef(null);
+  const videoRef = useRef(null)
 
   useEffect(() => {
-    let stream = null;
+    let stream = null
 
     const startWebcam = async () => {
       try {
@@ -3875,38 +3544,38 @@ const ReflectiveCard = ({
           video: {
             width: { ideal: 640 },
             height: { ideal: 480 },
-            facingMode: 'user'
-          }
-        });
+            facingMode: "user",
+          },
+        })
 
         if (videoRef.current) {
-          videoRef.current.srcObject = stream;
+          videoRef.current.srcObject = stream
         }
       } catch (err) {
-        console.error('Error accessing webcam:', err);
+        console.error("Error accessing webcam:", err)
       }
-    };
+    }
 
-    startWebcam();
+    startWebcam()
 
     return () => {
       if (stream) {
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((track) => track.stop())
       }
-    };
-  }, []);
+    }
+  }, [])
 
-  const baseFrequency = 0.03 / Math.max(0.1, noiseScale);
-  const saturation = 1 - Math.max(0, Math.min(1, grayscale));
+  const baseFrequency = 0.03 / Math.max(0.1, noiseScale)
+  const saturation = 1 - Math.max(0, Math.min(1, grayscale))
 
   const cssVariables = {
-    '--blur-strength': `${blurStrength}px`,
-    '--metalness': metalness,
-    '--roughness': roughness,
-    '--overlay-color': overlayColor,
-    '--text-color': color,
-    '--saturation': saturation
-  };
+    "--blur-strength": `${blurStrength}px`,
+    "--metalness": metalness,
+    "--roughness": roughness,
+    "--overlay-color": overlayColor,
+    "--text-color": color,
+    "--saturation": saturation,
+  }
 
   return (
     <div className={`reflective-card-container ${className}`} style={{ ...style, ...cssVariables }}>
@@ -3991,14 +3660,14 @@ const ReflectiveCard = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ReflectiveCard;
-
+export default ReflectiveCard
 ```
 
 ### Component CSS
+
 ```css
 .reflective-card-container {
   position: relative;
@@ -4011,7 +3680,7 @@ export default ReflectiveCard;
     0 20px 50px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.1) inset;
   isolation: isolate;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .reflective-svg-filters {
@@ -4182,10 +3851,10 @@ export default ReflectiveCard;
 .fingerprint-icon {
   opacity: 0.4;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -4200,69 +3869,69 @@ code: ## Integrate the <Stack /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Stack
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: motion
 
 ---
 
 ### Usage Example
+
 ```jsx
-import Stack from './Stack'
+import Stack from "./Stack"
 
 const images = [
   "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format",
   "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format",
   "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format",
-  "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format"
-];
+  "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format",
+]
 
-<div style={{ width: 208, height: 208 }}>
+;<div style={{ width: 208, height: 208 }}>
   <Stack
     randomRotation={true}
     sensitivity={180}
     sendToBackOnClick={true}
     cards={images.map((src, i) => (
-      <img 
-        key={i} 
-        src={src} 
-        alt={`card-${i + 1}`} 
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-      />
+      <img key={i} src={src} alt={`card-${i + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
     ))}
   />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| randomRotation | boolean | — | Applies a random rotation to each card for a 'messy' look. |
-| sensitivity | number | 200 | Drag sensitivity for sending a card to the back. |
-| sendToBackOnClick | boolean | false | When enabled, the stack also shifts to the next card on click. |
-| cards | ReactNode[] | [] | The array of card elements to display in the stack. |
-| animationConfig | object | { stiffness: 260, damping: 20 } | Configures the spring animation's stiffness and damping. |
-| autoplay | boolean | false | When enabled, the stack automatically cycles through cards. |
-| autoplayDelay | number | 3000 | Delay in milliseconds between automatic card transitions. |
-| pauseOnHover | boolean | false | When enabled, autoplay pauses when hovering over the stack. |
+
+| Prop              | Type        | Default                         | Description                                                    |
+| ----------------- | ----------- | ------------------------------- | -------------------------------------------------------------- |
+| randomRotation    | boolean     | —                               | Applies a random rotation to each card for a 'messy' look.     |
+| sensitivity       | number      | 200                             | Drag sensitivity for sending a card to the back.               |
+| sendToBackOnClick | boolean     | false                           | When enabled, the stack also shifts to the next card on click. |
+| cards             | ReactNode[] | []                              | The array of card elements to display in the stack.            |
+| animationConfig   | object      | { stiffness: 260, damping: 20 } | Configures the spring animation's stiffness and damping.       |
+| autoplay          | boolean     | false                           | When enabled, the stack automatically cycles through cards.    |
+| autoplayDelay     | number      | 3000                            | Delay in milliseconds between automatic card transitions.      |
+| pauseOnHover      | boolean     | false                           | When enabled, autoplay pauses when hovering over the stack.    |
 
 ### Full Component Source
+
 ```jsx
-import { motion, useMotionValue, useTransform } from 'motion/react';
-import { useState, useEffect } from 'react';
-import './Stack.css';
+import { motion, useMotionValue, useTransform } from "motion/react"
+import { useState, useEffect } from "react"
+import "./Stack.css"
 
 function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [60, -60]);
-  const rotateY = useTransform(x, [-100, 100], [-60, 60]);
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const rotateX = useTransform(y, [-100, 100], [60, -60])
+  const rotateY = useTransform(x, [-100, 100], [-60, 60])
 
   function handleDragEnd(_, info) {
     if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
-      onSendToBack();
+      onSendToBack()
     } else {
-      x.set(0);
-      y.set(0);
+      x.set(0)
+      y.set(0)
     }
   }
 
@@ -4271,7 +3940,7 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }
       <motion.div className="card-rotate-disabled" style={{ x: 0, y: 0 }}>
         {children}
       </motion.div>
-    );
+    )
   }
 
   return (
@@ -4281,12 +3950,12 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }
       drag
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       dragElastic={0.6}
-      whileTap={{ cursor: 'grabbing' }}
+      whileTap={{ cursor: "grabbing" }}
       onDragEnd={handleDragEnd}
     >
       {children}
     </motion.div>
-  );
+  )
 }
 
 export default function Stack({
@@ -4299,27 +3968,27 @@ export default function Stack({
   autoplayDelay = 3000,
   pauseOnHover = false,
   mobileClickOnly = false,
-  mobileBreakpoint = 768
+  mobileBreakpoint = 768,
 }) {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < mobileBreakpoint);
-    };
+      setIsMobile(window.innerWidth < mobileBreakpoint)
+    }
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, [mobileBreakpoint]);
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [mobileBreakpoint])
 
-  const shouldDisableDrag = mobileClickOnly && isMobile;
-  const shouldEnableClick = sendToBackOnClick || shouldDisableDrag;
+  const shouldDisableDrag = mobileClickOnly && isMobile
+  const shouldEnableClick = sendToBackOnClick || shouldDisableDrag
 
   const [stack, setStack] = useState(() => {
     if (cards.length) {
-      return cards.map((content, index) => ({ id: index + 1, content }));
+      return cards.map((content, index) => ({ id: index + 1, content }))
     } else {
       return [
         {
@@ -4330,7 +3999,7 @@ export default function Stack({
               alt="card-1"
               className="card-image"
             />
-          )
+          ),
         },
         {
           id: 2,
@@ -4340,7 +4009,7 @@ export default function Stack({
               alt="card-2"
               className="card-image"
             />
-          )
+          ),
         },
         {
           id: 3,
@@ -4350,7 +4019,7 @@ export default function Stack({
               alt="card-3"
               className="card-image"
             />
-          )
+          ),
         },
         {
           id: 4,
@@ -4360,38 +4029,38 @@ export default function Stack({
               alt="card-4"
               className="card-image"
             />
-          )
-        }
-      ];
+          ),
+        },
+      ]
     }
-  });
+  })
 
   useEffect(() => {
     if (cards.length) {
-      setStack(cards.map((content, index) => ({ id: index + 1, content })));
+      setStack(cards.map((content, index) => ({ id: index + 1, content })))
     }
-  }, [cards]);
+  }, [cards])
 
-  const sendToBack = id => {
-    setStack(prev => {
-      const newStack = [...prev];
-      const index = newStack.findIndex(card => card.id === id);
-      const [card] = newStack.splice(index, 1);
-      newStack.unshift(card);
-      return newStack;
-    });
-  };
+  const sendToBack = (id) => {
+    setStack((prev) => {
+      const newStack = [...prev]
+      const index = newStack.findIndex((card) => card.id === id)
+      const [card] = newStack.splice(index, 1)
+      newStack.unshift(card)
+      return newStack
+    })
+  }
 
   useEffect(() => {
     if (autoplay && stack.length > 1 && !isPaused) {
       const interval = setInterval(() => {
-        const topCardId = stack[stack.length - 1].id;
-        sendToBack(topCardId);
-      }, autoplayDelay);
+        const topCardId = stack[stack.length - 1].id
+        sendToBack(topCardId)
+      }, autoplayDelay)
 
-      return () => clearInterval(interval);
+      return () => clearInterval(interval)
     }
-  }, [autoplay, autoplayDelay, stack, isPaused]);
+  }, [autoplay, autoplayDelay, stack, isPaused])
 
   return (
     <div
@@ -4400,7 +4069,7 @@ export default function Stack({
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
     >
       {stack.map((card, index) => {
-        const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0;
+        const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0
         return (
           <CardRotate
             key={card.id}
@@ -4414,27 +4083,27 @@ export default function Stack({
               animate={{
                 rotateZ: (stack.length - index - 1) * 4 + randomRotate,
                 scale: 1 + index * 0.06 - stack.length * 0.06,
-                transformOrigin: '90% 90%'
+                transformOrigin: "90% 90%",
               }}
               initial={false}
               transition={{
-                type: 'spring',
+                type: "spring",
                 stiffness: animationConfig.stiffness,
-                damping: animationConfig.damping
+                damping: animationConfig.damping,
               }}
             >
               {card.content}
             </motion.div>
           </CardRotate>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .stack-container {
   position: relative;
@@ -4479,10 +4148,10 @@ export default function Stack({
   object-fit: cover;
   pointer-events: none;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -4497,16 +4166,19 @@ code: ## Integrate the <TiltedCard /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: TiltedCard
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: motion
 
 ---
 
 ### Usage Example
-```jsx
-import TiltedCard from './TiltedCard';
 
-<TiltedCard
+```jsx
+import TiltedCard from "./TiltedCard"
+
+;<TiltedCard
   imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
   altText="Kendrick Lamar - GNX Album Cover"
   captionText="Kendrick Lamar - GNX"
@@ -4519,107 +4191,104 @@ import TiltedCard from './TiltedCard';
   showMobileWarning={false}
   showTooltip={true}
   displayOverlayContent={true}
-  overlayContent={
-    <p className="tilted-card-demo-text">
-      Kendrick Lamar - GNX
-    </p>
-  }
+  overlayContent={<p className="tilted-card-demo-text">Kendrick Lamar - GNX</p>}
 />
-  
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| imageSrc | string | N/A | The source URL of the image. |
-| altText | string | Tilted card image | Alternative text for the image. |
-| captionText | string | — | Text for the tooltip caption. |
-| containerHeight | string | 600px | Height of the overall card container. |
-| containerWidth | string | 100% | Width of the overall card container. |
-| imageHeight | string | 300px | Height of the inner image. |
-| imageWidth | string | 300px | Width of the inner image. |
-| scaleOnHover | number | 1.1 | Scaling factor applied on hover. |
-| rotateAmplitude | number | 14 | Controls how much the card tilts with mouse movement. |
-| showMobileWarning | boolean | true | Whether to show a small alert about mobile usage. |
-| showTooltip | boolean | true | Toggles the visibility of the tooltip (figcaption). |
-| displayOverlayContent | boolean | false | Whether to display any overlayContent on top of the image. |
-| overlayContent | ReactNode | null | A React node to display as an overlay on the card. |
+
+| Prop                  | Type      | Default           | Description                                                |
+| --------------------- | --------- | ----------------- | ---------------------------------------------------------- |
+| imageSrc              | string    | N/A               | The source URL of the image.                               |
+| altText               | string    | Tilted card image | Alternative text for the image.                            |
+| captionText           | string    | —                 | Text for the tooltip caption.                              |
+| containerHeight       | string    | 600px             | Height of the overall card container.                      |
+| containerWidth        | string    | 100%              | Width of the overall card container.                       |
+| imageHeight           | string    | 300px             | Height of the inner image.                                 |
+| imageWidth            | string    | 300px             | Width of the inner image.                                  |
+| scaleOnHover          | number    | 1.1               | Scaling factor applied on hover.                           |
+| rotateAmplitude       | number    | 14                | Controls how much the card tilts with mouse movement.      |
+| showMobileWarning     | boolean   | true              | Whether to show a small alert about mobile usage.          |
+| showTooltip           | boolean   | true              | Toggles the visibility of the tooltip (figcaption).        |
+| displayOverlayContent | boolean   | false             | Whether to display any overlayContent on top of the image. |
+| overlayContent        | ReactNode | null              | A React node to display as an overlay on the card.         |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
-import './TiltedCard.css';
+import { useRef, useState } from "react"
+import { motion, useMotionValue, useSpring } from "motion/react"
+import "./TiltedCard.css"
 
 const springValues = {
   damping: 30,
   stiffness: 100,
-  mass: 2
-};
+  mass: 2,
+}
 
 export default function TiltedCard({
   imageSrc,
-  altText = 'Tilted card image',
-  captionText = '',
-  containerHeight = '300px',
-  containerWidth = '100%',
-  imageHeight = '300px',
-  imageWidth = '300px',
+  altText = "Tilted card image",
+  captionText = "",
+  containerHeight = "300px",
+  containerWidth = "100%",
+  imageHeight = "300px",
+  imageWidth = "300px",
   scaleOnHover = 1.1,
   rotateAmplitude = 14,
   showMobileWarning = true,
   showTooltip = true,
   overlayContent = null,
-  displayOverlayContent = false
+  displayOverlayContent = false,
 }) {
-  const ref = useRef(null);
+  const ref = useRef(null)
 
-  const x = useMotionValue();
-  const y = useMotionValue();
-  const rotateX = useSpring(useMotionValue(0), springValues);
-  const rotateY = useSpring(useMotionValue(0), springValues);
-  const scale = useSpring(1, springValues);
-  const opacity = useSpring(0);
+  const x = useMotionValue()
+  const y = useMotionValue()
+  const rotateX = useSpring(useMotionValue(0), springValues)
+  const rotateY = useSpring(useMotionValue(0), springValues)
+  const scale = useSpring(1, springValues)
+  const opacity = useSpring(0)
   const rotateFigcaption = useSpring(0, {
     stiffness: 350,
     damping: 30,
-    mass: 1
-  });
+    mass: 1,
+  })
 
-  const [lastY, setLastY] = useState(0);
+  const [lastY, setLastY] = useState(0)
 
   function handleMouse(e) {
-    if (!ref.current) return;
+    if (!ref.current) return
 
-    const rect = ref.current.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left - rect.width / 2;
-    const offsetY = e.clientY - rect.top - rect.height / 2;
+    const rect = ref.current.getBoundingClientRect()
+    const offsetX = e.clientX - rect.left - rect.width / 2
+    const offsetY = e.clientY - rect.top - rect.height / 2
 
-    const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
-    const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
+    const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude
+    const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude
 
-    rotateX.set(rotationX);
-    rotateY.set(rotationY);
+    rotateX.set(rotationX)
+    rotateY.set(rotationY)
 
-    x.set(e.clientX - rect.left);
-    y.set(e.clientY - rect.top);
+    x.set(e.clientX - rect.left)
+    y.set(e.clientY - rect.top)
 
-    const velocityY = offsetY - lastY;
-    rotateFigcaption.set(-velocityY * 0.6);
-    setLastY(offsetY);
+    const velocityY = offsetY - lastY
+    rotateFigcaption.set(-velocityY * 0.6)
+    setLastY(offsetY)
   }
 
   function handleMouseEnter() {
-    scale.set(scaleOnHover);
-    opacity.set(1);
+    scale.set(scaleOnHover)
+    opacity.set(1)
   }
 
   function handleMouseLeave() {
-    opacity.set(0);
-    scale.set(1);
-    rotateX.set(0);
-    rotateY.set(0);
-    rotateFigcaption.set(0);
+    opacity.set(0)
+    scale.set(1)
+    rotateX.set(0)
+    rotateY.set(0)
+    rotateFigcaption.set(0)
   }
 
   return (
@@ -4628,7 +4297,7 @@ export default function TiltedCard({
       className="tilted-card-figure"
       style={{
         height: containerHeight,
-        width: containerWidth
+        width: containerWidth,
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
@@ -4645,7 +4314,7 @@ export default function TiltedCard({
           height: imageHeight,
           rotateX,
           rotateY,
-          scale
+          scale,
         }}
       >
         <motion.img
@@ -4654,7 +4323,7 @@ export default function TiltedCard({
           className="tilted-card-img"
           style={{
             width: imageWidth,
-            height: imageHeight
+            height: imageHeight,
           }}
         />
 
@@ -4670,19 +4339,19 @@ export default function TiltedCard({
             x,
             y,
             opacity,
-            rotate: rotateFigcaption
+            rotate: rotateFigcaption,
           }}
         >
           {captionText}
         </motion.figcaption>
       )}
     </figure>
-  );
+  )
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .tilted-card-figure {
   position: relative;
@@ -4749,10 +4418,10 @@ export default function TiltedCard({
   opacity: 0;
   z-index: 3;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -4767,105 +4436,108 @@ code: ## Integrate the <Folder /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Folder
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
-```jsx
-import Folder from './Folder'
 
-<div style={{ height: '600px', position: 'relative' }}>
+```jsx
+import Folder from "./Folder"
+
+;<div style={{ height: "600px", position: "relative" }}>
   <Folder size={2} color="#5227FF" className="custom-folder" />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| color | string | #5227FF | The primary color of the folder. |
-| size | number | 1 | Scale factor for the folder size. |
-| items | React.ReactNode[] | [] | An array of up to 3 items rendered as papers in the folder. |
-| className | string | — | Additional CSS classes for the folder container. |
+
+| Prop      | Type              | Default | Description                                                 |
+| --------- | ----------------- | ------- | ----------------------------------------------------------- |
+| color     | string            | #5227FF | The primary color of the folder.                            |
+| size      | number            | 1       | Scale factor for the folder size.                           |
+| items     | React.ReactNode[] | []      | An array of up to 3 items rendered as papers in the folder. |
+| className | string            | —       | Additional CSS classes for the folder container.            |
 
 ### Full Component Source
+
 ```jsx
-import { useState } from 'react';
-import './Folder.css';
+import { useState } from "react"
+import "./Folder.css"
 
 const darkenColor = (hex, percent) => {
-  let color = hex.startsWith('#') ? hex.slice(1) : hex;
+  let color = hex.startsWith("#") ? hex.slice(1) : hex
   if (color.length === 3) {
     color = color
-      .split('')
-      .map(c => c + c)
-      .join('');
+      .split("")
+      .map((c) => c + c)
+      .join("")
   }
-  const num = parseInt(color, 16);
-  let r = (num >> 16) & 0xff;
-  let g = (num >> 8) & 0xff;
-  let b = num & 0xff;
-  r = Math.max(0, Math.min(255, Math.floor(r * (1 - percent))));
-  g = Math.max(0, Math.min(255, Math.floor(g * (1 - percent))));
-  b = Math.max(0, Math.min(255, Math.floor(b * (1 - percent))));
-  return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
-};
+  const num = parseInt(color, 16)
+  let r = (num >> 16) & 0xff
+  let g = (num >> 8) & 0xff
+  let b = num & 0xff
+  r = Math.max(0, Math.min(255, Math.floor(r * (1 - percent))))
+  g = Math.max(0, Math.min(255, Math.floor(g * (1 - percent))))
+  b = Math.max(0, Math.min(255, Math.floor(b * (1 - percent))))
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()
+}
 
-const Folder = ({ color = '#5227FF', size = 1, items = [], className = '' }) => {
-  const maxItems = 3;
-  const papers = items.slice(0, maxItems);
+const Folder = ({ color = "#5227FF", size = 1, items = [], className = "" }) => {
+  const maxItems = 3
+  const papers = items.slice(0, maxItems)
   while (papers.length < maxItems) {
-    papers.push(null);
+    papers.push(null)
   }
 
-  const [open, setOpen] = useState(false);
-  const [paperOffsets, setPaperOffsets] = useState(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })));
+  const [open, setOpen] = useState(false)
+  const [paperOffsets, setPaperOffsets] = useState(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })))
 
-  const folderBackColor = darkenColor(color, 0.08);
-  const paper1 = darkenColor('#ffffff', 0.1);
-  const paper2 = darkenColor('#ffffff', 0.05);
-  const paper3 = '#ffffff';
+  const folderBackColor = darkenColor(color, 0.08)
+  const paper1 = darkenColor("#ffffff", 0.1)
+  const paper2 = darkenColor("#ffffff", 0.05)
+  const paper3 = "#ffffff"
 
   const handleClick = () => {
-    setOpen(prev => !prev);
+    setOpen((prev) => !prev)
     if (open) {
-      setPaperOffsets(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })));
+      setPaperOffsets(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })))
     }
-  };
+  }
 
   const handlePaperMouseMove = (e, index) => {
-    if (!open) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const offsetX = (e.clientX - centerX) * 0.15;
-    const offsetY = (e.clientY - centerY) * 0.15;
-    setPaperOffsets(prev => {
-      const newOffsets = [...prev];
-      newOffsets[index] = { x: offsetX, y: offsetY };
-      return newOffsets;
-    });
-  };
+    if (!open) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    const offsetX = (e.clientX - centerX) * 0.15
+    const offsetY = (e.clientY - centerY) * 0.15
+    setPaperOffsets((prev) => {
+      const newOffsets = [...prev]
+      newOffsets[index] = { x: offsetX, y: offsetY }
+      return newOffsets
+    })
+  }
 
   const handlePaperMouseLeave = (e, index) => {
-    setPaperOffsets(prev => {
-      const newOffsets = [...prev];
-      newOffsets[index] = { x: 0, y: 0 };
-      return newOffsets;
-    });
-  };
+    setPaperOffsets((prev) => {
+      const newOffsets = [...prev]
+      newOffsets[index] = { x: 0, y: 0 }
+      return newOffsets
+    })
+  }
 
   const folderStyle = {
-    '--folder-color': color,
-    '--folder-back-color': folderBackColor,
-    '--paper-1': paper1,
-    '--paper-2': paper2,
-    '--paper-3': paper3
-  };
+    "--folder-color": color,
+    "--folder-back-color": folderBackColor,
+    "--paper-1": paper1,
+    "--paper-2": paper2,
+    "--paper-3": paper3,
+  }
 
-  const folderClassName = `folder ${open ? 'open' : ''}`.trim();
-  const scaleStyle = { transform: `scale(${size})` };
+  const folderClassName = `folder ${open ? "open" : ""}`.trim()
+  const scaleStyle = { transform: `scale(${size})` }
 
   return (
     <div style={scaleStyle} className={className}>
@@ -4875,13 +4547,13 @@ const Folder = ({ color = '#5227FF', size = 1, items = [], className = '' }) => 
             <div
               key={i}
               className={`paper paper-${i + 1}`}
-              onMouseMove={e => handlePaperMouseMove(e, i)}
-              onMouseLeave={e => handlePaperMouseLeave(e, i)}
+              onMouseMove={(e) => handlePaperMouseMove(e, i)}
+              onMouseLeave={(e) => handlePaperMouseLeave(e, i)}
               style={
                 open
                   ? {
-                      '--magnet-x': `${paperOffsets[i]?.x || 0}px`,
-                      '--magnet-y': `${paperOffsets[i]?.y || 0}px`
+                      "--magnet-x": `${paperOffsets[i]?.x || 0}px`,
+                      "--magnet-y": `${paperOffsets[i]?.y || 0}px`,
                     }
                   : {}
               }
@@ -4894,14 +4566,14 @@ const Folder = ({ color = '#5227FF', size = 1, items = [], className = '' }) => 
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Folder;
-
+export default Folder
 ```
 
 ### Component CSS
+
 ```css
 :root {
   --folder-color: #70a1ff;
@@ -4983,7 +4655,7 @@ export default Folder;
   z-index: 0;
   bottom: 98%;
   left: 0;
-  content: '';
+  content: "";
   width: 30px;
   height: 10px;
   background: var(--folder-back-color);
@@ -5025,10 +4697,10 @@ export default Folder;
   transform-origin: bottom;
   transition: all 0.3s ease-in-out;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -5043,16 +4715,17 @@ code: ## Integrate the <ProfileCard /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: ProfileCard
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
+
 ```jsx
-import ProfileCard from './ProfileCard'
-  
-<ProfileCard
+import ProfileCard from "./ProfileCard"
+
+;<ProfileCard
   name="Javi A. Torres"
   title="Software Engineer"
   handle="javicodes"
@@ -5062,7 +4735,7 @@ import ProfileCard from './ProfileCard'
   showUserInfo={true}
   enableTilt={true}
   enableMobileTilt={false}
-  onContactClick={() => console.log('Contact clicked')}
+  onContactClick={() => console.log("Contact clicked")}
   iconUrl="/assets/demo/iconpattern.png"
   behindGlowEnabled
   innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
@@ -5070,311 +4743,313 @@ import ProfileCard from './ProfileCard'
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| avatarUrl | string | "<Placeholder for avatar URL>" | URL for the main avatar image displayed on the card |
-| iconUrl | string | "<Placeholder for icon URL>" | Optional URL for an icon pattern overlay on the card background |
-| grainUrl | string | "<Placeholder for grain URL>" | Optional URL for a grain texture overlay effect |
-| innerGradient | string | undefined | Custom CSS gradient string for the inner card gradient |
-| behindGlowEnabled | boolean | true | Toggle the smooth radial glow that follows the cursor behind the card |
-| behindGlowColor | string | "rgba(125, 190, 255, 0.67)" | CSS color for the behind-the-card glow (e.g. rgba/hsla/hex) |
-| behindGlowSize | string | "50%" | Size of the glow as a length/percentage stop in the radial gradient |
-| className | string | "" | Additional CSS classes to apply to the card wrapper |
-| enableTilt | boolean | true | Enable or disable the 3D tilt effect on mouse hover |
-| enableMobileTilt | boolean | false | Enable or disable the 3D tilt effect on mobile devices |
-| mobileTiltSensitivity | number | 5 | Sensitivity of the 3D tilt effect on mobile devices |
-| miniAvatarUrl | string | undefined | Optional URL for a smaller avatar in the user info section |
-| name | string | "Javi A. Torres" | User's display name |
-| title | string | "Software Engineer" | User's job title or role |
-| handle | string | "javicodes" | User's handle or username (displayed with @ prefix) |
-| status | string | "Online" | User's current status |
-| contactText | string | "Contact" | Text displayed on the contact button |
-| showUserInfo | boolean | true | Whether to display the user information section |
-| onContactClick | function | undefined | Callback function called when the contact button is clicked |
+
+| Prop                  | Type     | Default                        | Description                                                           |
+| --------------------- | -------- | ------------------------------ | --------------------------------------------------------------------- |
+| avatarUrl             | string   | "<Placeholder for avatar URL>" | URL for the main avatar image displayed on the card                   |
+| iconUrl               | string   | "<Placeholder for icon URL>"   | Optional URL for an icon pattern overlay on the card background       |
+| grainUrl              | string   | "<Placeholder for grain URL>"  | Optional URL for a grain texture overlay effect                       |
+| innerGradient         | string   | undefined                      | Custom CSS gradient string for the inner card gradient                |
+| behindGlowEnabled     | boolean  | true                           | Toggle the smooth radial glow that follows the cursor behind the card |
+| behindGlowColor       | string   | "rgba(125, 190, 255, 0.67)"    | CSS color for the behind-the-card glow (e.g. rgba/hsla/hex)           |
+| behindGlowSize        | string   | "50%"                          | Size of the glow as a length/percentage stop in the radial gradient   |
+| className             | string   | ""                             | Additional CSS classes to apply to the card wrapper                   |
+| enableTilt            | boolean  | true                           | Enable or disable the 3D tilt effect on mouse hover                   |
+| enableMobileTilt      | boolean  | false                          | Enable or disable the 3D tilt effect on mobile devices                |
+| mobileTiltSensitivity | number   | 5                              | Sensitivity of the 3D tilt effect on mobile devices                   |
+| miniAvatarUrl         | string   | undefined                      | Optional URL for a smaller avatar in the user info section            |
+| name                  | string   | "Javi A. Torres"               | User's display name                                                   |
+| title                 | string   | "Software Engineer"            | User's job title or role                                              |
+| handle                | string   | "javicodes"                    | User's handle or username (displayed with @ prefix)                   |
+| status                | string   | "Online"                       | User's current status                                                 |
+| contactText           | string   | "Contact"                      | Text displayed on the contact button                                  |
+| showUserInfo          | boolean  | true                           | Whether to display the user information section                       |
+| onContactClick        | function | undefined                      | Callback function called when the contact button is clicked           |
 
 ### Full Component Source
-```jsx
-import React, { useEffect, useRef, useCallback, useMemo } from 'react';
-import './ProfileCard.css';
 
-const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)';
+```jsx
+import React, { useEffect, useRef, useCallback, useMemo } from "react"
+import "./ProfileCard.css"
+
+const DEFAULT_INNER_GRADIENT = "linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
 
 const ANIMATION_CONFIG = {
   INITIAL_DURATION: 1200,
   INITIAL_X_OFFSET: 70,
   INITIAL_Y_OFFSET: 60,
   DEVICE_BETA_OFFSET: 20,
-  ENTER_TRANSITION_MS: 180
-};
+  ENTER_TRANSITION_MS: 180,
+}
 
-const clamp = (v, min = 0, max = 100) => Math.min(Math.max(v, min), max);
-const round = (v, precision = 3) => parseFloat(v.toFixed(precision));
-const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
+const clamp = (v, min = 0, max = 100) => Math.min(Math.max(v, min), max)
+const round = (v, precision = 3) => parseFloat(v.toFixed(precision))
+const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin))
 
 const ProfileCardComponent = ({
-  avatarUrl = '<Placeholder for avatar URL>',
-  iconUrl = '<Placeholder for icon URL>',
-  grainUrl = '<Placeholder for grain URL>',
+  avatarUrl = "<Placeholder for avatar URL>",
+  iconUrl = "<Placeholder for icon URL>",
+  grainUrl = "<Placeholder for grain URL>",
   innerGradient,
   behindGlowEnabled = true,
   behindGlowColor,
   behindGlowSize,
-  className = '',
+  className = "",
   enableTilt = true,
   enableMobileTilt = false,
   mobileTiltSensitivity = 5,
   miniAvatarUrl,
-  name = 'Javi A. Torres',
-  title = 'Software Engineer',
-  handle = 'javicodes',
-  status = 'Online',
-  contactText = 'Contact',
+  name = "Javi A. Torres",
+  title = "Software Engineer",
+  handle = "javicodes",
+  status = "Online",
+  contactText = "Contact",
   showUserInfo = true,
-  onContactClick
+  onContactClick,
 }) => {
-  const wrapRef = useRef(null);
-  const shellRef = useRef(null);
+  const wrapRef = useRef(null)
+  const shellRef = useRef(null)
 
-  const enterTimerRef = useRef(null);
-  const leaveRafRef = useRef(null);
+  const enterTimerRef = useRef(null)
+  const leaveRafRef = useRef(null)
 
   const tiltEngine = useMemo(() => {
-    if (!enableTilt) return null;
+    if (!enableTilt) return null
 
-    let rafId = null;
-    let running = false;
-    let lastTs = 0;
+    let rafId = null
+    let running = false
+    let lastTs = 0
 
-    let currentX = 0;
-    let currentY = 0;
-    let targetX = 0;
-    let targetY = 0;
+    let currentX = 0
+    let currentY = 0
+    let targetX = 0
+    let targetY = 0
 
-    const DEFAULT_TAU = 0.14;
-    const INITIAL_TAU = 0.6;
-    let initialUntil = 0;
+    const DEFAULT_TAU = 0.14
+    const INITIAL_TAU = 0.6
+    let initialUntil = 0
 
     const setVarsFromXY = (x, y) => {
-      const shell = shellRef.current;
-      const wrap = wrapRef.current;
-      if (!shell || !wrap) return;
+      const shell = shellRef.current
+      const wrap = wrapRef.current
+      if (!shell || !wrap) return
 
-      const width = shell.clientWidth || 1;
-      const height = shell.clientHeight || 1;
+      const width = shell.clientWidth || 1
+      const height = shell.clientHeight || 1
 
-      const percentX = clamp((100 / width) * x);
-      const percentY = clamp((100 / height) * y);
+      const percentX = clamp((100 / width) * x)
+      const percentY = clamp((100 / height) * y)
 
-      const centerX = percentX - 50;
-      const centerY = percentY - 50;
+      const centerX = percentX - 50
+      const centerY = percentY - 50
 
       const properties = {
-        '--pointer-x': `${percentX}%`,
-        '--pointer-y': `${percentY}%`,
-        '--background-x': `${adjust(percentX, 0, 100, 35, 65)}%`,
-        '--background-y': `${adjust(percentY, 0, 100, 35, 65)}%`,
-        '--pointer-from-center': `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
-        '--pointer-from-top': `${percentY / 100}`,
-        '--pointer-from-left': `${percentX / 100}`,
-        '--rotate-x': `${round(-(centerX / 5))}deg`,
-        '--rotate-y': `${round(centerY / 4)}deg`
-      };
+        "--pointer-x": `${percentX}%`,
+        "--pointer-y": `${percentY}%`,
+        "--background-x": `${adjust(percentX, 0, 100, 35, 65)}%`,
+        "--background-y": `${adjust(percentY, 0, 100, 35, 65)}%`,
+        "--pointer-from-center": `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
+        "--pointer-from-top": `${percentY / 100}`,
+        "--pointer-from-left": `${percentX / 100}`,
+        "--rotate-x": `${round(-(centerX / 5))}deg`,
+        "--rotate-y": `${round(centerY / 4)}deg`,
+      }
 
-      for (const [k, v] of Object.entries(properties)) wrap.style.setProperty(k, v);
-    };
+      for (const [k, v] of Object.entries(properties)) wrap.style.setProperty(k, v)
+    }
 
-    const step = ts => {
-      if (!running) return;
-      if (lastTs === 0) lastTs = ts;
-      const dt = (ts - lastTs) / 1000;
-      lastTs = ts;
+    const step = (ts) => {
+      if (!running) return
+      if (lastTs === 0) lastTs = ts
+      const dt = (ts - lastTs) / 1000
+      lastTs = ts
 
-      const tau = ts < initialUntil ? INITIAL_TAU : DEFAULT_TAU;
-      const k = 1 - Math.exp(-dt / tau);
+      const tau = ts < initialUntil ? INITIAL_TAU : DEFAULT_TAU
+      const k = 1 - Math.exp(-dt / tau)
 
-      currentX += (targetX - currentX) * k;
-      currentY += (targetY - currentY) * k;
+      currentX += (targetX - currentX) * k
+      currentY += (targetY - currentY) * k
 
-      setVarsFromXY(currentX, currentY);
+      setVarsFromXY(currentX, currentY)
 
-      const stillFar = Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05;
+      const stillFar = Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05
 
       if (stillFar || document.hasFocus()) {
-        rafId = requestAnimationFrame(step);
+        rafId = requestAnimationFrame(step)
       } else {
-        running = false;
-        lastTs = 0;
+        running = false
+        lastTs = 0
         if (rafId) {
-          cancelAnimationFrame(rafId);
-          rafId = null;
+          cancelAnimationFrame(rafId)
+          rafId = null
         }
       }
-    };
+    }
 
     const start = () => {
-      if (running) return;
-      running = true;
-      lastTs = 0;
-      rafId = requestAnimationFrame(step);
-    };
+      if (running) return
+      running = true
+      lastTs = 0
+      rafId = requestAnimationFrame(step)
+    }
 
     return {
       setImmediate(x, y) {
-        currentX = x;
-        currentY = y;
-        setVarsFromXY(currentX, currentY);
+        currentX = x
+        currentY = y
+        setVarsFromXY(currentX, currentY)
       },
       setTarget(x, y) {
-        targetX = x;
-        targetY = y;
-        start();
+        targetX = x
+        targetY = y
+        start()
       },
       toCenter() {
-        const shell = shellRef.current;
-        if (!shell) return;
-        this.setTarget(shell.clientWidth / 2, shell.clientHeight / 2);
+        const shell = shellRef.current
+        if (!shell) return
+        this.setTarget(shell.clientWidth / 2, shell.clientHeight / 2)
       },
       beginInitial(durationMs) {
-        initialUntil = performance.now() + durationMs;
-        start();
+        initialUntil = performance.now() + durationMs
+        start()
       },
       getCurrent() {
-        return { x: currentX, y: currentY, tx: targetX, ty: targetY };
+        return { x: currentX, y: currentY, tx: targetX, ty: targetY }
       },
       cancel() {
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = null;
-        running = false;
-        lastTs = 0;
-      }
-    };
-  }, [enableTilt]);
+        if (rafId) cancelAnimationFrame(rafId)
+        rafId = null
+        running = false
+        lastTs = 0
+      },
+    }
+  }, [enableTilt])
 
   const getOffsets = (evt, el) => {
-    const rect = el.getBoundingClientRect();
-    return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
-  };
+    const rect = el.getBoundingClientRect()
+    return { x: evt.clientX - rect.left, y: evt.clientY - rect.top }
+  }
 
   const handlePointerMove = useCallback(
-    event => {
-      const shell = shellRef.current;
-      if (!shell || !tiltEngine) return;
-      const { x, y } = getOffsets(event, shell);
-      tiltEngine.setTarget(x, y);
+    (event) => {
+      const shell = shellRef.current
+      if (!shell || !tiltEngine) return
+      const { x, y } = getOffsets(event, shell)
+      tiltEngine.setTarget(x, y)
     },
-    [tiltEngine]
-  );
+    [tiltEngine],
+  )
 
   const handlePointerEnter = useCallback(
-    event => {
-      const shell = shellRef.current;
-      if (!shell || !tiltEngine) return;
+    (event) => {
+      const shell = shellRef.current
+      if (!shell || !tiltEngine) return
 
-      shell.classList.add('active');
-      shell.classList.add('entering');
-      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
+      shell.classList.add("active")
+      shell.classList.add("entering")
+      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current)
       enterTimerRef.current = window.setTimeout(() => {
-        shell.classList.remove('entering');
-      }, ANIMATION_CONFIG.ENTER_TRANSITION_MS);
+        shell.classList.remove("entering")
+      }, ANIMATION_CONFIG.ENTER_TRANSITION_MS)
 
-      const { x, y } = getOffsets(event, shell);
-      tiltEngine.setTarget(x, y);
+      const { x, y } = getOffsets(event, shell)
+      tiltEngine.setTarget(x, y)
     },
-    [tiltEngine]
-  );
+    [tiltEngine],
+  )
 
   const handlePointerLeave = useCallback(() => {
-    const shell = shellRef.current;
-    if (!shell || !tiltEngine) return;
+    const shell = shellRef.current
+    if (!shell || !tiltEngine) return
 
-    tiltEngine.toCenter();
+    tiltEngine.toCenter()
 
     const checkSettle = () => {
-      const { x, y, tx, ty } = tiltEngine.getCurrent();
-      const settled = Math.hypot(tx - x, ty - y) < 0.6;
+      const { x, y, tx, ty } = tiltEngine.getCurrent()
+      const settled = Math.hypot(tx - x, ty - y) < 0.6
       if (settled) {
-        shell.classList.remove('active');
-        leaveRafRef.current = null;
+        shell.classList.remove("active")
+        leaveRafRef.current = null
       } else {
-        leaveRafRef.current = requestAnimationFrame(checkSettle);
+        leaveRafRef.current = requestAnimationFrame(checkSettle)
       }
-    };
-    if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current);
-    leaveRafRef.current = requestAnimationFrame(checkSettle);
-  }, [tiltEngine]);
+    }
+    if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current)
+    leaveRafRef.current = requestAnimationFrame(checkSettle)
+  }, [tiltEngine])
 
   const handleDeviceOrientation = useCallback(
-    event => {
-      const shell = shellRef.current;
-      if (!shell || !tiltEngine) return;
+    (event) => {
+      const shell = shellRef.current
+      if (!shell || !tiltEngine) return
 
-      const { beta, gamma } = event;
-      if (beta == null || gamma == null) return;
+      const { beta, gamma } = event
+      if (beta == null || gamma == null) return
 
-      const centerX = shell.clientWidth / 2;
-      const centerY = shell.clientHeight / 2;
-      const x = clamp(centerX + gamma * mobileTiltSensitivity, 0, shell.clientWidth);
+      const centerX = shell.clientWidth / 2
+      const centerY = shell.clientHeight / 2
+      const x = clamp(centerX + gamma * mobileTiltSensitivity, 0, shell.clientWidth)
       const y = clamp(
         centerY + (beta - ANIMATION_CONFIG.DEVICE_BETA_OFFSET) * mobileTiltSensitivity,
         0,
-        shell.clientHeight
-      );
+        shell.clientHeight,
+      )
 
-      tiltEngine.setTarget(x, y);
+      tiltEngine.setTarget(x, y)
     },
-    [tiltEngine, mobileTiltSensitivity]
-  );
+    [tiltEngine, mobileTiltSensitivity],
+  )
 
   useEffect(() => {
-    if (!enableTilt || !tiltEngine) return;
+    if (!enableTilt || !tiltEngine) return
 
-    const shell = shellRef.current;
-    if (!shell) return;
+    const shell = shellRef.current
+    if (!shell) return
 
-    const pointerMoveHandler = handlePointerMove;
-    const pointerEnterHandler = handlePointerEnter;
-    const pointerLeaveHandler = handlePointerLeave;
-    const deviceOrientationHandler = handleDeviceOrientation;
+    const pointerMoveHandler = handlePointerMove
+    const pointerEnterHandler = handlePointerEnter
+    const pointerLeaveHandler = handlePointerLeave
+    const deviceOrientationHandler = handleDeviceOrientation
 
-    shell.addEventListener('pointerenter', pointerEnterHandler);
-    shell.addEventListener('pointermove', pointerMoveHandler);
-    shell.addEventListener('pointerleave', pointerLeaveHandler);
+    shell.addEventListener("pointerenter", pointerEnterHandler)
+    shell.addEventListener("pointermove", pointerMoveHandler)
+    shell.addEventListener("pointerleave", pointerLeaveHandler)
 
     const handleClick = () => {
-      if (!enableMobileTilt || location.protocol !== 'https:') return;
-      const anyMotion = window.DeviceMotionEvent;
-      if (anyMotion && typeof anyMotion.requestPermission === 'function') {
+      if (!enableMobileTilt || location.protocol !== "https:") return
+      const anyMotion = window.DeviceMotionEvent
+      if (anyMotion && typeof anyMotion.requestPermission === "function") {
         anyMotion
           .requestPermission()
-          .then(state => {
-            if (state === 'granted') {
-              window.addEventListener('deviceorientation', deviceOrientationHandler);
+          .then((state) => {
+            if (state === "granted") {
+              window.addEventListener("deviceorientation", deviceOrientationHandler)
             }
           })
-          .catch(console.error);
+          .catch(console.error)
       } else {
-        window.addEventListener('deviceorientation', deviceOrientationHandler);
+        window.addEventListener("deviceorientation", deviceOrientationHandler)
       }
-    };
-    shell.addEventListener('click', handleClick);
+    }
+    shell.addEventListener("click", handleClick)
 
-    const initialX = (shell.clientWidth || 0) - ANIMATION_CONFIG.INITIAL_X_OFFSET;
-    const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
-    tiltEngine.setImmediate(initialX, initialY);
-    tiltEngine.toCenter();
-    tiltEngine.beginInitial(ANIMATION_CONFIG.INITIAL_DURATION);
+    const initialX = (shell.clientWidth || 0) - ANIMATION_CONFIG.INITIAL_X_OFFSET
+    const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET
+    tiltEngine.setImmediate(initialX, initialY)
+    tiltEngine.toCenter()
+    tiltEngine.beginInitial(ANIMATION_CONFIG.INITIAL_DURATION)
 
     return () => {
-      shell.removeEventListener('pointerenter', pointerEnterHandler);
-      shell.removeEventListener('pointermove', pointerMoveHandler);
-      shell.removeEventListener('pointerleave', pointerLeaveHandler);
-      shell.removeEventListener('click', handleClick);
-      window.removeEventListener('deviceorientation', deviceOrientationHandler);
-      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
-      if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current);
-      tiltEngine.cancel();
-      shell.classList.remove('entering');
-    };
+      shell.removeEventListener("pointerenter", pointerEnterHandler)
+      shell.removeEventListener("pointermove", pointerMoveHandler)
+      shell.removeEventListener("pointerleave", pointerLeaveHandler)
+      shell.removeEventListener("click", handleClick)
+      window.removeEventListener("deviceorientation", deviceOrientationHandler)
+      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current)
+      if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current)
+      tiltEngine.cancel()
+      shell.classList.remove("entering")
+    }
   }, [
     enableTilt,
     enableMobileTilt,
@@ -5382,23 +5057,23 @@ const ProfileCardComponent = ({
     handlePointerMove,
     handlePointerEnter,
     handlePointerLeave,
-    handleDeviceOrientation
-  ]);
+    handleDeviceOrientation,
+  ])
 
   const cardStyle = useMemo(
     () => ({
-      '--icon': iconUrl ? `url(${iconUrl})` : 'none',
-      '--grain': grainUrl ? `url(${grainUrl})` : 'none',
-      '--inner-gradient': innerGradient ?? DEFAULT_INNER_GRADIENT,
-      '--behind-glow-color': behindGlowColor ?? 'rgba(125, 190, 255, 0.67)',
-      '--behind-glow-size': behindGlowSize ?? '50%'
+      "--icon": iconUrl ? `url(${iconUrl})` : "none",
+      "--grain": grainUrl ? `url(${grainUrl})` : "none",
+      "--inner-gradient": innerGradient ?? DEFAULT_INNER_GRADIENT,
+      "--behind-glow-color": behindGlowColor ?? "rgba(125, 190, 255, 0.67)",
+      "--behind-glow-size": behindGlowSize ?? "50%",
     }),
-    [iconUrl, grainUrl, innerGradient, behindGlowColor, behindGlowSize]
-  );
+    [iconUrl, grainUrl, innerGradient, behindGlowColor, behindGlowSize],
+  )
 
   const handleContactClick = useCallback(() => {
-    onContactClick?.();
-  }, [onContactClick]);
+    onContactClick?.()
+  }, [onContactClick])
 
   return (
     <div ref={wrapRef} className={`pc-card-wrapper ${className}`.trim()} style={cardStyle}>
@@ -5412,11 +5087,11 @@ const ProfileCardComponent = ({
               <img
                 className="avatar"
                 src={avatarUrl}
-                alt={`${name || 'User'} avatar`}
+                alt={`${name || "User"} avatar`}
                 loading="lazy"
-                onError={e => {
-                  const t = e.target;
-                  t.style.display = 'none';
+                onError={(e) => {
+                  const t = e.target
+                  t.style.display = "none"
                 }}
               />
               {showUserInfo && (
@@ -5425,12 +5100,12 @@ const ProfileCardComponent = ({
                     <div className="pc-mini-avatar">
                       <img
                         src={miniAvatarUrl || avatarUrl}
-                        alt={`${name || 'User'} mini avatar`}
+                        alt={`${name || "User"} mini avatar`}
                         loading="lazy"
-                        onError={e => {
-                          const t = e.target;
-                          t.style.opacity = '0.5';
-                          t.src = avatarUrl;
+                        onError={(e) => {
+                          const t = e.target
+                          t.style.opacity = "0.5"
+                          t.src = avatarUrl
                         }}
                       />
                     </div>
@@ -5442,9 +5117,9 @@ const ProfileCardComponent = ({
                   <button
                     className="pc-contact-btn"
                     onClick={handleContactClick}
-                    style={{ pointerEvents: 'auto' }}
+                    style={{ pointerEvents: "auto" }}
                     type="button"
-                    aria-label={`Contact ${name || 'user'}`}
+                    aria-label={`Contact ${name || "user"}`}
                   >
                     {contactText}
                   </button>
@@ -5461,15 +5136,15 @@ const ProfileCardComponent = ({
         </section>
       </div>
     </div>
-  );
-};
+  )
+}
 
-const ProfileCard = React.memo(ProfileCardComponent);
-export default ProfileCard;
-
+const ProfileCard = React.memo(ProfileCardComponent)
+export default ProfileCard
 ```
 
 ### Component CSS
+
 ```css
 :root {
   --pointer-x: 50%;
@@ -5641,7 +5316,7 @@ export default ProfileCard;
 
 .pc-shine::before,
 .pc-shine::after {
-  content: '';
+  content: "";
   background-position: center;
   background-size: cover;
   grid-area: 1/1;
@@ -5736,7 +5411,7 @@ export default ProfileCard;
 }
 
 .pc-avatar-content::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -6033,10 +5708,10 @@ export default ProfileCard;
     border-radius: 50px;
   }
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -6051,125 +5726,125 @@ code: ## Integrate the <PixelCard /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: PixelCard
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
+
 ```jsx
-import PixelCard from './PixelCard';
+import PixelCard from "./PixelCard"
 
-<PixelCard variant="pink">
-  // your card content (use position: absolute)
-</PixelCard>
-
+;<PixelCard variant="pink">// your card content (use position: absolute)</PixelCard>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| variant | string | "default" | Defines the color scheme and animation style. |
-| gap | number | varies by variant | Pixel grid gap size in pixels. |
-| speed | number | varies by variant | Animation speed modifier (lower is slower). |
-| colors | string | "#f8fafc,#f1f5f9,#cbd5e1" | Comma-separated list of colors for the pixel effect. |
-| noFocus | boolean | false | If true, prevents animation from triggering on focus. |
-| className | string | "" | Additional CSS class for the wrapper. |
-| style | object | {} | Inline styles for the wrapper. |
-| children | ReactNode | null | Content to render inside the pixel effect container. |
+
+| Prop      | Type      | Default                   | Description                                           |
+| --------- | --------- | ------------------------- | ----------------------------------------------------- |
+| variant   | string    | "default"                 | Defines the color scheme and animation style.         |
+| gap       | number    | varies by variant         | Pixel grid gap size in pixels.                        |
+| speed     | number    | varies by variant         | Animation speed modifier (lower is slower).           |
+| colors    | string    | "#f8fafc,#f1f5f9,#cbd5e1" | Comma-separated list of colors for the pixel effect.  |
+| noFocus   | boolean   | false                     | If true, prevents animation from triggering on focus. |
+| className | string    | ""                        | Additional CSS class for the wrapper.                 |
+| style     | object    | {}                        | Inline styles for the wrapper.                        |
+| children  | ReactNode | null                      | Content to render inside the pixel effect container.  |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import './PixelCard.css';
+import { useEffect, useRef } from "react"
+import "./PixelCard.css"
 
 class Pixel {
   constructor(canvas, context, x, y, color, speed, delay) {
-    this.width = canvas.width;
-    this.height = canvas.height;
-    this.ctx = context;
-    this.x = x;
-    this.y = y;
-    this.color = color;
-    this.speed = this.getRandomValue(0.1, 0.9) * speed;
-    this.size = 0;
-    this.sizeStep = Math.random() * 0.4;
-    this.minSize = 0.5;
-    this.maxSizeInteger = 2;
-    this.maxSize = this.getRandomValue(this.minSize, this.maxSizeInteger);
-    this.delay = delay;
-    this.counter = 0;
-    this.counterStep = Math.random() * 4 + (this.width + this.height) * 0.01;
-    this.isIdle = false;
-    this.isReverse = false;
-    this.isShimmer = false;
+    this.width = canvas.width
+    this.height = canvas.height
+    this.ctx = context
+    this.x = x
+    this.y = y
+    this.color = color
+    this.speed = this.getRandomValue(0.1, 0.9) * speed
+    this.size = 0
+    this.sizeStep = Math.random() * 0.4
+    this.minSize = 0.5
+    this.maxSizeInteger = 2
+    this.maxSize = this.getRandomValue(this.minSize, this.maxSizeInteger)
+    this.delay = delay
+    this.counter = 0
+    this.counterStep = Math.random() * 4 + (this.width + this.height) * 0.01
+    this.isIdle = false
+    this.isReverse = false
+    this.isShimmer = false
   }
 
   getRandomValue(min, max) {
-    return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min
   }
 
   draw() {
-    const centerOffset = this.maxSizeInteger * 0.5 - this.size * 0.5;
-    this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x + centerOffset, this.y + centerOffset, this.size, this.size);
+    const centerOffset = this.maxSizeInteger * 0.5 - this.size * 0.5
+    this.ctx.fillStyle = this.color
+    this.ctx.fillRect(this.x + centerOffset, this.y + centerOffset, this.size, this.size)
   }
 
   appear() {
-    this.isIdle = false;
+    this.isIdle = false
     if (this.counter <= this.delay) {
-      this.counter += this.counterStep;
-      return;
+      this.counter += this.counterStep
+      return
     }
     if (this.size >= this.maxSize) {
-      this.isShimmer = true;
+      this.isShimmer = true
     }
     if (this.isShimmer) {
-      this.shimmer();
+      this.shimmer()
     } else {
-      this.size += this.sizeStep;
+      this.size += this.sizeStep
     }
-    this.draw();
+    this.draw()
   }
 
   disappear() {
-    this.isShimmer = false;
-    this.counter = 0;
+    this.isShimmer = false
+    this.counter = 0
     if (this.size <= 0) {
-      this.isIdle = true;
-      return;
+      this.isIdle = true
+      return
     } else {
-      this.size -= 0.1;
+      this.size -= 0.1
     }
-    this.draw();
+    this.draw()
   }
 
   shimmer() {
     if (this.size >= this.maxSize) {
-      this.isReverse = true;
+      this.isReverse = true
     } else if (this.size <= this.minSize) {
-      this.isReverse = false;
+      this.isReverse = false
     }
     if (this.isReverse) {
-      this.size -= this.speed;
+      this.size -= this.speed
     } else {
-      this.size += this.speed;
+      this.size += this.speed
     }
   }
 }
 
 function getEffectiveSpeed(value, reducedMotion) {
-  const min = 0;
-  const max = 100;
-  const throttle = 0.001;
-  const parsed = parseInt(value, 10);
+  const min = 0
+  const max = 100
+  const throttle = 0.001
+  const parsed = parseInt(value, 10)
 
   if (parsed <= min || reducedMotion) {
-    return min;
+    return min
   } else if (parsed >= max) {
-    return max * throttle;
+    return max * throttle
   } else {
-    return parsed * throttle;
+    return parsed * throttle
   }
 }
 
@@ -6178,133 +5853,133 @@ const VARIANTS = {
     activeColor: null,
     gap: 5,
     speed: 35,
-    colors: '#f8fafc,#f1f5f9,#cbd5e1',
-    noFocus: false
+    colors: "#f8fafc,#f1f5f9,#cbd5e1",
+    noFocus: false,
   },
   blue: {
-    activeColor: '#e0f2fe',
+    activeColor: "#e0f2fe",
     gap: 10,
     speed: 25,
-    colors: '#e0f2fe,#7dd3fc,#0ea5e9',
-    noFocus: false
+    colors: "#e0f2fe,#7dd3fc,#0ea5e9",
+    noFocus: false,
   },
   yellow: {
-    activeColor: '#fef08a',
+    activeColor: "#fef08a",
     gap: 3,
     speed: 20,
-    colors: '#fef08a,#fde047,#eab308',
-    noFocus: false
+    colors: "#fef08a,#fde047,#eab308",
+    noFocus: false,
   },
   pink: {
-    activeColor: '#fecdd3',
+    activeColor: "#fecdd3",
     gap: 6,
     speed: 80,
-    colors: '#fecdd3,#fda4af,#e11d48',
-    noFocus: true
-  }
-};
+    colors: "#fecdd3,#fda4af,#e11d48",
+    noFocus: true,
+  },
+}
 
-export default function PixelCard({ variant = 'default', gap, speed, colors, noFocus, className = '', children }) {
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  const pixelsRef = useRef([]);
-  const animationRef = useRef(null);
-  const timePreviousRef = useRef(performance.now());
-  const reducedMotion = useRef(window.matchMedia('(prefers-reduced-motion: reduce)').matches).current;
+export default function PixelCard({ variant = "default", gap, speed, colors, noFocus, className = "", children }) {
+  const containerRef = useRef(null)
+  const canvasRef = useRef(null)
+  const pixelsRef = useRef([])
+  const animationRef = useRef(null)
+  const timePreviousRef = useRef(performance.now())
+  const reducedMotion = useRef(window.matchMedia("(prefers-reduced-motion: reduce)").matches).current
 
-  const variantCfg = VARIANTS[variant] || VARIANTS.default;
-  const finalGap = gap ?? variantCfg.gap;
-  const finalSpeed = speed ?? variantCfg.speed;
-  const finalColors = colors ?? variantCfg.colors;
-  const finalNoFocus = noFocus ?? variantCfg.noFocus;
+  const variantCfg = VARIANTS[variant] || VARIANTS.default
+  const finalGap = gap ?? variantCfg.gap
+  const finalSpeed = speed ?? variantCfg.speed
+  const finalColors = colors ?? variantCfg.colors
+  const finalNoFocus = noFocus ?? variantCfg.noFocus
 
   const initPixels = () => {
-    if (!containerRef.current || !canvasRef.current) return;
+    if (!containerRef.current || !canvasRef.current) return
 
-    const rect = containerRef.current.getBoundingClientRect();
-    const width = Math.floor(rect.width);
-    const height = Math.floor(rect.height);
-    const ctx = canvasRef.current.getContext('2d');
+    const rect = containerRef.current.getBoundingClientRect()
+    const width = Math.floor(rect.width)
+    const height = Math.floor(rect.height)
+    const ctx = canvasRef.current.getContext("2d")
 
-    canvasRef.current.width = width;
-    canvasRef.current.height = height;
-    canvasRef.current.style.width = `${width}px`;
-    canvasRef.current.style.height = `${height}px`;
+    canvasRef.current.width = width
+    canvasRef.current.height = height
+    canvasRef.current.style.width = `${width}px`
+    canvasRef.current.style.height = `${height}px`
 
-    const colorsArray = finalColors.split(',');
-    const pxs = [];
+    const colorsArray = finalColors.split(",")
+    const pxs = []
     for (let x = 0; x < width; x += parseInt(finalGap, 10)) {
       for (let y = 0; y < height; y += parseInt(finalGap, 10)) {
-        const color = colorsArray[Math.floor(Math.random() * colorsArray.length)];
+        const color = colorsArray[Math.floor(Math.random() * colorsArray.length)]
 
-        const dx = x - width / 2;
-        const dy = y - height / 2;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const delay = reducedMotion ? 0 : distance;
+        const dx = x - width / 2
+        const dy = y - height / 2
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        const delay = reducedMotion ? 0 : distance
 
-        pxs.push(new Pixel(canvasRef.current, ctx, x, y, color, getEffectiveSpeed(finalSpeed, reducedMotion), delay));
+        pxs.push(new Pixel(canvasRef.current, ctx, x, y, color, getEffectiveSpeed(finalSpeed, reducedMotion), delay))
       }
     }
-    pixelsRef.current = pxs;
-  };
+    pixelsRef.current = pxs
+  }
 
-  const doAnimate = fnName => {
-    animationRef.current = requestAnimationFrame(() => doAnimate(fnName));
-    const timeNow = performance.now();
-    const timePassed = timeNow - timePreviousRef.current;
-    const timeInterval = 1000 / 60;
+  const doAnimate = (fnName) => {
+    animationRef.current = requestAnimationFrame(() => doAnimate(fnName))
+    const timeNow = performance.now()
+    const timePassed = timeNow - timePreviousRef.current
+    const timeInterval = 1000 / 60
 
-    if (timePassed < timeInterval) return;
-    timePreviousRef.current = timeNow - (timePassed % timeInterval);
+    if (timePassed < timeInterval) return
+    timePreviousRef.current = timeNow - (timePassed % timeInterval)
 
-    const ctx = canvasRef.current?.getContext('2d');
-    if (!ctx || !canvasRef.current) return;
+    const ctx = canvasRef.current?.getContext("2d")
+    if (!ctx || !canvasRef.current) return
 
-    ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
 
-    let allIdle = true;
+    let allIdle = true
     for (let i = 0; i < pixelsRef.current.length; i++) {
-      const pixel = pixelsRef.current[i];
-      pixel[fnName]();
+      const pixel = pixelsRef.current[i]
+      pixel[fnName]()
       if (!pixel.isIdle) {
-        allIdle = false;
+        allIdle = false
       }
     }
     if (allIdle) {
-      cancelAnimationFrame(animationRef.current);
+      cancelAnimationFrame(animationRef.current)
     }
-  };
+  }
 
-  const handleAnimation = name => {
-    cancelAnimationFrame(animationRef.current);
-    animationRef.current = requestAnimationFrame(() => doAnimate(name));
-  };
+  const handleAnimation = (name) => {
+    cancelAnimationFrame(animationRef.current)
+    animationRef.current = requestAnimationFrame(() => doAnimate(name))
+  }
 
-  const onMouseEnter = () => handleAnimation('appear');
-  const onMouseLeave = () => handleAnimation('disappear');
-  const onFocus = e => {
-    if (e.currentTarget.contains(e.relatedTarget)) return;
-    handleAnimation('appear');
-  };
-  const onBlur = e => {
-    if (e.currentTarget.contains(e.relatedTarget)) return;
-    handleAnimation('disappear');
-  };
+  const onMouseEnter = () => handleAnimation("appear")
+  const onMouseLeave = () => handleAnimation("disappear")
+  const onFocus = (e) => {
+    if (e.currentTarget.contains(e.relatedTarget)) return
+    handleAnimation("appear")
+  }
+  const onBlur = (e) => {
+    if (e.currentTarget.contains(e.relatedTarget)) return
+    handleAnimation("disappear")
+  }
 
   useEffect(() => {
-    initPixels();
+    initPixels()
     const observer = new ResizeObserver(() => {
-      initPixels();
-    });
+      initPixels()
+    })
     if (containerRef.current) {
-      observer.observe(containerRef.current);
+      observer.observe(containerRef.current)
     }
     return () => {
-      observer.disconnect();
-      cancelAnimationFrame(animationRef.current);
-    };
+      observer.disconnect()
+      cancelAnimationFrame(animationRef.current)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [finalGap, finalSpeed, finalColors, finalNoFocus]);
+  }, [finalGap, finalSpeed, finalColors, finalNoFocus])
 
   return (
     <div
@@ -6319,12 +5994,12 @@ export default function PixelCard({ variant = 'default', gap, speed, colors, noF
       <canvas className="pixel-canvas" ref={canvasRef} />
       {children}
     </div>
-  );
+  )
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .pixel-canvas {
   width: 100%;
@@ -6348,7 +6023,7 @@ export default function PixelCard({ variant = 'default', gap, speed, colors, noF
 }
 
 .pixel-card::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   margin: auto;
@@ -6362,10 +6037,10 @@ export default function PixelCard({ variant = 'default', gap, speed, colors, noF
 .pixel-card:focus-within::before {
   opacity: 1;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -6380,56 +6055,59 @@ code: ## Integrate the <SpotlightCard /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: SpotlightCard
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
+
 ```jsx
-import SpotlightCard from './SpotlightCard';
-  
-<SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
+import SpotlightCard from "./SpotlightCard"
+
+;<SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
   // Content goes here
 </SpotlightCard>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
+
+| Prop           | Type   | Default                   | Description                                                              |
+| -------------- | ------ | ------------------------- | ------------------------------------------------------------------------ |
 | spotlightColor | string | rgba(255, 255, 255, 0.25) | Controls the color of the radial gradient used for the spotlight effect. |
-| className | string | — | Allows adding custom classes to the component. |
+| className      | string | —                         | Allows adding custom classes to the component.                           |
 
 ### Full Component Source
+
 ```jsx
-import { useRef } from 'react';
-import './SpotlightCard.css';
+import { useRef } from "react"
+import "./SpotlightCard.css"
 
-const SpotlightCard = ({ children, className = '', spotlightColor = 'rgba(255, 255, 255, 0.25)' }) => {
-  const divRef = useRef(null);
+const SpotlightCard = ({ children, className = "", spotlightColor = "rgba(255, 255, 255, 0.25)" }) => {
+  const divRef = useRef(null)
 
-  const handleMouseMove = e => {
-    const rect = divRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  const handleMouseMove = (e) => {
+    const rect = divRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
 
-    divRef.current.style.setProperty('--mouse-x', `${x}px`);
-    divRef.current.style.setProperty('--mouse-y', `${y}px`);
-    divRef.current.style.setProperty('--spotlight-color', spotlightColor);
-  };
+    divRef.current.style.setProperty("--mouse-x", `${x}px`)
+    divRef.current.style.setProperty("--mouse-y", `${y}px`)
+    divRef.current.style.setProperty("--spotlight-color", spotlightColor)
+  }
 
   return (
     <div ref={divRef} onMouseMove={handleMouseMove} className={`card-spotlight ${className}`}>
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default SpotlightCard;
-
+export default SpotlightCard
 ```
 
 ### Component CSS
+
 ```css
 .card-spotlight {
   position: relative;
@@ -6444,7 +6122,7 @@ export default SpotlightCard;
 }
 
 .card-spotlight::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -6460,10 +6138,10 @@ export default SpotlightCard;
 .card-spotlight:focus-within::before {
   opacity: 0.6;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -6478,22 +6156,20 @@ code: ## Integrate the <CardSwap /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: CardSwap
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
-```jsx
-import CardSwap, { Card } from './CardSwap'
 
-<div style={{ height: '600px', position: 'relative' }}>
-  <CardSwap
-    cardDistance={60}
-    verticalDistance={70}
-    delay={5000}
-    pauseOnHover={false}
-  >
+```jsx
+import CardSwap, { Card } from "./CardSwap"
+
+;<div style={{ height: "600px", position: "relative" }}>
+  <CardSwap cardDistance={60} verticalDistance={70} delay={5000} pauseOnHover={false}>
     <Card>
       <h3>Card 1</h3>
       <p>Your content here</p>
@@ -6511,36 +6187,38 @@ import CardSwap, { Card } from './CardSwap'
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| width | number | string | 500 | Width of the card container |
-| height | number | string | 400 | Height of the card container |
-| cardDistance | number | 60 | X-axis spacing between cards |
-| verticalDistance | number | 70 | Y-axis spacing between cards |
-| delay | number | 5000 | Milliseconds between card swaps |
-| pauseOnHover | boolean | false | Whether to pause animation on hover |
-| onCardClick | (idx: number) => void | undefined | Callback function when a card is clicked |
-| skewAmount | number | 6 | Degree of slope for top/bottom edges |
-| easing | 'linear' | 'elastic' | 'elastic' | Animation easing type |
-| children | ReactNode | required | Card components to display in the stack |
+
+| Prop             | Type                  | Default   | Description                              |
+| ---------------- | --------------------- | --------- | ---------------------------------------- | ---------------------------- |
+| width            | number                | string    | 500                                      | Width of the card container  |
+| height           | number                | string    | 400                                      | Height of the card container |
+| cardDistance     | number                | 60        | X-axis spacing between cards             |
+| verticalDistance | number                | 70        | Y-axis spacing between cards             |
+| delay            | number                | 5000      | Milliseconds between card swaps          |
+| pauseOnHover     | boolean               | false     | Whether to pause animation on hover      |
+| onCardClick      | (idx: number) => void | undefined | Callback function when a card is clicked |
+| skewAmount       | number                | 6         | Degree of slope for top/bottom edges     |
+| easing           | 'linear'              | 'elastic' | 'elastic'                                | Animation easing type        |
+| children         | ReactNode             | required  | Card components to display in the stack  |
 
 ### Full Component Source
+
 ```jsx
-import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo, useRef } from 'react';
-import gsap from 'gsap';
-import './CardSwap.css';
+import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo, useRef } from "react"
+import gsap from "gsap"
+import "./CardSwap.css"
 
 export const Card = forwardRef(({ customClass, ...rest }, ref) => (
-  <div ref={ref} {...rest} className={`card ${customClass ?? ''} ${rest.className ?? ''}`.trim()} />
-));
-Card.displayName = 'Card';
+  <div ref={ref} {...rest} className={`card ${customClass ?? ""} ${rest.className ?? ""}`.trim()} />
+))
+Card.displayName = "Card"
 
 const makeSlot = (i, distX, distY, total) => ({
   x: i * distX,
   y: -i * distY,
   z: -i * distX * 1.5,
-  zIndex: total - i
-});
+  zIndex: total - i,
+})
 const placeNow = (el, slot, skew) =>
   gsap.set(el, {
     x: slot.x,
@@ -6549,10 +6227,10 @@ const placeNow = (el, slot, skew) =>
     xPercent: -50,
     yPercent: -50,
     skewY: skew,
-    transformOrigin: 'center center',
+    transformOrigin: "center center",
     zIndex: slot.zIndex,
-    force3D: true
-  });
+    force3D: true,
+  })
 
 const CardSwap = ({
   width = 500,
@@ -6563,64 +6241,64 @@ const CardSwap = ({
   pauseOnHover = false,
   onCardClick,
   skewAmount = 6,
-  easing = 'elastic',
-  children
+  easing = "elastic",
+  children,
 }) => {
   const config =
-    easing === 'elastic'
+    easing === "elastic"
       ? {
-          ease: 'elastic.out(0.6,0.9)',
+          ease: "elastic.out(0.6,0.9)",
           durDrop: 2,
           durMove: 2,
           durReturn: 2,
           promoteOverlap: 0.9,
-          returnDelay: 0.05
+          returnDelay: 0.05,
         }
       : {
-          ease: 'power1.inOut',
+          ease: "power1.inOut",
           durDrop: 0.8,
           durMove: 0.8,
           durReturn: 0.8,
           promoteOverlap: 0.45,
-          returnDelay: 0.2
-        };
+          returnDelay: 0.2,
+        }
 
-  const childArr = useMemo(() => Children.toArray(children), [children]);
+  const childArr = useMemo(() => Children.toArray(children), [children])
   const refs = useMemo(
     () => childArr.map(() => React.createRef()),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [childArr.length]
-  );
+    [childArr.length],
+  )
 
-  const order = useRef(Array.from({ length: childArr.length }, (_, i) => i));
+  const order = useRef(Array.from({ length: childArr.length }, (_, i) => i))
 
-  const tlRef = useRef(null);
-  const intervalRef = useRef();
-  const container = useRef(null);
+  const tlRef = useRef(null)
+  const intervalRef = useRef()
+  const container = useRef(null)
 
   useEffect(() => {
-    const total = refs.length;
-    refs.forEach((r, i) => placeNow(r.current, makeSlot(i, cardDistance, verticalDistance, total), skewAmount));
+    const total = refs.length
+    refs.forEach((r, i) => placeNow(r.current, makeSlot(i, cardDistance, verticalDistance, total), skewAmount))
 
     const swap = () => {
-      if (order.current.length < 2) return;
+      if (order.current.length < 2) return
 
-      const [front, ...rest] = order.current;
-      const elFront = refs[front].current;
-      const tl = gsap.timeline();
-      tlRef.current = tl;
+      const [front, ...rest] = order.current
+      const elFront = refs[front].current
+      const tl = gsap.timeline()
+      tlRef.current = tl
 
       tl.to(elFront, {
-        y: '+=500',
+        y: "+=500",
         duration: config.durDrop,
-        ease: config.ease
-      });
+        ease: config.ease,
+      })
 
-      tl.addLabel('promote', `-=${config.durDrop * config.promoteOverlap}`);
+      tl.addLabel("promote", `-=${config.durDrop * config.promoteOverlap}`)
       rest.forEach((idx, i) => {
-        const el = refs[idx].current;
-        const slot = makeSlot(i, cardDistance, verticalDistance, refs.length);
-        tl.set(el, { zIndex: slot.zIndex }, 'promote');
+        const el = refs[idx].current
+        const slot = makeSlot(i, cardDistance, verticalDistance, refs.length)
+        tl.set(el, { zIndex: slot.zIndex }, "promote")
         tl.to(
           el,
           {
@@ -6628,21 +6306,21 @@ const CardSwap = ({
             y: slot.y,
             z: slot.z,
             duration: config.durMove,
-            ease: config.ease
+            ease: config.ease,
           },
-          `promote+=${i * 0.15}`
-        );
-      });
+          `promote+=${i * 0.15}`,
+        )
+      })
 
-      const backSlot = makeSlot(refs.length - 1, cardDistance, verticalDistance, refs.length);
-      tl.addLabel('return', `promote+=${config.durMove * config.returnDelay}`);
+      const backSlot = makeSlot(refs.length - 1, cardDistance, verticalDistance, refs.length)
+      tl.addLabel("return", `promote+=${config.durMove * config.returnDelay}`)
       tl.call(
         () => {
-          gsap.set(elFront, { zIndex: backSlot.zIndex });
+          gsap.set(elFront, { zIndex: backSlot.zIndex })
         },
         undefined,
-        'return'
-      );
+        "return",
+      )
       tl.to(
         elFront,
         {
@@ -6650,40 +6328,40 @@ const CardSwap = ({
           y: backSlot.y,
           z: backSlot.z,
           duration: config.durReturn,
-          ease: config.ease
+          ease: config.ease,
         },
-        'return'
-      );
+        "return",
+      )
 
       tl.call(() => {
-        order.current = [...rest, front];
-      });
-    };
+        order.current = [...rest, front]
+      })
+    }
 
-    swap();
-    intervalRef.current = window.setInterval(swap, delay);
+    swap()
+    intervalRef.current = window.setInterval(swap, delay)
 
     if (pauseOnHover) {
-      const node = container.current;
+      const node = container.current
       const pause = () => {
-        tlRef.current?.pause();
-        clearInterval(intervalRef.current);
-      };
+        tlRef.current?.pause()
+        clearInterval(intervalRef.current)
+      }
       const resume = () => {
-        tlRef.current?.play();
-        intervalRef.current = window.setInterval(swap, delay);
-      };
-      node.addEventListener('mouseenter', pause);
-      node.addEventListener('mouseleave', resume);
+        tlRef.current?.play()
+        intervalRef.current = window.setInterval(swap, delay)
+      }
+      node.addEventListener("mouseenter", pause)
+      node.addEventListener("mouseleave", resume)
       return () => {
-        node.removeEventListener('mouseenter', pause);
-        node.removeEventListener('mouseleave', resume);
-        clearInterval(intervalRef.current);
-      };
+        node.removeEventListener("mouseenter", pause)
+        node.removeEventListener("mouseleave", resume)
+        clearInterval(intervalRef.current)
+      }
     }
-    return () => clearInterval(intervalRef.current);
+    return () => clearInterval(intervalRef.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
+  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing])
 
   const rendered = childArr.map((child, i) =>
     isValidElement(child)
@@ -6691,26 +6369,26 @@ const CardSwap = ({
           key: i,
           ref: refs[i],
           style: { width, height, ...(child.props.style ?? {}) },
-          onClick: e => {
-            child.props.onClick?.(e);
-            onCardClick?.(i);
-          }
+          onClick: (e) => {
+            child.props.onClick?.(e)
+            onCardClick?.(i)
+          },
         })
-      : child
-  );
+      : child,
+  )
 
   return (
     <div ref={container} className="card-swap-container" style={{ width, height }}>
       {rendered}
     </div>
-  );
-};
+  )
+}
 
-export default CardSwap;
-
+export default CardSwap
 ```
 
 ### Component CSS
+
 ```css
 .card-swap-container {
   position: absolute;
@@ -6748,10 +6426,10 @@ export default CardSwap;
     transform: scale(0.55) translate(25%, 25%);
   }
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -6766,135 +6444,144 @@ code: ## Integrate the <DecayCard /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: DecayCard
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
-```jsx
-import DecayCard from './DecayCard';
 
-<DecayCard width={200} height={300} image="https://picsum.photos/300/400?grayscale">
-  <h2>Decay<br/>Card</h2>
+```jsx
+import DecayCard from "./DecayCard"
+
+;<DecayCard width={200} height={300} image="https://picsum.photos/300/400?grayscale">
+  <h2>
+    Decay
+    <br />
+    Card
+  </h2>
 </DecayCard>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | ReactNode | — | The content (JSX) to be rendered inside the card. |
-| width | number | 300 | The width of the card in pixels. |
-| height | number | 400 | The height of the card in pixels. |
-| image | string | — | Allows setting the background image of the card. |
-| baseFrequency | number | 0.015 | Base frequency for the turbulence filter. Lower values create larger, smoother patterns. |
-| numOctaves | number | 5 | Number of octaves for the turbulence filter. Higher values add finer detail. |
-| seed | number | 4 | Seed value for the turbulence random number generator. |
-| maxDisplacement | number | 400 | Maximum displacement scale applied when the cursor moves. Controls the intensity of the decay effect. |
-| movementBound | number | 50 | Maximum pixel distance the card can translate from its origin when following the cursor. |
+
+| Prop            | Type      | Default | Description                                                                                           |
+| --------------- | --------- | ------- | ----------------------------------------------------------------------------------------------------- |
+| children        | ReactNode | —       | The content (JSX) to be rendered inside the card.                                                     |
+| width           | number    | 300     | The width of the card in pixels.                                                                      |
+| height          | number    | 400     | The height of the card in pixels.                                                                     |
+| image           | string    | —       | Allows setting the background image of the card.                                                      |
+| baseFrequency   | number    | 0.015   | Base frequency for the turbulence filter. Lower values create larger, smoother patterns.              |
+| numOctaves      | number    | 5       | Number of octaves for the turbulence filter. Higher values add finer detail.                          |
+| seed            | number    | 4       | Seed value for the turbulence random number generator.                                                |
+| maxDisplacement | number    | 400     | Maximum displacement scale applied when the cursor moves. Controls the intensity of the decay effect. |
+| movementBound   | number    | 50      | Maximum pixel distance the card can translate from its origin when following the cursor.              |
 
 ### Full Component Source
-```jsx
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 
-import './DecayCard.css';
+```jsx
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+
+import "./DecayCard.css"
 
 const DecayCard = ({
   width = 300,
   height = 400,
-  image = 'https://picsum.photos/300/400?grayscale',
+  image = "https://picsum.photos/300/400?grayscale",
   baseFrequency = 0.015,
   numOctaves = 5,
   seed = 4,
   maxDisplacement = 400,
   movementBound = 50,
-  children
+  children,
 }) => {
-  const svgRef = useRef(null);
-  const displacementMapRef = useRef(null);
-  const cursor = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
-  const cachedCursor = useRef({ ...cursor.current });
-  const winsize = useRef({ width: window.innerWidth, height: window.innerHeight });
+  const svgRef = useRef(null)
+  const displacementMapRef = useRef(null)
+  const cursor = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
+  const cachedCursor = useRef({ ...cursor.current })
+  const winsize = useRef({ width: window.innerWidth, height: window.innerHeight })
 
   useEffect(() => {
-    const lerp = (a, b, n) => (1 - n) * a + n * b;
+    const lerp = (a, b, n) => (1 - n) * a + n * b
 
-    const map = (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c;
+    const map = (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c
 
     const distance = (x1, x2, y1, y2) => {
-      const a = x1 - x2;
-      const b = y1 - y2;
-      return Math.hypot(a, b);
-    };
+      const a = x1 - x2
+      const b = y1 - y2
+      return Math.hypot(a, b)
+    }
 
     const handleResize = () => {
-      winsize.current = { width: window.innerWidth, height: window.innerHeight };
-    };
+      winsize.current = { width: window.innerWidth, height: window.innerHeight }
+    }
 
-    const handleMouseMove = ev => {
-      cursor.current = { x: ev.clientX, y: ev.clientY };
-    };
+    const handleMouseMove = (ev) => {
+      cursor.current = { x: ev.clientX, y: ev.clientY }
+    }
 
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("resize", handleResize)
+    window.addEventListener("mousemove", handleMouseMove)
 
     const imgValues = {
       imgTransforms: { x: 0, y: 0, rz: 0 },
-      displacementScale: 0
-    };
+      displacementScale: 0,
+    }
 
     const render = () => {
-      let targetX = lerp(imgValues.imgTransforms.x, map(cursor.current.x, 0, winsize.current.width, -120, 120), 0.1);
-      let targetY = lerp(imgValues.imgTransforms.y, map(cursor.current.y, 0, winsize.current.height, -120, 120), 0.1);
-      let targetRz = lerp(imgValues.imgTransforms.rz, map(cursor.current.x, 0, winsize.current.width, -10, 10), 0.1);
+      let targetX = lerp(imgValues.imgTransforms.x, map(cursor.current.x, 0, winsize.current.width, -120, 120), 0.1)
+      let targetY = lerp(imgValues.imgTransforms.y, map(cursor.current.y, 0, winsize.current.height, -120, 120), 0.1)
+      let targetRz = lerp(imgValues.imgTransforms.rz, map(cursor.current.x, 0, winsize.current.width, -10, 10), 0.1)
 
-      if (targetX > movementBound) targetX = movementBound + (targetX - movementBound) * 0.2;
-      if (targetX < -movementBound) targetX = -movementBound + (targetX + movementBound) * 0.2;
-      if (targetY > movementBound) targetY = movementBound + (targetY - movementBound) * 0.2;
-      if (targetY < -movementBound) targetY = -movementBound + (targetY + movementBound) * 0.2;
+      if (targetX > movementBound) targetX = movementBound + (targetX - movementBound) * 0.2
+      if (targetX < -movementBound) targetX = -movementBound + (targetX + movementBound) * 0.2
+      if (targetY > movementBound) targetY = movementBound + (targetY - movementBound) * 0.2
+      if (targetY < -movementBound) targetY = -movementBound + (targetY + movementBound) * 0.2
 
-      imgValues.imgTransforms.x = targetX;
-      imgValues.imgTransforms.y = targetY;
-      imgValues.imgTransforms.rz = targetRz;
+      imgValues.imgTransforms.x = targetX
+      imgValues.imgTransforms.y = targetY
+      imgValues.imgTransforms.rz = targetRz
 
       if (svgRef.current) {
         gsap.set(svgRef.current, {
           x: imgValues.imgTransforms.x,
           y: imgValues.imgTransforms.y,
-          rotateZ: imgValues.imgTransforms.rz
-        });
+          rotateZ: imgValues.imgTransforms.rz,
+        })
       }
 
       const cursorTravelledDistance = distance(
         cachedCursor.current.x,
         cursor.current.x,
         cachedCursor.current.y,
-        cursor.current.y
-      );
+        cursor.current.y,
+      )
       imgValues.displacementScale = lerp(
         imgValues.displacementScale,
         map(cursorTravelledDistance, 0, 200, 0, maxDisplacement),
-        0.06
-      );
+        0.06,
+      )
 
       if (displacementMapRef.current) {
-        gsap.set(displacementMapRef.current, { attr: { scale: imgValues.displacementScale } });
+        gsap.set(displacementMapRef.current, { attr: { scale: imgValues.displacementScale } })
       }
 
-      cachedCursor.current = { ...cursor.current };
+      cachedCursor.current = { ...cursor.current }
 
-      rafId = requestAnimationFrame(render);
-    };
+      rafId = requestAnimationFrame(render)
+    }
 
-    let rafId = requestAnimationFrame(render);
+    let rafId = requestAnimationFrame(render)
 
     return () => {
-      cancelAnimationFrame(rafId);
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [maxDisplacement, movementBound]);
+      cancelAnimationFrame(rafId)
+      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [maxDisplacement, movementBound])
 
   return (
     <div className="content" style={{ width: `${width}px`, height: `${height}px` }} ref={svgRef}>
@@ -6940,14 +6627,14 @@ const DecayCard = ({
       </svg>
       <div className="card-text">{children}</div>
     </div>
-  );
-};
+  )
+}
 
-export default DecayCard;
-
+export default DecayCard
 ```
 
 ### Component CSS
+
 ```css
 .content {
   position: relative;
@@ -6974,10 +6661,10 @@ export default DecayCard;
 .card-text::first-line {
   font-size: 4rem;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -6992,32 +6679,35 @@ code: ## Integrate the <BounceCards /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: BounceCards
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
+
 ```jsx
-import BounceCards from './BounceCards'
+import BounceCards from "./BounceCards"
 
 const images = [
   "https://picsum.photos/400/400?grayscale",
   "https://picsum.photos/500/500?grayscale",
   "https://picsum.photos/600/600?grayscale",
   "https://picsum.photos/700/700?grayscale",
-  "https://picsum.photos/300/300?grayscale"
-];
+  "https://picsum.photos/300/300?grayscale",
+]
 
 const transformStyles = [
   "rotate(5deg) translate(-150px)",
   "rotate(0deg) translate(-70px)",
   "rotate(-5deg)",
   "rotate(5deg) translate(70px)",
-  "rotate(-5deg) translate(150px)"
-];
+  "rotate(-5deg) translate(150px)",
+]
 
-<BounceCards
+;<BounceCards
   className="custom-bounceCards"
   images={images}
   containerWidth={500}
@@ -7031,144 +6721,146 @@ const transformStyles = [
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| className | string | — | Additional CSS classes for the container. |
-| images | string[] | [] | Array of image URLs to display. |
-| containerWidth | number | 400 | Width of the container (px). |
-| containerHeight | number | 400 | Height of the container (px). |
-| animationDelay | number | 0.5 | Delay (in seconds) before the animation starts. |
-| animationStagger | number | 0.06 | Time (in seconds) between each card's animation. |
-| easeType | string | elastic.out(1, 0.8) | Easing function for the bounce. |
-| transformStyles | string[] | various rotations/translations | Custom transforms for each card position. |
-| enableHover | boolean | false | If true, hovering pushes siblings aside and flattens the hovered card's rotation. |
+
+| Prop             | Type     | Default                        | Description                                                                       |
+| ---------------- | -------- | ------------------------------ | --------------------------------------------------------------------------------- |
+| className        | string   | —                              | Additional CSS classes for the container.                                         |
+| images           | string[] | []                             | Array of image URLs to display.                                                   |
+| containerWidth   | number   | 400                            | Width of the container (px).                                                      |
+| containerHeight  | number   | 400                            | Height of the container (px).                                                     |
+| animationDelay   | number   | 0.5                            | Delay (in seconds) before the animation starts.                                   |
+| animationStagger | number   | 0.06                           | Time (in seconds) between each card's animation.                                  |
+| easeType         | string   | elastic.out(1, 0.8)            | Easing function for the bounce.                                                   |
+| transformStyles  | string[] | various rotations/translations | Custom transforms for each card position.                                         |
+| enableHover      | boolean  | false                          | If true, hovering pushes siblings aside and flattens the hovered card's rotation. |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import './BounceCards.css';
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+import "./BounceCards.css"
 
 export default function BounceCards({
-  className = '',
+  className = "",
   images = [],
   containerWidth = 400,
   containerHeight = 400,
   animationDelay = 0.5,
   animationStagger = 0.06,
-  easeType = 'elastic.out(1, 0.8)',
+  easeType = "elastic.out(1, 0.8)",
   transformStyles = [
-    'rotate(10deg) translate(-170px)',
-    'rotate(5deg) translate(-85px)',
-    'rotate(-3deg)',
-    'rotate(-10deg) translate(85px)',
-    'rotate(2deg) translate(170px)'
+    "rotate(10deg) translate(-170px)",
+    "rotate(5deg) translate(-85px)",
+    "rotate(-3deg)",
+    "rotate(-10deg) translate(85px)",
+    "rotate(2deg) translate(170px)",
   ],
-  enableHover = true
+  enableHover = true,
 }) {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        '.card',
+        ".card",
         { scale: 0 },
         {
           scale: 1,
           stagger: animationStagger,
           ease: easeType,
-          delay: animationDelay
-        }
-      );
-    }, containerRef);
-    return () => ctx.revert();
-  }, [animationStagger, easeType, animationDelay]);
+          delay: animationDelay,
+        },
+      )
+    }, containerRef)
+    return () => ctx.revert()
+  }, [animationStagger, easeType, animationDelay])
 
-  const getNoRotationTransform = transformStr => {
-    const hasRotate = /rotate\([\s\S]*?\)/.test(transformStr);
+  const getNoRotationTransform = (transformStr) => {
+    const hasRotate = /rotate\([\s\S]*?\)/.test(transformStr)
     if (hasRotate) {
-      return transformStr.replace(/rotate\([\s\S]*?\)/, 'rotate(0deg)');
-    } else if (transformStr === 'none') {
-      return 'rotate(0deg)';
+      return transformStr.replace(/rotate\([\s\S]*?\)/, "rotate(0deg)")
+    } else if (transformStr === "none") {
+      return "rotate(0deg)"
     } else {
-      return `${transformStr} rotate(0deg)`;
+      return `${transformStr} rotate(0deg)`
     }
-  };
+  }
 
   const getPushedTransform = (baseTransform, offsetX) => {
-    const translateRegex = /translate\(([-0-9.]+)px\)/;
-    const match = baseTransform.match(translateRegex);
+    const translateRegex = /translate\(([-0-9.]+)px\)/
+    const match = baseTransform.match(translateRegex)
     if (match) {
-      const currentX = parseFloat(match[1]);
-      const newX = currentX + offsetX;
-      return baseTransform.replace(translateRegex, `translate(${newX}px)`);
+      const currentX = parseFloat(match[1])
+      const newX = currentX + offsetX
+      return baseTransform.replace(translateRegex, `translate(${newX}px)`)
     } else {
-      return baseTransform === 'none' ? `translate(${offsetX}px)` : `${baseTransform} translate(${offsetX}px)`;
+      return baseTransform === "none" ? `translate(${offsetX}px)` : `${baseTransform} translate(${offsetX}px)`
     }
-  };
+  }
 
-  const pushSiblings = hoveredIdx => {
-    if (!enableHover || !containerRef.current) return;
+  const pushSiblings = (hoveredIdx) => {
+    if (!enableHover || !containerRef.current) return
 
-    const q = gsap.utils.selector(containerRef);
+    const q = gsap.utils.selector(containerRef)
 
     images.forEach((_, i) => {
-      const target = q(`.card-${i}`);
-      gsap.killTweensOf(target);
+      const target = q(`.card-${i}`)
+      gsap.killTweensOf(target)
 
-      const baseTransform = transformStyles[i] || 'none';
+      const baseTransform = transformStyles[i] || "none"
 
       if (i === hoveredIdx) {
-        const noRotationTransform = getNoRotationTransform(baseTransform);
+        const noRotationTransform = getNoRotationTransform(baseTransform)
         gsap.to(target, {
           transform: noRotationTransform,
           duration: 0.4,
-          ease: 'back.out(1.4)',
-          overwrite: 'auto'
-        });
+          ease: "back.out(1.4)",
+          overwrite: "auto",
+        })
       } else {
-        const offsetX = i < hoveredIdx ? -160 : 160;
-        const pushedTransform = getPushedTransform(baseTransform, offsetX);
+        const offsetX = i < hoveredIdx ? -160 : 160
+        const pushedTransform = getPushedTransform(baseTransform, offsetX)
 
-        const distance = Math.abs(hoveredIdx - i);
-        const delay = distance * 0.05;
+        const distance = Math.abs(hoveredIdx - i)
+        const delay = distance * 0.05
 
         gsap.to(target, {
           transform: pushedTransform,
           duration: 0.4,
-          ease: 'back.out(1.4)',
+          ease: "back.out(1.4)",
           delay,
-          overwrite: 'auto'
-        });
+          overwrite: "auto",
+        })
       }
-    });
-  };
+    })
+  }
 
   const resetSiblings = () => {
-    if (!enableHover || !containerRef.current) return;
+    if (!enableHover || !containerRef.current) return
 
-    const q = gsap.utils.selector(containerRef);
+    const q = gsap.utils.selector(containerRef)
 
     images.forEach((_, i) => {
-      const target = q(`.card-${i}`);
-      gsap.killTweensOf(target);
-      const baseTransform = transformStyles[i] || 'none';
+      const target = q(`.card-${i}`)
+      gsap.killTweensOf(target)
+      const baseTransform = transformStyles[i] || "none"
       gsap.to(target, {
         transform: baseTransform,
         duration: 0.4,
-        ease: 'back.out(1.4)',
-        overwrite: 'auto'
-      });
-    });
-  };
+        ease: "back.out(1.4)",
+        overwrite: "auto",
+      })
+    })
+  }
 
   return (
     <div
       className={`bounceCardsContainer ${className}`}
       ref={containerRef}
       style={{
-        position: 'relative',
+        position: "relative",
         width: containerWidth,
-        height: containerHeight
+        height: containerHeight,
       }}
     >
       {images.map((src, idx) => (
@@ -7176,7 +6868,7 @@ export default function BounceCards({
           key={idx}
           className={`card card-${idx}`}
           style={{
-            transform: transformStyles[idx] ?? 'none'
+            transform: transformStyles[idx] ?? "none",
           }}
           onMouseEnter={() => pushSiblings(idx)}
           onMouseLeave={resetSiblings}
@@ -7185,12 +6877,12 @@ export default function BounceCards({
         </div>
       ))}
     </div>
-  );
+  )
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .bounceCardsContainer {
   position: relative;
@@ -7216,10 +6908,10 @@ export default function BounceCards({
   height: 100%;
   object-fit: cover;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -7227,4 +6919,3 @@ export default function BounceCards({
 5. Adjust props as needed for the specific use case — refer to the props table for all available options.
 
 ---
-

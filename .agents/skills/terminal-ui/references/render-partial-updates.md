@@ -13,7 +13,7 @@ Update only the terminal regions that changed rather than redrawing the entire s
 
 ```typescript
 function updateUI(state: AppState) {
-  console.clear()  // Clears everything
+  console.clear() // Clears everything
   console.log(renderHeader(state))
   console.log(renderContent(state))
   console.log(renderFooter(state))

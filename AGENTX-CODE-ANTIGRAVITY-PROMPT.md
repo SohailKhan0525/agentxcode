@@ -1,12 +1,21 @@
 # AgentX Code — Complete Transformation Prompt
+
 # Tool: Antigravity CLI (agy) — Google's official terminal agent
+
 # Source: Fresh clone of anomalyco/opencode into working directory
+
 # Target: github.com/SohailKhan0525/agentxcode (new repo to create)
+
 # Reference: Study github.com/Kilo-Org/kilocode for binary release pattern
+
 # Display name: AgentX Code
+
 # CLI command: agentx
+
 # npm package name: @agent-qofeno/agentx-cli (DO NOT CHANGE)
+
 # Version: 3.0.0 everywhere
+
 # Config folder: .agentx (was .opencode)
 
 ---

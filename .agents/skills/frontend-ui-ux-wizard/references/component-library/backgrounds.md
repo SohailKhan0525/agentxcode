@@ -8,18 +8,20 @@ name: sparkles
 code: You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
+
 ```tsx
 sparkles.tsx
-"use client"
+;("use client")
 
 import { useEffect, useId, useState } from "react"
 import Particles, { initParticlesEngine } from "@tsparticles/react"
@@ -102,7 +104,6 @@ export function Sparkles({
   return isReady && <Particles id={id} options={{ ...defaultOptions, ...options }} className={className} />
 }
 
-
 demo.tsx
 import { Sparkles } from "@/components/ui/sparkles"
 import { useTheme } from "next-themes"
@@ -113,9 +114,7 @@ export function Demo() {
     <div className="h-screen w-full overflow-hidden">
       <div className="mx-auto mt-32 w-full max-w-2xl">
         <div className="text-center text-3xl text-foreground">
-          <span className="text-indigo-900 dark:text-indigo-200">
-            Trusted by experts.
-          </span>
+          <span className="text-indigo-900 dark:text-indigo-200">Trusted by experts.</span>
 
           <br />
 
@@ -184,15 +183,16 @@ const Raycast = () => (
     <path d="M151.74 36.73c-1.116 0-1.99-.301-2.613-.906-.624-.605-.936-1.446-.936-2.51v-6.6h-2.003v-2.471h2.014l.359-3.3h2.359v3.3H154v2.475h-3.08v6.237a1.3 1.3 0 00.356.92 1.22 1.22 0 00.94.38H154v2.475h-2.26zM139.691 36.963c-1.489 0-2.686-.353-3.593-1.06a4.739 4.739 0 01-1.74-2.816h2.961c.129.429.417.793.804 1.02a2.917 2.917 0 001.568.386c1.579 0 2.373-.44 2.373-1.29 0-.423-.249-.747-.745-.97a8.223 8.223 0 00-1.8-.534 22.253 22.253 0 01-2.125-.52 3.697 3.697 0 01-1.816-1.2c-.493-.587-.741-1.359-.743-2.315a3.264 3.264 0 011.252-2.616c.837-.695 1.998-1.042 3.483-1.04 1.484 0 2.663.33 3.537.99a4.415 4.415 0 011.679 2.666h-2.966c-.316-.781-1.061-1.18-2.242-1.181-1.267 0-1.899.393-1.899 1.18a1.016 1.016 0 00.533.88 3.55 3.55 0 001.327.472c.587.1 1.168.233 1.74.4.593.169 1.174.376 1.74.62a3.092 3.092 0 011.342 1.162 3.53 3.53 0 01.537 2 3.28 3.28 0 01-.333 1.517 3.307 3.307 0 01-.993 1.198c-.882.7-2.175 1.05-3.881 1.051zM130.862 25.257c-.912-.817-2.19-1.225-3.834-1.225-1.31 0-2.409.35-3.297 1.053a4.928 4.928 0 00-1.755 2.722h2.799c.142-.408.414-.76.774-1.001a2.488 2.488 0 011.481-.416c.77 0 1.376.198 1.82.59a2.081 2.081 0 01.663 1.645v.596h-3.206c-1.474 0-2.632.37-3.474 1.111a3.568 3.568 0 00-1.255 2.777 3.645 3.645 0 001.171 2.785c.779.733 1.811 1.1 3.096 1.1a4.748 4.748 0 002.291-.53 3.43 3.43 0 001.388-1.234h.115l.233 1.54h2.368v-8.14c-.005-1.429-.464-2.553-1.378-3.373zm-1.346 6.67a2.525 2.525 0 01-.83 1.98c-.549.486-1.3.73-2.251.73-.692 0-1.222-.158-1.587-.466a1.495 1.495 0 01-.553-1.19c0-1.1.723-1.646 2.14-1.646h3.081v.592zM114.473 36.99c-1.796 0-3.232-.574-4.307-1.72-1.074-1.148-1.612-2.735-1.614-4.762 0-2.022.536-3.608 1.608-4.756 1.071-1.148 2.509-1.722 4.313-1.72 1.466 0 2.68.388 3.644 1.166a5.532 5.532 0 011.92 2.954h-2.716a3.054 3.054 0 00-2.845-1.646 2.887 2.887 0 00-2.326 1.046c-.59.7-.885 1.685-.885 2.956 0 1.272.295 2.258.885 2.957a2.872 2.872 0 002.326 1.05 3.06 3.06 0 002.845-1.648h2.716a5.524 5.524 0 01-1.92 2.957c-.962.777-2.177 1.166-3.644 1.166zM98.455 41.476l1.895-4.717-5.088-12.487h2.96l3.434 8.837h.115l3.439-8.837h2.96l-6.872 17.204h-2.843zM92.704 25.257c-.913-.817-2.191-1.225-3.835-1.225-1.31 0-2.412.35-3.296 1.053a4.92 4.92 0 00-1.756 2.722h2.8c.14-.409.412-.76.773-1.001a2.48 2.48 0 011.482-.416c.769 0 1.376.197 1.82.59a2.074 2.074 0 01.663 1.645v.596h-3.207c-1.474 0-2.632.37-3.473 1.111a3.56 3.56 0 00-1.256 2.777 3.642 3.642 0 001.167 2.785c.779.733 1.81 1.1 3.096 1.1a4.745 4.745 0 002.29-.53 3.431 3.431 0 001.39-1.234h.114l.232 1.54h2.364v-8.14c0-1.429-.456-2.553-1.368-3.373zm-1.351 6.67a2.51 2.51 0 01-.83 1.98c-.548.487-1.298.73-2.25.73-.693 0-1.226-.156-1.588-.466a1.494 1.494 0 01-.553-1.19c.007-1.096.72-1.644 2.14-1.646h3.08v.592zM77.343 30.509c.422-.112.83-.272 1.216-.475a6.86 6.86 0 001.256-.88 4.036 4.036 0 001.046-1.54c.269-.69.401-1.425.39-2.165 0-1.57-.503-2.83-1.511-3.775-1.009-.946-2.32-1.418-3.936-1.415h-6.87v16.5h2.96v-6.122h2.247l4.267 6.122h3.317l-4.382-6.25zm-5.449-2.482v-5.17h3.669c.84 0 1.503.227 1.99.68.486.453.453.73 1.088.734 1.905 0 .817-.246 1.454-.739 1.91a2.784 2.784 0 01-1.961.675h-3.693z"></path>
   </svg>
 )
-
 ```
 
 Install NPM dependencies:
+
 ```bash
 @tsparticles/slim, @tsparticles/react
 ```
 
 Extend existing globals.css with this code:
+
 ```css
 @layer base {
   :root {
@@ -208,21 +208,23 @@ Extend existing globals.css with this code:
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -232,76 +234,77 @@ code ## Integrate the <LaserFlow /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: LaserFlow
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three
 
 ---
 
 ### Usage Example
+
 ```jsx
-import LaserFlow from './LaserFlow';
-import { useRef } from 'react';
+import LaserFlow from "./LaserFlow"
+import { useRef } from "react"
 
 // NOTE: You can also adjust the variables in the shader for super detailed customization
 
 // Basic Usage
-<div style={{ height: '500px', position: 'relative', overflow: 'hidden' }}>
+;<div style={{ height: "500px", position: "relative", overflow: "hidden" }}>
   <LaserFlow />
 </div>
 
 // Image Example Interactive Reveal Effect
 function LaserFlowBoxExample() {
-  const revealImgRef = useRef(null);
+  const revealImgRef = useRef(null)
 
   return (
-    <div 
-      style={{ 
-        height: '800px', 
-        position: 'relative', 
-        overflow: 'hidden',
-        backgroundColor: '#120F17'
+    <div
+      style={{
+        height: "800px",
+        position: "relative",
+        overflow: "hidden",
+        backgroundColor: "#120F17",
       }}
       onMouseMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const el = revealImgRef.current;
+        const rect = e.currentTarget.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+        const el = revealImgRef.current
         if (el) {
-          el.style.setProperty('--mx', `${x}px`);
-          el.style.setProperty('--my', `${y + rect.height * 0.5}px`);
+          el.style.setProperty("--mx", `${x}px`)
+          el.style.setProperty("--my", `${y + rect.height * 0.5}px`)
         }
       }}
       onMouseLeave={() => {
-        const el = revealImgRef.current;
+        const el = revealImgRef.current
         if (el) {
-          el.style.setProperty('--mx', '-9999px');
-          el.style.setProperty('--my', '-9999px');
+          el.style.setProperty("--mx", "-9999px")
+          el.style.setProperty("--my", "-9999px")
         }
       }}
     >
-      <LaserFlow
-        horizontalBeamOffset={0.1}
-        verticalBeamOffset={0.0}
-        color="#FF79C6"
-      />
-      
-      <div style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '86%',
-        height: '60%',
-        backgroundColor: '#120F17',
-        borderRadius: '20px',
-        border: '2px solid #FF79C6',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-        fontSize: '2rem',
-        zIndex: 6
-      }}>
+      <LaserFlow horizontalBeamOffset={0.1} verticalBeamOffset={0.0} color="#FF79C6" />
+
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "86%",
+          height: "60%",
+          backgroundColor: "#120F17",
+          borderRadius: "20px",
+          border: "2px solid #FF79C6",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "white",
+          fontSize: "2rem",
+          zIndex: 6,
+        }}
+      >
         {/* Your content here */}
       </div>
 
@@ -310,53 +313,57 @@ function LaserFlowBoxExample() {
         src="/path/to/image.jpg"
         alt="Reveal effect"
         style={{
-          position: 'absolute',
-          width: '100%',
-          top: '-50%',
+          position: "absolute",
+          width: "100%",
+          top: "-50%",
           zIndex: 5,
-          mixBlendMode: 'lighten',
+          mixBlendMode: "lighten",
           opacity: 0.3,
-          pointerEvents: 'none',
-          '--mx': '-9999px',
-          '--my': '-9999px',
-          WebkitMaskImage: 'radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)',
-          maskImage: 'radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)',
-          WebkitMaskRepeat: 'no-repeat',
-          maskRepeat: 'no-repeat'
+          pointerEvents: "none",
+          "--mx": "-9999px",
+          "--my": "-9999px",
+          WebkitMaskImage:
+            "radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)",
+          maskImage:
+            "radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,1) 0px, rgba(255,255,255,0.95) 60px, rgba(255,255,255,0.6) 120px, rgba(255,255,255,0.25) 180px, rgba(255,255,255,0) 240px)",
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
         }}
       />
     </div>
-  );
+  )
 }
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| horizontalBeamOffset | number | 0.1 | Horizontal offset of the beam (0–1 of canvas width). |
-| verticalBeamOffset | number | 0.0 | Vertical offset of the beam (0–1 of canvas height). |
-| horizontalSizing | number | 0.5 | Horizontal sizing factor of the beam footprint. |
-| verticalSizing | number | 2.0 | Vertical sizing factor of the beam footprint. |
-| wispDensity | number | 1 | Density of micro-streak wisps. |
-| wispSpeed | number | 15.0 | Speed of wisp motion. |
-| wispIntensity | number | 5.0 | Brightness of wisps. |
-| flowSpeed | number | 0.35 | Speed of the beam’s flow modulation. |
-| flowStrength | number | 0.25 | Strength of the beam’s flow modulation. |
-| fogIntensity | number | 0.45 | Overall volumetric fog intensity. |
-| fogScale | number | 0.3 | Spatial scale for the fog noise. |
-| fogFallSpeed | number | 0.6 | Drift speed for the fog field. |
-| mouseTiltStrength | number | 0.01 | How much mouse x tilts the fog volume. |
-| mouseSmoothTime | number | 0.0 | Pointer smoothing time (seconds). |
-| decay | number | 1.1 | Beam decay shaping for sampling envelope. |
-| falloffStart | number | 1.2 | Falloff start radius used in inverse-square blending. |
-| dpr | number | auto | Device pixel ratio override (defaults to window.devicePixelRatio). |
-| color | string | #FF79C6 | Beam color (hex). |
+
+| Prop                 | Type   | Default | Description                                                        |
+| -------------------- | ------ | ------- | ------------------------------------------------------------------ |
+| horizontalBeamOffset | number | 0.1     | Horizontal offset of the beam (0–1 of canvas width).               |
+| verticalBeamOffset   | number | 0.0     | Vertical offset of the beam (0–1 of canvas height).                |
+| horizontalSizing     | number | 0.5     | Horizontal sizing factor of the beam footprint.                    |
+| verticalSizing       | number | 2.0     | Vertical sizing factor of the beam footprint.                      |
+| wispDensity          | number | 1       | Density of micro-streak wisps.                                     |
+| wispSpeed            | number | 15.0    | Speed of wisp motion.                                              |
+| wispIntensity        | number | 5.0     | Brightness of wisps.                                               |
+| flowSpeed            | number | 0.35    | Speed of the beam’s flow modulation.                               |
+| flowStrength         | number | 0.25    | Strength of the beam’s flow modulation.                            |
+| fogIntensity         | number | 0.45    | Overall volumetric fog intensity.                                  |
+| fogScale             | number | 0.3     | Spatial scale for the fog noise.                                   |
+| fogFallSpeed         | number | 0.6     | Drift speed for the fog field.                                     |
+| mouseTiltStrength    | number | 0.01    | How much mouse x tilts the fog volume.                             |
+| mouseSmoothTime      | number | 0.0     | Pointer smoothing time (seconds).                                  |
+| decay                | number | 1.1     | Beam decay shaping for sampling envelope.                          |
+| falloffStart         | number | 1.2     | Falloff start radius used in inverse-square blending.              |
+| dpr                  | number | auto    | Device pixel ratio override (defaults to window.devicePixelRatio). |
+| color                | string | #FF79C6 | Beam color (hex).                                                  |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import './LaserFlow.css';
+import { useEffect, useRef } from "react"
+import * as THREE from "three"
+import "./LaserFlow.css"
 
 const VERT = `
 precision highp float;
@@ -364,7 +371,7 @@ attribute vec3 position;
 void main(){
   gl_Position = vec4(position, 1.0);
 }
-`;
+`
 
 const FRAG = `
 #ifdef GL_ES
@@ -592,7 +599,7 @@ void main(){
   mainImage(fc, gl_FragCoord.xy);
   gl_FragColor = fc;
 }
-`;
+`
 
 export const LaserFlow = ({
   className,
@@ -614,67 +621,67 @@ export const LaserFlow = ({
   decay = 1.1,
   falloffStart = 1.2,
   fogFallSpeed = 0.6,
-  color = '#FF79C6'
+  color = "#FF79C6",
 }) => {
-  const mountRef = useRef(null);
-  const rendererRef = useRef(null);
-  const uniformsRef = useRef(null);
-  const hasFadedRef = useRef(false);
-  const rectRef = useRef(null);
-  const baseDprRef = useRef(1);
-  const currentDprRef = useRef(1);
-  const lastSizeRef = useRef({ width: 0, height: 0, dpr: 0 });
-  const fpsSamplesRef = useRef([]);
-  const lastFpsCheckRef = useRef(performance.now());
-  const emaDtRef = useRef(16.7);
-  const pausedRef = useRef(false);
-  const inViewRef = useRef(true);
+  const mountRef = useRef(null)
+  const rendererRef = useRef(null)
+  const uniformsRef = useRef(null)
+  const hasFadedRef = useRef(false)
+  const rectRef = useRef(null)
+  const baseDprRef = useRef(1)
+  const currentDprRef = useRef(1)
+  const lastSizeRef = useRef({ width: 0, height: 0, dpr: 0 })
+  const fpsSamplesRef = useRef([])
+  const lastFpsCheckRef = useRef(performance.now())
+  const emaDtRef = useRef(16.7)
+  const pausedRef = useRef(false)
+  const inViewRef = useRef(true)
 
-  const hexToRGB = hex => {
-    let c = hex.trim();
-    if (c[0] === '#') c = c.slice(1);
+  const hexToRGB = (hex) => {
+    let c = hex.trim()
+    if (c[0] === "#") c = c.slice(1)
     if (c.length === 3)
       c = c
-        .split('')
-        .map(x => x + x)
-        .join('');
-    const n = parseInt(c, 16) || 0xffffff;
-    return { r: ((n >> 16) & 255) / 255, g: ((n >> 8) & 255) / 255, b: (n & 255) / 255 };
-  };
+        .split("")
+        .map((x) => x + x)
+        .join("")
+    const n = parseInt(c, 16) || 0xffffff
+    return { r: ((n >> 16) & 255) / 255, g: ((n >> 8) & 255) / 255, b: (n & 255) / 255 }
+  }
 
   useEffect(() => {
-    const mount = mountRef.current;
+    const mount = mountRef.current
     const renderer = new THREE.WebGLRenderer({
       antialias: false,
       alpha: false,
       depth: false,
       stencil: false,
-      powerPreference: 'high-performance',
+      powerPreference: "high-performance",
       premultipliedAlpha: false,
       preserveDrawingBuffer: false,
       failIfMajorPerformanceCaveat: false,
-      logarithmicDepthBuffer: false
-    });
-    rendererRef.current = renderer;
+      logarithmicDepthBuffer: false,
+    })
+    rendererRef.current = renderer
 
-    baseDprRef.current = Math.min(dpr ?? (window.devicePixelRatio || 1), 2);
-    currentDprRef.current = baseDprRef.current;
+    baseDprRef.current = Math.min(dpr ?? (window.devicePixelRatio || 1), 2)
+    currentDprRef.current = baseDprRef.current
 
-    renderer.setPixelRatio(currentDprRef.current);
-    renderer.shadowMap.enabled = false;
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.setClearColor(0x000000, 1);
-    const canvas = renderer.domElement;
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.display = 'block';
-    mount.appendChild(canvas);
+    renderer.setPixelRatio(currentDprRef.current)
+    renderer.shadowMap.enabled = false
+    renderer.outputColorSpace = THREE.SRGBColorSpace
+    renderer.setClearColor(0x000000, 1)
+    const canvas = renderer.domElement
+    canvas.style.width = "100%"
+    canvas.style.height = "100%"
+    canvas.style.display = "block"
+    mount.appendChild(canvas)
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const scene = new THREE.Scene()
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
 
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]), 3));
+    const geometry = new THREE.BufferGeometry()
+    geometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]), 3))
 
     const uniforms = {
       iTime: { value: 0 },
@@ -698,9 +705,9 @@ export const LaserFlow = ({
       uFalloffStart: { value: falloffStart },
       uFogFallSpeed: { value: fogFallSpeed },
       uColor: { value: new THREE.Vector3(1, 1, 1) },
-      uFade: { value: hasFadedRef.current ? 1 : 0 }
-    };
-    uniformsRef.current = uniforms;
+      uFade: { value: hasFadedRef.current ? 1 : 0 },
+    }
+    uniformsRef.current = uniforms
 
     const material = new THREE.RawShaderMaterial({
       vertexShader: VERT,
@@ -709,212 +716,212 @@ export const LaserFlow = ({
       transparent: false,
       depthTest: false,
       depthWrite: false,
-      blending: THREE.NormalBlending
-    });
+      blending: THREE.NormalBlending,
+    })
 
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.frustumCulled = false;
-    scene.add(mesh);
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.frustumCulled = false
+    scene.add(mesh)
 
-    const clock = new THREE.Clock();
-    let prevTime = 0;
-    let fade = hasFadedRef.current ? 1 : 0;
+    const clock = new THREE.Clock()
+    let prevTime = 0
+    let fade = hasFadedRef.current ? 1 : 0
 
-    const mouseTarget = new THREE.Vector2(0, 0);
-    const mouseSmooth = new THREE.Vector2(0, 0);
+    const mouseTarget = new THREE.Vector2(0, 0)
+    const mouseSmooth = new THREE.Vector2(0, 0)
 
     const setSizeNow = () => {
-      const w = mount.clientWidth || 1;
-      const h = mount.clientHeight || 1;
-      const pr = currentDprRef.current;
+      const w = mount.clientWidth || 1
+      const h = mount.clientHeight || 1
+      const pr = currentDprRef.current
 
-      const last = lastSizeRef.current;
-      const sizeChanged = Math.abs(w - last.width) > 0.5 || Math.abs(h - last.height) > 0.5;
-      const dprChanged = Math.abs(pr - last.dpr) > 0.01;
+      const last = lastSizeRef.current
+      const sizeChanged = Math.abs(w - last.width) > 0.5 || Math.abs(h - last.height) > 0.5
+      const dprChanged = Math.abs(pr - last.dpr) > 0.01
       if (!sizeChanged && !dprChanged) {
-        return;
+        return
       }
 
-      lastSizeRef.current = { width: w, height: h, dpr: pr };
-      renderer.setPixelRatio(pr);
-      renderer.setSize(w, h, false);
-      uniforms.iResolution.value.set(w * pr, h * pr, pr);
-      rectRef.current = canvas.getBoundingClientRect();
+      lastSizeRef.current = { width: w, height: h, dpr: pr }
+      renderer.setPixelRatio(pr)
+      renderer.setSize(w, h, false)
+      uniforms.iResolution.value.set(w * pr, h * pr, pr)
+      rectRef.current = canvas.getBoundingClientRect()
 
       if (!pausedRef.current) {
-        renderer.render(scene, camera);
+        renderer.render(scene, camera)
       }
-    };
+    }
 
-    let resizeRaf = 0;
+    let resizeRaf = 0
     const scheduleResize = () => {
-      if (resizeRaf) cancelAnimationFrame(resizeRaf);
-      resizeRaf = requestAnimationFrame(setSizeNow);
-    };
+      if (resizeRaf) cancelAnimationFrame(resizeRaf)
+      resizeRaf = requestAnimationFrame(setSizeNow)
+    }
 
-    setSizeNow();
-    const ro = new ResizeObserver(scheduleResize);
-    ro.observe(mount);
+    setSizeNow()
+    const ro = new ResizeObserver(scheduleResize)
+    ro.observe(mount)
 
     const io = new IntersectionObserver(
-      entries => {
-        inViewRef.current = entries[0]?.isIntersecting ?? true;
+      (entries) => {
+        inViewRef.current = entries[0]?.isIntersecting ?? true
       },
-      { root: null, threshold: 0 }
-    );
-    io.observe(mount);
+      { root: null, threshold: 0 },
+    )
+    io.observe(mount)
 
     const onVis = () => {
-      pausedRef.current = document.hidden;
-    };
-    document.addEventListener('visibilitychange', onVis, { passive: true });
+      pausedRef.current = document.hidden
+    }
+    document.addEventListener("visibilitychange", onVis, { passive: true })
 
     const updateMouse = (clientX, clientY) => {
-      const rect = rectRef.current;
-      if (!rect) return;
-      const x = clientX - rect.left;
-      const y = clientY - rect.top;
-      const ratio = currentDprRef.current;
-      const hb = rect.height * ratio;
-      mouseTarget.set(x * ratio, hb - y * ratio);
-    };
-    const onMove = ev => updateMouse(ev.clientX, ev.clientY);
-    const onLeave = () => mouseTarget.set(0, 0);
-    canvas.addEventListener('pointermove', onMove, { passive: true });
-    canvas.addEventListener('pointerdown', onMove, { passive: true });
-    canvas.addEventListener('pointerenter', onMove, { passive: true });
-    canvas.addEventListener('pointerleave', onLeave, { passive: true });
+      const rect = rectRef.current
+      if (!rect) return
+      const x = clientX - rect.left
+      const y = clientY - rect.top
+      const ratio = currentDprRef.current
+      const hb = rect.height * ratio
+      mouseTarget.set(x * ratio, hb - y * ratio)
+    }
+    const onMove = (ev) => updateMouse(ev.clientX, ev.clientY)
+    const onLeave = () => mouseTarget.set(0, 0)
+    canvas.addEventListener("pointermove", onMove, { passive: true })
+    canvas.addEventListener("pointerdown", onMove, { passive: true })
+    canvas.addEventListener("pointerenter", onMove, { passive: true })
+    canvas.addEventListener("pointerleave", onLeave, { passive: true })
 
-    const onCtxLost = e => {
-      e.preventDefault();
-      pausedRef.current = true;
-    };
+    const onCtxLost = (e) => {
+      e.preventDefault()
+      pausedRef.current = true
+    }
     const onCtxRestored = () => {
-      pausedRef.current = false;
-      scheduleResize();
-    };
-    canvas.addEventListener('webglcontextlost', onCtxLost, false);
-    canvas.addEventListener('webglcontextrestored', onCtxRestored, false);
+      pausedRef.current = false
+      scheduleResize()
+    }
+    canvas.addEventListener("webglcontextlost", onCtxLost, false)
+    canvas.addEventListener("webglcontextrestored", onCtxRestored, false)
 
-    let raf = 0;
+    let raf = 0
 
-    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
-    const dprFloor = 0.6;
-    const lowerThresh = 50;
-    const upperThresh = 58;
-    let lastDprChangeRef = 0;
-    const dprChangeCooldown = 2000;
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v))
+    const dprFloor = 0.6
+    const lowerThresh = 50
+    const upperThresh = 58
+    let lastDprChangeRef = 0
+    const dprChangeCooldown = 2000
 
-    const adjustDprIfNeeded = now => {
-      const elapsed = now - lastFpsCheckRef.current;
-      if (elapsed < 750) return;
+    const adjustDprIfNeeded = (now) => {
+      const elapsed = now - lastFpsCheckRef.current
+      if (elapsed < 750) return
 
-      const samples = fpsSamplesRef.current;
+      const samples = fpsSamplesRef.current
       if (samples.length === 0) {
-        lastFpsCheckRef.current = now;
-        return;
+        lastFpsCheckRef.current = now
+        return
       }
-      const avgFps = samples.reduce((a, b) => a + b, 0) / samples.length;
+      const avgFps = samples.reduce((a, b) => a + b, 0) / samples.length
 
-      let next = currentDprRef.current;
-      const base = baseDprRef.current;
+      let next = currentDprRef.current
+      const base = baseDprRef.current
 
       if (avgFps < lowerThresh) {
-        next = clamp(currentDprRef.current * 0.85, dprFloor, base);
+        next = clamp(currentDprRef.current * 0.85, dprFloor, base)
       } else if (avgFps > upperThresh && currentDprRef.current < base) {
-        next = clamp(currentDprRef.current * 1.1, dprFloor, base);
+        next = clamp(currentDprRef.current * 1.1, dprFloor, base)
       }
 
       if (Math.abs(next - currentDprRef.current) > 0.01 && now - lastDprChangeRef > dprChangeCooldown) {
-        currentDprRef.current = next;
-        lastDprChangeRef = now;
-        setSizeNow();
+        currentDprRef.current = next
+        lastDprChangeRef = now
+        setSizeNow()
       }
 
-      fpsSamplesRef.current = [];
-      lastFpsCheckRef.current = now;
-    };
+      fpsSamplesRef.current = []
+      lastFpsCheckRef.current = now
+    }
 
     const animate = () => {
-      raf = requestAnimationFrame(animate);
-      if (pausedRef.current || !inViewRef.current) return;
+      raf = requestAnimationFrame(animate)
+      if (pausedRef.current || !inViewRef.current) return
 
-      const t = clock.getElapsedTime();
-      const dt = Math.max(0, t - prevTime);
-      prevTime = t;
+      const t = clock.getElapsedTime()
+      const dt = Math.max(0, t - prevTime)
+      prevTime = t
 
-      const dtMs = dt * 1000;
-      emaDtRef.current = emaDtRef.current * 0.9 + dtMs * 0.1;
-      const instFps = 1000 / Math.max(1, emaDtRef.current);
-      fpsSamplesRef.current.push(instFps);
+      const dtMs = dt * 1000
+      emaDtRef.current = emaDtRef.current * 0.9 + dtMs * 0.1
+      const instFps = 1000 / Math.max(1, emaDtRef.current)
+      fpsSamplesRef.current.push(instFps)
 
-      uniforms.iTime.value = t;
+      uniforms.iTime.value = t
 
-      const cdt = Math.min(0.033, Math.max(0.001, dt));
-      uniforms.uFlowTime.value += cdt;
-      uniforms.uFogTime.value += cdt;
+      const cdt = Math.min(0.033, Math.max(0.001, dt))
+      uniforms.uFlowTime.value += cdt
+      uniforms.uFogTime.value += cdt
 
       if (!hasFadedRef.current) {
-        const fadeDur = 1.0;
-        fade = Math.min(1, fade + cdt / fadeDur);
-        uniforms.uFade.value = fade;
-        if (fade >= 1) hasFadedRef.current = true;
+        const fadeDur = 1.0
+        fade = Math.min(1, fade + cdt / fadeDur)
+        uniforms.uFade.value = fade
+        if (fade >= 1) hasFadedRef.current = true
       }
 
-      const tau = Math.max(1e-3, mouseSmoothTime);
-      const alpha = 1 - Math.exp(-cdt / tau);
-      mouseSmooth.lerp(mouseTarget, alpha);
-      uniforms.iMouse.value.set(mouseSmooth.x, mouseSmooth.y, 0, 0);
+      const tau = Math.max(1e-3, mouseSmoothTime)
+      const alpha = 1 - Math.exp(-cdt / tau)
+      mouseSmooth.lerp(mouseTarget, alpha)
+      uniforms.iMouse.value.set(mouseSmooth.x, mouseSmooth.y, 0, 0)
 
-      renderer.render(scene, camera);
+      renderer.render(scene, camera)
 
-      adjustDprIfNeeded(performance.now());
-    };
+      adjustDprIfNeeded(performance.now())
+    }
 
-    animate();
+    animate()
 
     return () => {
-      cancelAnimationFrame(raf);
-      ro.disconnect();
-      io.disconnect();
-      document.removeEventListener('visibilitychange', onVis);
-      canvas.removeEventListener('pointermove', onMove);
-      canvas.removeEventListener('pointerdown', onMove);
-      canvas.removeEventListener('pointerenter', onMove);
-      canvas.removeEventListener('pointerleave', onLeave);
-      canvas.removeEventListener('webglcontextlost', onCtxLost);
-      canvas.removeEventListener('webglcontextrestored', onCtxRestored);
-      geometry.dispose();
-      material.dispose();
-      renderer.dispose();
-      renderer.forceContextLoss();
-      if (mount.contains(canvas)) mount.removeChild(canvas);
-    };
+      cancelAnimationFrame(raf)
+      ro.disconnect()
+      io.disconnect()
+      document.removeEventListener("visibilitychange", onVis)
+      canvas.removeEventListener("pointermove", onMove)
+      canvas.removeEventListener("pointerdown", onMove)
+      canvas.removeEventListener("pointerenter", onMove)
+      canvas.removeEventListener("pointerleave", onLeave)
+      canvas.removeEventListener("webglcontextlost", onCtxLost)
+      canvas.removeEventListener("webglcontextrestored", onCtxRestored)
+      geometry.dispose()
+      material.dispose()
+      renderer.dispose()
+      renderer.forceContextLoss()
+      if (mount.contains(canvas)) mount.removeChild(canvas)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dpr]);
+  }, [dpr])
 
   useEffect(() => {
-    const uniforms = uniformsRef.current;
-    if (!uniforms) return;
+    const uniforms = uniformsRef.current
+    if (!uniforms) return
 
-    uniforms.uWispDensity.value = wispDensity;
-    uniforms.uTiltScale.value = mouseTiltStrength;
-    uniforms.uBeamXFrac.value = horizontalBeamOffset;
-    uniforms.uBeamYFrac.value = verticalBeamOffset;
-    uniforms.uFlowSpeed.value = flowSpeed;
-    uniforms.uVLenFactor.value = verticalSizing;
-    uniforms.uHLenFactor.value = horizontalSizing;
-    uniforms.uFogIntensity.value = fogIntensity;
-    uniforms.uFogScale.value = fogScale;
-    uniforms.uWSpeed.value = wispSpeed;
-    uniforms.uWIntensity.value = wispIntensity;
-    uniforms.uFlowStrength.value = flowStrength;
-    uniforms.uDecay.value = decay;
-    uniforms.uFalloffStart.value = falloffStart;
-    uniforms.uFogFallSpeed.value = fogFallSpeed;
+    uniforms.uWispDensity.value = wispDensity
+    uniforms.uTiltScale.value = mouseTiltStrength
+    uniforms.uBeamXFrac.value = horizontalBeamOffset
+    uniforms.uBeamYFrac.value = verticalBeamOffset
+    uniforms.uFlowSpeed.value = flowSpeed
+    uniforms.uVLenFactor.value = verticalSizing
+    uniforms.uHLenFactor.value = horizontalSizing
+    uniforms.uFogIntensity.value = fogIntensity
+    uniforms.uFogScale.value = fogScale
+    uniforms.uWSpeed.value = wispSpeed
+    uniforms.uWIntensity.value = wispIntensity
+    uniforms.uFlowStrength.value = flowStrength
+    uniforms.uDecay.value = decay
+    uniforms.uFalloffStart.value = falloffStart
+    uniforms.uFogFallSpeed.value = fogFallSpeed
 
-    const { r, g, b } = hexToRGB(color || '#FFFFFF');
-    uniforms.uColor.value.set(r, g, b);
+    const { r, g, b } = hexToRGB(color || "#FFFFFF")
+    uniforms.uColor.value.set(r, g, b)
   }, [
     wispDensity,
     mouseTiltStrength,
@@ -931,17 +938,17 @@ export const LaserFlow = ({
     decay,
     falloffStart,
     fogFallSpeed,
-    color
-  ]);
+    color,
+  ])
 
-  return <div ref={mountRef} className={`laser-flow-container ${className || ''}`} style={style} />;
-};
+  return <div ref={mountRef} className={`laser-flow-container ${className || ""}`} style={style} />
+}
 
-export default LaserFlow;
-
+export default LaserFlow
 ```
 
 ### Component CSS
+
 ```css
 .laser-flow-container {
   width: 100%;
@@ -949,10 +956,10 @@ export default LaserFlow;
   position: relative;
   pointer-events: none;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -967,18 +974,21 @@ code: ## Integrate the <Strands /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Strands
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Strands from './Strands';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import Strands from "./Strands"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Strands
-    colors={["#F97316","#7C3AED","#06B6D4"]}
+    colors={["#F97316", "#7C3AED", "#06B6D4"]}
     count={3}
     speed={0.5}
     amplitude={1}
@@ -1000,43 +1010,45 @@ import Strands from './Strands';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| colors | string[] | ["#FF4242", "#7C3AED", "#06B6D4", "#EAB308"] | Palette of hex colors cycled across the strands. Pass an empty array to use the built-in rainbow spectrum. |
-| count | number | 3 | Number of strands woven through the animation. |
-| speed | number | 0.5 | How quickly the strands ripple and flow. |
-| amplitude | number | 1 | Vertical reach of each strand as it waves up and down. |
-| waviness | number | 1 | Density of the curves along each strand. |
-| thickness | number | 0.7 | Width of each glowing strand. |
-| glow | number | 2.6 | Strength of the luminous bloom around the strands. |
-| taper | number | 3 | How sharply the strands fade out toward the edges. |
-| spread | number | 1 | Separation between strands so they fan out instead of overlapping. |
-| hueShift | number | 0 | Rotates the colors around the strands for variation. |
-| intensity | number | 0.6 | Overall brightness and energy of the effect. |
-| saturation | number | 1 | Vibrance of the colors. Above 1 makes them more intense, below 1 fades to grayscale. |
-| opacity | number | 1 | Overall transparency of the rendered strands. |
-| scale | number | 1 | Zooms the whole effect in or out to make the strands bigger or smaller. |
-| glass | boolean | false | Renders the strands inside a refractive glass ball. |
-| refraction | number | 1 | How strongly the glass ball bends the light passing through it. |
-| dispersion | number | 1 | Amount of rainbow color separation along the edges of the glass ball. |
-| glassSize | number | 1 | Size of the glass ball relative to the canvas. |
+
+| Prop       | Type     | Default                                      | Description                                                                                                |
+| ---------- | -------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| colors     | string[] | ["#FF4242", "#7C3AED", "#06B6D4", "#EAB308"] | Palette of hex colors cycled across the strands. Pass an empty array to use the built-in rainbow spectrum. |
+| count      | number   | 3                                            | Number of strands woven through the animation.                                                             |
+| speed      | number   | 0.5                                          | How quickly the strands ripple and flow.                                                                   |
+| amplitude  | number   | 1                                            | Vertical reach of each strand as it waves up and down.                                                     |
+| waviness   | number   | 1                                            | Density of the curves along each strand.                                                                   |
+| thickness  | number   | 0.7                                          | Width of each glowing strand.                                                                              |
+| glow       | number   | 2.6                                          | Strength of the luminous bloom around the strands.                                                         |
+| taper      | number   | 3                                            | How sharply the strands fade out toward the edges.                                                         |
+| spread     | number   | 1                                            | Separation between strands so they fan out instead of overlapping.                                         |
+| hueShift   | number   | 0                                            | Rotates the colors around the strands for variation.                                                       |
+| intensity  | number   | 0.6                                          | Overall brightness and energy of the effect.                                                               |
+| saturation | number   | 1                                            | Vibrance of the colors. Above 1 makes them more intense, below 1 fades to grayscale.                       |
+| opacity    | number   | 1                                            | Overall transparency of the rendered strands.                                                              |
+| scale      | number   | 1                                            | Zooms the whole effect in or out to make the strands bigger or smaller.                                    |
+| glass      | boolean  | false                                        | Renders the strands inside a refractive glass ball.                                                        |
+| refraction | number   | 1                                            | How strongly the glass ball bends the light passing through it.                                            |
+| dispersion | number   | 1                                            | Amount of rainbow color separation along the edges of the glass ball.                                      |
+| glassSize  | number   | 1                                            | Size of the glass ball relative to the canvas.                                                             |
 
 ### Full Component Source
+
 ```jsx
-import { Renderer, Program, Mesh, Color, Triangle, RenderTarget } from 'ogl';
-import { useEffect, useRef } from 'react';
+import { Renderer, Program, Mesh, Color, Triangle, RenderTarget } from "ogl"
+import { useEffect, useRef } from "react"
 
-import './Strands.css';
+import "./Strands.css"
 
-const MAX_STRANDS = 12;
-const MAX_COLORS = 8;
+const MAX_STRANDS = 12
+const MAX_COLORS = 8
 
 const VERT = `#version 300 es
 in vec2 position;
 void main() {
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const FRAG = `#version 300 es
 precision highp float;
@@ -1126,7 +1138,7 @@ void main() {
 
   fragColor = vec4(col * uOpacity, alpha);
 }
-`;
+`
 
 const GLASS_FRAG = `#version 300 es
 precision highp float;
@@ -1194,21 +1206,21 @@ void main() {
 
   fragColor = vec4(outRGB, outA);
 }
-`;
+`
 
-const buildPalette = colors => {
-  const filled = colors && colors.length ? colors : ['#ffffff'];
-  const padded = [];
+const buildPalette = (colors) => {
+  const filled = colors && colors.length ? colors : ["#ffffff"]
+  const padded = []
   for (let i = 0; i < MAX_COLORS; i++) {
-    const hex = filled[i] ?? filled[filled.length - 1];
-    const c = new Color(hex);
-    padded.push([c.r, c.g, c.b]);
+    const hex = filled[i] ?? filled[filled.length - 1]
+    const c = new Color(hex)
+    padded.push([c.r, c.g, c.b])
   }
-  return padded;
-};
+  return padded
+}
 
 export default function Strands({
-  colors = ['#FF4242', '#7C3AED', '#06B6D4', '#EAB308'],
+  colors = ["#FF4242", "#7C3AED", "#06B6D4", "#EAB308"],
   count = 3,
   speed = 0.5,
   amplitude = 1,
@@ -1226,10 +1238,10 @@ export default function Strands({
   refraction = 1,
   dispersion = 1,
   glassSize = 1,
-  className = '',
-  style
+  className = "",
+  style,
 }) {
-  const propsRef = useRef({});
+  const propsRef = useRef({})
   propsRef.current = {
     colors,
     count,
@@ -1248,29 +1260,29 @@ export default function Strands({
     glass,
     refraction,
     dispersion,
-    glassSize
-  };
+    glassSize,
+  }
 
-  const ctnDom = useRef(null);
+  const ctnDom = useRef(null)
 
   useEffect(() => {
-    const ctn = ctnDom.current;
-    if (!ctn) return;
+    const ctn = ctnDom.current
+    if (!ctn) return
 
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: true,
-      antialias: true
-    });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    gl.canvas.style.backgroundColor = 'transparent';
+      antialias: true,
+    })
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
+    gl.enable(gl.BLEND)
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
+    gl.canvas.style.backgroundColor = "transparent"
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     if (geometry.attributes.uv) {
-      delete geometry.attributes.uv;
+      delete geometry.attributes.uv
     }
 
     const program = new Program(gl, {
@@ -1293,16 +1305,16 @@ export default function Strands({
         uIntensity: { value: intensity },
         uOpacity: { value: opacity },
         uScale: { value: scale },
-        uSaturation: { value: saturation }
-      }
-    });
+        uSaturation: { value: saturation },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
+    const mesh = new Mesh(gl, { geometry, program })
 
     const renderTarget = new RenderTarget(gl, {
       width: ctn.offsetWidth,
-      height: ctn.offsetHeight
-    });
+      height: ctn.offsetHeight,
+    })
 
     const glassProgram = new Program(gl, {
       vertex: VERT,
@@ -1312,76 +1324,76 @@ export default function Strands({
         uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
         uRadius: { value: 0.46 * glassSize },
         uRefraction: { value: refraction },
-        uDispersion: { value: dispersion }
-      }
-    });
-    const glassMesh = new Mesh(gl, { geometry, program: glassProgram });
+        uDispersion: { value: dispersion },
+      },
+    })
+    const glassMesh = new Mesh(gl, { geometry, program: glassProgram })
 
-    ctn.appendChild(gl.canvas);
+    ctn.appendChild(gl.canvas)
 
     function resize() {
-      if (!ctn) return;
-      const width = ctn.offsetWidth;
-      const height = ctn.offsetHeight;
-      renderer.setSize(width, height);
-      program.uniforms.uResolution.value = [width, height];
-      renderTarget.setSize(width, height);
-      glassProgram.uniforms.uResolution.value = [width, height];
+      if (!ctn) return
+      const width = ctn.offsetWidth
+      const height = ctn.offsetHeight
+      renderer.setSize(width, height)
+      program.uniforms.uResolution.value = [width, height]
+      renderTarget.setSize(width, height)
+      glassProgram.uniforms.uResolution.value = [width, height]
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
-    let animateId = 0;
-    const update = t => {
-      animateId = requestAnimationFrame(update);
-      const current = propsRef.current;
-      program.uniforms.uTime.value = t * 0.001;
-      program.uniforms.uColors.value = buildPalette(current.colors);
-      program.uniforms.uColorCount.value = Math.min(current.colors.length, MAX_COLORS);
-      program.uniforms.uStrandCount.value = Math.min(Math.max(Math.round(current.count), 1), MAX_STRANDS);
-      program.uniforms.uSpeed.value = current.speed;
-      program.uniforms.uAmplitude.value = current.amplitude;
-      program.uniforms.uWaviness.value = current.waviness;
-      program.uniforms.uThickness.value = current.thickness;
-      program.uniforms.uGlow.value = current.glow;
-      program.uniforms.uTaper.value = current.taper;
-      program.uniforms.uSpread.value = current.spread;
-      program.uniforms.uHueShift.value = current.hueShift;
-      program.uniforms.uIntensity.value = current.intensity;
-      program.uniforms.uOpacity.value = current.opacity;
-      program.uniforms.uScale.value = current.scale;
-      program.uniforms.uSaturation.value = current.saturation;
+    let animateId = 0
+    const update = (t) => {
+      animateId = requestAnimationFrame(update)
+      const current = propsRef.current
+      program.uniforms.uTime.value = t * 0.001
+      program.uniforms.uColors.value = buildPalette(current.colors)
+      program.uniforms.uColorCount.value = Math.min(current.colors.length, MAX_COLORS)
+      program.uniforms.uStrandCount.value = Math.min(Math.max(Math.round(current.count), 1), MAX_STRANDS)
+      program.uniforms.uSpeed.value = current.speed
+      program.uniforms.uAmplitude.value = current.amplitude
+      program.uniforms.uWaviness.value = current.waviness
+      program.uniforms.uThickness.value = current.thickness
+      program.uniforms.uGlow.value = current.glow
+      program.uniforms.uTaper.value = current.taper
+      program.uniforms.uSpread.value = current.spread
+      program.uniforms.uHueShift.value = current.hueShift
+      program.uniforms.uIntensity.value = current.intensity
+      program.uniforms.uOpacity.value = current.opacity
+      program.uniforms.uScale.value = current.scale
+      program.uniforms.uSaturation.value = current.saturation
 
       if (current.glass) {
-        renderer.render({ scene: mesh, target: renderTarget });
-        glassProgram.uniforms.uScene.value = renderTarget.texture;
-        glassProgram.uniforms.uRefraction.value = current.refraction;
-        glassProgram.uniforms.uDispersion.value = current.dispersion;
-        glassProgram.uniforms.uRadius.value = 0.46 * current.glassSize;
-        renderer.render({ scene: glassMesh });
+        renderer.render({ scene: mesh, target: renderTarget })
+        glassProgram.uniforms.uScene.value = renderTarget.texture
+        glassProgram.uniforms.uRefraction.value = current.refraction
+        glassProgram.uniforms.uDispersion.value = current.dispersion
+        glassProgram.uniforms.uRadius.value = 0.46 * current.glassSize
+        renderer.render({ scene: glassMesh })
       } else {
-        renderer.render({ scene: mesh });
+        renderer.render({ scene: mesh })
       }
-    };
-    animateId = requestAnimationFrame(update);
+    }
+    animateId = requestAnimationFrame(update)
 
     return () => {
-      cancelAnimationFrame(animateId);
-      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animateId)
+      window.removeEventListener("resize", resize)
       if (ctn && gl.canvas.parentNode === ctn) {
-        ctn.removeChild(gl.canvas);
+        ctn.removeChild(gl.canvas)
       }
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
-  return <div ref={ctnDom} className={`strands-container ${className}`} style={style} />;
+  return <div ref={ctnDom} className={`strands-container ${className}`} style={style} />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .strands-container {
   position: relative;
@@ -1395,10 +1407,10 @@ export default function Strands({
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -1413,21 +1425,24 @@ code: ## Integrate the <Cubes /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Cubes
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
+
 ```jsx
 // CREDIT
 // Component inspired from Can Tastemel's original work for the lambda.ai landing page
 // https://cantastemel.com
-  
-import Cubes from './Cubes'
 
-<div style={{ height: '600px', position: 'relative' }}>
-  <Cubes 
+import Cubes from "./Cubes"
+
+;<div style={{ height: "600px", position: "relative" }}>
+  <Cubes
     gridSize={8}
     maxAngle={60}
     radius={4}
@@ -1442,290 +1457,292 @@ import Cubes from './Cubes'
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| gridSize | number | 10 | The size of the grid (number of cubes per row/column) |
-| cubeSize | number | undefined | Fixed size of each cube in pixels. If not provided, cubes will be responsive |
-| maxAngle | number | 45 | Maximum rotation angle for the tilt effect in degrees |
-| radius | number | 3 | Radius of the tilt effect (how many cubes around the cursor are affected) |
-| easing | string | 'power3.out' | GSAP easing function for the tilt animation |
-| duration | object | { enter: 0.3, leave: 0.6 } | Animation duration for enter and leave effects |
-| cellGap | number | object | undefined | Gap between cubes. Can be a number or object with row/col properties |
-| borderStyle | string | '1px solid #fff' | CSS border style for cube faces |
-| faceColor | string | '#120F17' | Background color for cube faces |
-| shadow | boolean | string | false | Shadow effect for cubes. Can be boolean or custom CSS shadow |
-| autoAnimate | boolean | true | Whether to automatically animate when user is idle |
-| rippleOnClick | boolean | true | Whether to show ripple effect on click |
-| rippleColor | string | '#fff' | Color of the ripple effect |
-| rippleSpeed | number | 2 | Speed multiplier for the ripple animation |
+
+| Prop          | Type    | Default                    | Description                                                                  |
+| ------------- | ------- | -------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| gridSize      | number  | 10                         | The size of the grid (number of cubes per row/column)                        |
+| cubeSize      | number  | undefined                  | Fixed size of each cube in pixels. If not provided, cubes will be responsive |
+| maxAngle      | number  | 45                         | Maximum rotation angle for the tilt effect in degrees                        |
+| radius        | number  | 3                          | Radius of the tilt effect (how many cubes around the cursor are affected)    |
+| easing        | string  | 'power3.out'               | GSAP easing function for the tilt animation                                  |
+| duration      | object  | { enter: 0.3, leave: 0.6 } | Animation duration for enter and leave effects                               |
+| cellGap       | number  | object                     | undefined                                                                    | Gap between cubes. Can be a number or object with row/col properties |
+| borderStyle   | string  | '1px solid #fff'           | CSS border style for cube faces                                              |
+| faceColor     | string  | '#120F17'                  | Background color for cube faces                                              |
+| shadow        | boolean | string                     | false                                                                        | Shadow effect for cubes. Can be boolean or custom CSS shadow         |
+| autoAnimate   | boolean | true                       | Whether to automatically animate when user is idle                           |
+| rippleOnClick | boolean | true                       | Whether to show ripple effect on click                                       |
+| rippleColor   | string  | '#fff'                     | Color of the ripple effect                                                   |
+| rippleSpeed   | number  | 2                          | Speed multiplier for the ripple animation                                    |
 
 ### Full Component Source
+
 ```jsx
-import { useCallback, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import './Cubes.css';
+import { useCallback, useEffect, useRef } from "react"
+import gsap from "gsap"
+import "./Cubes.css"
 
 const Cubes = ({
   gridSize = 10,
   cubeSize,
   maxAngle = 45,
   radius = 3,
-  easing = 'power3.out',
+  easing = "power3.out",
   duration = { enter: 0.3, leave: 0.6 },
   cellGap,
-  borderStyle = '1px solid #fff',
-  faceColor = '#120F17',
+  borderStyle = "1px solid #fff",
+  faceColor = "#120F17",
   shadow = false,
   autoAnimate = true,
   rippleOnClick = true,
-  rippleColor = '#fff',
-  rippleSpeed = 2
+  rippleColor = "#fff",
+  rippleSpeed = 2,
 }) => {
-  const sceneRef = useRef(null);
-  const rafRef = useRef(null);
-  const idleTimerRef = useRef(null);
-  const userActiveRef = useRef(false);
-  const simPosRef = useRef({ x: 0, y: 0 });
-  const simTargetRef = useRef({ x: 0, y: 0 });
-  const simRAFRef = useRef(null);
+  const sceneRef = useRef(null)
+  const rafRef = useRef(null)
+  const idleTimerRef = useRef(null)
+  const userActiveRef = useRef(false)
+  const simPosRef = useRef({ x: 0, y: 0 })
+  const simTargetRef = useRef({ x: 0, y: 0 })
+  const simRAFRef = useRef(null)
 
-  const colGap = typeof cellGap === 'number' ? `${cellGap}px` : cellGap?.col !== undefined ? `${cellGap.col}px` : '5%';
-  const rowGap = typeof cellGap === 'number' ? `${cellGap}px` : cellGap?.row !== undefined ? `${cellGap.row}px` : '5%';
+  const colGap = typeof cellGap === "number" ? `${cellGap}px` : cellGap?.col !== undefined ? `${cellGap.col}px` : "5%"
+  const rowGap = typeof cellGap === "number" ? `${cellGap}px` : cellGap?.row !== undefined ? `${cellGap.row}px` : "5%"
 
-  const enterDur = duration.enter;
-  const leaveDur = duration.leave;
+  const enterDur = duration.enter
+  const leaveDur = duration.leave
 
   const tiltAt = useCallback(
     (rowCenter, colCenter) => {
-      if (!sceneRef.current) return;
-      sceneRef.current.querySelectorAll('.cube').forEach(cube => {
-        const r = +cube.dataset.row;
-        const c = +cube.dataset.col;
-        const dist = Math.hypot(r - rowCenter, c - colCenter);
+      if (!sceneRef.current) return
+      sceneRef.current.querySelectorAll(".cube").forEach((cube) => {
+        const r = +cube.dataset.row
+        const c = +cube.dataset.col
+        const dist = Math.hypot(r - rowCenter, c - colCenter)
         if (dist <= radius) {
-          const pct = 1 - dist / radius;
-          const angle = pct * maxAngle;
+          const pct = 1 - dist / radius
+          const angle = pct * maxAngle
           gsap.to(cube, {
             duration: enterDur,
             ease: easing,
             overwrite: true,
             rotateX: -angle,
-            rotateY: angle
-          });
+            rotateY: angle,
+          })
         } else {
           gsap.to(cube, {
             duration: leaveDur,
-            ease: 'power3.out',
+            ease: "power3.out",
             overwrite: true,
             rotateX: 0,
-            rotateY: 0
-          });
+            rotateY: 0,
+          })
         }
-      });
+      })
     },
-    [radius, maxAngle, enterDur, leaveDur, easing]
-  );
+    [radius, maxAngle, enterDur, leaveDur, easing],
+  )
 
   const onPointerMove = useCallback(
-    e => {
-      userActiveRef.current = true;
-      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    (e) => {
+      userActiveRef.current = true
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current)
 
-      const rect = sceneRef.current.getBoundingClientRect();
-      const cellW = rect.width / gridSize;
-      const cellH = rect.height / gridSize;
-      const colCenter = (e.clientX - rect.left) / cellW;
-      const rowCenter = (e.clientY - rect.top) / cellH;
+      const rect = sceneRef.current.getBoundingClientRect()
+      const cellW = rect.width / gridSize
+      const cellH = rect.height / gridSize
+      const colCenter = (e.clientX - rect.left) / cellW
+      const rowCenter = (e.clientY - rect.top) / cellH
 
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(() => tiltAt(rowCenter, colCenter));
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      rafRef.current = requestAnimationFrame(() => tiltAt(rowCenter, colCenter))
 
       idleTimerRef.current = setTimeout(() => {
-        userActiveRef.current = false;
-      }, 3000);
+        userActiveRef.current = false
+      }, 3000)
     },
-    [gridSize, tiltAt]
-  );
+    [gridSize, tiltAt],
+  )
 
   const resetAll = useCallback(() => {
-    if (!sceneRef.current) return;
-    sceneRef.current.querySelectorAll('.cube').forEach(cube =>
+    if (!sceneRef.current) return
+    sceneRef.current.querySelectorAll(".cube").forEach((cube) =>
       gsap.to(cube, {
         duration: leaveDur,
         rotateX: 0,
         rotateY: 0,
-        ease: 'power3.out'
-      })
-    );
-  }, [leaveDur]);
+        ease: "power3.out",
+      }),
+    )
+  }, [leaveDur])
 
   const onTouchMove = useCallback(
-    e => {
-      e.preventDefault();
-      userActiveRef.current = true;
-      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    (e) => {
+      e.preventDefault()
+      userActiveRef.current = true
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current)
 
-      const rect = sceneRef.current.getBoundingClientRect();
-      const cellW = rect.width / gridSize;
-      const cellH = rect.height / gridSize;
+      const rect = sceneRef.current.getBoundingClientRect()
+      const cellW = rect.width / gridSize
+      const cellH = rect.height / gridSize
 
-      const touch = e.touches[0];
-      const colCenter = (touch.clientX - rect.left) / cellW;
-      const rowCenter = (touch.clientY - rect.top) / cellH;
+      const touch = e.touches[0]
+      const colCenter = (touch.clientX - rect.left) / cellW
+      const rowCenter = (touch.clientY - rect.top) / cellH
 
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(() => tiltAt(rowCenter, colCenter));
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      rafRef.current = requestAnimationFrame(() => tiltAt(rowCenter, colCenter))
 
       idleTimerRef.current = setTimeout(() => {
-        userActiveRef.current = false;
-      }, 3000);
+        userActiveRef.current = false
+      }, 3000)
     },
-    [gridSize, tiltAt]
-  );
+    [gridSize, tiltAt],
+  )
 
   const onTouchStart = useCallback(() => {
-    userActiveRef.current = true;
-  }, []);
+    userActiveRef.current = true
+  }, [])
 
   const onTouchEnd = useCallback(() => {
-    if (!sceneRef.current) return;
-    resetAll();
-  }, [resetAll]);
+    if (!sceneRef.current) return
+    resetAll()
+  }, [resetAll])
 
   const onClick = useCallback(
-    e => {
-      if (!rippleOnClick || !sceneRef.current) return;
-      const rect = sceneRef.current.getBoundingClientRect();
-      const cellW = rect.width / gridSize;
-      const cellH = rect.height / gridSize;
+    (e) => {
+      if (!rippleOnClick || !sceneRef.current) return
+      const rect = sceneRef.current.getBoundingClientRect()
+      const cellW = rect.width / gridSize
+      const cellH = rect.height / gridSize
 
-      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX)
+      const clientY = e.clientY || (e.touches && e.touches[0].clientY)
 
-      const colHit = Math.floor((clientX - rect.left) / cellW);
-      const rowHit = Math.floor((clientY - rect.top) / cellH);
+      const colHit = Math.floor((clientX - rect.left) / cellW)
+      const rowHit = Math.floor((clientY - rect.top) / cellH)
 
-      const baseRingDelay = 0.15;
-      const baseAnimDur = 0.3;
-      const baseHold = 0.6;
+      const baseRingDelay = 0.15
+      const baseAnimDur = 0.3
+      const baseHold = 0.6
 
-      const spreadDelay = baseRingDelay / rippleSpeed;
-      const animDuration = baseAnimDur / rippleSpeed;
-      const holdTime = baseHold / rippleSpeed;
+      const spreadDelay = baseRingDelay / rippleSpeed
+      const animDuration = baseAnimDur / rippleSpeed
+      const holdTime = baseHold / rippleSpeed
 
-      const rings = {};
-      sceneRef.current.querySelectorAll('.cube').forEach(cube => {
-        const r = +cube.dataset.row;
-        const c = +cube.dataset.col;
-        const dist = Math.hypot(r - rowHit, c - colHit);
-        const ring = Math.round(dist);
-        if (!rings[ring]) rings[ring] = [];
-        rings[ring].push(cube);
-      });
+      const rings = {}
+      sceneRef.current.querySelectorAll(".cube").forEach((cube) => {
+        const r = +cube.dataset.row
+        const c = +cube.dataset.col
+        const dist = Math.hypot(r - rowHit, c - colHit)
+        const ring = Math.round(dist)
+        if (!rings[ring]) rings[ring] = []
+        rings[ring].push(cube)
+      })
 
       Object.keys(rings)
         .map(Number)
         .sort((a, b) => a - b)
-        .forEach(ring => {
-          const delay = ring * spreadDelay;
-          const faces = rings[ring].flatMap(cube => Array.from(cube.querySelectorAll('.cube-face')));
+        .forEach((ring) => {
+          const delay = ring * spreadDelay
+          const faces = rings[ring].flatMap((cube) => Array.from(cube.querySelectorAll(".cube-face")))
 
           gsap.to(faces, {
             backgroundColor: rippleColor,
             duration: animDuration,
             delay,
-            ease: 'power3.out'
-          });
+            ease: "power3.out",
+          })
           gsap.to(faces, {
             backgroundColor: faceColor,
             duration: animDuration,
             delay: delay + animDuration + holdTime,
-            ease: 'power3.out'
-          });
-        });
+            ease: "power3.out",
+          })
+        })
     },
-    [rippleOnClick, gridSize, faceColor, rippleColor, rippleSpeed]
-  );
+    [rippleOnClick, gridSize, faceColor, rippleColor, rippleSpeed],
+  )
 
   useEffect(() => {
-    if (!autoAnimate || !sceneRef.current) return;
+    if (!autoAnimate || !sceneRef.current) return
     simPosRef.current = {
       x: Math.random() * gridSize,
-      y: Math.random() * gridSize
-    };
+      y: Math.random() * gridSize,
+    }
     simTargetRef.current = {
       x: Math.random() * gridSize,
-      y: Math.random() * gridSize
-    };
-    const speed = 0.02;
+      y: Math.random() * gridSize,
+    }
+    const speed = 0.02
     const loop = () => {
       if (!userActiveRef.current) {
-        const pos = simPosRef.current;
-        const tgt = simTargetRef.current;
-        pos.x += (tgt.x - pos.x) * speed;
-        pos.y += (tgt.y - pos.y) * speed;
-        tiltAt(pos.y, pos.x);
+        const pos = simPosRef.current
+        const tgt = simTargetRef.current
+        pos.x += (tgt.x - pos.x) * speed
+        pos.y += (tgt.y - pos.y) * speed
+        tiltAt(pos.y, pos.x)
         if (Math.hypot(pos.x - tgt.x, pos.y - tgt.y) < 0.1) {
           simTargetRef.current = {
             x: Math.random() * gridSize,
-            y: Math.random() * gridSize
-          };
+            y: Math.random() * gridSize,
+          }
         }
       }
-      simRAFRef.current = requestAnimationFrame(loop);
-    };
-    simRAFRef.current = requestAnimationFrame(loop);
+      simRAFRef.current = requestAnimationFrame(loop)
+    }
+    simRAFRef.current = requestAnimationFrame(loop)
     return () => {
       if (simRAFRef.current != null) {
-        cancelAnimationFrame(simRAFRef.current);
+        cancelAnimationFrame(simRAFRef.current)
       }
-    };
-  }, [autoAnimate, gridSize, tiltAt]);
+    }
+  }, [autoAnimate, gridSize, tiltAt])
 
   useEffect(() => {
-    const el = sceneRef.current;
-    if (!el) return;
+    const el = sceneRef.current
+    if (!el) return
 
-    el.addEventListener('pointermove', onPointerMove);
-    el.addEventListener('pointerleave', resetAll);
-    el.addEventListener('click', onClick);
+    el.addEventListener("pointermove", onPointerMove)
+    el.addEventListener("pointerleave", resetAll)
+    el.addEventListener("click", onClick)
 
-    el.addEventListener('touchmove', onTouchMove, { passive: false });
-    el.addEventListener('touchstart', onTouchStart, { passive: true });
-    el.addEventListener('touchend', onTouchEnd, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false })
+    el.addEventListener("touchstart", onTouchStart, { passive: true })
+    el.addEventListener("touchend", onTouchEnd, { passive: true })
 
     return () => {
-      el.removeEventListener('pointermove', onPointerMove);
-      el.removeEventListener('pointerleave', resetAll);
-      el.removeEventListener('click', onClick);
+      el.removeEventListener("pointermove", onPointerMove)
+      el.removeEventListener("pointerleave", resetAll)
+      el.removeEventListener("click", onClick)
 
-      el.removeEventListener('touchmove', onTouchMove);
-      el.removeEventListener('touchstart', onTouchStart);
-      el.removeEventListener('touchend', onTouchEnd);
+      el.removeEventListener("touchmove", onTouchMove)
+      el.removeEventListener("touchstart", onTouchStart)
+      el.removeEventListener("touchend", onTouchEnd)
 
-      rafRef.current != null && cancelAnimationFrame(rafRef.current);
-      idleTimerRef.current && clearTimeout(idleTimerRef.current);
-    };
-  }, [onPointerMove, resetAll, onClick, onTouchMove, onTouchStart, onTouchEnd]);
+      rafRef.current != null && cancelAnimationFrame(rafRef.current)
+      idleTimerRef.current && clearTimeout(idleTimerRef.current)
+    }
+  }, [onPointerMove, resetAll, onClick, onTouchMove, onTouchStart, onTouchEnd])
 
-  const cells = Array.from({ length: gridSize });
+  const cells = Array.from({ length: gridSize })
   const sceneStyle = {
     gridTemplateColumns: cubeSize ? `repeat(${gridSize}, ${cubeSize}px)` : `repeat(${gridSize}, 1fr)`,
     gridTemplateRows: cubeSize ? `repeat(${gridSize}, ${cubeSize}px)` : `repeat(${gridSize}, 1fr)`,
     columnGap: colGap,
-    rowGap: rowGap
-  };
+    rowGap: rowGap,
+  }
   const wrapperStyle = {
-    '--cube-face-border': borderStyle,
-    '--cube-face-bg': faceColor,
-    '--cube-face-shadow': shadow === true ? '0 0 6px rgba(0,0,0,.5)' : shadow || 'none',
+    "--cube-face-border": borderStyle,
+    "--cube-face-bg": faceColor,
+    "--cube-face-shadow": shadow === true ? "0 0 6px rgba(0,0,0,.5)" : shadow || "none",
     ...(cubeSize
       ? {
           width: `${gridSize * cubeSize}px`,
-          height: `${gridSize * cubeSize}px`
+          height: `${gridSize * cubeSize}px`,
         }
-      : {})
-  };
+      : {}),
+  }
 
   return (
     <div className="default-animation" style={wrapperStyle}>
@@ -1740,25 +1757,25 @@ const Cubes = ({
               <div className="cube-face cube-face--front" />
               <div className="cube-face cube-face--back" />
             </div>
-          ))
+          )),
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cubes;
-
+export default Cubes
 ```
 
 ### Component CSS
+
 ```css
 :root {
   --col-gap: 5%;
   --row-gap: 5%;
   --cube-perspective: 99999999px;
   --cube-face-border: 1px solid #fff;
-  --cube-face-bg: #120F17;
+  --cube-face-bg: #120f17;
 }
 
 .default-animation {
@@ -1787,7 +1804,7 @@ export default Cubes;
 }
 
 .cube::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -36px;
   right: -36px;
@@ -1833,10 +1850,10 @@ export default Cubes;
     width: 90%;
   }
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -1851,110 +1868,107 @@ code: ## Integrate the <Noise /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Noise
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
-```jsx
-import Noise from './Noise;'
 
-<div style={{width: '600px', height: '400px', position: 'relative', overflow: 'hidden'}}>
-  <Noise
-    patternSize={250}
-    patternScaleX={1}
-    patternScaleY={1}
-    patternRefreshInterval={2}
-    patternAlpha={15}
-  />
+```jsx
+import Noise from "./Noise;"
+
+;<div style={{ width: "600px", height: "400px", position: "relative", overflow: "hidden" }}>
+  <Noise patternSize={250} patternScaleX={1} patternScaleY={1} patternRefreshInterval={2} patternAlpha={15} />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| patternSize | number | 250 | Defines the size of the grain pattern. |
-| patternScaleX | number | 1 | Scaling factor for the X-axis of the grain pattern. |
-| patternScaleY | number | 1 | Scaling factor for the Y-axis of the grain pattern. |
-| patternRefreshInterval | number | 2 | Number of frames before the grain pattern refreshes. |
-| patternAlpha | number | 15 | Opacity of the grain pattern (0-255). |
+
+| Prop                   | Type   | Default | Description                                          |
+| ---------------------- | ------ | ------- | ---------------------------------------------------- |
+| patternSize            | number | 250     | Defines the size of the grain pattern.               |
+| patternScaleX          | number | 1       | Scaling factor for the X-axis of the grain pattern.  |
+| patternScaleY          | number | 1       | Scaling factor for the Y-axis of the grain pattern.  |
+| patternRefreshInterval | number | 2       | Number of frames before the grain pattern refreshes. |
+| patternAlpha           | number | 15      | Opacity of the grain pattern (0-255).                |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect } from 'react';
-import './Noise.css';
+import { useRef, useEffect } from "react"
+import "./Noise.css"
 
 const Noise = ({
   patternSize = 250,
   patternScaleX = 1,
   patternScaleY = 1,
   patternRefreshInterval = 2,
-  patternAlpha = 15
+  patternAlpha = 15,
 }) => {
-  const grainRef = useRef(null);
+  const grainRef = useRef(null)
 
   useEffect(() => {
-    const canvas = grainRef.current;
-    if (!canvas) return;
+    const canvas = grainRef.current
+    if (!canvas) return
 
-    const ctx = canvas.getContext('2d', { alpha: true });
-    if (!ctx) return;
+    const ctx = canvas.getContext("2d", { alpha: true })
+    if (!ctx) return
 
-    let frame = 0;
-    let animationId;
-    const canvasSize = 1024;
+    let frame = 0
+    let animationId
+    const canvasSize = 1024
 
     const resize = () => {
-      if (!canvas) return;
-      canvas.width = canvasSize;
-      canvas.height = canvasSize;
+      if (!canvas) return
+      canvas.width = canvasSize
+      canvas.height = canvasSize
 
-      canvas.style.width = '100vw';
-      canvas.style.height = '100vh';
-    };
+      canvas.style.width = "100vw"
+      canvas.style.height = "100vh"
+    }
 
     const drawGrain = () => {
-      const imageData = ctx.createImageData(canvasSize, canvasSize);
-      const data = imageData.data;
+      const imageData = ctx.createImageData(canvasSize, canvasSize)
+      const data = imageData.data
 
       for (let i = 0; i < data.length; i += 4) {
-        const value = Math.random() * 255;
-        data[i] = value;
-        data[i + 1] = value;
-        data[i + 2] = value;
-        data[i + 3] = patternAlpha;
+        const value = Math.random() * 255
+        data[i] = value
+        data[i + 1] = value
+        data[i + 2] = value
+        data[i + 3] = patternAlpha
       }
 
-      ctx.putImageData(imageData, 0, 0);
-    };
+      ctx.putImageData(imageData, 0, 0)
+    }
 
     const loop = () => {
       if (frame % patternRefreshInterval === 0) {
-        drawGrain();
+        drawGrain()
       }
-      frame++;
-      animationId = window.requestAnimationFrame(loop);
-    };
+      frame++
+      animationId = window.requestAnimationFrame(loop)
+    }
 
-    window.addEventListener('resize', resize);
-    resize();
-    loop();
+    window.addEventListener("resize", resize)
+    resize()
+    loop()
 
     return () => {
-      window.removeEventListener('resize', resize);
-      window.cancelAnimationFrame(animationId);
-    };
-  }, [patternSize, patternScaleX, patternScaleY, patternRefreshInterval, patternAlpha]);
+      window.removeEventListener("resize", resize)
+      window.cancelAnimationFrame(animationId)
+    }
+  }, [patternSize, patternScaleX, patternScaleY, patternRefreshInterval, patternAlpha])
 
-  return <canvas className="noise-overlay" ref={grainRef} style={{ imageRendering: 'pixelated' }} />;
-};
+  return <canvas className="noise-overlay" ref={grainRef} style={{ imageRendering: "pixelated" }} />
+}
 
-export default Noise;
-
+export default Noise
 ```
 
 ### Component CSS
+
 ```css
 .noise-overlay {
   position: absolute;
@@ -1964,10 +1978,10 @@ export default Noise;
   height: 100vh;
   pointer-events: none;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -1982,19 +1996,22 @@ code: ## Integrate the <Ribbons /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Ribbons
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Ribbons from './Ribbons';
 
-<div style={{ height: '500px', position: 'relative', overflow: 'hidden'}}>
+```jsx
+import Ribbons from "./Ribbons"
+
+;<div style={{ height: "500px", position: "relative", overflow: "hidden" }}>
   <Ribbons
     baseThickness={30}
-    colors={['#ffffff']}
+    colors={["#ffffff"]}
     speedMultiplier={0.5}
     maxAge={500}
     enableFade={false}
@@ -2004,30 +2021,32 @@ import Ribbons from './Ribbons';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| colors | string[] | ['#5227FF'] | An array of color strings to be used for the ribbons. |
-| baseSpring | number | 0.03 | Base spring factor for the physics controlling ribbon motion. |
-| baseFriction | number | 0.9 | Base friction factor that dampens the ribbon motion. |
-| baseThickness | number | 30 | The base thickness of the ribbons. |
-| offsetFactor | number | 0.02 | A factor to horizontally offset the starting positions of the ribbons. |
-| maxAge | number | 500 | Delay in milliseconds controlling how long the ribbon trails extend. |
-| pointCount | number | 50 | The number of points that make up each ribbon. |
-| speedMultiplier | number | 0.5 | Multiplier that adjusts how fast trailing points interpolate towards the head. |
-| enableFade | boolean | true | If true, a fade effect is applied along the length of the ribbon. |
-| enableShaderEffect | boolean | true | If true, an additional sine-wave shader effect is applied to the ribbons. |
-| effectAmplitude | number | 2 | The amplitude of the shader displacement effect. |
-| backgroundColor | number[] | [0, 0, 0, 0] | An RGBA array specifying the clear color for the renderer. |
+
+| Prop               | Type     | Default      | Description                                                                    |
+| ------------------ | -------- | ------------ | ------------------------------------------------------------------------------ |
+| colors             | string[] | ['#5227FF']  | An array of color strings to be used for the ribbons.                          |
+| baseSpring         | number   | 0.03         | Base spring factor for the physics controlling ribbon motion.                  |
+| baseFriction       | number   | 0.9          | Base friction factor that dampens the ribbon motion.                           |
+| baseThickness      | number   | 30           | The base thickness of the ribbons.                                             |
+| offsetFactor       | number   | 0.02         | A factor to horizontally offset the starting positions of the ribbons.         |
+| maxAge             | number   | 500          | Delay in milliseconds controlling how long the ribbon trails extend.           |
+| pointCount         | number   | 50           | The number of points that make up each ribbon.                                 |
+| speedMultiplier    | number   | 0.5          | Multiplier that adjusts how fast trailing points interpolate towards the head. |
+| enableFade         | boolean  | true         | If true, a fade effect is applied along the length of the ribbon.              |
+| enableShaderEffect | boolean  | true         | If true, an additional sine-wave shader effect is applied to the ribbons.      |
+| effectAmplitude    | number   | 2            | The amplitude of the shader displacement effect.                               |
+| backgroundColor    | number[] | [0, 0, 0, 0] | An RGBA array specifying the clear color for the renderer.                     |
 
 ### Full Component Source
-```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Transform, Vec3, Color, Polyline } from 'ogl';
 
-import './Ribbons.css';
+```jsx
+import { useEffect, useRef } from "react"
+import { Renderer, Transform, Vec3, Color, Polyline } from "ogl"
+
+import "./Ribbons.css"
 
 const Ribbons = ({
-  colors = ['#FC8EAC'],
+  colors = ["#FC8EAC"],
   baseSpring = 0.03,
   baseFriction = 0.9,
   baseThickness = 30,
@@ -2038,31 +2057,31 @@ const Ribbons = ({
   enableFade = false,
   enableShaderEffect = false,
   effectAmplitude = 2,
-  backgroundColor = [0, 0, 0, 0]
+  backgroundColor = [0, 0, 0, 0],
 }) => {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
-    const renderer = new Renderer({ dpr: window.devicePixelRatio || 2, alpha: true });
-    const gl = renderer.gl;
+    const renderer = new Renderer({ dpr: window.devicePixelRatio || 2, alpha: true })
+    const gl = renderer.gl
     if (Array.isArray(backgroundColor) && backgroundColor.length === 4) {
-      gl.clearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], backgroundColor[3]);
+      gl.clearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], backgroundColor[3])
     } else {
-      gl.clearColor(0, 0, 0, 0);
+      gl.clearColor(0, 0, 0, 0)
     }
 
-    gl.canvas.style.position = 'absolute';
-    gl.canvas.style.top = '0';
-    gl.canvas.style.left = '0';
-    gl.canvas.style.width = '100%';
-    gl.canvas.style.height = '100%';
-    container.appendChild(gl.canvas);
+    gl.canvas.style.position = "absolute"
+    gl.canvas.style.top = "0"
+    gl.canvas.style.left = "0"
+    gl.canvas.style.width = "100%"
+    gl.canvas.style.height = "100%"
+    container.appendChild(gl.canvas)
 
-    const scene = new Transform();
-    const lines = [];
+    const scene = new Transform()
+    const lines = []
 
     const vertex = `
       precision highp float;
@@ -2107,7 +2126,7 @@ const Ribbons = ({
           vUV = uv;
           gl_Position = getPosition();
       }
-    `;
+    `
 
     const fragment = `
       precision highp float;
@@ -2122,40 +2141,40 @@ const Ribbons = ({
           }
           gl_FragColor = vec4(uColor, uOpacity * fadeFactor);
       }
-    `;
+    `
 
     function resize() {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      renderer.setSize(width, height);
-      lines.forEach(line => line.polyline.resize());
+      const width = container.clientWidth
+      const height = container.clientHeight
+      renderer.setSize(width, height)
+      lines.forEach((line) => line.polyline.resize())
     }
-    window.addEventListener('resize', resize);
+    window.addEventListener("resize", resize)
 
-    const center = (colors.length - 1) / 2;
+    const center = (colors.length - 1) / 2
     colors.forEach((color, index) => {
-      const spring = baseSpring + (Math.random() - 0.5) * 0.05;
-      const friction = baseFriction + (Math.random() - 0.5) * 0.05;
-      const thickness = baseThickness + (Math.random() - 0.5) * 3;
+      const spring = baseSpring + (Math.random() - 0.5) * 0.05
+      const friction = baseFriction + (Math.random() - 0.5) * 0.05
+      const thickness = baseThickness + (Math.random() - 0.5) * 3
       const mouseOffset = new Vec3(
         (index - center) * offsetFactor + (Math.random() - 0.5) * 0.01,
         (Math.random() - 0.5) * 0.1,
-        0
-      );
+        0,
+      )
 
       const line = {
         spring,
         friction,
         mouseVelocity: new Vec3(),
-        mouseOffset
-      };
-
-      const count = pointCount;
-      const points = [];
-      for (let i = 0; i < count; i++) {
-        points.push(new Vec3());
+        mouseOffset,
       }
-      line.points = points;
+
+      const count = pointCount
+      const points = []
+      for (let i = 0; i < count; i++) {
+        points.push(new Vec3())
+      }
+      line.points = points
 
       line.polyline = new Polyline(gl, {
         points,
@@ -2168,77 +2187,77 @@ const Ribbons = ({
           uTime: { value: 0.0 },
           uEnableShaderEffect: { value: enableShaderEffect ? 1.0 : 0.0 },
           uEffectAmplitude: { value: effectAmplitude },
-          uEnableFade: { value: enableFade ? 1.0 : 0.0 }
-        }
-      });
-      line.polyline.mesh.setParent(scene);
-      lines.push(line);
-    });
+          uEnableFade: { value: enableFade ? 1.0 : 0.0 },
+        },
+      })
+      line.polyline.mesh.setParent(scene)
+      lines.push(line)
+    })
 
-    resize();
+    resize()
 
-    const mouse = new Vec3();
+    const mouse = new Vec3()
     function updateMouse(e) {
-      let x, y;
-      const rect = container.getBoundingClientRect();
+      let x, y
+      const rect = container.getBoundingClientRect()
       if (e.changedTouches && e.changedTouches.length) {
-        x = e.changedTouches[0].clientX - rect.left;
-        y = e.changedTouches[0].clientY - rect.top;
+        x = e.changedTouches[0].clientX - rect.left
+        y = e.changedTouches[0].clientY - rect.top
       } else {
-        x = e.clientX - rect.left;
-        y = e.clientY - rect.top;
+        x = e.clientX - rect.left
+        y = e.clientY - rect.top
       }
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      mouse.set((x / width) * 2 - 1, (y / height) * -2 + 1, 0);
+      const width = container.clientWidth
+      const height = container.clientHeight
+      mouse.set((x / width) * 2 - 1, (y / height) * -2 + 1, 0)
     }
-    container.addEventListener('mousemove', updateMouse);
-    container.addEventListener('touchstart', updateMouse);
-    container.addEventListener('touchmove', updateMouse);
+    container.addEventListener("mousemove", updateMouse)
+    container.addEventListener("touchstart", updateMouse)
+    container.addEventListener("touchmove", updateMouse)
 
-    const tmp = new Vec3();
-    let frameId;
-    let lastTime = performance.now();
+    const tmp = new Vec3()
+    let frameId
+    let lastTime = performance.now()
     function update() {
-      frameId = requestAnimationFrame(update);
-      const currentTime = performance.now();
-      const dt = currentTime - lastTime;
-      lastTime = currentTime;
+      frameId = requestAnimationFrame(update)
+      const currentTime = performance.now()
+      const dt = currentTime - lastTime
+      lastTime = currentTime
 
-      lines.forEach(line => {
-        tmp.copy(mouse).add(line.mouseOffset).sub(line.points[0]).multiply(line.spring);
-        line.mouseVelocity.add(tmp).multiply(line.friction);
-        line.points[0].add(line.mouseVelocity);
+      lines.forEach((line) => {
+        tmp.copy(mouse).add(line.mouseOffset).sub(line.points[0]).multiply(line.spring)
+        line.mouseVelocity.add(tmp).multiply(line.friction)
+        line.points[0].add(line.mouseVelocity)
 
         for (let i = 1; i < line.points.length; i++) {
           if (isFinite(maxAge) && maxAge > 0) {
-            const segmentDelay = maxAge / (line.points.length - 1);
-            const alpha = Math.min(1, (dt * speedMultiplier) / segmentDelay);
-            line.points[i].lerp(line.points[i - 1], alpha);
+            const segmentDelay = maxAge / (line.points.length - 1)
+            const alpha = Math.min(1, (dt * speedMultiplier) / segmentDelay)
+            line.points[i].lerp(line.points[i - 1], alpha)
           } else {
-            line.points[i].lerp(line.points[i - 1], 0.9);
+            line.points[i].lerp(line.points[i - 1], 0.9)
           }
         }
         if (line.polyline.mesh.program.uniforms.uTime) {
-          line.polyline.mesh.program.uniforms.uTime.value = currentTime * 0.001;
+          line.polyline.mesh.program.uniforms.uTime.value = currentTime * 0.001
         }
-        line.polyline.updateGeometry();
-      });
+        line.polyline.updateGeometry()
+      })
 
-      renderer.render({ scene });
+      renderer.render({ scene })
     }
-    update();
+    update()
 
     return () => {
-      window.removeEventListener('resize', resize);
-      container.removeEventListener('mousemove', updateMouse);
-      container.removeEventListener('touchstart', updateMouse);
-      container.removeEventListener('touchmove', updateMouse);
-      cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", resize)
+      container.removeEventListener("mousemove", updateMouse)
+      container.removeEventListener("touchstart", updateMouse)
+      container.removeEventListener("touchmove", updateMouse)
+      cancelAnimationFrame(frameId)
       if (gl.canvas && gl.canvas.parentNode === container) {
-        container.removeChild(gl.canvas);
+        container.removeChild(gl.canvas)
       }
-    };
+    }
   }, [
     colors,
     baseSpring,
@@ -2251,27 +2270,27 @@ const Ribbons = ({
     enableFade,
     enableShaderEffect,
     effectAmplitude,
-    backgroundColor
-  ]);
+    backgroundColor,
+  ])
 
-  return <div ref={containerRef} className="ribbons-container" />;
-};
+  return <div ref={containerRef} className="ribbons-container" />
+}
 
-export default Ribbons;
-
+export default Ribbons
 ```
 
 ### Component CSS
+
 ```css
 .ribbons-container {
   width: 100%;
   height: 100%;
   position: relative;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -2286,16 +2305,19 @@ code: ## Integrate the <MetaBalls /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: MetaBalls
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import MetaBalls from './MetaBalls';
 
-<MetaBalls
+```jsx
+import MetaBalls from "./MetaBalls"
+
+;<MetaBalls
   color="#ffffff"
   cursorBallColor="#ffffff"
   cursorBallSize={2}
@@ -2310,63 +2332,65 @@ import MetaBalls from './MetaBalls';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| color | string | #ffffff | The base color of the metaballs. |
-| speed | number | 0.3 | Speed multiplier for the animation. |
-| enableMouseInteraction | boolean | true | Enables or disables the ball following the mouse. |
-| enableTransparency | boolean | false | Enables or disables transparency for the container of the animation. |
-| hoverSmoothness | number | 0.05 | Smoothness factor for the cursor ball when following the mouse. |
-| animationSize | number | 30 | The size of the world for the animation. |
-| ballCount | number | 15 | Number of metaballs rendered. |
-| clumpFactor | number | 1 | Determines how close together the balls are rendered. |
-| cursorBallSize | number | 3 | Size of the cursor-controlled ball. |
-| cursorBallColor | string | #ff0000 | Color of the cursor ball. |
+
+| Prop                   | Type    | Default | Description                                                          |
+| ---------------------- | ------- | ------- | -------------------------------------------------------------------- |
+| color                  | string  | #ffffff | The base color of the metaballs.                                     |
+| speed                  | number  | 0.3     | Speed multiplier for the animation.                                  |
+| enableMouseInteraction | boolean | true    | Enables or disables the ball following the mouse.                    |
+| enableTransparency     | boolean | false   | Enables or disables transparency for the container of the animation. |
+| hoverSmoothness        | number  | 0.05    | Smoothness factor for the cursor ball when following the mouse.      |
+| animationSize          | number  | 30      | The size of the world for the animation.                             |
+| ballCount              | number  | 15      | Number of metaballs rendered.                                        |
+| clumpFactor            | number  | 1       | Determines how close together the balls are rendered.                |
+| cursorBallSize         | number  | 3       | Size of the cursor-controlled ball.                                  |
+| cursorBallColor        | string  | #ff0000 | Color of the cursor ball.                                            |
 
 ### Full Component Source
-```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle, Transform, Vec3, Camera } from 'ogl';
 
-import './MetaBalls.css';
+```jsx
+import { useEffect, useRef } from "react"
+import { Renderer, Program, Mesh, Triangle, Transform, Vec3, Camera } from "ogl"
+
+import "./MetaBalls.css"
 
 function parseHexColor(hex) {
-  const c = hex.replace('#', '');
-  const r = parseInt(c.substring(0, 2), 16) / 255;
-  const g = parseInt(c.substring(2, 4), 16) / 255;
-  const b = parseInt(c.substring(4, 6), 16) / 255;
-  return [r, g, b];
+  const c = hex.replace("#", "")
+  const r = parseInt(c.substring(0, 2), 16) / 255
+  const g = parseInt(c.substring(2, 4), 16) / 255
+  const b = parseInt(c.substring(4, 6), 16) / 255
+  return [r, g, b]
 }
 
 function fract(x) {
-  return x - Math.floor(x);
+  return x - Math.floor(x)
 }
 
 function hash31(p) {
-  let r = [p * 0.1031, p * 0.103, p * 0.0973].map(fract);
-  const r_yzx = [r[1], r[2], r[0]];
-  const dotVal = r[0] * (r_yzx[0] + 33.33) + r[1] * (r_yzx[1] + 33.33) + r[2] * (r_yzx[2] + 33.33);
+  let r = [p * 0.1031, p * 0.103, p * 0.0973].map(fract)
+  const r_yzx = [r[1], r[2], r[0]]
+  const dotVal = r[0] * (r_yzx[0] + 33.33) + r[1] * (r_yzx[1] + 33.33) + r[2] * (r_yzx[2] + 33.33)
   for (let i = 0; i < 3; i++) {
-    r[i] = fract(r[i] + dotVal);
+    r[i] = fract(r[i] + dotVal)
   }
-  return r;
+  return r
 }
 
 function hash33(v) {
-  let p = [v[0] * 0.1031, v[1] * 0.103, v[2] * 0.0973].map(fract);
-  const p_yxz = [p[1], p[0], p[2]];
-  const dotVal = p[0] * (p_yxz[0] + 33.33) + p[1] * (p_yxz[1] + 33.33) + p[2] * (p_yxz[2] + 33.33);
+  let p = [v[0] * 0.1031, v[1] * 0.103, v[2] * 0.0973].map(fract)
+  const p_yxz = [p[1], p[0], p[2]]
+  const dotVal = p[0] * (p_yxz[0] + 33.33) + p[1] * (p_yxz[1] + 33.33) + p[2] * (p_yxz[2] + 33.33)
   for (let i = 0; i < 3; i++) {
-    p[i] = fract(p[i] + dotVal);
+    p[i] = fract(p[i] + dotVal)
   }
-  const p_xxy = [p[0], p[0], p[1]];
-  const p_yxx = [p[1], p[0], p[0]];
-  const p_zyx = [p[2], p[1], p[0]];
-  const result = [];
+  const p_xxy = [p[0], p[0], p[1]]
+  const p_yxx = [p[1], p[0], p[0]]
+  const p_zyx = [p[2], p[1], p[0]]
+  const result = []
   for (let i = 0; i < 3; i++) {
-    result[i] = fract((p_xxy[i] + p_yxx[i]) * p_zyx[i]);
+    result[i] = fract((p_xxy[i] + p_yxx[i]) * p_zyx[i])
   }
-  return result;
+  return result
 }
 
 const vertex = `#version 300 es
@@ -2375,7 +2399,7 @@ layout(location = 0) in vec2 position;
 void main() {
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const fragment = `#version 300 es
 precision highp float;
@@ -2420,11 +2444,11 @@ void main() {
   }
   outColor = vec4(cFinal * f, enableTransparency ? f : 1.0);
 }
-`;
+`
 
 const MetaBalls = ({
-  className = '',
-  color = '#ffffff',
+  className = "",
+  color = "#ffffff",
   speed = 0.3,
   enableMouseInteraction = true,
   hoverSmoothness = 0.05,
@@ -2432,20 +2456,20 @@ const MetaBalls = ({
   ballCount = 15,
   clumpFactor = 1,
   cursorBallSize = 3,
-  cursorBallColor = '#ffffff',
-  enableTransparency = true
+  cursorBallColor = "#ffffff",
+  enableTransparency = true,
 }) => {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
-    const dpr = 1;
-    const renderer = new Renderer({ dpr, alpha: true, premultipliedAlpha: false });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, enableTransparency ? 0 : 1);
-    container.appendChild(gl.canvas);
+    const dpr = 1
+    const renderer = new Renderer({ dpr, alpha: true, premultipliedAlpha: false })
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, enableTransparency ? 0 : 1)
+    container.appendChild(gl.canvas)
 
     const camera = new Camera(gl, {
       left: -1,
@@ -2453,17 +2477,17 @@ const MetaBalls = ({
       top: 1,
       bottom: -1,
       near: 0.1,
-      far: 10
-    });
-    camera.position.z = 1;
+      far: 10,
+    })
+    camera.position.z = 1
 
-    const geometry = new Triangle(gl);
-    const [r1, g1, b1] = parseHexColor(color);
-    const [r2, g2, b2] = parseHexColor(cursorBallColor);
+    const geometry = new Triangle(gl)
+    const [r1, g1, b1] = parseHexColor(color)
+    const [r2, g2, b2] = parseHexColor(cursorBallColor)
 
-    const metaBallsUniform = [];
+    const metaBallsUniform = []
     for (let i = 0; i < 50; i++) {
-      metaBallsUniform.push(new Vec3(0, 0, 0));
+      metaBallsUniform.push(new Vec3(0, 0, 0))
     }
 
     const program = new Program(gl, {
@@ -2480,113 +2504,113 @@ const MetaBalls = ({
         iCursorBallSize: { value: cursorBallSize },
         iMetaBalls: { value: metaBallsUniform },
         iClumpFactor: { value: clumpFactor },
-        enableTransparency: { value: enableTransparency }
-      }
-    });
+        enableTransparency: { value: enableTransparency },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    const scene = new Transform();
-    mesh.setParent(scene);
+    const mesh = new Mesh(gl, { geometry, program })
+    const scene = new Transform()
+    mesh.setParent(scene)
 
-    const maxBalls = 50;
-    const effectiveBallCount = Math.min(ballCount, maxBalls);
-    const ballParams = [];
+    const maxBalls = 50
+    const effectiveBallCount = Math.min(ballCount, maxBalls)
+    const ballParams = []
     for (let i = 0; i < effectiveBallCount; i++) {
-      const idx = i + 1;
-      const h1 = hash31(idx);
-      const st = h1[0] * (2 * Math.PI);
-      const dtFactor = 0.1 * Math.PI + h1[1] * (0.4 * Math.PI - 0.1 * Math.PI);
-      const baseScale = 5.0 + h1[1] * (10.0 - 5.0);
-      const h2 = hash33(h1);
-      const toggle = Math.floor(h2[0] * 2.0);
-      const radiusVal = 0.5 + h2[2] * (2.0 - 0.5);
-      ballParams.push({ st, dtFactor, baseScale, toggle, radius: radiusVal });
+      const idx = i + 1
+      const h1 = hash31(idx)
+      const st = h1[0] * (2 * Math.PI)
+      const dtFactor = 0.1 * Math.PI + h1[1] * (0.4 * Math.PI - 0.1 * Math.PI)
+      const baseScale = 5.0 + h1[1] * (10.0 - 5.0)
+      const h2 = hash33(h1)
+      const toggle = Math.floor(h2[0] * 2.0)
+      const radiusVal = 0.5 + h2[2] * (2.0 - 0.5)
+      ballParams.push({ st, dtFactor, baseScale, toggle, radius: radiusVal })
     }
 
-    const mouseBallPos = { x: 0, y: 0 };
-    let pointerInside = false;
-    let pointerX = 0;
-    let pointerY = 0;
+    const mouseBallPos = { x: 0, y: 0 }
+    let pointerInside = false
+    let pointerX = 0
+    let pointerY = 0
 
     function resize() {
-      if (!container) return;
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      renderer.setSize(width * dpr, height * dpr);
-      gl.canvas.style.width = width + 'px';
-      gl.canvas.style.height = height + 'px';
-      program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, 0);
+      if (!container) return
+      const width = container.clientWidth
+      const height = container.clientHeight
+      renderer.setSize(width * dpr, height * dpr)
+      gl.canvas.style.width = width + "px"
+      gl.canvas.style.height = height + "px"
+      program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, 0)
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
     function onPointerMove(e) {
-      if (!enableMouseInteraction) return;
-      const rect = container.getBoundingClientRect();
-      const px = e.clientX - rect.left;
-      const py = e.clientY - rect.top;
-      pointerX = (px / rect.width) * gl.canvas.width;
-      pointerY = (1 - py / rect.height) * gl.canvas.height;
+      if (!enableMouseInteraction) return
+      const rect = container.getBoundingClientRect()
+      const px = e.clientX - rect.left
+      const py = e.clientY - rect.top
+      pointerX = (px / rect.width) * gl.canvas.width
+      pointerY = (1 - py / rect.height) * gl.canvas.height
     }
     function onPointerEnter() {
-      if (!enableMouseInteraction) return;
-      pointerInside = true;
+      if (!enableMouseInteraction) return
+      pointerInside = true
     }
     function onPointerLeave() {
-      if (!enableMouseInteraction) return;
-      pointerInside = false;
+      if (!enableMouseInteraction) return
+      pointerInside = false
     }
-    container.addEventListener('pointermove', onPointerMove);
-    container.addEventListener('pointerenter', onPointerEnter);
-    container.addEventListener('pointerleave', onPointerLeave);
+    container.addEventListener("pointermove", onPointerMove)
+    container.addEventListener("pointerenter", onPointerEnter)
+    container.addEventListener("pointerleave", onPointerLeave)
 
-    const startTime = performance.now();
-    let animationFrameId;
+    const startTime = performance.now()
+    let animationFrameId
     function update(t) {
-      animationFrameId = requestAnimationFrame(update);
-      const elapsed = (t - startTime) * 0.001;
-      program.uniforms.iTime.value = elapsed;
+      animationFrameId = requestAnimationFrame(update)
+      const elapsed = (t - startTime) * 0.001
+      program.uniforms.iTime.value = elapsed
 
       for (let i = 0; i < effectiveBallCount; i++) {
-        const p = ballParams[i];
-        const dt = elapsed * speed * p.dtFactor;
-        const th = p.st + dt;
-        const x = Math.cos(th);
-        const y = Math.sin(th + dt * p.toggle);
-        const posX = x * p.baseScale * clumpFactor;
-        const posY = y * p.baseScale * clumpFactor;
-        metaBallsUniform[i].set(posX, posY, p.radius);
+        const p = ballParams[i]
+        const dt = elapsed * speed * p.dtFactor
+        const th = p.st + dt
+        const x = Math.cos(th)
+        const y = Math.sin(th + dt * p.toggle)
+        const posX = x * p.baseScale * clumpFactor
+        const posY = y * p.baseScale * clumpFactor
+        metaBallsUniform[i].set(posX, posY, p.radius)
       }
 
-      let targetX, targetY;
+      let targetX, targetY
       if (pointerInside) {
-        targetX = pointerX;
-        targetY = pointerY;
+        targetX = pointerX
+        targetY = pointerY
       } else {
-        const cx = gl.canvas.width * 0.5;
-        const cy = gl.canvas.height * 0.5;
-        const rx = gl.canvas.width * 0.15;
-        const ry = gl.canvas.height * 0.15;
-        targetX = cx + Math.cos(elapsed * speed) * rx;
-        targetY = cy + Math.sin(elapsed * speed) * ry;
+        const cx = gl.canvas.width * 0.5
+        const cy = gl.canvas.height * 0.5
+        const rx = gl.canvas.width * 0.15
+        const ry = gl.canvas.height * 0.15
+        targetX = cx + Math.cos(elapsed * speed) * rx
+        targetY = cy + Math.sin(elapsed * speed) * ry
       }
-      mouseBallPos.x += (targetX - mouseBallPos.x) * hoverSmoothness;
-      mouseBallPos.y += (targetY - mouseBallPos.y) * hoverSmoothness;
-      program.uniforms.iMouse.value.set(mouseBallPos.x, mouseBallPos.y, 0);
+      mouseBallPos.x += (targetX - mouseBallPos.x) * hoverSmoothness
+      mouseBallPos.y += (targetY - mouseBallPos.y) * hoverSmoothness
+      program.uniforms.iMouse.value.set(mouseBallPos.x, mouseBallPos.y, 0)
 
-      renderer.render({ scene, camera });
+      renderer.render({ scene, camera })
     }
-    animationFrameId = requestAnimationFrame(update);
+    animationFrameId = requestAnimationFrame(update)
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
-      container.removeEventListener('pointermove', onPointerMove);
-      container.removeEventListener('pointerenter', onPointerEnter);
-      container.removeEventListener('pointerleave', onPointerLeave);
-      container.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
+      cancelAnimationFrame(animationFrameId)
+      window.removeEventListener("resize", resize)
+      container.removeEventListener("pointermove", onPointerMove)
+      container.removeEventListener("pointerenter", onPointerEnter)
+      container.removeEventListener("pointerleave", onPointerLeave)
+      container.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
   }, [
     color,
     cursorBallColor,
@@ -2597,27 +2621,27 @@ const MetaBalls = ({
     ballCount,
     clumpFactor,
     cursorBallSize,
-    enableTransparency
-  ]);
+    enableTransparency,
+  ])
 
-  return <div ref={containerRef} className={`metaballs-container ${className}`} />;
-};
+  return <div ref={containerRef} className={`metaballs-container ${className}`} />
+}
 
-export default MetaBalls;
-
+export default MetaBalls
 ```
 
 ### Component CSS
+
 ```css
 .metaballs-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -2632,12 +2656,15 @@ code: ## Integrate the <FluidGlass /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: FluidGlass
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three @react-three/fiber @react-three/drei maath
 
 ---
 
 ### Usage Example
+
 ```jsx
 // IMPORTANT INFO BELOW
 // This component requires a 3D model to function correctly.
@@ -2650,14 +2677,14 @@ You are helping integrate an open-source React component into an existing applic
 import FluidGlass from './FluidGlass'
 
 <div style={{ height: '600px', position: 'relative' }}>
-  <FluidGlass 
+  <FluidGlass
     mode="lens" // or "bar", "cube"
     lensProps={{
       scale: 0.25,
       ior: 1.15,
       thickness: 5,
       chromaticAberration: 0.1,
-      anisotropy: 0.01  
+      anisotropy: 0.01
     }}
     barProps={} // add specific props if using bar mode
     cubeProps={} // add specific props if using cube mode
@@ -2666,19 +2693,21 @@ import FluidGlass from './FluidGlass'
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| mode | string | 'lens' | Display mode of the fluid glass effect. Options: 'lens', 'bar', 'cube' |
-| lensProps | object | {} | Props specific to lens mode including material properties like ior, thickness, transmission |
-| barProps | object | {} | Props specific to bar mode including navItems array and material properties |
-| cubeProps | object | {} | Props specific to cube mode including material properties and interaction settings |
+
+| Prop      | Type   | Default | Description                                                                                 |
+| --------- | ------ | ------- | ------------------------------------------------------------------------------------------- |
+| mode      | string | 'lens'  | Display mode of the fluid glass effect. Options: 'lens', 'bar', 'cube'                      |
+| lensProps | object | {}      | Props specific to lens mode including material properties like ior, thickness, transmission |
+| barProps  | object | {}      | Props specific to bar mode including navItems array and material properties                 |
+| cubeProps | object | {}      | Props specific to cube mode including material properties and interaction settings          |
 
 ### Full Component Source
+
 ```jsx
 /* eslint-disable react/no-unknown-property */
-import * as THREE from 'three';
-import { useRef, useState, useEffect, memo } from 'react';
-import { Canvas, createPortal, useFrame, useThree } from '@react-three/fiber';
+import * as THREE from "three"
+import { useRef, useState, useEffect, memo } from "react"
+import { Canvas, createPortal, useFrame, useThree } from "@react-three/fiber"
 import {
   useFBO,
   useGLTF,
@@ -2688,27 +2717,27 @@ import {
   Preload,
   ScrollControls,
   MeshTransmissionMaterial,
-  Text
-} from '@react-three/drei';
-import { easing } from 'maath';
+  Text,
+} from "@react-three/drei"
+import { easing } from "maath"
 
-export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {}, cubeProps = {} }) {
-  const Wrapper = mode === 'bar' ? Bar : mode === 'cube' ? Cube : Lens;
-  const rawOverrides = mode === 'bar' ? barProps : mode === 'cube' ? cubeProps : lensProps;
+export default function FluidGlass({ mode = "lens", lensProps = {}, barProps = {}, cubeProps = {} }) {
+  const Wrapper = mode === "bar" ? Bar : mode === "cube" ? Cube : Lens
+  const rawOverrides = mode === "bar" ? barProps : mode === "cube" ? cubeProps : lensProps
 
   const {
     navItems = [
-      { label: 'Home', link: '' },
-      { label: 'About', link: '' },
-      { label: 'Contact', link: '' }
+      { label: "Home", link: "" },
+      { label: "About", link: "" },
+      { label: "Contact", link: "" },
     ],
     ...modeProps
-  } = rawOverrides;
+  } = rawOverrides
 
   return (
     <Canvas camera={{ position: [0, 0, 20], fov: 15 }} gl={{ alpha: true }}>
       <ScrollControls damping={0.2} pages={3} distance={0.4}>
-        {mode === 'bar' && <NavItems items={navItems} />}
+        {mode === "bar" && <NavItems items={navItems} />}
         <Wrapper modeProps={modeProps}>
           <Scroll>
             <Typography />
@@ -2719,7 +2748,7 @@ export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {
         </Wrapper>
       </ScrollControls>
     </Canvas>
-  );
+  )
 }
 
 const ModeWrapper = memo(function ModeWrapper({
@@ -2731,42 +2760,42 @@ const ModeWrapper = memo(function ModeWrapper({
   modeProps = {},
   ...props
 }) {
-  const ref = useRef();
-  const { nodes } = useGLTF(glb);
-  const buffer = useFBO();
-  const { viewport: vp } = useThree();
-  const [scene] = useState(() => new THREE.Scene());
-  const geoWidthRef = useRef(1);
+  const ref = useRef()
+  const { nodes } = useGLTF(glb)
+  const buffer = useFBO()
+  const { viewport: vp } = useThree()
+  const [scene] = useState(() => new THREE.Scene())
+  const geoWidthRef = useRef(1)
 
   useEffect(() => {
-    const geo = nodes[geometryKey]?.geometry;
-    geo.computeBoundingBox();
-    geoWidthRef.current = geo.boundingBox.max.x - geo.boundingBox.min.x || 1;
-  }, [nodes, geometryKey]);
+    const geo = nodes[geometryKey]?.geometry
+    geo.computeBoundingBox()
+    geoWidthRef.current = geo.boundingBox.max.x - geo.boundingBox.min.x || 1
+  }, [nodes, geometryKey])
 
   useFrame((state, delta) => {
-    const { gl, viewport, pointer, camera } = state;
-    const v = viewport.getCurrentViewport(camera, [0, 0, 15]);
+    const { gl, viewport, pointer, camera } = state
+    const v = viewport.getCurrentViewport(camera, [0, 0, 15])
 
-    const destX = followPointer ? (pointer.x * v.width) / 2 : 0;
-    const destY = lockToBottom ? -v.height / 2 + 0.2 : followPointer ? (pointer.y * v.height) / 2 : 0;
-    easing.damp3(ref.current.position, [destX, destY, 15], 0.15, delta);
+    const destX = followPointer ? (pointer.x * v.width) / 2 : 0
+    const destY = lockToBottom ? -v.height / 2 + 0.2 : followPointer ? (pointer.y * v.height) / 2 : 0
+    easing.damp3(ref.current.position, [destX, destY, 15], 0.15, delta)
 
     if (modeProps.scale == null) {
-      const maxWorld = v.width * 0.9;
-      const desired = maxWorld / geoWidthRef.current;
-      ref.current.scale.setScalar(Math.min(0.15, desired));
+      const maxWorld = v.width * 0.9
+      const desired = maxWorld / geoWidthRef.current
+      ref.current.scale.setScalar(Math.min(0.15, desired))
     }
 
-    gl.setRenderTarget(buffer);
-    gl.render(scene, camera);
-    gl.setRenderTarget(null);
+    gl.setRenderTarget(buffer)
+    gl.render(scene, camera)
+    gl.setRenderTarget(null)
 
     // Background Color
-    gl.setClearColor(0x5227ff, 1);
-  });
+    gl.setClearColor(0x5227ff, 1)
+  })
 
-  const { scale, ior, thickness, anisotropy, chromaticAberration, ...extraMat } = modeProps;
+  const { scale, ior, thickness, anisotropy, chromaticAberration, ...extraMat } = modeProps
 
   return (
     <>
@@ -2786,15 +2815,15 @@ const ModeWrapper = memo(function ModeWrapper({
         />
       </mesh>
     </>
-  );
-});
+  )
+})
 
 function Lens({ modeProps, ...p }) {
-  return <ModeWrapper glb="/assets/3d/lens.glb" geometryKey="Cylinder" followPointer modeProps={modeProps} {...p} />;
+  return <ModeWrapper glb="/assets/3d/lens.glb" geometryKey="Cylinder" followPointer modeProps={modeProps} {...p} />
 }
 
 function Cube({ modeProps, ...p }) {
-  return <ModeWrapper glb="/assets/3d/cube.glb" geometryKey="Cube" followPointer modeProps={modeProps} {...p} />;
+  return <ModeWrapper glb="/assets/3d/cube.glb" geometryKey="Cube" followPointer modeProps={modeProps} {...p} />
 }
 
 function Bar({ modeProps = {}, ...p }) {
@@ -2803,10 +2832,10 @@ function Bar({ modeProps = {}, ...p }) {
     roughness: 0,
     thickness: 10,
     ior: 1.15,
-    color: '#ffffff',
-    attenuationColor: '#ffffff',
-    attenuationDistance: 0.25
-  };
+    color: "#ffffff",
+    attenuationColor: "#ffffff",
+    attenuationDistance: 0.25,
+  }
 
   return (
     <ModeWrapper
@@ -2817,48 +2846,48 @@ function Bar({ modeProps = {}, ...p }) {
       modeProps={{ ...defaultMat, ...modeProps }}
       {...p}
     />
-  );
+  )
 }
 
 function NavItems({ items }) {
-  const group = useRef();
-  const { viewport, camera } = useThree();
+  const group = useRef()
+  const { viewport, camera } = useThree()
 
   const DEVICE = {
     mobile: { max: 639, spacing: 0.2, fontSize: 0.035 },
     tablet: { max: 1023, spacing: 0.24, fontSize: 0.035 },
-    desktop: { max: Infinity, spacing: 0.3, fontSize: 0.035 }
-  };
+    desktop: { max: Infinity, spacing: 0.3, fontSize: 0.035 },
+  }
   const getDevice = () => {
-    const w = window.innerWidth;
-    return w <= DEVICE.mobile.max ? 'mobile' : w <= DEVICE.tablet.max ? 'tablet' : 'desktop';
-  };
+    const w = window.innerWidth
+    return w <= DEVICE.mobile.max ? "mobile" : w <= DEVICE.tablet.max ? "tablet" : "desktop"
+  }
 
-  const [device, setDevice] = useState(getDevice());
+  const [device, setDevice] = useState(getDevice())
 
   useEffect(() => {
-    const onResize = () => setDevice(getDevice());
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    const onResize = () => setDevice(getDevice())
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
-  const { spacing, fontSize } = DEVICE[device];
+  const { spacing, fontSize } = DEVICE[device]
 
   useFrame(() => {
-    if (!group.current) return;
-    const v = viewport.getCurrentViewport(camera, [0, 0, 15]);
-    group.current.position.set(0, -v.height / 2 + 0.2, 15.1);
+    if (!group.current) return
+    const v = viewport.getCurrentViewport(camera, [0, 0, 15])
+    group.current.position.set(0, -v.height / 2 + 0.2, 15.1)
 
     group.current.children.forEach((child, i) => {
-      child.position.x = (i - (items.length - 1) / 2) * spacing;
-    });
-  });
+      child.position.x = (i - (items.length - 1) / 2) * spacing
+    })
+  })
 
-  const handleNavigate = link => {
-    if (!link) return;
-    link.startsWith('#') ? (window.location.hash = link) : (window.location.href = link);
-  };
+  const handleNavigate = (link) => {
+    if (!link) return
+    link.startsWith("#") ? (window.location.hash = link) : (window.location.href = link)
+  }
 
   return (
     <group ref={group} renderOrder={10}>
@@ -2876,32 +2905,32 @@ function NavItems({ items }) {
           outlineOpacity={0.5}
           depthTest={false}
           renderOrder={10}
-          onClick={e => {
-            e.stopPropagation();
-            handleNavigate(link);
+          onClick={(e) => {
+            e.stopPropagation()
+            handleNavigate(link)
           }}
-          onPointerOver={() => (document.body.style.cursor = 'pointer')}
-          onPointerOut={() => (document.body.style.cursor = 'auto')}
+          onPointerOver={() => (document.body.style.cursor = "pointer")}
+          onPointerOut={() => (document.body.style.cursor = "auto")}
         >
           {label}
         </Text>
       ))}
     </group>
-  );
+  )
 }
 
 function Images() {
-  const group = useRef();
-  const data = useScroll();
-  const { height } = useThree(s => s.viewport);
+  const group = useRef()
+  const data = useScroll()
+  const { height } = useThree((s) => s.viewport)
 
   useFrame(() => {
-    group.current.children[0].material.zoom = 1 + data.range(0, 1 / 3) / 3;
-    group.current.children[1].material.zoom = 1 + data.range(0, 1 / 3) / 3;
-    group.current.children[2].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2;
-    group.current.children[3].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2;
-    group.current.children[4].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2;
-  });
+    group.current.children[0].material.zoom = 1 + data.range(0, 1 / 3) / 3
+    group.current.children[1].material.zoom = 1 + data.range(0, 1 / 3) / 3
+    group.current.children[2].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2
+    group.current.children[3].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2
+    group.current.children[4].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2
+  })
 
   return (
     <group ref={group}>
@@ -2911,29 +2940,29 @@ function Images() {
       <Image position={[-0.6, -height, 9]} scale={[1, 2, 1]} url="/assets/demo/cs1.webp" />
       <Image position={[0.75, -height, 10.5]} scale={1.5} url="/assets/demo/cs2.webp" />
     </group>
-  );
+  )
 }
 
 function Typography() {
   const DEVICE = {
     mobile: { fontSize: 0.2 },
     tablet: { fontSize: 0.4 },
-    desktop: { fontSize: 0.6 }
-  };
+    desktop: { fontSize: 0.6 },
+  }
   const getDevice = () => {
-    const w = window.innerWidth;
-    return w <= 639 ? 'mobile' : w <= 1023 ? 'tablet' : 'desktop';
-  };
+    const w = window.innerWidth
+    return w <= 639 ? "mobile" : w <= 1023 ? "tablet" : "desktop"
+  }
 
-  const [device, setDevice] = useState(getDevice());
+  const [device, setDevice] = useState(getDevice())
 
   useEffect(() => {
-    const onResize = () => setDevice(getDevice());
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
+    const onResize = () => setDevice(getDevice())
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
+  }, [])
 
-  const { fontSize } = DEVICE[device];
+  const { fontSize } = DEVICE[device]
 
   return (
     <Text
@@ -2950,12 +2979,12 @@ function Typography() {
     >
       React Bits
     </Text>
-  );
+  )
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import and render the component using the usage example above as a starting point.
@@ -2969,14 +2998,17 @@ code: ## Integrate the <ChromaGrid /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: ChromaGrid
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
+
 ```jsx
-import ChromaGrid from './ChromaGrid'
+import ChromaGrid from "./ChromaGrid"
 
 const items = [
   {
@@ -2986,7 +3018,7 @@ const items = [
     handle: "@sarahjohnson",
     borderColor: "#3B82F6",
     gradient: "linear-gradient(145deg, #3B82F6, #000)",
-    url: "https://github.com/sarahjohnson"
+    url: "https://github.com/sarahjohnson",
   },
   {
     image: "https://i.pravatar.cc/300?img=2",
@@ -2995,121 +3027,117 @@ const items = [
     handle: "@mikechen",
     borderColor: "#10B981",
     gradient: "linear-gradient(180deg, #10B981, #000)",
-    url: "https://linkedin.com/in/mikechen"
-  }
-];
+    url: "https://linkedin.com/in/mikechen",
+  },
+]
 
-<div style={{ height: '600px', position: 'relative' }}>
-  <ChromaGrid 
-    items={items}
-    radius={300}
-    damping={0.45}
-    fadeOut={0.6}
-    ease="power3.out"
-  />
+;<div style={{ height: "600px", position: "relative" }}>
+  <ChromaGrid items={items} radius={300} damping={0.45} fadeOut={0.6} ease="power3.out" />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| items | Array | Demo [] | Array of ChromaItem objects to display in the grid |
-| className | string | '' | Additional CSS classes to apply to the grid container |
-| radius | number | 300 | Size of the spotlight effect in pixels |
-| damping | number | 0.45 | Cursor follow animation duration in seconds |
-| fadeOut | number | 0.6 | Fade-out animation duration in seconds when mouse leaves |
-| ease | string | 'power3.out' | GSAP easing function for animations |
+
+| Prop      | Type   | Default      | Description                                              |
+| --------- | ------ | ------------ | -------------------------------------------------------- |
+| items     | Array  | Demo []      | Array of ChromaItem objects to display in the grid       |
+| className | string | ''           | Additional CSS classes to apply to the grid container    |
+| radius    | number | 300          | Size of the spotlight effect in pixels                   |
+| damping   | number | 0.45         | Cursor follow animation duration in seconds              |
+| fadeOut   | number | 0.6          | Fade-out animation duration in seconds when mouse leaves |
+| ease      | string | 'power3.out' | GSAP easing function for animations                      |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import './ChromaGrid.css';
+import { useRef, useEffect } from "react"
+import { gsap } from "gsap"
+import "./ChromaGrid.css"
 
 export const ChromaGrid = ({
   items,
-  className = '',
+  className = "",
   radius = 300,
   columns = 3,
   rows = 2,
   damping = 0.45,
   fadeOut = 0.6,
-  ease = 'power3.out'
+  ease = "power3.out",
 }) => {
-  const rootRef = useRef(null);
-  const fadeRef = useRef(null);
-  const setX = useRef(null);
-  const setY = useRef(null);
-  const pos = useRef({ x: 0, y: 0 });
+  const rootRef = useRef(null)
+  const fadeRef = useRef(null)
+  const setX = useRef(null)
+  const setY = useRef(null)
+  const pos = useRef({ x: 0, y: 0 })
 
   const demo = [
     {
-      image: 'https://i.pravatar.cc/300?img=8',
-      title: 'Alex Rivera',
-      subtitle: 'Full Stack Developer',
-      handle: '@alexrivera',
-      borderColor: '#4F46E5',
-      gradient: 'linear-gradient(145deg, #4F46E5, #000)',
-      url: 'https://github.com/'
+      image: "https://i.pravatar.cc/300?img=8",
+      title: "Alex Rivera",
+      subtitle: "Full Stack Developer",
+      handle: "@alexrivera",
+      borderColor: "#4F46E5",
+      gradient: "linear-gradient(145deg, #4F46E5, #000)",
+      url: "https://github.com/",
     },
     {
-      image: 'https://i.pravatar.cc/300?img=11',
-      title: 'Jordan Chen',
-      subtitle: 'DevOps Engineer',
-      handle: '@jordanchen',
-      borderColor: '#10B981',
-      gradient: 'linear-gradient(210deg, #10B981, #000)',
-      url: 'https://linkedin.com/in/'
+      image: "https://i.pravatar.cc/300?img=11",
+      title: "Jordan Chen",
+      subtitle: "DevOps Engineer",
+      handle: "@jordanchen",
+      borderColor: "#10B981",
+      gradient: "linear-gradient(210deg, #10B981, #000)",
+      url: "https://linkedin.com/in/",
     },
     {
-      image: 'https://i.pravatar.cc/300?img=3',
-      title: 'Morgan Blake',
-      subtitle: 'UI/UX Designer',
-      handle: '@morganblake',
-      borderColor: '#F59E0B',
-      gradient: 'linear-gradient(165deg, #F59E0B, #000)',
-      url: 'https://dribbble.com/'
+      image: "https://i.pravatar.cc/300?img=3",
+      title: "Morgan Blake",
+      subtitle: "UI/UX Designer",
+      handle: "@morganblake",
+      borderColor: "#F59E0B",
+      gradient: "linear-gradient(165deg, #F59E0B, #000)",
+      url: "https://dribbble.com/",
     },
     {
-      image: 'https://i.pravatar.cc/300?img=16',
-      title: 'Casey Park',
-      subtitle: 'Data Scientist',
-      handle: '@caseypark',
-      borderColor: '#EF4444',
-      gradient: 'linear-gradient(195deg, #EF4444, #000)',
-      url: 'https://kaggle.com/'
+      image: "https://i.pravatar.cc/300?img=16",
+      title: "Casey Park",
+      subtitle: "Data Scientist",
+      handle: "@caseypark",
+      borderColor: "#EF4444",
+      gradient: "linear-gradient(195deg, #EF4444, #000)",
+      url: "https://kaggle.com/",
     },
     {
-      image: 'https://i.pravatar.cc/300?img=25',
-      title: 'Sam Kim',
-      subtitle: 'Mobile Developer',
-      handle: '@thesamkim',
-      borderColor: '#8B5CF6',
-      gradient: 'linear-gradient(225deg, #8B5CF6, #000)',
-      url: 'https://github.com/'
+      image: "https://i.pravatar.cc/300?img=25",
+      title: "Sam Kim",
+      subtitle: "Mobile Developer",
+      handle: "@thesamkim",
+      borderColor: "#8B5CF6",
+      gradient: "linear-gradient(225deg, #8B5CF6, #000)",
+      url: "https://github.com/",
     },
     {
-      image: 'https://i.pravatar.cc/300?img=60',
-      title: 'Tyler Rodriguez',
-      subtitle: 'Cloud Architect',
-      handle: '@tylerrod',
-      borderColor: '#06B6D4',
-      gradient: 'linear-gradient(135deg, #06B6D4, #000)',
-      url: 'https://aws.amazon.com/'
-    }
-  ];
-  const data = items?.length ? items : demo;
+      image: "https://i.pravatar.cc/300?img=60",
+      title: "Tyler Rodriguez",
+      subtitle: "Cloud Architect",
+      handle: "@tylerrod",
+      borderColor: "#06B6D4",
+      gradient: "linear-gradient(135deg, #06B6D4, #000)",
+      url: "https://aws.amazon.com/",
+    },
+  ]
+  const data = items?.length ? items : demo
 
   useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-    setX.current = gsap.quickSetter(el, '--x', 'px');
-    setY.current = gsap.quickSetter(el, '--y', 'px');
-    const { width, height } = el.getBoundingClientRect();
-    pos.current = { x: width / 2, y: height / 2 };
-    setX.current(pos.current.x);
-    setY.current(pos.current.y);
-  }, []);
+    const el = rootRef.current
+    if (!el) return
+    setX.current = gsap.quickSetter(el, "--x", "px")
+    setY.current = gsap.quickSetter(el, "--y", "px")
+    const { width, height } = el.getBoundingClientRect()
+    pos.current = { x: width / 2, y: height / 2 }
+    setX.current(pos.current.x)
+    setY.current(pos.current.y)
+  }, [])
 
   const moveTo = (x, y) => {
     gsap.to(pos.current, {
@@ -3118,50 +3146,50 @@ export const ChromaGrid = ({
       duration: damping,
       ease,
       onUpdate: () => {
-        setX.current?.(pos.current.x);
-        setY.current?.(pos.current.y);
+        setX.current?.(pos.current.x)
+        setY.current?.(pos.current.y)
       },
-      overwrite: true
-    });
-  };
+      overwrite: true,
+    })
+  }
 
-  const handleMove = e => {
-    const r = rootRef.current.getBoundingClientRect();
-    moveTo(e.clientX - r.left, e.clientY - r.top);
-    gsap.to(fadeRef.current, { opacity: 0, duration: 0.25, overwrite: true });
-  };
+  const handleMove = (e) => {
+    const r = rootRef.current.getBoundingClientRect()
+    moveTo(e.clientX - r.left, e.clientY - r.top)
+    gsap.to(fadeRef.current, { opacity: 0, duration: 0.25, overwrite: true })
+  }
 
   const handleLeave = () => {
     gsap.to(fadeRef.current, {
       opacity: 1,
       duration: fadeOut,
-      overwrite: true
-    });
-  };
+      overwrite: true,
+    })
+  }
 
-  const handleCardClick = url => {
+  const handleCardClick = (url) => {
     if (url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
+      window.open(url, "_blank", "noopener,noreferrer")
     }
-  };
+  }
 
-  const handleCardMove = e => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
-  };
+  const handleCardMove = (e) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    card.style.setProperty("--mouse-x", `${x}px`)
+    card.style.setProperty("--mouse-y", `${y}px`)
+  }
 
   return (
     <div
       ref={rootRef}
       className={`chroma-grid ${className}`}
       style={{
-        '--r': `${radius}px`,
-        '--cols': columns,
-        '--rows': rows
+        "--r": `${radius}px`,
+        "--cols": columns,
+        "--rows": rows,
       }}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
@@ -3173,9 +3201,9 @@ export const ChromaGrid = ({
           onMouseMove={handleCardMove}
           onClick={() => handleCardClick(c.url)}
           style={{
-            '--card-border': c.borderColor || 'transparent',
-            '--card-gradient': c.gradient,
-            cursor: c.url ? 'pointer' : 'default'
+            "--card-border": c.borderColor || "transparent",
+            "--card-gradient": c.gradient,
+            cursor: c.url ? "pointer" : "default",
           }}
         >
           <div className="chroma-img-wrapper">
@@ -3192,14 +3220,14 @@ export const ChromaGrid = ({
       <div className="chroma-overlay" />
       <div ref={fadeRef} className="chroma-fade" />
     </div>
-  );
-};
+  )
+}
 
-export default ChromaGrid;
-
+export default ChromaGrid
 ```
 
 ### Component CSS
+
 ```css
 .chroma-grid {
   position: relative;
@@ -3258,7 +3286,7 @@ export default ChromaGrid;
 }
 
 .chroma-card::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%);
@@ -3375,10 +3403,10 @@ export default ChromaGrid;
   opacity: 1;
   transition: opacity 0.25s ease;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -3393,18 +3421,21 @@ code: ## Integrate the <Ferrofluid /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Ferrofluid
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Ferrofluid from './Ferrofluid';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import Ferrofluid from "./Ferrofluid"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Ferrofluid
-    colors={["#ffffff","#ffffff","#ffffff"]}
+    colors={["#ffffff", "#ffffff", "#ffffff"]}
     speed={0.5}
     scale={1}
     turbulence={1}
@@ -3423,77 +3454,79 @@ import Ferrofluid from './Ferrofluid';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| colors | string[] | ['#4F46E5', '#06B6D4', '#E0F2FE'] | Array of hex colors (up to 8) used to tint the fluid rim. Colors are spread across the surface by height; a single color makes the whole effect uniform. |
-| backgroundColor | string | '#03010A' | Hex color of the background behind the fluid. |
-| backgroundColor | string | '#03010A' | Hex color of the background behind the fluid. |
-| speed | number | 0.5 | Multiplier for how fast the fluid churns and flows. |
-| scale | number | 1 | Overall feature size. Higher values zoom in for larger, fewer blobs. |
-| turbulence | number | 1 | Amount of domain distortion. Higher values create more chaotic, swirling motion. |
-| fluidity | number | 0.1 | Smoothness of the merge between the two fluid layers. Higher = softer, more liquid blending. |
-| rimWidth | number | 0.2 | Thickness of the glowing contour lines tracing the fluid surface. |
-| sharpness | number | 3 | Contrast of the rim highlights. Higher values give crisper, thinner edges. |
-| shimmer | number | 1 | Amount of fine grainy break-up applied to the rim. 0 = smooth lines. |
-| glow | number | 2 | Overall brightness multiplier of the rim highlights. |
-| flowDirection | 'up' | 'down' | 'left' | 'right' | 'down' | Primary direction the fluid surface drifts. |
-| opacity | number | 1 | Overall alpha of the rendered canvas. |
-| mouseInteraction | boolean | true | Enables a magnetic spike that rises and glows under the cursor. |
-| mouseStrength | number | 1 | Intensity of the magnetic cursor spike. |
-| mouseRadius | number | 0.3 | Falloff radius of the magnetic cursor spike. |
-| mouseDampening | number | 0.15 | Easing time constant (seconds) for the cursor to follow the pointer. 0 = immediate. |
-| mixBlendMode | string | undefined | CSS mix-blend-mode applied to the canvas (e.g. 'screen', 'lighten'). |
-| paused | boolean | false | If true, stops rendering updates (freezing the current frame). |
-| dpr | number | window.devicePixelRatio | Overrides device pixel ratio; lower for performance, higher for sharpness. |
-| className | string | — | Additional class names for the root container. |
+
+| Prop             | Type     | Default                           | Description                                                                                                                                              |
+| ---------------- | -------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------ | ------------------------------------------- |
+| colors           | string[] | ['#4F46E5', '#06B6D4', '#E0F2FE'] | Array of hex colors (up to 8) used to tint the fluid rim. Colors are spread across the surface by height; a single color makes the whole effect uniform. |
+| backgroundColor  | string   | '#03010A'                         | Hex color of the background behind the fluid.                                                                                                            |
+| backgroundColor  | string   | '#03010A'                         | Hex color of the background behind the fluid.                                                                                                            |
+| speed            | number   | 0.5                               | Multiplier for how fast the fluid churns and flows.                                                                                                      |
+| scale            | number   | 1                                 | Overall feature size. Higher values zoom in for larger, fewer blobs.                                                                                     |
+| turbulence       | number   | 1                                 | Amount of domain distortion. Higher values create more chaotic, swirling motion.                                                                         |
+| fluidity         | number   | 0.1                               | Smoothness of the merge between the two fluid layers. Higher = softer, more liquid blending.                                                             |
+| rimWidth         | number   | 0.2                               | Thickness of the glowing contour lines tracing the fluid surface.                                                                                        |
+| sharpness        | number   | 3                                 | Contrast of the rim highlights. Higher values give crisper, thinner edges.                                                                               |
+| shimmer          | number   | 1                                 | Amount of fine grainy break-up applied to the rim. 0 = smooth lines.                                                                                     |
+| glow             | number   | 2                                 | Overall brightness multiplier of the rim highlights.                                                                                                     |
+| flowDirection    | 'up'     | 'down'                            | 'left'                                                                                                                                                   | 'right' | 'down' | Primary direction the fluid surface drifts. |
+| opacity          | number   | 1                                 | Overall alpha of the rendered canvas.                                                                                                                    |
+| mouseInteraction | boolean  | true                              | Enables a magnetic spike that rises and glows under the cursor.                                                                                          |
+| mouseStrength    | number   | 1                                 | Intensity of the magnetic cursor spike.                                                                                                                  |
+| mouseRadius      | number   | 0.3                               | Falloff radius of the magnetic cursor spike.                                                                                                             |
+| mouseDampening   | number   | 0.15                              | Easing time constant (seconds) for the cursor to follow the pointer. 0 = immediate.                                                                      |
+| mixBlendMode     | string   | undefined                         | CSS mix-blend-mode applied to the canvas (e.g. 'screen', 'lighten').                                                                                     |
+| paused           | boolean  | false                             | If true, stops rendering updates (freezing the current frame).                                                                                           |
+| dpr              | number   | window.devicePixelRatio           | Overrides device pixel ratio; lower for performance, higher for sharpness.                                                                               |
+| className        | string   | —                                 | Additional class names for the root container.                                                                                                           |
 
 ### Full Component Source
+
 ```jsx
-import React, { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import './Ferrofluid.css';
+import React, { useEffect, useRef } from "react"
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+import "./Ferrofluid.css"
 
-const MAX_COLORS = 8;
+const MAX_COLORS = 8
 
-const hexToRGB = hex => {
-  const c = hex.replace('#', '').padEnd(6, '0');
-  const r = parseInt(c.slice(0, 2), 16) / 255;
-  const g = parseInt(c.slice(2, 4), 16) / 255;
-  const b = parseInt(c.slice(4, 6), 16) / 255;
-  return [r, g, b];
-};
+const hexToRGB = (hex) => {
+  const c = hex.replace("#", "").padEnd(6, "0")
+  const r = parseInt(c.slice(0, 2), 16) / 255
+  const g = parseInt(c.slice(2, 4), 16) / 255
+  const b = parseInt(c.slice(4, 6), 16) / 255
+  return [r, g, b]
+}
 
-const prepColors = input => {
-  const base = (input && input.length ? input : ['#4F46E5', '#06B6D4', '#E0F2FE']).slice(0, MAX_COLORS);
-  const count = base.length;
-  const arr = [];
-  for (let i = 0; i < MAX_COLORS; i++) arr.push(hexToRGB(base[Math.min(i, base.length - 1)]));
-  const avg = [0, 0, 0];
+const prepColors = (input) => {
+  const base = (input && input.length ? input : ["#4F46E5", "#06B6D4", "#E0F2FE"]).slice(0, MAX_COLORS)
+  const count = base.length
+  const arr = []
+  for (let i = 0; i < MAX_COLORS; i++) arr.push(hexToRGB(base[Math.min(i, base.length - 1)]))
+  const avg = [0, 0, 0]
   for (let i = 0; i < count; i++) {
-    avg[0] += arr[i][0];
-    avg[1] += arr[i][1];
-    avg[2] += arr[i][2];
+    avg[0] += arr[i][0]
+    avg[1] += arr[i][1]
+    avg[2] += arr[i][2]
   }
-  avg[0] /= count;
-  avg[1] /= count;
-  avg[2] /= count;
-  return { arr, count, avg };
-};
+  avg[0] /= count
+  avg[1] /= count
+  avg[2] /= count
+  return { arr, count, avg }
+}
 
-const flowVec = d => {
+const flowVec = (d) => {
   switch (d) {
-    case 'up':
-      return [0, 1];
-    case 'down':
-      return [0, -1];
-    case 'left':
-      return [-1, 0];
-    case 'right':
-      return [1, 0];
+    case "up":
+      return [0, 1]
+    case "down":
+      return [0, -1]
+    case "left":
+      return [-1, 0]
+    case "right":
+      return [1, 0]
     default:
-      return [0, -1];
+      return [0, -1]
   }
-};
+}
 
 const vertex = `
 attribute vec2 position;
@@ -3503,7 +3536,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const fragment = `
 precision highp float;
@@ -3636,13 +3669,13 @@ void main() {
   mainImage(color, vUv * iResolution.xy);
   gl_FragColor = color;
 }
-`;
+`
 
 const Ferrofluid = ({
   className,
   dpr,
   paused = false,
-  colors = ['#ffffff', '#ffffff', '#ffffff'],
+  colors = ["#ffffff", "#ffffff", "#ffffff"],
   speed = 0.5,
   scale = 1.6,
   turbulence = 1,
@@ -3651,42 +3684,42 @@ const Ferrofluid = ({
   sharpness = 2.5,
   shimmer = 1.5,
   glow = 2,
-  flowDirection = 'down',
+  flowDirection = "down",
   opacity = 1,
   mouseInteraction = true,
   mouseStrength = 1,
   mouseRadius = 0.35,
   mouseDampening = 0.15,
-  mixBlendMode
+  mixBlendMode,
 }) => {
-  const containerRef = useRef(null);
-  const rafRef = useRef(null);
-  const programRef = useRef(null);
-  const meshRef = useRef(null);
-  const geometryRef = useRef(null);
-  const rendererRef = useRef(null);
-  const mouseTargetRef = useRef([0, 0]);
-  const lastTimeRef = useRef(0);
+  const containerRef = useRef(null)
+  const rafRef = useRef(null)
+  const programRef = useRef(null)
+  const meshRef = useRef(null)
+  const geometryRef = useRef(null)
+  const rendererRef = useRef(null)
+  const mouseTargetRef = useRef([0, 0])
+  const lastTimeRef = useRef(0)
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
     const renderer = new Renderer({
-      dpr: dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1),
+      dpr: dpr ?? (typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1),
       alpha: true,
-      antialias: true
-    });
-    rendererRef.current = renderer;
-    const gl = renderer.gl;
-    const canvas = gl.canvas;
-    gl.clearColor(0, 0, 0, 0);
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.display = 'block';
-    container.appendChild(canvas);
+      antialias: true,
+    })
+    rendererRef.current = renderer
+    const gl = renderer.gl
+    const canvas = gl.canvas
+    gl.clearColor(0, 0, 0, 0)
+    canvas.style.width = "100%"
+    canvas.style.height = "100%"
+    canvas.style.display = "block"
+    container.appendChild(canvas)
 
-    const { arr, count, avg } = prepColors(colors);
+    const { arr, count, avg } = prepColors(colors)
 
     const uniforms = {
       iResolution: { value: [gl.drawingBufferWidth, gl.drawingBufferHeight, 1] },
@@ -3714,90 +3747,90 @@ const Ferrofluid = ({
       uOpacity: { value: opacity },
       uMouseEnabled: { value: mouseInteraction ? 1 : 0 },
       uMouseStrength: { value: mouseStrength },
-      uMouseRadius: { value: mouseRadius }
-    };
-
-    const program = new Program(gl, { vertex, fragment, uniforms });
-    programRef.current = program;
-
-    const geometry = new Triangle(gl);
-    geometryRef.current = geometry;
-    const mesh = new Mesh(gl, { geometry, program });
-    meshRef.current = mesh;
-
-    const resize = () => {
-      const rect = container.getBoundingClientRect();
-      renderer.setSize(rect.width, rect.height);
-      uniforms.iResolution.value = [gl.drawingBufferWidth, gl.drawingBufferHeight, 1];
-    };
-
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(container);
-
-    const onPointerMove = e => {
-      const rect = canvas.getBoundingClientRect();
-      const sc = renderer.dpr || 1;
-      const x = (e.clientX - rect.left) * sc;
-      const y = (rect.height - (e.clientY - rect.top)) * sc;
-      mouseTargetRef.current = [x, y];
-      if (mouseDampening <= 0) {
-        uniforms.iMouse.value = [x, y];
-      }
-    };
-    if (mouseInteraction) {
-      canvas.addEventListener('pointermove', onPointerMove);
+      uMouseRadius: { value: mouseRadius },
     }
 
-    const loop = t => {
-      rafRef.current = requestAnimationFrame(loop);
-      uniforms.iTime.value = t * 0.001;
+    const program = new Program(gl, { vertex, fragment, uniforms })
+    programRef.current = program
+
+    const geometry = new Triangle(gl)
+    geometryRef.current = geometry
+    const mesh = new Mesh(gl, { geometry, program })
+    meshRef.current = mesh
+
+    const resize = () => {
+      const rect = container.getBoundingClientRect()
+      renderer.setSize(rect.width, rect.height)
+      uniforms.iResolution.value = [gl.drawingBufferWidth, gl.drawingBufferHeight, 1]
+    }
+
+    resize()
+    const ro = new ResizeObserver(resize)
+    ro.observe(container)
+
+    const onPointerMove = (e) => {
+      const rect = canvas.getBoundingClientRect()
+      const sc = renderer.dpr || 1
+      const x = (e.clientX - rect.left) * sc
+      const y = (rect.height - (e.clientY - rect.top)) * sc
+      mouseTargetRef.current = [x, y]
+      if (mouseDampening <= 0) {
+        uniforms.iMouse.value = [x, y]
+      }
+    }
+    if (mouseInteraction) {
+      canvas.addEventListener("pointermove", onPointerMove)
+    }
+
+    const loop = (t) => {
+      rafRef.current = requestAnimationFrame(loop)
+      uniforms.iTime.value = t * 0.001
       if (mouseDampening > 0) {
-        if (!lastTimeRef.current) lastTimeRef.current = t;
-        const dt = (t - lastTimeRef.current) / 1000;
-        lastTimeRef.current = t;
-        const tau = Math.max(1e-4, mouseDampening);
-        let factor = 1 - Math.exp(-dt / tau);
-        if (factor > 1) factor = 1;
-        const target = mouseTargetRef.current;
-        const cur = uniforms.iMouse.value;
-        cur[0] += (target[0] - cur[0]) * factor;
-        cur[1] += (target[1] - cur[1]) * factor;
+        if (!lastTimeRef.current) lastTimeRef.current = t
+        const dt = (t - lastTimeRef.current) / 1000
+        lastTimeRef.current = t
+        const tau = Math.max(1e-4, mouseDampening)
+        let factor = 1 - Math.exp(-dt / tau)
+        if (factor > 1) factor = 1
+        const target = mouseTargetRef.current
+        const cur = uniforms.iMouse.value
+        cur[0] += (target[0] - cur[0]) * factor
+        cur[1] += (target[1] - cur[1]) * factor
       } else {
-        lastTimeRef.current = t;
+        lastTimeRef.current = t
       }
       if (!paused && programRef.current && meshRef.current) {
         try {
-          renderer.render({ scene: meshRef.current });
+          renderer.render({ scene: meshRef.current })
         } catch (e) {
-          console.error(e);
+          console.error(e)
         }
       }
-    };
-    rafRef.current = requestAnimationFrame(loop);
+    }
+    rafRef.current = requestAnimationFrame(loop)
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      if (mouseInteraction) canvas.removeEventListener('pointermove', onPointerMove);
-      ro.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      if (mouseInteraction) canvas.removeEventListener("pointermove", onPointerMove)
+      ro.disconnect()
       if (canvas.parentElement === container) {
-        container.removeChild(canvas);
+        container.removeChild(canvas)
       }
       const callIfFn = (obj, key) => {
-        const fn = obj && obj[key];
-        if (typeof fn === 'function') {
-          fn.call(obj);
+        const fn = obj && obj[key]
+        if (typeof fn === "function") {
+          fn.call(obj)
         }
-      };
-      callIfFn(programRef.current, 'remove');
-      callIfFn(geometryRef.current, 'remove');
-      callIfFn(meshRef.current, 'remove');
-      callIfFn(rendererRef.current, 'destroy');
-      programRef.current = null;
-      geometryRef.current = null;
-      meshRef.current = null;
-      rendererRef.current = null;
-    };
+      }
+      callIfFn(programRef.current, "remove")
+      callIfFn(geometryRef.current, "remove")
+      callIfFn(meshRef.current, "remove")
+      callIfFn(rendererRef.current, "destroy")
+      programRef.current = null
+      geometryRef.current = null
+      meshRef.current = null
+      rendererRef.current = null
+    }
   }, [
     dpr,
     paused,
@@ -3815,25 +3848,25 @@ const Ferrofluid = ({
     mouseInteraction,
     mouseStrength,
     mouseRadius,
-    mouseDampening
-  ]);
+    mouseDampening,
+  ])
 
   return (
     <div
       ref={containerRef}
-      className={`ferrofluid-container ${className ?? ''}`}
+      className={`ferrofluid-container ${className ?? ""}`}
       style={{
-        ...(mixBlendMode && { mixBlendMode })
+        ...(mixBlendMode && { mixBlendMode }),
       }}
     />
-  );
-};
+  )
+}
 
-export default Ferrofluid;
-
+export default Ferrofluid
 ```
 
 ### Component CSS
+
 ```css
 .ferrofluid-container {
   position: relative;
@@ -3841,10 +3874,10 @@ export default Ferrofluid;
   height: 100%;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -3859,18 +3892,21 @@ code: ## Integrate the <Lightfall /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Lightfall
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Lightfall from './Lightfall';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import Lightfall from "./Lightfall"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Lightfall
-    colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
+    colors={["#A6C8FF", "#5227FF", "#FF9FFC"]}
     backgroundColor="#0A29FF"
     speed={1}
     streakCount={8}
@@ -3890,61 +3926,63 @@ import Lightfall from './Lightfall';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| colors | string[] | ['#A6C8FF', '#5227FF', '#FF9FFC'] | Array of hex colors (up to 8) used to tint the falling light streaks. Each streak is randomly but evenly assigned one of the colors; a single color makes the whole effect uniform. |
-| backgroundColor | string | '#0A29FF' | Hex color of the soft ambient glow behind the streaks. |
-| speed | number | 1 | Multiplier for how fast the light streaks fall. |
-| streakCount | number | 8 | Number of streak layers rendered per cell (1–16). Higher = busier. |
-| streakWidth | number | 1 | Thickness of each light streak. |
-| streakLength | number | 1 | Length of the glowing tail trailing each streak. |
-| glow | number | 1 | Overall brightness multiplier applied before tone mapping. |
-| density | number | 1 | Vertical frequency of streaks. Higher values pack more streaks into view. |
-| twinkle | number | 1 | Amount of per‑streak brightness flicker. 0 = constant brightness. |
-| zoom | number | 2 | Field of view into the tunnel. Higher values zoom further in. |
-| backgroundGlow | number | 1 | Intensity of the ambient background glow. |
-| opacity | number | 1 | Overall alpha of the rendered canvas. |
-| mouseInteraction | boolean | true | Enables a soft light that follows the cursor and flares nearby streaks (no warping). |
-| mouseStrength | number | 1 | Intensity of the cursor light. |
-| mouseRadius | number | 0.6 | Falloff radius of the cursor light. |
-| mouseDampening | number | 0.15 | Easing time constant (seconds) for the cursor light to follow the pointer. 0 = immediate. |
-| mixBlendMode | string | undefined | CSS mix-blend-mode applied to the canvas (e.g. 'screen', 'lighten'). |
-| paused | boolean | false | If true, stops rendering updates (freezing the current frame). |
-| dpr | number | window.devicePixelRatio | Overrides device pixel ratio; lower for performance, higher for sharpness. |
-| className | string | — | Additional class names for the root container. |
+
+| Prop             | Type     | Default                           | Description                                                                                                                                                                         |
+| ---------------- | -------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| colors           | string[] | ['#A6C8FF', '#5227FF', '#FF9FFC'] | Array of hex colors (up to 8) used to tint the falling light streaks. Each streak is randomly but evenly assigned one of the colors; a single color makes the whole effect uniform. |
+| backgroundColor  | string   | '#0A29FF'                         | Hex color of the soft ambient glow behind the streaks.                                                                                                                              |
+| speed            | number   | 1                                 | Multiplier for how fast the light streaks fall.                                                                                                                                     |
+| streakCount      | number   | 8                                 | Number of streak layers rendered per cell (1–16). Higher = busier.                                                                                                                  |
+| streakWidth      | number   | 1                                 | Thickness of each light streak.                                                                                                                                                     |
+| streakLength     | number   | 1                                 | Length of the glowing tail trailing each streak.                                                                                                                                    |
+| glow             | number   | 1                                 | Overall brightness multiplier applied before tone mapping.                                                                                                                          |
+| density          | number   | 1                                 | Vertical frequency of streaks. Higher values pack more streaks into view.                                                                                                           |
+| twinkle          | number   | 1                                 | Amount of per‑streak brightness flicker. 0 = constant brightness.                                                                                                                   |
+| zoom             | number   | 2                                 | Field of view into the tunnel. Higher values zoom further in.                                                                                                                       |
+| backgroundGlow   | number   | 1                                 | Intensity of the ambient background glow.                                                                                                                                           |
+| opacity          | number   | 1                                 | Overall alpha of the rendered canvas.                                                                                                                                               |
+| mouseInteraction | boolean  | true                              | Enables a soft light that follows the cursor and flares nearby streaks (no warping).                                                                                                |
+| mouseStrength    | number   | 1                                 | Intensity of the cursor light.                                                                                                                                                      |
+| mouseRadius      | number   | 0.6                               | Falloff radius of the cursor light.                                                                                                                                                 |
+| mouseDampening   | number   | 0.15                              | Easing time constant (seconds) for the cursor light to follow the pointer. 0 = immediate.                                                                                           |
+| mixBlendMode     | string   | undefined                         | CSS mix-blend-mode applied to the canvas (e.g. 'screen', 'lighten').                                                                                                                |
+| paused           | boolean  | false                             | If true, stops rendering updates (freezing the current frame).                                                                                                                      |
+| dpr              | number   | window.devicePixelRatio           | Overrides device pixel ratio; lower for performance, higher for sharpness.                                                                                                          |
+| className        | string   | —                                 | Additional class names for the root container.                                                                                                                                      |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import './Lightfall.css';
+import { useEffect, useRef } from "react"
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+import "./Lightfall.css"
 
-const MAX_COLORS = 8;
+const MAX_COLORS = 8
 
-const hexToRGB = hex => {
-  const c = hex.replace('#', '').padEnd(6, '0');
-  const r = parseInt(c.slice(0, 2), 16) / 255;
-  const g = parseInt(c.slice(2, 4), 16) / 255;
-  const b = parseInt(c.slice(4, 6), 16) / 255;
-  return [r, g, b];
-};
+const hexToRGB = (hex) => {
+  const c = hex.replace("#", "").padEnd(6, "0")
+  const r = parseInt(c.slice(0, 2), 16) / 255
+  const g = parseInt(c.slice(2, 4), 16) / 255
+  const b = parseInt(c.slice(4, 6), 16) / 255
+  return [r, g, b]
+}
 
-const prepColors = input => {
-  const base = (input && input.length ? input : ['#A6C8FF', '#5227FF', '#FF9FFC']).slice(0, MAX_COLORS);
-  const count = base.length;
-  const arr = [];
-  for (let i = 0; i < MAX_COLORS; i++) arr.push(hexToRGB(base[Math.min(i, base.length - 1)]));
-  const avg = [0, 0, 0];
+const prepColors = (input) => {
+  const base = (input && input.length ? input : ["#A6C8FF", "#5227FF", "#FF9FFC"]).slice(0, MAX_COLORS)
+  const count = base.length
+  const arr = []
+  for (let i = 0; i < MAX_COLORS; i++) arr.push(hexToRGB(base[Math.min(i, base.length - 1)]))
+  const avg = [0, 0, 0]
   for (let i = 0; i < count; i++) {
-    avg[0] += arr[i][0];
-    avg[1] += arr[i][1];
-    avg[2] += arr[i][2];
+    avg[0] += arr[i][0]
+    avg[1] += arr[i][1]
+    avg[2] += arr[i][2]
   }
-  avg[0] /= count;
-  avg[1] /= count;
-  avg[2] /= count;
-  return { arr, count, avg };
-};
+  avg[0] /= count
+  avg[1] /= count
+  avg[2] /= count
+  return { arr, count, avg }
+}
 
 const vertex = `
 attribute vec2 position;
@@ -3954,7 +3992,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const fragment = `
 precision highp float;
@@ -4081,14 +4119,14 @@ void main() {
   mainImage(color, vUv * iResolution.xy);
   gl_FragColor = color;
 }
-`;
+`
 
 const Lightfall = ({
   className,
   dpr,
   paused = false,
-  colors = ['#A6C8FF', '#5227FF', '#FF9FFC'],
-  backgroundColor = '#0A29FF',
+  colors = ["#A6C8FF", "#5227FF", "#FF9FFC"],
+  backgroundColor = "#0A29FF",
   speed = 0.5,
   streakCount = 2,
   streakWidth = 1,
@@ -4103,36 +4141,36 @@ const Lightfall = ({
   mouseStrength = 0.5,
   mouseRadius = 1,
   mouseDampening = 0.15,
-  mixBlendMode
+  mixBlendMode,
 }) => {
-  const containerRef = useRef(null);
-  const rafRef = useRef(null);
-  const programRef = useRef(null);
-  const meshRef = useRef(null);
-  const geometryRef = useRef(null);
-  const rendererRef = useRef(null);
-  const mouseTargetRef = useRef([0, 0]);
-  const lastTimeRef = useRef(0);
+  const containerRef = useRef(null)
+  const rafRef = useRef(null)
+  const programRef = useRef(null)
+  const meshRef = useRef(null)
+  const geometryRef = useRef(null)
+  const rendererRef = useRef(null)
+  const mouseTargetRef = useRef([0, 0])
+  const lastTimeRef = useRef(0)
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
     const renderer = new Renderer({
-      dpr: dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1),
+      dpr: dpr ?? (typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1),
       alpha: true,
-      antialias: true
-    });
-    rendererRef.current = renderer;
-    const gl = renderer.gl;
-    const canvas = gl.canvas;
+      antialias: true,
+    })
+    rendererRef.current = renderer
+    const gl = renderer.gl
+    const canvas = gl.canvas
 
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.display = 'block';
-    container.appendChild(canvas);
+    canvas.style.width = "100%"
+    canvas.style.height = "100%"
+    canvas.style.display = "block"
+    container.appendChild(canvas)
 
-    const { arr, count, avg } = prepColors(colors);
+    const { arr, count, avg } = prepColors(colors)
 
     const uniforms = {
       iResolution: { value: [gl.drawingBufferWidth, gl.drawingBufferHeight, 1] },
@@ -4161,89 +4199,89 @@ const Lightfall = ({
       uOpacity: { value: opacity },
       uMouseEnabled: { value: mouseInteraction ? 1 : 0 },
       uMouseStrength: { value: mouseStrength },
-      uMouseRadius: { value: mouseRadius }
-    };
-
-    const program = new Program(gl, { vertex, fragment, uniforms });
-    programRef.current = program;
-
-    const geometry = new Triangle(gl);
-    geometryRef.current = geometry;
-    const mesh = new Mesh(gl, { geometry, program });
-    meshRef.current = mesh;
-
-    const resize = () => {
-      const rect = container.getBoundingClientRect();
-      renderer.setSize(rect.width, rect.height);
-      uniforms.iResolution.value = [gl.drawingBufferWidth, gl.drawingBufferHeight, 1];
-    };
-
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(container);
-
-    const onPointerMove = e => {
-      const rect = canvas.getBoundingClientRect();
-      const scale = renderer.dpr || 1;
-      const x = (e.clientX - rect.left) * scale;
-      const y = (rect.height - (e.clientY - rect.top)) * scale;
-      mouseTargetRef.current = [x, y];
-      if (mouseDampening <= 0) {
-        uniforms.iMouse.value = [x, y];
-      }
-    };
-    if (mouseInteraction) {
-      canvas.addEventListener('pointermove', onPointerMove);
+      uMouseRadius: { value: mouseRadius },
     }
 
-    const loop = t => {
-      rafRef.current = requestAnimationFrame(loop);
-      uniforms.iTime.value = t * 0.001;
+    const program = new Program(gl, { vertex, fragment, uniforms })
+    programRef.current = program
+
+    const geometry = new Triangle(gl)
+    geometryRef.current = geometry
+    const mesh = new Mesh(gl, { geometry, program })
+    meshRef.current = mesh
+
+    const resize = () => {
+      const rect = container.getBoundingClientRect()
+      renderer.setSize(rect.width, rect.height)
+      uniforms.iResolution.value = [gl.drawingBufferWidth, gl.drawingBufferHeight, 1]
+    }
+
+    resize()
+    const ro = new ResizeObserver(resize)
+    ro.observe(container)
+
+    const onPointerMove = (e) => {
+      const rect = canvas.getBoundingClientRect()
+      const scale = renderer.dpr || 1
+      const x = (e.clientX - rect.left) * scale
+      const y = (rect.height - (e.clientY - rect.top)) * scale
+      mouseTargetRef.current = [x, y]
+      if (mouseDampening <= 0) {
+        uniforms.iMouse.value = [x, y]
+      }
+    }
+    if (mouseInteraction) {
+      canvas.addEventListener("pointermove", onPointerMove)
+    }
+
+    const loop = (t) => {
+      rafRef.current = requestAnimationFrame(loop)
+      uniforms.iTime.value = t * 0.001
       if (mouseDampening > 0) {
-        if (!lastTimeRef.current) lastTimeRef.current = t;
-        const dt = (t - lastTimeRef.current) / 1000;
-        lastTimeRef.current = t;
-        const tau = Math.max(1e-4, mouseDampening);
-        let factor = 1 - Math.exp(-dt / tau);
-        if (factor > 1) factor = 1;
-        const target = mouseTargetRef.current;
-        const cur = uniforms.iMouse.value;
-        cur[0] += (target[0] - cur[0]) * factor;
-        cur[1] += (target[1] - cur[1]) * factor;
+        if (!lastTimeRef.current) lastTimeRef.current = t
+        const dt = (t - lastTimeRef.current) / 1000
+        lastTimeRef.current = t
+        const tau = Math.max(1e-4, mouseDampening)
+        let factor = 1 - Math.exp(-dt / tau)
+        if (factor > 1) factor = 1
+        const target = mouseTargetRef.current
+        const cur = uniforms.iMouse.value
+        cur[0] += (target[0] - cur[0]) * factor
+        cur[1] += (target[1] - cur[1]) * factor
       } else {
-        lastTimeRef.current = t;
+        lastTimeRef.current = t
       }
       if (!paused && programRef.current && meshRef.current) {
         try {
-          renderer.render({ scene: meshRef.current });
+          renderer.render({ scene: meshRef.current })
         } catch (e) {
-          console.error(e);
+          console.error(e)
         }
       }
-    };
-    rafRef.current = requestAnimationFrame(loop);
+    }
+    rafRef.current = requestAnimationFrame(loop)
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      if (mouseInteraction) canvas.removeEventListener('pointermove', onPointerMove);
-      ro.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      if (mouseInteraction) canvas.removeEventListener("pointermove", onPointerMove)
+      ro.disconnect()
       if (canvas.parentElement === container) {
-        container.removeChild(canvas);
+        container.removeChild(canvas)
       }
       const callIfFn = (obj, key) => {
-        if (obj && typeof obj[key] === 'function') {
-          obj[key].call(obj);
+        if (obj && typeof obj[key] === "function") {
+          obj[key].call(obj)
         }
-      };
-      callIfFn(programRef.current, 'remove');
-      callIfFn(geometryRef.current, 'remove');
-      callIfFn(meshRef.current, 'remove');
-      callIfFn(rendererRef.current, 'destroy');
-      programRef.current = null;
-      geometryRef.current = null;
-      meshRef.current = null;
-      rendererRef.current = null;
-    };
+      }
+      callIfFn(programRef.current, "remove")
+      callIfFn(geometryRef.current, "remove")
+      callIfFn(meshRef.current, "remove")
+      callIfFn(rendererRef.current, "destroy")
+      programRef.current = null
+      geometryRef.current = null
+      meshRef.current = null
+      rendererRef.current = null
+    }
   }, [
     dpr,
     paused,
@@ -4262,25 +4300,25 @@ const Lightfall = ({
     mouseInteraction,
     mouseStrength,
     mouseRadius,
-    mouseDampening
-  ]);
+    mouseDampening,
+  ])
 
   return (
     <div
       ref={containerRef}
-      className={`lightfall-container ${className ?? ''}`}
+      className={`lightfall-container ${className ?? ""}`}
       style={{
-        ...(mixBlendMode && { mixBlendMode })
+        ...(mixBlendMode && { mixBlendMode }),
       }}
     />
-  );
-};
+  )
+}
 
-export default Lightfall;
-
+export default Lightfall
 ```
 
 ### Component CSS
+
 ```css
 .lightfall-container {
   position: relative;
@@ -4288,10 +4326,10 @@ export default Lightfall;
   height: 100%;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -4306,18 +4344,21 @@ code: ## Integrate the <LiquidEther /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: LiquidEther
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three
 
 ---
 
 ### Usage Example
-```jsx
-import LiquidEther from './LiquidEther';
 
-<div style={{ width: '100%', height: 600, position: 'relative' }}>
+```jsx
+import LiquidEther from "./LiquidEther"
+
+;<div style={{ width: "100%", height: 600, position: "relative" }}>
   <LiquidEther
-    colors={[ '#5227FF', '#FF9FFC', '#B497CF' ]}
+    colors={["#5227FF", "#FF9FFC", "#B497CF"]}
     mouseForce={20}
     cursorSize={100}
     isViscous={false}
@@ -4337,33 +4378,35 @@ import LiquidEther from './LiquidEther';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| colors | string[] | ["#5227FF", "#FF9FFC", "#B497CF"] | Array of hex color stops used to build the velocity-to-color palette. |
-| mouseForce | number | 20 | Strength multiplier applied to mouse / touch movement when injecting velocity. |
-| cursorSize | number | 100 | Radius (in pixels at base resolution) of the force brush. |
-| resolution | number | 0.5 | Simulation texture scale relative to canvas size (lower = better performance, more blur). |
-| dt | number | 0.014 | Fixed simulation timestep used inside the advection / diffusion passes. |
-| BFECC | boolean | true | Enable BFECC advection (error-compensated) for crisper flow; disable for slight performance gain. |
-| isViscous | boolean | false | Toggle iterative viscosity solve (smoother, thicker motion when enabled). |
-| viscous | number | 30 | Viscosity coefficient used when isViscous is true. |
-| iterationsViscous | number | 32 | Number of Gauss-Seidel iterations for viscosity (higher = smoother, slower). |
-| iterationsPoisson | number | 32 | Number of pressure Poisson iterations to enforce incompressibility. |
-| isBounce | boolean | false | If true, shows bounce boundaries (velocity clamped at edges). |
-| autoDemo | boolean | true | Enable idle auto-driving of the pointer when no user interaction. |
-| autoSpeed | number | 0.5 | Speed (normalized units/sec) for auto pointer motion. |
-| autoIntensity | number | 2.2 | Multiplier applied to velocity delta while in auto mode. |
-| takeoverDuration | number | 0.25 | Seconds to interpolate from auto pointer to real cursor when user moves mouse. |
-| autoResumeDelay | number | 1000 | Milliseconds of inactivity before auto mode resumes. |
-| autoRampDuration | number | 0.6 | Seconds to ramp auto movement speed from 0 to full after activation. |
-| className | string | '' | Optional class for the root container. |
-| style | React.CSSProperties | {} | Inline styles applied to the root container. |
+
+| Prop              | Type                | Default                           | Description                                                                                       |
+| ----------------- | ------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------- |
+| colors            | string[]            | ["#5227FF", "#FF9FFC", "#B497CF"] | Array of hex color stops used to build the velocity-to-color palette.                             |
+| mouseForce        | number              | 20                                | Strength multiplier applied to mouse / touch movement when injecting velocity.                    |
+| cursorSize        | number              | 100                               | Radius (in pixels at base resolution) of the force brush.                                         |
+| resolution        | number              | 0.5                               | Simulation texture scale relative to canvas size (lower = better performance, more blur).         |
+| dt                | number              | 0.014                             | Fixed simulation timestep used inside the advection / diffusion passes.                           |
+| BFECC             | boolean             | true                              | Enable BFECC advection (error-compensated) for crisper flow; disable for slight performance gain. |
+| isViscous         | boolean             | false                             | Toggle iterative viscosity solve (smoother, thicker motion when enabled).                         |
+| viscous           | number              | 30                                | Viscosity coefficient used when isViscous is true.                                                |
+| iterationsViscous | number              | 32                                | Number of Gauss-Seidel iterations for viscosity (higher = smoother, slower).                      |
+| iterationsPoisson | number              | 32                                | Number of pressure Poisson iterations to enforce incompressibility.                               |
+| isBounce          | boolean             | false                             | If true, shows bounce boundaries (velocity clamped at edges).                                     |
+| autoDemo          | boolean             | true                              | Enable idle auto-driving of the pointer when no user interaction.                                 |
+| autoSpeed         | number              | 0.5                               | Speed (normalized units/sec) for auto pointer motion.                                             |
+| autoIntensity     | number              | 2.2                               | Multiplier applied to velocity delta while in auto mode.                                          |
+| takeoverDuration  | number              | 0.25                              | Seconds to interpolate from auto pointer to real cursor when user moves mouse.                    |
+| autoResumeDelay   | number              | 1000                              | Milliseconds of inactivity before auto mode resumes.                                              |
+| autoRampDuration  | number              | 0.6                               | Seconds to ramp auto movement speed from 0 to full after activation.                              |
+| className         | string              | ''                                | Optional class for the root container.                                                            |
+| style             | React.CSSProperties | {}                                | Inline styles applied to the root container.                                                      |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import './LiquidEther.css';
+import { useEffect, useRef } from "react"
+import * as THREE from "three"
+import "./LiquidEther.css"
 
 export default function LiquidEther({
   mouseForce = 20,
@@ -4376,314 +4419,314 @@ export default function LiquidEther({
   BFECC = true,
   resolution = 0.5,
   isBounce = false,
-  colors = ['#5227FF', '#FF9FFC', '#B497CF'],
+  colors = ["#5227FF", "#FF9FFC", "#B497CF"],
   style = {},
-  className = '',
+  className = "",
   autoDemo = true,
   autoSpeed = 0.5,
   autoIntensity = 2.2,
   takeoverDuration = 0.25,
   autoResumeDelay = 1000,
-  autoRampDuration = 0.6
+  autoRampDuration = 0.6,
 }) {
-  const mountRef = useRef(null);
-  const webglRef = useRef(null);
-  const resizeObserverRef = useRef(null);
-  const rafRef = useRef(null);
-  const intersectionObserverRef = useRef(null);
-  const isVisibleRef = useRef(true);
-  const resizeRafRef = useRef(null);
+  const mountRef = useRef(null)
+  const webglRef = useRef(null)
+  const resizeObserverRef = useRef(null)
+  const rafRef = useRef(null)
+  const intersectionObserverRef = useRef(null)
+  const isVisibleRef = useRef(true)
+  const resizeRafRef = useRef(null)
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    if (!mountRef.current) return
 
     function makePaletteTexture(stops) {
-      let arr;
+      let arr
       if (Array.isArray(stops) && stops.length > 0) {
         if (stops.length === 1) {
-          arr = [stops[0], stops[0]];
+          arr = [stops[0], stops[0]]
         } else {
-          arr = stops;
+          arr = stops
         }
       } else {
-        arr = ['#ffffff', '#ffffff'];
+        arr = ["#ffffff", "#ffffff"]
       }
-      const w = arr.length;
-      const data = new Uint8Array(w * 4);
+      const w = arr.length
+      const data = new Uint8Array(w * 4)
       for (let i = 0; i < w; i++) {
-        const c = new THREE.Color(arr[i]);
-        data[i * 4 + 0] = Math.round(c.r * 255);
-        data[i * 4 + 1] = Math.round(c.g * 255);
-        data[i * 4 + 2] = Math.round(c.b * 255);
-        data[i * 4 + 3] = 255;
+        const c = new THREE.Color(arr[i])
+        data[i * 4 + 0] = Math.round(c.r * 255)
+        data[i * 4 + 1] = Math.round(c.g * 255)
+        data[i * 4 + 2] = Math.round(c.b * 255)
+        data[i * 4 + 3] = 255
       }
-      const tex = new THREE.DataTexture(data, w, 1, THREE.RGBAFormat);
-      tex.magFilter = THREE.LinearFilter;
-      tex.minFilter = THREE.LinearFilter;
-      tex.wrapS = THREE.ClampToEdgeWrapping;
-      tex.wrapT = THREE.ClampToEdgeWrapping;
-      tex.generateMipmaps = false;
-      tex.needsUpdate = true;
-      return tex;
+      const tex = new THREE.DataTexture(data, w, 1, THREE.RGBAFormat)
+      tex.magFilter = THREE.LinearFilter
+      tex.minFilter = THREE.LinearFilter
+      tex.wrapS = THREE.ClampToEdgeWrapping
+      tex.wrapT = THREE.ClampToEdgeWrapping
+      tex.generateMipmaps = false
+      tex.needsUpdate = true
+      return tex
     }
 
-    const paletteTex = makePaletteTexture(colors);
-    const bgVec4 = new THREE.Vector4(0, 0, 0, 0); // always transparent
+    const paletteTex = makePaletteTexture(colors)
+    const bgVec4 = new THREE.Vector4(0, 0, 0, 0) // always transparent
 
     class CommonClass {
       constructor() {
-        this.width = 0;
-        this.height = 0;
-        this.aspect = 1;
-        this.pixelRatio = 1;
-        this.isMobile = false;
-        this.breakpoint = 768;
-        this.fboWidth = null;
-        this.fboHeight = null;
-        this.time = 0;
-        this.delta = 0;
-        this.container = null;
-        this.renderer = null;
-        this.clock = null;
+        this.width = 0
+        this.height = 0
+        this.aspect = 1
+        this.pixelRatio = 1
+        this.isMobile = false
+        this.breakpoint = 768
+        this.fboWidth = null
+        this.fboHeight = null
+        this.time = 0
+        this.delta = 0
+        this.container = null
+        this.renderer = null
+        this.clock = null
       }
       init(container) {
-        this.container = container;
-        this.pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-        this.resize();
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        this.renderer.autoClear = false;
-        this.renderer.setClearColor(new THREE.Color(0x000000), 0);
-        this.renderer.setPixelRatio(this.pixelRatio);
-        this.renderer.setSize(this.width, this.height);
-        this.renderer.domElement.style.width = '100%';
-        this.renderer.domElement.style.height = '100%';
-        this.renderer.domElement.style.display = 'block';
-        this.clock = new THREE.Clock();
-        this.clock.start();
+        this.container = container
+        this.pixelRatio = Math.min(window.devicePixelRatio || 1, 2)
+        this.resize()
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+        this.renderer.autoClear = false
+        this.renderer.setClearColor(new THREE.Color(0x000000), 0)
+        this.renderer.setPixelRatio(this.pixelRatio)
+        this.renderer.setSize(this.width, this.height)
+        this.renderer.domElement.style.width = "100%"
+        this.renderer.domElement.style.height = "100%"
+        this.renderer.domElement.style.display = "block"
+        this.clock = new THREE.Clock()
+        this.clock.start()
       }
       resize() {
-        if (!this.container) return;
-        const rect = this.container.getBoundingClientRect();
-        this.width = Math.max(1, Math.floor(rect.width));
-        this.height = Math.max(1, Math.floor(rect.height));
-        this.aspect = this.width / this.height;
-        if (this.renderer) this.renderer.setSize(this.width, this.height, false);
+        if (!this.container) return
+        const rect = this.container.getBoundingClientRect()
+        this.width = Math.max(1, Math.floor(rect.width))
+        this.height = Math.max(1, Math.floor(rect.height))
+        this.aspect = this.width / this.height
+        if (this.renderer) this.renderer.setSize(this.width, this.height, false)
       }
       update() {
-        this.delta = this.clock.getDelta();
-        this.time += this.delta;
+        this.delta = this.clock.getDelta()
+        this.time += this.delta
       }
     }
-    const Common = new CommonClass();
+    const Common = new CommonClass()
 
     class MouseClass {
       constructor() {
-        this.mouseMoved = false;
-        this.coords = new THREE.Vector2();
-        this.coords_old = new THREE.Vector2();
-        this.diff = new THREE.Vector2();
-        this.timer = null;
-        this.container = null;
-        this.docTarget = null;
-        this.listenerTarget = null;
-        this.isHoverInside = false;
-        this.hasUserControl = false;
-        this.isAutoActive = false;
-        this.autoIntensity = 2.0;
-        this.takeoverActive = false;
-        this.takeoverStartTime = 0;
-        this.takeoverDuration = 0.25;
-        this.takeoverFrom = new THREE.Vector2();
-        this.takeoverTo = new THREE.Vector2();
-        this.onInteract = null;
-        this._onMouseMove = this.onDocumentMouseMove.bind(this);
-        this._onTouchStart = this.onDocumentTouchStart.bind(this);
-        this._onTouchMove = this.onDocumentTouchMove.bind(this);
-        this._onTouchEnd = this.onTouchEnd.bind(this);
-        this._onDocumentLeave = this.onDocumentLeave.bind(this);
+        this.mouseMoved = false
+        this.coords = new THREE.Vector2()
+        this.coords_old = new THREE.Vector2()
+        this.diff = new THREE.Vector2()
+        this.timer = null
+        this.container = null
+        this.docTarget = null
+        this.listenerTarget = null
+        this.isHoverInside = false
+        this.hasUserControl = false
+        this.isAutoActive = false
+        this.autoIntensity = 2.0
+        this.takeoverActive = false
+        this.takeoverStartTime = 0
+        this.takeoverDuration = 0.25
+        this.takeoverFrom = new THREE.Vector2()
+        this.takeoverTo = new THREE.Vector2()
+        this.onInteract = null
+        this._onMouseMove = this.onDocumentMouseMove.bind(this)
+        this._onTouchStart = this.onDocumentTouchStart.bind(this)
+        this._onTouchMove = this.onDocumentTouchMove.bind(this)
+        this._onTouchEnd = this.onTouchEnd.bind(this)
+        this._onDocumentLeave = this.onDocumentLeave.bind(this)
       }
       init(container) {
-        this.container = container;
-        this.docTarget = container.ownerDocument || null;
+        this.container = container
+        this.docTarget = container.ownerDocument || null
         const defaultView =
-          (this.docTarget && this.docTarget.defaultView) || (typeof window !== 'undefined' ? window : null);
-        if (!defaultView) return;
-        this.listenerTarget = defaultView;
-        this.listenerTarget.addEventListener('mousemove', this._onMouseMove);
-        this.listenerTarget.addEventListener('touchstart', this._onTouchStart, { passive: true });
-        this.listenerTarget.addEventListener('touchmove', this._onTouchMove, { passive: true });
-        this.listenerTarget.addEventListener('touchend', this._onTouchEnd);
+          (this.docTarget && this.docTarget.defaultView) || (typeof window !== "undefined" ? window : null)
+        if (!defaultView) return
+        this.listenerTarget = defaultView
+        this.listenerTarget.addEventListener("mousemove", this._onMouseMove)
+        this.listenerTarget.addEventListener("touchstart", this._onTouchStart, { passive: true })
+        this.listenerTarget.addEventListener("touchmove", this._onTouchMove, { passive: true })
+        this.listenerTarget.addEventListener("touchend", this._onTouchEnd)
         if (this.docTarget) {
-          this.docTarget.addEventListener('mouseleave', this._onDocumentLeave);
+          this.docTarget.addEventListener("mouseleave", this._onDocumentLeave)
         }
       }
       dispose() {
         if (this.listenerTarget) {
-          this.listenerTarget.removeEventListener('mousemove', this._onMouseMove);
-          this.listenerTarget.removeEventListener('touchstart', this._onTouchStart);
-          this.listenerTarget.removeEventListener('touchmove', this._onTouchMove);
-          this.listenerTarget.removeEventListener('touchend', this._onTouchEnd);
+          this.listenerTarget.removeEventListener("mousemove", this._onMouseMove)
+          this.listenerTarget.removeEventListener("touchstart", this._onTouchStart)
+          this.listenerTarget.removeEventListener("touchmove", this._onTouchMove)
+          this.listenerTarget.removeEventListener("touchend", this._onTouchEnd)
         }
         if (this.docTarget) {
-          this.docTarget.removeEventListener('mouseleave', this._onDocumentLeave);
+          this.docTarget.removeEventListener("mouseleave", this._onDocumentLeave)
         }
-        this.listenerTarget = null;
-        this.docTarget = null;
-        this.container = null;
+        this.listenerTarget = null
+        this.docTarget = null
+        this.container = null
       }
       isPointInside(clientX, clientY) {
-        if (!this.container) return false;
-        const rect = this.container.getBoundingClientRect();
-        if (rect.width === 0 || rect.height === 0) return false;
-        return clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
+        if (!this.container) return false
+        const rect = this.container.getBoundingClientRect()
+        if (rect.width === 0 || rect.height === 0) return false
+        return clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom
       }
       updateHoverState(clientX, clientY) {
-        this.isHoverInside = this.isPointInside(clientX, clientY);
-        return this.isHoverInside;
+        this.isHoverInside = this.isPointInside(clientX, clientY)
+        return this.isHoverInside
       }
       setCoords(x, y) {
-        if (!this.container) return;
-        if (this.timer) window.clearTimeout(this.timer);
-        const rect = this.container.getBoundingClientRect();
-        if (rect.width === 0 || rect.height === 0) return;
-        const nx = (x - rect.left) / rect.width;
-        const ny = (y - rect.top) / rect.height;
-        this.coords.set(nx * 2 - 1, -(ny * 2 - 1));
-        this.mouseMoved = true;
+        if (!this.container) return
+        if (this.timer) window.clearTimeout(this.timer)
+        const rect = this.container.getBoundingClientRect()
+        if (rect.width === 0 || rect.height === 0) return
+        const nx = (x - rect.left) / rect.width
+        const ny = (y - rect.top) / rect.height
+        this.coords.set(nx * 2 - 1, -(ny * 2 - 1))
+        this.mouseMoved = true
         this.timer = window.setTimeout(() => {
-          this.mouseMoved = false;
-        }, 100);
+          this.mouseMoved = false
+        }, 100)
       }
       setNormalized(nx, ny) {
-        this.coords.set(nx, ny);
-        this.mouseMoved = true;
+        this.coords.set(nx, ny)
+        this.mouseMoved = true
       }
       onDocumentMouseMove(event) {
-        if (!this.updateHoverState(event.clientX, event.clientY)) return;
-        if (this.onInteract) this.onInteract();
+        if (!this.updateHoverState(event.clientX, event.clientY)) return
+        if (this.onInteract) this.onInteract()
         if (this.isAutoActive && !this.hasUserControl && !this.takeoverActive) {
-          if (!this.container) return;
-          const rect = this.container.getBoundingClientRect();
-          if (rect.width === 0 || rect.height === 0) return;
-          const nx = (event.clientX - rect.left) / rect.width;
-          const ny = (event.clientY - rect.top) / rect.height;
-          this.takeoverFrom.copy(this.coords);
-          this.takeoverTo.set(nx * 2 - 1, -(ny * 2 - 1));
-          this.takeoverStartTime = performance.now();
-          this.takeoverActive = true;
-          this.hasUserControl = true;
-          this.isAutoActive = false;
-          return;
+          if (!this.container) return
+          const rect = this.container.getBoundingClientRect()
+          if (rect.width === 0 || rect.height === 0) return
+          const nx = (event.clientX - rect.left) / rect.width
+          const ny = (event.clientY - rect.top) / rect.height
+          this.takeoverFrom.copy(this.coords)
+          this.takeoverTo.set(nx * 2 - 1, -(ny * 2 - 1))
+          this.takeoverStartTime = performance.now()
+          this.takeoverActive = true
+          this.hasUserControl = true
+          this.isAutoActive = false
+          return
         }
-        this.setCoords(event.clientX, event.clientY);
-        this.hasUserControl = true;
+        this.setCoords(event.clientX, event.clientY)
+        this.hasUserControl = true
       }
       onDocumentTouchStart(event) {
-        if (event.touches.length !== 1) return;
-        const t = event.touches[0];
-        if (!this.updateHoverState(t.clientX, t.clientY)) return;
-        if (this.onInteract) this.onInteract();
-        this.setCoords(t.clientX, t.clientY);
-        this.hasUserControl = true;
+        if (event.touches.length !== 1) return
+        const t = event.touches[0]
+        if (!this.updateHoverState(t.clientX, t.clientY)) return
+        if (this.onInteract) this.onInteract()
+        this.setCoords(t.clientX, t.clientY)
+        this.hasUserControl = true
       }
       onDocumentTouchMove(event) {
-        if (event.touches.length !== 1) return;
-        const t = event.touches[0];
-        if (!this.updateHoverState(t.clientX, t.clientY)) return;
-        if (this.onInteract) this.onInteract();
-        this.setCoords(t.clientX, t.clientY);
+        if (event.touches.length !== 1) return
+        const t = event.touches[0]
+        if (!this.updateHoverState(t.clientX, t.clientY)) return
+        if (this.onInteract) this.onInteract()
+        this.setCoords(t.clientX, t.clientY)
       }
       onTouchEnd() {
-        this.isHoverInside = false;
+        this.isHoverInside = false
       }
       onDocumentLeave() {
-        this.isHoverInside = false;
+        this.isHoverInside = false
       }
       update() {
         if (this.takeoverActive) {
-          const t = (performance.now() - this.takeoverStartTime) / (this.takeoverDuration * 1000);
+          const t = (performance.now() - this.takeoverStartTime) / (this.takeoverDuration * 1000)
           if (t >= 1) {
-            this.takeoverActive = false;
-            this.coords.copy(this.takeoverTo);
-            this.coords_old.copy(this.coords);
-            this.diff.set(0, 0);
+            this.takeoverActive = false
+            this.coords.copy(this.takeoverTo)
+            this.coords_old.copy(this.coords)
+            this.diff.set(0, 0)
           } else {
-            const k = t * t * (3 - 2 * t);
-            this.coords.copy(this.takeoverFrom).lerp(this.takeoverTo, k);
+            const k = t * t * (3 - 2 * t)
+            this.coords.copy(this.takeoverFrom).lerp(this.takeoverTo, k)
           }
         }
-        this.diff.subVectors(this.coords, this.coords_old);
-        this.coords_old.copy(this.coords);
-        if (this.coords_old.x === 0 && this.coords_old.y === 0) this.diff.set(0, 0);
-        if (this.isAutoActive && !this.takeoverActive) this.diff.multiplyScalar(this.autoIntensity);
+        this.diff.subVectors(this.coords, this.coords_old)
+        this.coords_old.copy(this.coords)
+        if (this.coords_old.x === 0 && this.coords_old.y === 0) this.diff.set(0, 0)
+        if (this.isAutoActive && !this.takeoverActive) this.diff.multiplyScalar(this.autoIntensity)
       }
     }
-    const Mouse = new MouseClass();
+    const Mouse = new MouseClass()
 
     class AutoDriver {
       constructor(mouse, manager, opts) {
-        this.mouse = mouse;
-        this.manager = manager;
-        this.enabled = opts.enabled;
-        this.speed = opts.speed; // normalized units/sec
-        this.resumeDelay = opts.resumeDelay || 3000; // ms
-        this.rampDurationMs = (opts.rampDuration || 0) * 1000;
-        this.active = false;
-        this.current = new THREE.Vector2(0, 0);
-        this.target = new THREE.Vector2();
-        this.lastTime = performance.now();
-        this.activationTime = 0;
-        this.margin = 0.2;
-        this._tmpDir = new THREE.Vector2(); // reuse temp vector to avoid per-frame alloc
-        this.pickNewTarget();
+        this.mouse = mouse
+        this.manager = manager
+        this.enabled = opts.enabled
+        this.speed = opts.speed // normalized units/sec
+        this.resumeDelay = opts.resumeDelay || 3000 // ms
+        this.rampDurationMs = (opts.rampDuration || 0) * 1000
+        this.active = false
+        this.current = new THREE.Vector2(0, 0)
+        this.target = new THREE.Vector2()
+        this.lastTime = performance.now()
+        this.activationTime = 0
+        this.margin = 0.2
+        this._tmpDir = new THREE.Vector2() // reuse temp vector to avoid per-frame alloc
+        this.pickNewTarget()
       }
       pickNewTarget() {
-        const r = Math.random;
-        this.target.set((r() * 2 - 1) * (1 - this.margin), (r() * 2 - 1) * (1 - this.margin));
+        const r = Math.random
+        this.target.set((r() * 2 - 1) * (1 - this.margin), (r() * 2 - 1) * (1 - this.margin))
       }
       forceStop() {
-        this.active = false;
-        this.mouse.isAutoActive = false;
+        this.active = false
+        this.mouse.isAutoActive = false
       }
       update() {
-        if (!this.enabled) return;
-        const now = performance.now();
-        const idle = now - this.manager.lastUserInteraction;
+        if (!this.enabled) return
+        const now = performance.now()
+        const idle = now - this.manager.lastUserInteraction
         if (idle < this.resumeDelay) {
-          if (this.active) this.forceStop();
-          return;
+          if (this.active) this.forceStop()
+          return
         }
         if (this.mouse.isHoverInside) {
-          if (this.active) this.forceStop();
-          return;
+          if (this.active) this.forceStop()
+          return
         }
         if (!this.active) {
-          this.active = true;
-          this.current.copy(this.mouse.coords);
-          this.lastTime = now;
-          this.activationTime = now;
+          this.active = true
+          this.current.copy(this.mouse.coords)
+          this.lastTime = now
+          this.activationTime = now
         }
-        if (!this.active) return;
-        this.mouse.isAutoActive = true;
-        let dtSec = (now - this.lastTime) / 1000;
-        this.lastTime = now;
-        if (dtSec > 0.2) dtSec = 0.016;
-        const dir = this._tmpDir.subVectors(this.target, this.current);
-        const dist = dir.length();
+        if (!this.active) return
+        this.mouse.isAutoActive = true
+        let dtSec = (now - this.lastTime) / 1000
+        this.lastTime = now
+        if (dtSec > 0.2) dtSec = 0.016
+        const dir = this._tmpDir.subVectors(this.target, this.current)
+        const dist = dir.length()
         if (dist < 0.01) {
-          this.pickNewTarget();
-          return;
+          this.pickNewTarget()
+          return
         }
-        dir.normalize();
-        let ramp = 1;
+        dir.normalize()
+        let ramp = 1
         if (this.rampDurationMs > 0) {
-          const t = Math.min(1, (now - this.activationTime) / this.rampDurationMs);
-          ramp = t * t * (3 - 2 * t);
+          const t = Math.min(1, (now - this.activationTime) / this.rampDurationMs)
+          ramp = t * t * (3 - 2 * t)
         }
-        const step = this.speed * dtSec * ramp;
-        const move = Math.min(step, dist);
-        this.current.addScaledVector(dir, move);
-        this.mouse.setNormalized(this.current.x, this.current.y);
+        const step = this.speed * dtSec * ramp
+        const move = Math.min(step, dist)
+        this.current.addScaledVector(dir, move)
+        this.mouse.setNormalized(this.current.x, this.current.y)
       }
     }
 
@@ -4700,7 +4743,7 @@ export default function LiquidEther({
   uv = vec2(0.5)+(pos.xy)*0.5;
   gl_Position = vec4(pos, 1.0);
 }
-`;
+`
     const line_vert = `
   attribute vec3 position;
   uniform vec2 px;
@@ -4714,7 +4757,7 @@ export default function LiquidEther({
   pos.xy *= n;
   gl_Position = vec4(pos, 1.0);
 }
-`;
+`
     const mouse_vert = `
     precision highp float;
     attribute vec3 position;
@@ -4728,7 +4771,7 @@ export default function LiquidEther({
     vUv = uv;
     gl_Position = vec4(pos, 0.0, 1.0);
 }
-`;
+`
     const advection_frag = `
     precision highp float;
     uniform sampler2D velocity;
@@ -4758,7 +4801,7 @@ export default function LiquidEther({
         gl_FragColor = vec4(newVel2, 0.0, 0.0);
     }
 }
-`;
+`
     const color_frag = `
     precision highp float;
     uniform sampler2D velocity;
@@ -4773,7 +4816,7 @@ export default function LiquidEther({
     float outA = mix(bgColor.a, 1.0, lenv);
     gl_FragColor = vec4(outRGB, outA);
 }
-`;
+`
     const divergence_frag = `
     precision highp float;
     uniform sampler2D velocity;
@@ -4788,7 +4831,7 @@ export default function LiquidEther({
     float divergence = (x1 - x0 + y1 - y0) / 2.0;
     gl_FragColor = vec4(divergence / dt);
 }
-`;
+`
     const externalForce_frag = `
     precision highp float;
     uniform vec2 force;
@@ -4802,7 +4845,7 @@ export default function LiquidEther({
     d *= d;
     gl_FragColor = vec4(force * d, 0.0, 1.0);
 }
-`;
+`
     const poisson_frag = `
     precision highp float;
     uniform sampler2D pressure;
@@ -4818,7 +4861,7 @@ export default function LiquidEther({
     float newP = (p0 + p1 + p2 + p3) / 4.0 - div;
     gl_FragColor = vec4(newP);
 }
-`;
+`
     const pressure_frag = `
     precision highp float;
     uniform sampler2D pressure;
@@ -4837,7 +4880,7 @@ export default function LiquidEther({
     v = v - gradP * dt;
     gl_FragColor = vec4(v, 0.0, 1.0);
 }
-`;
+`
     const viscous_frag = `
     precision highp float;
     uniform sampler2D velocity;
@@ -4856,32 +4899,32 @@ export default function LiquidEther({
     newv /= 4.0 * (1.0 + v * dt);
     gl_FragColor = vec4(newv, 0.0, 0.0);
 }
-`;
+`
 
     class ShaderPass {
       constructor(props) {
-        this.props = props || {};
-        this.uniforms = this.props.material?.uniforms;
-        this.scene = null;
-        this.camera = null;
-        this.material = null;
-        this.geometry = null;
-        this.plane = null;
+        this.props = props || {}
+        this.uniforms = this.props.material?.uniforms
+        this.scene = null
+        this.camera = null
+        this.material = null
+        this.geometry = null
+        this.plane = null
       }
       init() {
-        this.scene = new THREE.Scene();
-        this.camera = new THREE.Camera();
+        this.scene = new THREE.Scene()
+        this.camera = new THREE.Camera()
         if (this.uniforms) {
-          this.material = new THREE.RawShaderMaterial(this.props.material);
-          this.geometry = new THREE.PlaneGeometry(2.0, 2.0);
-          this.plane = new THREE.Mesh(this.geometry, this.material);
-          this.scene.add(this.plane);
+          this.material = new THREE.RawShaderMaterial(this.props.material)
+          this.geometry = new THREE.PlaneGeometry(2.0, 2.0)
+          this.plane = new THREE.Mesh(this.geometry, this.material)
+          this.scene.add(this.plane)
         }
       }
       update() {
-        Common.renderer.setRenderTarget(this.props.output || null);
-        Common.renderer.render(this.scene, this.camera);
-        Common.renderer.setRenderTarget(null);
+        Common.renderer.setRenderTarget(this.props.output || null)
+        Common.renderer.render(this.scene, this.camera)
+        Common.renderer.setRenderTarget(null)
       }
     }
 
@@ -4897,48 +4940,48 @@ export default function LiquidEther({
               fboSize: { value: simProps.fboSize },
               velocity: { value: simProps.src.texture },
               dt: { value: simProps.dt },
-              isBFECC: { value: true }
-            }
+              isBFECC: { value: true },
+            },
           },
-          output: simProps.dst
-        });
-        this.uniforms = this.props.material.uniforms;
-        this.init();
+          output: simProps.dst,
+        })
+        this.uniforms = this.props.material.uniforms
+        this.init()
       }
       init() {
-        super.init();
-        this.createBoundary();
+        super.init()
+        this.createBoundary()
       }
       createBoundary() {
-        const boundaryG = new THREE.BufferGeometry();
+        const boundaryG = new THREE.BufferGeometry()
         const vertices_boundary = new Float32Array([
-          -1, -1, 0, -1, 1, 0, -1, 1, 0, 1, 1, 0, 1, 1, 0, 1, -1, 0, 1, -1, 0, -1, -1, 0
-        ]);
-        boundaryG.setAttribute('position', new THREE.BufferAttribute(vertices_boundary, 3));
+          -1, -1, 0, -1, 1, 0, -1, 1, 0, 1, 1, 0, 1, 1, 0, 1, -1, 0, 1, -1, 0, -1, -1, 0,
+        ])
+        boundaryG.setAttribute("position", new THREE.BufferAttribute(vertices_boundary, 3))
         const boundaryM = new THREE.RawShaderMaterial({
           vertexShader: line_vert,
           fragmentShader: advection_frag,
-          uniforms: this.uniforms
-        });
-        this.line = new THREE.LineSegments(boundaryG, boundaryM);
-        this.scene.add(this.line);
+          uniforms: this.uniforms,
+        })
+        this.line = new THREE.LineSegments(boundaryG, boundaryM)
+        this.scene.add(this.line)
       }
       update({ dt, isBounce, BFECC }) {
-        this.uniforms.dt.value = dt;
-        this.line.visible = isBounce;
-        this.uniforms.isBFECC.value = BFECC;
-        super.update();
+        this.uniforms.dt.value = dt
+        this.line.visible = isBounce
+        this.uniforms.isBFECC.value = BFECC
+        super.update()
       }
     }
 
     class ExternalForce extends ShaderPass {
       constructor(simProps) {
-        super({ output: simProps.dst });
-        this.init(simProps);
+        super({ output: simProps.dst })
+        this.init(simProps)
       }
       init(simProps) {
-        super.init();
-        const mouseG = new THREE.PlaneGeometry(1, 1);
+        super.init()
+        const mouseG = new THREE.PlaneGeometry(1, 1)
         const mouseM = new THREE.RawShaderMaterial({
           vertexShader: mouse_vert,
           fragmentShader: externalForce_frag,
@@ -4948,30 +4991,30 @@ export default function LiquidEther({
             px: { value: simProps.cellScale },
             force: { value: new THREE.Vector2(0.0, 0.0) },
             center: { value: new THREE.Vector2(0.0, 0.0) },
-            scale: { value: new THREE.Vector2(simProps.cursor_size, simProps.cursor_size) }
-          }
-        });
-        this.mouse = new THREE.Mesh(mouseG, mouseM);
-        this.scene.add(this.mouse);
+            scale: { value: new THREE.Vector2(simProps.cursor_size, simProps.cursor_size) },
+          },
+        })
+        this.mouse = new THREE.Mesh(mouseG, mouseM)
+        this.scene.add(this.mouse)
       }
       update(props) {
-        const forceX = (Mouse.diff.x / 2) * props.mouse_force;
-        const forceY = (Mouse.diff.y / 2) * props.mouse_force;
-        const cursorSizeX = props.cursor_size * props.cellScale.x;
-        const cursorSizeY = props.cursor_size * props.cellScale.y;
+        const forceX = (Mouse.diff.x / 2) * props.mouse_force
+        const forceY = (Mouse.diff.y / 2) * props.mouse_force
+        const cursorSizeX = props.cursor_size * props.cellScale.x
+        const cursorSizeY = props.cursor_size * props.cellScale.y
         const centerX = Math.min(
           Math.max(Mouse.coords.x, -1 + cursorSizeX + props.cellScale.x * 2),
-          1 - cursorSizeX - props.cellScale.x * 2
-        );
+          1 - cursorSizeX - props.cellScale.x * 2,
+        )
         const centerY = Math.min(
           Math.max(Mouse.coords.y, -1 + cursorSizeY + props.cellScale.y * 2),
-          1 - cursorSizeY - props.cellScale.y * 2
-        );
-        const uniforms = this.mouse.material.uniforms;
-        uniforms.force.value.set(forceX, forceY);
-        uniforms.center.value.set(centerX, centerY);
-        uniforms.scale.value.set(props.cursor_size, props.cursor_size);
-        super.update();
+          1 - cursorSizeY - props.cellScale.y * 2,
+        )
+        const uniforms = this.mouse.material.uniforms
+        uniforms.force.value.set(forceX, forceY)
+        uniforms.center.value.set(centerX, centerY)
+        uniforms.scale.value.set(props.cursor_size, props.cursor_size)
+        super.update()
       }
     }
 
@@ -4987,32 +5030,32 @@ export default function LiquidEther({
               velocity_new: { value: simProps.dst_.texture },
               v: { value: simProps.viscous },
               px: { value: simProps.cellScale },
-              dt: { value: simProps.dt }
-            }
+              dt: { value: simProps.dt },
+            },
           },
           output: simProps.dst,
           output0: simProps.dst_,
-          output1: simProps.dst
-        });
-        this.init();
+          output1: simProps.dst,
+        })
+        this.init()
       }
       update({ viscous, iterations, dt }) {
-        let fbo_in, fbo_out;
-        this.uniforms.v.value = viscous;
+        let fbo_in, fbo_out
+        this.uniforms.v.value = viscous
         for (let i = 0; i < iterations; i++) {
           if (i % 2 === 0) {
-            fbo_in = this.props.output0;
-            fbo_out = this.props.output1;
+            fbo_in = this.props.output0
+            fbo_out = this.props.output1
           } else {
-            fbo_in = this.props.output1;
-            fbo_out = this.props.output0;
+            fbo_in = this.props.output1
+            fbo_out = this.props.output0
           }
-          this.uniforms.velocity_new.value = fbo_in.texture;
-          this.props.output = fbo_out;
-          this.uniforms.dt.value = dt;
-          super.update();
+          this.uniforms.velocity_new.value = fbo_in.texture
+          this.props.output = fbo_out
+          this.uniforms.dt.value = dt
+          super.update()
         }
-        return fbo_out;
+        return fbo_out
       }
     }
 
@@ -5026,16 +5069,16 @@ export default function LiquidEther({
               boundarySpace: { value: simProps.boundarySpace },
               velocity: { value: simProps.src.texture },
               px: { value: simProps.cellScale },
-              dt: { value: simProps.dt }
-            }
+              dt: { value: simProps.dt },
+            },
           },
-          output: simProps.dst
-        });
-        this.init();
+          output: simProps.dst,
+        })
+        this.init()
       }
       update({ vel }) {
-        this.uniforms.velocity.value = vel.texture;
-        super.update();
+        this.uniforms.velocity.value = vel.texture
+        super.update()
       }
     }
 
@@ -5049,30 +5092,30 @@ export default function LiquidEther({
               boundarySpace: { value: simProps.boundarySpace },
               pressure: { value: simProps.dst_.texture },
               divergence: { value: simProps.src.texture },
-              px: { value: simProps.cellScale }
-            }
+              px: { value: simProps.cellScale },
+            },
           },
           output: simProps.dst,
           output0: simProps.dst_,
-          output1: simProps.dst
-        });
-        this.init();
+          output1: simProps.dst,
+        })
+        this.init()
       }
       update({ iterations }) {
-        let p_in, p_out;
+        let p_in, p_out
         for (let i = 0; i < iterations; i++) {
           if (i % 2 === 0) {
-            p_in = this.props.output0;
-            p_out = this.props.output1;
+            p_in = this.props.output0
+            p_out = this.props.output1
           } else {
-            p_in = this.props.output1;
-            p_out = this.props.output0;
+            p_in = this.props.output1
+            p_out = this.props.output0
           }
-          this.uniforms.pressure.value = p_in.texture;
-          this.props.output = p_out;
-          super.update();
+          this.uniforms.pressure.value = p_in.texture
+          this.props.output = p_out
+          super.update()
         }
-        return p_out;
+        return p_out
       }
     }
 
@@ -5087,17 +5130,17 @@ export default function LiquidEther({
               pressure: { value: simProps.src_p.texture },
               velocity: { value: simProps.src_v.texture },
               px: { value: simProps.cellScale },
-              dt: { value: simProps.dt }
-            }
+              dt: { value: simProps.dt },
+            },
           },
-          output: simProps.dst
-        });
-        this.init();
+          output: simProps.dst,
+        })
+        this.init()
       }
       update({ vel, pressure }) {
-        this.uniforms.velocity.value = vel.texture;
-        this.uniforms.pressure.value = pressure.texture;
-        super.update();
+        this.uniforms.velocity.value = vel.texture
+        this.uniforms.pressure.value = pressure.texture
+        super.update()
       }
     }
 
@@ -5114,8 +5157,8 @@ export default function LiquidEther({
           dt: 0.014,
           isViscous: false,
           BFECC: true,
-          ...options
-        };
+          ...options,
+        }
         this.fbos = {
           vel_0: null,
           vel_1: null,
@@ -5123,24 +5166,24 @@ export default function LiquidEther({
           vel_viscous1: null,
           div: null,
           pressure_0: null,
-          pressure_1: null
-        };
-        this.fboSize = new THREE.Vector2();
-        this.cellScale = new THREE.Vector2();
-        this.boundarySpace = new THREE.Vector2();
-        this.init();
+          pressure_1: null,
+        }
+        this.fboSize = new THREE.Vector2()
+        this.cellScale = new THREE.Vector2()
+        this.boundarySpace = new THREE.Vector2()
+        this.init()
       }
       init() {
-        this.calcSize();
-        this.createAllFBO();
-        this.createShaderPass();
+        this.calcSize()
+        this.createAllFBO()
+        this.createShaderPass()
       }
       getFloatType() {
-        const isIOS = /(iPad|iPhone|iPod)/i.test(navigator.userAgent);
-        return isIOS ? THREE.HalfFloatType : THREE.FloatType;
+        const isIOS = /(iPad|iPhone|iPod)/i.test(navigator.userAgent)
+        return isIOS ? THREE.HalfFloatType : THREE.FloatType
       }
       createAllFBO() {
-        const type = this.getFloatType();
+        const type = this.getFloatType()
         const opts = {
           type,
           depthBuffer: false,
@@ -5148,10 +5191,10 @@ export default function LiquidEther({
           minFilter: THREE.LinearFilter,
           magFilter: THREE.LinearFilter,
           wrapS: THREE.ClampToEdgeWrapping,
-          wrapT: THREE.ClampToEdgeWrapping
-        };
+          wrapT: THREE.ClampToEdgeWrapping,
+        }
         for (let key in this.fbos) {
-          this.fbos[key] = new THREE.WebGLRenderTarget(this.fboSize.x, this.fboSize.y, opts);
+          this.fbos[key] = new THREE.WebGLRenderTarget(this.fboSize.x, this.fboSize.y, opts)
         }
       }
       createShaderPass() {
@@ -5160,13 +5203,13 @@ export default function LiquidEther({
           fboSize: this.fboSize,
           dt: this.options.dt,
           src: this.fbos.vel_0,
-          dst: this.fbos.vel_1
-        });
+          dst: this.fbos.vel_1,
+        })
         this.externalForce = new ExternalForce({
           cellScale: this.cellScale,
           cursor_size: this.options.cursor_size,
-          dst: this.fbos.vel_1
-        });
+          dst: this.fbos.vel_1,
+        })
         this.viscous = new Viscous({
           cellScale: this.cellScale,
           boundarySpace: this.boundarySpace,
@@ -5174,85 +5217,85 @@ export default function LiquidEther({
           src: this.fbos.vel_1,
           dst: this.fbos.vel_viscous1,
           dst_: this.fbos.vel_viscous0,
-          dt: this.options.dt
-        });
+          dt: this.options.dt,
+        })
         this.divergence = new Divergence({
           cellScale: this.cellScale,
           boundarySpace: this.boundarySpace,
           src: this.fbos.vel_viscous0,
           dst: this.fbos.div,
-          dt: this.options.dt
-        });
+          dt: this.options.dt,
+        })
         this.poisson = new Poisson({
           cellScale: this.cellScale,
           boundarySpace: this.boundarySpace,
           src: this.fbos.div,
           dst: this.fbos.pressure_1,
-          dst_: this.fbos.pressure_0
-        });
+          dst_: this.fbos.pressure_0,
+        })
         this.pressure = new Pressure({
           cellScale: this.cellScale,
           boundarySpace: this.boundarySpace,
           src_p: this.fbos.pressure_0,
           src_v: this.fbos.vel_viscous0,
           dst: this.fbos.vel_0,
-          dt: this.options.dt
-        });
+          dt: this.options.dt,
+        })
       }
       calcSize() {
-        const width = Math.max(1, Math.round(this.options.resolution * Common.width));
-        const height = Math.max(1, Math.round(this.options.resolution * Common.height));
-        const px_x = 1.0 / width;
-        const px_y = 1.0 / height;
-        this.cellScale.set(px_x, px_y);
-        this.fboSize.set(width, height);
+        const width = Math.max(1, Math.round(this.options.resolution * Common.width))
+        const height = Math.max(1, Math.round(this.options.resolution * Common.height))
+        const px_x = 1.0 / width
+        const px_y = 1.0 / height
+        this.cellScale.set(px_x, px_y)
+        this.fboSize.set(width, height)
       }
       resize() {
-        this.calcSize();
+        this.calcSize()
         for (let key in this.fbos) {
-          this.fbos[key].setSize(this.fboSize.x, this.fboSize.y);
+          this.fbos[key].setSize(this.fboSize.x, this.fboSize.y)
         }
       }
       update() {
         if (this.options.isBounce) {
-          this.boundarySpace.set(0, 0);
+          this.boundarySpace.set(0, 0)
         } else {
-          this.boundarySpace.copy(this.cellScale);
+          this.boundarySpace.copy(this.cellScale)
         }
         this.advection.update({
           dt: this.options.dt,
           isBounce: this.options.isBounce,
-          BFECC: this.options.BFECC
-        });
+          BFECC: this.options.BFECC,
+        })
         this.externalForce.update({
           cursor_size: this.options.cursor_size,
           mouse_force: this.options.mouse_force,
-          cellScale: this.cellScale
-        });
-        let vel = this.fbos.vel_1;
+          cellScale: this.cellScale,
+        })
+        let vel = this.fbos.vel_1
         if (this.options.isViscous) {
           vel = this.viscous.update({
             viscous: this.options.viscous,
             iterations: this.options.iterations_viscous,
-            dt: this.options.dt
-          });
+            dt: this.options.dt,
+          })
         }
-        this.divergence.update({ vel });
+        this.divergence.update({ vel })
         const pressure = this.poisson.update({
-          iterations: this.options.iterations_poisson
-        });
-        this.pressure.update({ vel, pressure });
+          iterations: this.options.iterations_poisson,
+        })
+        this.pressure.update({ vel, pressure })
       }
     }
 
     class Output {
       constructor() {
-        this.init();
+        this.init()
       }
       init() {
-        this.simulation = new Simulation();
-        this.scene = new THREE.Scene();
-        this.camera = new THREE.Camera();
+        this.simulation = new Simulation()
+        this.scene = new THREE.Scene()
+        this.camera = new THREE.Camera()
         this.output = new THREE.Mesh(
           new THREE.PlaneGeometry(2, 2),
           new THREE.RawShaderMaterial({
@@ -5264,112 +5307,112 @@ export default function LiquidEther({
               velocity: { value: this.simulation.fbos.vel_0.texture },
               boundarySpace: { value: new THREE.Vector2() },
               palette: { value: paletteTex },
-              bgColor: { value: bgVec4 }
-            }
-          })
-        );
-        this.scene.add(this.output);
+              bgColor: { value: bgVec4 },
+            },
+          }),
+        )
+        this.scene.add(this.output)
       }
       addScene(mesh) {
-        this.scene.add(mesh);
+        this.scene.add(mesh)
       }
       resize() {
-        this.simulation.resize();
+        this.simulation.resize()
       }
       render() {
-        Common.renderer.setRenderTarget(null);
-        Common.renderer.render(this.scene, this.camera);
+        Common.renderer.setRenderTarget(null)
+        Common.renderer.render(this.scene, this.camera)
       }
       update() {
-        this.simulation.update();
-        this.render();
+        this.simulation.update()
+        this.render()
       }
     }
 
     class WebGLManager {
       constructor(props) {
-        this.props = props;
-        Common.init(props.$wrapper);
-        Mouse.init(props.$wrapper);
-        Mouse.autoIntensity = props.autoIntensity;
-        Mouse.takeoverDuration = props.takeoverDuration;
-        this.lastUserInteraction = performance.now();
+        this.props = props
+        Common.init(props.$wrapper)
+        Mouse.init(props.$wrapper)
+        Mouse.autoIntensity = props.autoIntensity
+        Mouse.takeoverDuration = props.takeoverDuration
+        this.lastUserInteraction = performance.now()
         Mouse.onInteract = () => {
-          this.lastUserInteraction = performance.now();
-          if (this.autoDriver) this.autoDriver.forceStop();
-        };
+          this.lastUserInteraction = performance.now()
+          if (this.autoDriver) this.autoDriver.forceStop()
+        }
         this.autoDriver = new AutoDriver(Mouse, this, {
           enabled: props.autoDemo,
           speed: props.autoSpeed,
           resumeDelay: props.autoResumeDelay,
-          rampDuration: props.autoRampDuration
-        });
-        this.init();
-        this._loop = this.loop.bind(this);
-        this._resize = this.resize.bind(this);
-        window.addEventListener('resize', this._resize);
+          rampDuration: props.autoRampDuration,
+        })
+        this.init()
+        this._loop = this.loop.bind(this)
+        this._resize = this.resize.bind(this)
+        window.addEventListener("resize", this._resize)
         this._onVisibility = () => {
-          const hidden = document.hidden;
+          const hidden = document.hidden
           if (hidden) {
-            this.pause();
+            this.pause()
           } else if (isVisibleRef.current) {
-            this.start();
+            this.start()
           }
-        };
-        document.addEventListener('visibilitychange', this._onVisibility);
-        this.running = false;
+        }
+        document.addEventListener("visibilitychange", this._onVisibility)
+        this.running = false
       }
       init() {
-        this.props.$wrapper.prepend(Common.renderer.domElement);
-        this.output = new Output();
+        this.props.$wrapper.prepend(Common.renderer.domElement)
+        this.output = new Output()
       }
       resize() {
-        Common.resize();
-        this.output.resize();
+        Common.resize()
+        this.output.resize()
       }
       render() {
-        if (this.autoDriver) this.autoDriver.update();
-        Mouse.update();
-        Common.update();
-        this.output.update();
+        if (this.autoDriver) this.autoDriver.update()
+        Mouse.update()
+        Common.update()
+        this.output.update()
       }
       loop() {
-        if (!this.running) return; // safety
-        this.render();
-        rafRef.current = requestAnimationFrame(this._loop);
+        if (!this.running) return // safety
+        this.render()
+        rafRef.current = requestAnimationFrame(this._loop)
       }
       start() {
-        if (this.running) return;
-        this.running = true;
-        this._loop();
+        if (this.running) return
+        this.running = true
+        this._loop()
       }
       pause() {
-        this.running = false;
+        this.running = false
         if (rafRef.current) {
-          cancelAnimationFrame(rafRef.current);
-          rafRef.current = null;
+          cancelAnimationFrame(rafRef.current)
+          rafRef.current = null
         }
       }
       dispose() {
         try {
-          window.removeEventListener('resize', this._resize);
-          document.removeEventListener('visibilitychange', this._onVisibility);
-          Mouse.dispose();
+          window.removeEventListener("resize", this._resize)
+          document.removeEventListener("visibilitychange", this._onVisibility)
+          Mouse.dispose()
           if (Common.renderer) {
-            const canvas = Common.renderer.domElement;
-            if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
-            Common.renderer.dispose();
-            Common.renderer.forceContextLoss();
+            const canvas = Common.renderer.domElement
+            if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas)
+            Common.renderer.dispose()
+            Common.renderer.forceContextLoss()
           }
         } catch (e) {
-          void 0;
+          void 0
         }
       }
     }
 
-    const container = mountRef.current;
-    container.style.position = container.style.position || 'relative';
-    container.style.overflow = container.style.overflow || 'hidden';
+    const container = mountRef.current
+    container.style.position = container.style.position || "relative"
+    container.style.overflow = container.style.overflow || "hidden"
 
     const webgl = new WebGLManager({
       $wrapper: container,
@@ -5378,15 +5421,15 @@ export default function LiquidEther({
       autoIntensity,
       takeoverDuration,
       autoResumeDelay,
-      autoRampDuration
-    });
-    webglRef.current = webgl;
+      autoRampDuration,
+    })
+    webglRef.current = webgl
 
     const applyOptionsFromProps = () => {
-      if (!webglRef.current) return;
-      const sim = webglRef.current.output?.simulation;
-      if (!sim) return;
-      const prevRes = sim.options.resolution;
+      if (!webglRef.current) return
+      const sim = webglRef.current.output?.simulation
+      if (!sim) return
+      const prevRes = sim.options.resolution
       Object.assign(sim.options, {
         mouse_force: mouseForce,
         cursor_size: cursorSize,
@@ -5397,66 +5440,66 @@ export default function LiquidEther({
         dt,
         BFECC,
         resolution,
-        isBounce
-      });
+        isBounce,
+      })
       if (resolution !== prevRes) {
-        sim.resize();
+        sim.resize()
       }
-    };
-    applyOptionsFromProps();
+    }
+    applyOptionsFromProps()
 
-    webgl.start();
+    webgl.start()
 
     // IntersectionObserver to pause rendering when not visible
     const io = new IntersectionObserver(
-      entries => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting && entry.intersectionRatio > 0;
-        isVisibleRef.current = isVisible;
-        if (!webglRef.current) return;
+      (entries) => {
+        const entry = entries[0]
+        const isVisible = entry.isIntersecting && entry.intersectionRatio > 0
+        isVisibleRef.current = isVisible
+        if (!webglRef.current) return
         if (isVisible && !document.hidden) {
-          webglRef.current.start();
+          webglRef.current.start()
         } else {
-          webglRef.current.pause();
+          webglRef.current.pause()
         }
       },
-      { threshold: [0, 0.01, 0.1] }
-    );
-    io.observe(container);
-    intersectionObserverRef.current = io;
+      { threshold: [0, 0.01, 0.1] },
+    )
+    io.observe(container)
+    intersectionObserverRef.current = io
 
     const ro = new ResizeObserver(() => {
-      if (!webglRef.current) return;
-      if (resizeRafRef.current) cancelAnimationFrame(resizeRafRef.current);
+      if (!webglRef.current) return
+      if (resizeRafRef.current) cancelAnimationFrame(resizeRafRef.current)
       resizeRafRef.current = requestAnimationFrame(() => {
-        if (!webglRef.current) return;
-        webglRef.current.resize();
-      });
-    });
-    ro.observe(container);
-    resizeObserverRef.current = ro;
+        if (!webglRef.current) return
+        webglRef.current.resize()
+      })
+    })
+    ro.observe(container)
+    resizeObserverRef.current = ro
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
       if (resizeObserverRef.current) {
         try {
-          resizeObserverRef.current.disconnect();
+          resizeObserverRef.current.disconnect()
         } catch (e) {
-          void 0;
+          void 0
         }
       }
       if (intersectionObserverRef.current) {
         try {
-          intersectionObserverRef.current.disconnect();
+          intersectionObserverRef.current.disconnect()
         } catch (e) {
-          void 0;
+          void 0
         }
       }
       if (webglRef.current) {
-        webglRef.current.dispose();
+        webglRef.current.dispose()
       }
-      webglRef.current = null;
-    };
+      webglRef.current = null
+    }
   }, [
     BFECC,
     cursorSize,
@@ -5474,15 +5517,15 @@ export default function LiquidEther({
     autoIntensity,
     takeoverDuration,
     autoResumeDelay,
-    autoRampDuration
-  ]);
+    autoRampDuration,
+  ])
 
   useEffect(() => {
-    const webgl = webglRef.current;
-    if (!webgl) return;
-    const sim = webgl.output?.simulation;
-    if (!sim) return;
-    const prevRes = sim.options.resolution;
+    const webgl = webglRef.current
+    if (!webgl) return
+    const sim = webgl.output?.simulation
+    if (!sim) return
+    const prevRes = sim.options.resolution
     Object.assign(sim.options, {
       mouse_force: mouseForce,
       cursor_size: cursorSize,
@@ -5493,20 +5536,20 @@ export default function LiquidEther({
       dt,
       BFECC,
       resolution,
-      isBounce
-    });
+      isBounce,
+    })
     if (webgl.autoDriver) {
-      webgl.autoDriver.enabled = autoDemo;
-      webgl.autoDriver.speed = autoSpeed;
-      webgl.autoDriver.resumeDelay = autoResumeDelay;
-      webgl.autoDriver.rampDurationMs = autoRampDuration * 1000;
+      webgl.autoDriver.enabled = autoDemo
+      webgl.autoDriver.speed = autoSpeed
+      webgl.autoDriver.resumeDelay = autoResumeDelay
+      webgl.autoDriver.rampDurationMs = autoRampDuration * 1000
       if (webgl.autoDriver.mouse) {
-        webgl.autoDriver.mouse.autoIntensity = autoIntensity;
-        webgl.autoDriver.mouse.takeoverDuration = takeoverDuration;
+        webgl.autoDriver.mouse.autoIntensity = autoIntensity
+        webgl.autoDriver.mouse.takeoverDuration = takeoverDuration
       }
     }
     if (resolution !== prevRes) {
-      sim.resize();
+      sim.resize()
     }
   }, [
     mouseForce,
@@ -5524,15 +5567,15 @@ export default function LiquidEther({
     autoIntensity,
     takeoverDuration,
     autoResumeDelay,
-    autoRampDuration
-  ]);
+    autoRampDuration,
+  ])
 
-  return <div ref={mountRef} className={`liquid-ether-container ${className || ''}`} style={style} />;
+  return <div ref={mountRef} className={`liquid-ether-container ${className || ""}`} style={style} />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .liquid-ether-container {
   position: relative;
@@ -5541,10 +5584,10 @@ export default function LiquidEther({
   height: 100%;
   touch-action: none;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -5559,16 +5602,19 @@ code: ## Integrate the <Prism /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Prism
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Prism from './Prism';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import Prism from "./Prism"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Prism
     animationType="rotate"
     timeScale={0.5}
@@ -5584,34 +5630,36 @@ import Prism from './Prism';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| height | number | 3.5 | Apex height of the prism (world units). |
-| baseWidth | number | 5.5 | Total base width across X/Z (world units). |
-| animationType | "rotate" | "hover" | "3drotate" | "rotate" | Animation mode: shader wobble, pointer hover tilt, or full 3D rotation. |
-| glow | number | 1 | Glow/bleed intensity multiplier. |
-| offset | { x?: number; y?: number } | { x: 0, y: 0 } | Pixel offset within the canvas (x→right, y→down). |
-| noise | number | 0.5 | Film-grain noise amount added to final color (0 disables). |
-| transparent | boolean | true | Whether the canvas has an alpha channel (transparent background). |
-| scale | number | 3.6 | Overall screen-space scale of the prism (bigger = larger). |
-| hueShift | number | 0 | Hue rotation (radians) applied to final color. |
-| colorFrequency | number | 1 | Frequency of internal sine bands controlling color variation. |
-| hoverStrength | number | 2 | Sensitivity of hover tilt (pitch/yaw amplitude). |
-| inertia | number | 0.05 | Easing factor for hover (0..1, higher = snappier). |
-| bloom | number | 1 | Extra bloom factor layered on top of glow. |
-| suspendWhenOffscreen | boolean | false | Pause rendering when the element is not in the viewport. |
-| timeScale | number | 0.5 | Global time multiplier for animations (0=frozen, 1=normal). |
+
+| Prop                 | Type                       | Default        | Description                                                       |
+| -------------------- | -------------------------- | -------------- | ----------------------------------------------------------------- | -------- | ----------------------------------------------------------------------- |
+| height               | number                     | 3.5            | Apex height of the prism (world units).                           |
+| baseWidth            | number                     | 5.5            | Total base width across X/Z (world units).                        |
+| animationType        | "rotate"                   | "hover"        | "3drotate"                                                        | "rotate" | Animation mode: shader wobble, pointer hover tilt, or full 3D rotation. |
+| glow                 | number                     | 1              | Glow/bleed intensity multiplier.                                  |
+| offset               | { x?: number; y?: number } | { x: 0, y: 0 } | Pixel offset within the canvas (x→right, y→down).                 |
+| noise                | number                     | 0.5            | Film-grain noise amount added to final color (0 disables).        |
+| transparent          | boolean                    | true           | Whether the canvas has an alpha channel (transparent background). |
+| scale                | number                     | 3.6            | Overall screen-space scale of the prism (bigger = larger).        |
+| hueShift             | number                     | 0              | Hue rotation (radians) applied to final color.                    |
+| colorFrequency       | number                     | 1              | Frequency of internal sine bands controlling color variation.     |
+| hoverStrength        | number                     | 2              | Sensitivity of hover tilt (pitch/yaw amplitude).                  |
+| inertia              | number                     | 0.05           | Easing factor for hover (0..1, higher = snappier).                |
+| bloom                | number                     | 1              | Extra bloom factor layered on top of glow.                        |
+| suspendWhenOffscreen | boolean                    | false          | Pause rendering when the element is not in the viewport.          |
+| timeScale            | number                     | 0.5            | Global time multiplier for animations (0=frozen, 1=normal).       |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Triangle, Program, Mesh } from 'ogl';
-import './Prism.css';
+import { useEffect, useRef } from "react"
+import { Renderer, Triangle, Program, Mesh } from "ogl"
+import "./Prism.css"
 
 const Prism = ({
   height = 3.5,
   baseWidth = 5.5,
-  animationType = 'rotate',
+  animationType = "rotate",
   glow = 1,
   offset = { x: 0, y: 0 },
   noise = 0.5,
@@ -5623,59 +5671,59 @@ const Prism = ({
   inertia = 0.05,
   bloom = 1,
   suspendWhenOffscreen = false,
-  timeScale = 0.5
+  timeScale = 0.5,
 }) => {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
-    const H = Math.max(0.001, height);
-    const BW = Math.max(0.001, baseWidth);
-    const BASE_HALF = BW * 0.5;
-    const GLOW = Math.max(0.0, glow);
-    const NOISE = Math.max(0.0, noise);
-    const offX = offset?.x ?? 0;
-    const offY = offset?.y ?? 0;
-    const SAT = transparent ? 1.5 : 1;
-    const SCALE = Math.max(0.001, scale);
-    const HUE = hueShift || 0;
-    const CFREQ = Math.max(0.0, colorFrequency || 1);
-    const BLOOM = Math.max(0.0, bloom || 1);
-    const RSX = 1;
-    const RSY = 1;
-    const RSZ = 1;
-    const TS = Math.max(0, timeScale || 1);
-    const HOVSTR = Math.max(0, hoverStrength || 1);
-    const INERT = Math.max(0, Math.min(1, inertia || 0.12));
+    const H = Math.max(0.001, height)
+    const BW = Math.max(0.001, baseWidth)
+    const BASE_HALF = BW * 0.5
+    const GLOW = Math.max(0.0, glow)
+    const NOISE = Math.max(0.0, noise)
+    const offX = offset?.x ?? 0
+    const offY = offset?.y ?? 0
+    const SAT = transparent ? 1.5 : 1
+    const SCALE = Math.max(0.001, scale)
+    const HUE = hueShift || 0
+    const CFREQ = Math.max(0.0, colorFrequency || 1)
+    const BLOOM = Math.max(0.0, bloom || 1)
+    const RSX = 1
+    const RSY = 1
+    const RSZ = 1
+    const TS = Math.max(0, timeScale || 1)
+    const HOVSTR = Math.max(0, hoverStrength || 1)
+    const INERT = Math.max(0, Math.min(1, inertia || 0.12))
 
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const dpr = Math.min(2, window.devicePixelRatio || 1)
     const renderer = new Renderer({
       dpr,
       alpha: transparent,
-      antialias: false
-    });
-    const gl = renderer.gl;
-    gl.disable(gl.DEPTH_TEST);
-    gl.disable(gl.CULL_FACE);
-    gl.disable(gl.BLEND);
+      antialias: false,
+    })
+    const gl = renderer.gl
+    gl.disable(gl.DEPTH_TEST)
+    gl.disable(gl.CULL_FACE)
+    gl.disable(gl.BLEND)
 
     Object.assign(gl.canvas.style, {
-      position: 'absolute',
-      inset: '0',
-      width: '100%',
-      height: '100%',
-      display: 'block'
-    });
-    container.appendChild(gl.canvas);
+      position: "absolute",
+      inset: "0",
+      width: "100%",
+      height: "100%",
+      display: "block",
+    })
+    container.appendChild(gl.canvas)
 
     const vertex = /* glsl */ `
       attribute vec2 position;
       void main() {
         gl_Position = vec4(position, 0.0, 1.0);
       }
-    `;
+    `
 
     const fragment = /* glsl */ `
       precision highp float;
@@ -5792,11 +5840,11 @@ const Prism = ({
 
         gl_FragColor = vec4(col, o.a);
       }
-    `;
+    `
 
-    const geometry = new Triangle(gl);
-    const iResBuf = new Float32Array(2);
-    const offsetPxBuf = new Float32Array(2);
+    const geometry = new Triangle(gl)
+    const iResBuf = new Float32Array(2)
+    const offsetPxBuf = new Float32Array(2)
 
     const program = new Program(gl, {
       vertex,
@@ -5821,202 +5869,202 @@ const Prism = ({
         uInvHeight: { value: 1 / H },
         uMinAxis: { value: Math.min(BASE_HALF, H) },
         uPxScale: {
-          value: 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE)
+          value: 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE),
         },
-        uTimeScale: { value: TS }
-      }
-    });
-    const mesh = new Mesh(gl, { geometry, program });
+        uTimeScale: { value: TS },
+      },
+    })
+    const mesh = new Mesh(gl, { geometry, program })
 
     const resize = () => {
-      const w = container.clientWidth || 1;
-      const h = container.clientHeight || 1;
-      renderer.setSize(w, h);
-      iResBuf[0] = gl.drawingBufferWidth;
-      iResBuf[1] = gl.drawingBufferHeight;
-      offsetPxBuf[0] = offX * dpr;
-      offsetPxBuf[1] = offY * dpr;
-      program.uniforms.uPxScale.value = 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE);
-    };
-    const ro = new ResizeObserver(resize);
-    ro.observe(container);
-    resize();
+      const w = container.clientWidth || 1
+      const h = container.clientHeight || 1
+      renderer.setSize(w, h)
+      iResBuf[0] = gl.drawingBufferWidth
+      iResBuf[1] = gl.drawingBufferHeight
+      offsetPxBuf[0] = offX * dpr
+      offsetPxBuf[1] = offY * dpr
+      program.uniforms.uPxScale.value = 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE)
+    }
+    const ro = new ResizeObserver(resize)
+    ro.observe(container)
+    resize()
 
-    const rotBuf = new Float32Array(9);
+    const rotBuf = new Float32Array(9)
     const setMat3FromEuler = (yawY, pitchX, rollZ, out) => {
       const cy = Math.cos(yawY),
-        sy = Math.sin(yawY);
+        sy = Math.sin(yawY)
       const cx = Math.cos(pitchX),
-        sx = Math.sin(pitchX);
+        sx = Math.sin(pitchX)
       const cz = Math.cos(rollZ),
-        sz = Math.sin(rollZ);
-      const r00 = cy * cz + sy * sx * sz;
-      const r01 = -cy * sz + sy * sx * cz;
-      const r02 = sy * cx;
+        sz = Math.sin(rollZ)
+      const r00 = cy * cz + sy * sx * sz
+      const r01 = -cy * sz + sy * sx * cz
+      const r02 = sy * cx
 
-      const r10 = cx * sz;
-      const r11 = cx * cz;
-      const r12 = -sx;
+      const r10 = cx * sz
+      const r11 = cx * cz
+      const r12 = -sx
 
-      const r20 = -sy * cz + cy * sx * sz;
-      const r21 = sy * sz + cy * sx * cz;
-      const r22 = cy * cx;
+      const r20 = -sy * cz + cy * sx * sz
+      const r21 = sy * sz + cy * sx * cz
+      const r22 = cy * cx
 
-      out[0] = r00;
-      out[1] = r10;
-      out[2] = r20;
-      out[3] = r01;
-      out[4] = r11;
-      out[5] = r21;
-      out[6] = r02;
-      out[7] = r12;
-      out[8] = r22;
-      return out;
-    };
+      out[0] = r00
+      out[1] = r10
+      out[2] = r20
+      out[3] = r01
+      out[4] = r11
+      out[5] = r21
+      out[6] = r02
+      out[7] = r12
+      out[8] = r22
+      return out
+    }
 
-    const NOISE_IS_ZERO = NOISE < 1e-6;
-    let raf = 0;
-    const t0 = performance.now();
+    const NOISE_IS_ZERO = NOISE < 1e-6
+    let raf = 0
+    const t0 = performance.now()
     const startRAF = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(render);
-    };
+      if (raf) return
+      raf = requestAnimationFrame(render)
+    }
     const stopRAF = () => {
-      if (!raf) return;
-      cancelAnimationFrame(raf);
-      raf = 0;
-    };
+      if (!raf) return
+      cancelAnimationFrame(raf)
+      raf = 0
+    }
 
-    const rnd = () => Math.random();
-    const wX = (0.3 + rnd() * 0.6) * RSX;
-    const wY = (0.2 + rnd() * 0.7) * RSY;
-    const wZ = (0.1 + rnd() * 0.5) * RSZ;
-    const phX = rnd() * Math.PI * 2;
-    const phZ = rnd() * Math.PI * 2;
+    const rnd = () => Math.random()
+    const wX = (0.3 + rnd() * 0.6) * RSX
+    const wY = (0.2 + rnd() * 0.7) * RSY
+    const wZ = (0.1 + rnd() * 0.5) * RSZ
+    const phX = rnd() * Math.PI * 2
+    const phZ = rnd() * Math.PI * 2
 
     let yaw = 0,
       pitch = 0,
-      roll = 0;
+      roll = 0
     let targetYaw = 0,
-      targetPitch = 0;
-    const lerp = (a, b, t) => a + (b - a) * t;
+      targetPitch = 0
+    const lerp = (a, b, t) => a + (b - a) * t
 
-    const pointer = { x: 0, y: 0, inside: true };
-    const onMove = e => {
-      const ww = Math.max(1, window.innerWidth);
-      const wh = Math.max(1, window.innerHeight);
-      const cx = ww * 0.5;
-      const cy = wh * 0.5;
-      const nx = (e.clientX - cx) / (ww * 0.5);
-      const ny = (e.clientY - cy) / (wh * 0.5);
-      pointer.x = Math.max(-1, Math.min(1, nx));
-      pointer.y = Math.max(-1, Math.min(1, ny));
-      pointer.inside = true;
-    };
+    const pointer = { x: 0, y: 0, inside: true }
+    const onMove = (e) => {
+      const ww = Math.max(1, window.innerWidth)
+      const wh = Math.max(1, window.innerHeight)
+      const cx = ww * 0.5
+      const cy = wh * 0.5
+      const nx = (e.clientX - cx) / (ww * 0.5)
+      const ny = (e.clientY - cy) / (wh * 0.5)
+      pointer.x = Math.max(-1, Math.min(1, nx))
+      pointer.y = Math.max(-1, Math.min(1, ny))
+      pointer.inside = true
+    }
     const onLeave = () => {
-      pointer.inside = false;
-    };
+      pointer.inside = false
+    }
     const onBlur = () => {
-      pointer.inside = false;
-    };
-
-    let onPointerMove = null;
-    if (animationType === 'hover') {
-      onPointerMove = e => {
-        onMove(e);
-        startRAF();
-      };
-      window.addEventListener('pointermove', onPointerMove, { passive: true });
-      window.addEventListener('mouseleave', onLeave);
-      window.addEventListener('blur', onBlur);
-      program.uniforms.uUseBaseWobble.value = 0;
-    } else if (animationType === '3drotate') {
-      program.uniforms.uUseBaseWobble.value = 0;
-    } else {
-      program.uniforms.uUseBaseWobble.value = 1;
+      pointer.inside = false
     }
 
-    const render = t => {
-      const time = (t - t0) * 0.001;
-      program.uniforms.iTime.value = time;
+    let onPointerMove = null
+    if (animationType === "hover") {
+      onPointerMove = (e) => {
+        onMove(e)
+        startRAF()
+      }
+      window.addEventListener("pointermove", onPointerMove, { passive: true })
+      window.addEventListener("mouseleave", onLeave)
+      window.addEventListener("blur", onBlur)
+      program.uniforms.uUseBaseWobble.value = 0
+    } else if (animationType === "3drotate") {
+      program.uniforms.uUseBaseWobble.value = 0
+    } else {
+      program.uniforms.uUseBaseWobble.value = 1
+    }
 
-      let continueRAF = true;
+    const render = (t) => {
+      const time = (t - t0) * 0.001
+      program.uniforms.iTime.value = time
 
-      if (animationType === 'hover') {
-        const maxPitch = 0.6 * HOVSTR;
-        const maxYaw = 0.6 * HOVSTR;
-        targetYaw = (pointer.inside ? -pointer.x : 0) * maxYaw;
-        targetPitch = (pointer.inside ? pointer.y : 0) * maxPitch;
-        const prevYaw = yaw;
-        const prevPitch = pitch;
-        const prevRoll = roll;
-        yaw = lerp(prevYaw, targetYaw, INERT);
-        pitch = lerp(prevPitch, targetPitch, INERT);
-        roll = lerp(prevRoll, 0, 0.1);
-        program.uniforms.uRot.value = setMat3FromEuler(yaw, pitch, roll, rotBuf);
+      let continueRAF = true
+
+      if (animationType === "hover") {
+        const maxPitch = 0.6 * HOVSTR
+        const maxYaw = 0.6 * HOVSTR
+        targetYaw = (pointer.inside ? -pointer.x : 0) * maxYaw
+        targetPitch = (pointer.inside ? pointer.y : 0) * maxPitch
+        const prevYaw = yaw
+        const prevPitch = pitch
+        const prevRoll = roll
+        yaw = lerp(prevYaw, targetYaw, INERT)
+        pitch = lerp(prevPitch, targetPitch, INERT)
+        roll = lerp(prevRoll, 0, 0.1)
+        program.uniforms.uRot.value = setMat3FromEuler(yaw, pitch, roll, rotBuf)
 
         if (NOISE_IS_ZERO) {
           const settled =
-            Math.abs(yaw - targetYaw) < 1e-4 && Math.abs(pitch - targetPitch) < 1e-4 && Math.abs(roll) < 1e-4;
-          if (settled) continueRAF = false;
+            Math.abs(yaw - targetYaw) < 1e-4 && Math.abs(pitch - targetPitch) < 1e-4 && Math.abs(roll) < 1e-4
+          if (settled) continueRAF = false
         }
-      } else if (animationType === '3drotate') {
-        const tScaled = time * TS;
-        yaw = tScaled * wY;
-        pitch = Math.sin(tScaled * wX + phX) * 0.6;
-        roll = Math.sin(tScaled * wZ + phZ) * 0.5;
-        program.uniforms.uRot.value = setMat3FromEuler(yaw, pitch, roll, rotBuf);
-        if (TS < 1e-6) continueRAF = false;
+      } else if (animationType === "3drotate") {
+        const tScaled = time * TS
+        yaw = tScaled * wY
+        pitch = Math.sin(tScaled * wX + phX) * 0.6
+        roll = Math.sin(tScaled * wZ + phZ) * 0.5
+        program.uniforms.uRot.value = setMat3FromEuler(yaw, pitch, roll, rotBuf)
+        if (TS < 1e-6) continueRAF = false
       } else {
-        rotBuf[0] = 1;
-        rotBuf[1] = 0;
-        rotBuf[2] = 0;
-        rotBuf[3] = 0;
-        rotBuf[4] = 1;
-        rotBuf[5] = 0;
-        rotBuf[6] = 0;
-        rotBuf[7] = 0;
-        rotBuf[8] = 1;
-        program.uniforms.uRot.value = rotBuf;
-        if (TS < 1e-6) continueRAF = false;
+        rotBuf[0] = 1
+        rotBuf[1] = 0
+        rotBuf[2] = 0
+        rotBuf[3] = 0
+        rotBuf[4] = 1
+        rotBuf[5] = 0
+        rotBuf[6] = 0
+        rotBuf[7] = 0
+        rotBuf[8] = 1
+        program.uniforms.uRot.value = rotBuf
+        if (TS < 1e-6) continueRAF = false
       }
 
-      renderer.render({ scene: mesh });
+      renderer.render({ scene: mesh })
       if (continueRAF) {
-        raf = requestAnimationFrame(render);
+        raf = requestAnimationFrame(render)
       } else {
-        raf = 0;
+        raf = 0
       }
-    };
+    }
 
     if (suspendWhenOffscreen) {
-      const io = new IntersectionObserver(entries => {
-        const vis = entries.some(e => e.isIntersecting);
-        if (vis) startRAF();
-        else stopRAF();
-      });
-      io.observe(container);
-      startRAF();
-      container.__prismIO = io;
+      const io = new IntersectionObserver((entries) => {
+        const vis = entries.some((e) => e.isIntersecting)
+        if (vis) startRAF()
+        else stopRAF()
+      })
+      io.observe(container)
+      startRAF()
+      container.__prismIO = io
     } else {
-      startRAF();
+      startRAF()
     }
 
     return () => {
-      stopRAF();
-      ro.disconnect();
-      if (animationType === 'hover') {
-        if (onPointerMove) window.removeEventListener('pointermove', onPointerMove);
-        window.removeEventListener('mouseleave', onLeave);
-        window.removeEventListener('blur', onBlur);
+      stopRAF()
+      ro.disconnect()
+      if (animationType === "hover") {
+        if (onPointerMove) window.removeEventListener("pointermove", onPointerMove)
+        window.removeEventListener("mouseleave", onLeave)
+        window.removeEventListener("blur", onBlur)
       }
       if (suspendWhenOffscreen) {
-        const io = container.__prismIO;
-        if (io) io.disconnect();
-        delete container.__prismIO;
+        const io = container.__prismIO
+        if (io) io.disconnect()
+        delete container.__prismIO
       }
-      if (gl.canvas.parentElement === container) container.removeChild(gl.canvas);
-    };
+      if (gl.canvas.parentElement === container) container.removeChild(gl.canvas)
+    }
   }, [
     height,
     baseWidth,
@@ -6033,27 +6081,27 @@ const Prism = ({
     hoverStrength,
     inertia,
     bloom,
-    suspendWhenOffscreen
-  ]);
+    suspendWhenOffscreen,
+  ])
 
-  return <div className="prism-container" ref={containerRef} />;
-};
+  return <div className="prism-container" ref={containerRef} />
+}
 
-export default Prism;
-
+export default Prism
 ```
 
 ### Component CSS
+
 ```css
 .prism-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -6062,47 +6110,52 @@ export default Prism;
 
 ---
 
-name: dark veil 
+name: dark veil
 code: ## Integrate the <DarkVeil /> component from React Bits
 
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: DarkVeil
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import DarkVeil from './DarkVeil';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import DarkVeil from "./DarkVeil"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <DarkVeil />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| hueShift | number | 0 | Shifts the hue of the entire animation. |
-| noiseIntensity | number | 0 | Intensity of the noise/grain effect. |
-| scanlineIntensity | number | 0 | Intensity of the scanline effect. |
-| speed | number | 0.5 | Speed of the animation. |
-| scanlineFrequency | number | 0 | Frequency of the scanlines. |
-| warpAmount | number | 0 | Amount of warp distortion applied to the effect. |
-| resolutionScale | number | 1 | Scale factor for the resolution. |
+
+| Prop              | Type   | Default | Description                                      |
+| ----------------- | ------ | ------- | ------------------------------------------------ |
+| hueShift          | number | 0       | Shifts the hue of the entire animation.          |
+| noiseIntensity    | number | 0       | Intensity of the noise/grain effect.             |
+| scanlineIntensity | number | 0       | Intensity of the scanline effect.                |
+| speed             | number | 0.5     | Speed of the animation.                          |
+| scanlineFrequency | number | 0       | Frequency of the scanlines.                      |
+| warpAmount        | number | 0       | Amount of warp distortion applied to the effect. |
+| resolutionScale   | number | 1       | Scale factor for the resolution.                 |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect } from 'react';
-import { Renderer, Program, Mesh, Triangle, Vec2 } from 'ogl';
-import './DarkVeil.css';
+import { useRef, useEffect } from "react"
+import { Renderer, Program, Mesh, Triangle, Vec2 } from "ogl"
+import "./DarkVeil.css"
 
 const vertex = `
 attribute vec2 position;
 void main(){gl_Position=vec4(position,0.0,1.0);}
-`;
+`
 
 const fragment = `
 #ifdef GL_ES
@@ -6169,7 +6222,7 @@ void main(){
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
     gl_FragColor=vec4(clamp(col.rgb,0.0,1.0),1.0);
 }
-`;
+`
 
 export default function DarkVeil({
   hueShift = 0,
@@ -6178,20 +6231,20 @@ export default function DarkVeil({
   speed = 0.5,
   scanlineFrequency = 0,
   warpAmount = 0,
-  resolutionScale = 1
+  resolutionScale = 1,
 }) {
-  const ref = useRef(null);
+  const ref = useRef(null)
   useEffect(() => {
-    const canvas = ref.current;
-    const parent = canvas.parentElement;
+    const canvas = ref.current
+    const parent = canvas.parentElement
 
     const renderer = new Renderer({
       dpr: Math.min(window.devicePixelRatio, 2),
-      canvas
-    });
+      canvas,
+    })
 
-    const gl = renderer.gl;
-    const geometry = new Triangle(gl);
+    const gl = renderer.gl
+    const geometry = new Triangle(gl)
 
     const program = new Program(gl, {
       vertex,
@@ -6203,59 +6256,59 @@ export default function DarkVeil({
         uNoise: { value: noiseIntensity },
         uScan: { value: scanlineIntensity },
         uScanFreq: { value: scanlineFrequency },
-        uWarp: { value: warpAmount }
-      }
-    });
+        uWarp: { value: warpAmount },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
+    const mesh = new Mesh(gl, { geometry, program })
 
     const resize = () => {
       const w = parent.clientWidth,
-        h = parent.clientHeight;
-      renderer.setSize(w * resolutionScale, h * resolutionScale);
-      program.uniforms.uResolution.value.set(w, h);
-    };
+        h = parent.clientHeight
+      renderer.setSize(w * resolutionScale, h * resolutionScale)
+      program.uniforms.uResolution.value.set(w, h)
+    }
 
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
-    const start = performance.now();
-    let frame = 0;
+    const start = performance.now()
+    let frame = 0
 
     const loop = () => {
-      program.uniforms.uTime.value = ((performance.now() - start) / 1000) * speed;
-      program.uniforms.uHueShift.value = hueShift;
-      program.uniforms.uNoise.value = noiseIntensity;
-      program.uniforms.uScan.value = scanlineIntensity;
-      program.uniforms.uScanFreq.value = scanlineFrequency;
-      program.uniforms.uWarp.value = warpAmount;
-      renderer.render({ scene: mesh });
-      frame = requestAnimationFrame(loop);
-    };
+      program.uniforms.uTime.value = ((performance.now() - start) / 1000) * speed
+      program.uniforms.uHueShift.value = hueShift
+      program.uniforms.uNoise.value = noiseIntensity
+      program.uniforms.uScan.value = scanlineIntensity
+      program.uniforms.uScanFreq.value = scanlineFrequency
+      program.uniforms.uWarp.value = warpAmount
+      renderer.render({ scene: mesh })
+      frame = requestAnimationFrame(loop)
+    }
 
-    loop();
+    loop()
 
     return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('resize', resize);
-    };
-  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale]);
-  return <canvas ref={ref} className="darkveil-canvas" />;
+      cancelAnimationFrame(frame)
+      window.removeEventListener("resize", resize)
+    }
+  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale])
+  return <canvas ref={ref} className="darkveil-canvas" />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .darkveil-canvas {
   width: 100%;
   height: 100%;
   display: block;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -6270,16 +6323,19 @@ code: ## Integrate the <LightPillar /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: LightPillar
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three
 
 ---
 
 ### Usage Example
-```jsx
-import LightPillar from './LightPillar';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import LightPillar from "./LightPillar"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <LightPillar
     topColor="#5227FF"
     bottomColor="#FF9FFC"
@@ -6297,120 +6353,122 @@ import LightPillar from './LightPillar';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| topColor | string | '#5227FF' | Hex color string for the top gradient color of the light pillar. |
-| bottomColor | string | '#FF9FFC' | Hex color string for the bottom gradient color of the light pillar. |
-| intensity | number | 1.0 | Controls the overall brightness and intensity of the effect. |
-| rotationSpeed | number | 0.3 | Speed multiplier for the pillar rotation animation. |
-| interactive | boolean | false | Enable mouse interaction to control the pillar rotation. |
-| glowAmount | number | 0.005 | Controls the glow intensity and spread of the light effect. |
-| pillarWidth | number | 3.0 | Width/radius of the light pillar. |
-| pillarHeight | number | 0.4 | Height scaling factor for the pillar distortion. |
-| noiseIntensity | number | 0.5 | Intensity of the film grain noise postprocessing effect. |
-| className | string | '' | Additional CSS class names to apply to the container element. |
-| mixBlendMode | string | 'screen' | CSS mix-blend-mode property to control how the component blends with its background. |
-| pillarRotation | number | 0 | Rotation angle of the pillar in degrees (0-360). |
-| quality | 'low' | 'medium' | 'high' | 'high' | Rendering quality level. Lower settings improve performance on mobile devices. Mobile devices automatically downgrade from high to medium. |
+
+| Prop           | Type    | Default   | Description                                                                          |
+| -------------- | ------- | --------- | ------------------------------------------------------------------------------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| topColor       | string  | '#5227FF' | Hex color string for the top gradient color of the light pillar.                     |
+| bottomColor    | string  | '#FF9FFC' | Hex color string for the bottom gradient color of the light pillar.                  |
+| intensity      | number  | 1.0       | Controls the overall brightness and intensity of the effect.                         |
+| rotationSpeed  | number  | 0.3       | Speed multiplier for the pillar rotation animation.                                  |
+| interactive    | boolean | false     | Enable mouse interaction to control the pillar rotation.                             |
+| glowAmount     | number  | 0.005     | Controls the glow intensity and spread of the light effect.                          |
+| pillarWidth    | number  | 3.0       | Width/radius of the light pillar.                                                    |
+| pillarHeight   | number  | 0.4       | Height scaling factor for the pillar distortion.                                     |
+| noiseIntensity | number  | 0.5       | Intensity of the film grain noise postprocessing effect.                             |
+| className      | string  | ''        | Additional CSS class names to apply to the container element.                        |
+| mixBlendMode   | string  | 'screen'  | CSS mix-blend-mode property to control how the component blends with its background. |
+| pillarRotation | number  | 0         | Rotation angle of the pillar in degrees (0-360).                                     |
+| quality        | 'low'   | 'medium'  | 'high'                                                                               | 'high' | Rendering quality level. Lower settings improve performance on mobile devices. Mobile devices automatically downgrade from high to medium. |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect, useState } from 'react';
-import * as THREE from 'three';
-import './LightPillar.css';
+import { useRef, useEffect, useState } from "react"
+import * as THREE from "three"
+import "./LightPillar.css"
 
 const LightPillar = ({
-  topColor = '#5227FF',
-  bottomColor = '#FF9FFC',
+  topColor = "#5227FF",
+  bottomColor = "#FF9FFC",
   intensity = 1.0,
   rotationSpeed = 0.3,
   interactive = false,
-  className = '',
+  className = "",
   glowAmount = 0.005,
   pillarWidth = 3.0,
   pillarHeight = 0.4,
   noiseIntensity = 0.5,
-  mixBlendMode = 'screen',
+  mixBlendMode = "screen",
   pillarRotation = 0,
-  quality = 'high'
+  quality = "high",
 }) => {
-  const containerRef = useRef(null);
-  const rafRef = useRef(null);
-  const rendererRef = useRef(null);
-  const materialRef = useRef(null);
-  const sceneRef = useRef(null);
-  const cameraRef = useRef(null);
-  const geometryRef = useRef(null);
-  const mouseRef = useRef(new THREE.Vector2(0, 0));
-  const timeRef = useRef(0);
-  const rotationSpeedRef = useRef(rotationSpeed);
-  const [webGLSupported, setWebGLSupported] = useState(true);
+  const containerRef = useRef(null)
+  const rafRef = useRef(null)
+  const rendererRef = useRef(null)
+  const materialRef = useRef(null)
+  const sceneRef = useRef(null)
+  const cameraRef = useRef(null)
+  const geometryRef = useRef(null)
+  const mouseRef = useRef(new THREE.Vector2(0, 0))
+  const timeRef = useRef(0)
+  const rotationSpeedRef = useRef(rotationSpeed)
+  const [webGLSupported, setWebGLSupported] = useState(true)
 
   useEffect(() => {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    const canvas = document.createElement("canvas")
+    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl")
     if (!gl) {
-      setWebGLSupported(false);
+      setWebGLSupported(false)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    if (!containerRef.current || !webGLSupported) return;
+    if (!containerRef.current || !webGLSupported) return
 
-    const container = containerRef.current;
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    const container = containerRef.current
+    const width = container.clientWidth
+    const height = container.clientHeight
 
-    const scene = new THREE.Scene();
-    sceneRef.current = scene;
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    cameraRef.current = camera;
+    const scene = new THREE.Scene()
+    sceneRef.current = scene
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
+    cameraRef.current = camera
 
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const isLowEndDevice = isMobile || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    const isLowEndDevice = isMobile || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4)
 
-    let effectiveQuality = quality;
-    if (isLowEndDevice && quality === 'high') effectiveQuality = 'medium';
-    if (isMobile && quality !== 'low') effectiveQuality = 'low';
+    let effectiveQuality = quality
+    if (isLowEndDevice && quality === "high") effectiveQuality = "medium"
+    if (isMobile && quality !== "low") effectiveQuality = "low"
 
     const qualitySettings = {
-      low: { iterations: 24, waveIterations: 1, pixelRatio: 0.5, precision: 'mediump', stepMultiplier: 1.5 },
-      medium: { iterations: 40, waveIterations: 2, pixelRatio: 0.65, precision: 'mediump', stepMultiplier: 1.2 },
+      low: { iterations: 24, waveIterations: 1, pixelRatio: 0.5, precision: "mediump", stepMultiplier: 1.5 },
+      medium: { iterations: 40, waveIterations: 2, pixelRatio: 0.65, precision: "mediump", stepMultiplier: 1.2 },
       high: {
         iterations: 80,
         waveIterations: 4,
         pixelRatio: Math.min(window.devicePixelRatio, 2),
-        precision: 'highp',
-        stepMultiplier: 1.0
-      }
-    };
+        precision: "highp",
+        stepMultiplier: 1.0,
+      },
+    }
 
-    const settings = qualitySettings[effectiveQuality] || qualitySettings.medium;
+    const settings = qualitySettings[effectiveQuality] || qualitySettings.medium
 
-    let renderer;
+    let renderer
     try {
       renderer = new THREE.WebGLRenderer({
         antialias: false,
         alpha: true,
-        powerPreference: effectiveQuality === 'high' ? 'high-performance' : 'low-power',
+        powerPreference: effectiveQuality === "high" ? "high-performance" : "low-power",
         precision: settings.precision,
         stencil: false,
-        depth: false
-      });
+        depth: false,
+      })
     } catch (error) {
-      setWebGLSupported(false);
-      return;
+      setWebGLSupported(false)
+      return
     }
 
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(settings.pixelRatio);
-    container.appendChild(renderer.domElement);
-    rendererRef.current = renderer;
+    renderer.setSize(width, height)
+    renderer.setPixelRatio(settings.pixelRatio)
+    container.appendChild(renderer.domElement)
+    rendererRef.current = renderer
 
-    const parseColor = hex => {
-      const color = new THREE.Color(hex);
-      return new THREE.Vector3(color.r, color.g, color.b);
-    };
+    const parseColor = (hex) => {
+      const color = new THREE.Color(hex)
+      return new THREE.Vector3(color.r, color.g, color.b)
+    }
 
     const vertexShader = `
       varying vec2 vUv;
@@ -6418,7 +6476,7 @@ const LightPillar = ({
         vUv = uv;
         gl_Position = vec4(position, 1.0);
       }
-    `;
+    `
 
     const fragmentShader = `
       precision ${settings.precision} float;
@@ -6501,11 +6559,11 @@ const LightPillar = ({
         
         gl_FragColor = vec4(col * uIntensity, 1.0);
       }
-    `;
+    `
 
-    const pillarRotRad = (pillarRotation * Math.PI) / 180;
-    const waveSin = Math.sin(0.4);
-    const waveCos = Math.cos(0.4);
+    const pillarRotRad = (pillarRotation * Math.PI) / 180
+    const waveSin = Math.sin(0.4)
+    const waveCos = Math.cos(0.4)
 
     const material = new THREE.ShaderMaterial({
       vertexShader,
@@ -6527,178 +6585,178 @@ const LightPillar = ({
         uPillarRotCos: { value: Math.cos(pillarRotRad) },
         uPillarRotSin: { value: Math.sin(pillarRotRad) },
         uWaveSin: { value: waveSin },
-        uWaveCos: { value: waveCos }
+        uWaveCos: { value: waveCos },
       },
       transparent: true,
       depthWrite: false,
-      depthTest: false
-    });
-    materialRef.current = material;
+      depthTest: false,
+    })
+    materialRef.current = material
 
-    const geometry = new THREE.PlaneGeometry(2, 2);
-    geometryRef.current = geometry;
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+    const geometry = new THREE.PlaneGeometry(2, 2)
+    geometryRef.current = geometry
+    const mesh = new THREE.Mesh(geometry, material)
+    scene.add(mesh)
 
-    let mouseMoveTimeout = null;
-    const handleMouseMove = event => {
-      if (!interactive) return;
-      if (mouseMoveTimeout) return;
+    let mouseMoveTimeout = null
+    const handleMouseMove = (event) => {
+      if (!interactive) return
+      if (mouseMoveTimeout) return
       mouseMoveTimeout = window.setTimeout(() => {
-        mouseMoveTimeout = null;
-      }, 16);
-      const rect = container.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-      mouseRef.current.set(x, y);
-    };
-
-    if (interactive) {
-      container.addEventListener('mousemove', handleMouseMove, { passive: true });
+        mouseMoveTimeout = null
+      }, 16)
+      const rect = container.getBoundingClientRect()
+      const x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+      const y = -((event.clientY - rect.top) / rect.height) * 2 + 1
+      mouseRef.current.set(x, y)
     }
 
-    let lastTime = performance.now();
-    const targetFPS = effectiveQuality === 'low' ? 30 : 60;
-    const frameTime = 1000 / targetFPS;
+    if (interactive) {
+      container.addEventListener("mousemove", handleMouseMove, { passive: true })
+    }
 
-    const animate = currentTime => {
-      if (!materialRef.current || !rendererRef.current || !sceneRef.current || !cameraRef.current) return;
+    let lastTime = performance.now()
+    const targetFPS = effectiveQuality === "low" ? 30 : 60
+    const frameTime = 1000 / targetFPS
 
-      const deltaTime = currentTime - lastTime;
+    const animate = (currentTime) => {
+      if (!materialRef.current || !rendererRef.current || !sceneRef.current || !cameraRef.current) return
+
+      const deltaTime = currentTime - lastTime
 
       if (deltaTime >= frameTime) {
-        timeRef.current += 0.016 * rotationSpeedRef.current;
-        const t = timeRef.current;
-        materialRef.current.uniforms.uTime.value = t;
-        materialRef.current.uniforms.uRotCos.value = Math.cos(t * 0.3);
-        materialRef.current.uniforms.uRotSin.value = Math.sin(t * 0.3);
-        rendererRef.current.render(sceneRef.current, cameraRef.current);
-        lastTime = currentTime - (deltaTime % frameTime);
+        timeRef.current += 0.016 * rotationSpeedRef.current
+        const t = timeRef.current
+        materialRef.current.uniforms.uTime.value = t
+        materialRef.current.uniforms.uRotCos.value = Math.cos(t * 0.3)
+        materialRef.current.uniforms.uRotSin.value = Math.sin(t * 0.3)
+        rendererRef.current.render(sceneRef.current, cameraRef.current)
+        lastTime = currentTime - (deltaTime % frameTime)
       }
 
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    rafRef.current = requestAnimationFrame(animate);
+      rafRef.current = requestAnimationFrame(animate)
+    }
+    rafRef.current = requestAnimationFrame(animate)
 
-    let resizeTimeout = null;
+    let resizeTimeout = null
     const handleResize = () => {
       if (resizeTimeout) {
-        clearTimeout(resizeTimeout);
+        clearTimeout(resizeTimeout)
       }
 
       resizeTimeout = window.setTimeout(() => {
-        if (!rendererRef.current || !materialRef.current || !containerRef.current) return;
-        const newWidth = containerRef.current.clientWidth;
-        const newHeight = containerRef.current.clientHeight;
-        rendererRef.current.setSize(newWidth, newHeight);
-        materialRef.current.uniforms.uResolution.value.set(newWidth, newHeight);
-      }, 150);
-    };
+        if (!rendererRef.current || !materialRef.current || !containerRef.current) return
+        const newWidth = containerRef.current.clientWidth
+        const newHeight = containerRef.current.clientHeight
+        rendererRef.current.setSize(newWidth, newHeight)
+        materialRef.current.uniforms.uResolution.value.set(newWidth, newHeight)
+      }, 150)
+    }
 
-    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true })
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize)
       if (interactive) {
-        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener("mousemove", handleMouseMove)
       }
       if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
+        cancelAnimationFrame(rafRef.current)
       }
       if (rendererRef.current) {
-        rendererRef.current.dispose();
-        rendererRef.current.forceContextLoss();
+        rendererRef.current.dispose()
+        rendererRef.current.forceContextLoss()
         if (container.contains(rendererRef.current.domElement)) {
-          container.removeChild(rendererRef.current.domElement);
+          container.removeChild(rendererRef.current.domElement)
         }
       }
-      if (materialRef.current) materialRef.current.dispose();
-      if (geometryRef.current) geometryRef.current.dispose();
+      if (materialRef.current) materialRef.current.dispose()
+      if (geometryRef.current) geometryRef.current.dispose()
 
-      rendererRef.current = null;
-      materialRef.current = null;
-      sceneRef.current = null;
-      cameraRef.current = null;
-      geometryRef.current = null;
-      rafRef.current = null;
-    };
-  }, [webGLSupported, quality]);
-
-  useEffect(() => {
-    rotationSpeedRef.current = rotationSpeed;
-  }, [rotationSpeed]);
+      rendererRef.current = null
+      materialRef.current = null
+      sceneRef.current = null
+      cameraRef.current = null
+      geometryRef.current = null
+      rafRef.current = null
+    }
+  }, [webGLSupported, quality])
 
   useEffect(() => {
-    if (!materialRef.current) return;
-    const parseColor = hex => {
-      const color = new THREE.Color(hex);
-      return new THREE.Vector3(color.r, color.g, color.b);
-    };
-    materialRef.current.uniforms.uTopColor.value = parseColor(topColor);
-  }, [topColor]);
+    rotationSpeedRef.current = rotationSpeed
+  }, [rotationSpeed])
 
   useEffect(() => {
-    if (!materialRef.current) return;
-    const parseColor = hex => {
-      const color = new THREE.Color(hex);
-      return new THREE.Vector3(color.r, color.g, color.b);
-    };
-    materialRef.current.uniforms.uBottomColor.value = parseColor(bottomColor);
-  }, [bottomColor]);
+    if (!materialRef.current) return
+    const parseColor = (hex) => {
+      const color = new THREE.Color(hex)
+      return new THREE.Vector3(color.r, color.g, color.b)
+    }
+    materialRef.current.uniforms.uTopColor.value = parseColor(topColor)
+  }, [topColor])
 
   useEffect(() => {
-    if (!materialRef.current) return;
-    materialRef.current.uniforms.uIntensity.value = intensity;
-  }, [intensity]);
+    if (!materialRef.current) return
+    const parseColor = (hex) => {
+      const color = new THREE.Color(hex)
+      return new THREE.Vector3(color.r, color.g, color.b)
+    }
+    materialRef.current.uniforms.uBottomColor.value = parseColor(bottomColor)
+  }, [bottomColor])
 
   useEffect(() => {
-    if (!materialRef.current) return;
-    materialRef.current.uniforms.uInteractive.value = interactive;
-  }, [interactive]);
+    if (!materialRef.current) return
+    materialRef.current.uniforms.uIntensity.value = intensity
+  }, [intensity])
 
   useEffect(() => {
-    if (!materialRef.current) return;
-    materialRef.current.uniforms.uGlowAmount.value = glowAmount;
-  }, [glowAmount]);
+    if (!materialRef.current) return
+    materialRef.current.uniforms.uInteractive.value = interactive
+  }, [interactive])
 
   useEffect(() => {
-    if (!materialRef.current) return;
-    materialRef.current.uniforms.uPillarWidth.value = pillarWidth;
-  }, [pillarWidth]);
+    if (!materialRef.current) return
+    materialRef.current.uniforms.uGlowAmount.value = glowAmount
+  }, [glowAmount])
 
   useEffect(() => {
-    if (!materialRef.current) return;
-    materialRef.current.uniforms.uPillarHeight.value = pillarHeight;
-  }, [pillarHeight]);
+    if (!materialRef.current) return
+    materialRef.current.uniforms.uPillarWidth.value = pillarWidth
+  }, [pillarWidth])
 
   useEffect(() => {
-    if (!materialRef.current) return;
-    materialRef.current.uniforms.uNoiseIntensity.value = noiseIntensity;
-  }, [noiseIntensity]);
+    if (!materialRef.current) return
+    materialRef.current.uniforms.uPillarHeight.value = pillarHeight
+  }, [pillarHeight])
 
   useEffect(() => {
-    if (!materialRef.current) return;
-    const pillarRotRad = (pillarRotation * Math.PI) / 180;
-    materialRef.current.uniforms.uPillarRotCos.value = Math.cos(pillarRotRad);
-    materialRef.current.uniforms.uPillarRotSin.value = Math.sin(pillarRotRad);
-  }, [pillarRotation]);
+    if (!materialRef.current) return
+    materialRef.current.uniforms.uNoiseIntensity.value = noiseIntensity
+  }, [noiseIntensity])
+
+  useEffect(() => {
+    if (!materialRef.current) return
+    const pillarRotRad = (pillarRotation * Math.PI) / 180
+    materialRef.current.uniforms.uPillarRotCos.value = Math.cos(pillarRotRad)
+    materialRef.current.uniforms.uPillarRotSin.value = Math.sin(pillarRotRad)
+  }, [pillarRotation])
 
   if (!webGLSupported) {
     return (
       <div className={`light-pillar-fallback ${className}`} style={{ mixBlendMode }}>
         WebGL not supported
       </div>
-    );
+    )
   }
 
-  return <div ref={containerRef} className={`light-pillar-container ${className}`} style={{ mixBlendMode }} />;
-};
+  return <div ref={containerRef} className={`light-pillar-container ${className}`} style={{ mixBlendMode }} />
+}
 
-export default LightPillar;
-
+export default LightPillar
 ```
 
 ### Component CSS
+
 ```css
 .light-pillar-fallback {
   width: 100%;
@@ -6721,10 +6779,10 @@ export default LightPillar;
   top: 0;
   left: 0;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -6739,48 +6797,41 @@ code: ## Integrate the <Silk /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Silk
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
-```jsx
-import Silk from './Silk';
 
-<Silk
-  speed={5}
-  scale={1}
-  color="#7B7481"
-  noiseIntensity={1.5}
-  rotation={0}
-/>
+```jsx
+import Silk from "./Silk"
+
+;<Silk speed={5} scale={1} color="#7B7481" noiseIntensity={1.5} rotation={0} />
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| speed | number | 5 | Controls the animation speed of the silk effect. |
-| scale | number | 1 | Controls the scale of the silk pattern. |
-| color | string | '#7B7481' | Hex color code for the silk pattern. |
-| noiseIntensity | number | 1.5 | Controls the intensity of the noise effect. |
-| rotation | number | 0 | Controls the rotation of the silk pattern (in radians). |
+
+| Prop           | Type   | Default   | Description                                             |
+| -------------- | ------ | --------- | ------------------------------------------------------- |
+| speed          | number | 5         | Controls the animation speed of the silk effect.        |
+| scale          | number | 1         | Controls the scale of the silk pattern.                 |
+| color          | string | '#7B7481' | Hex color code for the silk pattern.                    |
+| noiseIntensity | number | 1.5       | Controls the intensity of the noise effect.             |
+| rotation       | number | 0         | Controls the rotation of the silk pattern (in radians). |
 
 ### Full Component Source
+
 ```jsx
 /* eslint-disable react/no-unknown-property */
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { forwardRef, useRef, useMemo, useLayoutEffect } from 'react';
-import { Color } from 'three';
+import { Canvas, useFrame, useThree } from "@react-three/fiber"
+import { forwardRef, useRef, useMemo, useLayoutEffect } from "react"
+import { Color } from "three"
 
-const hexToNormalizedRGB = hex => {
-  hex = hex.replace('#', '');
-  return [
-    parseInt(hex.slice(0, 2), 16) / 255,
-    parseInt(hex.slice(2, 4), 16) / 255,
-    parseInt(hex.slice(4, 6), 16) / 255
-  ];
-};
+const hexToNormalizedRGB = (hex) => {
+  hex = hex.replace("#", "")
+  return [parseInt(hex.slice(0, 2), 16) / 255, parseInt(hex.slice(2, 4), 16) / 255, parseInt(hex.slice(4, 6), 16) / 255]
+}
 
 const vertexShader = `
 varying vec2 vUv;
@@ -6791,7 +6842,7 @@ void main() {
   vUv = uv;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
-`;
+`
 
 const fragmentShader = `
 varying vec2 vUv;
@@ -6837,32 +6888,32 @@ void main() {
   col.a = 1.0;
   gl_FragColor = col;
 }
-`;
+`
 
 const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
-  const { viewport } = useThree();
+  const { viewport } = useThree()
 
   useLayoutEffect(() => {
     if (ref.current) {
-      ref.current.scale.set(viewport.width, viewport.height, 1);
+      ref.current.scale.set(viewport.width, viewport.height, 1)
     }
-  }, [ref, viewport]);
+  }, [ref, viewport])
 
   useFrame((_, delta) => {
-    ref.current.material.uniforms.uTime.value += 0.1 * delta;
-  });
+    ref.current.material.uniforms.uTime.value += 0.1 * delta
+  })
 
   return (
     <mesh ref={ref}>
       <planeGeometry args={[1, 1, 1, 1]} />
       <shaderMaterial uniforms={uniforms} vertexShader={vertexShader} fragmentShader={fragmentShader} />
     </mesh>
-  );
-});
-SilkPlane.displayName = 'SilkPlane';
+  )
+})
+SilkPlane.displayName = "SilkPlane"
 
-const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0 }) => {
-  const meshRef = useRef();
+const Silk = ({ speed = 5, scale = 1, color = "#7B7481", noiseIntensity = 1.5, rotation = 0 }) => {
+  const meshRef = useRef()
 
   const uniforms = useMemo(
     () => ({
@@ -6871,23 +6922,23 @@ const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, r
       uNoiseIntensity: { value: noiseIntensity },
       uColor: { value: new Color(...hexToNormalizedRGB(color)) },
       uRotation: { value: rotation },
-      uTime: { value: 0 }
+      uTime: { value: 0 },
     }),
-    [speed, scale, noiseIntensity, color, rotation]
-  );
+    [speed, scale, noiseIntensity, color, rotation],
+  )
 
   return (
     <Canvas dpr={[1, 2]} frameloop="always">
       <SilkPlane ref={meshRef} uniforms={uniforms} />
     </Canvas>
-  );
-};
+  )
+}
 
-export default Silk;
-
+export default Silk
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import and render the component using the usage example above as a starting point.
@@ -6901,18 +6952,21 @@ code: ## Integrate the <FloatingLines /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: FloatingLines
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three
 
 ---
 
 ### Usage Example
-```jsx
-import FloatingLines from './FloatingLines';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <FloatingLines 
-    enabledWaves={['top', 'middle', 'bottom']}
+```jsx
+import FloatingLines from "./FloatingLines"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
+  <FloatingLines
+    enabledWaves={["top", "middle", "bottom"]}
     // Array - specify line count per wave; Number - same count for all waves
     lineCount={[10, 15, 20]}
     // Array - specify line distance per wave; Number - same distance for all waves
@@ -6926,27 +6980,29 @@ import FloatingLines from './FloatingLines';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| linesGradient | string[] | undefined | Array of hex color strings for gradient coloring of lines (max 8 colors). |
-| enabledWaves | Array<'top' | 'middle' | 'bottom'> | ['top', 'middle', 'bottom'] | Which wave layers to display. Can toggle individual waves on/off. |
-| lineCount | number | number[] | [6] | Number of lines per wave. Single number applies to all waves, or array for per-wave control. |
-| lineDistance | number | number[] | [5] | Spacing between lines. Single number applies to all waves, or array for per-wave control. |
-| topWavePosition | { x: number; y: number; rotate: number } | undefined | Position and rotation settings for the top wave layer. |
-| middleWavePosition | { x: number; y: number; rotate: number } | undefined | Position and rotation settings for the middle wave layer. |
-| bottomWavePosition | { x: number; y: number; rotate: number } | { x: 2.0, y: -0.7, rotate: -1 } | Position and rotation settings for the bottom wave layer. |
-| animationSpeed | number | 1 | Speed multiplier for the wave animation. |
-| interactive | boolean | true | Whether the lines react to mouse/pointer movement. |
-| bendRadius | number | 10.0 | Radius of the area affected by mouse interaction. |
-| bendStrength | number | -5.0 | Intensity of the bend effect when interacting with mouse. |
-| mouseDamping | number | 0.05 | Smoothing factor for mouse movement tracking (0-1). |
-| parallax | boolean | true | Enable parallax effect with mouse movement. |
-| parallaxStrength | number | 0.2 | Strength of the parallax effect. |
-| mixBlendMode | React.CSSProperties['mixBlendMode'] | 'screen' | CSS mix-blend-mode applied to the canvas element. |
+
+| Prop               | Type                                     | Default                         | Description                                                               |
+| ------------------ | ---------------------------------------- | ------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| linesGradient      | string[]                                 | undefined                       | Array of hex color strings for gradient coloring of lines (max 8 colors). |
+| enabledWaves       | Array<'top'                              | 'middle'                        | 'bottom'>                                                                 | ['top', 'middle', 'bottom']                                                                  | Which wave layers to display. Can toggle individual waves on/off. |
+| lineCount          | number                                   | number[]                        | [6]                                                                       | Number of lines per wave. Single number applies to all waves, or array for per-wave control. |
+| lineDistance       | number                                   | number[]                        | [5]                                                                       | Spacing between lines. Single number applies to all waves, or array for per-wave control.    |
+| topWavePosition    | { x: number; y: number; rotate: number } | undefined                       | Position and rotation settings for the top wave layer.                    |
+| middleWavePosition | { x: number; y: number; rotate: number } | undefined                       | Position and rotation settings for the middle wave layer.                 |
+| bottomWavePosition | { x: number; y: number; rotate: number } | { x: 2.0, y: -0.7, rotate: -1 } | Position and rotation settings for the bottom wave layer.                 |
+| animationSpeed     | number                                   | 1                               | Speed multiplier for the wave animation.                                  |
+| interactive        | boolean                                  | true                            | Whether the lines react to mouse/pointer movement.                        |
+| bendRadius         | number                                   | 10.0                            | Radius of the area affected by mouse interaction.                         |
+| bendStrength       | number                                   | -5.0                            | Intensity of the bend effect when interacting with mouse.                 |
+| mouseDamping       | number                                   | 0.05                            | Smoothing factor for mouse movement tracking (0-1).                       |
+| parallax           | boolean                                  | true                            | Enable parallax effect with mouse movement.                               |
+| parallaxStrength   | number                                   | 0.2                             | Strength of the parallax effect.                                          |
+| mixBlendMode       | React.CSSProperties['mixBlendMode']      | 'screen'                        | CSS mix-blend-mode applied to the canvas element.                         |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react"
 import {
   Clock,
   Mesh,
@@ -6956,10 +7012,10 @@ import {
   ShaderMaterial,
   Vector2,
   Vector3,
-  WebGLRenderer
-} from 'three';
+  WebGLRenderer,
+} from "three"
 
-import './FloatingLines.css';
+import "./FloatingLines.css"
 
 const vertexShader = `
 precision highp float;
@@ -6967,7 +7023,7 @@ precision highp float;
 void main() {
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -7149,37 +7205,37 @@ void main() {
   mainImage(color, gl_FragCoord.xy);
   gl_FragColor = color;
 }
-`;
+`
 
-const MAX_GRADIENT_STOPS = 8;
+const MAX_GRADIENT_STOPS = 8
 
 function hexToVec3(hex) {
-  let value = hex.trim();
+  let value = hex.trim()
 
-  if (value.startsWith('#')) {
-    value = value.slice(1);
+  if (value.startsWith("#")) {
+    value = value.slice(1)
   }
 
-  let r = 255;
-  let g = 255;
-  let b = 255;
+  let r = 255
+  let g = 255
+  let b = 255
 
   if (value.length === 3) {
-    r = parseInt(value[0] + value[0], 16);
-    g = parseInt(value[1] + value[1], 16);
-    b = parseInt(value[2] + value[2], 16);
+    r = parseInt(value[0] + value[0], 16)
+    g = parseInt(value[1] + value[1], 16)
+    b = parseInt(value[2] + value[2], 16)
   } else if (value.length === 6) {
-    r = parseInt(value.slice(0, 2), 16);
-    g = parseInt(value.slice(2, 4), 16);
-    b = parseInt(value.slice(4, 6), 16);
+    r = parseInt(value.slice(0, 2), 16)
+    g = parseInt(value.slice(2, 4), 16)
+    b = parseInt(value.slice(4, 6), 16)
   }
 
-  return new Vector3(r / 255, g / 255, b / 255);
+  return new Vector3(r / 255, g / 255, b / 255)
 }
 
 export default function FloatingLines({
   linesGradient,
-  enabledWaves = ['top', 'middle', 'bottom'],
+  enabledWaves = ["top", "middle", "bottom"],
   lineCount = [6],
   lineDistance = [5],
   topWavePosition,
@@ -7192,63 +7248,63 @@ export default function FloatingLines({
   mouseDamping = 0.05,
   parallax = true,
   parallaxStrength = 0.2,
-  mixBlendMode = 'screen'
+  mixBlendMode = "screen",
 }) {
-  const containerRef = useRef(null);
-  const targetMouseRef = useRef(new Vector2(-1000, -1000));
-  const currentMouseRef = useRef(new Vector2(-1000, -1000));
-  const targetInfluenceRef = useRef(0);
-  const currentInfluenceRef = useRef(0);
-  const targetParallaxRef = useRef(new Vector2(0, 0));
-  const currentParallaxRef = useRef(new Vector2(0, 0));
+  const containerRef = useRef(null)
+  const targetMouseRef = useRef(new Vector2(-1000, -1000))
+  const currentMouseRef = useRef(new Vector2(-1000, -1000))
+  const targetInfluenceRef = useRef(0)
+  const currentInfluenceRef = useRef(0)
+  const targetParallaxRef = useRef(new Vector2(0, 0))
+  const currentParallaxRef = useRef(new Vector2(0, 0))
 
-  const getLineCount = waveType => {
-    if (typeof lineCount === 'number') return lineCount;
-    if (!enabledWaves.includes(waveType)) return 0;
-    const index = enabledWaves.indexOf(waveType);
-    return lineCount[index] ?? 6;
-  };
+  const getLineCount = (waveType) => {
+    if (typeof lineCount === "number") return lineCount
+    if (!enabledWaves.includes(waveType)) return 0
+    const index = enabledWaves.indexOf(waveType)
+    return lineCount[index] ?? 6
+  }
 
-  const getLineDistance = waveType => {
-    if (typeof lineDistance === 'number') return lineDistance;
-    if (!enabledWaves.includes(waveType)) return 0.1;
-    const index = enabledWaves.indexOf(waveType);
-    return lineDistance[index] ?? 0.1;
-  };
+  const getLineDistance = (waveType) => {
+    if (typeof lineDistance === "number") return lineDistance
+    if (!enabledWaves.includes(waveType)) return 0.1
+    const index = enabledWaves.indexOf(waveType)
+    return lineDistance[index] ?? 0.1
+  }
 
-  const topLineCount = enabledWaves.includes('top') ? getLineCount('top') : 0;
-  const middleLineCount = enabledWaves.includes('middle') ? getLineCount('middle') : 0;
-  const bottomLineCount = enabledWaves.includes('bottom') ? getLineCount('bottom') : 0;
+  const topLineCount = enabledWaves.includes("top") ? getLineCount("top") : 0
+  const middleLineCount = enabledWaves.includes("middle") ? getLineCount("middle") : 0
+  const bottomLineCount = enabledWaves.includes("bottom") ? getLineCount("bottom") : 0
 
-  const topLineDistance = enabledWaves.includes('top') ? getLineDistance('top') * 0.01 : 0.01;
-  const middleLineDistance = enabledWaves.includes('middle') ? getLineDistance('middle') * 0.01 : 0.01;
-  const bottomLineDistance = enabledWaves.includes('bottom') ? getLineDistance('bottom') * 0.01 : 0.01;
+  const topLineDistance = enabledWaves.includes("top") ? getLineDistance("top") * 0.01 : 0.01
+  const middleLineDistance = enabledWaves.includes("middle") ? getLineDistance("middle") * 0.01 : 0.01
+  const bottomLineDistance = enabledWaves.includes("bottom") ? getLineDistance("bottom") * 0.01 : 0.01
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
-    let active = true;
+    let active = true
 
-    const scene = new Scene();
+    const scene = new Scene()
 
-    const camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    camera.position.z = 1;
+    const camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1)
+    camera.position.z = 1
 
-    const renderer = new WebGLRenderer({ antialias: true, alpha: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.domElement.style.width = '100%';
-    renderer.domElement.style.height = '100%';
-    container.appendChild(renderer.domElement);
+    const renderer = new WebGLRenderer({ antialias: true, alpha: false })
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
+    renderer.domElement.style.width = "100%"
+    renderer.domElement.style.height = "100%"
+    container.appendChild(renderer.domElement)
 
     const uniforms = {
       iTime: { value: 0 },
       iResolution: { value: new Vector3(1, 1, 1) },
       animationSpeed: { value: animationSpeed },
 
-      enableTop: { value: enabledWaves.includes('top') },
-      enableMiddle: { value: enabledWaves.includes('middle') },
-      enableBottom: { value: enabledWaves.includes('bottom') },
+      enableTop: { value: enabledWaves.includes("top") },
+      enableMiddle: { value: enabledWaves.includes("middle") },
+      enableBottom: { value: enabledWaves.includes("bottom") },
 
       topLineCount: { value: topLineCount },
       middleLineCount: { value: middleLineCount },
@@ -7259,21 +7315,21 @@ export default function FloatingLines({
       bottomLineDistance: { value: bottomLineDistance },
 
       topWavePosition: {
-        value: new Vector3(topWavePosition?.x ?? 10.0, topWavePosition?.y ?? 0.5, topWavePosition?.rotate ?? -0.4)
+        value: new Vector3(topWavePosition?.x ?? 10.0, topWavePosition?.y ?? 0.5, topWavePosition?.rotate ?? -0.4),
       },
       middleWavePosition: {
         value: new Vector3(
           middleWavePosition?.x ?? 5.0,
           middleWavePosition?.y ?? 0.0,
-          middleWavePosition?.rotate ?? 0.2
-        )
+          middleWavePosition?.rotate ?? 0.2,
+        ),
       },
       bottomWavePosition: {
         value: new Vector3(
           bottomWavePosition?.x ?? 2.0,
           bottomWavePosition?.y ?? -0.7,
-          bottomWavePosition?.rotate ?? 0.4
-        )
+          bottomWavePosition?.rotate ?? 0.4,
+        ),
       },
 
       iMouse: { value: new Vector2(-1000, -1000) },
@@ -7287,128 +7343,128 @@ export default function FloatingLines({
       parallaxOffset: { value: new Vector2(0, 0) },
 
       lineGradient: {
-        value: Array.from({ length: MAX_GRADIENT_STOPS }, () => new Vector3(1, 1, 1))
+        value: Array.from({ length: MAX_GRADIENT_STOPS }, () => new Vector3(1, 1, 1)),
       },
-      lineGradientCount: { value: 0 }
-    };
+      lineGradientCount: { value: 0 },
+    }
 
     if (linesGradient && linesGradient.length > 0) {
-      const stops = linesGradient.slice(0, MAX_GRADIENT_STOPS);
-      uniforms.lineGradientCount.value = stops.length;
+      const stops = linesGradient.slice(0, MAX_GRADIENT_STOPS)
+      uniforms.lineGradientCount.value = stops.length
 
       stops.forEach((hex, i) => {
-        const color = hexToVec3(hex);
-        uniforms.lineGradient.value[i].set(color.x, color.y, color.z);
-      });
+        const color = hexToVec3(hex)
+        uniforms.lineGradient.value[i].set(color.x, color.y, color.z)
+      })
     }
 
     const material = new ShaderMaterial({
       uniforms,
       vertexShader,
-      fragmentShader
-    });
+      fragmentShader,
+    })
 
-    const geometry = new PlaneGeometry(2, 2);
-    const mesh = new Mesh(geometry, material);
-    scene.add(mesh);
+    const geometry = new PlaneGeometry(2, 2)
+    const mesh = new Mesh(geometry, material)
+    scene.add(mesh)
 
-    const clock = new Clock();
+    const clock = new Clock()
 
     const setSize = () => {
-      if (!active) return;
-      const width = container.clientWidth || 1;
-      const height = container.clientHeight || 1;
+      if (!active) return
+      const width = container.clientWidth || 1
+      const height = container.clientHeight || 1
 
-      renderer.setSize(width, height, false);
+      renderer.setSize(width, height, false)
 
-      const canvasWidth = renderer.domElement.width;
-      const canvasHeight = renderer.domElement.height;
-      uniforms.iResolution.value.set(canvasWidth, canvasHeight, 1);
-    };
-
-    setSize();
-
-    const ro =
-      typeof ResizeObserver !== 'undefined'
-        ? new ResizeObserver(() => {
-            if (!active) return;
-            setSize();
-          })
-        : null;
-
-    if (ro) ro.observe(container);
-
-    const handlePointerMove = event => {
-      const rect = renderer.domElement.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      const dpr = renderer.getPixelRatio();
-
-      targetMouseRef.current.set(x * dpr, (rect.height - y) * dpr);
-      targetInfluenceRef.current = 1.0;
-
-      if (parallax) {
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const offsetX = (x - centerX) / rect.width;
-        const offsetY = -(y - centerY) / rect.height;
-        targetParallaxRef.current.set(offsetX * parallaxStrength, offsetY * parallaxStrength);
-      }
-    };
-
-    const handlePointerLeave = () => {
-      targetInfluenceRef.current = 0.0;
-    };
-
-    if (interactive) {
-      renderer.domElement.addEventListener('pointermove', handlePointerMove);
-      renderer.domElement.addEventListener('pointerleave', handlePointerLeave);
+      const canvasWidth = renderer.domElement.width
+      const canvasHeight = renderer.domElement.height
+      uniforms.iResolution.value.set(canvasWidth, canvasHeight, 1)
     }
 
-    let raf = 0;
-    const renderLoop = () => {
-      if (!active) return;
+    setSize()
 
-      uniforms.iTime.value = clock.getElapsedTime();
+    const ro =
+      typeof ResizeObserver !== "undefined"
+        ? new ResizeObserver(() => {
+            if (!active) return
+            setSize()
+          })
+        : null
+
+    if (ro) ro.observe(container)
+
+    const handlePointerMove = (event) => {
+      const rect = renderer.domElement.getBoundingClientRect()
+      const x = event.clientX - rect.left
+      const y = event.clientY - rect.top
+      const dpr = renderer.getPixelRatio()
+
+      targetMouseRef.current.set(x * dpr, (rect.height - y) * dpr)
+      targetInfluenceRef.current = 1.0
+
+      if (parallax) {
+        const centerX = rect.width / 2
+        const centerY = rect.height / 2
+        const offsetX = (x - centerX) / rect.width
+        const offsetY = -(y - centerY) / rect.height
+        targetParallaxRef.current.set(offsetX * parallaxStrength, offsetY * parallaxStrength)
+      }
+    }
+
+    const handlePointerLeave = () => {
+      targetInfluenceRef.current = 0.0
+    }
+
+    if (interactive) {
+      renderer.domElement.addEventListener("pointermove", handlePointerMove)
+      renderer.domElement.addEventListener("pointerleave", handlePointerLeave)
+    }
+
+    let raf = 0
+    const renderLoop = () => {
+      if (!active) return
+
+      uniforms.iTime.value = clock.getElapsedTime()
 
       if (interactive) {
-        currentMouseRef.current.lerp(targetMouseRef.current, mouseDamping);
-        uniforms.iMouse.value.copy(currentMouseRef.current);
+        currentMouseRef.current.lerp(targetMouseRef.current, mouseDamping)
+        uniforms.iMouse.value.copy(currentMouseRef.current)
 
-        currentInfluenceRef.current += (targetInfluenceRef.current - currentInfluenceRef.current) * mouseDamping;
-        uniforms.bendInfluence.value = currentInfluenceRef.current;
+        currentInfluenceRef.current += (targetInfluenceRef.current - currentInfluenceRef.current) * mouseDamping
+        uniforms.bendInfluence.value = currentInfluenceRef.current
       }
 
       if (parallax) {
-        currentParallaxRef.current.lerp(targetParallaxRef.current, mouseDamping);
-        uniforms.parallaxOffset.value.copy(currentParallaxRef.current);
+        currentParallaxRef.current.lerp(targetParallaxRef.current, mouseDamping)
+        uniforms.parallaxOffset.value.copy(currentParallaxRef.current)
       }
 
-      renderer.render(scene, camera);
-      raf = requestAnimationFrame(renderLoop);
-    };
-    renderLoop();
+      renderer.render(scene, camera)
+      raf = requestAnimationFrame(renderLoop)
+    }
+    renderLoop()
 
     return () => {
-      active = false;
+      active = false
 
-      cancelAnimationFrame(raf);
+      cancelAnimationFrame(raf)
 
-      if (ro) ro.disconnect();
+      if (ro) ro.disconnect()
 
       if (interactive) {
-        renderer.domElement.removeEventListener('pointermove', handlePointerMove);
-        renderer.domElement.removeEventListener('pointerleave', handlePointerLeave);
+        renderer.domElement.removeEventListener("pointermove", handlePointerMove)
+        renderer.domElement.removeEventListener("pointerleave", handlePointerLeave)
       }
 
-      geometry.dispose();
-      material.dispose();
-      renderer.dispose();
-      renderer.forceContextLoss();
+      geometry.dispose()
+      material.dispose()
+      renderer.dispose()
+      renderer.forceContextLoss()
       if (renderer.domElement.parentElement) {
-        renderer.domElement.parentElement.removeChild(renderer.domElement);
+        renderer.domElement.parentElement.removeChild(renderer.domElement)
       }
-    };
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     linesGradient,
@@ -7424,23 +7480,23 @@ export default function FloatingLines({
     bendStrength,
     mouseDamping,
     parallax,
-    parallaxStrength
-  ]);
+    parallaxStrength,
+  ])
 
   return (
     <div
       ref={containerRef}
       className="floating-lines-container"
       style={{
-        mixBlendMode: mixBlendMode
+        mixBlendMode: mixBlendMode,
       }}
     />
-  );
+  )
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .floating-lines-container {
   width: 100%;
@@ -7448,10 +7504,10 @@ export default function FloatingLines({
   position: relative;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -7466,16 +7522,19 @@ code: ## Integrate the <SideRays /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: SideRays
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import SideRays from './SideRays';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import SideRays from "./SideRays"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <SideRays
     speed={2.5}
     rayColor1="#EAB308"
@@ -7493,120 +7552,126 @@ import SideRays from './SideRays';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| speed | number | 1.0 | Animation speed of the rays |
-| rayColor1 | string | "#ffaa6e" | Color of the first ray layer in hex format |
-| rayColor2 | string | "#96c8ff" | Color of the second ray layer in hex format |
-| intensity | number | 1.0 | Overall brightness of the rays |
-| spread | number | 1.0 | Angular width of the ray fan — higher values create a wider spread between the two ray layers |
-| origin | "top-right" | "top-left" | "bottom-right" | "bottom-left" | "top-right" | Corner of the canvas from which the rays emerge |
-| tilt | number | 0 | Rotation of the ray fan in degrees — positive values tilt clockwise |
-| saturation | number | 1.0 | Color saturation of the rays — 0 renders in grayscale, values above 1 boost color |
-| blend | number | 0.78 | Balance between the two ray layers — 0 is all ray 1, 1 is all ray 2 |
-| falloff | number | 2.0 | How steeply brightness diminishes with distance from the source — higher = tighter glow |
-| opacity | number | 1.0 | Overall opacity of the effect |
-| className | string | "" | Additional CSS classes to apply to the container |
+
+| Prop       | Type        | Default    | Description                                                                                   |
+| ---------- | ----------- | ---------- | --------------------------------------------------------------------------------------------- | ------------- | ----------- | ----------------------------------------------- |
+| speed      | number      | 1.0        | Animation speed of the rays                                                                   |
+| rayColor1  | string      | "#ffaa6e"  | Color of the first ray layer in hex format                                                    |
+| rayColor2  | string      | "#96c8ff"  | Color of the second ray layer in hex format                                                   |
+| intensity  | number      | 1.0        | Overall brightness of the rays                                                                |
+| spread     | number      | 1.0        | Angular width of the ray fan — higher values create a wider spread between the two ray layers |
+| origin     | "top-right" | "top-left" | "bottom-right"                                                                                | "bottom-left" | "top-right" | Corner of the canvas from which the rays emerge |
+| tilt       | number      | 0          | Rotation of the ray fan in degrees — positive values tilt clockwise                           |
+| saturation | number      | 1.0        | Color saturation of the rays — 0 renders in grayscale, values above 1 boost color             |
+| blend      | number      | 0.78       | Balance between the two ray layers — 0 is all ray 1, 1 is all ray 2                           |
+| falloff    | number      | 2.0        | How steeply brightness diminishes with distance from the source — higher = tighter glow       |
+| opacity    | number      | 1.0        | Overall opacity of the effect                                                                 |
+| className  | string      | ""         | Additional CSS classes to apply to the container                                              |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect, useState } from 'react';
-import { Renderer, Program, Triangle, Mesh } from 'ogl';
-import './SideRays.css';
+import { useRef, useEffect, useState } from "react"
+import { Renderer, Program, Triangle, Mesh } from "ogl"
+import "./SideRays.css"
 
-const hexToRgb = hex => {
-  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return m ? [parseInt(m[1], 16) / 255, parseInt(m[2], 16) / 255, parseInt(m[3], 16) / 255] : [1, 1, 1];
-};
+const hexToRgb = (hex) => {
+  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  return m ? [parseInt(m[1], 16) / 255, parseInt(m[2], 16) / 255, parseInt(m[3], 16) / 255] : [1, 1, 1]
+}
 
-const originToFlip = origin => {
+const originToFlip = (origin) => {
   switch (origin) {
-    case 'top-left': return [1, 0];
-    case 'bottom-right': return [0, 1];
-    case 'bottom-left': return [1, 1];
-    default: return [0, 0];
+    case "top-left":
+      return [1, 0]
+    case "bottom-right":
+      return [0, 1]
+    case "bottom-left":
+      return [1, 1]
+    default:
+      return [0, 0]
   }
-};
+}
 
 const SideRays = ({
   speed = 2.5,
-  rayColor1 = '#EAB308',
-  rayColor2 = '#96c8ff',
+  rayColor1 = "#EAB308",
+  rayColor2 = "#96c8ff",
   intensity = 2,
   spread = 2,
-  origin = 'top-right',
+  origin = "top-right",
   tilt = 0,
   saturation = 1.5,
   blend = 0.75,
   falloff = 1.6,
   opacity = 1.0,
-  className = ''
+  className = "",
 }) => {
-  const containerRef = useRef(null);
-  const uniformsRef = useRef(null);
-  const rendererRef = useRef(null);
-  const animationIdRef = useRef(null);
-  const meshRef = useRef(null);
-  const cleanupFunctionRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const observerRef = useRef(null);
+  const containerRef = useRef(null)
+  const uniformsRef = useRef(null)
+  const rendererRef = useRef(null)
+  const animationIdRef = useRef(null)
+  const meshRef = useRef(null)
+  const cleanupFunctionRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const observerRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current) return
 
     observerRef.current = new IntersectionObserver(
-      entries => {
-        const entry = entries[0];
-        setIsVisible(entry.isIntersecting);
+      (entries) => {
+        const entry = entries[0]
+        setIsVisible(entry.isIntersecting)
       },
-      { threshold: 0.1 }
-    );
+      { threshold: 0.1 },
+    )
 
-    observerRef.current.observe(containerRef.current);
+    observerRef.current.observe(containerRef.current)
 
     return () => {
       if (observerRef.current) {
-        observerRef.current.disconnect();
-        observerRef.current = null;
+        observerRef.current.disconnect()
+        observerRef.current = null
       }
-    };
-  }, []);
+    }
+  }, [])
 
   useEffect(() => {
-    if (!isVisible || !containerRef.current) return;
+    if (!isVisible || !containerRef.current) return
 
     if (cleanupFunctionRef.current) {
-      cleanupFunctionRef.current();
-      cleanupFunctionRef.current = null;
+      cleanupFunctionRef.current()
+      cleanupFunctionRef.current = null
     }
 
     const initializeWebGL = async () => {
-      if (!containerRef.current) return;
+      if (!containerRef.current) return
 
-      await new Promise(resolve => setTimeout(resolve, 10));
+      await new Promise((resolve) => setTimeout(resolve, 10))
 
-      if (!containerRef.current) return;
+      if (!containerRef.current) return
 
       const renderer = new Renderer({
         dpr: Math.min(window.devicePixelRatio, 2),
-        alpha: true
-      });
-      rendererRef.current = renderer;
+        alpha: true,
+      })
+      rendererRef.current = renderer
 
-      const gl = renderer.gl;
-      gl.canvas.style.width = '100%';
-      gl.canvas.style.height = '100%';
+      const gl = renderer.gl
+      gl.canvas.style.width = "100%"
+      gl.canvas.style.height = "100%"
 
       while (containerRef.current.firstChild) {
-        containerRef.current.removeChild(containerRef.current.firstChild);
+        containerRef.current.removeChild(containerRef.current.firstChild)
       }
-      containerRef.current.appendChild(gl.canvas);
+      containerRef.current.appendChild(gl.canvas)
 
       const vert = `
 attribute vec2 position;
 void main() {
   gl_Position = vec4(position, 0.0, 1.0);
-}`;
+}`
 
       const frag = `precision highp float;
 
@@ -7667,9 +7732,9 @@ void main() {
 
   color.a = max(color.r, max(color.g, color.b)) * iOpacity;
   gl_FragColor = color;
-}`;
+}`
 
-      const [flipX, flipY] = originToFlip(origin);
+      const [flipX, flipY] = originToFlip(origin)
       const uniforms = {
         iTime: { value: 0 },
         iResolution: { value: [1, 1] },
@@ -7684,94 +7749,94 @@ void main() {
         iSaturation: { value: saturation },
         iBlend: { value: blend },
         iFalloff: { value: falloff },
-        iOpacity: { value: opacity }
-      };
-      uniformsRef.current = uniforms;
+        iOpacity: { value: opacity },
+      }
+      uniformsRef.current = uniforms
 
-      const geometry = new Triangle(gl);
-      const program = new Program(gl, { vertex: vert, fragment: frag, uniforms });
-      const mesh = new Mesh(gl, { geometry, program });
-      meshRef.current = mesh;
+      const geometry = new Triangle(gl)
+      const program = new Program(gl, { vertex: vert, fragment: frag, uniforms })
+      const mesh = new Mesh(gl, { geometry, program })
+      meshRef.current = mesh
 
       const updateSize = () => {
-        if (!containerRef.current || !renderer) return;
-        renderer.dpr = Math.min(window.devicePixelRatio, 2);
-        const { clientWidth: w, clientHeight: h } = containerRef.current;
-        renderer.setSize(w, h);
-        uniforms.iResolution.value = [w * renderer.dpr, h * renderer.dpr];
-      };
+        if (!containerRef.current || !renderer) return
+        renderer.dpr = Math.min(window.devicePixelRatio, 2)
+        const { clientWidth: w, clientHeight: h } = containerRef.current
+        renderer.setSize(w, h)
+        uniforms.iResolution.value = [w * renderer.dpr, h * renderer.dpr]
+      }
 
-      const loop = t => {
-        if (!rendererRef.current || !uniformsRef.current || !meshRef.current) return;
-        uniforms.iTime.value = t * 0.001;
+      const loop = (t) => {
+        if (!rendererRef.current || !uniformsRef.current || !meshRef.current) return
+        uniforms.iTime.value = t * 0.001
         try {
-          renderer.render({ scene: mesh });
-          animationIdRef.current = requestAnimationFrame(loop);
+          renderer.render({ scene: mesh })
+          animationIdRef.current = requestAnimationFrame(loop)
         } catch (e) {
-          return;
+          return
         }
-      };
+      }
 
-      window.addEventListener('resize', updateSize);
-      updateSize();
-      animationIdRef.current = requestAnimationFrame(loop);
+      window.addEventListener("resize", updateSize)
+      updateSize()
+      animationIdRef.current = requestAnimationFrame(loop)
 
       cleanupFunctionRef.current = () => {
         if (animationIdRef.current) {
-          cancelAnimationFrame(animationIdRef.current);
-          animationIdRef.current = null;
+          cancelAnimationFrame(animationIdRef.current)
+          animationIdRef.current = null
         }
-        window.removeEventListener('resize', updateSize);
+        window.removeEventListener("resize", updateSize)
         if (renderer) {
           try {
-            const loseCtx = renderer.gl.getExtension('WEBGL_lose_context');
-            if (loseCtx) loseCtx.loseContext();
-            const canvas = renderer.gl.canvas;
-            if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
+            const loseCtx = renderer.gl.getExtension("WEBGL_lose_context")
+            if (loseCtx) loseCtx.loseContext()
+            const canvas = renderer.gl.canvas
+            if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas)
           } catch (e) {}
         }
-        rendererRef.current = null;
-        uniformsRef.current = null;
-        meshRef.current = null;
-      };
-    };
+        rendererRef.current = null
+        uniformsRef.current = null
+        meshRef.current = null
+      }
+    }
 
-    initializeWebGL();
+    initializeWebGL()
 
     return () => {
       if (cleanupFunctionRef.current) {
-        cleanupFunctionRef.current();
-        cleanupFunctionRef.current = null;
+        cleanupFunctionRef.current()
+        cleanupFunctionRef.current = null
       }
-    };
-  }, [isVisible, speed, rayColor1, rayColor2, intensity, spread, origin, tilt, saturation, blend, falloff, opacity]);
+    }
+  }, [isVisible, speed, rayColor1, rayColor2, intensity, spread, origin, tilt, saturation, blend, falloff, opacity])
 
   useEffect(() => {
-    if (!uniformsRef.current) return;
-    const u = uniformsRef.current;
-    u.iSpeed.value = speed;
-    u.iRayColor1.value = hexToRgb(rayColor1);
-    u.iRayColor2.value = hexToRgb(rayColor2);
-    u.iIntensity.value = intensity;
-    u.iSpread.value = spread;
-    const [flipX, flipY] = originToFlip(origin);
-    u.iFlipX.value = flipX;
-    u.iFlipY.value = flipY;
-    u.iTilt.value = tilt;
-    u.iSaturation.value = saturation;
-    u.iBlend.value = blend;
-    u.iFalloff.value = falloff;
-    u.iOpacity.value = opacity;
-  }, [speed, rayColor1, rayColor2, intensity, spread, origin, tilt, saturation, blend, falloff, opacity]);
+    if (!uniformsRef.current) return
+    const u = uniformsRef.current
+    u.iSpeed.value = speed
+    u.iRayColor1.value = hexToRgb(rayColor1)
+    u.iRayColor2.value = hexToRgb(rayColor2)
+    u.iIntensity.value = intensity
+    u.iSpread.value = spread
+    const [flipX, flipY] = originToFlip(origin)
+    u.iFlipX.value = flipX
+    u.iFlipY.value = flipY
+    u.iTilt.value = tilt
+    u.iSaturation.value = saturation
+    u.iBlend.value = blend
+    u.iFalloff.value = falloff
+    u.iOpacity.value = opacity
+  }, [speed, rayColor1, rayColor2, intensity, spread, origin, tilt, saturation, blend, falloff, opacity])
 
-  return <div ref={containerRef} className={`side-rays-container ${className}`.trim()} />;
-};
+  return <div ref={containerRef} className={`side-rays-container ${className}`.trim()} />
+}
 
-export default SideRays;
-
+export default SideRays
 ```
 
 ### Component CSS
+
 ```css
 .side-rays-container {
   width: 100%;
@@ -7781,10 +7846,10 @@ export default SideRays;
   z-index: 3;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -7799,16 +7864,19 @@ code: ## Integrate the <LightRays /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: LightRays
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import LightRays from './LightRays';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import LightRays from "./LightRays"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <LightRays
     raysOrigin="top-center"
     raysColor="#00ffff"
@@ -7825,59 +7893,61 @@ import LightRays from './LightRays';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| raysOrigin | RaysOrigin | "top-center" | Origin position of the light rays. Options: 'top-center', 'top-left', 'top-right', 'right', 'left', 'bottom-center', 'bottom-right', 'bottom-left' |
-| raysColor | string | "#ffffff" | Color of the light rays in hex format |
-| raysSpeed | number | 1 | Animation speed of the rays |
-| lightSpread | number | 0.5 | How wide the light rays spread. Lower values = tighter rays, higher values = wider spread |
-| rayLength | number | 1.0 | Maximum length/reach of the rays |
-| pulsating | boolean | false | Enable pulsing animation effect |
-| fadeDistance | number | 1.0 | How far rays fade out from origin |
-| saturation | number | 1.0 | Color saturation level (0-1) |
-| followMouse | boolean | false | Make rays rotate towards the mouse cursor |
-| mouseInfluence | number | 0.5 | How much mouse affects rays (0-1) |
-| noiseAmount | number | 0.0 | Add noise/grain to rays (0-1) |
-| distortion | number | 0.0 | Apply wave distortion to rays |
-| className | string | "" | Additional CSS classes to apply to the container |
+
+| Prop           | Type       | Default      | Description                                                                                                                                        |
+| -------------- | ---------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| raysOrigin     | RaysOrigin | "top-center" | Origin position of the light rays. Options: 'top-center', 'top-left', 'top-right', 'right', 'left', 'bottom-center', 'bottom-right', 'bottom-left' |
+| raysColor      | string     | "#ffffff"    | Color of the light rays in hex format                                                                                                              |
+| raysSpeed      | number     | 1            | Animation speed of the rays                                                                                                                        |
+| lightSpread    | number     | 0.5          | How wide the light rays spread. Lower values = tighter rays, higher values = wider spread                                                          |
+| rayLength      | number     | 1.0          | Maximum length/reach of the rays                                                                                                                   |
+| pulsating      | boolean    | false        | Enable pulsing animation effect                                                                                                                    |
+| fadeDistance   | number     | 1.0          | How far rays fade out from origin                                                                                                                  |
+| saturation     | number     | 1.0          | Color saturation level (0-1)                                                                                                                       |
+| followMouse    | boolean    | false        | Make rays rotate towards the mouse cursor                                                                                                          |
+| mouseInfluence | number     | 0.5          | How much mouse affects rays (0-1)                                                                                                                  |
+| noiseAmount    | number     | 0.0          | Add noise/grain to rays (0-1)                                                                                                                      |
+| distortion     | number     | 0.0          | Apply wave distortion to rays                                                                                                                      |
+| className      | string     | ""           | Additional CSS classes to apply to the container                                                                                                   |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect, useState } from 'react';
-import { Renderer, Program, Triangle, Mesh } from 'ogl';
-import './LightRays.css';
+import { useRef, useEffect, useState } from "react"
+import { Renderer, Program, Triangle, Mesh } from "ogl"
+import "./LightRays.css"
 
-const DEFAULT_COLOR = '#ffffff';
+const DEFAULT_COLOR = "#ffffff"
 
-const hexToRgb = hex => {
-  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return m ? [parseInt(m[1], 16) / 255, parseInt(m[2], 16) / 255, parseInt(m[3], 16) / 255] : [1, 1, 1];
-};
+const hexToRgb = (hex) => {
+  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  return m ? [parseInt(m[1], 16) / 255, parseInt(m[2], 16) / 255, parseInt(m[3], 16) / 255] : [1, 1, 1]
+}
 
 const getAnchorAndDir = (origin, w, h) => {
-  const outside = 0.2;
+  const outside = 0.2
   switch (origin) {
-    case 'top-left':
-      return { anchor: [0, -outside * h], dir: [0, 1] };
-    case 'top-right':
-      return { anchor: [w, -outside * h], dir: [0, 1] };
-    case 'left':
-      return { anchor: [-outside * w, 0.5 * h], dir: [1, 0] };
-    case 'right':
-      return { anchor: [(1 + outside) * w, 0.5 * h], dir: [-1, 0] };
-    case 'bottom-left':
-      return { anchor: [0, (1 + outside) * h], dir: [0, -1] };
-    case 'bottom-center':
-      return { anchor: [0.5 * w, (1 + outside) * h], dir: [0, -1] };
-    case 'bottom-right':
-      return { anchor: [w, (1 + outside) * h], dir: [0, -1] };
+    case "top-left":
+      return { anchor: [0, -outside * h], dir: [0, 1] }
+    case "top-right":
+      return { anchor: [w, -outside * h], dir: [0, 1] }
+    case "left":
+      return { anchor: [-outside * w, 0.5 * h], dir: [1, 0] }
+    case "right":
+      return { anchor: [(1 + outside) * w, 0.5 * h], dir: [-1, 0] }
+    case "bottom-left":
+      return { anchor: [0, (1 + outside) * h], dir: [0, -1] }
+    case "bottom-center":
+      return { anchor: [0.5 * w, (1 + outside) * h], dir: [0, -1] }
+    case "bottom-right":
+      return { anchor: [w, (1 + outside) * h], dir: [0, -1] }
     default: // "top-center"
-      return { anchor: [0.5 * w, -outside * h], dir: [0, 1] };
+      return { anchor: [0.5 * w, -outside * h], dir: [0, 1] }
   }
-};
+}
 
 const LightRays = ({
-  raysOrigin = 'top-center',
+  raysOrigin = "top-center",
   raysColor = DEFAULT_COLOR,
   raysSpeed = 1,
   lightSpread = 1,
@@ -7889,69 +7959,69 @@ const LightRays = ({
   mouseInfluence = 0.1,
   noiseAmount = 0.0,
   distortion = 0.0,
-  className = ''
+  className = "",
 }) => {
-  const containerRef = useRef(null);
-  const uniformsRef = useRef(null);
-  const rendererRef = useRef(null);
-  const mouseRef = useRef({ x: 0.5, y: 0.5 });
-  const smoothMouseRef = useRef({ x: 0.5, y: 0.5 });
-  const animationIdRef = useRef(null);
-  const meshRef = useRef(null);
-  const cleanupFunctionRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const observerRef = useRef(null);
+  const containerRef = useRef(null)
+  const uniformsRef = useRef(null)
+  const rendererRef = useRef(null)
+  const mouseRef = useRef({ x: 0.5, y: 0.5 })
+  const smoothMouseRef = useRef({ x: 0.5, y: 0.5 })
+  const animationIdRef = useRef(null)
+  const meshRef = useRef(null)
+  const cleanupFunctionRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const observerRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current) return
 
     observerRef.current = new IntersectionObserver(
-      entries => {
-        const entry = entries[0];
-        setIsVisible(entry.isIntersecting);
+      (entries) => {
+        const entry = entries[0]
+        setIsVisible(entry.isIntersecting)
       },
-      { threshold: 0.1 }
-    );
+      { threshold: 0.1 },
+    )
 
-    observerRef.current.observe(containerRef.current);
+    observerRef.current.observe(containerRef.current)
 
     return () => {
       if (observerRef.current) {
-        observerRef.current.disconnect();
-        observerRef.current = null;
+        observerRef.current.disconnect()
+        observerRef.current = null
       }
-    };
-  }, []);
+    }
+  }, [])
 
   useEffect(() => {
-    if (!isVisible || !containerRef.current) return;
+    if (!isVisible || !containerRef.current) return
 
     if (cleanupFunctionRef.current) {
-      cleanupFunctionRef.current();
-      cleanupFunctionRef.current = null;
+      cleanupFunctionRef.current()
+      cleanupFunctionRef.current = null
     }
 
     const initializeWebGL = async () => {
-      if (!containerRef.current) return;
+      if (!containerRef.current) return
 
-      await new Promise(resolve => setTimeout(resolve, 10));
+      await new Promise((resolve) => setTimeout(resolve, 10))
 
-      if (!containerRef.current) return;
+      if (!containerRef.current) return
 
       const renderer = new Renderer({
         dpr: Math.min(window.devicePixelRatio, 2),
-        alpha: true
-      });
-      rendererRef.current = renderer;
+        alpha: true,
+      })
+      rendererRef.current = renderer
 
-      const gl = renderer.gl;
-      gl.canvas.style.width = '100%';
-      gl.canvas.style.height = '100%';
+      const gl = renderer.gl
+      gl.canvas.style.width = "100%"
+      gl.canvas.style.height = "100%"
 
       while (containerRef.current.firstChild) {
-        containerRef.current.removeChild(containerRef.current.firstChild);
+        containerRef.current.removeChild(containerRef.current.firstChild)
       }
-      containerRef.current.appendChild(gl.canvas);
+      containerRef.current.appendChild(gl.canvas)
 
       const vert = `
 attribute vec2 position;
@@ -7959,7 +8029,7 @@ varying vec2 vUv;
 void main() {
   vUv = position * 0.5 + 0.5;
   gl_Position = vec4(position, 0.0, 1.0);
-}`;
+}`
 
       const frag = `precision highp float;
 
@@ -8053,7 +8123,7 @@ void main() {
   vec4 color;
   mainImage(color, gl_FragCoord.xy);
   gl_FragColor  = color;
-}`;
+}`
 
       const uniforms = {
         iTime: { value: 0 },
@@ -8072,105 +8142,105 @@ void main() {
         mousePos: { value: [0.5, 0.5] },
         mouseInfluence: { value: mouseInfluence },
         noiseAmount: { value: noiseAmount },
-        distortion: { value: distortion }
-      };
-      uniformsRef.current = uniforms;
+        distortion: { value: distortion },
+      }
+      uniformsRef.current = uniforms
 
-      const geometry = new Triangle(gl);
+      const geometry = new Triangle(gl)
       const program = new Program(gl, {
         vertex: vert,
         fragment: frag,
-        uniforms
-      });
-      const mesh = new Mesh(gl, { geometry, program });
-      meshRef.current = mesh;
+        uniforms,
+      })
+      const mesh = new Mesh(gl, { geometry, program })
+      meshRef.current = mesh
 
       const updatePlacement = () => {
-        if (!containerRef.current || !renderer) return;
+        if (!containerRef.current || !renderer) return
 
-        renderer.dpr = Math.min(window.devicePixelRatio, 2);
+        renderer.dpr = Math.min(window.devicePixelRatio, 2)
 
-        const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current;
-        renderer.setSize(wCSS, hCSS);
+        const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current
+        renderer.setSize(wCSS, hCSS)
 
-        const dpr = renderer.dpr;
-        const w = wCSS * dpr;
-        const h = hCSS * dpr;
+        const dpr = renderer.dpr
+        const w = wCSS * dpr
+        const h = hCSS * dpr
 
-        uniforms.iResolution.value = [w, h];
+        uniforms.iResolution.value = [w, h]
 
-        const { anchor, dir } = getAnchorAndDir(raysOrigin, w, h);
-        uniforms.rayPos.value = anchor;
-        uniforms.rayDir.value = dir;
-      };
+        const { anchor, dir } = getAnchorAndDir(raysOrigin, w, h)
+        uniforms.rayPos.value = anchor
+        uniforms.rayDir.value = dir
+      }
 
-      const loop = t => {
+      const loop = (t) => {
         if (!rendererRef.current || !uniformsRef.current || !meshRef.current) {
-          return;
+          return
         }
 
-        uniforms.iTime.value = t * 0.001;
+        uniforms.iTime.value = t * 0.001
 
         if (followMouse && mouseInfluence > 0.0) {
-          const smoothing = 0.92;
+          const smoothing = 0.92
 
-          smoothMouseRef.current.x = smoothMouseRef.current.x * smoothing + mouseRef.current.x * (1 - smoothing);
-          smoothMouseRef.current.y = smoothMouseRef.current.y * smoothing + mouseRef.current.y * (1 - smoothing);
+          smoothMouseRef.current.x = smoothMouseRef.current.x * smoothing + mouseRef.current.x * (1 - smoothing)
+          smoothMouseRef.current.y = smoothMouseRef.current.y * smoothing + mouseRef.current.y * (1 - smoothing)
 
-          uniforms.mousePos.value = [smoothMouseRef.current.x, smoothMouseRef.current.y];
+          uniforms.mousePos.value = [smoothMouseRef.current.x, smoothMouseRef.current.y]
         }
 
         try {
-          renderer.render({ scene: mesh });
-          animationIdRef.current = requestAnimationFrame(loop);
+          renderer.render({ scene: mesh })
+          animationIdRef.current = requestAnimationFrame(loop)
         } catch (error) {
-          console.warn('WebGL rendering error:', error);
-          return;
+          console.warn("WebGL rendering error:", error)
+          return
         }
-      };
+      }
 
-      window.addEventListener('resize', updatePlacement);
-      updatePlacement();
-      animationIdRef.current = requestAnimationFrame(loop);
+      window.addEventListener("resize", updatePlacement)
+      updatePlacement()
+      animationIdRef.current = requestAnimationFrame(loop)
 
       cleanupFunctionRef.current = () => {
         if (animationIdRef.current) {
-          cancelAnimationFrame(animationIdRef.current);
-          animationIdRef.current = null;
+          cancelAnimationFrame(animationIdRef.current)
+          animationIdRef.current = null
         }
 
-        window.removeEventListener('resize', updatePlacement);
+        window.removeEventListener("resize", updatePlacement)
 
         if (renderer) {
           try {
-            const canvas = renderer.gl.canvas;
-            const loseContextExt = renderer.gl.getExtension('WEBGL_lose_context');
+            const canvas = renderer.gl.canvas
+            const loseContextExt = renderer.gl.getExtension("WEBGL_lose_context")
             if (loseContextExt) {
-              loseContextExt.loseContext();
+              loseContextExt.loseContext()
             }
 
             if (canvas && canvas.parentNode) {
-              canvas.parentNode.removeChild(canvas);
+              canvas.parentNode.removeChild(canvas)
             }
           } catch (error) {
-            console.warn('Error during WebGL cleanup:', error);
+            console.warn("Error during WebGL cleanup:", error)
           }
         }
 
-        rendererRef.current = null;
-        uniformsRef.current = null;
-        meshRef.current = null;
-      };
-    };
+        rendererRef.current = null
+        uniformsRef.current = null
+        meshRef.current = null
+      }
+    }
 
-    initializeWebGL();
+    initializeWebGL()
 
     return () => {
       if (cleanupFunctionRef.current) {
-        cleanupFunctionRef.current();
-        cleanupFunctionRef.current = null;
+        cleanupFunctionRef.current()
+        cleanupFunctionRef.current = null
       }
-    };
+    }
   }, [
     isVisible,
     raysOrigin,
@@ -8184,31 +8254,31 @@ void main() {
     followMouse,
     mouseInfluence,
     noiseAmount,
-    distortion
-  ]);
+    distortion,
+  ])
 
   useEffect(() => {
-    if (!uniformsRef.current || !containerRef.current || !rendererRef.current) return;
+    if (!uniformsRef.current || !containerRef.current || !rendererRef.current) return
 
-    const u = uniformsRef.current;
-    const renderer = rendererRef.current;
+    const u = uniformsRef.current
+    const renderer = rendererRef.current
 
-    u.raysColor.value = hexToRgb(raysColor);
-    u.raysSpeed.value = raysSpeed;
-    u.lightSpread.value = lightSpread;
-    u.rayLength.value = rayLength;
-    u.pulsating.value = pulsating ? 1.0 : 0.0;
-    u.fadeDistance.value = fadeDistance;
-    u.saturation.value = saturation;
-    u.mouseInfluence.value = mouseInfluence;
-    u.noiseAmount.value = noiseAmount;
-    u.distortion.value = distortion;
+    u.raysColor.value = hexToRgb(raysColor)
+    u.raysSpeed.value = raysSpeed
+    u.lightSpread.value = lightSpread
+    u.rayLength.value = rayLength
+    u.pulsating.value = pulsating ? 1.0 : 0.0
+    u.fadeDistance.value = fadeDistance
+    u.saturation.value = saturation
+    u.mouseInfluence.value = mouseInfluence
+    u.noiseAmount.value = noiseAmount
+    u.distortion.value = distortion
 
-    const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current;
-    const dpr = renderer.dpr;
-    const { anchor, dir } = getAnchorAndDir(raysOrigin, wCSS * dpr, hCSS * dpr);
-    u.rayPos.value = anchor;
-    u.rayDir.value = dir;
+    const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current
+    const dpr = renderer.dpr
+    const { anchor, dir } = getAnchorAndDir(raysOrigin, wCSS * dpr, hCSS * dpr)
+    u.rayPos.value = anchor
+    u.rayDir.value = dir
   }, [
     raysColor,
     raysSpeed,
@@ -8220,32 +8290,32 @@ void main() {
     saturation,
     mouseInfluence,
     noiseAmount,
-    distortion
-  ]);
+    distortion,
+  ])
 
   useEffect(() => {
-    const handleMouseMove = e => {
-      if (!containerRef.current || !rendererRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-      mouseRef.current = { x, y };
-    };
+    const handleMouseMove = (e) => {
+      if (!containerRef.current || !rendererRef.current) return
+      const rect = containerRef.current.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width
+      const y = (e.clientY - rect.top) / rect.height
+      mouseRef.current = { x, y }
+    }
 
     if (followMouse) {
-      window.addEventListener('mousemove', handleMouseMove);
-      return () => window.removeEventListener('mousemove', handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove)
+      return () => window.removeEventListener("mousemove", handleMouseMove)
     }
-  }, [followMouse]);
+  }, [followMouse])
 
-  return <div ref={containerRef} className={`light-rays-container ${className}`.trim()} />;
-};
+  return <div ref={containerRef} className={`light-rays-container ${className}`.trim()} />
+}
 
-export default LightRays;
-
+export default LightRays
 ```
 
 ### Component CSS
+
 ```css
 .light-rays-container {
   width: 100%;
@@ -8255,10 +8325,10 @@ export default LightRays;
   z-index: 3;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -8273,18 +8343,21 @@ code: ## Integrate the <PixelBlast /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: PixelBlast
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three postprocessing
 
 ---
 
 ### Usage Example
+
 ```jsx
 // Component inspired by github.com/zavalit/bayer-dithering-webgl-demo
-  
-import PixelBlast from './PixelBlast';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+import PixelBlast from "./PixelBlast"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <PixelBlast
     variant="circle"
     pixelSize={6}
@@ -8308,119 +8381,121 @@ import PixelBlast from './PixelBlast';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| variant | 'square'|'circle'|'triangle'|'diamond' | 'square' | Pixel shape variant. |
-| pixelSize | number | 4 | Base pixel size (auto scaled for DPI). |
-| color | string | '#B497CF' | Pixel color. |
-| patternScale | number | 2 | Noise/pattern scale. |
-| patternDensity | number | 1 | Pattern density adjustment. |
-| pixelSizeJitter | number | 0 | Random jitter applied to coverage. |
-| enableRipples | boolean | true | Enable click ripple waves. |
-| rippleSpeed | number | 0.3 | Ripple propagation speed. |
-| rippleThickness | number | 0.1 | Ripple ring thickness. |
-| rippleIntensityScale | number | 1 | Ripple intensity multiplier. |
-| liquid | boolean | false | Enable liquid distortion effect. |
-| liquidStrength | number | 0.1 | Liquid distortion strength. |
-| liquidRadius | number | 1 | Liquid touch brush radius scale. |
-| liquidWobbleSpeed | number | 4.5 | Liquid wobble frequency. |
-| speed | number | 0.5 | Animation time scale. |
-| edgeFade | number | 0.25 | Edge fade distance (0-1). |
-| noiseAmount | number | 0 | Post noise amount. |
-| transparent | boolean | true | Transparent background. |
+
+| Prop                 | Type     | Default   | Description                            |
+| -------------------- | -------- | --------- | -------------------------------------- | --------- | -------- | -------------------- |
+| variant              | 'square' | 'circle'  | 'triangle'                             | 'diamond' | 'square' | Pixel shape variant. |
+| pixelSize            | number   | 4         | Base pixel size (auto scaled for DPI). |
+| color                | string   | '#B497CF' | Pixel color.                           |
+| patternScale         | number   | 2         | Noise/pattern scale.                   |
+| patternDensity       | number   | 1         | Pattern density adjustment.            |
+| pixelSizeJitter      | number   | 0         | Random jitter applied to coverage.     |
+| enableRipples        | boolean  | true      | Enable click ripple waves.             |
+| rippleSpeed          | number   | 0.3       | Ripple propagation speed.              |
+| rippleThickness      | number   | 0.1       | Ripple ring thickness.                 |
+| rippleIntensityScale | number   | 1         | Ripple intensity multiplier.           |
+| liquid               | boolean  | false     | Enable liquid distortion effect.       |
+| liquidStrength       | number   | 0.1       | Liquid distortion strength.            |
+| liquidRadius         | number   | 1         | Liquid touch brush radius scale.       |
+| liquidWobbleSpeed    | number   | 4.5       | Liquid wobble frequency.               |
+| speed                | number   | 0.5       | Animation time scale.                  |
+| edgeFade             | number   | 0.25      | Edge fade distance (0-1).              |
+| noiseAmount          | number   | 0         | Post noise amount.                     |
+| transparent          | boolean  | true      | Transparent background.                |
 
 ### Full Component Source
+
 ```jsx
-import { Effect, EffectComposer, EffectPass, RenderPass } from 'postprocessing';
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import './PixelBlast.css';
+import { Effect, EffectComposer, EffectPass, RenderPass } from "postprocessing"
+import { useEffect, useRef } from "react"
+import * as THREE from "three"
+import "./PixelBlast.css"
 
 const createTouchTexture = () => {
-  const size = 64;
-  const canvas = document.createElement('canvas');
-  canvas.width = size;
-  canvas.height = size;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) throw new Error('2D context not available');
-  ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  const texture = new THREE.Texture(canvas);
-  texture.minFilter = THREE.LinearFilter;
-  texture.magFilter = THREE.LinearFilter;
-  texture.generateMipmaps = false;
-  const trail = [];
-  let last = null;
-  const maxAge = 64;
-  let radius = 0.1 * size;
-  const speed = 1 / maxAge;
+  const size = 64
+  const canvas = document.createElement("canvas")
+  canvas.width = size
+  canvas.height = size
+  const ctx = canvas.getContext("2d")
+  if (!ctx) throw new Error("2D context not available")
+  ctx.fillStyle = "black"
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  const texture = new THREE.Texture(canvas)
+  texture.minFilter = THREE.LinearFilter
+  texture.magFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  const trail = []
+  let last = null
+  const maxAge = 64
+  let radius = 0.1 * size
+  const speed = 1 / maxAge
   const clear = () => {
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-  };
-  const drawPoint = p => {
-    const pos = { x: p.x * size, y: (1 - p.y) * size };
-    let intensity = 1;
-    const easeOutSine = t => Math.sin((t * Math.PI) / 2);
-    const easeOutQuad = t => -t * (t - 2);
-    if (p.age < maxAge * 0.3) intensity = easeOutSine(p.age / (maxAge * 0.3));
-    else intensity = easeOutQuad(1 - (p.age - maxAge * 0.3) / (maxAge * 0.7)) || 0;
-    intensity *= p.force;
-    const color = `${((p.vx + 1) / 2) * 255}, ${((p.vy + 1) / 2) * 255}, ${intensity * 255}`;
-    const offset = size * 5;
-    ctx.shadowOffsetX = offset;
-    ctx.shadowOffsetY = offset;
-    ctx.shadowBlur = radius;
-    ctx.shadowColor = `rgba(${color},${0.22 * intensity})`;
-    ctx.beginPath();
-    ctx.fillStyle = 'rgba(255,0,0,1)';
-    ctx.arc(pos.x - offset, pos.y - offset, radius, 0, Math.PI * 2);
-    ctx.fill();
-  };
-  const addTouch = norm => {
-    let force = 0;
-    let vx = 0;
-    let vy = 0;
+    ctx.fillStyle = "black"
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+  }
+  const drawPoint = (p) => {
+    const pos = { x: p.x * size, y: (1 - p.y) * size }
+    let intensity = 1
+    const easeOutSine = (t) => Math.sin((t * Math.PI) / 2)
+    const easeOutQuad = (t) => -t * (t - 2)
+    if (p.age < maxAge * 0.3) intensity = easeOutSine(p.age / (maxAge * 0.3))
+    else intensity = easeOutQuad(1 - (p.age - maxAge * 0.3) / (maxAge * 0.7)) || 0
+    intensity *= p.force
+    const color = `${((p.vx + 1) / 2) * 255}, ${((p.vy + 1) / 2) * 255}, ${intensity * 255}`
+    const offset = size * 5
+    ctx.shadowOffsetX = offset
+    ctx.shadowOffsetY = offset
+    ctx.shadowBlur = radius
+    ctx.shadowColor = `rgba(${color},${0.22 * intensity})`
+    ctx.beginPath()
+    ctx.fillStyle = "rgba(255,0,0,1)"
+    ctx.arc(pos.x - offset, pos.y - offset, radius, 0, Math.PI * 2)
+    ctx.fill()
+  }
+  const addTouch = (norm) => {
+    let force = 0
+    let vx = 0
+    let vy = 0
     if (last) {
-      const dx = norm.x - last.x;
-      const dy = norm.y - last.y;
-      if (dx === 0 && dy === 0) return;
-      const dd = dx * dx + dy * dy;
-      const d = Math.sqrt(dd);
-      vx = dx / (d || 1);
-      vy = dy / (d || 1);
-      force = Math.min(dd * 10000, 1);
+      const dx = norm.x - last.x
+      const dy = norm.y - last.y
+      if (dx === 0 && dy === 0) return
+      const dd = dx * dx + dy * dy
+      const d = Math.sqrt(dd)
+      vx = dx / (d || 1)
+      vy = dy / (d || 1)
+      force = Math.min(dd * 10000, 1)
     }
-    last = { x: norm.x, y: norm.y };
-    trail.push({ x: norm.x, y: norm.y, age: 0, force, vx, vy });
-  };
+    last = { x: norm.x, y: norm.y }
+    trail.push({ x: norm.x, y: norm.y, age: 0, force, vx, vy })
+  }
   const update = () => {
-    clear();
+    clear()
     for (let i = trail.length - 1; i >= 0; i--) {
-      const point = trail[i];
-      const f = point.force * speed * (1 - point.age / maxAge);
-      point.x += point.vx * f;
-      point.y += point.vy * f;
-      point.age++;
-      if (point.age > maxAge) trail.splice(i, 1);
+      const point = trail[i]
+      const f = point.force * speed * (1 - point.age / maxAge)
+      point.x += point.vx * f
+      point.y += point.vy * f
+      point.age++
+      if (point.age > maxAge) trail.splice(i, 1)
     }
-    for (let i = 0; i < trail.length; i++) drawPoint(trail[i]);
-    texture.needsUpdate = true;
-  };
+    for (let i = 0; i < trail.length; i++) drawPoint(trail[i])
+    texture.needsUpdate = true
+  }
   return {
     canvas,
     texture,
     addTouch,
     update,
     set radiusScale(v) {
-      radius = 0.1 * size * v;
+      radius = 0.1 * size * v
     },
     get radiusScale() {
-      return radius / (0.1 * size);
+      return radius / (0.1 * size)
     },
-    size
-  };
-};
+    size,
+  }
+}
 
 const createLiquidEffect = (texture, opts) => {
   const fragment = `
@@ -8441,29 +8516,29 @@ const createLiquidEffect = (texture, opts) => {
 
       uv += vec2(vx, vy) * amt;
     }
-    `;
-  return new Effect('LiquidEffect', fragment, {
+    `
+  return new Effect("LiquidEffect", fragment, {
     uniforms: new Map([
-      ['uTexture', new THREE.Uniform(texture)],
-      ['uStrength', new THREE.Uniform(opts?.strength ?? 0.025)],
-      ['uTime', new THREE.Uniform(0)],
-      ['uFreq', new THREE.Uniform(opts?.freq ?? 4.5)]
-    ])
-  });
-};
+      ["uTexture", new THREE.Uniform(texture)],
+      ["uStrength", new THREE.Uniform(opts?.strength ?? 0.025)],
+      ["uTime", new THREE.Uniform(0)],
+      ["uFreq", new THREE.Uniform(opts?.freq ?? 4.5)],
+    ]),
+  })
+}
 
 const SHAPE_MAP = {
   square: 0,
   circle: 1,
   triangle: 2,
-  diamond: 3
-};
+  diamond: 3,
+}
 
 const VERTEX_SRC = `
 void main() {
   gl_Position = vec4(position, 1.0);
 }
-`;
+`
 
 const FRAGMENT_SRC = `
 precision highp float;
@@ -8630,14 +8705,14 @@ void main(){
 
   fragColor = vec4(srgbColor, M);
 }
-`;
+`
 
-const MAX_CLICKS = 10;
+const MAX_CLICKS = 10
 
 const PixelBlast = ({
-  variant = 'square',
+  variant = "square",
   pixelSize = 3,
-  color = '#B497CF',
+  color = "#B497CF",
   className,
   style,
   antialias = true,
@@ -8656,61 +8731,61 @@ const PixelBlast = ({
   speed = 0.5,
   transparent = true,
   edgeFade = 0.5,
-  noiseAmount = 0
+  noiseAmount = 0,
 }) => {
-  const containerRef = useRef(null);
-  const visibilityRef = useRef({ visible: true });
-  const speedRef = useRef(speed);
+  const containerRef = useRef(null)
+  const visibilityRef = useRef({ visible: true })
+  const speedRef = useRef(speed)
 
-  const threeRef = useRef(null);
-  const prevConfigRef = useRef(null);
+  const threeRef = useRef(null)
+  const prevConfigRef = useRef(null)
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    speedRef.current = speed;
-    const needsReinitKeys = ['antialias', 'liquid', 'noiseAmount'];
-    const cfg = { antialias, liquid, noiseAmount };
-    let mustReinit = false;
-    if (!threeRef.current) mustReinit = true;
+    const container = containerRef.current
+    if (!container) return
+    speedRef.current = speed
+    const needsReinitKeys = ["antialias", "liquid", "noiseAmount"]
+    const cfg = { antialias, liquid, noiseAmount }
+    let mustReinit = false
+    if (!threeRef.current) mustReinit = true
     else if (prevConfigRef.current) {
       for (const k of needsReinitKeys)
         if (prevConfigRef.current[k] !== cfg[k]) {
-          mustReinit = true;
-          break;
+          mustReinit = true
+          break
         }
     }
     if (mustReinit) {
       if (threeRef.current) {
-        const t = threeRef.current;
-        t.resizeObserver?.disconnect();
-        cancelAnimationFrame(t.raf);
-        t.quad?.geometry.dispose();
-        t.material.dispose();
-        t.composer?.dispose();
-        t.renderer.dispose();
-        t.renderer.forceContextLoss();
-        if (t.renderer.domElement.parentElement === container) container.removeChild(t.renderer.domElement);
-        threeRef.current = null;
+        const t = threeRef.current
+        t.resizeObserver?.disconnect()
+        cancelAnimationFrame(t.raf)
+        t.quad?.geometry.dispose()
+        t.material.dispose()
+        t.composer?.dispose()
+        t.renderer.dispose()
+        t.renderer.forceContextLoss()
+        if (t.renderer.domElement.parentElement === container) container.removeChild(t.renderer.domElement)
+        threeRef.current = null
       }
-      const canvas = document.createElement('canvas');
+      const canvas = document.createElement("canvas")
       const renderer = new THREE.WebGLRenderer({
         canvas,
         antialias,
         alpha: true,
-        powerPreference: 'high-performance'
-      });
-      renderer.domElement.style.width = '100%';
-      renderer.domElement.style.height = '100%';
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      container.appendChild(renderer.domElement);
-      if (transparent) renderer.setClearAlpha(0);
-      else renderer.setClearColor(0x000000, 1);
+        powerPreference: "high-performance",
+      })
+      renderer.domElement.style.width = "100%"
+      renderer.domElement.style.height = "100%"
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
+      container.appendChild(renderer.domElement)
+      if (transparent) renderer.setClearAlpha(0)
+      else renderer.setClearColor(0x000000, 1)
       const uniforms = {
         uResolution: { value: new THREE.Vector2(0, 0) },
         uTime: { value: 0 },
         uColor: { value: new THREE.Color(color) },
         uClickPos: {
-          value: Array.from({ length: MAX_CLICKS }, () => new THREE.Vector2(-1, -1))
+          value: Array.from({ length: MAX_CLICKS }, () => new THREE.Vector2(-1, -1)),
         },
         uClickTimes: { value: new Float32Array(MAX_CLICKS) },
         uShapeType: { value: SHAPE_MAP[variant] ?? 0 },
@@ -8722,10 +8797,10 @@ const PixelBlast = ({
         uRippleSpeed: { value: rippleSpeed },
         uRippleThickness: { value: rippleThickness },
         uRippleIntensity: { value: rippleIntensityScale },
-        uEdgeFade: { value: edgeFade }
-      };
-      const scene = new THREE.Scene();
-      const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        uEdgeFade: { value: edgeFade },
+      }
+      const scene = new THREE.Scene()
+      const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
       const material = new THREE.ShaderMaterial({
         vertexShader: VERTEX_SRC,
         fragmentShader: FRAGMENT_SRC,
@@ -8733,125 +8808,125 @@ const PixelBlast = ({
         transparent: true,
         depthTest: false,
         depthWrite: false,
-        glslVersion: THREE.GLSL3
-      });
-      const quadGeom = new THREE.PlaneGeometry(2, 2);
-      const quad = new THREE.Mesh(quadGeom, material);
-      scene.add(quad);
-      const clock = new THREE.Clock();
+        glslVersion: THREE.GLSL3,
+      })
+      const quadGeom = new THREE.PlaneGeometry(2, 2)
+      const quad = new THREE.Mesh(quadGeom, material)
+      scene.add(quad)
+      const clock = new THREE.Clock()
       const setSize = () => {
-        const w = container.clientWidth || 1;
-        const h = container.clientHeight || 1;
-        renderer.setSize(w, h, false);
-        uniforms.uResolution.value.set(renderer.domElement.width, renderer.domElement.height);
+        const w = container.clientWidth || 1
+        const h = container.clientHeight || 1
+        renderer.setSize(w, h, false)
+        uniforms.uResolution.value.set(renderer.domElement.width, renderer.domElement.height)
         if (threeRef.current?.composer)
-          threeRef.current.composer.setSize(renderer.domElement.width, renderer.domElement.height);
-        uniforms.uPixelSize.value = pixelSize * renderer.getPixelRatio();
-      };
-      setSize();
-      const ro = new ResizeObserver(setSize);
-      ro.observe(container);
+          threeRef.current.composer.setSize(renderer.domElement.width, renderer.domElement.height)
+        uniforms.uPixelSize.value = pixelSize * renderer.getPixelRatio()
+      }
+      setSize()
+      const ro = new ResizeObserver(setSize)
+      ro.observe(container)
       const randomFloat = () => {
-        if (typeof window !== 'undefined' && window.crypto?.getRandomValues) {
-          const u32 = new Uint32Array(1);
-          window.crypto.getRandomValues(u32);
-          return u32[0] / 0xffffffff;
+        if (typeof window !== "undefined" && window.crypto?.getRandomValues) {
+          const u32 = new Uint32Array(1)
+          window.crypto.getRandomValues(u32)
+          return u32[0] / 0xffffffff
         }
-        return Math.random();
-      };
-      const timeOffset = randomFloat() * 1000;
-      let composer;
-      let touch;
-      let liquidEffect;
+        return Math.random()
+      }
+      const timeOffset = randomFloat() * 1000
+      let composer
+      let touch
+      let liquidEffect
       if (liquid) {
-        touch = createTouchTexture();
-        touch.radiusScale = liquidRadius;
-        composer = new EffectComposer(renderer);
-        const renderPass = new RenderPass(scene, camera);
+        touch = createTouchTexture()
+        touch.radiusScale = liquidRadius
+        composer = new EffectComposer(renderer)
+        const renderPass = new RenderPass(scene, camera)
         liquidEffect = createLiquidEffect(touch.texture, {
           strength: liquidStrength,
-          freq: liquidWobbleSpeed
-        });
-        const effectPass = new EffectPass(camera, liquidEffect);
-        effectPass.renderToScreen = true;
-        composer.addPass(renderPass);
-        composer.addPass(effectPass);
+          freq: liquidWobbleSpeed,
+        })
+        const effectPass = new EffectPass(camera, liquidEffect)
+        effectPass.renderToScreen = true
+        composer.addPass(renderPass)
+        composer.addPass(effectPass)
       }
       if (noiseAmount > 0) {
         if (!composer) {
-          composer = new EffectComposer(renderer);
-          composer.addPass(new RenderPass(scene, camera));
+          composer = new EffectComposer(renderer)
+          composer.addPass(new RenderPass(scene, camera))
         }
         const noiseEffect = new Effect(
-          'NoiseEffect',
+          "NoiseEffect",
           `uniform float uTime; uniform float uAmount; float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453);} void mainUv(inout vec2 uv){} void mainImage(const in vec4 inputColor,const in vec2 uv,out vec4 outputColor){ float n=hash(floor(uv*vec2(1920.0,1080.0))+floor(uTime*60.0)); float g=(n-0.5)*uAmount; outputColor=inputColor+vec4(vec3(g),0.0);} `,
           {
             uniforms: new Map([
-              ['uTime', new THREE.Uniform(0)],
-              ['uAmount', new THREE.Uniform(noiseAmount)]
-            ])
-          }
-        );
-        const noisePass = new EffectPass(camera, noiseEffect);
-        noisePass.renderToScreen = true;
-        if (composer && composer.passes.length > 0) composer.passes.forEach(p => (p.renderToScreen = false));
-        composer.addPass(noisePass);
+              ["uTime", new THREE.Uniform(0)],
+              ["uAmount", new THREE.Uniform(noiseAmount)],
+            ]),
+          },
+        )
+        const noisePass = new EffectPass(camera, noiseEffect)
+        noisePass.renderToScreen = true
+        if (composer && composer.passes.length > 0) composer.passes.forEach((p) => (p.renderToScreen = false))
+        composer.addPass(noisePass)
       }
-      if (composer) composer.setSize(renderer.domElement.width, renderer.domElement.height);
-      const mapToPixels = e => {
-        const rect = renderer.domElement.getBoundingClientRect();
-        const scaleX = renderer.domElement.width / rect.width;
-        const scaleY = renderer.domElement.height / rect.height;
-        const fx = (e.clientX - rect.left) * scaleX;
-        const fy = (rect.height - (e.clientY - rect.top)) * scaleY;
+      if (composer) composer.setSize(renderer.domElement.width, renderer.domElement.height)
+      const mapToPixels = (e) => {
+        const rect = renderer.domElement.getBoundingClientRect()
+        const scaleX = renderer.domElement.width / rect.width
+        const scaleY = renderer.domElement.height / rect.height
+        const fx = (e.clientX - rect.left) * scaleX
+        const fy = (rect.height - (e.clientY - rect.top)) * scaleY
         return {
           fx,
           fy,
           w: renderer.domElement.width,
-          h: renderer.domElement.height
-        };
-      };
-      const onPointerDown = e => {
-        const { fx, fy } = mapToPixels(e);
-        const ix = threeRef.current?.clickIx ?? 0;
-        uniforms.uClickPos.value[ix].set(fx, fy);
-        uniforms.uClickTimes.value[ix] = uniforms.uTime.value;
-        if (threeRef.current) threeRef.current.clickIx = (ix + 1) % MAX_CLICKS;
-      };
-      const onPointerMove = e => {
-        if (!touch) return;
-        const { fx, fy, w, h } = mapToPixels(e);
-        touch.addTouch({ x: fx / w, y: fy / h });
-      };
-      renderer.domElement.addEventListener('pointerdown', onPointerDown, {
-        passive: true
-      });
-      renderer.domElement.addEventListener('pointermove', onPointerMove, {
-        passive: true
-      });
-      let raf = 0;
+          h: renderer.domElement.height,
+        }
+      }
+      const onPointerDown = (e) => {
+        const { fx, fy } = mapToPixels(e)
+        const ix = threeRef.current?.clickIx ?? 0
+        uniforms.uClickPos.value[ix].set(fx, fy)
+        uniforms.uClickTimes.value[ix] = uniforms.uTime.value
+        if (threeRef.current) threeRef.current.clickIx = (ix + 1) % MAX_CLICKS
+      }
+      const onPointerMove = (e) => {
+        if (!touch) return
+        const { fx, fy, w, h } = mapToPixels(e)
+        touch.addTouch({ x: fx / w, y: fy / h })
+      }
+      renderer.domElement.addEventListener("pointerdown", onPointerDown, {
+        passive: true,
+      })
+      renderer.domElement.addEventListener("pointermove", onPointerMove, {
+        passive: true,
+      })
+      let raf = 0
       const animate = () => {
         if (autoPauseOffscreen && !visibilityRef.current.visible) {
-          raf = requestAnimationFrame(animate);
-          return;
+          raf = requestAnimationFrame(animate)
+          return
         }
-        uniforms.uTime.value = timeOffset + clock.getElapsedTime() * speedRef.current;
-        if (liquidEffect) liquidEffect.uniforms.get('uTime').value = uniforms.uTime.value;
+        uniforms.uTime.value = timeOffset + clock.getElapsedTime() * speedRef.current
+        if (liquidEffect) liquidEffect.uniforms.get("uTime").value = uniforms.uTime.value
         if (composer) {
-          if (touch) touch.update();
-          composer.passes.forEach(p => {
-            const effs = p.effects;
+          if (touch) touch.update()
+          composer.passes.forEach((p) => {
+            const effs = p.effects
             if (effs)
-              effs.forEach(eff => {
-                const u = eff.uniforms?.get('uTime');
-                if (u) u.value = uniforms.uTime.value;
-              });
-          });
-          composer.render();
-        } else renderer.render(scene, camera);
-        raf = requestAnimationFrame(animate);
-      };
-      raf = requestAnimationFrame(animate);
+              effs.forEach((eff) => {
+                const u = eff.uniforms?.get("uTime")
+                if (u) u.value = uniforms.uTime.value
+              })
+          })
+          composer.render()
+        } else renderer.render(scene, camera)
+        raf = requestAnimationFrame(animate)
+      }
+      raf = requestAnimationFrame(animate)
       threeRef.current = {
         renderer,
         scene,
@@ -8866,46 +8941,46 @@ const PixelBlast = ({
         timeOffset,
         composer,
         touch,
-        liquidEffect
-      };
-    } else {
-      const t = threeRef.current;
-      t.uniforms.uShapeType.value = SHAPE_MAP[variant] ?? 0;
-      t.uniforms.uPixelSize.value = pixelSize * t.renderer.getPixelRatio();
-      t.uniforms.uColor.value.set(color);
-      t.uniforms.uScale.value = patternScale;
-      t.uniforms.uDensity.value = patternDensity;
-      t.uniforms.uPixelJitter.value = pixelSizeJitter;
-      t.uniforms.uEnableRipples.value = enableRipples ? 1 : 0;
-      t.uniforms.uRippleIntensity.value = rippleIntensityScale;
-      t.uniforms.uRippleThickness.value = rippleThickness;
-      t.uniforms.uRippleSpeed.value = rippleSpeed;
-      t.uniforms.uEdgeFade.value = edgeFade;
-      if (transparent) t.renderer.setClearAlpha(0);
-      else t.renderer.setClearColor(0x000000, 1);
-      if (t.liquidEffect) {
-        const uStrength = t.liquidEffect;
-        if (uStrength) uStrength.value = liquidStrength;
-        const uFreq = t.liquidEffect.uniforms.get('uFreq');
-        if (uFreq) uFreq.value = liquidWobbleSpeed;
+        liquidEffect,
       }
-      if (t.touch) t.touch.radiusScale = liquidRadius;
+    } else {
+      const t = threeRef.current
+      t.uniforms.uShapeType.value = SHAPE_MAP[variant] ?? 0
+      t.uniforms.uPixelSize.value = pixelSize * t.renderer.getPixelRatio()
+      t.uniforms.uColor.value.set(color)
+      t.uniforms.uScale.value = patternScale
+      t.uniforms.uDensity.value = patternDensity
+      t.uniforms.uPixelJitter.value = pixelSizeJitter
+      t.uniforms.uEnableRipples.value = enableRipples ? 1 : 0
+      t.uniforms.uRippleIntensity.value = rippleIntensityScale
+      t.uniforms.uRippleThickness.value = rippleThickness
+      t.uniforms.uRippleSpeed.value = rippleSpeed
+      t.uniforms.uEdgeFade.value = edgeFade
+      if (transparent) t.renderer.setClearAlpha(0)
+      else t.renderer.setClearColor(0x000000, 1)
+      if (t.liquidEffect) {
+        const uStrength = t.liquidEffect
+        if (uStrength) uStrength.value = liquidStrength
+        const uFreq = t.liquidEffect.uniforms.get("uFreq")
+        if (uFreq) uFreq.value = liquidWobbleSpeed
+      }
+      if (t.touch) t.touch.radiusScale = liquidRadius
     }
-    prevConfigRef.current = cfg;
+    prevConfigRef.current = cfg
     return () => {
-      if (threeRef.current && mustReinit) return;
-      if (!threeRef.current) return;
-      const t = threeRef.current;
-      t.resizeObserver?.disconnect();
-      cancelAnimationFrame(t.raf);
-      t.quad?.geometry.dispose();
-      t.material.dispose();
-      t.composer?.dispose();
-      t.renderer.dispose();
-      t.renderer.forceContextLoss();
-      if (t.renderer.domElement.parentElement === container) container.removeChild(t.renderer.domElement);
-      threeRef.current = null;
-    };
+      if (threeRef.current && mustReinit) return
+      if (!threeRef.current) return
+      const t = threeRef.current
+      t.resizeObserver?.disconnect()
+      cancelAnimationFrame(t.raf)
+      t.quad?.geometry.dispose()
+      t.material.dispose()
+      t.composer?.dispose()
+      t.renderer.dispose()
+      t.renderer.forceContextLoss()
+      if (t.renderer.domElement.parentElement === container) container.removeChild(t.renderer.domElement)
+      threeRef.current = null
+    }
   }, [
     antialias,
     liquid,
@@ -8926,24 +9001,24 @@ const PixelBlast = ({
     autoPauseOffscreen,
     variant,
     color,
-    speed
-  ]);
+    speed,
+  ])
 
   return (
     <div
       ref={containerRef}
-      className={`pixel-blast-container ${className ?? ''}`}
+      className={`pixel-blast-container ${className ?? ""}`}
       style={style}
       aria-label="PixelBlast interactive background"
     />
-  );
-};
+  )
+}
 
-export default PixelBlast;
-
+export default PixelBlast
 ```
 
 ### Component CSS
+
 ```css
 .pixel-blast-container {
   width: 100%;
@@ -8951,10 +9026,10 @@ export default PixelBlast;
   position: relative;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -8969,16 +9044,19 @@ code: ## Integrate the <ColorBends /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: ColorBends
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three
 
 ---
 
 ### Usage Example
+
 ```jsx
-import ColorBends from './ColorBends';
-  
-<ColorBends
+import ColorBends from "./ColorBends"
+
+;<ColorBends
   colors={["#ff5c7a", "#8a5cff", "#00ffd1"]}
   rotation={90}
   speed={0.2}
@@ -8996,32 +9074,34 @@ import ColorBends from './ColorBends';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| rotation | number | 90 | Base rotation angle in degrees. |
-| autoRotate | number | 0 | Automatic rotation speed in degrees/sec. |
-| speed | number | 0.2 | Animation time scale of the shader. |
-| colors | string[] | [] | Palette of up to 8 hex colors used to blend the bends. |
-| transparent | boolean | true | Whether the background is transparent (uses alpha). |
-| scale | number | 1 | Zoom factor of the pattern. |
-| frequency | number | 1 | Wave frequency used in the pattern. |
-| warpStrength | number | 1 | Amount of warping/distortion applied to waves. |
-| mouseInfluence | number | 1 | How strongly the waves react to pointer movement. |
-| parallax | number | 0.5 | Parallax factor shifting content with pointer. |
-| noise | number | 0.15 | Adds subtle grain. 0 disables noise. |
-| iterations | number | 1 | Number of extra warp passes (1-5). Higher values create more complex patterns. |
-| intensity | number | 1.5 | Brightness multiplier for the final color output. |
-| bandWidth | number | 6 | Controls the width/falloff of each color band. |
-| className | string | '' | Additional CSS classes for the container. |
-| style | React.CSSProperties | {} | Inline styles for the container. |
+
+| Prop           | Type                | Default | Description                                                                    |
+| -------------- | ------------------- | ------- | ------------------------------------------------------------------------------ |
+| rotation       | number              | 90      | Base rotation angle in degrees.                                                |
+| autoRotate     | number              | 0       | Automatic rotation speed in degrees/sec.                                       |
+| speed          | number              | 0.2     | Animation time scale of the shader.                                            |
+| colors         | string[]            | []      | Palette of up to 8 hex colors used to blend the bends.                         |
+| transparent    | boolean             | true    | Whether the background is transparent (uses alpha).                            |
+| scale          | number              | 1       | Zoom factor of the pattern.                                                    |
+| frequency      | number              | 1       | Wave frequency used in the pattern.                                            |
+| warpStrength   | number              | 1       | Amount of warping/distortion applied to waves.                                 |
+| mouseInfluence | number              | 1       | How strongly the waves react to pointer movement.                              |
+| parallax       | number              | 0.5     | Parallax factor shifting content with pointer.                                 |
+| noise          | number              | 0.15    | Adds subtle grain. 0 disables noise.                                           |
+| iterations     | number              | 1       | Number of extra warp passes (1-5). Higher values create more complex patterns. |
+| intensity      | number              | 1.5     | Brightness multiplier for the final color output.                              |
+| bandWidth      | number              | 6       | Controls the width/falloff of each color band.                                 |
+| className      | string              | ''      | Additional CSS classes for the container.                                      |
+| style          | React.CSSProperties | {}      | Inline styles for the container.                                               |
 
 ### Full Component Source
-```jsx
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import './ColorBends.css';
 
-const MAX_COLORS = 8;
+```jsx
+import { useEffect, useRef } from "react"
+import * as THREE from "three"
+import "./ColorBends.css"
+
+const MAX_COLORS = 8
 
 const frag = `
 #define MAX_COLORS ${MAX_COLORS}
@@ -9116,7 +9196,7 @@ void main() {
     vec3 rgb = (uTransparent > 0) ? col * a : col;
     gl_FragColor = vec4(rgb, a);
 }
-`;
+`
 
 const vert = `
 varying vec2 vUv;
@@ -9124,7 +9204,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 1.0);
 }
-`;
+`
 
 export default function ColorBends({
   className,
@@ -9142,26 +9222,26 @@ export default function ColorBends({
   noise = 0.15,
   iterations = 1,
   intensity = 1.5,
-  bandWidth = 6
+  bandWidth = 6,
 }) {
-  const containerRef = useRef(null);
-  const rendererRef = useRef(null);
-  const rafRef = useRef(null);
-  const materialRef = useRef(null);
-  const resizeObserverRef = useRef(null);
-  const rotationRef = useRef(rotation);
-  const autoRotateRef = useRef(autoRotate);
-  const pointerTargetRef = useRef(new THREE.Vector2(0, 0));
-  const pointerCurrentRef = useRef(new THREE.Vector2(0, 0));
-  const pointerSmoothRef = useRef(8);
+  const containerRef = useRef(null)
+  const rendererRef = useRef(null)
+  const rafRef = useRef(null)
+  const materialRef = useRef(null)
+  const resizeObserverRef = useRef(null)
+  const rotationRef = useRef(rotation)
+  const autoRotateRef = useRef(autoRotate)
+  const pointerTargetRef = useRef(new THREE.Vector2(0, 0))
+  const pointerCurrentRef = useRef(new THREE.Vector2(0, 0))
+  const pointerSmoothRef = useRef(8)
 
   useEffect(() => {
-    const container = containerRef.current;
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const container = containerRef.current
+    const scene = new THREE.Scene()
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
 
-    const geometry = new THREE.PlaneGeometry(2, 2);
-    const uColorsArray = Array.from({ length: MAX_COLORS }, () => new THREE.Vector3(0, 0, 0));
+    const geometry = new THREE.PlaneGeometry(2, 2)
+    const uColorsArray = Array.from({ length: MAX_COLORS }, () => new THREE.Vector3(0, 0, 0))
     const material = new THREE.ShaderMaterial({
       vertexShader: vert,
       fragmentShader: frag,
@@ -9182,121 +9262,133 @@ export default function ColorBends({
         uNoise: { value: noise },
         uIterations: { value: iterations },
         uIntensity: { value: intensity },
-        uBandWidth: { value: bandWidth }
+        uBandWidth: { value: bandWidth },
       },
       premultipliedAlpha: true,
-      transparent: true
-    });
-    materialRef.current = material;
+      transparent: true,
+    })
+    materialRef.current = material
 
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+    const mesh = new THREE.Mesh(geometry, material)
+    scene.add(mesh)
 
     const renderer = new THREE.WebGLRenderer({
       antialias: false,
-      powerPreference: 'high-performance',
-      alpha: true
-    });
-    rendererRef.current = renderer;
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setClearColor(0x000000, transparent ? 0 : 1);
-    renderer.domElement.style.width = '100%';
-    renderer.domElement.style.height = '100%';
-    renderer.domElement.style.display = 'block';
-    container.appendChild(renderer.domElement);
+      powerPreference: "high-performance",
+      alpha: true,
+    })
+    rendererRef.current = renderer
+    renderer.outputColorSpace = THREE.SRGBColorSpace
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
+    renderer.setClearColor(0x000000, transparent ? 0 : 1)
+    renderer.domElement.style.width = "100%"
+    renderer.domElement.style.height = "100%"
+    renderer.domElement.style.display = "block"
+    container.appendChild(renderer.domElement)
 
-    const clock = new THREE.Clock();
+    const clock = new THREE.Clock()
 
     const handleResize = () => {
-      const w = container.clientWidth || 1;
-      const h = container.clientHeight || 1;
-      renderer.setSize(w, h, false);
-      material.uniforms.uCanvas.value.set(w, h);
-    };
+      const w = container.clientWidth || 1
+      const h = container.clientHeight || 1
+      renderer.setSize(w, h, false)
+      material.uniforms.uCanvas.value.set(w, h)
+    }
 
-    handleResize();
+    handleResize()
 
-    if ('ResizeObserver' in window) {
-      const ro = new ResizeObserver(handleResize);
-      ro.observe(container);
-      resizeObserverRef.current = ro;
+    if ("ResizeObserver" in window) {
+      const ro = new ResizeObserver(handleResize)
+      ro.observe(container)
+      resizeObserverRef.current = ro
     } else {
-      window.addEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize)
     }
 
     const loop = () => {
-      const dt = clock.getDelta();
-      const elapsed = clock.elapsedTime;
-      material.uniforms.uTime.value = elapsed;
+      const dt = clock.getDelta()
+      const elapsed = clock.elapsedTime
+      material.uniforms.uTime.value = elapsed
 
-      const deg = (rotationRef.current % 360) + autoRotateRef.current * elapsed;
-      const rad = (deg * Math.PI) / 180;
-      const c = Math.cos(rad);
-      const s = Math.sin(rad);
-      material.uniforms.uRot.value.set(c, s);
+      const deg = (rotationRef.current % 360) + autoRotateRef.current * elapsed
+      const rad = (deg * Math.PI) / 180
+      const c = Math.cos(rad)
+      const s = Math.sin(rad)
+      material.uniforms.uRot.value.set(c, s)
 
-      const cur = pointerCurrentRef.current;
-      const tgt = pointerTargetRef.current;
-      const amt = Math.min(1, dt * pointerSmoothRef.current);
-      cur.lerp(tgt, amt);
-      material.uniforms.uPointer.value.copy(cur);
-      renderer.render(scene, camera);
-      rafRef.current = requestAnimationFrame(loop);
-    };
-    rafRef.current = requestAnimationFrame(loop);
+      const cur = pointerCurrentRef.current
+      const tgt = pointerTargetRef.current
+      const amt = Math.min(1, dt * pointerSmoothRef.current)
+      cur.lerp(tgt, amt)
+      material.uniforms.uPointer.value.copy(cur)
+      renderer.render(scene, camera)
+      rafRef.current = requestAnimationFrame(loop)
+    }
+    rafRef.current = requestAnimationFrame(loop)
 
     return () => {
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
-      if (resizeObserverRef.current) resizeObserverRef.current.disconnect();
-      else window.removeEventListener('resize', handleResize);
-      geometry.dispose();
-      material.dispose();
-      renderer.dispose();
-      renderer.forceContextLoss();
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+      if (resizeObserverRef.current) resizeObserverRef.current.disconnect()
+      else window.removeEventListener("resize", handleResize)
+      geometry.dispose()
+      material.dispose()
+      renderer.dispose()
+      renderer.forceContextLoss()
       if (renderer.domElement && renderer.domElement.parentElement === container) {
-        container.removeChild(renderer.domElement);
+        container.removeChild(renderer.domElement)
       }
-    };
-  }, [bandWidth, frequency, intensity, iterations, mouseInfluence, noise, parallax, scale, speed, transparent, warpStrength]);
+    }
+  }, [
+    bandWidth,
+    frequency,
+    intensity,
+    iterations,
+    mouseInfluence,
+    noise,
+    parallax,
+    scale,
+    speed,
+    transparent,
+    warpStrength,
+  ])
 
   useEffect(() => {
-    const material = materialRef.current;
-    const renderer = rendererRef.current;
-    if (!material) return;
+    const material = materialRef.current
+    const renderer = rendererRef.current
+    if (!material) return
 
-    rotationRef.current = rotation;
-    autoRotateRef.current = autoRotate;
-    material.uniforms.uSpeed.value = speed;
-    material.uniforms.uScale.value = scale;
-    material.uniforms.uFrequency.value = frequency;
-    material.uniforms.uWarpStrength.value = warpStrength;
-    material.uniforms.uMouseInfluence.value = mouseInfluence;
-    material.uniforms.uParallax.value = parallax;
-    material.uniforms.uNoise.value = noise;
-    material.uniforms.uIterations.value = iterations;
-    material.uniforms.uIntensity.value = intensity;
-    material.uniforms.uBandWidth.value = bandWidth;
+    rotationRef.current = rotation
+    autoRotateRef.current = autoRotate
+    material.uniforms.uSpeed.value = speed
+    material.uniforms.uScale.value = scale
+    material.uniforms.uFrequency.value = frequency
+    material.uniforms.uWarpStrength.value = warpStrength
+    material.uniforms.uMouseInfluence.value = mouseInfluence
+    material.uniforms.uParallax.value = parallax
+    material.uniforms.uNoise.value = noise
+    material.uniforms.uIterations.value = iterations
+    material.uniforms.uIntensity.value = intensity
+    material.uniforms.uBandWidth.value = bandWidth
 
-    const toVec3 = hex => {
-      const h = hex.replace('#', '').trim();
+    const toVec3 = (hex) => {
+      const h = hex.replace("#", "").trim()
       const v =
         h.length === 3
           ? [parseInt(h[0] + h[0], 16), parseInt(h[1] + h[1], 16), parseInt(h[2] + h[2], 16)]
-          : [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
-      return new THREE.Vector3(v[0] / 255, v[1] / 255, v[2] / 255);
-    };
-
-    const arr = (colors || []).filter(Boolean).slice(0, MAX_COLORS).map(toVec3);
-    for (let i = 0; i < MAX_COLORS; i++) {
-      const vec = material.uniforms.uColors.value[i];
-      if (i < arr.length) vec.copy(arr[i]);
-      else vec.set(0, 0, 0);
+          : [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)]
+      return new THREE.Vector3(v[0] / 255, v[1] / 255, v[2] / 255)
     }
-    material.uniforms.uColorCount.value = arr.length;
 
-    material.uniforms.uTransparent.value = transparent ? 1 : 0;
-    if (renderer) renderer.setClearColor(0x000000, transparent ? 0 : 1);
+    const arr = (colors || []).filter(Boolean).slice(0, MAX_COLORS).map(toVec3)
+    for (let i = 0; i < MAX_COLORS; i++) {
+      const vec = material.uniforms.uColors.value[i]
+      if (i < arr.length) vec.copy(arr[i])
+      else vec.set(0, 0, 0)
+    }
+    material.uniforms.uColorCount.value = arr.length
+
+    material.uniforms.uTransparent.value = transparent ? 1 : 0
+    if (renderer) renderer.setClearColor(0x000000, transparent ? 0 : 1)
   }, [
     rotation,
     autoRotate,
@@ -9311,33 +9403,33 @@ export default function ColorBends({
     intensity,
     bandWidth,
     colors,
-    transparent
-  ]);
+    transparent,
+  ])
 
   useEffect(() => {
-    const material = materialRef.current;
-    const container = containerRef.current;
-    if (!material || !container) return;
+    const material = materialRef.current
+    const container = containerRef.current
+    if (!material || !container) return
 
-    const handlePointerMove = e => {
-      const rect = container.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / (rect.width || 1)) * 2 - 1;
-      const y = -(((e.clientY - rect.top) / (rect.height || 1)) * 2 - 1);
-      pointerTargetRef.current.set(x, y);
-    };
+    const handlePointerMove = (e) => {
+      const rect = container.getBoundingClientRect()
+      const x = ((e.clientX - rect.left) / (rect.width || 1)) * 2 - 1
+      const y = -(((e.clientY - rect.top) / (rect.height || 1)) * 2 - 1)
+      pointerTargetRef.current.set(x, y)
+    }
 
-    container.addEventListener('pointermove', handlePointerMove);
+    container.addEventListener("pointermove", handlePointerMove)
     return () => {
-      container.removeEventListener('pointermove', handlePointerMove);
-    };
-  }, []);
+      container.removeEventListener("pointermove", handlePointerMove)
+    }
+  }, [])
 
-  return <div ref={containerRef} className={`color-bends-container ${className}`} style={style} />;
+  return <div ref={containerRef} className={`color-bends-container ${className}`} style={style} />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .color-bends-container {
   position: relative;
@@ -9345,10 +9437,10 @@ export default function ColorBends({
   height: 100%;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -9363,16 +9455,19 @@ code: ## Integrate the <EvilEye /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: EvilEye
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import EvilEye from './EvilEye';
 
-<EvilEye
+```jsx
+import EvilEye from "./EvilEye"
+
+;<EvilEye
   eyeColor="#FF6F37"
   intensity={1.5}
   pupilSize={0.6}
@@ -9387,82 +9482,80 @@ import EvilEye from './EvilEye';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| eyeColor | string | "#FF6F37" | Primary eye color in HEX format. |
-| intensity | number | 1.5 | Brightness / HDR intensity of the eye color. |
-| pupilSize | number | 0.6 | Size and darkness of the pupil slit. |
-| irisWidth | number | 0.25 | Width of the main iris ring. |
-| glowIntensity | number | 0.35 | Strength of the outer eye glow. |
-| scale | number | 0.8 | Zoom level of the eye. Values > 1 zoom in, < 1 zoom out. |
-| noiseScale | number | 1.0 | Scale of the fire/noise texture sampling. |
-| pupilFollow | number | 1.0 | Intensity of pupil cursor tracking. 0 disables it. |
-| flameSpeed | number | 1.0 | Independent flame flicker animation speed. |
-| backgroundColor | string | "#000000" | Background color in HEX format. |
+
+| Prop            | Type   | Default   | Description                                              |
+| --------------- | ------ | --------- | -------------------------------------------------------- |
+| eyeColor        | string | "#FF6F37" | Primary eye color in HEX format.                         |
+| intensity       | number | 1.5       | Brightness / HDR intensity of the eye color.             |
+| pupilSize       | number | 0.6       | Size and darkness of the pupil slit.                     |
+| irisWidth       | number | 0.25      | Width of the main iris ring.                             |
+| glowIntensity   | number | 0.35      | Strength of the outer eye glow.                          |
+| scale           | number | 0.8       | Zoom level of the eye. Values > 1 zoom in, < 1 zoom out. |
+| noiseScale      | number | 1.0       | Scale of the fire/noise texture sampling.                |
+| pupilFollow     | number | 1.0       | Intensity of pupil cursor tracking. 0 disables it.       |
+| flameSpeed      | number | 1.0       | Independent flame flicker animation speed.               |
+| backgroundColor | string | "#000000" | Background color in HEX format.                          |
 
 ### Full Component Source
+
 ```jsx
-import { Renderer, Program, Mesh, Triangle, Texture } from 'ogl';
-import { useEffect, useRef } from 'react';
-import './EvilEye.css';
+import { Renderer, Program, Mesh, Triangle, Texture } from "ogl"
+import { useEffect, useRef } from "react"
+import "./EvilEye.css"
 
 function hexToVec3(hex) {
-  const h = hex.replace('#', '');
-  return [
-    parseInt(h.slice(0, 2), 16) / 255,
-    parseInt(h.slice(2, 4), 16) / 255,
-    parseInt(h.slice(4, 6), 16) / 255
-  ];
+  const h = hex.replace("#", "")
+  return [parseInt(h.slice(0, 2), 16) / 255, parseInt(h.slice(2, 4), 16) / 255, parseInt(h.slice(4, 6), 16) / 255]
 }
 
 function generateNoiseTexture(size = 256) {
-  const data = new Uint8Array(size * size * 4);
+  const data = new Uint8Array(size * size * 4)
 
   function hash(x, y, s) {
-    let n = x * 374761393 + y * 668265263 + s * 1274126177;
-    n = Math.imul(n ^ (n >>> 13), 1274126177);
-    return ((n ^ (n >>> 16)) >>> 0) / 4294967296;
+    let n = x * 374761393 + y * 668265263 + s * 1274126177
+    n = Math.imul(n ^ (n >>> 13), 1274126177)
+    return ((n ^ (n >>> 16)) >>> 0) / 4294967296
   }
 
   function noise(px, py, freq, seed) {
-    const fx = (px / size) * freq;
-    const fy = (py / size) * freq;
-    const ix = Math.floor(fx);
-    const iy = Math.floor(fy);
-    const tx = fx - ix;
-    const ty = fy - iy;
-    const w = freq | 0;
-    const v00 = hash(((ix % w) + w) % w, ((iy % w) + w) % w, seed);
-    const v10 = hash((((ix + 1) % w) + w) % w, ((iy % w) + w) % w, seed);
-    const v01 = hash(((ix % w) + w) % w, (((iy + 1) % w) + w) % w, seed);
-    const v11 = hash((((ix + 1) % w) + w) % w, (((iy + 1) % w) + w) % w, seed);
-    return v00 * (1 - tx) * (1 - ty) + v10 * tx * (1 - ty) + v01 * (1 - tx) * ty + v11 * tx * ty;
+    const fx = (px / size) * freq
+    const fy = (py / size) * freq
+    const ix = Math.floor(fx)
+    const iy = Math.floor(fy)
+    const tx = fx - ix
+    const ty = fy - iy
+    const w = freq | 0
+    const v00 = hash(((ix % w) + w) % w, ((iy % w) + w) % w, seed)
+    const v10 = hash((((ix + 1) % w) + w) % w, ((iy % w) + w) % w, seed)
+    const v01 = hash(((ix % w) + w) % w, (((iy + 1) % w) + w) % w, seed)
+    const v11 = hash((((ix + 1) % w) + w) % w, (((iy + 1) % w) + w) % w, seed)
+    return v00 * (1 - tx) * (1 - ty) + v10 * tx * (1 - ty) + v01 * (1 - tx) * ty + v11 * tx * ty
   }
 
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {
-      let v = 0;
-      let amp = 0.4;
-      let totalAmp = 0;
+      let v = 0
+      let amp = 0.4
+      let totalAmp = 0
       for (let o = 0; o < 8; o++) {
-        const f = 32 * (1 << o);
-        v += amp * noise(x, y, f, o * 31);
-        totalAmp += amp;
-        amp *= 0.65;
+        const f = 32 * (1 << o)
+        v += amp * noise(x, y, f, o * 31)
+        totalAmp += amp
+        amp *= 0.65
       }
-      v /= totalAmp;
-      v = (v - 0.5) * 2.2 + 0.5;
-      v = Math.max(0, Math.min(1, v));
-      const val = Math.round(v * 255);
-      const i = (y * size + x) * 4;
-      data[i] = val;
-      data[i + 1] = val;
-      data[i + 2] = val;
-      data[i + 3] = 255;
+      v /= totalAmp
+      v = (v - 0.5) * 2.2 + 0.5
+      v = Math.max(0, Math.min(1, v))
+      const val = Math.round(v * 255)
+      const i = (y * size + x) * 4
+      data[i] = val
+      data[i + 1] = val
+      data[i + 2] = val
+      data[i + 3] = 255
     }
   }
 
-  return data;
+  return data
 }
 
 const vertexShader = `
@@ -9473,7 +9566,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0, 1);
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -9556,10 +9649,10 @@ void main() {
 
   gl_FragColor = vec4(color, 1.0);
 }
-`;
+`
 
 export default function EvilEye({
-  eyeColor = '#FF6F37',
+  eyeColor = "#FF6F37",
   intensity = 1.5,
   pupilSize = 0.6,
   irisWidth = 0.25,
@@ -9568,58 +9661,58 @@ export default function EvilEye({
   noiseScale = 1.0,
   pupilFollow = 1.0,
   flameSpeed = 1.0,
-  backgroundColor = '#000000'
+  backgroundColor = "#000000",
 }) {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    const container = containerRef.current;
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
+    if (!containerRef.current) return
+    const container = containerRef.current
+    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false })
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
 
-    const noiseData = generateNoiseTexture(256);
+    const noiseData = generateNoiseTexture(256)
     const noiseTexture = new Texture(gl, {
       image: noiseData,
       width: 256,
       height: 256,
       generateMipmaps: false,
       flipY: false,
-    });
-    noiseTexture.minFilter = gl.LINEAR;
-    noiseTexture.magFilter = gl.LINEAR;
-    noiseTexture.wrapS = gl.REPEAT;
-    noiseTexture.wrapT = gl.REPEAT;
+    })
+    noiseTexture.minFilter = gl.LINEAR
+    noiseTexture.magFilter = gl.LINEAR
+    noiseTexture.wrapS = gl.REPEAT
+    noiseTexture.wrapT = gl.REPEAT
 
-    const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+    const mouse = { x: 0, y: 0, tx: 0, ty: 0 }
 
     function onMouseMove(e) {
-      const rect = container.getBoundingClientRect();
-      mouse.tx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.ty = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+      const rect = container.getBoundingClientRect()
+      mouse.tx = ((e.clientX - rect.left) / rect.width) * 2 - 1
+      mouse.ty = -(((e.clientY - rect.top) / rect.height) * 2 - 1)
     }
 
     function onMouseLeave() {
-      mouse.tx = 0;
-      mouse.ty = 0;
+      mouse.tx = 0
+      mouse.ty = 0
     }
 
-    container.addEventListener('mousemove', onMouseMove);
-    container.addEventListener('mouseleave', onMouseLeave);
+    container.addEventListener("mousemove", onMouseMove)
+    container.addEventListener("mouseleave", onMouseLeave)
 
-    let program;
+    let program
 
     function resize() {
-      renderer.setSize(container.offsetWidth, container.offsetHeight);
+      renderer.setSize(container.offsetWidth, container.offsetHeight)
       if (program) {
-        program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height];
+        program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height]
       }
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
@@ -9637,50 +9730,61 @@ export default function EvilEye({
         uPupilFollow: { value: pupilFollow },
         uFlameSpeed: { value: flameSpeed },
         uEyeColor: { value: hexToVec3(eyeColor) },
-        uBgColor: { value: hexToVec3(backgroundColor) }
-      }
-    });
+        uBgColor: { value: hexToVec3(backgroundColor) },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    container.appendChild(gl.canvas);
+    const mesh = new Mesh(gl, { geometry, program })
+    container.appendChild(gl.canvas)
 
-    let animationFrameId;
+    let animationFrameId
 
     function update(time) {
-      animationFrameId = requestAnimationFrame(update);
-      mouse.x += (mouse.tx - mouse.x) * 0.05;
-      mouse.y += (mouse.ty - mouse.y) * 0.05;
-      program.uniforms.uMouse.value = [mouse.x, mouse.y];
-      program.uniforms.uTime.value = time * 0.001;
-      renderer.render({ scene: mesh });
+      animationFrameId = requestAnimationFrame(update)
+      mouse.x += (mouse.tx - mouse.x) * 0.05
+      mouse.y += (mouse.ty - mouse.y) * 0.05
+      program.uniforms.uMouse.value = [mouse.x, mouse.y]
+      program.uniforms.uTime.value = time * 0.001
+      renderer.render({ scene: mesh })
     }
-    animationFrameId = requestAnimationFrame(update);
+    animationFrameId = requestAnimationFrame(update)
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
-      container.removeEventListener('mousemove', onMouseMove);
-      container.removeEventListener('mouseleave', onMouseLeave);
-      container.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
-  }, [eyeColor, intensity, pupilSize, irisWidth, glowIntensity, scale, noiseScale, pupilFollow, flameSpeed, backgroundColor]);
+      cancelAnimationFrame(animationFrameId)
+      window.removeEventListener("resize", resize)
+      container.removeEventListener("mousemove", onMouseMove)
+      container.removeEventListener("mouseleave", onMouseLeave)
+      container.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
+  }, [
+    eyeColor,
+    intensity,
+    pupilSize,
+    irisWidth,
+    glowIntensity,
+    scale,
+    noiseScale,
+    pupilFollow,
+    flameSpeed,
+    backgroundColor,
+  ])
 
-  return <div ref={containerRef} className="evil-eye-container" />;
+  return <div ref={containerRef} className="evil-eye-container" />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .evil-eye-container {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -9695,16 +9799,19 @@ code: ## Integrate the <LineWaves /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: LineWaves
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
+
 ```jsx
-import LineWaves from './LineWaves';
-  
-<LineWaves
+import LineWaves from "./LineWaves"
+
+;<LineWaves
   speed={0.3}
   innerLineCount={32}
   outerLineCount={36}
@@ -9722,36 +9829,34 @@ import LineWaves from './LineWaves';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| speed | number | 0.3 | Overall animation speed multiplier. |
-| innerLineCount | number | 32.0 | Number of lines in the inner (center) wave region. |
-| outerLineCount | number | 36.0 | Number of lines in the outer (edge) wave region. |
-| warpIntensity | number | 1.0 | Intensity of the wave distortion effect. |
-| rotation | number | -45 | Rotation of the wave pattern in degrees. |
-| edgeFadeWidth | number | 0.0 | Width of the edge fade between inner and outer regions. |
-| colorCycleSpeed | number | 1.0 | Speed of color cycling animation. |
-| brightness | number | 0.2 | Overall brightness multiplier. |
-| color1 | string | "#ffffff" | First color channel in HEX format. |
-| color2 | string | "#ffffff" | Second color channel in HEX format. |
-| color3 | string | "#ffffff" | Third color channel in HEX format. |
-| enableMouseInteraction | boolean | true | Enable cursor-reactive wave distortion. |
-| mouseInfluence | number | 2.0 | Strength of mouse influence on the wave pattern. |
+
+| Prop                   | Type    | Default   | Description                                             |
+| ---------------------- | ------- | --------- | ------------------------------------------------------- |
+| speed                  | number  | 0.3       | Overall animation speed multiplier.                     |
+| innerLineCount         | number  | 32.0      | Number of lines in the inner (center) wave region.      |
+| outerLineCount         | number  | 36.0      | Number of lines in the outer (edge) wave region.        |
+| warpIntensity          | number  | 1.0       | Intensity of the wave distortion effect.                |
+| rotation               | number  | -45       | Rotation of the wave pattern in degrees.                |
+| edgeFadeWidth          | number  | 0.0       | Width of the edge fade between inner and outer regions. |
+| colorCycleSpeed        | number  | 1.0       | Speed of color cycling animation.                       |
+| brightness             | number  | 0.2       | Overall brightness multiplier.                          |
+| color1                 | string  | "#ffffff" | First color channel in HEX format.                      |
+| color2                 | string  | "#ffffff" | Second color channel in HEX format.                     |
+| color3                 | string  | "#ffffff" | Third color channel in HEX format.                      |
+| enableMouseInteraction | boolean | true      | Enable cursor-reactive wave distortion.                 |
+| mouseInfluence         | number  | 2.0       | Strength of mouse influence on the wave pattern.        |
 
 ### Full Component Source
-```jsx
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
 
-import './LineWaves.css';
+```jsx
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+import { useEffect, useRef } from "react"
+
+import "./LineWaves.css"
 
 function hexToVec3(hex) {
-  const h = hex.replace('#', '');
-  return [
-    parseInt(h.slice(0, 2), 16) / 255,
-    parseInt(h.slice(2, 4), 16) / 255,
-    parseInt(h.slice(4, 6), 16) / 255
-  ];
+  const h = hex.replace("#", "")
+  return [parseInt(h.slice(0, 2), 16) / 255, parseInt(h.slice(2, 4), 16) / 255, parseInt(h.slice(4, 6), 16) / 255]
 }
 
 const vertexShader = `
@@ -9762,7 +9867,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0, 1);
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -9871,7 +9976,7 @@ void main() {
 
   gl_FragColor = vec4(col, alpha);
 }
-`;
+`
 
 export default function LineWaves({
   speed = 0.3,
@@ -9882,48 +9987,45 @@ export default function LineWaves({
   edgeFadeWidth = 0.0,
   colorCycleSpeed = 1.0,
   brightness = 0.2,
-  color1 = '#ffffff',
-  color2 = '#ffffff',
-  color3 = '#ffffff',
+  color1 = "#ffffff",
+  color2 = "#ffffff",
+  color3 = "#ffffff",
   enableMouseInteraction = true,
-  mouseInfluence = 2.0
+  mouseInfluence = 2.0,
 }) {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    const container = containerRef.current;
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
+    if (!containerRef.current) return
+    const container = containerRef.current
+    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false })
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
 
-    let program;
-    let currentMouse = [0.5, 0.5];
-    let targetMouse = [0.5, 0.5];
+    let program
+    let currentMouse = [0.5, 0.5]
+    let targetMouse = [0.5, 0.5]
 
     function handleMouseMove(e) {
-      const rect = gl.canvas.getBoundingClientRect();
-      targetMouse = [
-        (e.clientX - rect.left) / rect.width,
-        1.0 - (e.clientY - rect.top) / rect.height
-      ];
+      const rect = gl.canvas.getBoundingClientRect()
+      targetMouse = [(e.clientX - rect.left) / rect.width, 1.0 - (e.clientY - rect.top) / rect.height]
     }
 
     function handleMouseLeave() {
-      targetMouse = [0.5, 0.5];
+      targetMouse = [0.5, 0.5]
     }
 
     function resize() {
-      renderer.setSize(container.offsetWidth, container.offsetHeight);
+      renderer.setSize(container.offsetWidth, container.offsetHeight)
       if (program) {
-        program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height];
+        program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height]
       }
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
-    const geometry = new Triangle(gl);
-    const rotationRad = (rotation * Math.PI) / 180;
+    const geometry = new Triangle(gl)
+    const rotationRad = (rotation * Math.PI) / 180
     program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
@@ -9943,56 +10045,70 @@ export default function LineWaves({
         uColor3: { value: hexToVec3(color3) },
         uMouse: { value: new Float32Array([0.5, 0.5]) },
         uMouseInfluence: { value: mouseInfluence },
-        uEnableMouse: { value: enableMouseInteraction }
-      }
-    });
+        uEnableMouse: { value: enableMouseInteraction },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    container.appendChild(gl.canvas);
+    const mesh = new Mesh(gl, { geometry, program })
+    container.appendChild(gl.canvas)
 
     if (enableMouseInteraction) {
-      gl.canvas.addEventListener('mousemove', handleMouseMove);
-      gl.canvas.addEventListener('mouseleave', handleMouseLeave);
+      gl.canvas.addEventListener("mousemove", handleMouseMove)
+      gl.canvas.addEventListener("mouseleave", handleMouseLeave)
     }
 
-    let animationFrameId;
+    let animationFrameId
 
     function update(time) {
-      animationFrameId = requestAnimationFrame(update);
-      program.uniforms.uTime.value = time * 0.001;
+      animationFrameId = requestAnimationFrame(update)
+      program.uniforms.uTime.value = time * 0.001
 
       if (enableMouseInteraction) {
-        currentMouse[0] += 0.05 * (targetMouse[0] - currentMouse[0]);
-        currentMouse[1] += 0.05 * (targetMouse[1] - currentMouse[1]);
-        program.uniforms.uMouse.value[0] = currentMouse[0];
-        program.uniforms.uMouse.value[1] = currentMouse[1];
+        currentMouse[0] += 0.05 * (targetMouse[0] - currentMouse[0])
+        currentMouse[1] += 0.05 * (targetMouse[1] - currentMouse[1])
+        program.uniforms.uMouse.value[0] = currentMouse[0]
+        program.uniforms.uMouse.value[1] = currentMouse[1]
       } else {
-        program.uniforms.uMouse.value[0] = 0.5;
-        program.uniforms.uMouse.value[1] = 0.5;
+        program.uniforms.uMouse.value[0] = 0.5
+        program.uniforms.uMouse.value[1] = 0.5
       }
 
-      renderer.render({ scene: mesh });
+      renderer.render({ scene: mesh })
     }
-    animationFrameId = requestAnimationFrame(update);
+    animationFrameId = requestAnimationFrame(update)
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationFrameId)
+      window.removeEventListener("resize", resize)
       if (enableMouseInteraction) {
-        gl.canvas.removeEventListener('mousemove', handleMouseMove);
-        gl.canvas.removeEventListener('mouseleave', handleMouseLeave);
+        gl.canvas.removeEventListener("mousemove", handleMouseMove)
+        gl.canvas.removeEventListener("mouseleave", handleMouseLeave)
       }
-      container.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
-  }, [speed, innerLineCount, outerLineCount, warpIntensity, rotation, edgeFadeWidth, colorCycleSpeed, brightness, color1, color2, color3, enableMouseInteraction, mouseInfluence]);
+      container.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
+  }, [
+    speed,
+    innerLineCount,
+    outerLineCount,
+    warpIntensity,
+    rotation,
+    edgeFadeWidth,
+    colorCycleSpeed,
+    brightness,
+    color1,
+    color2,
+    color3,
+    enableMouseInteraction,
+    mouseInfluence,
+  ])
 
-  return <div ref={containerRef} className="line-waves-container" />;
+  return <div ref={containerRef} className="line-waves-container" />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .line-waves-container {
   width: 100%;
@@ -10001,6 +10117,7 @@ export default function LineWaves({
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -10015,16 +10132,19 @@ code: ## Integrate the <Radar /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Radar
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
+
 ```jsx
-import Radar from './Radar';
-  
-<Radar
+import Radar from "./Radar"
+
+;<Radar
   speed={1.0}
   scale={0.5}
   ringCount={10}
@@ -10044,38 +10164,36 @@ import Radar from './Radar';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| speed | number | 1.0 | Overall animation speed multiplier. |
-| scale | number | 0.5 | Zoom level of the radar pattern. |
-| ringCount | number | 10.0 | Number of concentric rings. |
-| spokeCount | number | 10.0 | Number of radial spoke lines. |
-| ringThickness | number | 0.05 | Thickness of the concentric ring lines. |
-| spokeThickness | number | 0.01 | Thickness of the radial spoke lines. |
-| sweepSpeed | number | 1.0 | Rotation speed of the sweep beam. |
-| sweepWidth | number | 2.0 | Width of the sweep trail (higher = thinner). |
-| sweepLobes | number | 1.0 | Number of sweep beams around the radar. |
-| color | string | "#9f29ff" | Primary radar color in HEX format. |
-| backgroundColor | string | "#000000" | Background color in HEX format. |
-| falloff | number | 2.0 | Edge fade intensity based on distance from center. |
-| brightness | number | 1.0 | Overall brightness multiplier. |
-| enableMouseInteraction | boolean | true | Enable cursor-reactive center offset. |
-| mouseInfluence | number | 0.1 | Strength of the mouse offset effect. |
+
+| Prop                   | Type    | Default   | Description                                        |
+| ---------------------- | ------- | --------- | -------------------------------------------------- |
+| speed                  | number  | 1.0       | Overall animation speed multiplier.                |
+| scale                  | number  | 0.5       | Zoom level of the radar pattern.                   |
+| ringCount              | number  | 10.0      | Number of concentric rings.                        |
+| spokeCount             | number  | 10.0      | Number of radial spoke lines.                      |
+| ringThickness          | number  | 0.05      | Thickness of the concentric ring lines.            |
+| spokeThickness         | number  | 0.01      | Thickness of the radial spoke lines.               |
+| sweepSpeed             | number  | 1.0       | Rotation speed of the sweep beam.                  |
+| sweepWidth             | number  | 2.0       | Width of the sweep trail (higher = thinner).       |
+| sweepLobes             | number  | 1.0       | Number of sweep beams around the radar.            |
+| color                  | string  | "#9f29ff" | Primary radar color in HEX format.                 |
+| backgroundColor        | string  | "#000000" | Background color in HEX format.                    |
+| falloff                | number  | 2.0       | Edge fade intensity based on distance from center. |
+| brightness             | number  | 1.0       | Overall brightness multiplier.                     |
+| enableMouseInteraction | boolean | true      | Enable cursor-reactive center offset.              |
+| mouseInfluence         | number  | 0.1       | Strength of the mouse offset effect.               |
 
 ### Full Component Source
-```jsx
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
 
-import './Radar.css';
+```jsx
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+import { useEffect, useRef } from "react"
+
+import "./Radar.css"
 
 function hexToVec3(hex) {
-  const h = hex.replace('#', '');
-  return [
-    parseInt(h.slice(0, 2), 16) / 255,
-    parseInt(h.slice(2, 4), 16) / 255,
-    parseInt(h.slice(4, 6), 16) / 255
-  ];
+  const h = hex.replace("#", "")
+  return [parseInt(h.slice(0, 2), 16) / 255, parseInt(h.slice(2, 4), 16) / 255, parseInt(h.slice(4, 6), 16) / 255]
 }
 
 const vertexShader = `
@@ -10086,7 +10204,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0, 1);
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -10149,7 +10267,7 @@ void main() {
   float alpha = clamp(length(col), 0.0, 1.0);
   gl_FragColor = vec4(col, alpha);
 }
-`;
+`
 
 export default function Radar({
   speed = 1.0,
@@ -10161,48 +10279,45 @@ export default function Radar({
   sweepSpeed = 1.0,
   sweepWidth = 2.0,
   sweepLobes = 1.0,
-  color = '#9f29ff',
-  backgroundColor = '#000000',
+  color = "#9f29ff",
+  backgroundColor = "#000000",
   falloff = 2.0,
   brightness = 1.0,
   enableMouseInteraction = true,
-  mouseInfluence = 0.1
+  mouseInfluence = 0.1,
 }) {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    const container = containerRef.current;
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
+    if (!containerRef.current) return
+    const container = containerRef.current
+    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false })
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
 
-    let program;
-    let currentMouse = [0.5, 0.5];
-    let targetMouse = [0.5, 0.5];
+    let program
+    let currentMouse = [0.5, 0.5]
+    let targetMouse = [0.5, 0.5]
 
     function handleMouseMove(e) {
-      const rect = gl.canvas.getBoundingClientRect();
-      targetMouse = [
-        (e.clientX - rect.left) / rect.width,
-        1.0 - (e.clientY - rect.top) / rect.height
-      ];
+      const rect = gl.canvas.getBoundingClientRect()
+      targetMouse = [(e.clientX - rect.left) / rect.width, 1.0 - (e.clientY - rect.top) / rect.height]
     }
 
     function handleMouseLeave() {
-      targetMouse = [0.5, 0.5];
+      targetMouse = [0.5, 0.5]
     }
 
     function resize() {
-      renderer.setSize(container.offsetWidth, container.offsetHeight);
+      renderer.setSize(container.offsetWidth, container.offsetHeight)
       if (program) {
-        program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height];
+        program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height]
       }
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
@@ -10224,65 +10339,81 @@ export default function Radar({
         uBrightness: { value: brightness },
         uMouse: { value: new Float32Array([0.5, 0.5]) },
         uMouseInfluence: { value: mouseInfluence },
-        uEnableMouse: { value: enableMouseInteraction }
-      }
-    });
+        uEnableMouse: { value: enableMouseInteraction },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    container.appendChild(gl.canvas);
+    const mesh = new Mesh(gl, { geometry, program })
+    container.appendChild(gl.canvas)
 
     if (enableMouseInteraction) {
-      gl.canvas.addEventListener('mousemove', handleMouseMove);
-      gl.canvas.addEventListener('mouseleave', handleMouseLeave);
+      gl.canvas.addEventListener("mousemove", handleMouseMove)
+      gl.canvas.addEventListener("mouseleave", handleMouseLeave)
     }
 
-    let animationFrameId;
+    let animationFrameId
 
     function update(time) {
-      animationFrameId = requestAnimationFrame(update);
-      program.uniforms.uTime.value = time * 0.001;
+      animationFrameId = requestAnimationFrame(update)
+      program.uniforms.uTime.value = time * 0.001
 
       if (enableMouseInteraction) {
-        currentMouse[0] += 0.05 * (targetMouse[0] - currentMouse[0]);
-        currentMouse[1] += 0.05 * (targetMouse[1] - currentMouse[1]);
-        program.uniforms.uMouse.value[0] = currentMouse[0];
-        program.uniforms.uMouse.value[1] = currentMouse[1];
+        currentMouse[0] += 0.05 * (targetMouse[0] - currentMouse[0])
+        currentMouse[1] += 0.05 * (targetMouse[1] - currentMouse[1])
+        program.uniforms.uMouse.value[0] = currentMouse[0]
+        program.uniforms.uMouse.value[1] = currentMouse[1]
       } else {
-        program.uniforms.uMouse.value[0] = 0.5;
-        program.uniforms.uMouse.value[1] = 0.5;
+        program.uniforms.uMouse.value[0] = 0.5
+        program.uniforms.uMouse.value[1] = 0.5
       }
 
-      renderer.render({ scene: mesh });
+      renderer.render({ scene: mesh })
     }
-    animationFrameId = requestAnimationFrame(update);
+    animationFrameId = requestAnimationFrame(update)
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationFrameId)
+      window.removeEventListener("resize", resize)
       if (enableMouseInteraction) {
-        gl.canvas.removeEventListener('mousemove', handleMouseMove);
-        gl.canvas.removeEventListener('mouseleave', handleMouseLeave);
+        gl.canvas.removeEventListener("mousemove", handleMouseMove)
+        gl.canvas.removeEventListener("mouseleave", handleMouseLeave)
       }
-      container.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
-  }, [speed, scale, ringCount, spokeCount, ringThickness, spokeThickness, sweepSpeed, sweepWidth, sweepLobes, color, backgroundColor, falloff, brightness, enableMouseInteraction, mouseInfluence]);
+      container.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
+  }, [
+    speed,
+    scale,
+    ringCount,
+    spokeCount,
+    ringThickness,
+    spokeThickness,
+    sweepSpeed,
+    sweepWidth,
+    sweepLobes,
+    color,
+    backgroundColor,
+    falloff,
+    brightness,
+    enableMouseInteraction,
+    mouseInfluence,
+  ])
 
-  return <div ref={containerRef} className="radar-container" />;
+  return <div ref={containerRef} className="radar-container" />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .radar-container {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -10297,16 +10428,19 @@ code: ## Integrate the <SoftAurora /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: SoftAurora
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
+
 ```jsx
-import SoftAurora from './SoftAurora';
-  
-<SoftAurora
+import SoftAurora from "./SoftAurora"
+
+;<SoftAurora
   speed={0.6}
   scale={1.5}
   brightness={1.0}
@@ -10325,37 +10459,35 @@ import SoftAurora from './SoftAurora';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| speed | number | 0.6 | Overall animation speed multiplier. |
-| scale | number | 1.5 | Scale of the noise pattern. |
-| brightness | number | 1.0 | Overall brightness multiplier. |
-| color1 | string | "#f7f7f7" | Tint color for the first aurora layer. |
-| color2 | string | "#e100ff" | Tint color for the second aurora layer. |
-| noiseFrequency | number | 2.5 | Base frequency of the Perlin noise. |
-| noiseAmplitude | number | 1.0 | Base amplitude of the Perlin noise. |
-| bandHeight | number | 0.5 | Vertical position of the aurora band (0-1). |
-| bandSpread | number | 1.0 | Vertical spread of the aurora glow. |
-| octaveDecay | number | 0.1 | Amplitude decay per noise octave. |
-| layerOffset | number | 0 | Time offset between the two aurora layers. |
-| colorSpeed | number | 1.0 | Speed of palette color shifting. |
-| enableMouseInteraction | boolean | true | Enable cursor-reactive aurora offset. |
-| mouseInfluence | number | 0.25 | Strength of the mouse offset effect. |
+
+| Prop                   | Type    | Default   | Description                                 |
+| ---------------------- | ------- | --------- | ------------------------------------------- |
+| speed                  | number  | 0.6       | Overall animation speed multiplier.         |
+| scale                  | number  | 1.5       | Scale of the noise pattern.                 |
+| brightness             | number  | 1.0       | Overall brightness multiplier.              |
+| color1                 | string  | "#f7f7f7" | Tint color for the first aurora layer.      |
+| color2                 | string  | "#e100ff" | Tint color for the second aurora layer.     |
+| noiseFrequency         | number  | 2.5       | Base frequency of the Perlin noise.         |
+| noiseAmplitude         | number  | 1.0       | Base amplitude of the Perlin noise.         |
+| bandHeight             | number  | 0.5       | Vertical position of the aurora band (0-1). |
+| bandSpread             | number  | 1.0       | Vertical spread of the aurora glow.         |
+| octaveDecay            | number  | 0.1       | Amplitude decay per noise octave.           |
+| layerOffset            | number  | 0         | Time offset between the two aurora layers.  |
+| colorSpeed             | number  | 1.0       | Speed of palette color shifting.            |
+| enableMouseInteraction | boolean | true      | Enable cursor-reactive aurora offset.       |
+| mouseInfluence         | number  | 0.25      | Strength of the mouse offset effect.        |
 
 ### Full Component Source
-```jsx
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
 
-import './SoftAurora.css';
+```jsx
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+import { useEffect, useRef } from "react"
+
+import "./SoftAurora.css"
 
 function hexToVec3(hex) {
-  const h = hex.replace('#', '');
-  return [
-    parseInt(h.slice(0, 2), 16) / 255,
-    parseInt(h.slice(2, 4), 16) / 255,
-    parseInt(h.slice(4, 6), 16) / 255
-  ];
+  const h = hex.replace("#", "")
+  return [parseInt(h.slice(0, 2), 16) / 255, parseInt(h.slice(2, 4), 16) / 255, parseInt(h.slice(4, 6), 16) / 255]
 }
 
 const vertexShader = `
@@ -10366,7 +10498,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0, 1);
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -10489,14 +10621,14 @@ void main() {
   float alpha = clamp(length(col), 0.0, 1.0);
   gl_FragColor = vec4(col, alpha);
 }
-`;
+`
 
 export default function SoftAurora({
   speed = 0.6,
   scale = 1.5,
   brightness = 1.0,
-  color1 = '#f7f7f7',
-  color2 = '#e100ff',
+  color1 = "#f7f7f7",
+  color2 = "#e100ff",
   noiseFrequency = 2.5,
   noiseAmplitude = 1.0,
   bandHeight = 0.5,
@@ -10505,43 +10637,40 @@ export default function SoftAurora({
   layerOffset = 0,
   colorSpeed = 1.0,
   enableMouseInteraction = true,
-  mouseInfluence = 0.25
+  mouseInfluence = 0.25,
 }) {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    const container = containerRef.current;
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
+    if (!containerRef.current) return
+    const container = containerRef.current
+    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false })
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
 
-    let program;
-    let currentMouse = [0.5, 0.5];
-    let targetMouse = [0.5, 0.5];
+    let program
+    let currentMouse = [0.5, 0.5]
+    let targetMouse = [0.5, 0.5]
 
     function handleMouseMove(e) {
-      const rect = gl.canvas.getBoundingClientRect();
-      targetMouse = [
-        (e.clientX - rect.left) / rect.width,
-        1.0 - (e.clientY - rect.top) / rect.height
-      ];
+      const rect = gl.canvas.getBoundingClientRect()
+      targetMouse = [(e.clientX - rect.left) / rect.width, 1.0 - (e.clientY - rect.top) / rect.height]
     }
 
     function handleMouseLeave() {
-      targetMouse = [0.5, 0.5];
+      targetMouse = [0.5, 0.5]
     }
 
     function resize() {
-      renderer.setSize(container.offsetWidth, container.offsetHeight);
+      renderer.setSize(container.offsetWidth, container.offsetHeight)
       if (program) {
-        program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height];
+        program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height]
       }
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
@@ -10562,65 +10691,80 @@ export default function SoftAurora({
         uColorSpeed: { value: colorSpeed },
         uMouse: { value: new Float32Array([0.5, 0.5]) },
         uMouseInfluence: { value: mouseInfluence },
-        uEnableMouse: { value: enableMouseInteraction }
-      }
-    });
+        uEnableMouse: { value: enableMouseInteraction },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    container.appendChild(gl.canvas);
+    const mesh = new Mesh(gl, { geometry, program })
+    container.appendChild(gl.canvas)
 
     if (enableMouseInteraction) {
-      gl.canvas.addEventListener('mousemove', handleMouseMove);
-      gl.canvas.addEventListener('mouseleave', handleMouseLeave);
+      gl.canvas.addEventListener("mousemove", handleMouseMove)
+      gl.canvas.addEventListener("mouseleave", handleMouseLeave)
     }
 
-    let animationFrameId;
+    let animationFrameId
 
     function update(time) {
-      animationFrameId = requestAnimationFrame(update);
-      program.uniforms.uTime.value = time * 0.001;
+      animationFrameId = requestAnimationFrame(update)
+      program.uniforms.uTime.value = time * 0.001
 
       if (enableMouseInteraction) {
-        currentMouse[0] += 0.05 * (targetMouse[0] - currentMouse[0]);
-        currentMouse[1] += 0.05 * (targetMouse[1] - currentMouse[1]);
-        program.uniforms.uMouse.value[0] = currentMouse[0];
-        program.uniforms.uMouse.value[1] = currentMouse[1];
+        currentMouse[0] += 0.05 * (targetMouse[0] - currentMouse[0])
+        currentMouse[1] += 0.05 * (targetMouse[1] - currentMouse[1])
+        program.uniforms.uMouse.value[0] = currentMouse[0]
+        program.uniforms.uMouse.value[1] = currentMouse[1]
       } else {
-        program.uniforms.uMouse.value[0] = 0.5;
-        program.uniforms.uMouse.value[1] = 0.5;
+        program.uniforms.uMouse.value[0] = 0.5
+        program.uniforms.uMouse.value[1] = 0.5
       }
 
-      renderer.render({ scene: mesh });
+      renderer.render({ scene: mesh })
     }
-    animationFrameId = requestAnimationFrame(update);
+    animationFrameId = requestAnimationFrame(update)
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationFrameId)
+      window.removeEventListener("resize", resize)
       if (enableMouseInteraction) {
-        gl.canvas.removeEventListener('mousemove', handleMouseMove);
-        gl.canvas.removeEventListener('mouseleave', handleMouseLeave);
+        gl.canvas.removeEventListener("mousemove", handleMouseMove)
+        gl.canvas.removeEventListener("mouseleave", handleMouseLeave)
       }
-      container.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
-  }, [speed, scale, brightness, color1, color2, noiseFrequency, noiseAmplitude, bandHeight, bandSpread, octaveDecay, layerOffset, colorSpeed, enableMouseInteraction, mouseInfluence]);
+      container.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
+  }, [
+    speed,
+    scale,
+    brightness,
+    color1,
+    color2,
+    noiseFrequency,
+    noiseAmplitude,
+    bandHeight,
+    bandSpread,
+    octaveDecay,
+    layerOffset,
+    colorSpeed,
+    enableMouseInteraction,
+    mouseInfluence,
+  ])
 
-  return <div ref={containerRef} className="soft-aurora-container" />;
+  return <div ref={containerRef} className="soft-aurora-container" />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .soft-aurora-container {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -10635,44 +10779,44 @@ code: ## Integrate the <Aurora /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Aurora
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
+
 ```jsx
-import Aurora from './Aurora';
-  
-<Aurora
-  colorStops={["#7cff67","#B497CF","#5227FF"]}
-  blend={0.5}
-  amplitude={1.0}
-  speed={0.5}
-/>
+import Aurora from "./Aurora"
+
+;<Aurora colorStops={["#7cff67", "#B497CF", "#5227FF"]} blend={0.5} amplitude={1.0} speed={0.5} />
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| colorStops | [string, string, string] | ["#3A29FF", "#FF94B4", "#FF3232"] | An array of three hex colors defining the aurora gradient. |
-| speed | number | 1.0 | Controls the animation speed. Higher values make the aurora move faster. |
-| blend | number | 0.5 | Controls the blending of the aurora effect with the background. |
-| amplitude | number | 1.0 | Controls the height intensity of the aurora effect. |
+
+| Prop       | Type                     | Default                           | Description                                                              |
+| ---------- | ------------------------ | --------------------------------- | ------------------------------------------------------------------------ |
+| colorStops | [string, string, string] | ["#3A29FF", "#FF94B4", "#FF3232"] | An array of three hex colors defining the aurora gradient.               |
+| speed      | number                   | 1.0                               | Controls the animation speed. Higher values make the aurora move faster. |
+| blend      | number                   | 0.5                               | Controls the blending of the aurora effect with the background.          |
+| amplitude  | number                   | 1.0                               | Controls the height intensity of the aurora effect.                      |
 
 ### Full Component Source
-```jsx
-import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
 
-import './Aurora.css';
+```jsx
+import { Renderer, Program, Mesh, Color, Triangle } from "ogl"
+import { useEffect, useRef } from "react"
+
+import "./Aurora.css"
 
 const VERT = `#version 300 es
 in vec2 position;
 void main() {
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const FRAG = `#version 300 es
 precision highp float;
@@ -10771,52 +10915,52 @@ void main() {
   
   fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
 }
-`;
+`
 
 export default function Aurora(props) {
-  const { colorStops = ['#5227FF', '#7cff67', '#5227FF'], amplitude = 1.0, blend = 0.5 } = props;
-  const propsRef = useRef(props);
-  propsRef.current = props;
+  const { colorStops = ["#5227FF", "#7cff67", "#5227FF"], amplitude = 1.0, blend = 0.5 } = props
+  const propsRef = useRef(props)
+  propsRef.current = props
 
-  const ctnDom = useRef(null);
+  const ctnDom = useRef(null)
 
   useEffect(() => {
-    const ctn = ctnDom.current;
-    if (!ctn) return;
+    const ctn = ctnDom.current
+    if (!ctn) return
 
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: true,
-      antialias: true
-    });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    gl.canvas.style.backgroundColor = 'transparent';
+      antialias: true,
+    })
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
+    gl.enable(gl.BLEND)
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
+    gl.canvas.style.backgroundColor = "transparent"
 
-    let program;
+    let program
 
     function resize() {
-      if (!ctn) return;
-      const width = ctn.offsetWidth;
-      const height = ctn.offsetHeight;
-      renderer.setSize(width, height);
+      if (!ctn) return
+      const width = ctn.offsetWidth
+      const height = ctn.offsetHeight
+      renderer.setSize(width, height)
       if (program) {
-        program.uniforms.uResolution.value = [width, height];
+        program.uniforms.uResolution.value = [width, height]
       }
     }
-    window.addEventListener('resize', resize);
+    window.addEventListener("resize", resize)
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     if (geometry.attributes.uv) {
-      delete geometry.attributes.uv;
+      delete geometry.attributes.uv
     }
 
-    const colorStopsArray = colorStops.map(hex => {
-      const c = new Color(hex);
-      return [c.r, c.g, c.b];
-    });
+    const colorStopsArray = colorStops.map((hex) => {
+      const c = new Color(hex)
+      return [c.r, c.g, c.b]
+    })
 
     program = new Program(gl, {
       vertex: VERT,
@@ -10826,57 +10970,57 @@ export default function Aurora(props) {
         uAmplitude: { value: amplitude },
         uColorStops: { value: colorStopsArray },
         uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
-        uBlend: { value: blend }
-      }
-    });
+        uBlend: { value: blend },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    ctn.appendChild(gl.canvas);
+    const mesh = new Mesh(gl, { geometry, program })
+    ctn.appendChild(gl.canvas)
 
-    let animateId = 0;
-    const update = t => {
-      animateId = requestAnimationFrame(update);
-      const { time = t * 0.01, speed = 1.0 } = propsRef.current;
-      program.uniforms.uTime.value = time * speed * 0.1;
-      program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
-      program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
-      const stops = propsRef.current.colorStops ?? colorStops;
-      program.uniforms.uColorStops.value = stops.map(hex => {
-        const c = new Color(hex);
-        return [c.r, c.g, c.b];
-      });
-      renderer.render({ scene: mesh });
-    };
-    animateId = requestAnimationFrame(update);
+    let animateId = 0
+    const update = (t) => {
+      animateId = requestAnimationFrame(update)
+      const { time = t * 0.01, speed = 1.0 } = propsRef.current
+      program.uniforms.uTime.value = time * speed * 0.1
+      program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0
+      program.uniforms.uBlend.value = propsRef.current.blend ?? blend
+      const stops = propsRef.current.colorStops ?? colorStops
+      program.uniforms.uColorStops.value = stops.map((hex) => {
+        const c = new Color(hex)
+        return [c.r, c.g, c.b]
+      })
+      renderer.render({ scene: mesh })
+    }
+    animateId = requestAnimationFrame(update)
 
-    resize();
+    resize()
 
     return () => {
-      cancelAnimationFrame(animateId);
-      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animateId)
+      window.removeEventListener("resize", resize)
       if (ctn && gl.canvas.parentNode === ctn) {
-        ctn.removeChild(gl.canvas);
+        ctn.removeChild(gl.canvas)
       }
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amplitude]);
+  }, [amplitude])
 
-  return <div ref={ctnDom} className="aurora-container" />;
+  return <div ref={ctnDom} className="aurora-container" />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .aurora-container {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -10885,54 +11029,52 @@ export default function Aurora(props) {
 
 ---
 
-name: plasma 
+name: plasma
 code: ## Integrate the <Plasma /> component from React Bits
 
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Plasma
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Plasma from './Plasma';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <Plasma 
-    color="#ff6b35"
-    speed={0.6}
-    direction="forward"
-    scale={1.1}
-    opacity={0.8}
-    mouseInteractive={true}
-  />
+```jsx
+import Plasma from "./Plasma"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
+  <Plasma color="#ff6b35" speed={0.6} direction="forward" scale={1.1} opacity={0.8} mouseInteractive={true} />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| color | string | undefined | Optional hex color to tint the plasma effect. If not provided, uses original colors. |
-| speed | number | 1.0 | Animation speed multiplier. Higher values = faster animation. |
-| direction | 'forward' | 'reverse' | 'pingpong' | 'forward' | Animation direction. 'pingpong' oscillates back and forth. |
-| scale | number | 1.0 | Zoom level of the plasma pattern. Higher values zoom in. |
-| opacity | number | 1.0 | Overall opacity of the effect (0-1). |
-| mouseInteractive | boolean | false | Whether the plasma responds to mouse movement. |
+
+| Prop             | Type      | Default   | Description                                                                          |
+| ---------------- | --------- | --------- | ------------------------------------------------------------------------------------ | --------- | ---------------------------------------------------------- |
+| color            | string    | undefined | Optional hex color to tint the plasma effect. If not provided, uses original colors. |
+| speed            | number    | 1.0       | Animation speed multiplier. Higher values = faster animation.                        |
+| direction        | 'forward' | 'reverse' | 'pingpong'                                                                           | 'forward' | Animation direction. 'pingpong' oscillates back and forth. |
+| scale            | number    | 1.0       | Zoom level of the plasma pattern. Higher values zoom in.                             |
+| opacity          | number    | 1.0       | Overall opacity of the effect (0-1).                                                 |
+| mouseInteractive | boolean   | false     | Whether the plasma responds to mouse movement.                                       |
 
 ### Full Component Source
-```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import './Plasma.css';
 
-const hexToRgb = hex => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (!result) return [1, 0.5, 0.2];
-  return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255];
-};
+```jsx
+import { useEffect, useRef } from "react"
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+import "./Plasma.css"
+
+const hexToRgb = (hex) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  if (!result) return [1, 0.5, 0.2]
+  return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255]
+}
 
 const vertex = `#version 300 es
 precision highp float;
@@ -10943,7 +11085,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const fragment = `#version 300 es
 precision highp float;
@@ -11004,48 +11146,48 @@ void main() {
   
   float alpha = length(rgb) * uOpacity;
   fragColor = vec4(finalColor, alpha);
-}`;
+}`
 
 export const Plasma = ({
-  color = '#ffffff',
+  color = "#ffffff",
   speed = 1,
-  direction = 'forward',
+  direction = "forward",
   scale = 1,
   opacity = 1,
-  mouseInteractive = true
+  mouseInteractive = true,
 }) => {
-  const containerRef = useRef(null);
-  const mousePos = useRef({ x: 0, y: 0 });
+  const containerRef = useRef(null)
+  const mousePos = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    const containerEl = containerRef.current;
+    if (!containerRef.current) return
+    const containerEl = containerRef.current
 
-    const useCustomColor = color ? 1.0 : 0.0;
-    const customColorRgb = color ? hexToRgb(color) : [1, 1, 1];
+    const useCustomColor = color ? 1.0 : 0.0
+    const customColorRgb = color ? hexToRgb(color) : [1, 1, 1]
 
-    const directionMultiplier = direction === 'reverse' ? -1.0 : 1.0;
+    const directionMultiplier = direction === "reverse" ? -1.0 : 1.0
 
-    let renderer;
+    let renderer
     try {
       renderer = new Renderer({
         webgl: 2,
         alpha: true,
         antialias: false,
-        dpr: Math.min(window.devicePixelRatio || 1, 2)
-      });
+        dpr: Math.min(window.devicePixelRatio || 1, 2),
+      })
     } catch {
-      return;
+      return
     }
-    const gl = renderer.gl;
-    if (!gl) return;
-    const canvas = gl.canvas;
-    canvas.style.display = 'block';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    containerEl.appendChild(canvas);
+    const gl = renderer.gl
+    if (!gl) return
+    const canvas = gl.canvas
+    canvas.style.display = "block"
+    canvas.style.width = "100%"
+    canvas.style.height = "100%"
+    containerEl.appendChild(canvas)
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
 
     const program = new Program(gl, {
       vertex: vertex,
@@ -11060,114 +11202,117 @@ export const Plasma = ({
         uScale: { value: scale },
         uOpacity: { value: opacity },
         uMouse: { value: new Float32Array([0, 0]) },
-        uMouseInteractive: { value: mouseInteractive ? 1.0 : 0.0 }
-      }
-    });
+        uMouseInteractive: { value: mouseInteractive ? 1.0 : 0.0 },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
+    const mesh = new Mesh(gl, { geometry, program })
 
-    const handleMouseMove = e => {
-      if (!mouseInteractive) return;
-      const rect = containerEl.getBoundingClientRect();
-      mousePos.current.x = e.clientX - rect.left;
-      mousePos.current.y = e.clientY - rect.top;
-      const mouseUniform = program.uniforms.uMouse.value;
-      mouseUniform[0] = mousePos.current.x;
-      mouseUniform[1] = mousePos.current.y;
-    };
+    const handleMouseMove = (e) => {
+      if (!mouseInteractive) return
+      const rect = containerEl.getBoundingClientRect()
+      mousePos.current.x = e.clientX - rect.left
+      mousePos.current.y = e.clientY - rect.top
+      const mouseUniform = program.uniforms.uMouse.value
+      mouseUniform[0] = mousePos.current.x
+      mouseUniform[1] = mousePos.current.y
+    }
 
     if (mouseInteractive) {
-      containerEl.addEventListener('mousemove', handleMouseMove);
+      containerEl.addEventListener("mousemove", handleMouseMove)
     }
 
     const setSize = () => {
-      const rect = containerEl.getBoundingClientRect();
-      const width = Math.max(1, Math.floor(rect.width));
-      const height = Math.max(1, Math.floor(rect.height));
-      renderer.setSize(width, height);
-      const res = program.uniforms.iResolution.value;
-      res[0] = gl.drawingBufferWidth;
-      res[1] = gl.drawingBufferHeight;
-    };
+      const rect = containerEl.getBoundingClientRect()
+      const width = Math.max(1, Math.floor(rect.width))
+      const height = Math.max(1, Math.floor(rect.height))
+      renderer.setSize(width, height)
+      const res = program.uniforms.iResolution.value
+      res[0] = gl.drawingBufferWidth
+      res[1] = gl.drawingBufferHeight
+    }
 
-    const ro = new ResizeObserver(setSize);
-    ro.observe(containerEl);
-    setSize();
+    const ro = new ResizeObserver(setSize)
+    ro.observe(containerEl)
+    setSize()
 
-    let raf = 0;
-    let contextLost = false;
-    let isVisible = true;
-    const t0 = performance.now();
+    let raf = 0
+    let contextLost = false
+    let isVisible = true
+    const t0 = performance.now()
 
-    const loop = t => {
-      if (contextLost || !isVisible) return;
-      let timeValue = (t - t0) * 0.001;
-      if (direction === 'pingpong') {
-        const pingpongDuration = 10;
-        const segmentTime = timeValue % pingpongDuration;
-        const isForward = Math.floor(timeValue / pingpongDuration) % 2 === 0;
-        const u = segmentTime / pingpongDuration;
-        const smooth = u * u * (3 - 2 * u);
-        const pingpongTime = isForward ? smooth * pingpongDuration : (1 - smooth) * pingpongDuration;
-        program.uniforms.uDirection.value = 1.0;
-        program.uniforms.iTime.value = pingpongTime;
+    const loop = (t) => {
+      if (contextLost || !isVisible) return
+      let timeValue = (t - t0) * 0.001
+      if (direction === "pingpong") {
+        const pingpongDuration = 10
+        const segmentTime = timeValue % pingpongDuration
+        const isForward = Math.floor(timeValue / pingpongDuration) % 2 === 0
+        const u = segmentTime / pingpongDuration
+        const smooth = u * u * (3 - 2 * u)
+        const pingpongTime = isForward ? smooth * pingpongDuration : (1 - smooth) * pingpongDuration
+        program.uniforms.uDirection.value = 1.0
+        program.uniforms.iTime.value = pingpongTime
       } else {
-        program.uniforms.iTime.value = timeValue;
+        program.uniforms.iTime.value = timeValue
       }
-      renderer.render({ scene: mesh });
-      raf = requestAnimationFrame(loop);
-    };
+      renderer.render({ scene: mesh })
+      raf = requestAnimationFrame(loop)
+    }
 
     const handleContextLost = (e) => {
-      e.preventDefault();
-      contextLost = true;
-      cancelAnimationFrame(raf);
-    };
+      e.preventDefault()
+      contextLost = true
+      cancelAnimationFrame(raf)
+    }
     const handleContextRestored = () => {
-      contextLost = false;
+      contextLost = false
       if (isVisible) {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(loop);
+        cancelAnimationFrame(raf)
+        raf = requestAnimationFrame(loop)
       }
-    };
-    canvas.addEventListener('webglcontextlost', handleContextLost);
-    canvas.addEventListener('webglcontextrestored', handleContextRestored);
+    }
+    canvas.addEventListener("webglcontextlost", handleContextLost)
+    canvas.addEventListener("webglcontextrestored", handleContextRestored)
 
-    const io = new IntersectionObserver(([entry]) => {
-      const wasVisible = isVisible;
-      isVisible = entry.isIntersecting;
-      if (isVisible && !wasVisible && !contextLost) {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(loop);
-      }
-    }, { threshold: 0 });
-    io.observe(containerEl);
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = isVisible
+        isVisible = entry.isIntersecting
+        if (isVisible && !wasVisible && !contextLost) {
+          cancelAnimationFrame(raf)
+          raf = requestAnimationFrame(loop)
+        }
+      },
+      { threshold: 0 },
+    )
+    io.observe(containerEl)
 
-    raf = requestAnimationFrame(loop);
+    raf = requestAnimationFrame(loop)
 
     return () => {
-      cancelAnimationFrame(raf);
-      ro.disconnect();
-      io.disconnect();
-      canvas.removeEventListener('webglcontextlost', handleContextLost);
-      canvas.removeEventListener('webglcontextrestored', handleContextRestored);
+      cancelAnimationFrame(raf)
+      ro.disconnect()
+      io.disconnect()
+      canvas.removeEventListener("webglcontextlost", handleContextLost)
+      canvas.removeEventListener("webglcontextrestored", handleContextRestored)
       if (mouseInteractive && containerEl) {
-        containerEl.removeEventListener('mousemove', handleMouseMove);
+        containerEl.removeEventListener("mousemove", handleMouseMove)
       }
       try {
-        containerEl?.removeChild(canvas);
+        containerEl?.removeChild(canvas)
       } catch {}
-    };
-  }, [color, speed, direction, scale, opacity, mouseInteractive]);
+    }
+  }, [color, speed, direction, scale, opacity, mouseInteractive])
 
-  return <div ref={containerRef} className="plasma-container" />;
-};
+  return <div ref={containerRef} className="plasma-container" />
+}
 
-export default Plasma;
-
+export default Plasma
 ```
 
 ### Component CSS
+
 ```css
 .plasma-container {
   position: relative;
@@ -11175,10 +11320,10 @@ export default Plasma;
   height: 100%;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -11193,17 +11338,20 @@ code: ## Integrate the <PlasmaWave /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: PlasmaWave
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
+
 ```jsx
-import PlasmaWave from './PlasmaWave';
-  
-<PlasmaWave
-  colors={["#A855F7","#06B6D4"]}
+import PlasmaWave from "./PlasmaWave"
+
+;<PlasmaWave
+  colors={["#A855F7", "#06B6D4"]}
   speed1={0.05}
   speed2={0.05}
   focalLength={0.8}
@@ -11215,31 +11363,33 @@ import PlasmaWave from './PlasmaWave';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| colors | [string, string] | ["#A855F7", "#06B6D4"] | Array of two hex colors — one for each plasma wave band. |
-| speed1 | number | 0.05 | Speed of the first plasma wave. |
-| speed2 | number | 0.05 | Speed of the second plasma wave. |
-| dir2 | number | 1.0 | Direction multiplier for the second wave. Use -1 to reverse. |
-| focalLength | number | 0.8 | Focal length of the camera projection. |
-| bend1 | number | 1 | Bend intensity of the first wave. |
-| bend2 | number | 0.5 | Bend intensity of the second wave. |
-| rotationDeg | number | 0 | Rotation angle of the scene in degrees. |
-| xOffset | number | 0 | Horizontal offset of the viewport. |
-| yOffset | number | 0 | Vertical offset of the viewport. |
+
+| Prop        | Type             | Default                | Description                                                  |
+| ----------- | ---------------- | ---------------------- | ------------------------------------------------------------ |
+| colors      | [string, string] | ["#A855F7", "#06B6D4"] | Array of two hex colors — one for each plasma wave band.     |
+| speed1      | number           | 0.05                   | Speed of the first plasma wave.                              |
+| speed2      | number           | 0.05                   | Speed of the second plasma wave.                             |
+| dir2        | number           | 1.0                    | Direction multiplier for the second wave. Use -1 to reverse. |
+| focalLength | number           | 0.8                    | Focal length of the camera projection.                       |
+| bend1       | number           | 1                      | Bend intensity of the first wave.                            |
+| bend2       | number           | 0.5                    | Bend intensity of the second wave.                           |
+| rotationDeg | number           | 0                      | Rotation angle of the scene in degrees.                      |
+| xOffset     | number           | 0                      | Horizontal offset of the viewport.                           |
+| yOffset     | number           | 0                      | Vertical offset of the viewport.                             |
 
 ### Full Component Source
-```jsx
-import { useRef, useEffect } from 'react';
-import { Renderer, Camera, Transform, Program, Mesh, Geometry } from 'ogl';
 
-import './PlasmaWave.css';
+```jsx
+import { useRef, useEffect } from "react"
+import { Renderer, Camera, Transform, Program, Mesh, Geometry } from "ogl"
+
+import "./PlasmaWave.css"
 
 function hexToRgb(hex) {
-  const r = parseInt(hex.slice(1, 3), 16) / 255;
-  const g = parseInt(hex.slice(3, 5), 16) / 255;
-  const b = parseInt(hex.slice(5, 7), 16) / 255;
-  return [r, g, b];
+  const r = parseInt(hex.slice(1, 3), 16) / 255
+  const g = parseInt(hex.slice(3, 5), 16) / 255
+  const b = parseInt(hex.slice(5, 7), 16) / 255
+  return [r, g, b]
 }
 
 const VERT = /* glsl */ `
@@ -11247,7 +11397,7 @@ attribute vec2 position;
 void main() {
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const FRAG = /* glsl */ `
 precision mediump float;
@@ -11334,7 +11484,7 @@ void main() {
   mainImage(color, coord);
   gl_FragColor = color;
 }
-`;
+`
 
 export default function PlasmaWave(props) {
   const {
@@ -11347,17 +11497,17 @@ export default function PlasmaWave(props) {
     dir2 = 1.0,
     bend1 = 1,
     bend2 = 0.5,
-    colors = ['#A855F7', '#06B6D4']
-  } = props;
+    colors = ["#A855F7", "#06B6D4"],
+  } = props
 
-  const propsRef = useRef(props);
-  propsRef.current = props;
+  const propsRef = useRef(props)
+  propsRef.current = props
 
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    const ctn = containerRef.current;
-    if (!ctn) return;
+    const ctn = containerRef.current
+    if (!ctn) return
 
     const renderer = new Renderer({
       alpha: true,
@@ -11367,24 +11517,24 @@ export default function PlasmaWave(props) {
       stencil: false,
       premultipliedAlpha: false,
       preserveDrawingBuffer: false,
-      powerPreference: 'high-performance'
-    });
+      powerPreference: "high-performance",
+    })
 
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
-    ctn.appendChild(gl.canvas);
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
+    ctn.appendChild(gl.canvas)
 
-    const camera = new Camera(gl);
-    const scene = new Transform();
+    const camera = new Camera(gl)
+    const scene = new Transform()
 
     const geometry = new Geometry(gl, {
-      position: { size: 2, data: new Float32Array([-1, -1, 3, -1, -1, 3]) }
-    });
+      position: { size: 2, data: new Float32Array([-1, -1, 3, -1, -1, 3]) },
+    })
 
-    const uniformOffset = new Float32Array([xOffset, yOffset]);
-    const uniformResolution = new Float32Array([1, 1]);
-    const c1 = hexToRgb(colors[0]);
-    const c2 = hexToRgb(colors[1]);
+    const uniformOffset = new Float32Array([xOffset, yOffset])
+    const uniformResolution = new Float32Array([1, 1])
+    const c1 = hexToRgb(colors[0])
+    const c2 = hexToRgb(colors[1])
 
     const program = new Program(gl, {
       vertex: VERT,
@@ -11401,27 +11551,27 @@ export default function PlasmaWave(props) {
         uBend1: { value: bend1 },
         uBend2: { value: bend2 },
         uColor1: { value: c1 },
-        uColor2: { value: c2 }
-      }
-    });
+        uColor2: { value: c2 },
+      },
+    })
 
-    new Mesh(gl, { geometry, program }).setParent(scene);
+    new Mesh(gl, { geometry, program }).setParent(scene)
 
     function resize() {
-      if (!ctn) return;
-      const { width, height } = ctn.getBoundingClientRect();
-      renderer.setSize(width, height);
-      uniformResolution[0] = width * renderer.dpr;
-      uniformResolution[1] = height * renderer.dpr;
-      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+      if (!ctn) return
+      const { width, height } = ctn.getBoundingClientRect()
+      renderer.setSize(width, height)
+      uniformResolution[0] = width * renderer.dpr
+      uniformResolution[1] = height * renderer.dpr
+      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
     }
 
-    const ro = new ResizeObserver(resize);
-    ro.observe(ctn);
-    resize();
+    const ro = new ResizeObserver(resize)
+    ro.observe(ctn)
+    resize()
 
-    const startTime = performance.now();
-    let animateId;
+    const startTime = performance.now()
+    let animateId
 
     const update = (now) => {
       const {
@@ -11434,54 +11584,54 @@ export default function PlasmaWave(props) {
         dir2: d2 = 1.0,
         bend1: b1 = 1,
         bend2: b2 = 0.5,
-        colors: cols = ['#A855F7', '#06B6D4']
-      } = propsRef.current;
+        colors: cols = ["#A855F7", "#06B6D4"],
+      } = propsRef.current
 
-      uniformOffset[0] = xOff;
-      uniformOffset[1] = yOff;
-      program.uniforms.iTime.value = (now - startTime) * 0.001;
-      program.uniforms.uRotation.value = (rot * Math.PI) / 180;
-      program.uniforms.uFocalLength.value = fLen;
-      program.uniforms.uSpeed1.value = s1;
-      program.uniforms.uSpeed2.value = s2;
-      program.uniforms.uDir2.value = d2;
-      program.uniforms.uBend1.value = b1;
-      program.uniforms.uBend2.value = b2;
-      program.uniforms.uColor1.value = hexToRgb(cols[0]);
-      program.uniforms.uColor2.value = hexToRgb(cols[1]);
+      uniformOffset[0] = xOff
+      uniformOffset[1] = yOff
+      program.uniforms.iTime.value = (now - startTime) * 0.001
+      program.uniforms.uRotation.value = (rot * Math.PI) / 180
+      program.uniforms.uFocalLength.value = fLen
+      program.uniforms.uSpeed1.value = s1
+      program.uniforms.uSpeed2.value = s2
+      program.uniforms.uDir2.value = d2
+      program.uniforms.uBend1.value = b1
+      program.uniforms.uBend2.value = b2
+      program.uniforms.uColor1.value = hexToRgb(cols[0])
+      program.uniforms.uColor2.value = hexToRgb(cols[1])
 
-      renderer.render({ scene, camera });
-      animateId = requestAnimationFrame(update);
-    };
+      renderer.render({ scene, camera })
+      animateId = requestAnimationFrame(update)
+    }
 
-    animateId = requestAnimationFrame(update);
+    animateId = requestAnimationFrame(update)
 
     return () => {
-      cancelAnimationFrame(animateId);
-      ro.disconnect();
+      cancelAnimationFrame(animateId)
+      ro.disconnect()
       if (ctn && gl.canvas.parentNode === ctn) {
-        ctn.removeChild(gl.canvas);
+        ctn.removeChild(gl.canvas)
       }
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
-  return <div ref={containerRef} className="plasma-wave-container" />;
+  return <div ref={containerRef} className="plasma-wave-container" />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .plasma-wave-container {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -11496,16 +11646,19 @@ code: ## Integrate the <Particles /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Particles
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Particles from './Particles';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import Particles from "./Particles"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Particles
     particleColors={["#ffffff"]}
     particleCount={200}
@@ -11520,44 +11673,46 @@ import Particles from './Particles';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| particleCount | number | 200 | The number of particles to generate. |
-| particleSpread | number | 10 | Controls how far particles are spread from the center. |
-| speed | number | 0.1 | Speed factor controlling the animation pace. |
-| particleColors | string[] | ['#ffffff'] | An array of hex color strings used to color the particles. |
-| moveParticlesOnHover | boolean | false | Determines if particles should move in response to mouse hover. |
-| particleHoverFactor | number | 1 | Multiplier for the particle movement when hovering. |
-| alphaParticles | boolean | false | If true, particles are rendered with varying transparency; otherwise, as solid circles. |
-| particleBaseSize | number | 100 | The base size of the particles. |
-| sizeRandomness | number | 1 | Controls the variation in particle sizes (0 means all particles have the same size). |
-| cameraDistance | number | 20 | Distance from the camera to the particle system. |
-| disableRotation | boolean | false | If true, stops the particle system from rotating. |
-| pixelRatio | number | 1 | Sets the pixel ratio for sharper rendering on high-DPI screens. |
+
+| Prop                 | Type     | Default     | Description                                                                             |
+| -------------------- | -------- | ----------- | --------------------------------------------------------------------------------------- |
+| particleCount        | number   | 200         | The number of particles to generate.                                                    |
+| particleSpread       | number   | 10          | Controls how far particles are spread from the center.                                  |
+| speed                | number   | 0.1         | Speed factor controlling the animation pace.                                            |
+| particleColors       | string[] | ['#ffffff'] | An array of hex color strings used to color the particles.                              |
+| moveParticlesOnHover | boolean  | false       | Determines if particles should move in response to mouse hover.                         |
+| particleHoverFactor  | number   | 1           | Multiplier for the particle movement when hovering.                                     |
+| alphaParticles       | boolean  | false       | If true, particles are rendered with varying transparency; otherwise, as solid circles. |
+| particleBaseSize     | number   | 100         | The base size of the particles.                                                         |
+| sizeRandomness       | number   | 1           | Controls the variation in particle sizes (0 means all particles have the same size).    |
+| cameraDistance       | number   | 20          | Distance from the camera to the particle system.                                        |
+| disableRotation      | boolean  | false       | If true, stops the particle system from rotating.                                       |
+| pixelRatio           | number   | 1           | Sets the pixel ratio for sharper rendering on high-DPI screens.                         |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
+import { useEffect, useRef } from "react"
+import { Renderer, Camera, Geometry, Program, Mesh } from "ogl"
 
-import './Particles.css';
+import "./Particles.css"
 
-const defaultColors = ['#ffffff', '#ffffff', '#ffffff'];
+const defaultColors = ["#ffffff", "#ffffff", "#ffffff"]
 
-const hexToRgb = hex => {
-  hex = hex.replace(/^#/, '');
+const hexToRgb = (hex) => {
+  hex = hex.replace(/^#/, "")
   if (hex.length === 3) {
     hex = hex
-      .split('')
-      .map(c => c + c)
-      .join('');
+      .split("")
+      .map((c) => c + c)
+      .join("")
   }
-  const int = parseInt(hex, 16);
-  const r = ((int >> 16) & 255) / 255;
-  const g = ((int >> 8) & 255) / 255;
-  const b = (int & 255) / 255;
-  return [r, g, b];
-};
+  const int = parseInt(hex, 16)
+  const r = ((int >> 16) & 255) / 255
+  const g = ((int >> 8) & 255) / 255
+  const b = (int & 255) / 255
+  return [r, g, b]
+}
 
 const vertex = /* glsl */ `
   attribute vec3 position;
@@ -11598,7 +11753,7 @@ const vertex = /* glsl */ `
 
     gl_Position = projectionMatrix * mvPos;
   }
-`;
+`
 
 const fragment = /* glsl */ `
   precision highp float;
@@ -11622,7 +11777,7 @@ const fragment = /* glsl */ `
       gl_FragColor = vec4(vColor + 0.2 * sin(uv.yxx + uTime + vRandom.y * 6.28), circle);
     }
   }
-`;
+`
 
 const Particles = ({
   particleCount = 200,
@@ -11637,73 +11792,73 @@ const Particles = ({
   cameraDistance = 20,
   disableRotation = false,
   pixelRatio = 1,
-  className
+  className,
 }) => {
-  const containerRef = useRef(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
+  const containerRef = useRef(null)
+  const mouseRef = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
     const renderer = new Renderer({
       dpr: pixelRatio,
       depth: false,
-      alpha: true
-    });
-    const gl = renderer.gl;
-    container.appendChild(gl.canvas);
-    gl.clearColor(0, 0, 0, 0);
+      alpha: true,
+    })
+    const gl = renderer.gl
+    container.appendChild(gl.canvas)
+    gl.clearColor(0, 0, 0, 0)
 
-    const camera = new Camera(gl, { fov: 15 });
-    camera.position.set(0, 0, cameraDistance);
+    const camera = new Camera(gl, { fov: 15 })
+    camera.position.set(0, 0, cameraDistance)
 
     const resize = () => {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      renderer.setSize(width, height);
-      camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
-    };
-    window.addEventListener('resize', resize, false);
-    resize();
+      const width = container.clientWidth
+      const height = container.clientHeight
+      renderer.setSize(width, height)
+      camera.perspective({ aspect: gl.canvas.width / gl.canvas.height })
+    }
+    window.addEventListener("resize", resize, false)
+    resize()
 
-    const handleMouseMove = e => {
-      const rect = container.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-      mouseRef.current = { x, y };
-    };
-
-    if (moveParticlesOnHover) {
-      container.addEventListener('mousemove', handleMouseMove);
+    const handleMouseMove = (e) => {
+      const rect = container.getBoundingClientRect()
+      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1
+      const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1)
+      mouseRef.current = { x, y }
     }
 
-    const count = particleCount;
-    const positions = new Float32Array(count * 3);
-    const randoms = new Float32Array(count * 4);
-    const colors = new Float32Array(count * 3);
-    const palette = particleColors && particleColors.length > 0 ? particleColors : defaultColors;
+    if (moveParticlesOnHover) {
+      container.addEventListener("mousemove", handleMouseMove)
+    }
+
+    const count = particleCount
+    const positions = new Float32Array(count * 3)
+    const randoms = new Float32Array(count * 4)
+    const colors = new Float32Array(count * 3)
+    const palette = particleColors && particleColors.length > 0 ? particleColors : defaultColors
 
     for (let i = 0; i < count; i++) {
-      let x, y, z, len;
+      let x, y, z, len
       do {
-        x = Math.random() * 2 - 1;
-        y = Math.random() * 2 - 1;
-        z = Math.random() * 2 - 1;
-        len = x * x + y * y + z * z;
-      } while (len > 1 || len === 0);
-      const r = Math.cbrt(Math.random());
-      positions.set([x * r, y * r, z * r], i * 3);
-      randoms.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4);
-      const col = hexToRgb(palette[Math.floor(Math.random() * palette.length)]);
-      colors.set(col, i * 3);
+        x = Math.random() * 2 - 1
+        y = Math.random() * 2 - 1
+        z = Math.random() * 2 - 1
+        len = x * x + y * y + z * z
+      } while (len > 1 || len === 0)
+      const r = Math.cbrt(Math.random())
+      positions.set([x * r, y * r, z * r], i * 3)
+      randoms.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4)
+      const col = hexToRgb(palette[Math.floor(Math.random() * palette.length)])
+      colors.set(col, i * 3)
     }
 
     const geometry = new Geometry(gl, {
       position: { size: 3, data: positions },
       random: { size: 4, data: randoms },
-      color: { size: 3, data: colors }
-    });
+      color: { size: 3, data: colors },
+    })
 
     const program = new Program(gl, {
       vertex,
@@ -11713,55 +11868,55 @@ const Particles = ({
         uSpread: { value: particleSpread },
         uBaseSize: { value: particleBaseSize * pixelRatio },
         uSizeRandomness: { value: sizeRandomness },
-        uAlphaParticles: { value: alphaParticles ? 1 : 0 }
+        uAlphaParticles: { value: alphaParticles ? 1 : 0 },
       },
       transparent: true,
-      depthTest: false
-    });
+      depthTest: false,
+    })
 
-    const particles = new Mesh(gl, { mode: gl.POINTS, geometry, program });
+    const particles = new Mesh(gl, { mode: gl.POINTS, geometry, program })
 
-    let animationFrameId;
-    let lastTime = performance.now();
-    let elapsed = 0;
+    let animationFrameId
+    let lastTime = performance.now()
+    let elapsed = 0
 
-    const update = t => {
-      animationFrameId = requestAnimationFrame(update);
-      const delta = t - lastTime;
-      lastTime = t;
-      elapsed += delta * speed;
+    const update = (t) => {
+      animationFrameId = requestAnimationFrame(update)
+      const delta = t - lastTime
+      lastTime = t
+      elapsed += delta * speed
 
-      program.uniforms.uTime.value = elapsed * 0.001;
+      program.uniforms.uTime.value = elapsed * 0.001
 
       if (moveParticlesOnHover) {
-        particles.position.x = -mouseRef.current.x * particleHoverFactor;
-        particles.position.y = -mouseRef.current.y * particleHoverFactor;
+        particles.position.x = -mouseRef.current.x * particleHoverFactor
+        particles.position.y = -mouseRef.current.y * particleHoverFactor
       } else {
-        particles.position.x = 0;
-        particles.position.y = 0;
+        particles.position.x = 0
+        particles.position.y = 0
       }
 
       if (!disableRotation) {
-        particles.rotation.x = Math.sin(elapsed * 0.0002) * 0.1;
-        particles.rotation.y = Math.cos(elapsed * 0.0005) * 0.15;
-        particles.rotation.z += 0.01 * speed;
+        particles.rotation.x = Math.sin(elapsed * 0.0002) * 0.1
+        particles.rotation.y = Math.cos(elapsed * 0.0005) * 0.15
+        particles.rotation.z += 0.01 * speed
       }
 
-      renderer.render({ scene: particles, camera });
-    };
+      renderer.render({ scene: particles, camera })
+    }
 
-    animationFrameId = requestAnimationFrame(update);
+    animationFrameId = requestAnimationFrame(update)
 
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener("resize", resize)
       if (moveParticlesOnHover) {
-        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener("mousemove", handleMouseMove)
       }
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(animationFrameId)
       if (container.contains(gl.canvas)) {
-        container.removeChild(gl.canvas);
+        container.removeChild(gl.canvas)
       }
-    };
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     particleCount,
@@ -11774,27 +11929,27 @@ const Particles = ({
     sizeRandomness,
     cameraDistance,
     disableRotation,
-    pixelRatio
-  ]);
+    pixelRatio,
+  ])
 
-  return <div ref={containerRef} className={`particles-container ${className}`} />;
-};
+  return <div ref={containerRef} className={`particles-container ${className}`} />
+}
 
-export default Particles;
-
+export default Particles
 ```
 
 ### Component CSS
+
 ```css
 .particles-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -11809,18 +11964,21 @@ code: ## Integrate the <GradientBlinds /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: GradientBlinds
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import GradientBlinds from './GradientBlinds';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import GradientBlinds from "./GradientBlinds"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <GradientBlinds
-    gradientColors={['#FF9FFC', '#5227FF']}
+    gradientColors={["#FF9FFC", "#5227FF"]}
     angle={0}
     noise={0.3}
     blindCount={12}
@@ -11837,48 +11995,50 @@ import GradientBlinds from './GradientBlinds';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| gradientColors | string[] | ['#FF9FFC', '#5227FF'] | Array of hex colors (up to 8) forming the animated gradient. If one color is provided it is duplicated. |
-| angle | number | 0 | Rotation of the gradient in degrees (0 = horizontal left→right). |
-| noise | number | 0.3 | Strength of per‑pixel noise added to the final color (0 = clean). |
-| blindCount | number | 16 | Target number of vertical blinds. Acts as an upper bound when blindMinWidth is set. |
-| blindMinWidth | number | 60 | Minimum pixel width for each blind. Reduces effective blindCount if necessary to satisfy this width. |
-| mouseDampening | number | 0.15 | Easing time constant (seconds) for the spotlight to follow the cursor. 0 = immediate. |
-| mirrorGradient | boolean | false | Creates a mirrored ping‑pong gradient progression instead of a linear wrap. |
-| spotlightRadius | number | 0.5 | Normalized spotlight radius relative to the shorter canvas dimension. |
-| spotlightSoftness | number | 1 | Falloff exponent for spotlight edge. Higher = sharper edge (values >1 increase contrast). |
-| spotlightOpacity | number | 1 | Overall intensity multiplier for the spotlight highlight. |
-| distortAmount | number | 0 | Sin/cos warp intensity applied to UVs for subtle wavy distortion. |
-| shineDirection | 'left' | 'right' | left | Flips the bright side of each blind; useful for composition with other elements. |
-| mixBlendMode | string | 'lighten' | CSS mix-blend-mode applied to the canvas (e.g. 'screen', 'overlay', 'multiply'). |
-| paused | boolean | false | If true, stops rendering updates (freezing the current frame). |
-| dpr | number | window.devicePixelRatio | Overrides device pixel ratio; lower for performance, higher for sharpness. |
-| className | string | — | Additional class names for the root container. |
+
+| Prop              | Type     | Default                 | Description                                                                                             |
+| ----------------- | -------- | ----------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| gradientColors    | string[] | ['#FF9FFC', '#5227FF']  | Array of hex colors (up to 8) forming the animated gradient. If one color is provided it is duplicated. |
+| angle             | number   | 0                       | Rotation of the gradient in degrees (0 = horizontal left→right).                                        |
+| noise             | number   | 0.3                     | Strength of per‑pixel noise added to the final color (0 = clean).                                       |
+| blindCount        | number   | 16                      | Target number of vertical blinds. Acts as an upper bound when blindMinWidth is set.                     |
+| blindMinWidth     | number   | 60                      | Minimum pixel width for each blind. Reduces effective blindCount if necessary to satisfy this width.    |
+| mouseDampening    | number   | 0.15                    | Easing time constant (seconds) for the spotlight to follow the cursor. 0 = immediate.                   |
+| mirrorGradient    | boolean  | false                   | Creates a mirrored ping‑pong gradient progression instead of a linear wrap.                             |
+| spotlightRadius   | number   | 0.5                     | Normalized spotlight radius relative to the shorter canvas dimension.                                   |
+| spotlightSoftness | number   | 1                       | Falloff exponent for spotlight edge. Higher = sharper edge (values >1 increase contrast).               |
+| spotlightOpacity  | number   | 1                       | Overall intensity multiplier for the spotlight highlight.                                               |
+| distortAmount     | number   | 0                       | Sin/cos warp intensity applied to UVs for subtle wavy distortion.                                       |
+| shineDirection    | 'left'   | 'right'                 | left                                                                                                    | Flips the bright side of each blind; useful for composition with other elements. |
+| mixBlendMode      | string   | 'lighten'               | CSS mix-blend-mode applied to the canvas (e.g. 'screen', 'overlay', 'multiply').                        |
+| paused            | boolean  | false                   | If true, stops rendering updates (freezing the current frame).                                          |
+| dpr               | number   | window.devicePixelRatio | Overrides device pixel ratio; lower for performance, higher for sharpness.                              |
+| className         | string   | —                       | Additional class names for the root container.                                                          |
 
 ### Full Component Source
-```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import './GradientBlinds.css';
 
-const MAX_COLORS = 8;
-const hexToRGB = hex => {
-  const c = hex.replace('#', '').padEnd(6, '0');
-  const r = parseInt(c.slice(0, 2), 16) / 255;
-  const g = parseInt(c.slice(2, 4), 16) / 255;
-  const b = parseInt(c.slice(4, 6), 16) / 255;
-  return [r, g, b];
-};
-const prepStops = stops => {
-  const base = (stops && stops.length ? stops : ['#FF9FFC', '#5227FF']).slice(0, MAX_COLORS);
-  if (base.length === 1) base.push(base[0]);
-  while (base.length < MAX_COLORS) base.push(base[base.length - 1]);
-  const arr = [];
-  for (let i = 0; i < MAX_COLORS; i++) arr.push(hexToRGB(base[i]));
-  const count = Math.max(2, Math.min(MAX_COLORS, stops?.length ?? 2));
-  return { arr, count };
-};
+```jsx
+import { useEffect, useRef } from "react"
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+import "./GradientBlinds.css"
+
+const MAX_COLORS = 8
+const hexToRGB = (hex) => {
+  const c = hex.replace("#", "").padEnd(6, "0")
+  const r = parseInt(c.slice(0, 2), 16) / 255
+  const g = parseInt(c.slice(2, 4), 16) / 255
+  const b = parseInt(c.slice(4, 6), 16) / 255
+  return [r, g, b]
+}
+const prepStops = (stops) => {
+  const base = (stops && stops.length ? stops : ["#FF9FFC", "#5227FF"]).slice(0, MAX_COLORS)
+  if (base.length === 1) base.push(base[0])
+  while (base.length < MAX_COLORS) base.push(base[base.length - 1])
+  const arr = []
+  for (let i = 0; i < MAX_COLORS; i++) arr.push(hexToRGB(base[i]))
+  const count = Math.max(2, Math.min(MAX_COLORS, stops?.length ?? 2))
+  return { arr, count }
+}
 
 const GradientBlinds = ({
   className,
@@ -11895,36 +12055,36 @@ const GradientBlinds = ({
   spotlightSoftness = 1,
   spotlightOpacity = 1,
   distortAmount = 0,
-  shineDirection = 'left',
-  mixBlendMode = 'lighten'
+  shineDirection = "left",
+  mixBlendMode = "lighten",
 }) => {
-  const containerRef = useRef(null);
-  const rafRef = useRef(null);
-  const programRef = useRef(null);
-  const meshRef = useRef(null);
-  const geometryRef = useRef(null);
-  const rendererRef = useRef(null);
-  const mouseTargetRef = useRef([0, 0]);
-  const lastTimeRef = useRef(0);
-  const firstResizeRef = useRef(true);
+  const containerRef = useRef(null)
+  const rafRef = useRef(null)
+  const programRef = useRef(null)
+  const meshRef = useRef(null)
+  const geometryRef = useRef(null)
+  const rendererRef = useRef(null)
+  const mouseTargetRef = useRef([0, 0])
+  const lastTimeRef = useRef(0)
+  const firstResizeRef = useRef(true)
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
     const renderer = new Renderer({
-      dpr: dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1),
+      dpr: dpr ?? (typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1),
       alpha: true,
-      antialias: true
-    });
-    rendererRef.current = renderer;
-    const gl = renderer.gl;
-    const canvas = gl.canvas;
+      antialias: true,
+    })
+    rendererRef.current = renderer
+    const gl = renderer.gl
+    const canvas = gl.canvas
 
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.display = 'block';
-    container.appendChild(canvas);
+    canvas.style.width = "100%"
+    canvas.style.height = "100%"
+    canvas.style.display = "block"
+    container.appendChild(canvas)
 
     const vertex = `
 attribute vec2 position;
@@ -11935,7 +12095,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
     const fragment = `
 #ifdef GL_ES
@@ -12047,12 +12207,12 @@ void main() {
     mainImage(color, vUv * iResolution.xy);
     gl_FragColor = color;
 }
-`;
+`
 
-    const { arr: colorArr, count: colorCount } = prepStops(gradientColors);
+    const { arr: colorArr, count: colorCount } = prepStops(gradientColors)
     const uniforms = {
       iResolution: {
-        value: [gl.drawingBufferWidth, gl.drawingBufferHeight, 1]
+        value: [gl.drawingBufferWidth, gl.drawingBufferHeight, 1],
       },
       iMouse: { value: [0, 0] },
       iTime: { value: 0 },
@@ -12064,7 +12224,7 @@ void main() {
       uSpotlightOpacity: { value: spotlightOpacity },
       uMirror: { value: mirrorGradient ? 1 : 0 },
       uDistort: { value: distortAmount },
-      uShineFlip: { value: shineDirection === 'right' ? 1 : 0 },
+      uShineFlip: { value: shineDirection === "right" ? 1 : 0 },
       uColor0: { value: colorArr[0] },
       uColor1: { value: colorArr[1] },
       uColor2: { value: colorArr[2] },
@@ -12073,108 +12233,108 @@ void main() {
       uColor5: { value: colorArr[5] },
       uColor6: { value: colorArr[6] },
       uColor7: { value: colorArr[7] },
-      uColorCount: { value: colorCount }
-    };
+      uColorCount: { value: colorCount },
+    }
 
     const program = new Program(gl, {
       vertex,
       fragment,
-      uniforms
-    });
-    programRef.current = program;
+      uniforms,
+    })
+    programRef.current = program
 
-    const geometry = new Triangle(gl);
-    geometryRef.current = geometry;
-    const mesh = new Mesh(gl, { geometry, program });
-    meshRef.current = mesh;
+    const geometry = new Triangle(gl)
+    geometryRef.current = geometry
+    const mesh = new Mesh(gl, { geometry, program })
+    meshRef.current = mesh
 
     const resize = () => {
-      const rect = container.getBoundingClientRect();
-      renderer.setSize(rect.width, rect.height);
-      uniforms.iResolution.value = [gl.drawingBufferWidth, gl.drawingBufferHeight, 1];
+      const rect = container.getBoundingClientRect()
+      renderer.setSize(rect.width, rect.height)
+      uniforms.iResolution.value = [gl.drawingBufferWidth, gl.drawingBufferHeight, 1]
 
       if (blindMinWidth && blindMinWidth > 0) {
-        const maxByMinWidth = Math.max(1, Math.floor(rect.width / blindMinWidth));
+        const maxByMinWidth = Math.max(1, Math.floor(rect.width / blindMinWidth))
 
-        const effective = blindCount ? Math.min(blindCount, maxByMinWidth) : maxByMinWidth;
-        uniforms.uBlindCount.value = Math.max(1, effective);
+        const effective = blindCount ? Math.min(blindCount, maxByMinWidth) : maxByMinWidth
+        uniforms.uBlindCount.value = Math.max(1, effective)
       } else {
-        uniforms.uBlindCount.value = Math.max(1, blindCount);
+        uniforms.uBlindCount.value = Math.max(1, blindCount)
       }
 
       if (firstResizeRef.current) {
-        firstResizeRef.current = false;
-        const cx = gl.drawingBufferWidth / 2;
-        const cy = gl.drawingBufferHeight / 2;
-        uniforms.iMouse.value = [cx, cy];
-        mouseTargetRef.current = [cx, cy];
+        firstResizeRef.current = false
+        const cx = gl.drawingBufferWidth / 2
+        const cy = gl.drawingBufferHeight / 2
+        uniforms.iMouse.value = [cx, cy]
+        mouseTargetRef.current = [cx, cy]
       }
-    };
+    }
 
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(container);
+    resize()
+    const ro = new ResizeObserver(resize)
+    ro.observe(container)
 
-    const onPointerMove = e => {
-      const rect = canvas.getBoundingClientRect();
-      const scale = renderer.dpr || 1;
-      const x = (e.clientX - rect.left) * scale;
-      const y = (rect.height - (e.clientY - rect.top)) * scale;
-      mouseTargetRef.current = [x, y];
+    const onPointerMove = (e) => {
+      const rect = canvas.getBoundingClientRect()
+      const scale = renderer.dpr || 1
+      const x = (e.clientX - rect.left) * scale
+      const y = (rect.height - (e.clientY - rect.top)) * scale
+      mouseTargetRef.current = [x, y]
       if (mouseDampening <= 0) {
-        uniforms.iMouse.value = [x, y];
+        uniforms.iMouse.value = [x, y]
       }
-    };
-    canvas.addEventListener('pointermove', onPointerMove);
+    }
+    canvas.addEventListener("pointermove", onPointerMove)
 
-    const loop = t => {
-      rafRef.current = requestAnimationFrame(loop);
-      uniforms.iTime.value = t * 0.001;
+    const loop = (t) => {
+      rafRef.current = requestAnimationFrame(loop)
+      uniforms.iTime.value = t * 0.001
       if (mouseDampening > 0) {
-        if (!lastTimeRef.current) lastTimeRef.current = t;
-        const dt = (t - lastTimeRef.current) / 1000;
-        lastTimeRef.current = t;
-        const tau = Math.max(1e-4, mouseDampening);
-        let factor = 1 - Math.exp(-dt / tau);
-        if (factor > 1) factor = 1;
-        const target = mouseTargetRef.current;
-        const cur = uniforms.iMouse.value;
-        cur[0] += (target[0] - cur[0]) * factor;
-        cur[1] += (target[1] - cur[1]) * factor;
+        if (!lastTimeRef.current) lastTimeRef.current = t
+        const dt = (t - lastTimeRef.current) / 1000
+        lastTimeRef.current = t
+        const tau = Math.max(1e-4, mouseDampening)
+        let factor = 1 - Math.exp(-dt / tau)
+        if (factor > 1) factor = 1
+        const target = mouseTargetRef.current
+        const cur = uniforms.iMouse.value
+        cur[0] += (target[0] - cur[0]) * factor
+        cur[1] += (target[1] - cur[1]) * factor
       } else {
-        lastTimeRef.current = t;
+        lastTimeRef.current = t
       }
       if (!paused && programRef.current && meshRef.current) {
         try {
-          renderer.render({ scene: meshRef.current });
+          renderer.render({ scene: meshRef.current })
         } catch (e) {
-          console.error(e);
+          console.error(e)
         }
       }
-    };
-    rafRef.current = requestAnimationFrame(loop);
+    }
+    rafRef.current = requestAnimationFrame(loop)
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      canvas.removeEventListener('pointermove', onPointerMove);
-      ro.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      canvas.removeEventListener("pointermove", onPointerMove)
+      ro.disconnect()
       if (canvas.parentElement === container) {
-        container.removeChild(canvas);
+        container.removeChild(canvas)
       }
       const callIfFn = (obj, key) => {
-        if (obj && typeof obj[key] === 'function') {
-          obj[key].call(obj);
+        if (obj && typeof obj[key] === "function") {
+          obj[key].call(obj)
         }
-      };
-      callIfFn(programRef.current, 'remove');
-      callIfFn(geometryRef.current, 'remove');
-      callIfFn(meshRef.current, 'remove');
-      callIfFn(rendererRef.current, 'destroy');
-      programRef.current = null;
-      geometryRef.current = null;
-      meshRef.current = null;
-      rendererRef.current = null;
-    };
+      }
+      callIfFn(programRef.current, "remove")
+      callIfFn(geometryRef.current, "remove")
+      callIfFn(meshRef.current, "remove")
+      callIfFn(rendererRef.current, "destroy")
+      programRef.current = null
+      geometryRef.current = null
+      meshRef.current = null
+      rendererRef.current = null
+    }
   }, [
     dpr,
     paused,
@@ -12189,8 +12349,8 @@ void main() {
     spotlightSoftness,
     spotlightOpacity,
     distortAmount,
-    shineDirection
-  ]);
+    shineDirection,
+  ])
 
   return (
     <div
@@ -12198,18 +12358,18 @@ void main() {
       className={`gradient-blinds-container ${className}`}
       style={{
         ...(mixBlendMode && {
-          mixBlendMode: mixBlendMode
-        })
+          mixBlendMode: mixBlendMode,
+        }),
       }}
     />
-  );
-};
+  )
+}
 
-export default GradientBlinds;
-
+export default GradientBlinds
 ```
 
 ### Component CSS
+
 ```css
 .gradient-blinds-container {
   position: relative;
@@ -12217,10 +12377,10 @@ export default GradientBlinds;
   height: 100%;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -12235,16 +12395,19 @@ code: ## Integrate the <Grainient /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Grainient
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Grainient from './Grainient';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import Grainient from "./Grainient"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Grainient
     color1="#FF9FFC"
     color2="#5227FF"
@@ -12273,50 +12436,52 @@ import Grainient from './Grainient';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| color1 | string | '#FF9FFC' | Primary light color used in the gradient blend. |
-| color2 | string | '#5227FF' | Secondary accent color used in the gradient blend. |
-| color3 | string | '#B497CF' | Deep base color used in the gradient blend. |
-| timeSpeed | number | 0.25 | Animation speed multiplier for the gradient motion. |
-| colorBalance | number | 0.0 | Shifts the palette balance toward dark or lighter tones. |
-| warpStrength | number | 1.0 | Strength of the wave warp distortion (0 = none). |
-| warpFrequency | number | 5.0 | Frequency of the wave warp. |
-| warpSpeed | number | 2.0 | Speed multiplier for the warp animation. |
-| warpAmplitude | number | 50.0 | Base amplitude for the warp distortion. |
-| blendAngle | number | 0.0 | Rotation angle for the color blend axis (degrees). |
-| blendSoftness | number | 0.05 | Softens the blend edges between color layers. |
-| rotationAmount | number | 500.0 | Rotation amount driven by noise. |
-| noiseScale | number | 2.0 | Scales the noise frequency that drives rotation. |
-| grainAmount | number | 0.1 | Amount of film grain applied to the gradient. |
-| grainScale | number | 2.0 | Scale of the grain pattern. |
-| grainAnimated | boolean | false | Animate grain over time. |
-| contrast | number | 1.5 | Overall contrast applied to the final color. |
-| gamma | number | 1.0 | Gamma correction for the final color. |
-| saturation | number | 1.0 | Saturation amount for the final color. |
-| centerX | number | 0.0 | Horizontal offset of the gradient center. |
-| centerY | number | 0.0 | Vertical offset of the gradient center. |
-| zoom | number | 0.9 | Zoom level for the gradient field. |
-| className | string | '' | Additional CSS classes applied to the container. |
+
+| Prop           | Type    | Default   | Description                                              |
+| -------------- | ------- | --------- | -------------------------------------------------------- |
+| color1         | string  | '#FF9FFC' | Primary light color used in the gradient blend.          |
+| color2         | string  | '#5227FF' | Secondary accent color used in the gradient blend.       |
+| color3         | string  | '#B497CF' | Deep base color used in the gradient blend.              |
+| timeSpeed      | number  | 0.25      | Animation speed multiplier for the gradient motion.      |
+| colorBalance   | number  | 0.0       | Shifts the palette balance toward dark or lighter tones. |
+| warpStrength   | number  | 1.0       | Strength of the wave warp distortion (0 = none).         |
+| warpFrequency  | number  | 5.0       | Frequency of the wave warp.                              |
+| warpSpeed      | number  | 2.0       | Speed multiplier for the warp animation.                 |
+| warpAmplitude  | number  | 50.0      | Base amplitude for the warp distortion.                  |
+| blendAngle     | number  | 0.0       | Rotation angle for the color blend axis (degrees).       |
+| blendSoftness  | number  | 0.05      | Softens the blend edges between color layers.            |
+| rotationAmount | number  | 500.0     | Rotation amount driven by noise.                         |
+| noiseScale     | number  | 2.0       | Scales the noise frequency that drives rotation.         |
+| grainAmount    | number  | 0.1       | Amount of film grain applied to the gradient.            |
+| grainScale     | number  | 2.0       | Scale of the grain pattern.                              |
+| grainAnimated  | boolean | false     | Animate grain over time.                                 |
+| contrast       | number  | 1.5       | Overall contrast applied to the final color.             |
+| gamma          | number  | 1.0       | Gamma correction for the final color.                    |
+| saturation     | number  | 1.0       | Saturation amount for the final color.                   |
+| centerX        | number  | 0.0       | Horizontal offset of the gradient center.                |
+| centerY        | number  | 0.0       | Vertical offset of the gradient center.                  |
+| zoom           | number  | 0.9       | Zoom level for the gradient field.                       |
+| className      | string  | ''        | Additional CSS classes applied to the container.         |
 
 ### Full Component Source
-```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import './Grainient.css';
 
-const hexToRgb = hex => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (!result) return [1, 1, 1];
-  return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255];
-};
+```jsx
+import { useEffect, useRef } from "react"
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+import "./Grainient.css"
+
+const hexToRgb = (hex) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  if (!result) return [1, 1, 1]
+  return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255]
+}
 
 const vertex = `#version 300 es
 in vec2 position;
 void main() {
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const fragment = `#version 300 es
 precision highp float;
@@ -12400,12 +12565,11 @@ void main(){
   mainImage(o,gl_FragCoord.xy);
   fragColor=o;
 }
-`;
-
+`
 
 // Keep renderer/program alive across re-renders so Effect 2 can update
 // uniforms without ever rebuilding the WebGL context.
-const ctxMap = new WeakMap();
+const ctxMap = new WeakMap()
 
 const Grainient = ({
   timeSpeed = 0.25,
@@ -12427,168 +12591,196 @@ const Grainient = ({
   centerX = 0.0,
   centerY = 0.0,
   zoom = 0.9,
-  color1 = '#FF9FFC',
-  color2 = '#5227FF',
-  color3 = '#B497CF',
-  className = ''
+  color1 = "#FF9FFC",
+  color2 = "#5227FF",
+  color3 = "#B497CF",
+  className = "",
 }) => {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   // Effect 1: build WebGL context once, pause when offscreen / tab hidden
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
     const renderer = new Renderer({
       webgl: 2,
       alpha: true,
       antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2)
-    });
+      dpr: Math.min(window.devicePixelRatio || 1, 2),
+    })
 
-    const gl = renderer.gl;
-    const canvas = gl.canvas;
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.display = 'block';
-    container.appendChild(canvas);
+    const gl = renderer.gl
+    const canvas = gl.canvas
+    canvas.style.width = "100%"
+    canvas.style.height = "100%"
+    canvas.style.display = "block"
+    container.appendChild(canvas)
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     const program = new Program(gl, {
       vertex,
       fragment,
       uniforms: {
-        iTime:           { value: 0 },
-        iResolution:     { value: new Float32Array([1, 1]) },
-        uTimeSpeed:      { value: 0.25 },
-        uColorBalance:   { value: 0.0 },
-        uWarpStrength:   { value: 1.0 },
-        uWarpFrequency:  { value: 5.0 },
-        uWarpSpeed:      { value: 2.0 },
-        uWarpAmplitude:  { value: 50.0 },
-        uBlendAngle:     { value: 0.0 },
-        uBlendSoftness:  { value: 0.05 },
+        iTime: { value: 0 },
+        iResolution: { value: new Float32Array([1, 1]) },
+        uTimeSpeed: { value: 0.25 },
+        uColorBalance: { value: 0.0 },
+        uWarpStrength: { value: 1.0 },
+        uWarpFrequency: { value: 5.0 },
+        uWarpSpeed: { value: 2.0 },
+        uWarpAmplitude: { value: 50.0 },
+        uBlendAngle: { value: 0.0 },
+        uBlendSoftness: { value: 0.05 },
         uRotationAmount: { value: 500.0 },
-        uNoiseScale:     { value: 2.0 },
-        uGrainAmount:    { value: 0.1 },
-        uGrainScale:     { value: 2.0 },
-        uGrainAnimated:  { value: 0.0 },
-        uContrast:       { value: 1.5 },
-        uGamma:          { value: 1.0 },
-        uSaturation:     { value: 1.0 },
-        uCenterOffset:   { value: new Float32Array([0, 0]) },
-        uZoom:           { value: 0.9 },
-        uColor1:         { value: new Float32Array([1, 1, 1]) },
-        uColor2:         { value: new Float32Array([1, 1, 1]) },
-        uColor3:         { value: new Float32Array([1, 1, 1]) }
-      }
-    });
+        uNoiseScale: { value: 2.0 },
+        uGrainAmount: { value: 0.1 },
+        uGrainScale: { value: 2.0 },
+        uGrainAnimated: { value: 0.0 },
+        uContrast: { value: 1.5 },
+        uGamma: { value: 1.0 },
+        uSaturation: { value: 1.0 },
+        uCenterOffset: { value: new Float32Array([0, 0]) },
+        uZoom: { value: 0.9 },
+        uColor1: { value: new Float32Array([1, 1, 1]) },
+        uColor2: { value: new Float32Array([1, 1, 1]) },
+        uColor3: { value: new Float32Array([1, 1, 1]) },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    ctxMap.set(container, { renderer, program, mesh });
+    const mesh = new Mesh(gl, { geometry, program })
+    ctxMap.set(container, { renderer, program, mesh })
 
     const setSize = () => {
-      const rect = container.getBoundingClientRect();
-      const w = Math.max(1, Math.floor(rect.width));
-      const h = Math.max(1, Math.floor(rect.height));
-      renderer.setSize(w, h);
-      const res = program.uniforms.iResolution.value;
-      res[0] = gl.drawingBufferWidth;
-      res[1] = gl.drawingBufferHeight;
-      renderer.render({ scene: mesh });
-    };
+      const rect = container.getBoundingClientRect()
+      const w = Math.max(1, Math.floor(rect.width))
+      const h = Math.max(1, Math.floor(rect.height))
+      renderer.setSize(w, h)
+      const res = program.uniforms.iResolution.value
+      res[0] = gl.drawingBufferWidth
+      res[1] = gl.drawingBufferHeight
+      renderer.render({ scene: mesh })
+    }
 
-    const ro = new ResizeObserver(setSize);
-    ro.observe(container);
-    setSize();
+    const ro = new ResizeObserver(setSize)
+    ro.observe(container)
+    setSize()
 
-    let raf = 0;
-    let isVisible = true;
-    let isPageVisible = !document.hidden;
-    const t0 = performance.now();
+    let raf = 0
+    let isVisible = true
+    let isPageVisible = !document.hidden
+    const t0 = performance.now()
 
-    const loop = t => {
-      program.uniforms.iTime.value = (t - t0) * 0.001;
-      renderer.render({ scene: mesh });
-      raf = requestAnimationFrame(loop);
-    };
+    const loop = (t) => {
+      program.uniforms.iTime.value = (t - t0) * 0.001
+      renderer.render({ scene: mesh })
+      raf = requestAnimationFrame(loop)
+    }
 
     const tryStart = () => {
-      if (isVisible && isPageVisible && raf === 0) raf = requestAnimationFrame(loop);
-    };
+      if (isVisible && isPageVisible && raf === 0) raf = requestAnimationFrame(loop)
+    }
     const tryStop = () => {
-      if (raf !== 0) { cancelAnimationFrame(raf); raf = 0; }
-    };
+      if (raf !== 0) {
+        cancelAnimationFrame(raf)
+        raf = 0
+      }
+    }
 
     const io = new IntersectionObserver(
-      ([entry]) => { isVisible = entry.isIntersecting; isVisible ? tryStart() : tryStop(); },
-      { threshold: 0 }
-    );
-    io.observe(container);
+      ([entry]) => {
+        isVisible = entry.isIntersecting
+        isVisible ? tryStart() : tryStop()
+      },
+      { threshold: 0 },
+    )
+    io.observe(container)
 
     const onVisibility = () => {
-      isPageVisible = !document.hidden;
-      isPageVisible ? tryStart() : tryStop();
-    };
-    document.addEventListener('visibilitychange', onVisibility);
+      isPageVisible = !document.hidden
+      isPageVisible ? tryStart() : tryStop()
+    }
+    document.addEventListener("visibilitychange", onVisibility)
 
-    tryStart();
+    tryStart()
 
     return () => {
-      tryStop();
-      ro.disconnect();
-      io.disconnect();
-      document.removeEventListener('visibilitychange', onVisibility);
-      ctxMap.delete(container);
-      try { container.removeChild(canvas); } catch { /* ignore */ }
-    };
-  }, []); // renderer created once
+      tryStop()
+      ro.disconnect()
+      io.disconnect()
+      document.removeEventListener("visibilitychange", onVisibility)
+      ctxMap.delete(container)
+      try {
+        container.removeChild(canvas)
+      } catch {
+        /* ignore */
+      }
+    }
+  }, []) // renderer created once
 
   // Effect 2: sync props to uniforms — zero GPU cost, no teardown
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const ctx = ctxMap.get(container);
-    if (!ctx) return;
-    const { program } = ctx;
-    const u = program.uniforms;
+    const container = containerRef.current
+    if (!container) return
+    const ctx = ctxMap.get(container)
+    if (!ctx) return
+    const { program } = ctx
+    const u = program.uniforms
 
-    u.uTimeSpeed.value      = timeSpeed;
-    u.uColorBalance.value   = colorBalance;
-    u.uWarpStrength.value   = warpStrength;
-    u.uWarpFrequency.value  = warpFrequency;
-    u.uWarpSpeed.value      = warpSpeed;
-    u.uWarpAmplitude.value  = warpAmplitude;
-    u.uBlendAngle.value     = blendAngle;
-    u.uBlendSoftness.value  = blendSoftness;
-    u.uRotationAmount.value = rotationAmount;
-    u.uNoiseScale.value     = noiseScale;
-    u.uGrainAmount.value    = grainAmount;
-    u.uGrainScale.value     = grainScale;
-    u.uGrainAnimated.value  = grainAnimated ? 1.0 : 0.0;
-    u.uContrast.value       = contrast;
-    u.uGamma.value          = gamma;
-    u.uSaturation.value     = saturation;
-    u.uCenterOffset.value   = new Float32Array([centerX, centerY]);
-    u.uZoom.value           = zoom;
-    u.uColor1.value         = new Float32Array(hexToRgb(color1));
-    u.uColor2.value         = new Float32Array(hexToRgb(color2));
-    u.uColor3.value         = new Float32Array(hexToRgb(color3));
+    u.uTimeSpeed.value = timeSpeed
+    u.uColorBalance.value = colorBalance
+    u.uWarpStrength.value = warpStrength
+    u.uWarpFrequency.value = warpFrequency
+    u.uWarpSpeed.value = warpSpeed
+    u.uWarpAmplitude.value = warpAmplitude
+    u.uBlendAngle.value = blendAngle
+    u.uBlendSoftness.value = blendSoftness
+    u.uRotationAmount.value = rotationAmount
+    u.uNoiseScale.value = noiseScale
+    u.uGrainAmount.value = grainAmount
+    u.uGrainScale.value = grainScale
+    u.uGrainAnimated.value = grainAnimated ? 1.0 : 0.0
+    u.uContrast.value = contrast
+    u.uGamma.value = gamma
+    u.uSaturation.value = saturation
+    u.uCenterOffset.value = new Float32Array([centerX, centerY])
+    u.uZoom.value = zoom
+    u.uColor1.value = new Float32Array(hexToRgb(color1))
+    u.uColor2.value = new Float32Array(hexToRgb(color2))
+    u.uColor3.value = new Float32Array(hexToRgb(color3))
   }, [
-    timeSpeed, colorBalance, warpStrength, warpFrequency, warpSpeed,
-    warpAmplitude, blendAngle, blendSoftness, rotationAmount, noiseScale,
-    grainAmount, grainScale, grainAnimated, contrast, gamma, saturation,
-    centerX, centerY, zoom, color1, color2, color3
-  ]);
+    timeSpeed,
+    colorBalance,
+    warpStrength,
+    warpFrequency,
+    warpSpeed,
+    warpAmplitude,
+    blendAngle,
+    blendSoftness,
+    rotationAmount,
+    noiseScale,
+    grainAmount,
+    grainScale,
+    grainAnimated,
+    contrast,
+    gamma,
+    saturation,
+    centerX,
+    centerY,
+    zoom,
+    color1,
+    color2,
+    color3,
+  ])
 
+  return <div ref={containerRef} className={`grainient-container ${className}`.trim()} />
+}
 
-  return <div ref={containerRef} className={`grainient-container ${className}`.trim()} />;
-};
-
-export default Grainient;
+export default Grainient
 ```
 
 ### Component CSS
+
 ```css
 .grainient-container {
   position: relative;
@@ -12596,10 +12788,10 @@ export default Grainient;
   height: 100%;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -12614,16 +12806,19 @@ code: ## Integrate the <GridScan /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: GridScan
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three face-api.js
 
 ---
 
 ### Usage Example
-```jsx
-import GridScan from './GridScan';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import GridScan from "./GridScan"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <GridScan
     sensitivity={0.55}
     lineThickness={1}
@@ -12640,44 +12835,46 @@ import GridScan from './GridScan';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| enableWebcam | boolean | false | Enable face tracking via webcam. |
-| showPreview | boolean | false | Show webcam preview/debug HUD. |
-| modelsPath | string | CDN URL | Path/URL to face-api.js models. |
-| sensitivity | number | 0.55 | Overall responsiveness to input. |
-| lineThickness | number | 1 | Grid line thickness. |
-| linesColor | string | '#2F293A' | Color of the grid lines. |
-| gridScale | number | 0.1 | Grid spacing scale (smaller = denser). |
-| lineStyle | 'solid' | 'dashed' | 'dotted' | 'solid' | Grid line style. |
-| lineJitter | number | 0.1 | Animated jitter along the grid lines. |
-| enablePost | boolean | true | Enable post-processing effects. |
-| bloomIntensity | number | 0 | Bloom strength. |
-| bloomThreshold | number | 0 | Bloom luminance threshold. |
-| bloomSmoothing | number | 0 | Bloom threshold smoothing. |
-| chromaticAberration | number | 0.002 | Chromatic aberration offset (post). |
-| noiseIntensity | number | 0.01 | Additive film grain intensity. |
-| scanColor | string | '#FF9FFC' | Color of the scan beam/aura. |
-| scanOpacity | number | 0.4 | Opacity of the scan effect. |
-| scanDirection | 'forward' | 'backward' | 'pingpong' | 'pingpong' | Scan motion. |
-| scanSoftness | number | 2 | Softness of scan band edges. |
-| scanGlow | number | 0.5 | Relative width/intensity of glow. |
-| scanPhaseTaper | number | 0.9 | Fade-in/out window for the phase. |
-| scanDuration | number | 2.0 | Duration of a scan cycle (seconds). |
-| scanDelay | number | 2.0 | Delay between scan cycles (seconds). |
-| enableGyro | boolean | false | Use device orientation for input. |
-| scanOnClick | boolean | false | Trigger a scan when clicking. |
-| snapBackDelay | number | 250 | Delay (ms) before input recenters. |
-| className | string | '' | Additional CSS classes. |
-| style | React.CSSProperties | {} | Inline style overrides. |
+
+| Prop                | Type                | Default    | Description                            |
+| ------------------- | ------------------- | ---------- | -------------------------------------- | ---------- | ---------------- |
+| enableWebcam        | boolean             | false      | Enable face tracking via webcam.       |
+| showPreview         | boolean             | false      | Show webcam preview/debug HUD.         |
+| modelsPath          | string              | CDN URL    | Path/URL to face-api.js models.        |
+| sensitivity         | number              | 0.55       | Overall responsiveness to input.       |
+| lineThickness       | number              | 1          | Grid line thickness.                   |
+| linesColor          | string              | '#2F293A'  | Color of the grid lines.               |
+| gridScale           | number              | 0.1        | Grid spacing scale (smaller = denser). |
+| lineStyle           | 'solid'             | 'dashed'   | 'dotted'                               | 'solid'    | Grid line style. |
+| lineJitter          | number              | 0.1        | Animated jitter along the grid lines.  |
+| enablePost          | boolean             | true       | Enable post-processing effects.        |
+| bloomIntensity      | number              | 0          | Bloom strength.                        |
+| bloomThreshold      | number              | 0          | Bloom luminance threshold.             |
+| bloomSmoothing      | number              | 0          | Bloom threshold smoothing.             |
+| chromaticAberration | number              | 0.002      | Chromatic aberration offset (post).    |
+| noiseIntensity      | number              | 0.01       | Additive film grain intensity.         |
+| scanColor           | string              | '#FF9FFC'  | Color of the scan beam/aura.           |
+| scanOpacity         | number              | 0.4        | Opacity of the scan effect.            |
+| scanDirection       | 'forward'           | 'backward' | 'pingpong'                             | 'pingpong' | Scan motion.     |
+| scanSoftness        | number              | 2          | Softness of scan band edges.           |
+| scanGlow            | number              | 0.5        | Relative width/intensity of glow.      |
+| scanPhaseTaper      | number              | 0.9        | Fade-in/out window for the phase.      |
+| scanDuration        | number              | 2.0        | Duration of a scan cycle (seconds).    |
+| scanDelay           | number              | 2.0        | Delay between scan cycles (seconds).   |
+| enableGyro          | boolean             | false      | Use device orientation for input.      |
+| scanOnClick         | boolean             | false      | Trigger a scan when clicking.          |
+| snapBackDelay       | number              | 250        | Delay (ms) before input recenters.     |
+| className           | string              | ''         | Additional CSS classes.                |
+| style               | React.CSSProperties | {}         | Inline style overrides.                |
 
 ### Full Component Source
+
 ```jsx
-import * as faceapi from 'face-api.js';
-import { BloomEffect, ChromaticAberrationEffect, EffectComposer, EffectPass, RenderPass } from 'postprocessing';
-import { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
-import './GridScan.css';
+import * as faceapi from "face-api.js"
+import { BloomEffect, ChromaticAberrationEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing"
+import { useEffect, useRef, useState } from "react"
+import * as THREE from "three"
+import "./GridScan.css"
 
 const vert = `
 varying vec2 vUv;
@@ -12685,7 +12882,7 @@ void main(){
   vUv = uv;
   gl_Position = vec4(position.xy, 0.0, 1.0);
 }
-`;
+`
 
 const frag = `
 precision highp float;
@@ -12942,21 +13139,21 @@ void main(){
   mainImage(c, vUv * iResolution.xy);
   gl_FragColor = c;
 }
-`;
+`
 
 export const GridScan = ({
   enableWebcam = false,
   showPreview = false,
-  modelsPath = 'https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@0.22.2/weights',
+  modelsPath = "https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@0.22.2/weights",
   sensitivity = 0.55,
   lineThickness = 1,
-  linesColor = '#2F293A',
-  scanColor = '#FF9FFC',
+  linesColor = "#2F293A",
+  scanColor = "#FF9FFC",
   scanOpacity = 0.4,
   gridScale = 0.1,
-  lineStyle = 'solid',
+  lineStyle = "solid",
   lineJitter = 0.1,
-  scanDirection = 'pingpong',
+  scanDirection = "pingpong",
   enablePost = true,
   bloomIntensity = 0,
   bloomThreshold = 0,
@@ -12972,143 +13169,143 @@ export const GridScan = ({
   scanOnClick = false,
   snapBackDelay = 250,
   className,
-  style
+  style,
 }) => {
-  const containerRef = useRef(null);
-  const videoRef = useRef(null);
+  const containerRef = useRef(null)
+  const videoRef = useRef(null)
 
-  const rendererRef = useRef(null);
-  const materialRef = useRef(null);
-  const composerRef = useRef(null);
-  const bloomRef = useRef(null);
-  const chromaRef = useRef(null);
-  const rafRef = useRef(null);
+  const rendererRef = useRef(null)
+  const materialRef = useRef(null)
+  const composerRef = useRef(null)
+  const bloomRef = useRef(null)
+  const chromaRef = useRef(null)
+  const rafRef = useRef(null)
 
-  const [modelsReady, setModelsReady] = useState(false);
-  const [uiFaceActive, setUiFaceActive] = useState(false);
+  const [modelsReady, setModelsReady] = useState(false)
+  const [uiFaceActive, setUiFaceActive] = useState(false)
 
-  const lookTarget = useRef(new THREE.Vector2(0, 0));
-  const tiltTarget = useRef(0);
-  const yawTarget = useRef(0);
+  const lookTarget = useRef(new THREE.Vector2(0, 0))
+  const tiltTarget = useRef(0)
+  const yawTarget = useRef(0)
 
-  const lookCurrent = useRef(new THREE.Vector2(0, 0));
-  const lookVel = useRef(new THREE.Vector2(0, 0));
-  const tiltCurrent = useRef(0);
-  const tiltVel = useRef(0);
-  const yawCurrent = useRef(0);
-  const yawVel = useRef(0);
+  const lookCurrent = useRef(new THREE.Vector2(0, 0))
+  const lookVel = useRef(new THREE.Vector2(0, 0))
+  const tiltCurrent = useRef(0)
+  const tiltVel = useRef(0)
+  const yawCurrent = useRef(0)
+  const yawVel = useRef(0)
 
-  const MAX_SCANS = 8;
-  const scanStartsRef = useRef([]);
+  const MAX_SCANS = 8
+  const scanStartsRef = useRef([])
 
-  const pushScan = t => {
-    const arr = scanStartsRef.current.slice();
-    if (arr.length >= MAX_SCANS) arr.shift();
-    arr.push(t);
-    scanStartsRef.current = arr;
+  const pushScan = (t) => {
+    const arr = scanStartsRef.current.slice()
+    if (arr.length >= MAX_SCANS) arr.shift()
+    arr.push(t)
+    scanStartsRef.current = arr
     if (materialRef.current) {
-      const u = materialRef.current.uniforms;
-      const buf = new Array(MAX_SCANS).fill(0);
-      for (let i = 0; i < arr.length && i < MAX_SCANS; i++) buf[i] = arr[i];
-      u.uScanStarts.value = buf;
-      u.uScanCount.value = arr.length;
+      const u = materialRef.current.uniforms
+      const buf = new Array(MAX_SCANS).fill(0)
+      for (let i = 0; i < arr.length && i < MAX_SCANS; i++) buf[i] = arr[i]
+      u.uScanStarts.value = buf
+      u.uScanCount.value = arr.length
     }
-  };
+  }
 
-  const bufX = useRef([]);
-  const bufY = useRef([]);
-  const bufT = useRef([]);
-  const bufYaw = useRef([]);
+  const bufX = useRef([])
+  const bufY = useRef([])
+  const bufT = useRef([])
+  const bufYaw = useRef([])
 
-  const s = THREE.MathUtils.clamp(sensitivity, 0, 1);
-  const skewScale = THREE.MathUtils.lerp(0.06, 0.2, s);
-  const tiltScale = THREE.MathUtils.lerp(0.12, 0.3, s);
-  const yawScale = THREE.MathUtils.lerp(0.1, 0.28, s);
-  const depthResponse = THREE.MathUtils.lerp(0.25, 0.45, s);
-  const smoothTime = THREE.MathUtils.lerp(0.45, 0.12, s);
-  const maxSpeed = Infinity;
+  const s = THREE.MathUtils.clamp(sensitivity, 0, 1)
+  const skewScale = THREE.MathUtils.lerp(0.06, 0.2, s)
+  const tiltScale = THREE.MathUtils.lerp(0.12, 0.3, s)
+  const yawScale = THREE.MathUtils.lerp(0.1, 0.28, s)
+  const depthResponse = THREE.MathUtils.lerp(0.25, 0.45, s)
+  const smoothTime = THREE.MathUtils.lerp(0.45, 0.12, s)
+  const maxSpeed = Infinity
 
-  const yBoost = THREE.MathUtils.lerp(1.2, 1.6, s);
+  const yBoost = THREE.MathUtils.lerp(1.2, 1.6, s)
 
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    let leaveTimer = null;
-    const onMove = e => {
-      if (uiFaceActive) return;
+    const el = containerRef.current
+    if (!el) return
+    let leaveTimer = null
+    const onMove = (e) => {
+      if (uiFaceActive) return
       if (leaveTimer) {
-        clearTimeout(leaveTimer);
-        leaveTimer = null;
+        clearTimeout(leaveTimer)
+        leaveTimer = null
       }
-      const rect = el.getBoundingClientRect();
-      const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      const ny = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-      lookTarget.current.set(nx, ny);
-    };
+      const rect = el.getBoundingClientRect()
+      const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1
+      const ny = -(((e.clientY - rect.top) / rect.height) * 2 - 1)
+      lookTarget.current.set(nx, ny)
+    }
     const onClick = async () => {
-      const nowSec = performance.now() / 1000;
-      if (scanOnClick) pushScan(nowSec);
+      const nowSec = performance.now() / 1000
+      if (scanOnClick) pushScan(nowSec)
       if (
         enableGyro &&
-        typeof window !== 'undefined' &&
+        typeof window !== "undefined" &&
         window.DeviceOrientationEvent &&
         DeviceOrientationEvent.requestPermission
       ) {
         try {
-          await DeviceOrientationEvent.requestPermission();
+          await DeviceOrientationEvent.requestPermission()
         } catch {
           // noop
         }
       }
-    };
+    }
     const onEnter = () => {
       if (leaveTimer) {
-        clearTimeout(leaveTimer);
-        leaveTimer = null;
+        clearTimeout(leaveTimer)
+        leaveTimer = null
       }
-    };
+    }
     const onLeave = () => {
-      if (uiFaceActive) return;
-      if (leaveTimer) clearTimeout(leaveTimer);
+      if (uiFaceActive) return
+      if (leaveTimer) clearTimeout(leaveTimer)
       leaveTimer = window.setTimeout(
         () => {
-          lookTarget.current.set(0, 0);
-          tiltTarget.current = 0;
-          yawTarget.current = 0;
+          lookTarget.current.set(0, 0)
+          tiltTarget.current = 0
+          yawTarget.current = 0
         },
-        Math.max(0, snapBackDelay || 0)
-      );
-    };
-    el.addEventListener('mousemove', onMove);
-    el.addEventListener('mouseenter', onEnter);
-    if (scanOnClick) el.addEventListener('click', onClick);
-    el.addEventListener('mouseleave', onLeave);
+        Math.max(0, snapBackDelay || 0),
+      )
+    }
+    el.addEventListener("mousemove", onMove)
+    el.addEventListener("mouseenter", onEnter)
+    if (scanOnClick) el.addEventListener("click", onClick)
+    el.addEventListener("mouseleave", onLeave)
     return () => {
-      el.removeEventListener('mousemove', onMove);
-      el.removeEventListener('mouseenter', onEnter);
-      el.removeEventListener('mouseleave', onLeave);
-      if (scanOnClick) el.removeEventListener('click', onClick);
-      if (leaveTimer) clearTimeout(leaveTimer);
-    };
-  }, [uiFaceActive, snapBackDelay, scanOnClick, enableGyro]);
+      el.removeEventListener("mousemove", onMove)
+      el.removeEventListener("mouseenter", onEnter)
+      el.removeEventListener("mouseleave", onLeave)
+      if (scanOnClick) el.removeEventListener("click", onClick)
+      if (leaveTimer) clearTimeout(leaveTimer)
+    }
+  }, [uiFaceActive, snapBackDelay, scanOnClick, enableGyro])
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    rendererRef.current = renderer;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.NoToneMapping;
-    renderer.autoClear = false;
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    rendererRef.current = renderer
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
+    renderer.setSize(container.clientWidth, container.clientHeight)
+    renderer.outputColorSpace = THREE.SRGBColorSpace
+    renderer.toneMapping = THREE.NoToneMapping
+    renderer.autoClear = false
+    renderer.setClearColor(0x000000, 0)
+    container.appendChild(renderer.domElement)
 
     const uniforms = {
       iResolution: {
-        value: new THREE.Vector3(container.clientWidth, container.clientHeight, renderer.getPixelRatio())
+        value: new THREE.Vector3(container.clientWidth, container.clientHeight, renderer.getPixelRatio()),
       },
       iTime: { value: 0 },
       uSkew: { value: new THREE.Vector2(0, 0) },
@@ -13118,7 +13315,7 @@ export const GridScan = ({
       uLinesColor: { value: srgbColor(linesColor) },
       uScanColor: { value: srgbColor(scanColor) },
       uGridScale: { value: gridScale },
-      uLineStyle: { value: lineStyle === 'dashed' ? 1 : lineStyle === 'dotted' ? 2 : 0 },
+      uLineStyle: { value: lineStyle === "dashed" ? 1 : lineStyle === "dotted" ? 2 : 0 },
       uLineJitter: { value: Math.max(0, Math.min(1, lineJitter || 0)) },
       uScanOpacity: { value: scanOpacity },
       uNoise: { value: noiseIntensity },
@@ -13128,10 +13325,10 @@ export const GridScan = ({
       uPhaseTaper: { value: scanPhaseTaper },
       uScanDuration: { value: scanDuration },
       uScanDelay: { value: scanDelay },
-      uScanDirection: { value: scanDirection === 'backward' ? 1 : scanDirection === 'pingpong' ? 2 : 0 },
+      uScanDirection: { value: scanDirection === "backward" ? 1 : scanDirection === "pingpong" ? 2 : 0 },
       uScanStarts: { value: new Array(MAX_SCANS).fill(0) },
-      uScanCount: { value: 0 }
-    };
+      uScanCount: { value: 0 },
+    }
 
     const material = new THREE.ShaderMaterial({
       uniforms,
@@ -13139,58 +13336,58 @@ export const GridScan = ({
       fragmentShader: frag,
       transparent: true,
       depthWrite: false,
-      depthTest: false
-    });
-    materialRef.current = material;
+      depthTest: false,
+    })
+    materialRef.current = material
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
-    scene.add(quad);
+    const scene = new THREE.Scene()
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
+    const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material)
+    scene.add(quad)
 
-    let composer = null;
+    let composer = null
     if (enablePost) {
-      composer = new EffectComposer(renderer);
-      composerRef.current = composer;
-      const renderPass = new RenderPass(scene, camera);
-      composer.addPass(renderPass);
+      composer = new EffectComposer(renderer)
+      composerRef.current = composer
+      const renderPass = new RenderPass(scene, camera)
+      composer.addPass(renderPass)
 
       const bloom = new BloomEffect({
         intensity: 1.0,
         luminanceThreshold: bloomThreshold,
-        luminanceSmoothing: bloomSmoothing
-      });
-      bloom.blendMode.opacity.value = Math.max(0, bloomIntensity);
-      bloomRef.current = bloom;
+        luminanceSmoothing: bloomSmoothing,
+      })
+      bloom.blendMode.opacity.value = Math.max(0, bloomIntensity)
+      bloomRef.current = bloom
 
       const chroma = new ChromaticAberrationEffect({
         offset: new THREE.Vector2(chromaticAberration, chromaticAberration),
         radialModulation: true,
-        modulationOffset: 0.0
-      });
-      chromaRef.current = chroma;
+        modulationOffset: 0.0,
+      })
+      chromaRef.current = chroma
 
-      const effectPass = new EffectPass(camera, bloom, chroma);
-      effectPass.renderToScreen = true;
-      composer.addPass(effectPass);
+      const effectPass = new EffectPass(camera, bloom, chroma)
+      effectPass.renderToScreen = true
+      composer.addPass(effectPass)
     }
 
     const onResize = () => {
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      material.uniforms.iResolution.value.set(container.clientWidth, container.clientHeight, renderer.getPixelRatio());
-      if (composerRef.current) composerRef.current.setSize(container.clientWidth, container.clientHeight);
-    };
-    window.addEventListener('resize', onResize);
+      renderer.setSize(container.clientWidth, container.clientHeight)
+      material.uniforms.iResolution.value.set(container.clientWidth, container.clientHeight, renderer.getPixelRatio())
+      if (composerRef.current) composerRef.current.setSize(container.clientWidth, container.clientHeight)
+    }
+    window.addEventListener("resize", onResize)
 
-    let last = performance.now();
+    let last = performance.now()
     const tick = () => {
-      const now = performance.now();
-      const dt = Math.max(0, Math.min(0.1, (now - last) / 1000));
-      last = now;
+      const now = performance.now()
+      const dt = Math.max(0, Math.min(0.1, (now - last) / 1000))
+      last = now
 
       lookCurrent.current.copy(
-        smoothDampVec2(lookCurrent.current, lookTarget.current, lookVel.current, smoothTime, maxSpeed, dt)
-      );
+        smoothDampVec2(lookCurrent.current, lookTarget.current, lookVel.current, smoothTime, maxSpeed, dt),
+      )
 
       const tiltSm = smoothDampFloat(
         tiltCurrent.current,
@@ -13198,10 +13395,10 @@ export const GridScan = ({
         { v: tiltVel.current },
         smoothTime,
         maxSpeed,
-        dt
-      );
-      tiltCurrent.current = tiltSm.value;
-      tiltVel.current = tiltSm.v;
+        dt,
+      )
+      tiltCurrent.current = tiltSm.value
+      tiltVel.current = tiltSm.v
 
       const yawSm = smoothDampFloat(
         yawCurrent.current,
@@ -13209,41 +13406,41 @@ export const GridScan = ({
         { v: yawVel.current },
         smoothTime,
         maxSpeed,
-        dt
-      );
-      yawCurrent.current = yawSm.value;
-      yawVel.current = yawSm.v;
+        dt,
+      )
+      yawCurrent.current = yawSm.value
+      yawVel.current = yawSm.v
 
-      const skew = new THREE.Vector2(lookCurrent.current.x * skewScale, -lookCurrent.current.y * yBoost * skewScale);
-      material.uniforms.uSkew.value.set(skew.x, skew.y);
-      material.uniforms.uTilt.value = tiltCurrent.current * tiltScale;
-      material.uniforms.uYaw.value = THREE.MathUtils.clamp(yawCurrent.current * yawScale, -0.6, 0.6);
+      const skew = new THREE.Vector2(lookCurrent.current.x * skewScale, -lookCurrent.current.y * yBoost * skewScale)
+      material.uniforms.uSkew.value.set(skew.x, skew.y)
+      material.uniforms.uTilt.value = tiltCurrent.current * tiltScale
+      material.uniforms.uYaw.value = THREE.MathUtils.clamp(yawCurrent.current * yawScale, -0.6, 0.6)
 
-      material.uniforms.iTime.value = now / 1000;
-      renderer.clear(true, true, true);
+      material.uniforms.iTime.value = now / 1000
+      renderer.clear(true, true, true)
       if (composerRef.current) {
-        composerRef.current.render(dt);
+        composerRef.current.render(dt)
       } else {
-        renderer.render(scene, camera);
+        renderer.render(scene, camera)
       }
-      rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
+      rafRef.current = requestAnimationFrame(tick)
+    }
+    rafRef.current = requestAnimationFrame(tick)
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      window.removeEventListener('resize', onResize);
-      material.dispose();
-      quad.geometry.dispose();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      window.removeEventListener("resize", onResize)
+      material.dispose()
+      quad.geometry.dispose()
 
       if (composerRef.current) {
-        composerRef.current.dispose();
-        composerRef.current = null;
+        composerRef.current.dispose()
+        composerRef.current = null
       }
-      renderer.dispose();
-      renderer.forceContextLoss();
-      container.removeChild(renderer.domElement);
-    };
+      renderer.dispose()
+      renderer.forceContextLoss()
+      container.removeChild(renderer.domElement)
+    }
   }, [
     sensitivity,
     lineThickness,
@@ -13270,36 +13467,36 @@ export const GridScan = ({
     skewScale,
     yBoost,
     tiltScale,
-    yawScale
-  ]);
+    yawScale,
+  ])
 
   useEffect(() => {
-    const m = materialRef.current;
+    const m = materialRef.current
     if (m) {
-      const u = m.uniforms;
-      u.uLineThickness.value = lineThickness;
-      u.uLinesColor.value.copy(srgbColor(linesColor));
-      u.uScanColor.value.copy(srgbColor(scanColor));
-      u.uGridScale.value = gridScale;
-      u.uLineStyle.value = lineStyle === 'dashed' ? 1 : lineStyle === 'dotted' ? 2 : 0;
-      u.uLineJitter.value = Math.max(0, Math.min(1, lineJitter || 0));
-      u.uBloomOpacity.value = Math.max(0, bloomIntensity);
-      u.uNoise.value = Math.max(0, noiseIntensity);
-      u.uScanGlow.value = scanGlow;
-      u.uScanOpacity.value = Math.max(0, Math.min(1, scanOpacity));
-      u.uScanDirection.value = scanDirection === 'backward' ? 1 : scanDirection === 'pingpong' ? 2 : 0;
-      u.uScanSoftness.value = scanSoftness;
-      u.uPhaseTaper.value = scanPhaseTaper;
-      u.uScanDuration.value = Math.max(0.05, scanDuration);
-      u.uScanDelay.value = Math.max(0.0, scanDelay);
+      const u = m.uniforms
+      u.uLineThickness.value = lineThickness
+      u.uLinesColor.value.copy(srgbColor(linesColor))
+      u.uScanColor.value.copy(srgbColor(scanColor))
+      u.uGridScale.value = gridScale
+      u.uLineStyle.value = lineStyle === "dashed" ? 1 : lineStyle === "dotted" ? 2 : 0
+      u.uLineJitter.value = Math.max(0, Math.min(1, lineJitter || 0))
+      u.uBloomOpacity.value = Math.max(0, bloomIntensity)
+      u.uNoise.value = Math.max(0, noiseIntensity)
+      u.uScanGlow.value = scanGlow
+      u.uScanOpacity.value = Math.max(0, Math.min(1, scanOpacity))
+      u.uScanDirection.value = scanDirection === "backward" ? 1 : scanDirection === "pingpong" ? 2 : 0
+      u.uScanSoftness.value = scanSoftness
+      u.uPhaseTaper.value = scanPhaseTaper
+      u.uScanDuration.value = Math.max(0.05, scanDuration)
+      u.uScanDelay.value = Math.max(0.0, scanDelay)
     }
     if (bloomRef.current) {
-      bloomRef.current.blendMode.opacity.value = Math.max(0, bloomIntensity);
-      bloomRef.current.luminanceMaterial.threshold = bloomThreshold;
-      bloomRef.current.luminanceMaterial.smoothing = bloomSmoothing;
+      bloomRef.current.blendMode.opacity.value = Math.max(0, bloomIntensity)
+      bloomRef.current.luminanceMaterial.threshold = bloomThreshold
+      bloomRef.current.luminanceMaterial.smoothing = bloomSmoothing
     }
     if (chromaRef.current) {
-      chromaRef.current.offset.set(chromaticAberration, chromaticAberration);
+      chromaRef.current.offset.set(chromaticAberration, chromaticAberration)
     }
   }, [
     lineThickness,
@@ -13319,150 +13516,150 @@ export const GridScan = ({
     scanSoftness,
     scanPhaseTaper,
     scanDuration,
-    scanDelay
-  ]);
+    scanDelay,
+  ])
 
   useEffect(() => {
-    if (!enableGyro) return;
-    const handler = e => {
-      if (uiFaceActive) return;
-      const gamma = e.gamma ?? 0;
-      const beta = e.beta ?? 0;
-      const nx = THREE.MathUtils.clamp(gamma / 45, -1, 1);
-      const ny = THREE.MathUtils.clamp(-beta / 30, -1, 1);
-      lookTarget.current.set(nx, ny);
-      tiltTarget.current = THREE.MathUtils.degToRad(gamma) * 0.4;
-    };
-    window.addEventListener('deviceorientation', handler);
+    if (!enableGyro) return
+    const handler = (e) => {
+      if (uiFaceActive) return
+      const gamma = e.gamma ?? 0
+      const beta = e.beta ?? 0
+      const nx = THREE.MathUtils.clamp(gamma / 45, -1, 1)
+      const ny = THREE.MathUtils.clamp(-beta / 30, -1, 1)
+      lookTarget.current.set(nx, ny)
+      tiltTarget.current = THREE.MathUtils.degToRad(gamma) * 0.4
+    }
+    window.addEventListener("deviceorientation", handler)
     return () => {
-      window.removeEventListener('deviceorientation', handler);
-    };
-  }, [enableGyro, uiFaceActive]);
+      window.removeEventListener("deviceorientation", handler)
+    }
+  }, [enableGyro, uiFaceActive])
 
   useEffect(() => {
-    let canceled = false;
+    let canceled = false
     const load = async () => {
       try {
         await Promise.all([
           faceapi.nets.tinyFaceDetector.loadFromUri(modelsPath),
-          faceapi.nets.faceLandmark68TinyNet.loadFromUri(modelsPath)
-        ]);
-        if (!canceled) setModelsReady(true);
+          faceapi.nets.faceLandmark68TinyNet.loadFromUri(modelsPath),
+        ])
+        if (!canceled) setModelsReady(true)
       } catch {
-        if (!canceled) setModelsReady(false);
+        if (!canceled) setModelsReady(false)
       }
-    };
-    load();
+    }
+    load()
     return () => {
-      canceled = true;
-    };
-  }, [modelsPath]);
+      canceled = true
+    }
+  }, [modelsPath])
 
   useEffect(() => {
-    let stop = false;
-    let lastDetect = 0;
-    const video = videoRef.current;
+    let stop = false
+    let lastDetect = 0
+    const video = videoRef.current
 
     const start = async () => {
-      if (!enableWebcam || !modelsReady) return;
-      if (!video) return;
+      if (!enableWebcam || !modelsReady) return
+      if (!video) return
 
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } },
-          audio: false
-        });
-        video.srcObject = stream;
-        await video.play();
+          video: { facingMode: "user", width: { ideal: 1280 }, height: { ideal: 720 } },
+          audio: false,
+        })
+        video.srcObject = stream
+        await video.play()
       } catch {
-        return;
+        return
       }
 
-      const opts = new faceapi.TinyFaceDetectorOptions({ inputSize: 320, scoreThreshold: 0.5 });
+      const opts = new faceapi.TinyFaceDetectorOptions({ inputSize: 320, scoreThreshold: 0.5 })
 
-      const detect = async ts => {
-        if (stop) return;
+      const detect = async (ts) => {
+        if (stop) return
 
         if (ts - lastDetect >= 33) {
-          lastDetect = ts;
+          lastDetect = ts
           try {
-            const res = await faceapi.detectSingleFace(video, opts).withFaceLandmarks(true);
+            const res = await faceapi.detectSingleFace(video, opts).withFaceLandmarks(true)
             if (res && res.detection) {
-              const det = res.detection;
-              const box = det.box;
-              const vw = video.videoWidth || 1;
-              const vh = video.videoHeight || 1;
+              const det = res.detection
+              const box = det.box
+              const vw = video.videoWidth || 1
+              const vh = video.videoHeight || 1
 
-              const cx = box.x + box.width * 0.5;
-              const cy = box.y + box.height * 0.5;
-              const nx = (cx / vw) * 2 - 1;
-              const ny = (cy / vh) * 2 - 1;
-              medianPush(bufX.current, nx, 5);
-              medianPush(bufY.current, ny, 5);
-              const nxm = median(bufX.current);
-              const nym = median(bufY.current);
+              const cx = box.x + box.width * 0.5
+              const cy = box.y + box.height * 0.5
+              const nx = (cx / vw) * 2 - 1
+              const ny = (cy / vh) * 2 - 1
+              medianPush(bufX.current, nx, 5)
+              medianPush(bufY.current, ny, 5)
+              const nxm = median(bufX.current)
+              const nym = median(bufY.current)
 
-              const look = new THREE.Vector2(Math.tanh(nxm), Math.tanh(nym));
+              const look = new THREE.Vector2(Math.tanh(nxm), Math.tanh(nym))
 
-              const faceSize = Math.min(1, Math.hypot(box.width / vw, box.height / vh));
-              const depthScale = 1 + depthResponse * (faceSize - 0.25);
-              lookTarget.current.copy(look.multiplyScalar(depthScale));
+              const faceSize = Math.min(1, Math.hypot(box.width / vw, box.height / vh))
+              const depthScale = 1 + depthResponse * (faceSize - 0.25)
+              lookTarget.current.copy(look.multiplyScalar(depthScale))
 
-              const leftEye = res.landmarks.getLeftEye();
-              const rightEye = res.landmarks.getRightEye();
-              const lc = centroid(leftEye);
-              const rc = centroid(rightEye);
-              const tilt = Math.atan2(rc.y - lc.y, rc.x - lc.x);
-              medianPush(bufT.current, tilt, 5);
-              tiltTarget.current = median(bufT.current);
+              const leftEye = res.landmarks.getLeftEye()
+              const rightEye = res.landmarks.getRightEye()
+              const lc = centroid(leftEye)
+              const rc = centroid(rightEye)
+              const tilt = Math.atan2(rc.y - lc.y, rc.x - lc.x)
+              medianPush(bufT.current, tilt, 5)
+              tiltTarget.current = median(bufT.current)
 
-              const nose = res.landmarks.getNose();
-              const tip = nose[nose.length - 1] || nose[Math.floor(nose.length / 2)];
-              const jaw = res.landmarks.getJawOutline();
-              const leftCheek = jaw[3] || jaw[2];
-              const rightCheek = jaw[13] || jaw[14];
-              const dL = dist2(tip, leftCheek);
-              const dR = dist2(tip, rightCheek);
-              const eyeDist = Math.hypot(rc.x - lc.x, rc.y - lc.y) + 1e-6;
-              let yawSignal = THREE.MathUtils.clamp((dR - dL) / (eyeDist * 1.6), -1, 1);
-              yawSignal = Math.tanh(yawSignal);
-              medianPush(bufYaw.current, yawSignal, 5);
-              yawTarget.current = median(bufYaw.current);
+              const nose = res.landmarks.getNose()
+              const tip = nose[nose.length - 1] || nose[Math.floor(nose.length / 2)]
+              const jaw = res.landmarks.getJawOutline()
+              const leftCheek = jaw[3] || jaw[2]
+              const rightCheek = jaw[13] || jaw[14]
+              const dL = dist2(tip, leftCheek)
+              const dR = dist2(tip, rightCheek)
+              const eyeDist = Math.hypot(rc.x - lc.x, rc.y - lc.y) + 1e-6
+              let yawSignal = THREE.MathUtils.clamp((dR - dL) / (eyeDist * 1.6), -1, 1)
+              yawSignal = Math.tanh(yawSignal)
+              medianPush(bufYaw.current, yawSignal, 5)
+              yawTarget.current = median(bufYaw.current)
 
-              setUiFaceActive(true);
+              setUiFaceActive(true)
             } else {
-              setUiFaceActive(false);
+              setUiFaceActive(false)
             }
           } catch {
-            setUiFaceActive(false);
+            setUiFaceActive(false)
           }
         }
 
-        if ('requestVideoFrameCallback' in HTMLVideoElement.prototype) {
-          video.requestVideoFrameCallback(() => detect(performance.now()));
+        if ("requestVideoFrameCallback" in HTMLVideoElement.prototype) {
+          video.requestVideoFrameCallback(() => detect(performance.now()))
         } else {
-          requestAnimationFrame(detect);
+          requestAnimationFrame(detect)
         }
-      };
+      }
 
-      requestAnimationFrame(detect);
-    };
+      requestAnimationFrame(detect)
+    }
 
-    start();
+    start()
 
     return () => {
-      stop = true;
+      stop = true
       if (video) {
-        const stream = video.srcObject;
-        if (stream) stream.getTracks().forEach(t => t.stop());
-        video.pause();
-        video.srcObject = null;
+        const stream = video.srcObject
+        if (stream) stream.getTracks().forEach((t) => t.stop())
+        video.pause()
+        video.srcObject = null
       }
-    };
-  }, [enableWebcam, modelsReady, depthResponse]);
+    }
+  }, [enableWebcam, modelsReady, depthResponse])
 
   return (
-    <div ref={containerRef} className={`gridscan${className ? ` ${className}` : ''}`} style={style}>
+    <div ref={containerRef} className={`gridscan${className ? ` ${className}` : ""}`} style={style}>
       {showPreview && (
         <div className="gridscan__preview">
           <video ref={videoRef} muted playsInline autoPlay className="gridscan__video" />
@@ -13470,108 +13667,108 @@ export const GridScan = ({
             {enableWebcam
               ? modelsReady
                 ? uiFaceActive
-                  ? 'Face: tracking'
-                  : 'Face: searching'
-                : 'Loading models'
-              : 'Webcam disabled'}
+                  ? "Face: tracking"
+                  : "Face: searching"
+                : "Loading models"
+              : "Webcam disabled"}
           </div>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 function srgbColor(hex) {
-  const c = new THREE.Color(hex);
-  return c.convertSRGBToLinear();
+  const c = new THREE.Color(hex)
+  return c.convertSRGBToLinear()
 }
 
 function smoothDampVec2(current, target, currentVelocity, smoothTime, maxSpeed, deltaTime) {
-  const out = current.clone();
-  smoothTime = Math.max(0.0001, smoothTime);
-  const omega = 2 / smoothTime;
-  const x = omega * deltaTime;
-  const exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
+  const out = current.clone()
+  smoothTime = Math.max(0.0001, smoothTime)
+  const omega = 2 / smoothTime
+  const x = omega * deltaTime
+  const exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x)
 
-  let change = current.clone().sub(target);
-  const originalTo = target.clone();
+  let change = current.clone().sub(target)
+  const originalTo = target.clone()
 
-  const maxChange = maxSpeed * smoothTime;
-  if (change.length() > maxChange) change.setLength(maxChange);
+  const maxChange = maxSpeed * smoothTime
+  if (change.length() > maxChange) change.setLength(maxChange)
 
-  target = current.clone().sub(change);
-  const temp = currentVelocity.clone().addScaledVector(change, omega).multiplyScalar(deltaTime);
-  currentVelocity.sub(temp.clone().multiplyScalar(omega));
-  currentVelocity.multiplyScalar(exp);
+  target = current.clone().sub(change)
+  const temp = currentVelocity.clone().addScaledVector(change, omega).multiplyScalar(deltaTime)
+  currentVelocity.sub(temp.clone().multiplyScalar(omega))
+  currentVelocity.multiplyScalar(exp)
 
-  out.copy(target.clone().add(change.add(temp).multiplyScalar(exp)));
+  out.copy(target.clone().add(change.add(temp).multiplyScalar(exp)))
 
-  const origMinusCurrent = originalTo.clone().sub(current);
-  const outMinusOrig = out.clone().sub(originalTo);
+  const origMinusCurrent = originalTo.clone().sub(current)
+  const outMinusOrig = out.clone().sub(originalTo)
   if (origMinusCurrent.dot(outMinusOrig) > 0) {
-    out.copy(originalTo);
-    currentVelocity.set(0, 0);
+    out.copy(originalTo)
+    currentVelocity.set(0, 0)
   }
-  return out;
+  return out
 }
 
 function smoothDampFloat(current, target, velRef, smoothTime, maxSpeed, deltaTime) {
-  smoothTime = Math.max(0.0001, smoothTime);
-  const omega = 2 / smoothTime;
-  const x = omega * deltaTime;
-  const exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
+  smoothTime = Math.max(0.0001, smoothTime)
+  const omega = 2 / smoothTime
+  const x = omega * deltaTime
+  const exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x)
 
-  let change = current - target;
-  const originalTo = target;
+  let change = current - target
+  const originalTo = target
 
-  const maxChange = maxSpeed * smoothTime;
-  change = Math.sign(change) * Math.min(Math.abs(change), maxChange);
+  const maxChange = maxSpeed * smoothTime
+  change = Math.sign(change) * Math.min(Math.abs(change), maxChange)
 
-  target = current - change;
-  const temp = (velRef.v + omega * change) * deltaTime;
-  velRef.v = (velRef.v - omega * temp) * exp;
+  target = current - change
+  const temp = (velRef.v + omega * change) * deltaTime
+  velRef.v = (velRef.v - omega * temp) * exp
 
-  let out = target + (change + temp) * exp;
+  let out = target + (change + temp) * exp
 
-  const origMinusCurrent = originalTo - current;
-  const outMinusOrig = out - originalTo;
+  const origMinusCurrent = originalTo - current
+  const outMinusOrig = out - originalTo
   if (origMinusCurrent * outMinusOrig > 0) {
-    out = originalTo;
-    velRef.v = 0;
+    out = originalTo
+    velRef.v = 0
   }
-  return { value: out, v: velRef.v };
+  return { value: out, v: velRef.v }
 }
 
 function medianPush(buf, v, maxLen) {
-  buf.push(v);
-  if (buf.length > maxLen) buf.shift();
+  buf.push(v)
+  if (buf.length > maxLen) buf.shift()
 }
 
 function median(buf) {
-  if (buf.length === 0) return 0;
-  const a = [...buf].sort((x, y) => x - y);
-  const mid = Math.floor(a.length / 2);
-  return a.length % 2 ? a[mid] : (a[mid - 1] + a[mid]) * 0.5;
+  if (buf.length === 0) return 0
+  const a = [...buf].sort((x, y) => x - y)
+  const mid = Math.floor(a.length / 2)
+  return a.length % 2 ? a[mid] : (a[mid - 1] + a[mid]) * 0.5
 }
 
 function centroid(points) {
   let x = 0,
-    y = 0;
-  const n = points.length || 1;
+    y = 0
+  const n = points.length || 1
   for (const p of points) {
-    x += p.x;
-    y += p.y;
+    x += p.x
+    y += p.y
   }
-  return { x: x / n, y: y / n };
+  return { x: x / n, y: y / n }
 }
 
 function dist2(a, b) {
-  return Math.hypot(a.x - b.x, a.y - b.y);
+  return Math.hypot(a.x - b.x, a.y - b.y)
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .gridscan {
   position: relative;
@@ -13617,10 +13814,10 @@ function dist2(a, b) {
   border-radius: 6px;
   backdrop-filter: blur(4px);
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -13635,16 +13832,19 @@ code: ## Integrate the <Beams /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Beams
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three @react-three/fiber @react-three/drei
 
 ---
 
 ### Usage Example
-```jsx
-import Beams from './Beams';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import Beams from "./Beams"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Beams
     beamWidth={2}
     beamHeight={15}
@@ -13659,57 +13859,59 @@ import Beams from './Beams';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| beamWidth | number | 2 | Width of each beam. |
-| beamHeight | number | 15 | Height of each beam. |
-| beamNumber | number | 12 | Number of beams to display. |
-| lightColor | string | '#ffffff' | Color of the directional light. |
-| speed | number | 2 | Speed of the animation. |
-| noiseIntensity | number | 1.75 | Intensity of the noise effect overlay. |
-| scale | number | 0.2 | Scale of the noise pattern. |
-| rotation | number | 0 | Rotation of the entire beams system in degrees. |
+
+| Prop           | Type   | Default   | Description                                     |
+| -------------- | ------ | --------- | ----------------------------------------------- |
+| beamWidth      | number | 2         | Width of each beam.                             |
+| beamHeight     | number | 15        | Height of each beam.                            |
+| beamNumber     | number | 12        | Number of beams to display.                     |
+| lightColor     | string | '#ffffff' | Color of the directional light.                 |
+| speed          | number | 2         | Speed of the animation.                         |
+| noiseIntensity | number | 1.75      | Intensity of the noise effect overlay.          |
+| scale          | number | 0.2       | Scale of the noise pattern.                     |
+| rotation       | number | 0         | Rotation of the entire beams system in degrees. |
 
 ### Full Component Source
+
 ```jsx
 /* eslint-disable react/no-unknown-property */
-import { forwardRef, useImperativeHandle, useEffect, useRef, useMemo } from 'react';
+import { forwardRef, useImperativeHandle, useEffect, useRef, useMemo } from "react"
 
-import * as THREE from 'three';
+import * as THREE from "three"
 
-import { Canvas, useFrame } from '@react-three/fiber';
-import { PerspectiveCamera } from '@react-three/drei';
-import { degToRad } from 'three/src/math/MathUtils.js';
+import { Canvas, useFrame } from "@react-three/fiber"
+import { PerspectiveCamera } from "@react-three/drei"
+import { degToRad } from "three/src/math/MathUtils.js"
 
-import './Beams.css';
+import "./Beams.css"
 
 function extendMaterial(BaseMaterial, cfg) {
-  const physical = THREE.ShaderLib.physical;
-  const { vertexShader: baseVert, fragmentShader: baseFrag, uniforms: baseUniforms } = physical;
-  const baseDefines = physical.defines ?? {};
+  const physical = THREE.ShaderLib.physical
+  const { vertexShader: baseVert, fragmentShader: baseFrag, uniforms: baseUniforms } = physical
+  const baseDefines = physical.defines ?? {}
 
-  const uniforms = THREE.UniformsUtils.clone(baseUniforms);
+  const uniforms = THREE.UniformsUtils.clone(baseUniforms)
 
-  const defaults = new BaseMaterial(cfg.material || {});
+  const defaults = new BaseMaterial(cfg.material || {})
 
-  if (defaults.color) uniforms.diffuse.value = defaults.color;
-  if ('roughness' in defaults) uniforms.roughness.value = defaults.roughness;
-  if ('metalness' in defaults) uniforms.metalness.value = defaults.metalness;
-  if ('envMap' in defaults) uniforms.envMap.value = defaults.envMap;
-  if ('envMapIntensity' in defaults) uniforms.envMapIntensity.value = defaults.envMapIntensity;
+  if (defaults.color) uniforms.diffuse.value = defaults.color
+  if ("roughness" in defaults) uniforms.roughness.value = defaults.roughness
+  if ("metalness" in defaults) uniforms.metalness.value = defaults.metalness
+  if ("envMap" in defaults) uniforms.envMap.value = defaults.envMap
+  if ("envMapIntensity" in defaults) uniforms.envMapIntensity.value = defaults.envMapIntensity
 
   Object.entries(cfg.uniforms ?? {}).forEach(([key, u]) => {
-    uniforms[key] = u !== null && typeof u === 'object' && 'value' in u ? u : { value: u };
-  });
+    uniforms[key] = u !== null && typeof u === "object" && "value" in u ? u : { value: u }
+  })
 
-  let vert = `${cfg.header}\n${cfg.vertexHeader ?? ''}\n${baseVert}`;
-  let frag = `${cfg.header}\n${cfg.fragmentHeader ?? ''}\n${baseFrag}`;
+  let vert = `${cfg.header}\n${cfg.vertexHeader ?? ""}\n${baseVert}`
+  let frag = `${cfg.header}\n${cfg.fragmentHeader ?? ""}\n${baseFrag}`
 
   for (const [inc, code] of Object.entries(cfg.vertex ?? {})) {
-    vert = vert.replace(inc, `${inc}\n${code}`);
+    vert = vert.replace(inc, `${inc}\n${code}`)
   }
   for (const [inc, code] of Object.entries(cfg.fragment ?? {})) {
-    frag = frag.replace(inc, `${inc}\n${code}`);
+    frag = frag.replace(inc, `${inc}\n${code}`)
   }
 
   const mat = new THREE.ShaderMaterial({
@@ -13718,25 +13920,25 @@ function extendMaterial(BaseMaterial, cfg) {
     vertexShader: vert,
     fragmentShader: frag,
     lights: true,
-    fog: !!cfg.material?.fog
-  });
+    fog: !!cfg.material?.fog,
+  })
 
-  return mat;
+  return mat
 }
 
 const CanvasWrapper = ({ children }) => (
   <Canvas dpr={[1, 2]} frameloop="always" className="beams-container">
     {children}
   </Canvas>
-);
+)
 
-const hexToNormalizedRGB = hex => {
-  const clean = hex.replace('#', '');
-  const r = parseInt(clean.substring(0, 2), 16);
-  const g = parseInt(clean.substring(2, 4), 16);
-  const b = parseInt(clean.substring(4, 6), 16);
-  return [r / 255, g / 255, b / 255];
-};
+const hexToNormalizedRGB = (hex) => {
+  const clean = hex.replace("#", "")
+  const r = parseInt(clean.substring(0, 2), 16)
+  const g = parseInt(clean.substring(2, 4), 16)
+  const b = parseInt(clean.substring(4, 6), 16)
+  return [r / 255, g / 255, b / 255]
+}
 
 const noise = `
 float random (in vec2 st) {
@@ -13813,19 +14015,19 @@ float cnoise(vec3 P){
   float n_xyz = mix(n_yz.x,n_yz.y,fade_xyz.x);
   return 2.2 * n_xyz;
 }
-`;
+`
 
 const Beams = ({
   beamWidth = 2,
   beamHeight = 15,
   beamNumber = 12,
-  lightColor = '#ffffff',
+  lightColor = "#ffffff",
   speed = 2,
   noiseIntensity = 1.75,
   scale = 0.2,
-  rotation = 0
+  rotation = 0,
 }) => {
-  const meshRef = useRef(null);
+  const meshRef = useRef(null)
   const beamMaterial = useMemo(
     () =>
       extendMaterial(THREE.MeshStandardMaterial, {
@@ -13858,30 +14060,30 @@ const Beams = ({
     vec3 tangentZ = normalize(nextposZ - curpos);
     return normalize(cross(tangentZ, tangentX));
   }`,
-        fragmentHeader: '',
+        fragmentHeader: "",
         vertex: {
-          '#include <begin_vertex>': `transformed.z += getPos(transformed.xyz);`,
-          '#include <beginnormal_vertex>': `objectNormal = getNormal(position.xyz);`
+          "#include <begin_vertex>": `transformed.z += getPos(transformed.xyz);`,
+          "#include <beginnormal_vertex>": `objectNormal = getNormal(position.xyz);`,
         },
         fragment: {
-          '#include <dithering_fragment>': `
+          "#include <dithering_fragment>": `
     float randomNoise = noise(gl_FragCoord.xy);
-    gl_FragColor.rgb -= randomNoise / 15. * uNoiseIntensity;`
+    gl_FragColor.rgb -= randomNoise / 15. * uNoiseIntensity;`,
         },
         material: { fog: true },
         uniforms: {
-          diffuse: new THREE.Color(...hexToNormalizedRGB('#000000')),
+          diffuse: new THREE.Color(...hexToNormalizedRGB("#000000")),
           time: { shared: true, mixed: true, linked: true, value: 0 },
           roughness: 0.3,
           metalness: 0.3,
           uSpeed: { shared: true, mixed: true, linked: true, value: speed },
           envMapIntensity: 10,
           uNoiseIntensity: noiseIntensity,
-          uScale: scale
-        }
+          uScale: scale,
+        },
       }),
-    [speed, noiseIntensity, scale]
-  );
+    [speed, noiseIntensity, scale],
+  )
 
   return (
     <CanvasWrapper>
@@ -13890,110 +14092,110 @@ const Beams = ({
         <DirLight color={lightColor} position={[0, 3, 10]} />
       </group>
       <ambientLight intensity={1} />
-      <color attach="background" args={['#000000']} />
+      <color attach="background" args={["#000000"]} />
       <PerspectiveCamera makeDefault position={[0, 0, 20]} fov={30} />
     </CanvasWrapper>
-  );
-};
+  )
+}
 
 function createStackedPlanesBufferGeometry(n, width, height, spacing, heightSegments) {
-  const geometry = new THREE.BufferGeometry();
-  const numVertices = n * (heightSegments + 1) * 2;
-  const numFaces = n * heightSegments * 2;
-  const positions = new Float32Array(numVertices * 3);
-  const indices = new Uint32Array(numFaces * 3);
-  const uvs = new Float32Array(numVertices * 2);
+  const geometry = new THREE.BufferGeometry()
+  const numVertices = n * (heightSegments + 1) * 2
+  const numFaces = n * heightSegments * 2
+  const positions = new Float32Array(numVertices * 3)
+  const indices = new Uint32Array(numFaces * 3)
+  const uvs = new Float32Array(numVertices * 2)
 
-  let vertexOffset = 0;
-  let indexOffset = 0;
-  let uvOffset = 0;
-  const totalWidth = n * width + (n - 1) * spacing;
-  const xOffsetBase = -totalWidth / 2;
+  let vertexOffset = 0
+  let indexOffset = 0
+  let uvOffset = 0
+  const totalWidth = n * width + (n - 1) * spacing
+  const xOffsetBase = -totalWidth / 2
 
   for (let i = 0; i < n; i++) {
-    const xOffset = xOffsetBase + i * (width + spacing);
-    const uvXOffset = Math.random() * 300;
-    const uvYOffset = Math.random() * 300;
+    const xOffset = xOffsetBase + i * (width + spacing)
+    const uvXOffset = Math.random() * 300
+    const uvYOffset = Math.random() * 300
 
     for (let j = 0; j <= heightSegments; j++) {
-      const y = height * (j / heightSegments - 0.5);
-      const v0 = [xOffset, y, 0];
-      const v1 = [xOffset + width, y, 0];
-      positions.set([...v0, ...v1], vertexOffset * 3);
+      const y = height * (j / heightSegments - 0.5)
+      const v0 = [xOffset, y, 0]
+      const v1 = [xOffset + width, y, 0]
+      positions.set([...v0, ...v1], vertexOffset * 3)
 
-      const uvY = j / heightSegments;
-      uvs.set([uvXOffset, uvY + uvYOffset, uvXOffset + 1, uvY + uvYOffset], uvOffset);
+      const uvY = j / heightSegments
+      uvs.set([uvXOffset, uvY + uvYOffset, uvXOffset + 1, uvY + uvYOffset], uvOffset)
 
       if (j < heightSegments) {
         const a = vertexOffset,
           b = vertexOffset + 1,
           c = vertexOffset + 2,
-          d = vertexOffset + 3;
-        indices.set([a, b, c, c, b, d], indexOffset);
-        indexOffset += 6;
+          d = vertexOffset + 3
+        indices.set([a, b, c, c, b, d], indexOffset)
+        indexOffset += 6
       }
-      vertexOffset += 2;
-      uvOffset += 4;
+      vertexOffset += 2
+      uvOffset += 4
     }
   }
 
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
-  geometry.setIndex(new THREE.BufferAttribute(indices, 1));
-  geometry.computeVertexNormals();
-  return geometry;
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3))
+  geometry.setAttribute("uv", new THREE.BufferAttribute(uvs, 2))
+  geometry.setIndex(new THREE.BufferAttribute(indices, 1))
+  geometry.computeVertexNormals()
+  return geometry
 }
 
 const MergedPlanes = forwardRef(({ material, width, count, height }, ref) => {
-  const mesh = useRef(null);
-  useImperativeHandle(ref, () => mesh.current);
+  const mesh = useRef(null)
+  useImperativeHandle(ref, () => mesh.current)
   const geometry = useMemo(
     () => createStackedPlanesBufferGeometry(count, width, height, 0, 100),
-    [count, width, height]
-  );
+    [count, width, height],
+  )
   useFrame((_, delta) => {
-    mesh.current.material.uniforms.time.value += 0.1 * delta;
-  });
-  return <mesh ref={mesh} geometry={geometry} material={material} />;
-});
-MergedPlanes.displayName = 'MergedPlanes';
+    mesh.current.material.uniforms.time.value += 0.1 * delta
+  })
+  return <mesh ref={mesh} geometry={geometry} material={material} />
+})
+MergedPlanes.displayName = "MergedPlanes"
 
 const PlaneNoise = forwardRef((props, ref) => (
   <MergedPlanes ref={ref} material={props.material} width={props.width} count={props.count} height={props.height} />
-));
-PlaneNoise.displayName = 'PlaneNoise';
+))
+PlaneNoise.displayName = "PlaneNoise"
 
 const DirLight = ({ position, color }) => {
-  const dir = useRef(null);
+  const dir = useRef(null)
   useEffect(() => {
-    if (!dir.current) return;
-    const cam = dir.current.shadow.camera;
-    if (!cam) return;
-    cam.top = 24;
-    cam.bottom = -24;
-    cam.left = -24;
-    cam.right = 24;
-    cam.far = 64;
-    dir.current.shadow.bias = -0.004;
-  }, []);
-  return <directionalLight ref={dir} color={color} intensity={1} position={position} />;
-};
+    if (!dir.current) return
+    const cam = dir.current.shadow.camera
+    if (!cam) return
+    cam.top = 24
+    cam.bottom = -24
+    cam.left = -24
+    cam.right = 24
+    cam.far = 64
+    dir.current.shadow.bias = -0.004
+  }, [])
+  return <directionalLight ref={dir} color={color} intensity={1} position={position} />
+}
 
-export default Beams;
-
+export default Beams
 ```
 
 ### Component CSS
+
 ```css
 .beams-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -14008,17 +14210,20 @@ code: ## Integrate the <PixelSnow /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: PixelSnow
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three
 
 ---
 
 ### Usage Example
-```jsx
-import PixelSnow from './PixelSnow';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <PixelSnow 
+```jsx
+import PixelSnow from "./PixelSnow"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
+  <PixelSnow
     color="#ffffff"
     flakeSize={0.01}
     minFlakeSize={1.25}
@@ -14032,26 +14237,28 @@ import PixelSnow from './PixelSnow';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| color | string | "#ffffff" | Color of the snowflakes (hex or CSS color) |
-| flakeSize | number | 0.01 | Size of snowflakes in scene units |
-| minFlakeSize | number | 1.25 | Minimum flake size in pixels on screen |
-| pixelResolution | number | 200 | Pixel resolution - lower values create larger pixels for a more retro look |
-| speed | number | 1.25 | Animation speed multiplier |
-| depthFade | number | 8 | Depth fade intensity - higher values make distant flakes fade faster |
-| farPlane | number | 20 | Far plane distance for rendering - higher values show more distant flakes |
-| brightness | number | 1 | Overall brightness multiplier |
-| gamma | number | 0.4545 | Gamma correction value for final color output |
-| density | number | 0.3 | Probability of snowflakes appearing (0-1) - lower values = fewer flakes |
-| variant | "square" | "round" | "snowflake" | "square" | Shape of the snowflakes - square, round, or snowflake pattern |
-| direction | number | 125 | Wind direction angle in degrees (0-360) |
-| className | string | "" | Additional CSS class name |
-| style | object | {} | Additional inline styles |
+
+| Prop            | Type     | Default   | Description                                                                |
+| --------------- | -------- | --------- | -------------------------------------------------------------------------- | -------- | ------------------------------------------------------------- |
+| color           | string   | "#ffffff" | Color of the snowflakes (hex or CSS color)                                 |
+| flakeSize       | number   | 0.01      | Size of snowflakes in scene units                                          |
+| minFlakeSize    | number   | 1.25      | Minimum flake size in pixels on screen                                     |
+| pixelResolution | number   | 200       | Pixel resolution - lower values create larger pixels for a more retro look |
+| speed           | number   | 1.25      | Animation speed multiplier                                                 |
+| depthFade       | number   | 8         | Depth fade intensity - higher values make distant flakes fade faster       |
+| farPlane        | number   | 20        | Far plane distance for rendering - higher values show more distant flakes  |
+| brightness      | number   | 1         | Overall brightness multiplier                                              |
+| gamma           | number   | 0.4545    | Gamma correction value for final color output                              |
+| density         | number   | 0.3       | Probability of snowflakes appearing (0-1) - lower values = fewer flakes    |
+| variant         | "square" | "round"   | "snowflake"                                                                | "square" | Shape of the snowflakes - square, round, or snowflake pattern |
+| direction       | number   | 125       | Wind direction angle in degrees (0-360)                                    |
+| className       | string   | ""        | Additional CSS class name                                                  |
+| style           | object   | {}        | Additional inline styles                                                   |
 
 ### Full Component Source
+
 ```jsx
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from "react"
 import {
   Color,
   Mesh,
@@ -14061,16 +14268,16 @@ import {
   ShaderMaterial,
   Vector2,
   Vector3,
-  WebGLRenderer
-} from 'three';
+  WebGLRenderer,
+} from "three"
 
-import './PixelSnow.css';
+import "./PixelSnow.css"
 
 const vertexShader = `
 void main() {
   gl_Position = vec4(position, 1.0);
 }
-`;
+`
 
 const fragmentShader = `
 precision mediump float;
@@ -14222,10 +14429,10 @@ void main() {
 
   gl_FragColor = vec4(0.0);
 }
-`;
+`
 
 export default function PixelSnow({
-  color = '#ffffff',
+  color = "#ffffff",
   flakeSize = 0.01,
   minFlakeSize = 1.25,
   pixelResolution = 200,
@@ -14235,84 +14442,84 @@ export default function PixelSnow({
   brightness = 1,
   gamma = 0.4545,
   density = 0.3,
-  variant = 'square',
+  variant = "square",
   direction = 125,
-  className = '',
-  style = {}
+  className = "",
+  style = {},
 }) {
-  const containerRef = useRef(null);
-  const animationRef = useRef(0);
-  const isVisibleRef = useRef(true);
-  const rendererRef = useRef(null);
-  const materialRef = useRef(null);
-  const resizeTimeoutRef = useRef(null);
+  const containerRef = useRef(null)
+  const animationRef = useRef(0)
+  const isVisibleRef = useRef(true)
+  const rendererRef = useRef(null)
+  const materialRef = useRef(null)
+  const resizeTimeoutRef = useRef(null)
 
   // Memoize shader variant value
   const variantValue = useMemo(() => {
-    return variant === 'round' ? 1.0 : variant === 'snowflake' ? 2.0 : 0.0;
-  }, [variant]);
+    return variant === "round" ? 1.0 : variant === "snowflake" ? 2.0 : 0.0
+  }, [variant])
 
   // Memoize color conversion
   const colorVector = useMemo(() => {
-    const threeColor = new Color(color);
-    return new Vector3(threeColor.r, threeColor.g, threeColor.b);
-  }, [color]);
+    const threeColor = new Color(color)
+    return new Vector3(threeColor.r, threeColor.g, threeColor.b)
+  }, [color])
 
   // Debounced resize handler
   const handleResize = useCallback(() => {
     if (resizeTimeoutRef.current) {
-      clearTimeout(resizeTimeoutRef.current);
+      clearTimeout(resizeTimeoutRef.current)
     }
     resizeTimeoutRef.current = window.setTimeout(() => {
-      const container = containerRef.current;
-      const renderer = rendererRef.current;
-      const material = materialRef.current;
-      if (!container || !renderer || !material) return;
+      const container = containerRef.current
+      const renderer = rendererRef.current
+      const material = materialRef.current
+      if (!container || !renderer || !material) return
 
-      const w = container.offsetWidth;
-      const h = container.offsetHeight;
-      renderer.setSize(w, h);
-      material.uniforms.uResolution.value.set(w, h);
-    }, 100);
-  }, []);
+      const w = container.offsetWidth
+      const h = container.offsetHeight
+      renderer.setSize(w, h)
+      material.uniforms.uResolution.value.set(w, h)
+    }, 100)
+  }, [])
 
   // Visibility observer
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        isVisibleRef.current = entry.isIntersecting;
+        isVisibleRef.current = entry.isIntersecting
       },
-      { threshold: 0 }
-    );
+      { threshold: 0 },
+    )
 
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, []);
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [])
 
   // Main Three.js setup - only runs once
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
-    const scene = new Scene();
-    const camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const scene = new Scene()
+    const camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1)
     const renderer = new WebGLRenderer({
       antialias: false,
       alpha: true,
       premultipliedAlpha: false,
-      powerPreference: 'high-performance',
+      powerPreference: "high-performance",
       stencil: false,
-      depth: false
-    });
+      depth: false,
+    })
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
-    rendererRef.current = renderer;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setSize(container.offsetWidth, container.offsetHeight)
+    renderer.setClearColor(0x000000, 0)
+    container.appendChild(renderer.domElement)
+    rendererRef.current = renderer
 
     const material = new ShaderMaterial({
       vertexShader,
@@ -14331,65 +14538,65 @@ export default function PixelSnow({
         uGamma: { value: gamma },
         uDensity: { value: density },
         uVariant: { value: variantValue },
-        uDirection: { value: (direction * Math.PI) / 180 }
+        uDirection: { value: (direction * Math.PI) / 180 },
       },
-      transparent: true
-    });
-    materialRef.current = material;
+      transparent: true,
+    })
+    materialRef.current = material
 
-    const geometry = new PlaneGeometry(2, 2);
-    scene.add(new Mesh(geometry, material));
+    const geometry = new PlaneGeometry(2, 2)
+    scene.add(new Mesh(geometry, material))
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize)
 
-    const startTime = performance.now();
+    const startTime = performance.now()
     const animate = () => {
-      animationRef.current = requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate)
 
       // Only render if visible
       if (isVisibleRef.current) {
-        material.uniforms.uTime.value = (performance.now() - startTime) * 0.001;
-        renderer.render(scene, camera);
+        material.uniforms.uTime.value = (performance.now() - startTime) * 0.001
+        renderer.render(scene, camera)
       }
-    };
-    animate();
+    }
+    animate()
 
     return () => {
-      cancelAnimationFrame(animationRef.current);
-      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationRef.current)
+      window.removeEventListener("resize", handleResize)
       if (resizeTimeoutRef.current) {
-        clearTimeout(resizeTimeoutRef.current);
+        clearTimeout(resizeTimeoutRef.current)
       }
       if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
+        container.removeChild(renderer.domElement)
       }
-      renderer.dispose();
-      renderer.forceContextLoss();
-      geometry.dispose();
-      material.dispose();
-      rendererRef.current = null;
-      materialRef.current = null;
-    };
+      renderer.dispose()
+      renderer.forceContextLoss()
+      geometry.dispose()
+      material.dispose()
+      rendererRef.current = null
+      materialRef.current = null
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [handleResize]); // Only recreate scene when handleResize changes
+  }, [handleResize]) // Only recreate scene when handleResize changes
 
   // Update material uniforms when props change
   useEffect(() => {
-    const material = materialRef.current;
-    if (!material) return;
+    const material = materialRef.current
+    if (!material) return
 
-    material.uniforms.uFlakeSize.value = flakeSize;
-    material.uniforms.uMinFlakeSize.value = minFlakeSize;
-    material.uniforms.uPixelResolution.value = pixelResolution;
-    material.uniforms.uSpeed.value = speed;
-    material.uniforms.uDepthFade.value = depthFade;
-    material.uniforms.uFarPlane.value = farPlane;
-    material.uniforms.uBrightness.value = brightness;
-    material.uniforms.uGamma.value = gamma;
-    material.uniforms.uDensity.value = density;
-    material.uniforms.uVariant.value = variantValue;
-    material.uniforms.uDirection.value = (direction * Math.PI) / 180;
-    material.uniforms.uColor.value.copy(colorVector);
+    material.uniforms.uFlakeSize.value = flakeSize
+    material.uniforms.uMinFlakeSize.value = minFlakeSize
+    material.uniforms.uPixelResolution.value = pixelResolution
+    material.uniforms.uSpeed.value = speed
+    material.uniforms.uDepthFade.value = depthFade
+    material.uniforms.uFarPlane.value = farPlane
+    material.uniforms.uBrightness.value = brightness
+    material.uniforms.uGamma.value = gamma
+    material.uniforms.uDensity.value = density
+    material.uniforms.uVariant.value = variantValue
+    material.uniforms.uDirection.value = (direction * Math.PI) / 180
+    material.uniforms.uColor.value.copy(colorVector)
   }, [
     flakeSize,
     minFlakeSize,
@@ -14402,15 +14609,15 @@ export default function PixelSnow({
     density,
     variantValue,
     direction,
-    colorVector
-  ]);
+    colorVector,
+  ])
 
-  return <div ref={containerRef} className={`pixel-snow-container ${className}`} style={style} />;
+  return <div ref={containerRef} className={`pixel-snow-container ${className}`} style={style} />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .pixel-snow-container {
   width: 100%;
@@ -14428,10 +14635,10 @@ export default function PixelSnow({
   will-change: transform;
   backface-visibility: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -14446,58 +14653,55 @@ code: ## Integrate the <Lightning /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Lightning
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
-```jsx
-import Lightning from './Lightning';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <Lightning
-    hue={220}
-    xOffset={0}
-    speed={1}
-    intensity={1}
-    size={1}
-  />
+```jsx
+import Lightning from "./Lightning"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
+  <Lightning hue={220} xOffset={0} speed={1} intensity={1} size={1} />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| hue | number | 230 | Hue of the lightning in degrees (0 to 360). |
-| xOffset | number | 0 | Horizontal offset of the lightning in normalized units. |
-| speed | number | 1 | Animation speed multiplier for the lightning. |
-| intensity | number | 1 | Brightness multiplier for the lightning. |
-| size | number | 1 | Scale factor for the bolt size. |
+
+| Prop      | Type   | Default | Description                                             |
+| --------- | ------ | ------- | ------------------------------------------------------- |
+| hue       | number | 230     | Hue of the lightning in degrees (0 to 360).             |
+| xOffset   | number | 0       | Horizontal offset of the lightning in normalized units. |
+| speed     | number | 1       | Animation speed multiplier for the lightning.           |
+| intensity | number | 1       | Brightness multiplier for the lightning.                |
+| size      | number | 1       | Scale factor for the bolt size.                         |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect } from 'react';
-import './Lightning.css';
+import { useRef, useEffect } from "react"
+import "./Lightning.css"
 
 const Lightning = ({ hue = 230, xOffset = 0, speed = 1, intensity = 1, size = 1 }) => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef(null)
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvas = canvasRef.current
+    if (!canvas) return
 
     const resizeCanvas = () => {
-      canvas.width = canvas.clientWidth;
-      canvas.height = canvas.clientHeight;
-    };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+      canvas.width = canvas.clientWidth
+      canvas.height = canvas.clientHeight
+    }
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
 
-    const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: false });
+    const gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false })
     if (!gl) {
-      console.error('WebGL not supported');
-      return;
+      console.error("WebGL not supported")
+      return
     }
 
     const vertexShaderSource = `
@@ -14505,7 +14709,7 @@ const Lightning = ({ hue = 230, xOffset = 0, speed = 1, intensity = 1, size = 1 
       void main() {
         gl_Position = vec4(aPosition, 0.0, 1.0);
       }
-    `;
+    `
 
     const fragmentShaderSource = `
       precision mediump float;
@@ -14586,93 +14790,93 @@ const Lightning = ({ hue = 230, xOffset = 0, speed = 1, intensity = 1, size = 1 
       void main() {
           mainImage(gl_FragColor, gl_FragCoord.xy);
       }
-    `;
+    `
 
     const compileShader = (source, type) => {
-      const shader = gl.createShader(type);
-      if (!shader) return null;
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
+      const shader = gl.createShader(type)
+      if (!shader) return null
+      gl.shaderSource(shader, source)
+      gl.compileShader(shader)
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error('Shader compile error:', gl.getShaderInfoLog(shader));
-        gl.deleteShader(shader);
-        return null;
+        console.error("Shader compile error:", gl.getShaderInfoLog(shader))
+        gl.deleteShader(shader)
+        return null
       }
-      return shader;
-    };
-
-    const vertexShader = compileShader(vertexShaderSource, gl.VERTEX_SHADER);
-    const fragmentShader = compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER);
-    if (!vertexShader || !fragmentShader) return;
-
-    const program = gl.createProgram();
-    if (!program) return;
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      console.error('Program linking error:', gl.getProgramInfoLog(program));
-      return;
+      return shader
     }
-    gl.useProgram(program);
 
-    const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]);
-    const vertexBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+    const vertexShader = compileShader(vertexShaderSource, gl.VERTEX_SHADER)
+    const fragmentShader = compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER)
+    if (!vertexShader || !fragmentShader) return
 
-    const aPosition = gl.getAttribLocation(program, 'aPosition');
-    gl.enableVertexAttribArray(aPosition);
-    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
+    const program = gl.createProgram()
+    if (!program) return
+    gl.attachShader(program, vertexShader)
+    gl.attachShader(program, fragmentShader)
+    gl.linkProgram(program)
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      console.error("Program linking error:", gl.getProgramInfoLog(program))
+      return
+    }
+    gl.useProgram(program)
 
-    const iResolutionLocation = gl.getUniformLocation(program, 'iResolution');
-    const iTimeLocation = gl.getUniformLocation(program, 'iTime');
-    const uHueLocation = gl.getUniformLocation(program, 'uHue');
-    const uXOffsetLocation = gl.getUniformLocation(program, 'uXOffset');
-    const uSpeedLocation = gl.getUniformLocation(program, 'uSpeed');
-    const uIntensityLocation = gl.getUniformLocation(program, 'uIntensity');
-    const uSizeLocation = gl.getUniformLocation(program, 'uSize');
+    const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1])
+    const vertexBuffer = gl.createBuffer()
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
 
-    const startTime = performance.now();
+    const aPosition = gl.getAttribLocation(program, "aPosition")
+    gl.enableVertexAttribArray(aPosition)
+    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0)
+
+    const iResolutionLocation = gl.getUniformLocation(program, "iResolution")
+    const iTimeLocation = gl.getUniformLocation(program, "iTime")
+    const uHueLocation = gl.getUniformLocation(program, "uHue")
+    const uXOffsetLocation = gl.getUniformLocation(program, "uXOffset")
+    const uSpeedLocation = gl.getUniformLocation(program, "uSpeed")
+    const uIntensityLocation = gl.getUniformLocation(program, "uIntensity")
+    const uSizeLocation = gl.getUniformLocation(program, "uSize")
+
+    const startTime = performance.now()
     const render = () => {
-      resizeCanvas();
-      gl.viewport(0, 0, canvas.width, canvas.height);
-      gl.uniform2f(iResolutionLocation, canvas.width, canvas.height);
-      const currentTime = performance.now();
-      gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0);
-      gl.uniform1f(uHueLocation, hue);
-      gl.uniform1f(uXOffsetLocation, xOffset);
-      gl.uniform1f(uSpeedLocation, speed);
-      gl.uniform1f(uIntensityLocation, intensity);
-      gl.uniform1f(uSizeLocation, size);
-      gl.drawArrays(gl.TRIANGLES, 0, 6);
-      requestAnimationFrame(render);
-    };
-    requestAnimationFrame(render);
+      resizeCanvas()
+      gl.viewport(0, 0, canvas.width, canvas.height)
+      gl.uniform2f(iResolutionLocation, canvas.width, canvas.height)
+      const currentTime = performance.now()
+      gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0)
+      gl.uniform1f(uHueLocation, hue)
+      gl.uniform1f(uXOffsetLocation, xOffset)
+      gl.uniform1f(uSpeedLocation, speed)
+      gl.uniform1f(uIntensityLocation, intensity)
+      gl.uniform1f(uSizeLocation, size)
+      gl.drawArrays(gl.TRIANGLES, 0, 6)
+      requestAnimationFrame(render)
+    }
+    requestAnimationFrame(render)
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
-    };
-  }, [hue, xOffset, speed, intensity, size]);
+      window.removeEventListener("resize", resizeCanvas)
+    }
+  }, [hue, xOffset, speed, intensity, size])
 
-  return <canvas ref={canvasRef} className="lightning-container" />;
-};
+  return <canvas ref={canvasRef} className="lightning-container" />
+}
 
-export default Lightning;
-
+export default Lightning
 ```
 
 ### Component CSS
+
 ```css
 .lightning-container {
   width: 100%;
   height: 100%;
   position: relative;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -14687,16 +14891,19 @@ code: ## Integrate the <PrismaticBurst /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: PrismaticBurst
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import PrismaticBurst from './PrismaticBurst';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import PrismaticBurst from "./PrismaticBurst"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <PrismaticBurst
     animationType="rotate3d"
     intensity={2}
@@ -14707,30 +14914,32 @@ import PrismaticBurst from './PrismaticBurst';
     hoverDampness={0.25}
     rayCount={24}
     mixBlendMode="lighten"
-    colors={['#ff007a', '#4d3dff', '#ffffff']}
+    colors={["#ff007a", "#4d3dff", "#ffffff"]}
   />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| intensity | number | 2 | Overall brightness multiplier applied after accumulation. |
-| speed | number | 0.5 | Global time multiplier controlling ray motion & distortion. |
-| animationType | "rotate" | "rotate3d" | "hover" | "rotate3d" | Core motion style: planar rotation, full 3D rotation, or pointer hover orbit |
-| colors | string[] | [] | Optional array of hex colors used as a gradient (otherwise spectral) |
-| distort | number | 0 | Amount of bend/distortion applied to marching space (adds organic wobble) |
-| paused | boolean | false | Freeze time progression when true (animation stops) |
-| offset | { x?: number|string; y?: number|string } | { x: 0, y: 0 } | Pixel (or CSS length) offset of focal origin from center |
-| hoverDampness | number | 0 | Smoothing factor (0-1) for pointer tracking when animationType='hover' |
-| rayCount | number | undefined | If > 0 applies an angular comb filter to produce discrete ray spokes |
-| mixBlendMode | CSSProperties['mixBlendMode'] | 'none' | "lighten" | Canvas CSS mix-blend-mode (e.g. lighten, screen) or 'none' for normal |
+
+| Prop          | Type                          | Default            | Description                                                               |
+| ------------- | ----------------------------- | ------------------ | ------------------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| intensity     | number                        | 2                  | Overall brightness multiplier applied after accumulation.                 |
+| speed         | number                        | 0.5                | Global time multiplier controlling ray motion & distortion.               |
+| animationType | "rotate"                      | "rotate3d"         | "hover"                                                                   | "rotate3d"                                                            | Core motion style: planar rotation, full 3D rotation, or pointer hover orbit |
+| colors        | string[]                      | []                 | Optional array of hex colors used as a gradient (otherwise spectral)      |
+| distort       | number                        | 0                  | Amount of bend/distortion applied to marching space (adds organic wobble) |
+| paused        | boolean                       | false              | Freeze time progression when true (animation stops)                       |
+| offset        | { x?: number                  | string; y?: number | string }                                                                  | { x: 0, y: 0 }                                                        | Pixel (or CSS length) offset of focal origin from center                     |
+| hoverDampness | number                        | 0                  | Smoothing factor (0-1) for pointer tracking when animationType='hover'    |
+| rayCount      | number                        | undefined          | If > 0 applies an angular comb filter to produce discrete ray spokes      |
+| mixBlendMode  | CSSProperties['mixBlendMode'] | 'none'             | "lighten"                                                                 | Canvas CSS mix-blend-mode (e.g. lighten, screen) or 'none' for normal |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle, Texture } from 'ogl';
-import './PrismaticBurst.css';
+import { useEffect, useRef } from "react"
+import { Renderer, Program, Mesh, Triangle, Texture } from "ogl"
+import "./PrismaticBurst.css"
 
 const vertexShader = `#version 300 es
 in vec2 position;
@@ -14740,7 +14949,7 @@ void main() {
     vUv = uv;
     gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const fragmentShader = `#version 300 es
 precision highp float;
@@ -14903,98 +15112,98 @@ void main(){
     col *= uIntensity;
 
     fragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
-}`;
+}`
 
-const hexToRgb01 = hex => {
-  let h = hex.trim();
-  if (h.startsWith('#')) h = h.slice(1);
+const hexToRgb01 = (hex) => {
+  let h = hex.trim()
+  if (h.startsWith("#")) h = h.slice(1)
   if (h.length === 3) {
     const r = h[0],
       g = h[1],
-      b = h[2];
-    h = r + r + g + g + b + b;
+      b = h[2]
+    h = r + r + g + g + b + b
   }
-  const intVal = parseInt(h, 16);
-  if (isNaN(intVal) || (h.length !== 6 && h.length !== 8)) return [1, 1, 1];
-  const r = ((intVal >> 16) & 255) / 255;
-  const g = ((intVal >> 8) & 255) / 255;
-  const b = (intVal & 255) / 255;
-  return [r, g, b];
-};
+  const intVal = parseInt(h, 16)
+  if (isNaN(intVal) || (h.length !== 6 && h.length !== 8)) return [1, 1, 1]
+  const r = ((intVal >> 16) & 255) / 255
+  const g = ((intVal >> 8) & 255) / 255
+  const b = (intVal & 255) / 255
+  return [r, g, b]
+}
 
-const toPx = v => {
-  if (v == null) return 0;
-  if (typeof v === 'number') return v;
-  const s = String(v).trim();
-  const num = parseFloat(s.replace('px', ''));
-  return isNaN(num) ? 0 : num;
-};
+const toPx = (v) => {
+  if (v == null) return 0
+  if (typeof v === "number") return v
+  const s = String(v).trim()
+  const num = parseFloat(s.replace("px", ""))
+  return isNaN(num) ? 0 : num
+}
 
 const PrismaticBurst = ({
   intensity = 2,
   speed = 0.5,
-  animationType = 'rotate3d',
+  animationType = "rotate3d",
   colors,
   distort = 0,
   paused = false,
   offset = { x: 0, y: 0 },
   hoverDampness = 0,
   rayCount,
-  mixBlendMode = 'lighten'
+  mixBlendMode = "lighten",
 }) => {
-  const containerRef = useRef(null);
-  const programRef = useRef(null);
-  const rendererRef = useRef(null);
-  const mouseTargetRef = useRef([0.5, 0.5]);
-  const mouseSmoothRef = useRef([0.5, 0.5]);
-  const pausedRef = useRef(paused);
-  const gradTexRef = useRef(null);
-  const hoverDampRef = useRef(hoverDampness);
-  const isVisibleRef = useRef(true);
-  const meshRef = useRef(null);
-  const triRef = useRef(null);
+  const containerRef = useRef(null)
+  const programRef = useRef(null)
+  const rendererRef = useRef(null)
+  const mouseTargetRef = useRef([0.5, 0.5])
+  const mouseSmoothRef = useRef([0.5, 0.5])
+  const pausedRef = useRef(paused)
+  const gradTexRef = useRef(null)
+  const hoverDampRef = useRef(hoverDampness)
+  const isVisibleRef = useRef(true)
+  const meshRef = useRef(null)
+  const triRef = useRef(null)
 
   useEffect(() => {
-    pausedRef.current = paused;
-  }, [paused]);
+    pausedRef.current = paused
+  }, [paused])
   useEffect(() => {
-    hoverDampRef.current = hoverDampness;
-  }, [hoverDampness]);
+    hoverDampRef.current = hoverDampness
+  }, [hoverDampness])
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
     const renderer = new Renderer({
       dpr,
       alpha: false,
-      antialias: false
-    });
-    rendererRef.current = renderer;
+      antialias: false,
+    })
+    rendererRef.current = renderer
 
-    const gl = renderer.gl;
-    gl.canvas.style.position = 'absolute';
-    gl.canvas.style.inset = '0';
-    gl.canvas.style.width = '100%';
-    gl.canvas.style.height = '100%';
-    gl.canvas.style.mixBlendMode = mixBlendMode && mixBlendMode !== 'none' ? mixBlendMode : '';
-    container.appendChild(gl.canvas);
+    const gl = renderer.gl
+    gl.canvas.style.position = "absolute"
+    gl.canvas.style.inset = "0"
+    gl.canvas.style.width = "100%"
+    gl.canvas.style.height = "100%"
+    gl.canvas.style.mixBlendMode = mixBlendMode && mixBlendMode !== "none" ? mixBlendMode : ""
+    container.appendChild(gl.canvas)
 
-    const white = new Uint8Array([255, 255, 255, 255]);
+    const white = new Uint8Array([255, 255, 255, 255])
     const gradientTex = new Texture(gl, {
       image: white,
       width: 1,
       height: 1,
       generateMipmaps: false,
-      flipY: false
-    });
+      flipY: false,
+    })
 
-    gradientTex.minFilter = gl.LINEAR;
-    gradientTex.magFilter = gl.LINEAR;
-    gradientTex.wrapS = gl.CLAMP_TO_EDGE;
-    gradientTex.wrapT = gl.CLAMP_TO_EDGE;
-    gradTexRef.current = gradientTex;
+    gradientTex.minFilter = gl.LINEAR
+    gradientTex.magFilter = gl.LINEAR
+    gradientTex.wrapS = gl.CLAMP_TO_EDGE
+    gradientTex.wrapT = gl.CLAMP_TO_EDGE
+    gradTexRef.current = gradientTex
 
     const program = new Program(gl, {
       vertex: vertexShader,
@@ -15012,201 +15221,201 @@ const PrismaticBurst = ({
         uOffset: { value: [0, 0] },
         uGradient: { value: gradientTex },
         uNoiseAmount: { value: 0.8 },
-        uRayCount: { value: 0 }
-      }
-    });
+        uRayCount: { value: 0 },
+      },
+    })
 
-    programRef.current = program;
+    programRef.current = program
 
-    const triangle = new Triangle(gl);
-    const mesh = new Mesh(gl, { geometry: triangle, program });
-    triRef.current = triangle;
-    meshRef.current = mesh;
+    const triangle = new Triangle(gl)
+    const mesh = new Mesh(gl, { geometry: triangle, program })
+    triRef.current = triangle
+    meshRef.current = mesh
 
     const resize = () => {
-      const w = container.clientWidth || 1;
-      const h = container.clientHeight || 1;
-      renderer.setSize(w, h);
-      program.uniforms.uResolution.value = [gl.drawingBufferWidth, gl.drawingBufferHeight];
-    };
-
-    let ro = null;
-    if ('ResizeObserver' in window) {
-      ro = new ResizeObserver(resize);
-      ro.observe(container);
-    } else {
-      window.addEventListener('resize', resize);
+      const w = container.clientWidth || 1
+      const h = container.clientHeight || 1
+      renderer.setSize(w, h)
+      program.uniforms.uResolution.value = [gl.drawingBufferWidth, gl.drawingBufferHeight]
     }
-    resize();
 
-    const onPointer = e => {
-      const rect = container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / Math.max(rect.width, 1);
-      const y = (e.clientY - rect.top) / Math.max(rect.height, 1);
-      mouseTargetRef.current = [Math.min(Math.max(x, 0), 1), Math.min(Math.max(y, 0), 1)];
-    };
-    container.addEventListener('pointermove', onPointer, { passive: true });
+    let ro = null
+    if ("ResizeObserver" in window) {
+      ro = new ResizeObserver(resize)
+      ro.observe(container)
+    } else {
+      window.addEventListener("resize", resize)
+    }
+    resize()
 
-    let io = null;
-    if ('IntersectionObserver' in window) {
+    const onPointer = (e) => {
+      const rect = container.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / Math.max(rect.width, 1)
+      const y = (e.clientY - rect.top) / Math.max(rect.height, 1)
+      mouseTargetRef.current = [Math.min(Math.max(x, 0), 1), Math.min(Math.max(y, 0), 1)]
+    }
+    container.addEventListener("pointermove", onPointer, { passive: true })
+
+    let io = null
+    if ("IntersectionObserver" in window) {
       io = new IntersectionObserver(
-        entries => {
+        (entries) => {
           if (entries[0]) {
-            isVisibleRef.current = entries[0].isIntersecting;
+            isVisibleRef.current = entries[0].isIntersecting
           }
         },
-        { root: null, threshold: 0.01 }
-      );
-      io.observe(container);
+        { root: null, threshold: 0.01 },
+      )
+      io.observe(container)
     }
 
-    const onVis = () => {};
-    document.addEventListener('visibilitychange', onVis);
+    const onVis = () => {}
+    document.addEventListener("visibilitychange", onVis)
 
-    let raf = 0;
-    let last = performance.now();
-    let accumTime = 0;
+    let raf = 0
+    let last = performance.now()
+    let accumTime = 0
 
-    const update = now => {
-      const dt = Math.max(0, now - last) * 0.001;
-      last = now;
-      const visible = isVisibleRef.current && !document.hidden;
-      if (!pausedRef.current) accumTime += dt;
+    const update = (now) => {
+      const dt = Math.max(0, now - last) * 0.001
+      last = now
+      const visible = isVisibleRef.current && !document.hidden
+      if (!pausedRef.current) accumTime += dt
 
       if (!visible) {
-        raf = requestAnimationFrame(update);
-        return;
+        raf = requestAnimationFrame(update)
+        return
       }
 
-      const tau = 0.02 + Math.max(0, Math.min(1, hoverDampRef.current)) * 0.5;
-      const alpha = 1 - Math.exp(-dt / tau);
-      const tgt = mouseTargetRef.current;
-      const sm = mouseSmoothRef.current;
-      sm[0] += (tgt[0] - sm[0]) * alpha;
-      sm[1] += (tgt[1] - sm[1]) * alpha;
+      const tau = 0.02 + Math.max(0, Math.min(1, hoverDampRef.current)) * 0.5
+      const alpha = 1 - Math.exp(-dt / tau)
+      const tgt = mouseTargetRef.current
+      const sm = mouseSmoothRef.current
+      sm[0] += (tgt[0] - sm[0]) * alpha
+      sm[1] += (tgt[1] - sm[1]) * alpha
 
-      program.uniforms.uMouse.value = sm;
-      program.uniforms.uTime.value = accumTime;
+      program.uniforms.uMouse.value = sm
+      program.uniforms.uTime.value = accumTime
 
-      renderer.render({ scene: meshRef.current });
-      raf = requestAnimationFrame(update);
-    };
-    raf = requestAnimationFrame(update);
+      renderer.render({ scene: meshRef.current })
+      raf = requestAnimationFrame(update)
+    }
+    raf = requestAnimationFrame(update)
 
     return () => {
-      cancelAnimationFrame(raf);
-      container.removeEventListener('pointermove', onPointer);
-      ro?.disconnect();
-      if (!ro) window.removeEventListener('resize', resize);
-      io?.disconnect();
-      document.removeEventListener('visibilitychange', onVis);
+      cancelAnimationFrame(raf)
+      container.removeEventListener("pointermove", onPointer)
+      ro?.disconnect()
+      if (!ro) window.removeEventListener("resize", resize)
+      io?.disconnect()
+      document.removeEventListener("visibilitychange", onVis)
       try {
-        container.removeChild(gl.canvas);
+        container.removeChild(gl.canvas)
       } catch {
-        console.warn('Canvas already removed');
+        console.warn("Canvas already removed")
       }
       try {
-        meshRef.current?.remove?.();
+        meshRef.current?.remove?.()
       } catch (e) {
         /* ignore dispose errors */
       }
       try {
-        triRef.current?.remove?.();
+        triRef.current?.remove?.()
       } catch (e) {
         /* ignore dispose errors */
       }
       try {
-        programRef.current?.remove?.();
+        programRef.current?.remove?.()
       } catch (e) {
         /* ignore dispose errors */
       }
       try {
-        const glCtx = rendererRef.current?.gl;
+        const glCtx = rendererRef.current?.gl
         if (glCtx && gradTexRef.current?.texture) {
-          glCtx.deleteTexture(gradTexRef.current.texture);
+          glCtx.deleteTexture(gradTexRef.current.texture)
         }
       } catch (e) {
         /* ignore texture delete errors */
       }
-      programRef.current = null;
-      rendererRef.current = null;
-      gradTexRef.current = null;
-      meshRef.current = null;
-      triRef.current = null;
-    };
+      programRef.current = null
+      rendererRef.current = null
+      gradTexRef.current = null
+      meshRef.current = null
+      triRef.current = null
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   useEffect(() => {
-    const canvas = rendererRef.current?.gl?.canvas;
+    const canvas = rendererRef.current?.gl?.canvas
 
     if (canvas) {
-      canvas.style.mixBlendMode = mixBlendMode && mixBlendMode !== 'none' ? mixBlendMode : '';
+      canvas.style.mixBlendMode = mixBlendMode && mixBlendMode !== "none" ? mixBlendMode : ""
     }
-  }, [mixBlendMode]);
+  }, [mixBlendMode])
 
   useEffect(() => {
-    const program = programRef.current;
-    const renderer = rendererRef.current;
-    const gradTex = gradTexRef.current;
-    if (!program || !renderer || !gradTex) return;
+    const program = programRef.current
+    const renderer = rendererRef.current
+    const gradTex = gradTexRef.current
+    if (!program || !renderer || !gradTex) return
 
-    program.uniforms.uIntensity.value = intensity ?? 1;
-    program.uniforms.uSpeed.value = speed ?? 1;
+    program.uniforms.uIntensity.value = intensity ?? 1
+    program.uniforms.uSpeed.value = speed ?? 1
 
     const animTypeMap = {
       rotate: 0,
       rotate3d: 1,
-      hover: 2
-    };
-    program.uniforms.uAnimType.value = animTypeMap[animationType ?? 'rotate'];
-
-    program.uniforms.uDistort.value = typeof distort === 'number' ? distort : 0;
-
-    const ox = toPx(offset?.x);
-    const oy = toPx(offset?.y);
-    program.uniforms.uOffset.value = [ox, oy];
-    program.uniforms.uRayCount.value = Math.max(0, Math.floor(rayCount ?? 0));
-
-    let count = 0;
-    if (Array.isArray(colors) && colors.length > 0) {
-      const gl = renderer.gl;
-      const capped = colors.slice(0, 64);
-      count = capped.length;
-      const data = new Uint8Array(count * 4);
-      for (let i = 0; i < count; i++) {
-        const [r, g, b] = hexToRgb01(capped[i]);
-        data[i * 4 + 0] = Math.round(r * 255);
-        data[i * 4 + 1] = Math.round(g * 255);
-        data[i * 4 + 2] = Math.round(b * 255);
-        data[i * 4 + 3] = 255;
-      }
-      gradTex.image = data;
-      gradTex.width = count;
-      gradTex.height = 1;
-      gradTex.minFilter = gl.LINEAR;
-      gradTex.magFilter = gl.LINEAR;
-      gradTex.wrapS = gl.CLAMP_TO_EDGE;
-      gradTex.wrapT = gl.CLAMP_TO_EDGE;
-      gradTex.flipY = false;
-      gradTex.generateMipmaps = false;
-      gradTex.format = gl.RGBA;
-      gradTex.type = gl.UNSIGNED_BYTE;
-      gradTex.needsUpdate = true;
-    } else {
-      count = 0;
+      hover: 2,
     }
-    program.uniforms.uColorCount.value = count;
-  }, [intensity, speed, animationType, colors, distort, offset, rayCount]);
+    program.uniforms.uAnimType.value = animTypeMap[animationType ?? "rotate"]
 
-  return <div className="prismatic-burst-container" ref={containerRef} />;
-};
+    program.uniforms.uDistort.value = typeof distort === "number" ? distort : 0
 
-export default PrismaticBurst;
+    const ox = toPx(offset?.x)
+    const oy = toPx(offset?.y)
+    program.uniforms.uOffset.value = [ox, oy]
+    program.uniforms.uRayCount.value = Math.max(0, Math.floor(rayCount ?? 0))
 
+    let count = 0
+    if (Array.isArray(colors) && colors.length > 0) {
+      const gl = renderer.gl
+      const capped = colors.slice(0, 64)
+      count = capped.length
+      const data = new Uint8Array(count * 4)
+      for (let i = 0; i < count; i++) {
+        const [r, g, b] = hexToRgb01(capped[i])
+        data[i * 4 + 0] = Math.round(r * 255)
+        data[i * 4 + 1] = Math.round(g * 255)
+        data[i * 4 + 2] = Math.round(b * 255)
+        data[i * 4 + 3] = 255
+      }
+      gradTex.image = data
+      gradTex.width = count
+      gradTex.height = 1
+      gradTex.minFilter = gl.LINEAR
+      gradTex.magFilter = gl.LINEAR
+      gradTex.wrapS = gl.CLAMP_TO_EDGE
+      gradTex.wrapT = gl.CLAMP_TO_EDGE
+      gradTex.flipY = false
+      gradTex.generateMipmaps = false
+      gradTex.format = gl.RGBA
+      gradTex.type = gl.UNSIGNED_BYTE
+      gradTex.needsUpdate = true
+    } else {
+      count = 0
+    }
+    program.uniforms.uColorCount.value = count
+  }, [intensity, speed, animationType, colors, distort, offset, rayCount])
+
+  return <div className="prismatic-burst-container" ref={containerRef} />
+}
+
+export default PrismaticBurst
 ```
 
 ### Component CSS
+
 ```css
 .prismatic-burst-container {
   position: relative;
@@ -15214,10 +15423,10 @@ export default PrismaticBurst;
   height: 100%;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -15232,12 +15441,15 @@ code: ## Integrate the <Galaxy /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Galaxy
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
+
 ```jsx
 import Galaxy from './Galaxy';
 
@@ -15248,7 +15460,7 @@ import Galaxy from './Galaxy';
 
 // With custom prop values
 <div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <Galaxy 
+  <Galaxy
     mouseRepulsion={true}
     mouseInteraction={true}
     density={1.5}
@@ -15260,30 +15472,32 @@ import Galaxy from './Galaxy';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| focal | [number, number] | [0.5, 0.5] | Sets the focal point of the galaxy effect as [x, y] coordinates from 0 to 1 |
-| rotation | [number, number] | [1.0, 0.0] | Controls the rotation matrix of the galaxy as [x, y] rotation values |
-| starSpeed | number | 0.5 | Controls the speed of star movement and animation |
-| density | number | 1 | Controls the density of stars in the galaxy |
-| hueShift | number | 140 | Shifts the hue of all stars by the specified degrees (0-360) |
-| disableAnimation | boolean | false | When true, stops all time-based animations |
-| speed | number | 1.0 | Global speed multiplier for all animations |
-| mouseInteraction | boolean | true | Enables or disables mouse interaction with the galaxy |
-| glowIntensity | number | 0.3 | Controls the intensity of the star glow effect |
-| saturation | number | 0.0 | Controls color saturation of stars (0 = grayscale, 1 = full color) |
-| mouseRepulsion | boolean | true | When true, stars are repelled by the mouse cursor |
-| twinkleIntensity | number | 0.3 | Controls how much stars twinkle (0 = no twinkle, 1 = maximum twinkle) |
-| rotationSpeed | number | 0.1 | Speed of automatic galaxy rotation |
-| repulsionStrength | number | 2 | Strength of mouse repulsion effect when mouseRepulsion is enabled |
-| autoCenterRepulsion | number | 0 | Creates repulsion from center of canvas. Overrides mouse repulsion when > 0 |
-| transparent | boolean | true | Makes the black background transparent, showing only stars |
+
+| Prop                | Type             | Default    | Description                                                                 |
+| ------------------- | ---------------- | ---------- | --------------------------------------------------------------------------- |
+| focal               | [number, number] | [0.5, 0.5] | Sets the focal point of the galaxy effect as [x, y] coordinates from 0 to 1 |
+| rotation            | [number, number] | [1.0, 0.0] | Controls the rotation matrix of the galaxy as [x, y] rotation values        |
+| starSpeed           | number           | 0.5        | Controls the speed of star movement and animation                           |
+| density             | number           | 1          | Controls the density of stars in the galaxy                                 |
+| hueShift            | number           | 140        | Shifts the hue of all stars by the specified degrees (0-360)                |
+| disableAnimation    | boolean          | false      | When true, stops all time-based animations                                  |
+| speed               | number           | 1.0        | Global speed multiplier for all animations                                  |
+| mouseInteraction    | boolean          | true       | Enables or disables mouse interaction with the galaxy                       |
+| glowIntensity       | number           | 0.3        | Controls the intensity of the star glow effect                              |
+| saturation          | number           | 0.0        | Controls color saturation of stars (0 = grayscale, 1 = full color)          |
+| mouseRepulsion      | boolean          | true       | When true, stars are repelled by the mouse cursor                           |
+| twinkleIntensity    | number           | 0.3        | Controls how much stars twinkle (0 = no twinkle, 1 = maximum twinkle)       |
+| rotationSpeed       | number           | 0.1        | Speed of automatic galaxy rotation                                          |
+| repulsionStrength   | number           | 2          | Strength of mouse repulsion effect when mouseRepulsion is enabled           |
+| autoCenterRepulsion | number           | 0          | Creates repulsion from center of canvas. Overrides mouse repulsion when > 0 |
+| transparent         | boolean          | true       | Makes the black background transparent, showing only stars                  |
 
 ### Full Component Source
+
 ```jsx
-import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
-import './Galaxy.css';
+import { Renderer, Program, Mesh, Color, Triangle } from "ogl"
+import { useEffect, useRef } from "react"
+import "./Galaxy.css"
 
 const vertexShader = `
 attribute vec2 uv;
@@ -15295,7 +15509,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0, 1);
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -15451,7 +15665,7 @@ void main() {
     gl_FragColor = vec4(col, 1.0);
   }
 }
-`;
+`
 
 export default function Galaxy({
   focal = [0.5, 0.5],
@@ -15472,53 +15686,53 @@ export default function Galaxy({
   transparent = true,
   ...rest
 }) {
-  const ctnDom = useRef(null);
-  const targetMousePos = useRef({ x: 0.5, y: 0.5 });
-  const smoothMousePos = useRef({ x: 0.5, y: 0.5 });
-  const targetMouseActive = useRef(0.0);
-  const smoothMouseActive = useRef(0.0);
+  const ctnDom = useRef(null)
+  const targetMousePos = useRef({ x: 0.5, y: 0.5 })
+  const smoothMousePos = useRef({ x: 0.5, y: 0.5 })
+  const targetMouseActive = useRef(0.0)
+  const smoothMouseActive = useRef(0.0)
 
   useEffect(() => {
-    if (!ctnDom.current) return;
-    const ctn = ctnDom.current;
+    if (!ctnDom.current) return
+    const ctn = ctnDom.current
     const renderer = new Renderer({
       alpha: transparent,
-      premultipliedAlpha: false
-    });
-    const gl = renderer.gl;
+      premultipliedAlpha: false,
+    })
+    const gl = renderer.gl
 
     if (transparent) {
-      gl.enable(gl.BLEND);
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-      gl.clearColor(0, 0, 0, 0);
+      gl.enable(gl.BLEND)
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+      gl.clearColor(0, 0, 0, 0)
     } else {
-      gl.clearColor(0, 0, 0, 1);
+      gl.clearColor(0, 0, 0, 1)
     }
 
-    let program;
+    let program
 
     function resize() {
-      const scale = 1;
-      renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
+      const scale = 1
+      renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale)
       if (program) {
         program.uniforms.uResolution.value = new Color(
           gl.canvas.width,
           gl.canvas.height,
-          gl.canvas.width / gl.canvas.height
-        );
+          gl.canvas.width / gl.canvas.height,
+        )
       }
     }
-    window.addEventListener('resize', resize, false);
-    resize();
+    window.addEventListener("resize", resize, false)
+    resize()
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
       uniforms: {
         uTime: { value: 0 },
         uResolution: {
-          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
+          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height),
         },
         uFocal: { value: new Float32Array(focal) },
         uRotation: { value: new Float32Array(rotation) },
@@ -15527,7 +15741,7 @@ export default function Galaxy({
         uHueShift: { value: hueShift },
         uSpeed: { value: speed },
         uMouse: {
-          value: new Float32Array([smoothMousePos.current.x, smoothMousePos.current.y])
+          value: new Float32Array([smoothMousePos.current.x, smoothMousePos.current.y]),
         },
         uGlowIntensity: { value: glowIntensity },
         uSaturation: { value: saturation },
@@ -15537,62 +15751,62 @@ export default function Galaxy({
         uRepulsionStrength: { value: repulsionStrength },
         uMouseActiveFactor: { value: 0.0 },
         uAutoCenterRepulsion: { value: autoCenterRepulsion },
-        uTransparent: { value: transparent }
-      }
-    });
+        uTransparent: { value: transparent },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    let animateId;
+    const mesh = new Mesh(gl, { geometry, program })
+    let animateId
 
     function update(t) {
-      animateId = requestAnimationFrame(update);
+      animateId = requestAnimationFrame(update)
       if (!disableAnimation) {
-        program.uniforms.uTime.value = t * 0.001;
-        program.uniforms.uStarSpeed.value = (t * 0.001 * starSpeed) / 10.0;
+        program.uniforms.uTime.value = t * 0.001
+        program.uniforms.uStarSpeed.value = (t * 0.001 * starSpeed) / 10.0
       }
 
-      const lerpFactor = 0.05;
-      smoothMousePos.current.x += (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor;
-      smoothMousePos.current.y += (targetMousePos.current.y - smoothMousePos.current.y) * lerpFactor;
+      const lerpFactor = 0.05
+      smoothMousePos.current.x += (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor
+      smoothMousePos.current.y += (targetMousePos.current.y - smoothMousePos.current.y) * lerpFactor
 
-      smoothMouseActive.current += (targetMouseActive.current - smoothMouseActive.current) * lerpFactor;
+      smoothMouseActive.current += (targetMouseActive.current - smoothMouseActive.current) * lerpFactor
 
-      program.uniforms.uMouse.value[0] = smoothMousePos.current.x;
-      program.uniforms.uMouse.value[1] = smoothMousePos.current.y;
-      program.uniforms.uMouseActiveFactor.value = smoothMouseActive.current;
+      program.uniforms.uMouse.value[0] = smoothMousePos.current.x
+      program.uniforms.uMouse.value[1] = smoothMousePos.current.y
+      program.uniforms.uMouseActiveFactor.value = smoothMouseActive.current
 
-      renderer.render({ scene: mesh });
+      renderer.render({ scene: mesh })
     }
-    animateId = requestAnimationFrame(update);
-    ctn.appendChild(gl.canvas);
+    animateId = requestAnimationFrame(update)
+    ctn.appendChild(gl.canvas)
 
     function handleMouseMove(e) {
-      const rect = ctn.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = 1.0 - (e.clientY - rect.top) / rect.height;
-      targetMousePos.current = { x, y };
-      targetMouseActive.current = 1.0;
+      const rect = ctn.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width
+      const y = 1.0 - (e.clientY - rect.top) / rect.height
+      targetMousePos.current = { x, y }
+      targetMouseActive.current = 1.0
     }
 
     function handleMouseLeave() {
-      targetMouseActive.current = 0.0;
+      targetMouseActive.current = 0.0
     }
 
     if (mouseInteraction) {
-      ctn.addEventListener('mousemove', handleMouseMove);
-      ctn.addEventListener('mouseleave', handleMouseLeave);
+      ctn.addEventListener("mousemove", handleMouseMove)
+      ctn.addEventListener("mouseleave", handleMouseLeave)
     }
 
     return () => {
-      cancelAnimationFrame(animateId);
-      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animateId)
+      window.removeEventListener("resize", resize)
       if (mouseInteraction) {
-        ctn.removeEventListener('mousemove', handleMouseMove);
-        ctn.removeEventListener('mouseleave', handleMouseLeave);
+        ctn.removeEventListener("mousemove", handleMouseMove)
+        ctn.removeEventListener("mouseleave", handleMouseLeave)
       }
-      ctn.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
+      ctn.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
   }, [
     focal,
     rotation,
@@ -15609,25 +15823,25 @@ export default function Galaxy({
     rotationSpeed,
     repulsionStrength,
     autoCenterRepulsion,
-    transparent
-  ]);
+    transparent,
+  ])
 
-  return <div ref={ctnDom} className="galaxy-container" {...rest} />;
+  return <div ref={ctnDom} className="galaxy-container" {...rest} />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .galaxy-container {
   width: 100%;
   height: 100%;
   position: relative;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -15642,16 +15856,19 @@ code: ## Integrate the <Dither /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Dither
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three postprocessing @react-three/fiber @react-three/postprocessing
 
 ---
 
 ### Usage Example
-```jsx
-import Dither from './Dither';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import Dither from "./Dither"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <Dither
     waveColor={[0.5, 0.5, 0.5]}
     disableAnimation={false}
@@ -15666,28 +15883,30 @@ import Dither from './Dither';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| waveSpeed | number | 0.05 | Speed of the wave animation. |
-| waveFrequency | number | 3 | Frequency of the wave pattern. |
-| waveAmplitude | number | 0.3 | Amplitude of the wave pattern. |
-| waveColor | [number, number, number] | [0.5, 0.5, 0.5] | Color of the wave, defined as an RGB array. |
-| colorNum | number | 4 | Number of colors to use in the dithering effect. |
-| pixelSize | number | 2 | Size of the pixels for the dithering effect. |
-| disableAnimation | boolean | false | Disable the wave animation when true. |
-| enableMouseInteraction | boolean | true | Enables mouse interaction to influence the wave effect. |
-| mouseRadius | number | 1 | Radius for the mouse interaction effect. |
+
+| Prop                   | Type                     | Default         | Description                                             |
+| ---------------------- | ------------------------ | --------------- | ------------------------------------------------------- |
+| waveSpeed              | number                   | 0.05            | Speed of the wave animation.                            |
+| waveFrequency          | number                   | 3               | Frequency of the wave pattern.                          |
+| waveAmplitude          | number                   | 0.3             | Amplitude of the wave pattern.                          |
+| waveColor              | [number, number, number] | [0.5, 0.5, 0.5] | Color of the wave, defined as an RGB array.             |
+| colorNum               | number                   | 4               | Number of colors to use in the dithering effect.        |
+| pixelSize              | number                   | 2               | Size of the pixels for the dithering effect.            |
+| disableAnimation       | boolean                  | false           | Disable the wave animation when true.                   |
+| enableMouseInteraction | boolean                  | true            | Enables mouse interaction to influence the wave effect. |
+| mouseRadius            | number                   | 1               | Radius for the mouse interaction effect.                |
 
 ### Full Component Source
+
 ```jsx
 /* eslint-disable react/no-unknown-property */
-import { useRef, useEffect, forwardRef } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { EffectComposer, wrapEffect } from '@react-three/postprocessing';
-import { Effect } from 'postprocessing';
-import * as THREE from 'three';
+import { useRef, useEffect, forwardRef } from "react"
+import { Canvas, useFrame, useThree } from "@react-three/fiber"
+import { EffectComposer, wrapEffect } from "@react-three/postprocessing"
+import { Effect } from "postprocessing"
+import * as THREE from "three"
 
-import './Dither.css';
+import "./Dither.css"
 
 const waveVertexShader = `
 precision highp float;
@@ -15698,7 +15917,7 @@ void main() {
   vec4 viewPosition = viewMatrix * modelPosition;
   gl_Position = projectionMatrix * viewPosition;
 }
-`;
+`
 
 const waveFragmentShader = `
 precision highp float;
@@ -15778,7 +15997,7 @@ void main() {
   vec3 col = mix(vec3(0.0), waveColor, f);
   gl_FragColor = vec4(col, 1.0);
 }
-`;
+`
 
 const ditherFragmentShader = `
 precision highp float;
@@ -15814,38 +16033,38 @@ void mainImage(in vec4 inputColor, in vec2 uv, out vec4 outputColor) {
   color.rgb = dither(uv, color.rgb);
   outputColor = color;
 }
-`;
+`
 
 class RetroEffectImpl extends Effect {
   constructor() {
     const uniforms = new Map([
-      ['colorNum', new THREE.Uniform(4.0)],
-      ['pixelSize', new THREE.Uniform(2.0)]
-    ]);
-    super('RetroEffect', ditherFragmentShader, { uniforms });
-    this.uniforms = uniforms;
+      ["colorNum", new THREE.Uniform(4.0)],
+      ["pixelSize", new THREE.Uniform(2.0)],
+    ])
+    super("RetroEffect", ditherFragmentShader, { uniforms })
+    this.uniforms = uniforms
   }
   set colorNum(v) {
-    this.uniforms.get('colorNum').value = v;
+    this.uniforms.get("colorNum").value = v
   }
   get colorNum() {
-    return this.uniforms.get('colorNum').value;
+    return this.uniforms.get("colorNum").value
   }
   set pixelSize(v) {
-    this.uniforms.get('pixelSize').value = v;
+    this.uniforms.get("pixelSize").value = v
   }
   get pixelSize() {
-    return this.uniforms.get('pixelSize').value;
+    return this.uniforms.get("pixelSize").value
   }
 }
 
-const WrappedRetro = wrapEffect(RetroEffectImpl);
+const WrappedRetro = wrapEffect(RetroEffectImpl)
 
 const RetroEffect = forwardRef((props, ref) => {
-  const { colorNum, pixelSize } = props;
-  return <WrappedRetro ref={ref} colorNum={colorNum} pixelSize={pixelSize} />;
-});
-RetroEffect.displayName = 'RetroEffect';
+  const { colorNum, pixelSize } = props
+  return <WrappedRetro ref={ref} colorNum={colorNum} pixelSize={pixelSize} />
+})
+RetroEffect.displayName = "RetroEffect"
 
 function DitheredWaves({
   waveSpeed,
@@ -15856,11 +16075,11 @@ function DitheredWaves({
   pixelSize,
   disableAnimation,
   enableMouseInteraction,
-  mouseRadius
+  mouseRadius,
 }) {
-  const mesh = useRef(null);
-  const mouseRef = useRef(new THREE.Vector2());
-  const { viewport, size, gl } = useThree();
+  const mesh = useRef(null)
+  const mouseRef = useRef(new THREE.Vector2())
+  const { viewport, size, gl } = useThree()
 
   const waveUniformsRef = useRef({
     time: new THREE.Uniform(0),
@@ -15871,50 +16090,50 @@ function DitheredWaves({
     waveColor: new THREE.Uniform(new THREE.Color(...waveColor)),
     mousePos: new THREE.Uniform(new THREE.Vector2(0, 0)),
     enableMouseInteraction: new THREE.Uniform(enableMouseInteraction ? 1 : 0),
-    mouseRadius: new THREE.Uniform(mouseRadius)
-  });
+    mouseRadius: new THREE.Uniform(mouseRadius),
+  })
 
   useEffect(() => {
-    const dpr = gl.getPixelRatio();
+    const dpr = gl.getPixelRatio()
     const w = Math.floor(size.width * dpr),
-      h = Math.floor(size.height * dpr);
-    const res = waveUniformsRef.current.resolution.value;
+      h = Math.floor(size.height * dpr)
+    const res = waveUniformsRef.current.resolution.value
     if (res.x !== w || res.y !== h) {
-      res.set(w, h);
+      res.set(w, h)
     }
-  }, [size, gl]);
+  }, [size, gl])
 
-  const prevColor = useRef([...waveColor]);
+  const prevColor = useRef([...waveColor])
   useFrame(({ clock }) => {
-    const u = waveUniformsRef.current;
+    const u = waveUniformsRef.current
 
     if (!disableAnimation) {
-      u.time.value = clock.getElapsedTime();
+      u.time.value = clock.getElapsedTime()
     }
 
-    if (u.waveSpeed.value !== waveSpeed) u.waveSpeed.value = waveSpeed;
-    if (u.waveFrequency.value !== waveFrequency) u.waveFrequency.value = waveFrequency;
-    if (u.waveAmplitude.value !== waveAmplitude) u.waveAmplitude.value = waveAmplitude;
+    if (u.waveSpeed.value !== waveSpeed) u.waveSpeed.value = waveSpeed
+    if (u.waveFrequency.value !== waveFrequency) u.waveFrequency.value = waveFrequency
+    if (u.waveAmplitude.value !== waveAmplitude) u.waveAmplitude.value = waveAmplitude
 
     if (!prevColor.current.every((v, i) => v === waveColor[i])) {
-      u.waveColor.value.set(...waveColor);
-      prevColor.current = [...waveColor];
+      u.waveColor.value.set(...waveColor)
+      prevColor.current = [...waveColor]
     }
 
-    u.enableMouseInteraction.value = enableMouseInteraction ? 1 : 0;
-    u.mouseRadius.value = mouseRadius;
+    u.enableMouseInteraction.value = enableMouseInteraction ? 1 : 0
+    u.mouseRadius.value = mouseRadius
 
     if (enableMouseInteraction) {
-      u.mousePos.value.copy(mouseRef.current);
+      u.mousePos.value.copy(mouseRef.current)
     }
-  });
+  })
 
-  const handlePointerMove = e => {
-    if (!enableMouseInteraction) return;
-    const rect = gl.domElement.getBoundingClientRect();
-    const dpr = gl.getPixelRatio();
-    mouseRef.current.set((e.clientX - rect.left) * dpr, (e.clientY - rect.top) * dpr);
-  };
+  const handlePointerMove = (e) => {
+    if (!enableMouseInteraction) return
+    const rect = gl.domElement.getBoundingClientRect()
+    const dpr = gl.getPixelRatio()
+    mouseRef.current.set((e.clientX - rect.left) * dpr, (e.clientY - rect.top) * dpr)
+  }
 
   return (
     <>
@@ -15941,7 +16160,7 @@ function DitheredWaves({
         <meshBasicMaterial transparent opacity={0} />
       </mesh>
     </>
-  );
+  )
 }
 
 export default function Dither({
@@ -15953,7 +16172,7 @@ export default function Dither({
   pixelSize = 2,
   disableAnimation = false,
   enableMouseInteraction = true,
-  mouseRadius = 1
+  mouseRadius = 1,
 }) {
   return (
     <Canvas
@@ -15974,22 +16193,22 @@ export default function Dither({
         mouseRadius={mouseRadius}
       />
     </Canvas>
-  );
+  )
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .dither-container {
   width: 100%;
   height: 100%;
   position: relative;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -16004,16 +16223,19 @@ code: ## Integrate the <FaultyTerminal /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: FaultyTerminal
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import FaultyTerminal from './FaultyTerminal';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import FaultyTerminal from "./FaultyTerminal"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <FaultyTerminal
     scale={1.5}
     gridMul={[2, 1]}
@@ -16037,33 +16259,35 @@ import FaultyTerminal from './FaultyTerminal';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| scale | number | 1.5 | Controls the zoom/scale of the pattern. |
-| gridMul | Vec2 | [2, 1] | Grid multiplier for glyph density [x, y]. |
-| digitSize | number | 1.2 | Size of individual glyphs. |
-| timeScale | number | 1 | Animation speed multiplier. |
-| pause | boolean | false | Pause/resume animation. |
-| scanlineIntensity | number | 1 | Strength of scanline effects. |
-| glitchAmount | number | 1 | Glitch displacement intensity. |
-| flickerAmount | number | 1 | Flicker effect strength. |
-| noiseAmp | number | 1 | Noise pattern amplitude. |
-| chromaticAberration | number | 0 | RGB channel separation in pixels. |
-| dither | number | boolean | 0 | Dithering effect intensity. |
-| curvature | number | 0 | Barrel distortion amount. |
-| tint | string | '#ffffff' | Color tint (hex). |
-| mouseReact | boolean | true | Enable/disable mouse interaction. |
-| mouseStrength | number | 0.5 | Mouse interaction intensity. |
-| pageLoadAnimation | boolean | false | Enable fade-in animation on load. |
-| brightness | number | 1 | Overall opacity/brightness control. |
-| className | string | '' | Additional CSS classes. |
-| style | React.CSSProperties | {} | Inline styles. |
+
+| Prop                | Type                | Default   | Description                               |
+| ------------------- | ------------------- | --------- | ----------------------------------------- | --------------------------- |
+| scale               | number              | 1.5       | Controls the zoom/scale of the pattern.   |
+| gridMul             | Vec2                | [2, 1]    | Grid multiplier for glyph density [x, y]. |
+| digitSize           | number              | 1.2       | Size of individual glyphs.                |
+| timeScale           | number              | 1         | Animation speed multiplier.               |
+| pause               | boolean             | false     | Pause/resume animation.                   |
+| scanlineIntensity   | number              | 1         | Strength of scanline effects.             |
+| glitchAmount        | number              | 1         | Glitch displacement intensity.            |
+| flickerAmount       | number              | 1         | Flicker effect strength.                  |
+| noiseAmp            | number              | 1         | Noise pattern amplitude.                  |
+| chromaticAberration | number              | 0         | RGB channel separation in pixels.         |
+| dither              | number              | boolean   | 0                                         | Dithering effect intensity. |
+| curvature           | number              | 0         | Barrel distortion amount.                 |
+| tint                | string              | '#ffffff' | Color tint (hex).                         |
+| mouseReact          | boolean             | true      | Enable/disable mouse interaction.         |
+| mouseStrength       | number              | 0.5       | Mouse interaction intensity.              |
+| pageLoadAnimation   | boolean             | false     | Enable fade-in animation on load.         |
+| brightness          | number              | 1         | Overall opacity/brightness control.       |
+| className           | string              | ''        | Additional CSS classes.                   |
+| style               | React.CSSProperties | {}        | Inline styles.                            |
 
 ### Full Component Source
+
 ```jsx
-import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
-import { useEffect, useRef, useMemo, useCallback } from 'react';
-import './FaultyTerminal.css';
+import { Renderer, Program, Mesh, Color, Triangle } from "ogl"
+import { useEffect, useRef, useMemo, useCallback } from "react"
+import "./FaultyTerminal.css"
 
 const vertexShader = `
 attribute vec2 position;
@@ -16073,7 +16297,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const fragmentShader = `
 precision mediump float;
@@ -16269,17 +16493,17 @@ void main() {
 
     gl_FragColor = vec4(col, 1.0);
 }
-`;
+`
 
 function hexToRgb(hex) {
-  let h = hex.replace('#', '').trim();
+  let h = hex.replace("#", "").trim()
   if (h.length === 3)
     h = h
-      .split('')
-      .map(c => c + c)
-      .join('');
-  const num = parseInt(h, 16);
-  return [((num >> 16) & 255) / 255, ((num >> 8) & 255) / 255, (num & 255) / 255];
+      .split("")
+      .map((c) => c + c)
+      .join("")
+  const num = parseInt(h, 16)
+  return [((num >> 16) & 255) / 255, ((num >> 8) & 255) / 255, (num & 255) / 255]
 }
 
 export default function FaultyTerminal({
@@ -16295,7 +16519,7 @@ export default function FaultyTerminal({
   chromaticAberration = 0,
   dither = 0,
   curvature = 0.2,
-  tint = '#ffffff',
+  tint = "#ffffff",
   mouseReact = true,
   mouseStrength = 0.2,
   dpr = Math.min(window.devicePixelRatio || 1, 2),
@@ -16305,39 +16529,39 @@ export default function FaultyTerminal({
   style,
   ...rest
 }) {
-  const containerRef = useRef(null);
-  const programRef = useRef(null);
-  const rendererRef = useRef(null);
-  const mouseRef = useRef({ x: 0.5, y: 0.5 });
-  const smoothMouseRef = useRef({ x: 0.5, y: 0.5 });
-  const frozenTimeRef = useRef(0);
-  const rafRef = useRef(0);
-  const loadAnimationStartRef = useRef(0);
-  const timeOffsetRef = useRef(Math.random() * 100);
+  const containerRef = useRef(null)
+  const programRef = useRef(null)
+  const rendererRef = useRef(null)
+  const mouseRef = useRef({ x: 0.5, y: 0.5 })
+  const smoothMouseRef = useRef({ x: 0.5, y: 0.5 })
+  const frozenTimeRef = useRef(0)
+  const rafRef = useRef(0)
+  const loadAnimationStartRef = useRef(0)
+  const timeOffsetRef = useRef(Math.random() * 100)
 
-  const tintVec = useMemo(() => hexToRgb(tint), [tint]);
+  const tintVec = useMemo(() => hexToRgb(tint), [tint])
 
-  const ditherValue = useMemo(() => (typeof dither === 'boolean' ? (dither ? 1 : 0) : dither), [dither]);
+  const ditherValue = useMemo(() => (typeof dither === "boolean" ? (dither ? 1 : 0) : dither), [dither])
 
-  const handleMouseMove = useCallback(e => {
-    const ctn = containerRef.current;
-    if (!ctn) return;
-    const rect = ctn.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = 1 - (e.clientY - rect.top) / rect.height;
-    mouseRef.current = { x, y };
-  }, []);
+  const handleMouseMove = useCallback((e) => {
+    const ctn = containerRef.current
+    if (!ctn) return
+    const rect = ctn.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = 1 - (e.clientY - rect.top) / rect.height
+    mouseRef.current = { x, y }
+  }, [])
 
   useEffect(() => {
-    const ctn = containerRef.current;
-    if (!ctn) return;
+    const ctn = containerRef.current
+    if (!ctn) return
 
-    const renderer = new Renderer({ dpr });
-    rendererRef.current = renderer;
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 1);
+    const renderer = new Renderer({ dpr })
+    rendererRef.current = renderer
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 1)
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
 
     const program = new Program(gl, {
       vertex: vertexShader,
@@ -16345,7 +16569,7 @@ export default function FaultyTerminal({
       uniforms: {
         iTime: { value: 0 },
         iResolution: {
-          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
+          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height),
         },
         uScale: { value: scale },
 
@@ -16360,83 +16584,83 @@ export default function FaultyTerminal({
         uCurvature: { value: curvature },
         uTint: { value: new Color(tintVec[0], tintVec[1], tintVec[2]) },
         uMouse: {
-          value: new Float32Array([smoothMouseRef.current.x, smoothMouseRef.current.y])
+          value: new Float32Array([smoothMouseRef.current.x, smoothMouseRef.current.y]),
         },
         uMouseStrength: { value: mouseStrength },
         uUseMouse: { value: mouseReact ? 1 : 0 },
         uPageLoadProgress: { value: pageLoadAnimation ? 0 : 1 },
         uUsePageLoadAnimation: { value: pageLoadAnimation ? 1 : 0 },
-        uBrightness: { value: brightness }
-      }
-    });
-    programRef.current = program;
+        uBrightness: { value: brightness },
+      },
+    })
+    programRef.current = program
 
-    const mesh = new Mesh(gl, { geometry, program });
+    const mesh = new Mesh(gl, { geometry, program })
 
     function resize() {
-      if (!ctn || !renderer) return;
-      renderer.setSize(ctn.offsetWidth, ctn.offsetHeight);
+      if (!ctn || !renderer) return
+      renderer.setSize(ctn.offsetWidth, ctn.offsetHeight)
       program.uniforms.iResolution.value = new Color(
         gl.canvas.width,
         gl.canvas.height,
-        gl.canvas.width / gl.canvas.height
-      );
+        gl.canvas.width / gl.canvas.height,
+      )
     }
 
-    const resizeObserver = new ResizeObserver(() => resize());
-    resizeObserver.observe(ctn);
-    resize();
+    const resizeObserver = new ResizeObserver(() => resize())
+    resizeObserver.observe(ctn)
+    resize()
 
-    const update = t => {
-      rafRef.current = requestAnimationFrame(update);
+    const update = (t) => {
+      rafRef.current = requestAnimationFrame(update)
 
       if (pageLoadAnimation && loadAnimationStartRef.current === 0) {
-        loadAnimationStartRef.current = t;
+        loadAnimationStartRef.current = t
       }
 
       if (!pause) {
-        const elapsed = (t * 0.001 + timeOffsetRef.current) * timeScale;
-        program.uniforms.iTime.value = elapsed;
-        frozenTimeRef.current = elapsed;
+        const elapsed = (t * 0.001 + timeOffsetRef.current) * timeScale
+        program.uniforms.iTime.value = elapsed
+        frozenTimeRef.current = elapsed
       } else {
-        program.uniforms.iTime.value = frozenTimeRef.current;
+        program.uniforms.iTime.value = frozenTimeRef.current
       }
 
       if (pageLoadAnimation && loadAnimationStartRef.current > 0) {
-        const animationDuration = 2000;
-        const animationElapsed = t - loadAnimationStartRef.current;
-        const progress = Math.min(animationElapsed / animationDuration, 1);
-        program.uniforms.uPageLoadProgress.value = progress;
+        const animationDuration = 2000
+        const animationElapsed = t - loadAnimationStartRef.current
+        const progress = Math.min(animationElapsed / animationDuration, 1)
+        program.uniforms.uPageLoadProgress.value = progress
       }
 
       if (mouseReact) {
-        const dampingFactor = 0.08;
-        const smoothMouse = smoothMouseRef.current;
-        const mouse = mouseRef.current;
-        smoothMouse.x += (mouse.x - smoothMouse.x) * dampingFactor;
-        smoothMouse.y += (mouse.y - smoothMouse.y) * dampingFactor;
+        const dampingFactor = 0.08
+        const smoothMouse = smoothMouseRef.current
+        const mouse = mouseRef.current
+        smoothMouse.x += (mouse.x - smoothMouse.x) * dampingFactor
+        smoothMouse.y += (mouse.y - smoothMouse.y) * dampingFactor
 
-        const mouseUniform = program.uniforms.uMouse.value;
-        mouseUniform[0] = smoothMouse.x;
-        mouseUniform[1] = smoothMouse.y;
+        const mouseUniform = program.uniforms.uMouse.value
+        mouseUniform[0] = smoothMouse.x
+        mouseUniform[1] = smoothMouse.y
       }
 
-      renderer.render({ scene: mesh });
-    };
-    rafRef.current = requestAnimationFrame(update);
-    ctn.appendChild(gl.canvas);
+      renderer.render({ scene: mesh })
+    }
+    rafRef.current = requestAnimationFrame(update)
+    ctn.appendChild(gl.canvas)
 
-    if (mouseReact) ctn.addEventListener('mousemove', handleMouseMove);
+    if (mouseReact) ctn.addEventListener("mousemove", handleMouseMove)
 
     return () => {
-      cancelAnimationFrame(rafRef.current);
-      resizeObserver.disconnect();
-      if (mouseReact) ctn.removeEventListener('mousemove', handleMouseMove);
-      if (gl.canvas.parentElement === ctn) ctn.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-      loadAnimationStartRef.current = 0;
-      timeOffsetRef.current = Math.random() * 100;
-    };
+      cancelAnimationFrame(rafRef.current)
+      resizeObserver.disconnect()
+      if (mouseReact) ctn.removeEventListener("mousemove", handleMouseMove)
+      if (gl.canvas.parentElement === ctn) ctn.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+      loadAnimationStartRef.current = 0
+      timeOffsetRef.current = Math.random() * 100
+    }
   }, [
     dpr,
     pause,
@@ -16456,15 +16680,15 @@ export default function FaultyTerminal({
     mouseStrength,
     pageLoadAnimation,
     brightness,
-    handleMouseMove
-  ]);
+    handleMouseMove,
+  ])
 
-  return <div ref={containerRef} className={`faulty-terminal-container ${className}`} style={style} {...rest} />;
+  return <div ref={containerRef} className={`faulty-terminal-container ${className}`} style={style} {...rest} />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .faulty-terminal-container {
   width: 100%;
@@ -16472,10 +16696,10 @@ export default function FaultyTerminal({
   position: relative;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -16490,16 +16714,19 @@ code:## Integrate the <RippleGrid /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: RippleGrid
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import RippleGrid from './RippleGrid';
 
-<div style={{position: 'relative', height: '500px', overflow: 'hidden'}}>
+```jsx
+import RippleGrid from "./RippleGrid"
+
+;<div style={{ position: "relative", height: "500px", overflow: "hidden" }}>
   <RippleGrid
     enableRainbow={false}
     gridColor="#ffffff"
@@ -16514,30 +16741,32 @@ import RippleGrid from './RippleGrid';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| enableRainbow | boolean | false | Enables rainbow color cycling animation for the grid. |
-| gridColor | string | '#ffffff' | Color of the grid when rainbow mode is disabled. |
-| rippleIntensity | number | 0.05 | Controls the intensity of the ripple effect from the center. |
-| gridSize | number | 10.0 | Controls the density/size of the grid pattern. |
-| gridThickness | number | 15.0 | Controls the thickness of the grid lines. |
-| fadeDistance | number | 1.5 | Controls how far the fade effect extends from the center. |
-| vignetteStrength | number | 2.0 | Controls the intensity of the vignette (edge darkening) effect. |
-| glowIntensity | number | 0.1 | Adds a glow effect to the grid lines. |
-| opacity | number | 1.0 | Overall opacity of the entire effect. |
-| gridRotation | number | 0 | Rotate the entire grid pattern by degrees. |
-| mouseInteraction | boolean | false | Enable mouse/touch interaction to create ripples. |
-| mouseInteractionRadius | number | 0.8 | Controls the radius of the mouse interaction effect. |
+
+| Prop                   | Type    | Default   | Description                                                     |
+| ---------------------- | ------- | --------- | --------------------------------------------------------------- |
+| enableRainbow          | boolean | false     | Enables rainbow color cycling animation for the grid.           |
+| gridColor              | string  | '#ffffff' | Color of the grid when rainbow mode is disabled.                |
+| rippleIntensity        | number  | 0.05      | Controls the intensity of the ripple effect from the center.    |
+| gridSize               | number  | 10.0      | Controls the density/size of the grid pattern.                  |
+| gridThickness          | number  | 15.0      | Controls the thickness of the grid lines.                       |
+| fadeDistance           | number  | 1.5       | Controls how far the fade effect extends from the center.       |
+| vignetteStrength       | number  | 2.0       | Controls the intensity of the vignette (edge darkening) effect. |
+| glowIntensity          | number  | 0.1       | Adds a glow effect to the grid lines.                           |
+| opacity                | number  | 1.0       | Overall opacity of the entire effect.                           |
+| gridRotation           | number  | 0         | Rotate the entire grid pattern by degrees.                      |
+| mouseInteraction       | boolean | false     | Enable mouse/touch interaction to create ripples.               |
+| mouseInteractionRadius | number  | 0.8       | Controls the radius of the mouse interaction effect.            |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect } from 'react';
-import { Renderer, Program, Triangle, Mesh } from 'ogl';
-import './RippleGrid.css';
+import { useRef, useEffect } from "react"
+import { Renderer, Program, Triangle, Mesh } from "ogl"
+import "./RippleGrid.css"
 
 const RippleGrid = ({
   enableRainbow = false,
-  gridColor = '#ffffff',
+  gridColor = "#ffffff",
   rippleIntensity = 0.05,
   gridSize = 10.0,
   gridThickness = 15.0,
@@ -16547,34 +16776,34 @@ const RippleGrid = ({
   opacity = 1.0,
   gridRotation = 0,
   mouseInteraction = true,
-  mouseInteractionRadius = 1
+  mouseInteractionRadius = 1,
 }) => {
-  const containerRef = useRef(null);
-  const mousePositionRef = useRef({ x: 0.5, y: 0.5 });
-  const targetMouseRef = useRef({ x: 0.5, y: 0.5 });
-  const mouseInfluenceRef = useRef(0);
-  const uniformsRef = useRef(null);
+  const containerRef = useRef(null)
+  const mousePositionRef = useRef({ x: 0.5, y: 0.5 })
+  const targetMouseRef = useRef({ x: 0.5, y: 0.5 })
+  const mouseInfluenceRef = useRef(0)
+  const uniformsRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current) return
 
-    const hexToRgb = hex => {
-      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    const hexToRgb = (hex) => {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
       return result
         ? [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255]
-        : [1, 1, 1];
-    };
+        : [1, 1, 1]
+    }
 
     const renderer = new Renderer({
       dpr: Math.min(window.devicePixelRatio, 2),
-      alpha: true
-    });
-    const gl = renderer.gl;
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-    gl.canvas.style.width = '100%';
-    gl.canvas.style.height = '100%';
-    containerRef.current.appendChild(gl.canvas);
+      alpha: true,
+    })
+    const gl = renderer.gl
+    gl.enable(gl.BLEND)
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+    gl.canvas.style.width = "100%"
+    gl.canvas.style.height = "100%"
+    containerRef.current.appendChild(gl.canvas)
 
     const vert = `
 attribute vec2 position;
@@ -16582,7 +16811,7 @@ varying vec2 vUv;
 void main() {
     vUv = position * 0.5 + 0.5;
     gl_Position = vec4(position, 0.0, 1.0);
-}`;
+}`
 
     const frag = `precision highp float;
 uniform float iTime;
@@ -16675,7 +16904,7 @@ void main() {
     float finalFade = ddd * vignette;
     float alpha = length(color) * finalFade * opacity;
     gl_FragColor = vec4(color * t * finalFade * opacity, alpha);
-}`;
+}`
 
     const uniforms = {
       iTime: { value: 0 },
@@ -16693,102 +16922,102 @@ void main() {
       mouseInteraction: { value: mouseInteraction },
       mousePosition: { value: [0.5, 0.5] },
       mouseInfluence: { value: 0 },
-      mouseInteractionRadius: { value: mouseInteractionRadius }
-    };
+      mouseInteractionRadius: { value: mouseInteractionRadius },
+    }
 
-    uniformsRef.current = uniforms;
+    uniformsRef.current = uniforms
 
-    const geometry = new Triangle(gl);
-    const program = new Program(gl, { vertex: vert, fragment: frag, uniforms });
-    const mesh = new Mesh(gl, { geometry, program });
+    const geometry = new Triangle(gl)
+    const program = new Program(gl, { vertex: vert, fragment: frag, uniforms })
+    const mesh = new Mesh(gl, { geometry, program })
 
     const resize = () => {
-      const { clientWidth: w, clientHeight: h } = containerRef.current;
-      renderer.setSize(w, h);
-      uniforms.iResolution.value = [w, h];
-    };
+      const { clientWidth: w, clientHeight: h } = containerRef.current
+      renderer.setSize(w, h)
+      uniforms.iResolution.value = [w, h]
+    }
 
-    const handleMouseMove = e => {
-      if (!mouseInteraction || !containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = 1.0 - (e.clientY - rect.top) / rect.height; // Flip Y coordinate
-      targetMouseRef.current = { x, y };
-    };
+    const handleMouseMove = (e) => {
+      if (!mouseInteraction || !containerRef.current) return
+      const rect = containerRef.current.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width
+      const y = 1.0 - (e.clientY - rect.top) / rect.height // Flip Y coordinate
+      targetMouseRef.current = { x, y }
+    }
 
     const handleMouseEnter = () => {
-      if (!mouseInteraction) return;
-      mouseInfluenceRef.current = 1.0;
-    };
+      if (!mouseInteraction) return
+      mouseInfluenceRef.current = 1.0
+    }
 
     const handleMouseLeave = () => {
-      if (!mouseInteraction) return;
-      mouseInfluenceRef.current = 0.0;
-    };
-
-    window.addEventListener('resize', resize);
-    if (mouseInteraction) {
-      containerRef.current.addEventListener('mousemove', handleMouseMove);
-      containerRef.current.addEventListener('mouseenter', handleMouseEnter);
-      containerRef.current.addEventListener('mouseleave', handleMouseLeave);
+      if (!mouseInteraction) return
+      mouseInfluenceRef.current = 0.0
     }
-    resize();
 
-    const render = t => {
-      uniforms.iTime.value = t * 0.001;
+    window.addEventListener("resize", resize)
+    if (mouseInteraction) {
+      containerRef.current.addEventListener("mousemove", handleMouseMove)
+      containerRef.current.addEventListener("mouseenter", handleMouseEnter)
+      containerRef.current.addEventListener("mouseleave", handleMouseLeave)
+    }
+    resize()
 
-      const lerpFactor = 0.1;
-      mousePositionRef.current.x += (targetMouseRef.current.x - mousePositionRef.current.x) * lerpFactor;
-      mousePositionRef.current.y += (targetMouseRef.current.y - mousePositionRef.current.y) * lerpFactor;
+    const render = (t) => {
+      uniforms.iTime.value = t * 0.001
 
-      const currentInfluence = uniforms.mouseInfluence.value;
-      const targetInfluence = mouseInfluenceRef.current;
-      uniforms.mouseInfluence.value += (targetInfluence - currentInfluence) * 0.05;
+      const lerpFactor = 0.1
+      mousePositionRef.current.x += (targetMouseRef.current.x - mousePositionRef.current.x) * lerpFactor
+      mousePositionRef.current.y += (targetMouseRef.current.y - mousePositionRef.current.y) * lerpFactor
 
-      uniforms.mousePosition.value = [mousePositionRef.current.x, mousePositionRef.current.y];
+      const currentInfluence = uniforms.mouseInfluence.value
+      const targetInfluence = mouseInfluenceRef.current
+      uniforms.mouseInfluence.value += (targetInfluence - currentInfluence) * 0.05
 
-      renderer.render({ scene: mesh });
-      requestAnimationFrame(render);
-    };
+      uniforms.mousePosition.value = [mousePositionRef.current.x, mousePositionRef.current.y]
 
-    requestAnimationFrame(render);
+      renderer.render({ scene: mesh })
+      requestAnimationFrame(render)
+    }
 
-    const container = containerRef.current;
+    requestAnimationFrame(render)
+
+    const container = containerRef.current
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener("resize", resize)
       if (mouseInteraction && container) {
-        container.removeEventListener('mousemove', handleMouseMove);
-        container.removeEventListener('mouseenter', handleMouseEnter);
-        container.removeEventListener('mouseleave', handleMouseLeave);
+        container.removeEventListener("mousemove", handleMouseMove)
+        container.removeEventListener("mouseenter", handleMouseEnter)
+        container.removeEventListener("mouseleave", handleMouseLeave)
       }
-      renderer.gl.getExtension('WEBGL_lose_context')?.loseContext();
-      container?.removeChild(gl.canvas);
-    };
+      renderer.gl.getExtension("WEBGL_lose_context")?.loseContext()
+      container?.removeChild(gl.canvas)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   useEffect(() => {
-    if (!uniformsRef.current) return;
+    if (!uniformsRef.current) return
 
-    const hexToRgb = hex => {
-      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    const hexToRgb = (hex) => {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
       return result
         ? [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255]
-        : [1, 1, 1];
-    };
+        : [1, 1, 1]
+    }
 
-    uniformsRef.current.enableRainbow.value = enableRainbow;
-    uniformsRef.current.gridColor.value = hexToRgb(gridColor);
-    uniformsRef.current.rippleIntensity.value = rippleIntensity;
-    uniformsRef.current.gridSize.value = gridSize;
-    uniformsRef.current.gridThickness.value = gridThickness;
-    uniformsRef.current.fadeDistance.value = fadeDistance;
-    uniformsRef.current.vignetteStrength.value = vignetteStrength;
-    uniformsRef.current.glowIntensity.value = glowIntensity;
-    uniformsRef.current.opacity.value = opacity;
-    uniformsRef.current.gridRotation.value = gridRotation;
-    uniformsRef.current.mouseInteraction.value = mouseInteraction;
-    uniformsRef.current.mouseInteractionRadius.value = mouseInteractionRadius;
+    uniformsRef.current.enableRainbow.value = enableRainbow
+    uniformsRef.current.gridColor.value = hexToRgb(gridColor)
+    uniformsRef.current.rippleIntensity.value = rippleIntensity
+    uniformsRef.current.gridSize.value = gridSize
+    uniformsRef.current.gridThickness.value = gridThickness
+    uniformsRef.current.fadeDistance.value = fadeDistance
+    uniformsRef.current.vignetteStrength.value = vignetteStrength
+    uniformsRef.current.glowIntensity.value = glowIntensity
+    uniformsRef.current.opacity.value = opacity
+    uniformsRef.current.gridRotation.value = gridRotation
+    uniformsRef.current.mouseInteraction.value = mouseInteraction
+    uniformsRef.current.mouseInteractionRadius.value = mouseInteractionRadius
   }, [
     enableRainbow,
     gridColor,
@@ -16801,17 +17030,17 @@ void main() {
     opacity,
     gridRotation,
     mouseInteraction,
-    mouseInteractionRadius
-  ]);
+    mouseInteractionRadius,
+  ])
 
-  return <div ref={containerRef} className="ripple-grid-container" />;
-};
+  return <div ref={containerRef} className="ripple-grid-container" />
+}
 
-export default RippleGrid;
-
+export default RippleGrid
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import and render the component using the usage example above as a starting point.
@@ -16825,333 +17054,342 @@ code: ## Integrate the <DotField /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: DotField
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
-```jsx
-import DotField from './DotField';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <DotField
-    dotRadius={1.5}
-    dotSpacing={14}
-    bulgeStrength={67}
-    glowRadius={160}
-    sparkle={false}
-    waveAmplitude={0}
-  />
+```jsx
+import DotField from "./DotField"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
+  <DotField dotRadius={1.5} dotSpacing={14} bulgeStrength={67} glowRadius={160} sparkle={false} waveAmplitude={0} />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| dotRadius | number | 1.5 | Radius of each individual dot in the grid. |
-| dotSpacing | number | 14 | Spacing between dots in the grid. |
-| cursorRadius | number | 500 | Radius of the cursor interaction area. |
-| cursorForce | number | 0.1 | Force applied to dots when not in bulge mode. |
-| bulgeOnly | boolean | true | When true, dots bulge away from cursor. When false, dots are pushed with physics. |
-| bulgeStrength | number | 67 | Strength of the bulge effect around the cursor. |
-| glowRadius | number | 160 | Radius of the SVG glow effect that follows the cursor. |
-| sparkle | boolean | false | When enabled, ~3% of dots randomly sparkle at a larger size. |
-| waveAmplitude | number | 0 | Amplitude of the wave displacement animation applied to dots. |
-| gradientFrom | string | 'rgba(168, 85, 247, 0.35)' | Start color of the diagonal gradient applied to dots. |
-| gradientTo | string | 'rgba(180, 151, 207, 0.25)' | End color of the diagonal gradient applied to dots. |
-| glowColor | string | '#120F17' | Color of the radial glow effect that follows the cursor. |
+
+| Prop          | Type    | Default                     | Description                                                                       |
+| ------------- | ------- | --------------------------- | --------------------------------------------------------------------------------- |
+| dotRadius     | number  | 1.5                         | Radius of each individual dot in the grid.                                        |
+| dotSpacing    | number  | 14                          | Spacing between dots in the grid.                                                 |
+| cursorRadius  | number  | 500                         | Radius of the cursor interaction area.                                            |
+| cursorForce   | number  | 0.1                         | Force applied to dots when not in bulge mode.                                     |
+| bulgeOnly     | boolean | true                        | When true, dots bulge away from cursor. When false, dots are pushed with physics. |
+| bulgeStrength | number  | 67                          | Strength of the bulge effect around the cursor.                                   |
+| glowRadius    | number  | 160                         | Radius of the SVG glow effect that follows the cursor.                            |
+| sparkle       | boolean | false                       | When enabled, ~3% of dots randomly sparkle at a larger size.                      |
+| waveAmplitude | number  | 0                           | Amplitude of the wave displacement animation applied to dots.                     |
+| gradientFrom  | string  | 'rgba(168, 85, 247, 0.35)'  | Start color of the diagonal gradient applied to dots.                             |
+| gradientTo    | string  | 'rgba(180, 151, 207, 0.25)' | End color of the diagonal gradient applied to dots.                               |
+| glowColor     | string  | '#120F17'                   | Color of the radial glow effect that follows the cursor.                          |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef, memo } from 'react';
+import { useEffect, useRef, memo } from "react"
 
-import './DotField.css';
+import "./DotField.css"
 
-const TWO_PI = Math.PI * 2;
+const TWO_PI = Math.PI * 2
 
-const DotField = memo(({
-  dotRadius = 1.5,
-  dotSpacing = 14,
-  cursorRadius = 500,
-  cursorForce = 0.1,
-  bulgeOnly = true,
-  bulgeStrength = 67,
-  glowRadius = 160,
-  sparkle = false,
-  waveAmplitude = 0,
-  gradientFrom = 'rgba(168, 85, 247, 0.35)',
-  gradientTo = 'rgba(180, 151, 207, 0.25)',
-  glowColor = '#120F17',
-  ...rest
-}) => {
-  const canvasRef = useRef(null);
-  const svgRef = useRef(null);
-  const glowRef = useRef(null);
-  const dotsRef = useRef([]);
-  const mouseRef = useRef({ x: -9999, y: -9999, prevX: -9999, prevY: -9999, speed: 0 });
-  const rafRef = useRef(null);
-  const sizeRef = useRef({ w: 0, h: 0, offsetX: 0, offsetY: 0 });
-  const glowOpacity = useRef(0);
-  const engagement = useRef(0);
-  const propsRef = useRef({});
-  propsRef.current = { dotRadius, dotSpacing, cursorRadius, cursorForce, bulgeOnly, bulgeStrength, sparkle, waveAmplitude, gradientFrom, gradientTo };
-  const rebuildRef = useRef(null);
-  const glowIdRef = useRef(`dot-field-glow-${Math.random().toString(36).slice(2, 9)}`);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const glowEl = glowRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d', { alpha: true });
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let resizeTimer;
-
-    function resize() {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(doResize, 100);
+const DotField = memo(
+  ({
+    dotRadius = 1.5,
+    dotSpacing = 14,
+    cursorRadius = 500,
+    cursorForce = 0.1,
+    bulgeOnly = true,
+    bulgeStrength = 67,
+    glowRadius = 160,
+    sparkle = false,
+    waveAmplitude = 0,
+    gradientFrom = "rgba(168, 85, 247, 0.35)",
+    gradientTo = "rgba(180, 151, 207, 0.25)",
+    glowColor = "#120F17",
+    ...rest
+  }) => {
+    const canvasRef = useRef(null)
+    const svgRef = useRef(null)
+    const glowRef = useRef(null)
+    const dotsRef = useRef([])
+    const mouseRef = useRef({ x: -9999, y: -9999, prevX: -9999, prevY: -9999, speed: 0 })
+    const rafRef = useRef(null)
+    const sizeRef = useRef({ w: 0, h: 0, offsetX: 0, offsetY: 0 })
+    const glowOpacity = useRef(0)
+    const engagement = useRef(0)
+    const propsRef = useRef({})
+    propsRef.current = {
+      dotRadius,
+      dotSpacing,
+      cursorRadius,
+      cursorForce,
+      bulgeOnly,
+      bulgeStrength,
+      sparkle,
+      waveAmplitude,
+      gradientFrom,
+      gradientTo,
     }
+    const rebuildRef = useRef(null)
+    const glowIdRef = useRef(`dot-field-glow-${Math.random().toString(36).slice(2, 9)}`)
 
-    function doResize() {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
+    useEffect(() => {
+      const canvas = canvasRef.current
+      const glowEl = glowRef.current
+      if (!canvas) return
+      const ctx = canvas.getContext("2d", { alpha: true })
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      let resizeTimer
 
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      canvas.style.width = `${w}px`;
-      canvas.style.height = `${h}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      function resize() {
+        clearTimeout(resizeTimer)
+        resizeTimer = setTimeout(doResize, 100)
+      }
 
-      sizeRef.current = {
-        w,
-        h,
-        offsetX: rect.left + window.scrollX,
-        offsetY: rect.top + window.scrollY,
-      };
+      function doResize() {
+        const rect = canvas.parentElement.getBoundingClientRect()
+        const w = rect.width
+        const h = rect.height
 
-      buildDots(w, h);
-    }
+        canvas.width = w * dpr
+        canvas.height = h * dpr
+        canvas.style.width = `${w}px`
+        canvas.style.height = `${h}px`
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
-    function buildDots(w, h) {
-      const p = propsRef.current;
-      const step = p.dotRadius + p.dotSpacing;
-      const cols = Math.floor(w / step);
-      const rows = Math.floor(h / step);
-      const padX = (w % step) / 2;
-      const padY = (h % step) / 2;
-      const dots = new Array(rows * cols);
-      let idx = 0;
-
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const ax = padX + col * step + step / 2;
-          const ay = padY + row * step + step / 2;
-          dots[idx++] = { ax, ay, sx: ax, sy: ay, vx: 0, vy: 0, x: ax, y: ay };
+        sizeRef.current = {
+          w,
+          h,
+          offsetX: rect.left + window.scrollX,
+          offsetY: rect.top + window.scrollY,
         }
-      }
-      dotsRef.current = dots;
-    }
 
-    function onMouseMove(e) {
-      const s = sizeRef.current;
-      mouseRef.current.x = e.pageX - s.offsetX;
-      mouseRef.current.y = e.pageY - s.offsetY;
-    }
-
-    function updateMouseSpeed() {
-      const m = mouseRef.current;
-      const dx = m.prevX - m.x;
-      const dy = m.prevY - m.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      m.speed += (dist - m.speed) * 0.5;
-      if (m.speed < 0.001) m.speed = 0;
-      m.prevX = m.x;
-      m.prevY = m.y;
-    }
-
-    const speedInterval = setInterval(updateMouseSpeed, 20);
-
-    let frameCount = 0;
-
-    function tick() {
-      frameCount++;
-      const dots = dotsRef.current;
-      const m = mouseRef.current;
-      const { w, h } = sizeRef.current;
-      const p = propsRef.current;
-      const len = dots.length;
-      const t = frameCount * 0.02;
-
-      const targetEngagement = Math.min(m.speed / 5, 1);
-      engagement.current += (targetEngagement - engagement.current) * 0.06;
-      if (engagement.current < 0.001) engagement.current = 0;
-      const eng = engagement.current;
-
-      glowOpacity.current += (eng - glowOpacity.current) * 0.08;
-
-      if (glowEl) {
-        glowEl.setAttribute('cx', m.x);
-        glowEl.setAttribute('cy', m.y);
-        glowEl.style.opacity = glowOpacity.current;
+        buildDots(w, h)
       }
 
-      ctx.clearRect(0, 0, w, h);
+      function buildDots(w, h) {
+        const p = propsRef.current
+        const step = p.dotRadius + p.dotSpacing
+        const cols = Math.floor(w / step)
+        const rows = Math.floor(h / step)
+        const padX = (w % step) / 2
+        const padY = (h % step) / 2
+        const dots = new Array(rows * cols)
+        let idx = 0
 
-      const grad = ctx.createLinearGradient(0, 0, w, h);
-      grad.addColorStop(0, p.gradientFrom);
-      grad.addColorStop(1, p.gradientTo);
-      ctx.fillStyle = grad;
-
-      const cr = p.cursorRadius;
-      const crSq = cr * cr;
-      const rad = p.dotRadius / 2;
-      const isBulge = p.bulgeOnly;
-
-      ctx.beginPath();
-
-      for (let i = 0; i < len; i++) {
-        const d = dots[i];
-        const dx = m.x - d.ax;
-        const dy = m.y - d.ay;
-        const distSq = dx * dx + dy * dy;
-
-        if (distSq < crSq && eng > 0.01) {
-          const dist = Math.sqrt(distSq);
-          if (isBulge) {
-            const t = 1 - dist / cr;
-            const push = t * t * p.bulgeStrength * eng;
-            const angle = Math.atan2(dy, dx);
-            d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.15;
-            d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.15;
-          } else {
-            const angle = Math.atan2(dy, dx);
-            const move = (500 / dist) * (m.speed * p.cursorForce);
-            d.vx += Math.cos(angle) * -move;
-            d.vy += Math.sin(angle) * -move;
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const ax = padX + col * step + step / 2
+            const ay = padY + row * step + step / 2
+            dots[idx++] = { ax, ay, sx: ax, sy: ay, vx: 0, vy: 0, x: ax, y: ay }
           }
-        } else if (isBulge) {
-          d.sx += (d.ax - d.sx) * 0.1;
-          d.sy += (d.ay - d.sy) * 0.1;
         }
-
-        if (!isBulge) {
-          d.vx *= 0.9;
-          d.vy *= 0.9;
-          d.x = d.ax + d.vx;
-          d.y = d.ay + d.vy;
-          d.sx += (d.x - d.sx) * 0.1;
-          d.sy += (d.y - d.sy) * 0.1;
-        }
-
-        let drawX = d.sx;
-        let drawY = d.sy;
-        if (p.waveAmplitude > 0) {
-          drawY += Math.sin(d.ax * 0.03 + t) * p.waveAmplitude;
-          drawX += Math.cos(d.ay * 0.03 + t * 0.7) * p.waveAmplitude * 0.5;
-        }
-
-        if (p.sparkle) {
-          const hash = ((i * 2654435761) ^ (frameCount >> 3)) >>> 0;
-          if ((hash % 100) < 3) {
-            ctx.moveTo(drawX + rad * 1.8, drawY);
-            ctx.arc(drawX, drawY, rad * 1.8, 0, TWO_PI);
-          } else {
-            ctx.moveTo(drawX + rad, drawY);
-            ctx.arc(drawX, drawY, rad, 0, TWO_PI);
-          }
-        } else {
-          ctx.moveTo(drawX + rad, drawY);
-          ctx.arc(drawX, drawY, rad, 0, TWO_PI);
-        }
+        dotsRef.current = dots
       }
 
-      ctx.fill();
+      function onMouseMove(e) {
+        const s = sizeRef.current
+        mouseRef.current.x = e.pageX - s.offsetX
+        mouseRef.current.y = e.pageY - s.offsetY
+      }
 
-      rafRef.current = requestAnimationFrame(tick);
-    }
+      function updateMouseSpeed() {
+        const m = mouseRef.current
+        const dx = m.prevX - m.x
+        const dy = m.prevY - m.y
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        m.speed += (dist - m.speed) * 0.5
+        if (m.speed < 0.001) m.speed = 0
+        m.prevX = m.x
+        m.prevY = m.y
+      }
 
-    doResize();
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
-    rafRef.current = requestAnimationFrame(tick);
+      const speedInterval = setInterval(updateMouseSpeed, 20)
 
-    rebuildRef.current = () => {
-      const { w, h } = sizeRef.current;
-      if (w > 0 && h > 0) buildDots(w, h);
-    };
+      let frameCount = 0
 
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      clearInterval(speedInterval);
-      clearTimeout(resizeTimer);
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', onMouseMove);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      function tick() {
+        frameCount++
+        const dots = dotsRef.current
+        const m = mouseRef.current
+        const { w, h } = sizeRef.current
+        const p = propsRef.current
+        const len = dots.length
+        const t = frameCount * 0.02
 
-  useEffect(() => {
-    rebuildRef.current?.();
-  }, [dotRadius, dotSpacing]);
+        const targetEngagement = Math.min(m.speed / 5, 1)
+        engagement.current += (targetEngagement - engagement.current) * 0.06
+        if (engagement.current < 0.001) engagement.current = 0
+        const eng = engagement.current
 
-  return (
-    <div className="dot-field-container" {...rest}>
-      <canvas
-        ref={canvasRef}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-        }}
-      />
-      <svg
-        ref={svgRef}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-        }}
-      >
-        <defs>
-          <radialGradient id={glowIdRef.current}>
-            <stop offset="0%" stopColor={glowColor} />
-            <stop offset="100%" stopColor="transparent" />
-          </radialGradient>
-        </defs>
-        <circle
-          ref={glowRef}
-          cx="-9999"
-          cy="-9999"
-          r={glowRadius}
-          fill={`url(#${glowIdRef.current})`}
-          style={{ opacity: 0, willChange: 'opacity' }}
+        glowOpacity.current += (eng - glowOpacity.current) * 0.08
+
+        if (glowEl) {
+          glowEl.setAttribute("cx", m.x)
+          glowEl.setAttribute("cy", m.y)
+          glowEl.style.opacity = glowOpacity.current
+        }
+
+        ctx.clearRect(0, 0, w, h)
+
+        const grad = ctx.createLinearGradient(0, 0, w, h)
+        grad.addColorStop(0, p.gradientFrom)
+        grad.addColorStop(1, p.gradientTo)
+        ctx.fillStyle = grad
+
+        const cr = p.cursorRadius
+        const crSq = cr * cr
+        const rad = p.dotRadius / 2
+        const isBulge = p.bulgeOnly
+
+        ctx.beginPath()
+
+        for (let i = 0; i < len; i++) {
+          const d = dots[i]
+          const dx = m.x - d.ax
+          const dy = m.y - d.ay
+          const distSq = dx * dx + dy * dy
+
+          if (distSq < crSq && eng > 0.01) {
+            const dist = Math.sqrt(distSq)
+            if (isBulge) {
+              const t = 1 - dist / cr
+              const push = t * t * p.bulgeStrength * eng
+              const angle = Math.atan2(dy, dx)
+              d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.15
+              d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.15
+            } else {
+              const angle = Math.atan2(dy, dx)
+              const move = (500 / dist) * (m.speed * p.cursorForce)
+              d.vx += Math.cos(angle) * -move
+              d.vy += Math.sin(angle) * -move
+            }
+          } else if (isBulge) {
+            d.sx += (d.ax - d.sx) * 0.1
+            d.sy += (d.ay - d.sy) * 0.1
+          }
+
+          if (!isBulge) {
+            d.vx *= 0.9
+            d.vy *= 0.9
+            d.x = d.ax + d.vx
+            d.y = d.ay + d.vy
+            d.sx += (d.x - d.sx) * 0.1
+            d.sy += (d.y - d.sy) * 0.1
+          }
+
+          let drawX = d.sx
+          let drawY = d.sy
+          if (p.waveAmplitude > 0) {
+            drawY += Math.sin(d.ax * 0.03 + t) * p.waveAmplitude
+            drawX += Math.cos(d.ay * 0.03 + t * 0.7) * p.waveAmplitude * 0.5
+          }
+
+          if (p.sparkle) {
+            const hash = ((i * 2654435761) ^ (frameCount >> 3)) >>> 0
+            if (hash % 100 < 3) {
+              ctx.moveTo(drawX + rad * 1.8, drawY)
+              ctx.arc(drawX, drawY, rad * 1.8, 0, TWO_PI)
+            } else {
+              ctx.moveTo(drawX + rad, drawY)
+              ctx.arc(drawX, drawY, rad, 0, TWO_PI)
+            }
+          } else {
+            ctx.moveTo(drawX + rad, drawY)
+            ctx.arc(drawX, drawY, rad, 0, TWO_PI)
+          }
+        }
+
+        ctx.fill()
+
+        rafRef.current = requestAnimationFrame(tick)
+      }
+
+      doResize()
+      window.addEventListener("resize", resize)
+      window.addEventListener("mousemove", onMouseMove, { passive: true })
+      rafRef.current = requestAnimationFrame(tick)
+
+      rebuildRef.current = () => {
+        const { w, h } = sizeRef.current
+        if (w > 0 && h > 0) buildDots(w, h)
+      }
+
+      return () => {
+        cancelAnimationFrame(rafRef.current)
+        clearInterval(speedInterval)
+        clearTimeout(resizeTimer)
+        window.removeEventListener("resize", resize)
+        window.removeEventListener("mousemove", onMouseMove)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+      rebuildRef.current?.()
+    }, [dotRadius, dotSpacing])
+
+    return (
+      <div className="dot-field-container" {...rest}>
+        <canvas
+          ref={canvasRef}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+          }}
         />
-      </svg>
-    </div>
-  );
-});
+        <svg
+          ref={svgRef}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            pointerEvents: "none",
+          }}
+        >
+          <defs>
+            <radialGradient id={glowIdRef.current}>
+              <stop offset="0%" stopColor={glowColor} />
+              <stop offset="100%" stopColor="transparent" />
+            </radialGradient>
+          </defs>
+          <circle
+            ref={glowRef}
+            cx="-9999"
+            cy="-9999"
+            r={glowRadius}
+            fill={`url(#${glowIdRef.current})`}
+            style={{ opacity: 0, willChange: "opacity" }}
+          />
+        </svg>
+      </div>
+    )
+  },
+)
 
-DotField.displayName = 'DotField';
+DotField.displayName = "DotField"
 
-export default DotField;
-
+export default DotField
 ```
 
 ### Component CSS
+
 ```css
 .dot-field-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -17166,16 +17404,19 @@ code: ## Integrate the <DotGrid /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: DotGrid
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
-```jsx
-import DotGrid from './DotGrid';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import DotGrid from "./DotGrid"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <DotGrid
     dotSize={10}
     gap={15}
@@ -17191,59 +17432,61 @@ import DotGrid from './DotGrid';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| dotSize | number | 16 | Size of each dot in pixels. |
-| gap | number | 32 | Gap between each dot in pixels. |
-| baseColor | string | '#5227FF' | Base color of the dots. |
-| activeColor | string | '#5227FF' | Color of dots when hovered or activated. |
-| proximity | number | 150 | Radius around the mouse pointer within which dots react. |
-| speedTrigger | number | 100 | Mouse speed threshold to trigger inertia effect. |
-| shockRadius | number | 250 | Radius of the shockwave effect on click. |
-| shockStrength | number | 5 | Strength of the shockwave effect on click. |
-| maxSpeed | number | 5000 | Maximum speed for inertia calculation. |
-| resistance | number | 750 | Resistance for the inertia effect. |
-| returnDuration | number | 1.5 | Duration for dots to return to their original position after inertia. |
-| className | string | '' | Additional CSS classes for the component. |
-| style | React.CSSProperties | {} | Inline styles for the component. |
+
+| Prop           | Type                | Default   | Description                                                           |
+| -------------- | ------------------- | --------- | --------------------------------------------------------------------- |
+| dotSize        | number              | 16        | Size of each dot in pixels.                                           |
+| gap            | number              | 32        | Gap between each dot in pixels.                                       |
+| baseColor      | string              | '#5227FF' | Base color of the dots.                                               |
+| activeColor    | string              | '#5227FF' | Color of dots when hovered or activated.                              |
+| proximity      | number              | 150       | Radius around the mouse pointer within which dots react.              |
+| speedTrigger   | number              | 100       | Mouse speed threshold to trigger inertia effect.                      |
+| shockRadius    | number              | 250       | Radius of the shockwave effect on click.                              |
+| shockStrength  | number              | 5         | Strength of the shockwave effect on click.                            |
+| maxSpeed       | number              | 5000      | Maximum speed for inertia calculation.                                |
+| resistance     | number              | 750       | Resistance for the inertia effect.                                    |
+| returnDuration | number              | 1.5       | Duration for dots to return to their original position after inertia. |
+| className      | string              | ''        | Additional CSS classes for the component.                             |
+| style          | React.CSSProperties | {}        | Inline styles for the component.                                      |
 
 ### Full Component Source
+
 ```jsx
-'use client';
-import { useRef, useEffect, useCallback, useMemo } from 'react';
-import { gsap } from 'gsap';
-import { InertiaPlugin } from 'gsap/InertiaPlugin';
+"use client"
+import { useRef, useEffect, useCallback, useMemo } from "react"
+import { gsap } from "gsap"
+import { InertiaPlugin } from "gsap/InertiaPlugin"
 
-import './DotGrid.css';
+import "./DotGrid.css"
 
-gsap.registerPlugin(InertiaPlugin);
+gsap.registerPlugin(InertiaPlugin)
 
 const throttle = (func, limit) => {
-  let lastCall = 0;
+  let lastCall = 0
   return function (...args) {
-    const now = performance.now();
+    const now = performance.now()
     if (now - lastCall >= limit) {
-      lastCall = now;
-      func.apply(this, args);
+      lastCall = now
+      func.apply(this, args)
     }
-  };
-};
+  }
+}
 
 function hexToRgb(hex) {
-  const m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
-  if (!m) return { r: 0, g: 0, b: 0 };
+  const m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i)
+  if (!m) return { r: 0, g: 0, b: 0 }
   return {
     r: parseInt(m[1], 16),
     g: parseInt(m[2], 16),
-    b: parseInt(m[3], 16)
-  };
+    b: parseInt(m[3], 16),
+  }
 }
 
 const DotGrid = ({
   dotSize = 16,
   gap = 32,
-  baseColor = '#5227FF',
-  activeColor = '#5227FF',
+  baseColor = "#5227FF",
+  activeColor = "#5227FF",
   proximity = 150,
   speedTrigger = 100,
   shockRadius = 250,
@@ -17251,12 +17494,12 @@ const DotGrid = ({
   maxSpeed = 5000,
   resistance = 750,
   returnDuration = 1.5,
-  className = '',
-  style
+  className = "",
+  style,
 }) => {
-  const wrapperRef = useRef(null);
-  const canvasRef = useRef(null);
-  const dotsRef = useRef([]);
+  const wrapperRef = useRef(null)
+  const canvasRef = useRef(null)
+  const dotsRef = useRef([])
   const pointerRef = useRef({
     x: 0,
     y: 0,
@@ -17265,154 +17508,154 @@ const DotGrid = ({
     speed: 0,
     lastTime: 0,
     lastX: 0,
-    lastY: 0
-  });
+    lastY: 0,
+  })
 
-  const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor]);
-  const activeRgb = useMemo(() => hexToRgb(activeColor), [activeColor]);
+  const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor])
+  const activeRgb = useMemo(() => hexToRgb(activeColor), [activeColor])
 
   const circlePath = useMemo(() => {
-    if (typeof window === 'undefined' || !window.Path2D) return null;
+    if (typeof window === "undefined" || !window.Path2D) return null
 
-    const p = new window.Path2D();
-    p.arc(0, 0, dotSize / 2, 0, Math.PI * 2);
-    return p;
-  }, [dotSize]);
+    const p = new window.Path2D()
+    p.arc(0, 0, dotSize / 2, 0, Math.PI * 2)
+    return p
+  }, [dotSize])
 
   const buildGrid = useCallback(() => {
-    const wrap = wrapperRef.current;
-    const canvas = canvasRef.current;
-    if (!wrap || !canvas) return;
+    const wrap = wrapperRef.current
+    const canvas = canvasRef.current
+    if (!wrap || !canvas) return
 
-    const { width, height } = wrap.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
+    const { width, height } = wrap.getBoundingClientRect()
+    const dpr = window.devicePixelRatio || 1
 
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    const ctx = canvas.getContext('2d');
-    if (ctx) ctx.scale(dpr, dpr);
+    canvas.width = width * dpr
+    canvas.height = height * dpr
+    canvas.style.width = `${width}px`
+    canvas.style.height = `${height}px`
+    const ctx = canvas.getContext("2d")
+    if (ctx) ctx.scale(dpr, dpr)
 
-    const cols = Math.floor((width + gap) / (dotSize + gap));
-    const rows = Math.floor((height + gap) / (dotSize + gap));
-    const cell = dotSize + gap;
+    const cols = Math.floor((width + gap) / (dotSize + gap))
+    const rows = Math.floor((height + gap) / (dotSize + gap))
+    const cell = dotSize + gap
 
-    const gridW = cell * cols - gap;
-    const gridH = cell * rows - gap;
+    const gridW = cell * cols - gap
+    const gridH = cell * rows - gap
 
-    const extraX = width - gridW;
-    const extraY = height - gridH;
+    const extraX = width - gridW
+    const extraY = height - gridH
 
-    const startX = extraX / 2 + dotSize / 2;
-    const startY = extraY / 2 + dotSize / 2;
+    const startX = extraX / 2 + dotSize / 2
+    const startY = extraY / 2 + dotSize / 2
 
-    const dots = [];
+    const dots = []
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < cols; x++) {
-        const cx = startX + x * cell;
-        const cy = startY + y * cell;
-        dots.push({ cx, cy, xOffset: 0, yOffset: 0, _inertiaApplied: false });
+        const cx = startX + x * cell
+        const cy = startY + y * cell
+        dots.push({ cx, cy, xOffset: 0, yOffset: 0, _inertiaApplied: false })
       }
     }
-    dotsRef.current = dots;
-  }, [dotSize, gap]);
+    dotsRef.current = dots
+  }, [dotSize, gap])
 
   useEffect(() => {
-    if (!circlePath) return;
+    if (!circlePath) return
 
-    let rafId;
-    const proxSq = proximity * proximity;
+    let rafId
+    const proxSq = proximity * proximity
 
     const draw = () => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const canvas = canvasRef.current
+      if (!canvas) return
+      const ctx = canvas.getContext("2d")
+      if (!ctx) return
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      const { x: px, y: py } = pointerRef.current;
+      const { x: px, y: py } = pointerRef.current
 
       for (const dot of dotsRef.current) {
-        const ox = dot.cx + dot.xOffset;
-        const oy = dot.cy + dot.yOffset;
-        const dx = dot.cx - px;
-        const dy = dot.cy - py;
-        const dsq = dx * dx + dy * dy;
+        const ox = dot.cx + dot.xOffset
+        const oy = dot.cy + dot.yOffset
+        const dx = dot.cx - px
+        const dy = dot.cy - py
+        const dsq = dx * dx + dy * dy
 
-        let style = baseColor;
+        let style = baseColor
         if (dsq <= proxSq) {
-          const dist = Math.sqrt(dsq);
-          const t = 1 - dist / proximity;
-          const r = Math.round(baseRgb.r + (activeRgb.r - baseRgb.r) * t);
-          const g = Math.round(baseRgb.g + (activeRgb.g - baseRgb.g) * t);
-          const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * t);
-          style = `rgb(${r},${g},${b})`;
+          const dist = Math.sqrt(dsq)
+          const t = 1 - dist / proximity
+          const r = Math.round(baseRgb.r + (activeRgb.r - baseRgb.r) * t)
+          const g = Math.round(baseRgb.g + (activeRgb.g - baseRgb.g) * t)
+          const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * t)
+          style = `rgb(${r},${g},${b})`
         }
 
-        ctx.save();
-        ctx.translate(ox, oy);
-        ctx.fillStyle = style;
-        ctx.fill(circlePath);
-        ctx.restore();
+        ctx.save()
+        ctx.translate(ox, oy)
+        ctx.fillStyle = style
+        ctx.fill(circlePath)
+        ctx.restore()
       }
 
-      rafId = requestAnimationFrame(draw);
-    };
+      rafId = requestAnimationFrame(draw)
+    }
 
-    draw();
-    return () => cancelAnimationFrame(rafId);
-  }, [proximity, baseColor, activeRgb, baseRgb, circlePath]);
+    draw()
+    return () => cancelAnimationFrame(rafId)
+  }, [proximity, baseColor, activeRgb, baseRgb, circlePath])
 
   useEffect(() => {
-    buildGrid();
-    let ro = null;
-    if ('ResizeObserver' in window) {
-      ro = new ResizeObserver(buildGrid);
-      wrapperRef.current && ro.observe(wrapperRef.current);
+    buildGrid()
+    let ro = null
+    if ("ResizeObserver" in window) {
+      ro = new ResizeObserver(buildGrid)
+      wrapperRef.current && ro.observe(wrapperRef.current)
     } else {
-      window.addEventListener('resize', buildGrid);
+      window.addEventListener("resize", buildGrid)
     }
     return () => {
-      if (ro) ro.disconnect();
-      else window.removeEventListener('resize', buildGrid);
-    };
-  }, [buildGrid]);
+      if (ro) ro.disconnect()
+      else window.removeEventListener("resize", buildGrid)
+    }
+  }, [buildGrid])
 
   useEffect(() => {
-    const onMove = e => {
-      const now = performance.now();
-      const pr = pointerRef.current;
-      const dt = pr.lastTime ? now - pr.lastTime : 16;
-      const dx = e.clientX - pr.lastX;
-      const dy = e.clientY - pr.lastY;
-      let vx = (dx / dt) * 1000;
-      let vy = (dy / dt) * 1000;
-      let speed = Math.hypot(vx, vy);
+    const onMove = (e) => {
+      const now = performance.now()
+      const pr = pointerRef.current
+      const dt = pr.lastTime ? now - pr.lastTime : 16
+      const dx = e.clientX - pr.lastX
+      const dy = e.clientY - pr.lastY
+      let vx = (dx / dt) * 1000
+      let vy = (dy / dt) * 1000
+      let speed = Math.hypot(vx, vy)
       if (speed > maxSpeed) {
-        const scale = maxSpeed / speed;
-        vx *= scale;
-        vy *= scale;
-        speed = maxSpeed;
+        const scale = maxSpeed / speed
+        vx *= scale
+        vy *= scale
+        speed = maxSpeed
       }
-      pr.lastTime = now;
-      pr.lastX = e.clientX;
-      pr.lastY = e.clientY;
-      pr.vx = vx;
-      pr.vy = vy;
-      pr.speed = speed;
+      pr.lastTime = now
+      pr.lastX = e.clientX
+      pr.lastY = e.clientY
+      pr.vx = vx
+      pr.vy = vy
+      pr.speed = speed
 
-      const rect = canvasRef.current.getBoundingClientRect();
-      pr.x = e.clientX - rect.left;
-      pr.y = e.clientY - rect.top;
+      const rect = canvasRef.current.getBoundingClientRect()
+      pr.x = e.clientX - rect.left
+      pr.y = e.clientY - rect.top
 
       for (const dot of dotsRef.current) {
-        const dist = Math.hypot(dot.cx - pr.x, dot.cy - pr.y);
+        const dist = Math.hypot(dot.cx - pr.x, dot.cy - pr.y)
         if (speed > speedTrigger && dist < proximity && !dot._inertiaApplied) {
-          dot._inertiaApplied = true;
-          gsap.killTweensOf(dot);
-          const pushX = dot.cx - pr.x + vx * 0.005;
-          const pushY = dot.cy - pr.y + vy * 0.005;
+          dot._inertiaApplied = true
+          gsap.killTweensOf(dot)
+          const pushX = dot.cx - pr.x + vx * 0.005
+          const pushY = dot.cy - pr.y + vy * 0.005
           gsap.to(dot, {
             inertia: { xOffset: pushX, yOffset: pushY, resistance },
             onComplete: () => {
@@ -17420,27 +17663,27 @@ const DotGrid = ({
                 xOffset: 0,
                 yOffset: 0,
                 duration: returnDuration,
-                ease: 'elastic.out(1,0.75)'
-              });
-              dot._inertiaApplied = false;
-            }
-          });
+                ease: "elastic.out(1,0.75)",
+              })
+              dot._inertiaApplied = false
+            },
+          })
         }
       }
-    };
+    }
 
-    const onClick = e => {
-      const rect = canvasRef.current.getBoundingClientRect();
-      const cx = e.clientX - rect.left;
-      const cy = e.clientY - rect.top;
+    const onClick = (e) => {
+      const rect = canvasRef.current.getBoundingClientRect()
+      const cx = e.clientX - rect.left
+      const cy = e.clientY - rect.top
       for (const dot of dotsRef.current) {
-        const dist = Math.hypot(dot.cx - cx, dot.cy - cy);
+        const dist = Math.hypot(dot.cx - cx, dot.cy - cy)
         if (dist < shockRadius && !dot._inertiaApplied) {
-          dot._inertiaApplied = true;
-          gsap.killTweensOf(dot);
-          const falloff = Math.max(0, 1 - dist / shockRadius);
-          const pushX = (dot.cx - cx) * shockStrength * falloff;
-          const pushY = (dot.cy - cy) * shockStrength * falloff;
+          dot._inertiaApplied = true
+          gsap.killTweensOf(dot)
+          const falloff = Math.max(0, 1 - dist / shockRadius)
+          const pushX = (dot.cx - cx) * shockStrength * falloff
+          const pushY = (dot.cy - cy) * shockStrength * falloff
           gsap.to(dot, {
             inertia: { xOffset: pushX, yOffset: pushY, resistance },
             onComplete: () => {
@@ -17448,24 +17691,24 @@ const DotGrid = ({
                 xOffset: 0,
                 yOffset: 0,
                 duration: returnDuration,
-                ease: 'elastic.out(1,0.75)'
-              });
-              dot._inertiaApplied = false;
-            }
-          });
+                ease: "elastic.out(1,0.75)",
+              })
+              dot._inertiaApplied = false
+            },
+          })
         }
       }
-    };
+    }
 
-    const throttledMove = throttle(onMove, 50);
-    window.addEventListener('mousemove', throttledMove, { passive: true });
-    window.addEventListener('click', onClick);
+    const throttledMove = throttle(onMove, 50)
+    window.addEventListener("mousemove", throttledMove, { passive: true })
+    window.addEventListener("click", onClick)
 
     return () => {
-      window.removeEventListener('mousemove', throttledMove);
-      window.removeEventListener('click', onClick);
-    };
-  }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
+      window.removeEventListener("mousemove", throttledMove)
+      window.removeEventListener("click", onClick)
+    }
+  }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength])
 
   return (
     <section className={`dot-grid ${className}`} style={style}>
@@ -17473,14 +17716,14 @@ const DotGrid = ({
         <canvas ref={canvasRef} className="dot-grid__canvas" />
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default DotGrid;
-
+export default DotGrid
 ```
 
 ### Component CSS
+
 ```css
 .dot-grid {
   display: flex;
@@ -17504,10 +17747,10 @@ export default DotGrid;
   height: 100%;
   pointer-events: none;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -17522,38 +17765,39 @@ code: ## Integrate the <Threads /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Threads
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Threads from './Threads';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <Threads
-    amplitude={1}
-    distance={0}
-    enableMouseInteraction={true}
-  />
+```jsx
+import Threads from "./Threads"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
+  <Threads amplitude={1} distance={0} enableMouseInteraction={true} />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| color | [number, number, number] | [1, 1, 1] | Customizes the color of the lines (RGB). |
-| amplitude | number | 1 | Adjusts the intensity of the wave effect on the lines. |
-| distance | number | 0 | Controls the spacing between the lines. A value of 0 means no offset. |
-| enableMouseInteraction | boolean | false | Enables smooth mouse hover effects that modulate the line's movement and amplitude. |
+
+| Prop                   | Type                     | Default   | Description                                                                         |
+| ---------------------- | ------------------------ | --------- | ----------------------------------------------------------------------------------- |
+| color                  | [number, number, number] | [1, 1, 1] | Customizes the color of the lines (RGB).                                            |
+| amplitude              | number                   | 1         | Adjusts the intensity of the wave effect on the lines.                              |
+| distance               | number                   | 0         | Controls the spacing between the lines. A value of 0 means no offset.               |
+| enableMouseInteraction | boolean                  | false     | Enables smooth mouse hover effects that modulate the line's movement and amplitude. |
 
 ### Full Component Source
-```jsx
-import { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle, Color } from 'ogl';
 
-import './Threads.css';
+```jsx
+import { useEffect, useRef } from "react"
+import { Renderer, Program, Mesh, Triangle, Color } from "ogl"
+
+import "./Threads.css"
 
 const vertexShader = `
 attribute vec2 position;
@@ -17563,7 +17807,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -17670,117 +17914,117 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 void main() {
     mainImage(gl_FragColor, gl_FragCoord.xy);
 }
-`;
+`
 
 const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseInteraction = false, ...rest }) => {
-  const containerRef = useRef(null);
-  const animationFrameId = useRef();
+  const containerRef = useRef(null)
+  const animationFrameId = useRef()
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    const container = containerRef.current;
+    if (!containerRef.current) return
+    const container = containerRef.current
 
-    const renderer = new Renderer({ alpha: true });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-    container.appendChild(gl.canvas);
+    const renderer = new Renderer({ alpha: true })
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
+    gl.enable(gl.BLEND)
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+    container.appendChild(gl.canvas)
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     const program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
       uniforms: {
         iTime: { value: 0 },
         iResolution: {
-          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
+          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height),
         },
         uColor: { value: new Color(...color) },
         uAmplitude: { value: amplitude },
         uDistance: { value: distance },
-        uMouse: { value: new Float32Array([0.5, 0.5]) }
-      }
-    });
+        uMouse: { value: new Float32Array([0.5, 0.5]) },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
+    const mesh = new Mesh(gl, { geometry, program })
 
     function resize() {
-      const { clientWidth, clientHeight } = container;
-      renderer.setSize(clientWidth, clientHeight);
-      program.uniforms.iResolution.value.r = clientWidth;
-      program.uniforms.iResolution.value.g = clientHeight;
-      program.uniforms.iResolution.value.b = clientWidth / clientHeight;
+      const { clientWidth, clientHeight } = container
+      renderer.setSize(clientWidth, clientHeight)
+      program.uniforms.iResolution.value.r = clientWidth
+      program.uniforms.iResolution.value.g = clientHeight
+      program.uniforms.iResolution.value.b = clientWidth / clientHeight
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
-    let currentMouse = [0.5, 0.5];
-    let targetMouse = [0.5, 0.5];
+    let currentMouse = [0.5, 0.5]
+    let targetMouse = [0.5, 0.5]
 
     function handleMouseMove(e) {
-      const rect = container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = 1.0 - (e.clientY - rect.top) / rect.height;
-      targetMouse = [x, y];
+      const rect = container.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width
+      const y = 1.0 - (e.clientY - rect.top) / rect.height
+      targetMouse = [x, y]
     }
     function handleMouseLeave() {
-      targetMouse = [0.5, 0.5];
+      targetMouse = [0.5, 0.5]
     }
     if (enableMouseInteraction) {
-      container.addEventListener('mousemove', handleMouseMove);
-      container.addEventListener('mouseleave', handleMouseLeave);
+      container.addEventListener("mousemove", handleMouseMove)
+      container.addEventListener("mouseleave", handleMouseLeave)
     }
 
     function update(t) {
       if (enableMouseInteraction) {
-        const smoothing = 0.05;
-        currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
-        currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1]);
-        program.uniforms.uMouse.value[0] = currentMouse[0];
-        program.uniforms.uMouse.value[1] = currentMouse[1];
+        const smoothing = 0.05
+        currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0])
+        currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1])
+        program.uniforms.uMouse.value[0] = currentMouse[0]
+        program.uniforms.uMouse.value[1] = currentMouse[1]
       } else {
-        program.uniforms.uMouse.value[0] = 0.5;
-        program.uniforms.uMouse.value[1] = 0.5;
+        program.uniforms.uMouse.value[0] = 0.5
+        program.uniforms.uMouse.value[1] = 0.5
       }
-      program.uniforms.iTime.value = t * 0.001;
+      program.uniforms.iTime.value = t * 0.001
 
-      renderer.render({ scene: mesh });
-      animationFrameId.current = requestAnimationFrame(update);
+      renderer.render({ scene: mesh })
+      animationFrameId.current = requestAnimationFrame(update)
     }
-    animationFrameId.current = requestAnimationFrame(update);
+    animationFrameId.current = requestAnimationFrame(update)
 
     return () => {
-      if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
-      window.removeEventListener('resize', resize);
+      if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current)
+      window.removeEventListener("resize", resize)
 
       if (enableMouseInteraction) {
-        container.removeEventListener('mousemove', handleMouseMove);
-        container.removeEventListener('mouseleave', handleMouseLeave);
+        container.removeEventListener("mousemove", handleMouseMove)
+        container.removeEventListener("mouseleave", handleMouseLeave)
       }
-      if (container.contains(gl.canvas)) container.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
-  }, [color, amplitude, distance, enableMouseInteraction]);
+      if (container.contains(gl.canvas)) container.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
+  }, [color, amplitude, distance, enableMouseInteraction])
 
-  return <div ref={containerRef} className="threads-container" {...rest} />;
-};
+  return <div ref={containerRef} className="threads-container" {...rest} />
+}
 
-export default Threads;
-
+export default Threads
 ```
 
 ### Component CSS
+
 ```css
 .threads-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -17795,12 +18039,15 @@ code: ## Integrate the <Hyperspeed /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Hyperspeed
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three postprocessing
 
 ---
 
 ### Usage Example
+
 ```jsx
 import Hyperspeed from './Hyperspeed';
 
@@ -17851,22 +18098,24 @@ import Hyperspeed from './Hyperspeed';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
+
+| Prop          | Type   | Default                                            | Description                                                                                                                 |
+| ------------- | ------ | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | effectOptions | object | See the "code" tab for default values and presets. | The highly customizable configuration object for the effect, controls things like colors, distortion, line properties, etc. |
 
 ### Full Component Source
-```jsx
-import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'postprocessing';
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
 
-import './Hyperspeed.css';
+```jsx
+import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from "postprocessing"
+import { useEffect, useRef } from "react"
+import * as THREE from "three"
+
+import "./Hyperspeed.css"
 
 const DEFAULT_EFFECT_OPTIONS = {
   onSpeedUp: () => {},
   onSlowDown: () => {},
-  distortion: 'turbulentDistortion',
+  distortion: "turbulentDistortion",
   length: 400,
   roadWidth: 10,
   islandWidth: 2,
@@ -17897,52 +18146,52 @@ const DEFAULT_EFFECT_OPTIONS = {
     brokenLines: 0xffffff,
     leftCars: [0xd856bf, 0x6750a2, 0xc247ac],
     rightCars: [0x03b3c3, 0x0e5ea5, 0x324555],
-    sticks: 0x03b3c3
-  }
-};
+    sticks: 0x03b3c3,
+  },
+}
 
 const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
-  const hyperspeed = useRef(null);
-  const appRef = useRef(null);
+  const hyperspeed = useRef(null)
+  const appRef = useRef(null)
 
   useEffect(() => {
     if (appRef.current) {
-      appRef.current.dispose();
-      appRef.current = null;
-      const container = hyperspeed.current;
+      appRef.current.dispose()
+      appRef.current = null
+      const container = hyperspeed.current
       if (container) {
         while (container.firstChild) {
-          container.removeChild(container.firstChild);
+          container.removeChild(container.firstChild)
         }
       }
     }
     const mountainUniforms = {
       uFreq: { value: new THREE.Vector3(3, 6, 10) },
-      uAmp: { value: new THREE.Vector3(30, 30, 20) }
-    };
+      uAmp: { value: new THREE.Vector3(30, 30, 20) },
+    }
 
     const xyUniforms = {
       uFreq: { value: new THREE.Vector2(5, 2) },
-      uAmp: { value: new THREE.Vector2(25, 15) }
-    };
+      uAmp: { value: new THREE.Vector2(25, 15) },
+    }
 
     const LongRaceUniforms = {
       uFreq: { value: new THREE.Vector2(2, 3) },
-      uAmp: { value: new THREE.Vector2(35, 10) }
-    };
+      uAmp: { value: new THREE.Vector2(35, 10) },
+    }
 
     const turbulentUniforms = {
       uFreq: { value: new THREE.Vector4(4, 8, 8, 1) },
-      uAmp: { value: new THREE.Vector4(25, 5, 10, 10) }
-    };
+      uAmp: { value: new THREE.Vector4(25, 5, 10, 10) },
+    }
 
     const deepUniforms = {
       uFreq: { value: new THREE.Vector2(4, 8) },
       uAmp: { value: new THREE.Vector2(10, 20) },
-      uPowY: { value: new THREE.Vector2(20, 2) }
-    };
+      uPowY: { value: new THREE.Vector2(20, 2) },
+    }
 
-    let nsin = val => Math.sin(val) * 0.5 + 0.5;
+    let nsin = (val) => Math.sin(val) * 0.5 + 0.5
 
     const distortions = {
       mountainDistortion: {
@@ -17964,21 +18213,21 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
           }
         `,
         getJS: (progress, time) => {
-          let movementProgressFix = 0.02;
-          let uFreq = mountainUniforms.uFreq.value;
-          let uAmp = mountainUniforms.uAmp.value;
+          let movementProgressFix = 0.02
+          let uFreq = mountainUniforms.uFreq.value
+          let uAmp = mountainUniforms.uAmp.value
           let distortion = new THREE.Vector3(
             Math.cos(progress * Math.PI * uFreq.x + time) * uAmp.x -
               Math.cos(movementProgressFix * Math.PI * uFreq.x + time) * uAmp.x,
             nsin(progress * Math.PI * uFreq.y + time) * uAmp.y -
               nsin(movementProgressFix * Math.PI * uFreq.y + time) * uAmp.y,
             nsin(progress * Math.PI * uFreq.z + time) * uAmp.z -
-              nsin(movementProgressFix * Math.PI * uFreq.z + time) * uAmp.z
-          );
-          let lookAtAmp = new THREE.Vector3(2, 2, 2);
-          let lookAtOffset = new THREE.Vector3(0, 0, -5);
-          return distortion.multiply(lookAtAmp).add(lookAtOffset);
-        }
+              nsin(movementProgressFix * Math.PI * uFreq.z + time) * uAmp.z,
+          )
+          let lookAtAmp = new THREE.Vector3(2, 2, 2)
+          let lookAtOffset = new THREE.Vector3(0, 0, -5)
+          return distortion.multiply(lookAtAmp).add(lookAtOffset)
+        },
       },
       xyDistortion: {
         uniforms: xyUniforms,
@@ -17996,20 +18245,20 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
           }
         `,
         getJS: (progress, time) => {
-          let movementProgressFix = 0.02;
-          let uFreq = xyUniforms.uFreq.value;
-          let uAmp = xyUniforms.uAmp.value;
+          let movementProgressFix = 0.02
+          let uFreq = xyUniforms.uFreq.value
+          let uAmp = xyUniforms.uAmp.value
           let distortion = new THREE.Vector3(
             Math.cos(progress * Math.PI * uFreq.x + time) * uAmp.x -
               Math.cos(movementProgressFix * Math.PI * uFreq.x + time) * uAmp.x,
             Math.sin(progress * Math.PI * uFreq.y + time + Math.PI / 2) * uAmp.y -
               Math.sin(movementProgressFix * Math.PI * uFreq.y + time + Math.PI / 2) * uAmp.y,
-            0
-          );
-          let lookAtAmp = new THREE.Vector3(2, 0.4, 1);
-          let lookAtOffset = new THREE.Vector3(0, 0, -3);
-          return distortion.multiply(lookAtAmp).add(lookAtOffset);
-        }
+            0,
+          )
+          let lookAtAmp = new THREE.Vector3(2, 0.4, 1)
+          let lookAtOffset = new THREE.Vector3(0, 0, -3)
+          return distortion.multiply(lookAtAmp).add(lookAtOffset)
+        },
       },
       LongRaceDistortion: {
         uniforms: LongRaceUniforms,
@@ -18027,20 +18276,20 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
           }
         `,
         getJS: (progress, time) => {
-          let camProgress = 0.0125;
-          let uFreq = LongRaceUniforms.uFreq.value;
-          let uAmp = LongRaceUniforms.uAmp.value;
+          let camProgress = 0.0125
+          let uFreq = LongRaceUniforms.uFreq.value
+          let uAmp = LongRaceUniforms.uAmp.value
           let distortion = new THREE.Vector3(
             Math.sin(progress * Math.PI * uFreq.x + time) * uAmp.x -
               Math.sin(camProgress * Math.PI * uFreq.x + time) * uAmp.x,
             Math.sin(progress * Math.PI * uFreq.y + time) * uAmp.y -
               Math.sin(camProgress * Math.PI * uFreq.y + time) * uAmp.y,
-            0
-          );
-          let lookAtAmp = new THREE.Vector3(1, 1, 0);
-          let lookAtOffset = new THREE.Vector3(0, 0, -5);
-          return distortion.multiply(lookAtAmp).add(lookAtOffset);
-        }
+            0,
+          )
+          let lookAtAmp = new THREE.Vector3(1, 1, 0)
+          let lookAtOffset = new THREE.Vector3(0, 0, -5)
+          return distortion.multiply(lookAtAmp).add(lookAtOffset)
+        },
       },
       turbulentDistortion: {
         uniforms: turbulentUniforms,
@@ -18072,26 +18321,26 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
           }
         `,
         getJS: (progress, time) => {
-          const uFreq = turbulentUniforms.uFreq.value;
-          const uAmp = turbulentUniforms.uAmp.value;
+          const uFreq = turbulentUniforms.uFreq.value
+          const uAmp = turbulentUniforms.uAmp.value
 
-          const getX = p =>
+          const getX = (p) =>
             Math.cos(Math.PI * p * uFreq.x + time) * uAmp.x +
-            Math.pow(Math.cos(Math.PI * p * uFreq.y + time * (uFreq.y / uFreq.x)), 2) * uAmp.y;
+            Math.pow(Math.cos(Math.PI * p * uFreq.y + time * (uFreq.y / uFreq.x)), 2) * uAmp.y
 
-          const getY = p =>
+          const getY = (p) =>
             -nsin(Math.PI * p * uFreq.z + time) * uAmp.z -
-            Math.pow(nsin(Math.PI * p * uFreq.w + time / (uFreq.z / uFreq.w)), 5) * uAmp.w;
+            Math.pow(nsin(Math.PI * p * uFreq.w + time / (uFreq.z / uFreq.w)), 5) * uAmp.w
 
           let distortion = new THREE.Vector3(
             getX(progress) - getX(progress + 0.007),
             getY(progress) - getY(progress + 0.007),
-            0
-          );
-          let lookAtAmp = new THREE.Vector3(-2, -5, 0);
-          let lookAtOffset = new THREE.Vector3(0, 0, -10);
-          return distortion.multiply(lookAtAmp).add(lookAtOffset);
-        }
+            0,
+          )
+          let lookAtAmp = new THREE.Vector3(-2, -5, 0)
+          let lookAtOffset = new THREE.Vector3(0, 0, -10)
+          return distortion.multiply(lookAtAmp).add(lookAtOffset)
+        },
       },
       turbulentDistortionStill: {
         uniforms: turbulentUniforms,
@@ -18121,7 +18370,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
               0.
             );
           }
-        `
+        `,
       },
       deepDistortionStill: {
         uniforms: deepUniforms,
@@ -18150,7 +18399,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
               0.
             );
           }
-        `
+        `,
       },
       deepDistortion: {
         uniforms: deepUniforms,
@@ -18181,362 +18430,362 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
           }
         `,
         getJS: (progress, time) => {
-          const uFreq = deepUniforms.uFreq.value;
-          const uAmp = deepUniforms.uAmp.value;
-          const uPowY = deepUniforms.uPowY.value;
+          const uFreq = deepUniforms.uFreq.value
+          const uAmp = deepUniforms.uAmp.value
+          const uPowY = deepUniforms.uPowY.value
 
-          const getX = p => Math.sin(p * Math.PI * uFreq.x + time) * uAmp.x;
-          const getY = p => Math.pow(p * uPowY.x, uPowY.y) + Math.sin(p * Math.PI * uFreq.y + time) * uAmp.y;
+          const getX = (p) => Math.sin(p * Math.PI * uFreq.x + time) * uAmp.x
+          const getY = (p) => Math.pow(p * uPowY.x, uPowY.y) + Math.sin(p * Math.PI * uFreq.y + time) * uAmp.y
 
           let distortion = new THREE.Vector3(
             getX(progress) - getX(progress + 0.01),
             getY(progress) - getY(progress + 0.01),
-            0
-          );
-          let lookAtAmp = new THREE.Vector3(-2, -4, 0);
-          let lookAtOffset = new THREE.Vector3(0, 0, -10);
-          return distortion.multiply(lookAtAmp).add(lookAtOffset);
-        }
-      }
-    };
+            0,
+          )
+          let lookAtAmp = new THREE.Vector3(-2, -4, 0)
+          let lookAtOffset = new THREE.Vector3(0, 0, -10)
+          return distortion.multiply(lookAtAmp).add(lookAtOffset)
+        },
+      },
+    }
 
     class App {
       constructor(container, options = {}) {
-        this.options = options;
+        this.options = options
         if (this.options.distortion == null) {
           this.options.distortion = {
             uniforms: distortion_uniforms,
-            getDistortion: distortion_vertex
-          };
+            getDistortion: distortion_vertex,
+          }
         }
-        this.container = container;
-        this.hasValidSize = false;
+        this.container = container
+        this.hasValidSize = false
 
-        const initW = Math.max(1, container.offsetWidth);
-        const initH = Math.max(1, container.offsetHeight);
+        const initW = Math.max(1, container.offsetWidth)
+        const initH = Math.max(1, container.offsetHeight)
 
         this.renderer = new THREE.WebGLRenderer({
           antialias: false,
-          alpha: true
-        });
-        this.renderer.setSize(initW, initH, false);
-        this.renderer.setPixelRatio(window.devicePixelRatio);
-        this.composer = new EffectComposer(this.renderer);
-        container.append(this.renderer.domElement);
+          alpha: true,
+        })
+        this.renderer.setSize(initW, initH, false)
+        this.renderer.setPixelRatio(window.devicePixelRatio)
+        this.composer = new EffectComposer(this.renderer)
+        container.append(this.renderer.domElement)
 
-        this.camera = new THREE.PerspectiveCamera(options.fov, initW / initH, 0.1, 10000);
-        this.camera.position.z = -5;
-        this.camera.position.y = 8;
-        this.camera.position.x = 0;
-        this.scene = new THREE.Scene();
-        this.scene.background = null;
+        this.camera = new THREE.PerspectiveCamera(options.fov, initW / initH, 0.1, 10000)
+        this.camera.position.z = -5
+        this.camera.position.y = 8
+        this.camera.position.x = 0
+        this.scene = new THREE.Scene()
+        this.scene.background = null
 
-        let fog = new THREE.Fog(options.colors.background, options.length * 0.2, options.length * 500);
-        this.scene.fog = fog;
+        let fog = new THREE.Fog(options.colors.background, options.length * 0.2, options.length * 500)
+        this.scene.fog = fog
         this.fogUniforms = {
           fogColor: { value: fog.color },
           fogNear: { value: fog.near },
-          fogFar: { value: fog.far }
-        };
-        this.clock = new THREE.Clock();
-        this.assets = {};
-        this.disposed = false;
+          fogFar: { value: fog.far },
+        }
+        this.clock = new THREE.Clock()
+        this.assets = {}
+        this.disposed = false
 
-        this.road = new Road(this, options);
+        this.road = new Road(this, options)
         this.leftCarLights = new CarLights(
           this,
           options,
           options.colors.leftCars,
           options.movingAwaySpeed,
-          new THREE.Vector2(0, 1 - options.carLightsFade)
-        );
+          new THREE.Vector2(0, 1 - options.carLightsFade),
+        )
         this.rightCarLights = new CarLights(
           this,
           options,
           options.colors.rightCars,
           options.movingCloserSpeed,
-          new THREE.Vector2(1, 0 + options.carLightsFade)
-        );
-        this.leftSticks = new LightsSticks(this, options);
+          new THREE.Vector2(1, 0 + options.carLightsFade),
+        )
+        this.leftSticks = new LightsSticks(this, options)
 
-        this.fovTarget = options.fov;
-        this.speedUpTarget = 0;
-        this.speedUp = 0;
-        this.timeOffset = 0;
+        this.fovTarget = options.fov
+        this.speedUpTarget = 0
+        this.speedUp = 0
+        this.timeOffset = 0
 
-        this.tick = this.tick.bind(this);
-        this.init = this.init.bind(this);
-        this.setSize = this.setSize.bind(this);
-        this.onMouseDown = this.onMouseDown.bind(this);
-        this.onMouseUp = this.onMouseUp.bind(this);
+        this.tick = this.tick.bind(this)
+        this.init = this.init.bind(this)
+        this.setSize = this.setSize.bind(this)
+        this.onMouseDown = this.onMouseDown.bind(this)
+        this.onMouseUp = this.onMouseUp.bind(this)
 
-        this.onTouchStart = this.onTouchStart.bind(this);
-        this.onTouchEnd = this.onTouchEnd.bind(this);
-        this.onContextMenu = this.onContextMenu.bind(this);
+        this.onTouchStart = this.onTouchStart.bind(this)
+        this.onTouchEnd = this.onTouchEnd.bind(this)
+        this.onContextMenu = this.onContextMenu.bind(this)
 
-        this.onWindowResize = this.onWindowResize.bind(this);
-        window.addEventListener('resize', this.onWindowResize);
+        this.onWindowResize = this.onWindowResize.bind(this)
+        window.addEventListener("resize", this.onWindowResize)
 
         if (container.offsetWidth > 0 && container.offsetHeight > 0) {
-          this.hasValidSize = true;
+          this.hasValidSize = true
         }
       }
 
       onWindowResize() {
-        const width = this.container.offsetWidth;
-        const height = this.container.offsetHeight;
+        const width = this.container.offsetWidth
+        const height = this.container.offsetHeight
 
         if (width <= 0 || height <= 0) {
-          this.hasValidSize = false;
-          return;
+          this.hasValidSize = false
+          return
         }
 
-        this.renderer.setSize(width, height);
-        this.camera.aspect = width / height;
-        this.camera.updateProjectionMatrix();
-        this.composer.setSize(width, height);
-        this.hasValidSize = true;
+        this.renderer.setSize(width, height)
+        this.camera.aspect = width / height
+        this.camera.updateProjectionMatrix()
+        this.composer.setSize(width, height)
+        this.hasValidSize = true
       }
 
       initPasses() {
-        this.renderPass = new RenderPass(this.scene, this.camera);
+        this.renderPass = new RenderPass(this.scene, this.camera)
         this.bloomPass = new EffectPass(
           this.camera,
           new BloomEffect({
             luminanceThreshold: 0.2,
             luminanceSmoothing: 0,
-            resolutionScale: 1
-          })
-        );
+            resolutionScale: 1,
+          }),
+        )
 
         const smaaPass = new EffectPass(
           this.camera,
           new SMAAEffect({
             preset: SMAAPreset.MEDIUM,
             searchImage: SMAAEffect.searchImageDataURL,
-            areaImage: SMAAEffect.areaImageDataURL
-          })
-        );
-        this.renderPass.renderToScreen = false;
-        this.bloomPass.renderToScreen = false;
-        smaaPass.renderToScreen = true;
-        this.composer.addPass(this.renderPass);
-        this.composer.addPass(this.bloomPass);
-        this.composer.addPass(smaaPass);
+            areaImage: SMAAEffect.areaImageDataURL,
+          }),
+        )
+        this.renderPass.renderToScreen = false
+        this.bloomPass.renderToScreen = false
+        smaaPass.renderToScreen = true
+        this.composer.addPass(this.renderPass)
+        this.composer.addPass(this.bloomPass)
+        this.composer.addPass(smaaPass)
       }
 
       loadAssets() {
-        const assets = this.assets;
-        return new Promise(resolve => {
-          const manager = new THREE.LoadingManager(resolve);
+        const assets = this.assets
+        return new Promise((resolve) => {
+          const manager = new THREE.LoadingManager(resolve)
 
-          const searchImage = new Image();
-          const areaImage = new Image();
-          assets.smaa = {};
-          searchImage.addEventListener('load', function () {
-            assets.smaa.search = this;
-            manager.itemEnd('smaa-search');
-          });
+          const searchImage = new Image()
+          const areaImage = new Image()
+          assets.smaa = {}
+          searchImage.addEventListener("load", function () {
+            assets.smaa.search = this
+            manager.itemEnd("smaa-search")
+          })
 
-          areaImage.addEventListener('load', function () {
-            assets.smaa.area = this;
-            manager.itemEnd('smaa-area');
-          });
-          manager.itemStart('smaa-search');
-          manager.itemStart('smaa-area');
+          areaImage.addEventListener("load", function () {
+            assets.smaa.area = this
+            manager.itemEnd("smaa-area")
+          })
+          manager.itemStart("smaa-search")
+          manager.itemStart("smaa-area")
 
-          searchImage.src = SMAAEffect.searchImageDataURL;
-          areaImage.src = SMAAEffect.areaImageDataURL;
-        });
+          searchImage.src = SMAAEffect.searchImageDataURL
+          areaImage.src = SMAAEffect.areaImageDataURL
+        })
       }
 
       init() {
-        this.initPasses();
-        const options = this.options;
-        this.road.init();
-        this.leftCarLights.init();
+        this.initPasses()
+        const options = this.options
+        this.road.init()
+        this.leftCarLights.init()
 
-        this.leftCarLights.mesh.position.setX(-options.roadWidth / 2 - options.islandWidth / 2);
-        this.rightCarLights.init();
-        this.rightCarLights.mesh.position.setX(options.roadWidth / 2 + options.islandWidth / 2);
-        this.leftSticks.init();
-        this.leftSticks.mesh.position.setX(-(options.roadWidth + options.islandWidth / 2));
+        this.leftCarLights.mesh.position.setX(-options.roadWidth / 2 - options.islandWidth / 2)
+        this.rightCarLights.init()
+        this.rightCarLights.mesh.position.setX(options.roadWidth / 2 + options.islandWidth / 2)
+        this.leftSticks.init()
+        this.leftSticks.mesh.position.setX(-(options.roadWidth + options.islandWidth / 2))
 
-        this.container.addEventListener('mousedown', this.onMouseDown);
-        this.container.addEventListener('mouseup', this.onMouseUp);
-        this.container.addEventListener('mouseout', this.onMouseUp);
+        this.container.addEventListener("mousedown", this.onMouseDown)
+        this.container.addEventListener("mouseup", this.onMouseUp)
+        this.container.addEventListener("mouseout", this.onMouseUp)
 
-        this.container.addEventListener('touchstart', this.onTouchStart, { passive: true });
-        this.container.addEventListener('touchend', this.onTouchEnd, { passive: true });
-        this.container.addEventListener('touchcancel', this.onTouchEnd, { passive: true });
+        this.container.addEventListener("touchstart", this.onTouchStart, { passive: true })
+        this.container.addEventListener("touchend", this.onTouchEnd, { passive: true })
+        this.container.addEventListener("touchcancel", this.onTouchEnd, { passive: true })
 
-        this.container.addEventListener('contextmenu', this.onContextMenu);
+        this.container.addEventListener("contextmenu", this.onContextMenu)
 
-        this.tick();
+        this.tick()
       }
 
       onMouseDown(ev) {
-        if (this.options.onSpeedUp) this.options.onSpeedUp(ev);
-        this.fovTarget = this.options.fovSpeedUp;
-        this.speedUpTarget = this.options.speedUp;
+        if (this.options.onSpeedUp) this.options.onSpeedUp(ev)
+        this.fovTarget = this.options.fovSpeedUp
+        this.speedUpTarget = this.options.speedUp
       }
 
       onMouseUp(ev) {
-        if (this.options.onSlowDown) this.options.onSlowDown(ev);
-        this.fovTarget = this.options.fov;
-        this.speedUpTarget = 0;
+        if (this.options.onSlowDown) this.options.onSlowDown(ev)
+        this.fovTarget = this.options.fov
+        this.speedUpTarget = 0
       }
 
       onTouchStart(ev) {
-        if (this.options.onSpeedUp) this.options.onSpeedUp(ev);
-        this.fovTarget = this.options.fovSpeedUp;
-        this.speedUpTarget = this.options.speedUp;
+        if (this.options.onSpeedUp) this.options.onSpeedUp(ev)
+        this.fovTarget = this.options.fovSpeedUp
+        this.speedUpTarget = this.options.speedUp
       }
 
       onTouchEnd(ev) {
-        if (this.options.onSlowDown) this.options.onSlowDown(ev);
-        this.fovTarget = this.options.fov;
-        this.speedUpTarget = 0;
+        if (this.options.onSlowDown) this.options.onSlowDown(ev)
+        this.fovTarget = this.options.fov
+        this.speedUpTarget = 0
       }
 
       onContextMenu(ev) {
-        ev.preventDefault();
+        ev.preventDefault()
       }
 
       update(delta) {
-        let lerpPercentage = Math.exp(-(-60 * Math.log2(1 - 0.1)) * delta);
-        this.speedUp += lerp(this.speedUp, this.speedUpTarget, lerpPercentage, 0.00001);
-        this.timeOffset += this.speedUp * delta;
+        let lerpPercentage = Math.exp(-(-60 * Math.log2(1 - 0.1)) * delta)
+        this.speedUp += lerp(this.speedUp, this.speedUpTarget, lerpPercentage, 0.00001)
+        this.timeOffset += this.speedUp * delta
 
-        let time = this.clock.elapsedTime + this.timeOffset;
+        let time = this.clock.elapsedTime + this.timeOffset
 
-        this.rightCarLights.update(time);
-        this.leftCarLights.update(time);
-        this.leftSticks.update(time);
-        this.road.update(time);
+        this.rightCarLights.update(time)
+        this.leftCarLights.update(time)
+        this.leftSticks.update(time)
+        this.road.update(time)
 
-        let updateCamera = false;
-        let fovChange = lerp(this.camera.fov, this.fovTarget, lerpPercentage);
+        let updateCamera = false
+        let fovChange = lerp(this.camera.fov, this.fovTarget, lerpPercentage)
         if (fovChange !== 0) {
-          this.camera.fov += fovChange * delta * 6;
-          updateCamera = true;
+          this.camera.fov += fovChange * delta * 6
+          updateCamera = true
         }
 
         if (this.options.distortion.getJS) {
-          const distortion = this.options.distortion.getJS(0.025, time);
+          const distortion = this.options.distortion.getJS(0.025, time)
 
           this.camera.lookAt(
             new THREE.Vector3(
               this.camera.position.x + distortion.x,
               this.camera.position.y + distortion.y,
-              this.camera.position.z + distortion.z
-            )
-          );
-          updateCamera = true;
+              this.camera.position.z + distortion.z,
+            ),
+          )
+          updateCamera = true
         }
         if (updateCamera) {
-          this.camera.updateProjectionMatrix();
+          this.camera.updateProjectionMatrix()
         }
       }
 
       render(delta) {
-        this.composer.render(delta);
+        this.composer.render(delta)
       }
 
       dispose() {
-        this.disposed = true;
+        this.disposed = true
 
         if (this.scene) {
-          this.scene.traverse(object => {
-            const obj = object;
-            if (!obj.isMesh) return;
+          this.scene.traverse((object) => {
+            const obj = object
+            if (!obj.isMesh) return
 
-            if (obj.geometry) obj.geometry.dispose();
+            if (obj.geometry) obj.geometry.dispose()
 
             if (obj.material) {
               if (Array.isArray(obj.material)) {
-                obj.material.forEach(material => material.dispose());
+                obj.material.forEach((material) => material.dispose())
               } else {
-                obj.material.dispose();
+                obj.material.dispose()
               }
             }
-          });
-          this.scene.clear();
+          })
+          this.scene.clear()
         }
 
         if (this.renderer) {
-          this.renderer.dispose();
-          this.renderer.forceContextLoss();
+          this.renderer.dispose()
+          this.renderer.forceContextLoss()
           if (this.renderer.domElement && this.renderer.domElement.parentNode) {
-            this.renderer.domElement.parentNode.removeChild(this.renderer.domElement);
+            this.renderer.domElement.parentNode.removeChild(this.renderer.domElement)
           }
         }
         if (this.composer) {
-          this.composer.dispose();
+          this.composer.dispose()
         }
 
-        window.removeEventListener('resize', this.onWindowResize);
+        window.removeEventListener("resize", this.onWindowResize)
         if (this.container) {
-          this.container.removeEventListener('mousedown', this.onMouseDown);
-          this.container.removeEventListener('mouseup', this.onMouseUp);
-          this.container.removeEventListener('mouseout', this.onMouseUp);
+          this.container.removeEventListener("mousedown", this.onMouseDown)
+          this.container.removeEventListener("mouseup", this.onMouseUp)
+          this.container.removeEventListener("mouseout", this.onMouseUp)
 
-          this.container.removeEventListener('touchstart', this.onTouchStart);
-          this.container.removeEventListener('touchend', this.onTouchEnd);
-          this.container.removeEventListener('touchcancel', this.onTouchEnd);
-          this.container.removeEventListener('contextmenu', this.onContextMenu);
+          this.container.removeEventListener("touchstart", this.onTouchStart)
+          this.container.removeEventListener("touchend", this.onTouchEnd)
+          this.container.removeEventListener("touchcancel", this.onTouchEnd)
+          this.container.removeEventListener("contextmenu", this.onContextMenu)
         }
       }
 
       setSize(width, height, updateStyles) {
         if (width <= 0 || height <= 0) {
-          this.hasValidSize = false;
-          return;
+          this.hasValidSize = false
+          return
         }
-        this.composer.setSize(width, height, updateStyles);
-        this.hasValidSize = true;
+        this.composer.setSize(width, height, updateStyles)
+        this.hasValidSize = true
       }
 
       tick() {
-        if (this.disposed) return;
+        if (this.disposed) return
 
         if (!this.hasValidSize) {
-          const w = this.container.offsetWidth;
-          const h = this.container.offsetHeight;
+          const w = this.container.offsetWidth
+          const h = this.container.offsetHeight
           if (w > 0 && h > 0) {
-            this.renderer.setSize(w, h, false);
-            this.camera.aspect = w / h;
-            this.camera.updateProjectionMatrix();
-            this.composer.setSize(w, h);
-            this.hasValidSize = true;
+            this.renderer.setSize(w, h, false)
+            this.camera.aspect = w / h
+            this.camera.updateProjectionMatrix()
+            this.composer.setSize(w, h)
+            this.hasValidSize = true
           } else {
-            requestAnimationFrame(this.tick);
-            return;
+            requestAnimationFrame(this.tick)
+            return
           }
         }
 
         if (resizeRendererToDisplaySize(this.renderer, this.setSize)) {
-          const canvas = this.renderer.domElement;
+          const canvas = this.renderer.domElement
           if (this.hasValidSize) {
-            this.camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            this.camera.updateProjectionMatrix();
+            this.camera.aspect = canvas.clientWidth / canvas.clientHeight
+            this.camera.updateProjectionMatrix()
           }
         }
 
         if (this.hasValidSize) {
-          const delta = this.clock.getDelta();
-          this.render(delta);
-          this.update(delta);
+          const delta = this.clock.getDelta()
+          this.render(delta)
+          this.update(delta)
         }
 
-        requestAnimationFrame(this.tick);
+        requestAnimationFrame(this.tick)
       }
     }
 
     const distortion_uniforms = {
       uDistortionX: { value: new THREE.Vector2(80, 3) },
-      uDistortionY: { value: new THREE.Vector2(-40, 2.5) }
-    };
+      uDistortionY: { value: new THREE.Vector2(-40, 2.5) },
+    }
 
     const distortion_vertex = `
       #define PI 3.14159265358979
@@ -18557,101 +18806,101 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
           0.
         );
       }
-    `;
+    `
 
-    const random = base => {
-      if (Array.isArray(base)) return Math.random() * (base[1] - base[0]) + base[0];
-      return Math.random() * base;
-    };
+    const random = (base) => {
+      if (Array.isArray(base)) return Math.random() * (base[1] - base[0]) + base[0]
+      return Math.random() * base
+    }
 
-    const pickRandom = arr => {
-      if (Array.isArray(arr)) return arr[Math.floor(Math.random() * arr.length)];
-      return arr;
-    };
+    const pickRandom = (arr) => {
+      if (Array.isArray(arr)) return arr[Math.floor(Math.random() * arr.length)]
+      return arr
+    }
 
     function lerp(current, target, speed = 0.1, limit = 0.001) {
-      let change = (target - current) * speed;
+      let change = (target - current) * speed
       if (Math.abs(change) < limit) {
-        change = target - current;
+        change = target - current
       }
-      return change;
+      return change
     }
 
     class CarLights {
       constructor(webgl, options, colors, speed, fade) {
-        this.webgl = webgl;
-        this.options = options;
-        this.colors = colors;
-        this.speed = speed;
-        this.fade = fade;
+        this.webgl = webgl
+        this.options = options
+        this.colors = colors
+        this.speed = speed
+        this.fade = fade
       }
 
       init() {
-        const options = this.options;
-        let curve = new THREE.LineCurve3(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, -1));
-        let geometry = new THREE.TubeGeometry(curve, 40, 1, 8, false);
+        const options = this.options
+        let curve = new THREE.LineCurve3(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, -1))
+        let geometry = new THREE.TubeGeometry(curve, 40, 1, 8, false)
 
-        let instanced = new THREE.InstancedBufferGeometry().copy(geometry);
-        instanced.instanceCount = options.lightPairsPerRoadWay * 2;
+        let instanced = new THREE.InstancedBufferGeometry().copy(geometry)
+        instanced.instanceCount = options.lightPairsPerRoadWay * 2
 
-        let laneWidth = options.roadWidth / options.lanesPerRoad;
+        let laneWidth = options.roadWidth / options.lanesPerRoad
 
-        let aOffset = [];
-        let aMetrics = [];
-        let aColor = [];
+        let aOffset = []
+        let aMetrics = []
+        let aColor = []
 
-        let colors = this.colors;
+        let colors = this.colors
         if (Array.isArray(colors)) {
-          colors = colors.map(c => new THREE.Color(c));
+          colors = colors.map((c) => new THREE.Color(c))
         } else {
-          colors = new THREE.Color(colors);
+          colors = new THREE.Color(colors)
         }
 
         for (let i = 0; i < options.lightPairsPerRoadWay; i++) {
-          let radius = random(options.carLightsRadius);
-          let length = random(options.carLightsLength);
-          let speed = random(this.speed);
+          let radius = random(options.carLightsRadius)
+          let length = random(options.carLightsLength)
+          let speed = random(this.speed)
 
-          let carLane = i % options.lanesPerRoad;
-          let laneX = carLane * laneWidth - options.roadWidth / 2 + laneWidth / 2;
+          let carLane = i % options.lanesPerRoad
+          let laneX = carLane * laneWidth - options.roadWidth / 2 + laneWidth / 2
 
-          let carWidth = random(options.carWidthPercentage) * laneWidth;
-          let carShiftX = random(options.carShiftX) * laneWidth;
-          laneX += carShiftX;
+          let carWidth = random(options.carWidthPercentage) * laneWidth
+          let carShiftX = random(options.carShiftX) * laneWidth
+          laneX += carShiftX
 
-          let offsetY = random(options.carFloorSeparation) + radius * 1.3;
+          let offsetY = random(options.carFloorSeparation) + radius * 1.3
 
-          let offsetZ = -random(options.length);
+          let offsetZ = -random(options.length)
 
-          aOffset.push(laneX - carWidth / 2);
-          aOffset.push(offsetY);
-          aOffset.push(offsetZ);
+          aOffset.push(laneX - carWidth / 2)
+          aOffset.push(offsetY)
+          aOffset.push(offsetZ)
 
-          aOffset.push(laneX + carWidth / 2);
-          aOffset.push(offsetY);
-          aOffset.push(offsetZ);
+          aOffset.push(laneX + carWidth / 2)
+          aOffset.push(offsetY)
+          aOffset.push(offsetZ)
 
-          aMetrics.push(radius);
-          aMetrics.push(length);
-          aMetrics.push(speed);
+          aMetrics.push(radius)
+          aMetrics.push(length)
+          aMetrics.push(speed)
 
-          aMetrics.push(radius);
-          aMetrics.push(length);
-          aMetrics.push(speed);
+          aMetrics.push(radius)
+          aMetrics.push(length)
+          aMetrics.push(speed)
 
-          let color = pickRandom(colors);
-          aColor.push(color.r);
-          aColor.push(color.g);
-          aColor.push(color.b);
+          let color = pickRandom(colors)
+          aColor.push(color.r)
+          aColor.push(color.g)
+          aColor.push(color.b)
 
-          aColor.push(color.r);
-          aColor.push(color.g);
-          aColor.push(color.b);
+          aColor.push(color.r)
+          aColor.push(color.g)
+          aColor.push(color.b)
         }
 
-        instanced.setAttribute('aOffset', new THREE.InstancedBufferAttribute(new Float32Array(aOffset), 3, false));
-        instanced.setAttribute('aMetrics', new THREE.InstancedBufferAttribute(new Float32Array(aMetrics), 3, false));
-        instanced.setAttribute('aColor', new THREE.InstancedBufferAttribute(new Float32Array(aColor), 3, false));
+        instanced.setAttribute("aOffset", new THREE.InstancedBufferAttribute(new Float32Array(aOffset), 3, false))
+        instanced.setAttribute("aMetrics", new THREE.InstancedBufferAttribute(new Float32Array(aMetrics), 3, false))
+        instanced.setAttribute("aColor", new THREE.InstancedBufferAttribute(new Float32Array(aColor), 3, false))
 
         let material = new THREE.ShaderMaterial({
           fragmentShader: carLightsFragment,
@@ -18661,34 +18910,34 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
             {
               uTime: { value: 0 },
               uTravelLength: { value: options.length },
-              uFade: { value: this.fade }
+              uFade: { value: this.fade },
             },
             this.webgl.fogUniforms,
-            options.distortion.uniforms
-          )
-        });
+            options.distortion.uniforms,
+          ),
+        })
 
-        material.onBeforeCompile = shader => {
+        material.onBeforeCompile = (shader) => {
           shader.vertexShader = shader.vertexShader.replace(
-            '#include <getDistortion_vertex>',
-            options.distortion.getDistortion
-          );
-        };
+            "#include <getDistortion_vertex>",
+            options.distortion.getDistortion,
+          )
+        }
 
-        let mesh = new THREE.Mesh(instanced, material);
-        mesh.frustumCulled = false;
-        this.webgl.scene.add(mesh);
-        this.mesh = mesh;
+        let mesh = new THREE.Mesh(instanced, material)
+        mesh.frustumCulled = false
+        this.webgl.scene.add(mesh)
+        this.mesh = mesh
       }
 
       update(time) {
-        this.mesh.material.uniforms.uTime.value = time;
+        this.mesh.material.uniforms.uTime.value = time
       }
     }
 
     const carLightsFragment = `
       #define USE_FOG;
-      ${THREE.ShaderChunk['fog_pars_fragment']}
+      ${THREE.ShaderChunk["fog_pars_fragment"]}
       varying vec3 vColor;
       varying vec2 vUv; 
       uniform vec2 uFade;
@@ -18697,13 +18946,13 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         float alpha = smoothstep(uFade.x, uFade.y, vUv.x);
         gl_FragColor = vec4(color, alpha);
         if (gl_FragColor.a < 0.0001) discard;
-        ${THREE.ShaderChunk['fog_fragment']}
+        ${THREE.ShaderChunk["fog_fragment"]}
       }
-    `;
+    `
 
     const carLightsVertex = `
       #define USE_FOG;
-      ${THREE.ShaderChunk['fog_pars_vertex']}
+      ${THREE.ShaderChunk["fog_pars_vertex"]}
       attribute vec3 aOffset;
       attribute vec3 aMetrics;
       attribute vec3 aColor;
@@ -18731,52 +18980,52 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         gl_Position = projectionMatrix * mvPosition;
         vUv = uv;
         vColor = aColor;
-        ${THREE.ShaderChunk['fog_vertex']}
+        ${THREE.ShaderChunk["fog_vertex"]}
       }
-    `;
+    `
 
     class LightsSticks {
       constructor(webgl, options) {
-        this.webgl = webgl;
-        this.options = options;
+        this.webgl = webgl
+        this.options = options
       }
 
       init() {
-        const options = this.options;
-        const geometry = new THREE.PlaneGeometry(1, 1);
-        let instanced = new THREE.InstancedBufferGeometry().copy(geometry);
-        let totalSticks = options.totalSideLightSticks;
-        instanced.instanceCount = totalSticks;
+        const options = this.options
+        const geometry = new THREE.PlaneGeometry(1, 1)
+        let instanced = new THREE.InstancedBufferGeometry().copy(geometry)
+        let totalSticks = options.totalSideLightSticks
+        instanced.instanceCount = totalSticks
 
-        let stickoffset = options.length / (totalSticks - 1);
-        const aOffset = [];
-        const aColor = [];
-        const aMetrics = [];
+        let stickoffset = options.length / (totalSticks - 1)
+        const aOffset = []
+        const aColor = []
+        const aMetrics = []
 
-        let colors = options.colors.sticks;
+        let colors = options.colors.sticks
         if (Array.isArray(colors)) {
-          colors = colors.map(c => new THREE.Color(c));
+          colors = colors.map((c) => new THREE.Color(c))
         } else {
-          colors = new THREE.Color(colors);
+          colors = new THREE.Color(colors)
         }
 
         for (let i = 0; i < totalSticks; i++) {
-          let width = random(options.lightStickWidth);
-          let height = random(options.lightStickHeight);
-          aOffset.push((i - 1) * stickoffset * 2 + stickoffset * Math.random());
+          let width = random(options.lightStickWidth)
+          let height = random(options.lightStickHeight)
+          aOffset.push((i - 1) * stickoffset * 2 + stickoffset * Math.random())
 
-          let color = pickRandom(colors);
-          aColor.push(color.r);
-          aColor.push(color.g);
-          aColor.push(color.b);
+          let color = pickRandom(colors)
+          aColor.push(color.r)
+          aColor.push(color.g)
+          aColor.push(color.b)
 
-          aMetrics.push(width);
-          aMetrics.push(height);
+          aMetrics.push(width)
+          aMetrics.push(height)
         }
 
-        instanced.setAttribute('aOffset', new THREE.InstancedBufferAttribute(new Float32Array(aOffset), 1, false));
-        instanced.setAttribute('aColor', new THREE.InstancedBufferAttribute(new Float32Array(aColor), 3, false));
-        instanced.setAttribute('aMetrics', new THREE.InstancedBufferAttribute(new Float32Array(aMetrics), 2, false));
+        instanced.setAttribute("aOffset", new THREE.InstancedBufferAttribute(new Float32Array(aOffset), 1, false))
+        instanced.setAttribute("aColor", new THREE.InstancedBufferAttribute(new Float32Array(aColor), 3, false))
+        instanced.setAttribute("aMetrics", new THREE.InstancedBufferAttribute(new Float32Array(aMetrics), 2, false))
 
         const material = new THREE.ShaderMaterial({
           fragmentShader: sideSticksFragment,
@@ -18785,34 +19034,34 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
           uniforms: Object.assign(
             {
               uTravelLength: { value: options.length },
-              uTime: { value: 0 }
+              uTime: { value: 0 },
             },
             this.webgl.fogUniforms,
-            options.distortion.uniforms
-          )
-        });
+            options.distortion.uniforms,
+          ),
+        })
 
-        material.onBeforeCompile = shader => {
+        material.onBeforeCompile = (shader) => {
           shader.vertexShader = shader.vertexShader.replace(
-            '#include <getDistortion_vertex>',
-            options.distortion.getDistortion
-          );
-        };
+            "#include <getDistortion_vertex>",
+            options.distortion.getDistortion,
+          )
+        }
 
-        const mesh = new THREE.Mesh(instanced, material);
-        mesh.frustumCulled = false;
-        this.webgl.scene.add(mesh);
-        this.mesh = mesh;
+        const mesh = new THREE.Mesh(instanced, material)
+        mesh.frustumCulled = false
+        this.webgl.scene.add(mesh)
+        this.mesh = mesh
       }
 
       update(time) {
-        this.mesh.material.uniforms.uTime.value = time;
+        this.mesh.material.uniforms.uTime.value = time
       }
     }
 
     const sideSticksVertex = `
       #define USE_FOG;
-      ${THREE.ShaderChunk['fog_pars_vertex']}
+      ${THREE.ShaderChunk["fog_pars_vertex"]}
       attribute float aOffset;
       attribute vec3 aColor;
       attribute vec2 aMetrics;
@@ -18846,42 +19095,42 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         vec4 mvPosition = modelViewMatrix * vec4(transformed, 1.);
         gl_Position = projectionMatrix * mvPosition;
         vColor = aColor;
-        ${THREE.ShaderChunk['fog_vertex']}
+        ${THREE.ShaderChunk["fog_vertex"]}
       }
-    `;
+    `
 
     const sideSticksFragment = `
       #define USE_FOG;
-      ${THREE.ShaderChunk['fog_pars_fragment']}
+      ${THREE.ShaderChunk["fog_pars_fragment"]}
       varying vec3 vColor;
       void main(){
         vec3 color = vec3(vColor);
         gl_FragColor = vec4(color,1.);
-        ${THREE.ShaderChunk['fog_fragment']}
+        ${THREE.ShaderChunk["fog_fragment"]}
       }
-    `;
+    `
 
     class Road {
       constructor(webgl, options) {
-        this.webgl = webgl;
-        this.options = options;
-        this.uTime = { value: 0 };
+        this.webgl = webgl
+        this.options = options
+        this.uTime = { value: 0 }
       }
 
       createPlane(side, width, isRoad) {
-        const options = this.options;
-        let segments = 100;
+        const options = this.options
+        let segments = 100
         const geometry = new THREE.PlaneGeometry(
           isRoad ? options.roadWidth : options.islandWidth,
           options.length,
           20,
-          segments
-        );
+          segments,
+        )
         let uniforms = {
           uTravelLength: { value: options.length },
           uColor: { value: new THREE.Color(isRoad ? options.colors.roadColor : options.colors.islandColor) },
-          uTime: this.uTime
-        };
+          uTime: this.uTime,
+        }
 
         if (isRoad) {
           uniforms = Object.assign(uniforms, {
@@ -18890,41 +19139,41 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
             uShoulderLinesColor: { value: new THREE.Color(options.colors.shoulderLines) },
             uShoulderLinesWidthPercentage: { value: options.shoulderLinesWidthPercentage },
             uBrokenLinesLengthPercentage: { value: options.brokenLinesLengthPercentage },
-            uBrokenLinesWidthPercentage: { value: options.brokenLinesWidthPercentage }
-          });
+            uBrokenLinesWidthPercentage: { value: options.brokenLinesWidthPercentage },
+          })
         }
 
         const material = new THREE.ShaderMaterial({
           fragmentShader: isRoad ? roadFragment : islandFragment,
           vertexShader: roadVertex,
           side: THREE.DoubleSide,
-          uniforms: Object.assign(uniforms, this.webgl.fogUniforms, options.distortion.uniforms)
-        });
+          uniforms: Object.assign(uniforms, this.webgl.fogUniforms, options.distortion.uniforms),
+        })
 
-        material.onBeforeCompile = shader => {
+        material.onBeforeCompile = (shader) => {
           shader.vertexShader = shader.vertexShader.replace(
-            '#include <getDistortion_vertex>',
-            options.distortion.getDistortion
-          );
-        };
+            "#include <getDistortion_vertex>",
+            options.distortion.getDistortion,
+          )
+        }
 
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.rotation.x = -Math.PI / 2;
-        mesh.position.z = -options.length / 2;
-        mesh.position.x += (this.options.islandWidth / 2 + options.roadWidth / 2) * side;
-        this.webgl.scene.add(mesh);
+        const mesh = new THREE.Mesh(geometry, material)
+        mesh.rotation.x = -Math.PI / 2
+        mesh.position.z = -options.length / 2
+        mesh.position.x += (this.options.islandWidth / 2 + options.roadWidth / 2) * side
+        this.webgl.scene.add(mesh)
 
-        return mesh;
+        return mesh
       }
 
       init() {
-        this.leftRoadWay = this.createPlane(-1, this.options.roadWidth, true);
-        this.rightRoadWay = this.createPlane(1, this.options.roadWidth, true);
-        this.island = this.createPlane(0, this.options.islandWidth, false);
+        this.leftRoadWay = this.createPlane(-1, this.options.roadWidth, true)
+        this.rightRoadWay = this.createPlane(1, this.options.roadWidth, true)
+        this.island = this.createPlane(0, this.options.islandWidth, false)
       }
 
       update(time) {
-        this.uTime.value = time;
+        this.uTime.value = time
       }
     }
 
@@ -18934,19 +19183,19 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       uniform vec3 uColor;
       uniform float uTime;
       #include <roadMarkings_vars>
-      ${THREE.ShaderChunk['fog_pars_fragment']}
+      ${THREE.ShaderChunk["fog_pars_fragment"]}
       void main() {
         vec2 uv = vUv;
         vec3 color = vec3(uColor);
         #include <roadMarkings_fragment>
         gl_FragColor = vec4(color, 1.);
-        ${THREE.ShaderChunk['fog_fragment']}
+        ${THREE.ShaderChunk["fog_fragment"]}
       }
-    `;
+    `
 
     const islandFragment = roadBaseFragment
-      .replace('#include <roadMarkings_fragment>', '')
-      .replace('#include <roadMarkings_vars>', '');
+      .replace("#include <roadMarkings_fragment>", "")
+      .replace("#include <roadMarkings_vars>", "")
 
     const roadMarkings_vars = `
       uniform float uLanes;
@@ -18963,7 +19212,7 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         highp float sn = mod(dt, 3.14);
         return fract(sin(sn) * c);
       }
-    `;
+    `
 
     const roadMarkings_fragment = `
       uv.y = mod(uv.y + uTime * 0.05, 1.);
@@ -18975,16 +19224,16 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
       float sideLines = step(1.0 - brokenLineWidth, fract((uv.x - laneWidth * (uLanes - 1.0)) * 2.0)) + step(brokenLineWidth, uv.x);
 
       brokenLines = mix(brokenLines, sideLines, uv.x);
-    `;
+    `
 
     const roadFragment = roadBaseFragment
-      .replace('#include <roadMarkings_fragment>', roadMarkings_fragment)
-      .replace('#include <roadMarkings_vars>', roadMarkings_vars);
+      .replace("#include <roadMarkings_fragment>", roadMarkings_fragment)
+      .replace("#include <roadMarkings_vars>", roadMarkings_vars)
 
     const roadVertex = `
       #define USE_FOG;
       uniform float uTime;
-      ${THREE.ShaderChunk['fog_pars_vertex']}
+      ${THREE.ShaderChunk["fog_pars_vertex"]}
       uniform float uTravelLength;
       varying vec2 vUv; 
       #include <getDistortion_vertex>
@@ -18998,52 +19247,52 @@ const Hyperspeed = ({ effectOptions = DEFAULT_EFFECT_OPTIONS }) => {
         vec4 mvPosition = modelViewMatrix * vec4(transformed, 1.);
         gl_Position = projectionMatrix * mvPosition;
         vUv = uv;
-        ${THREE.ShaderChunk['fog_vertex']}
+        ${THREE.ShaderChunk["fog_vertex"]}
       }
-    `;
+    `
 
     function resizeRendererToDisplaySize(renderer, setSize) {
-      const canvas = renderer.domElement;
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
-      if (width <= 0 || height <= 0) return false;
-      const needResize = canvas.width !== width || canvas.height !== height;
+      const canvas = renderer.domElement
+      const width = canvas.clientWidth
+      const height = canvas.clientHeight
+      if (width <= 0 || height <= 0) return false
+      const needResize = canvas.width !== width || canvas.height !== height
       if (needResize) {
-        setSize(width, height, false);
+        setSize(width, height, false)
       }
-      return needResize;
+      return needResize
     }
 
-    const container = hyperspeed.current;
-    if (!container) return;
+    const container = hyperspeed.current
+    if (!container) return
 
     const options = {
       ...DEFAULT_EFFECT_OPTIONS,
       ...effectOptions,
-      colors: { ...DEFAULT_EFFECT_OPTIONS.colors, ...effectOptions.colors }
-    };
-    options.distortion = distortions[options.distortion];
+      colors: { ...DEFAULT_EFFECT_OPTIONS.colors, ...effectOptions.colors },
+    }
+    options.distortion = distortions[options.distortion]
 
-    const myApp = new App(container, options);
-    appRef.current = myApp;
-    myApp.loadAssets().then(myApp.init);
+    const myApp = new App(container, options)
+    appRef.current = myApp
+    myApp.loadAssets().then(myApp.init)
 
     return () => {
       if (appRef.current) {
-        appRef.current.dispose();
-        appRef.current = null;
+        appRef.current.dispose()
+        appRef.current = null
       }
-    };
-  }, [effectOptions]);
+    }
+  }, [effectOptions])
 
-  return <div id="lights" ref={hyperspeed}></div>;
-};
+  return <div id="lights" ref={hyperspeed}></div>
+}
 
-export default Hyperspeed;
-
+export default Hyperspeed
 ```
 
 ### Component CSS
+
 ```css
 #lights {
   width: 100%;
@@ -19056,10 +19305,10 @@ canvas {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -19074,37 +19323,37 @@ code: ## Integrate the <Iridescence /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Iridescence
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
+
 ```jsx
-import Iridescence from './Iridescence';
-  
-<Iridescence
-  color={[1, 1, 1]}
-  mouseReact={false}
-  amplitude={0.1}
-  speed={1.0}
-/>
+import Iridescence from "./Iridescence"
+
+;<Iridescence color={[1, 1, 1]} mouseReact={false} amplitude={0.1} speed={1.0} />
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| color | Array<number> | [0.3, 0.2, 0.5] | Base color as an array of RGB values (each between 0 and 1). |
-| speed | number | 1.0 | Speed multiplier for the animation. |
-| amplitude | number | 0.1 | Amplitude for the mouse-driven effect. |
-| mouseReact | boolean | false | Enable or disable mouse interaction with the shader. |
+
+| Prop       | Type          | Default         | Description                                                  |
+| ---------- | ------------- | --------------- | ------------------------------------------------------------ |
+| color      | Array<number> | [0.3, 0.2, 0.5] | Base color as an array of RGB values (each between 0 and 1). |
+| speed      | number        | 1.0             | Speed multiplier for the animation.                          |
+| amplitude  | number        | 0.1             | Amplitude for the mouse-driven effect.                       |
+| mouseReact | boolean       | false           | Enable or disable mouse interaction with the shader.         |
 
 ### Full Component Source
-```jsx
-import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
 
-import './Iridescence.css';
+```jsx
+import { Renderer, Program, Mesh, Color, Triangle } from "ogl"
+import { useEffect, useRef } from "react"
+
+import "./Iridescence.css"
 
 const vertexShader = `
 attribute vec2 uv;
@@ -19116,7 +19365,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0, 1);
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -19147,36 +19396,36 @@ void main() {
   col = cos(col * cos(vec3(d, a, 2.5)) * 0.5 + 0.5) * uColor;
   gl_FragColor = vec4(col, 1.0);
 }
-`;
+`
 
 export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude = 0.1, mouseReact = true, ...rest }) {
-  const ctnDom = useRef(null);
-  const mousePos = useRef({ x: 0.5, y: 0.5 });
+  const ctnDom = useRef(null)
+  const mousePos = useRef({ x: 0.5, y: 0.5 })
 
   useEffect(() => {
-    if (!ctnDom.current) return;
-    const ctn = ctnDom.current;
-    const renderer = new Renderer();
-    const gl = renderer.gl;
-    gl.clearColor(1, 1, 1, 1);
+    if (!ctnDom.current) return
+    const ctn = ctnDom.current
+    const renderer = new Renderer()
+    const gl = renderer.gl
+    gl.clearColor(1, 1, 1, 1)
 
-    let program;
+    let program
 
     function resize() {
-      const scale = 1;
-      renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
+      const scale = 1
+      renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale)
       if (program) {
         program.uniforms.uResolution.value = new Color(
           gl.canvas.width,
           gl.canvas.height,
-          gl.canvas.width / gl.canvas.height
-        );
+          gl.canvas.width / gl.canvas.height,
+        )
       }
     }
-    window.addEventListener('resize', resize, false);
-    resize();
+    window.addEventListener("resize", resize, false)
+    resize()
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
@@ -19184,63 +19433,63 @@ export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude 
         uTime: { value: 0 },
         uColor: { value: new Color(...color) },
         uResolution: {
-          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
+          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height),
         },
         uMouse: { value: new Float32Array([mousePos.current.x, mousePos.current.y]) },
         uAmplitude: { value: amplitude },
-        uSpeed: { value: speed }
-      }
-    });
+        uSpeed: { value: speed },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    let animateId;
+    const mesh = new Mesh(gl, { geometry, program })
+    let animateId
 
     function update(t) {
-      animateId = requestAnimationFrame(update);
-      program.uniforms.uTime.value = t * 0.001;
-      renderer.render({ scene: mesh });
+      animateId = requestAnimationFrame(update)
+      program.uniforms.uTime.value = t * 0.001
+      renderer.render({ scene: mesh })
     }
-    animateId = requestAnimationFrame(update);
-    ctn.appendChild(gl.canvas);
+    animateId = requestAnimationFrame(update)
+    ctn.appendChild(gl.canvas)
 
     function handleMouseMove(e) {
-      const rect = ctn.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = 1.0 - (e.clientY - rect.top) / rect.height;
-      mousePos.current = { x, y };
-      program.uniforms.uMouse.value[0] = x;
-      program.uniforms.uMouse.value[1] = y;
+      const rect = ctn.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width
+      const y = 1.0 - (e.clientY - rect.top) / rect.height
+      mousePos.current = { x, y }
+      program.uniforms.uMouse.value[0] = x
+      program.uniforms.uMouse.value[1] = y
     }
     if (mouseReact) {
-      ctn.addEventListener('mousemove', handleMouseMove);
+      ctn.addEventListener("mousemove", handleMouseMove)
     }
 
     return () => {
-      cancelAnimationFrame(animateId);
-      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animateId)
+      window.removeEventListener("resize", resize)
       if (mouseReact) {
-        ctn.removeEventListener('mousemove', handleMouseMove);
+        ctn.removeEventListener("mousemove", handleMouseMove)
       }
-      ctn.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
-  }, [color, speed, amplitude, mouseReact]);
+      ctn.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
+  }, [color, speed, amplitude, mouseReact])
 
-  return <div ref={ctnDom} className="iridescence-container" {...rest} />;
+  return <div ref={ctnDom} className="iridescence-container" {...rest} />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .iridescence-container {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -19255,16 +19504,17 @@ code: ## Integrate the <Waves /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Waves
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
-```jsx
-import Waves from './Waves';
 
-<Waves
+```jsx
+import Waves from "./Waves"
+
+;<Waves
   lineColor="#fff"
   backgroundColor="rgba(255, 255, 255, 0.2)"
   waveSpeedX={0.02}
@@ -19280,35 +19530,37 @@ import Waves from './Waves';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| lineColor | string | black | Defines the color of the wave lines drawn on the canvas. |
-| backgroundColor | string | transparent | Sets the background color of the waves container. |
-| waveSpeedX | number | 0.0125 | Horizontal speed factor for the wave animation. |
-| waveSpeedY | number | 0.005 | Vertical speed factor for the wave animation. |
-| waveAmpX | number | 32 | Horizontal amplitude of each wave. |
-| waveAmpY | number | 16 | Vertical amplitude of each wave. |
-| xGap | number | 10 | Horizontal gap between individual wave lines. |
-| yGap | number | 32 | Vertical gap between points on each wave line. |
-| friction | number | 0.925 | Controls how quickly the cursor effect slows down. |
-| tension | number | 0.005 | Determines the 'springiness' of the cursor effect on points. |
-| maxCursorMove | number | 100 | Limits how far each point can shift due to cursor movement. |
-| style | object | {} | Inline styles applied to the container element. |
-| className | string | — | Custom class name(s) applied to the container element. |
+
+| Prop            | Type   | Default     | Description                                                  |
+| --------------- | ------ | ----------- | ------------------------------------------------------------ |
+| lineColor       | string | black       | Defines the color of the wave lines drawn on the canvas.     |
+| backgroundColor | string | transparent | Sets the background color of the waves container.            |
+| waveSpeedX      | number | 0.0125      | Horizontal speed factor for the wave animation.              |
+| waveSpeedY      | number | 0.005       | Vertical speed factor for the wave animation.                |
+| waveAmpX        | number | 32          | Horizontal amplitude of each wave.                           |
+| waveAmpY        | number | 16          | Vertical amplitude of each wave.                             |
+| xGap            | number | 10          | Horizontal gap between individual wave lines.                |
+| yGap            | number | 32          | Vertical gap between points on each wave line.               |
+| friction        | number | 0.925       | Controls how quickly the cursor effect slows down.           |
+| tension         | number | 0.005       | Determines the 'springiness' of the cursor effect on points. |
+| maxCursorMove   | number | 100         | Limits how far each point can shift due to cursor movement.  |
+| style           | object | {}          | Inline styles applied to the container element.              |
+| className       | string | —           | Custom class name(s) applied to the container element.       |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect } from 'react';
-import './Waves.css';
+import { useRef, useEffect } from "react"
+import "./Waves.css"
 
 class Grad {
   constructor(x, y, z) {
-    this.x = x;
-    this.y = y;
-    this.z = z;
+    this.x = x
+    this.y = y
+    this.z = z
   }
   dot2(x, y) {
-    return this.x * x + this.y * y;
+    return this.x * x + this.y * y
   }
 }
 
@@ -19326,8 +19578,8 @@ class Noise {
       new Grad(0, 1, 1),
       new Grad(0, -1, 1),
       new Grad(0, 1, -1),
-      new Grad(0, -1, -1)
-    ];
+      new Grad(0, -1, -1),
+    ]
     this.p = [
       151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37, 240,
       21, 10, 23, 190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62, 94, 252, 219, 203, 117, 35, 11, 32, 57, 177, 33, 88,
@@ -19339,47 +19591,47 @@ class Noise {
       129, 22, 39, 253, 19, 98, 108, 110, 79, 113, 224, 232, 178, 185, 112, 104, 218, 246, 97, 228, 251, 34, 242, 193,
       238, 210, 144, 12, 191, 179, 162, 241, 81, 51, 145, 235, 249, 14, 239, 107, 49, 192, 214, 31, 181, 199, 106, 157,
       184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254, 138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128,
-      195, 78, 66, 215, 61, 156, 180
-    ];
-    this.perm = new Array(512);
-    this.gradP = new Array(512);
-    this.seed(seed);
+      195, 78, 66, 215, 61, 156, 180,
+    ]
+    this.perm = new Array(512)
+    this.gradP = new Array(512)
+    this.seed(seed)
   }
   seed(seed) {
-    if (seed > 0 && seed < 1) seed *= 65536;
-    seed = Math.floor(seed);
-    if (seed < 256) seed |= seed << 8;
+    if (seed > 0 && seed < 1) seed *= 65536
+    seed = Math.floor(seed)
+    if (seed < 256) seed |= seed << 8
     for (let i = 0; i < 256; i++) {
-      let v = i & 1 ? this.p[i] ^ (seed & 255) : this.p[i] ^ ((seed >> 8) & 255);
-      this.perm[i] = this.perm[i + 256] = v;
-      this.gradP[i] = this.gradP[i + 256] = this.grad3[v % 12];
+      let v = i & 1 ? this.p[i] ^ (seed & 255) : this.p[i] ^ ((seed >> 8) & 255)
+      this.perm[i] = this.perm[i + 256] = v
+      this.gradP[i] = this.gradP[i + 256] = this.grad3[v % 12]
     }
   }
   fade(t) {
-    return t * t * t * (t * (t * 6 - 15) + 10);
+    return t * t * t * (t * (t * 6 - 15) + 10)
   }
   lerp(a, b, t) {
-    return (1 - t) * a + t * b;
+    return (1 - t) * a + t * b
   }
   perlin2(x, y) {
     let X = Math.floor(x),
-      Y = Math.floor(y);
-    x -= X;
-    y -= Y;
-    X &= 255;
-    Y &= 255;
-    const n00 = this.gradP[X + this.perm[Y]].dot2(x, y);
-    const n01 = this.gradP[X + this.perm[Y + 1]].dot2(x, y - 1);
-    const n10 = this.gradP[X + 1 + this.perm[Y]].dot2(x - 1, y);
-    const n11 = this.gradP[X + 1 + this.perm[Y + 1]].dot2(x - 1, y - 1);
-    const u = this.fade(x);
-    return this.lerp(this.lerp(n00, n10, u), this.lerp(n01, n11, u), this.fade(y));
+      Y = Math.floor(y)
+    x -= X
+    y -= Y
+    X &= 255
+    Y &= 255
+    const n00 = this.gradP[X + this.perm[Y]].dot2(x, y)
+    const n01 = this.gradP[X + this.perm[Y + 1]].dot2(x, y - 1)
+    const n10 = this.gradP[X + 1 + this.perm[Y]].dot2(x - 1, y)
+    const n11 = this.gradP[X + 1 + this.perm[Y + 1]].dot2(x - 1, y - 1)
+    const u = this.fade(x)
+    return this.lerp(this.lerp(n00, n10, u), this.lerp(n01, n11, u), this.fade(y))
   }
 }
 
 const Waves = ({
-  lineColor = 'black',
-  backgroundColor = 'transparent',
+  lineColor = "black",
+  backgroundColor = "transparent",
   waveSpeedX = 0.0125,
   waveSpeedY = 0.005,
   waveAmpX = 32,
@@ -19390,14 +19642,14 @@ const Waves = ({
   tension = 0.005,
   maxCursorMove = 100,
   style = {},
-  className = ''
+  className = "",
 }) => {
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  const ctxRef = useRef(null);
-  const boundingRef = useRef({ width: 0, height: 0, left: 0, top: 0 });
-  const noiseRef = useRef(new Noise(Math.random()));
-  const linesRef = useRef([]);
+  const containerRef = useRef(null)
+  const canvasRef = useRef(null)
+  const ctxRef = useRef(null)
+  const boundingRef = useRef({ width: 0, height: 0, left: 0, top: 0 })
+  const noiseRef = useRef(new Noise(Math.random()))
+  const linesRef = useRef([])
   const mouseRef = useRef({
     x: -10,
     y: 0,
@@ -19408,8 +19660,8 @@ const Waves = ({
     v: 0,
     vs: 0,
     a: 0,
-    set: false
-  });
+    set: false,
+  })
   const configRef = useRef({
     lineColor,
     waveSpeedX,
@@ -19420,9 +19672,9 @@ const Waves = ({
     tension,
     maxCursorMove,
     xGap,
-    yGap
-  });
-  const frameIdRef = useRef(null);
+    yGap,
+  })
+  const frameIdRef = useRef(null)
 
   useEffect(() => {
     configRef.current = {
@@ -19435,194 +19687,194 @@ const Waves = ({
       tension,
       maxCursorMove,
       xGap,
-      yGap
-    };
-  }, [lineColor, waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, friction, tension, maxCursorMove, xGap, yGap]);
+      yGap,
+    }
+  }, [lineColor, waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, friction, tension, maxCursorMove, xGap, yGap])
 
   useEffect(() => {
-    console.log('Waves mounted');
-    const canvas = canvasRef.current;
-    const container = containerRef.current;
-    ctxRef.current = canvas.getContext('2d');
+    console.log("Waves mounted")
+    const canvas = canvasRef.current
+    const container = containerRef.current
+    ctxRef.current = canvas.getContext("2d")
 
     function setSize() {
-      boundingRef.current = container.getBoundingClientRect();
-      canvas.width = boundingRef.current.width;
-      canvas.height = boundingRef.current.height;
+      boundingRef.current = container.getBoundingClientRect()
+      canvas.width = boundingRef.current.width
+      canvas.height = boundingRef.current.height
     }
 
     function setLines() {
-      const { width, height } = boundingRef.current;
-      linesRef.current = [];
+      const { width, height } = boundingRef.current
+      linesRef.current = []
       const oWidth = width + 200,
-        oHeight = height + 30;
-      const { xGap, yGap } = configRef.current;
-      const totalLines = Math.ceil(oWidth / xGap);
-      const totalPoints = Math.ceil(oHeight / yGap);
-      const xStart = (width - xGap * totalLines) / 2;
-      const yStart = (height - yGap * totalPoints) / 2;
+        oHeight = height + 30
+      const { xGap, yGap } = configRef.current
+      const totalLines = Math.ceil(oWidth / xGap)
+      const totalPoints = Math.ceil(oHeight / yGap)
+      const xStart = (width - xGap * totalLines) / 2
+      const yStart = (height - yGap * totalPoints) / 2
       for (let i = 0; i <= totalLines; i++) {
-        const pts = [];
+        const pts = []
         for (let j = 0; j <= totalPoints; j++) {
           pts.push({
             x: xStart + xGap * i,
             y: yStart + yGap * j,
             wave: { x: 0, y: 0 },
-            cursor: { x: 0, y: 0, vx: 0, vy: 0 }
-          });
+            cursor: { x: 0, y: 0, vx: 0, vy: 0 },
+          })
         }
-        linesRef.current.push(pts);
+        linesRef.current.push(pts)
       }
     }
 
     function movePoints(time) {
       const lines = linesRef.current,
         mouse = mouseRef.current,
-        noise = noiseRef.current;
-      const { waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, friction, tension, maxCursorMove } = configRef.current;
-      lines.forEach(pts => {
-        pts.forEach(p => {
-          const move = noise.perlin2((p.x + time * waveSpeedX) * 0.002, (p.y + time * waveSpeedY) * 0.0015) * 12;
-          p.wave.x = Math.cos(move) * waveAmpX;
-          p.wave.y = Math.sin(move) * waveAmpY;
+        noise = noiseRef.current
+      const { waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, friction, tension, maxCursorMove } = configRef.current
+      lines.forEach((pts) => {
+        pts.forEach((p) => {
+          const move = noise.perlin2((p.x + time * waveSpeedX) * 0.002, (p.y + time * waveSpeedY) * 0.0015) * 12
+          p.wave.x = Math.cos(move) * waveAmpX
+          p.wave.y = Math.sin(move) * waveAmpY
 
           const dx = p.x - mouse.sx,
-            dy = p.y - mouse.sy;
+            dy = p.y - mouse.sy
           const dist = Math.hypot(dx, dy),
-            l = Math.max(175, mouse.vs);
+            l = Math.max(175, mouse.vs)
           if (dist < l) {
-            const s = 1 - dist / l;
-            const f = Math.cos(dist * 0.001) * s;
-            p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00065;
-            p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00065;
+            const s = 1 - dist / l
+            const f = Math.cos(dist * 0.001) * s
+            p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00065
+            p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00065
           }
 
-          p.cursor.vx += (0 - p.cursor.x) * tension;
-          p.cursor.vy += (0 - p.cursor.y) * tension;
-          p.cursor.vx *= friction;
-          p.cursor.vy *= friction;
-          p.cursor.x += p.cursor.vx * 2;
-          p.cursor.y += p.cursor.vy * 2;
-          p.cursor.x = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.x));
-          p.cursor.y = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.y));
-        });
-      });
+          p.cursor.vx += (0 - p.cursor.x) * tension
+          p.cursor.vy += (0 - p.cursor.y) * tension
+          p.cursor.vx *= friction
+          p.cursor.vy *= friction
+          p.cursor.x += p.cursor.vx * 2
+          p.cursor.y += p.cursor.vy * 2
+          p.cursor.x = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.x))
+          p.cursor.y = Math.min(maxCursorMove, Math.max(-maxCursorMove, p.cursor.y))
+        })
+      })
     }
 
     function moved(point, withCursor = true) {
-      const x = point.x + point.wave.x + (withCursor ? point.cursor.x : 0);
-      const y = point.y + point.wave.y + (withCursor ? point.cursor.y : 0);
-      return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
+      const x = point.x + point.wave.x + (withCursor ? point.cursor.x : 0)
+      const y = point.y + point.wave.y + (withCursor ? point.cursor.y : 0)
+      return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 }
     }
 
     function drawLines() {
-      const { width, height } = boundingRef.current;
-      const ctx = ctxRef.current;
-      ctx.clearRect(0, 0, width, height);
-      ctx.beginPath();
-      ctx.strokeStyle = configRef.current.lineColor;
-      linesRef.current.forEach(points => {
-        let p1 = moved(points[0], false);
-        ctx.moveTo(p1.x, p1.y);
+      const { width, height } = boundingRef.current
+      const ctx = ctxRef.current
+      ctx.clearRect(0, 0, width, height)
+      ctx.beginPath()
+      ctx.strokeStyle = configRef.current.lineColor
+      linesRef.current.forEach((points) => {
+        let p1 = moved(points[0], false)
+        ctx.moveTo(p1.x, p1.y)
         points.forEach((p, idx) => {
-          const isLast = idx === points.length - 1;
-          p1 = moved(p, !isLast);
-          const p2 = moved(points[idx + 1] || points[points.length - 1], !isLast);
-          ctx.lineTo(p1.x, p1.y);
-          if (isLast) ctx.moveTo(p2.x, p2.y);
-        });
-      });
-      ctx.stroke();
+          const isLast = idx === points.length - 1
+          p1 = moved(p, !isLast)
+          const p2 = moved(points[idx + 1] || points[points.length - 1], !isLast)
+          ctx.lineTo(p1.x, p1.y)
+          if (isLast) ctx.moveTo(p2.x, p2.y)
+        })
+      })
+      ctx.stroke()
     }
 
     function tick(t) {
-      const mouse = mouseRef.current;
-      mouse.sx += (mouse.x - mouse.sx) * 0.1;
-      mouse.sy += (mouse.y - mouse.sy) * 0.1;
+      const mouse = mouseRef.current
+      mouse.sx += (mouse.x - mouse.sx) * 0.1
+      mouse.sy += (mouse.y - mouse.sy) * 0.1
       const dx = mouse.x - mouse.lx,
-        dy = mouse.y - mouse.ly;
-      const d = Math.hypot(dx, dy);
-      mouse.v = d;
-      mouse.vs += (d - mouse.vs) * 0.1;
-      mouse.vs = Math.min(100, mouse.vs);
-      mouse.lx = mouse.x;
-      mouse.ly = mouse.y;
-      mouse.a = Math.atan2(dy, dx);
-      container.style.setProperty('--x', `${mouse.sx}px`);
-      container.style.setProperty('--y', `${mouse.sy}px`);
+        dy = mouse.y - mouse.ly
+      const d = Math.hypot(dx, dy)
+      mouse.v = d
+      mouse.vs += (d - mouse.vs) * 0.1
+      mouse.vs = Math.min(100, mouse.vs)
+      mouse.lx = mouse.x
+      mouse.ly = mouse.y
+      mouse.a = Math.atan2(dy, dx)
+      container.style.setProperty("--x", `${mouse.sx}px`)
+      container.style.setProperty("--y", `${mouse.sy}px`)
 
-      movePoints(t);
-      drawLines();
-      frameIdRef.current = requestAnimationFrame(tick);
+      movePoints(t)
+      drawLines()
+      frameIdRef.current = requestAnimationFrame(tick)
     }
 
     function onResize() {
-      setSize();
-      setLines();
+      setSize()
+      setLines()
     }
     function onMouseMove(e) {
-      updateMouse(e.clientX, e.clientY);
+      updateMouse(e.clientX, e.clientY)
     }
     function onTouchMove(e) {
-      const touch = e.touches[0];
-      updateMouse(touch.clientX, touch.clientY);
+      const touch = e.touches[0]
+      updateMouse(touch.clientX, touch.clientY)
     }
     function updateMouse(x, y) {
       const mouse = mouseRef.current,
-        b = boundingRef.current;
-      mouse.x = x - b.left;
-      mouse.y = y - b.top;
+        b = boundingRef.current
+      mouse.x = x - b.left
+      mouse.y = y - b.top
       if (!mouse.set) {
-        mouse.sx = mouse.x;
-        mouse.sy = mouse.y;
-        mouse.lx = mouse.x;
-        mouse.ly = mouse.y;
-        mouse.set = true;
+        mouse.sx = mouse.x
+        mouse.sy = mouse.y
+        mouse.lx = mouse.x
+        mouse.ly = mouse.y
+        mouse.set = true
       }
     }
 
-    setSize();
-    setLines();
-    frameIdRef.current = requestAnimationFrame(tick);
-    window.addEventListener('resize', onResize);
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('touchmove', onTouchMove, { passive: false });
+    setSize()
+    setLines()
+    frameIdRef.current = requestAnimationFrame(tick)
+    window.addEventListener("resize", onResize)
+    window.addEventListener("mousemove", onMouseMove)
+    window.addEventListener("touchmove", onTouchMove, { passive: false })
 
     return () => {
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('touchmove', onTouchMove);
-      cancelAnimationFrame(frameIdRef.current);
-    };
-  }, []);
+      window.removeEventListener("resize", onResize)
+      window.removeEventListener("mousemove", onMouseMove)
+      window.removeEventListener("touchmove", onTouchMove)
+      cancelAnimationFrame(frameIdRef.current)
+    }
+  }, [])
 
   return (
     <div
       ref={containerRef}
       className={`waves ${className}`}
       style={{
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
         margin: 0,
         padding: 0,
-        width: '100%',
-        height: '100%',
-        overflow: 'hidden',
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
         backgroundColor,
-        ...style
+        ...style,
       }}
     >
       <canvas ref={canvasRef} className="waves-canvas" />
     </div>
-  );
-};
+  )
+}
 
-export default Waves;
-
+export default Waves
 ```
 
 ### Component CSS
+
 ```css
 .waves {
   position: absolute;
@@ -19636,7 +19888,7 @@ export default Waves;
 }
 
 .waves::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -19653,10 +19905,10 @@ export default Waves;
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -19671,16 +19923,19 @@ code: ## Integrate the <GridDistortion /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: GridDistortion
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three
 
 ---
 
 ### Usage Example
-```jsx
-import GridDistortion from './GridDistortion';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
+```jsx
+import GridDistortion from "./GridDistortion"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
   <GridDistortion
     imageSrc="https://picsum.photos/1920/1080?grayscale"
     grid={10}
@@ -19693,20 +19948,22 @@ import GridDistortion from './GridDistortion';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| imgageSrc | string | — | The image you want to render inside the container. |
-| grid | number | 15 | The number of cells present in the distortion grid |
-| mouse | number | 0.1 | The size of the distortion effect that follows the cursor. |
-| relaxation | number | 0.9 | The speed at which grid cells return to their initial state. |
-| strength | number | 0.15 | The overall strength of the distortion effect. |
-| className | string | — | Any custom class(es) you want to apply to the container. |
+
+| Prop       | Type   | Default | Description                                                  |
+| ---------- | ------ | ------- | ------------------------------------------------------------ |
+| imgageSrc  | string | —       | The image you want to render inside the container.           |
+| grid       | number | 15      | The number of cells present in the distortion grid           |
+| mouse      | number | 0.1     | The size of the distortion effect that follows the cursor.   |
+| relaxation | number | 0.9     | The speed at which grid cells return to their initial state. |
+| strength   | number | 0.15    | The overall strength of the distortion effect.               |
+| className  | string | —       | Any custom class(es) you want to apply to the container.     |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import './GridDistortion.css';
+import { useEffect, useRef } from "react"
+import * as THREE from "three"
+import "./GridDistortion.css"
 
 const vertexShader = `
 uniform float time;
@@ -19717,7 +19974,7 @@ void main() {
   vUv = uv;
   vPosition = position;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-}`;
+}`
 
 const fragmentShader = `
 uniform sampler2D uDataTexture;
@@ -19729,120 +19986,120 @@ void main() {
   vec2 uv = vUv;
   vec4 offset = texture2D(uDataTexture, vUv);
   gl_FragColor = texture2D(uTexture, uv - 0.02 * offset.rg);
-}`;
+}`
 
-const GridDistortion = ({ grid = 15, mouse = 0.1, strength = 0.15, relaxation = 0.9, imageSrc, className = '' }) => {
-  const containerRef = useRef(null);
-  const sceneRef = useRef(null);
-  const rendererRef = useRef(null);
-  const cameraRef = useRef(null);
-  const planeRef = useRef(null);
-  const imageAspectRef = useRef(1);
-  const animationIdRef = useRef(null);
-  const resizeObserverRef = useRef(null);
+const GridDistortion = ({ grid = 15, mouse = 0.1, strength = 0.15, relaxation = 0.9, imageSrc, className = "" }) => {
+  const containerRef = useRef(null)
+  const sceneRef = useRef(null)
+  const rendererRef = useRef(null)
+  const cameraRef = useRef(null)
+  const planeRef = useRef(null)
+  const imageAspectRef = useRef(1)
+  const animationIdRef = useRef(null)
+  const resizeObserverRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current) return
 
-    const container = containerRef.current;
+    const container = containerRef.current
 
-    const scene = new THREE.Scene();
-    sceneRef.current = scene;
+    const scene = new THREE.Scene()
+    sceneRef.current = scene
 
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
-      powerPreference: 'high-performance'
-    });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0);
-    rendererRef.current = renderer;
+      powerPreference: "high-performance",
+    })
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setClearColor(0x000000, 0)
+    rendererRef.current = renderer
 
-    container.innerHTML = '';
-    container.appendChild(renderer.domElement);
+    container.innerHTML = ""
+    container.appendChild(renderer.domElement)
 
-    const camera = new THREE.OrthographicCamera(0, 0, 0, 0, -1000, 1000);
-    camera.position.z = 2;
-    cameraRef.current = camera;
+    const camera = new THREE.OrthographicCamera(0, 0, 0, 0, -1000, 1000)
+    camera.position.z = 2
+    cameraRef.current = camera
 
     const uniforms = {
       time: { value: 0 },
       resolution: { value: new THREE.Vector4() },
       uTexture: { value: null },
-      uDataTexture: { value: null }
-    };
-
-    const textureLoader = new THREE.TextureLoader();
-    textureLoader.load(imageSrc, texture => {
-      texture.minFilter = THREE.LinearFilter;
-      texture.magFilter = THREE.LinearFilter;
-      texture.wrapS = THREE.ClampToEdgeWrapping;
-      texture.wrapT = THREE.ClampToEdgeWrapping;
-      imageAspectRef.current = texture.image.width / texture.image.height;
-      uniforms.uTexture.value = texture;
-      handleResize();
-    });
-
-    const size = grid;
-    const data = new Float32Array(4 * size * size);
-    for (let i = 0; i < size * size; i++) {
-      data[i * 4] = Math.random() * 255 - 125;
-      data[i * 4 + 1] = Math.random() * 255 - 125;
+      uDataTexture: { value: null },
     }
 
-    const dataTexture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat, THREE.FloatType);
-    dataTexture.needsUpdate = true;
-    uniforms.uDataTexture.value = dataTexture;
+    const textureLoader = new THREE.TextureLoader()
+    textureLoader.load(imageSrc, (texture) => {
+      texture.minFilter = THREE.LinearFilter
+      texture.magFilter = THREE.LinearFilter
+      texture.wrapS = THREE.ClampToEdgeWrapping
+      texture.wrapT = THREE.ClampToEdgeWrapping
+      imageAspectRef.current = texture.image.width / texture.image.height
+      uniforms.uTexture.value = texture
+      handleResize()
+    })
+
+    const size = grid
+    const data = new Float32Array(4 * size * size)
+    for (let i = 0; i < size * size; i++) {
+      data[i * 4] = Math.random() * 255 - 125
+      data[i * 4 + 1] = Math.random() * 255 - 125
+    }
+
+    const dataTexture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat, THREE.FloatType)
+    dataTexture.needsUpdate = true
+    uniforms.uDataTexture.value = dataTexture
 
     const material = new THREE.ShaderMaterial({
       side: THREE.DoubleSide,
       uniforms,
       vertexShader,
       fragmentShader,
-      transparent: true
-    });
+      transparent: true,
+    })
 
-    const geometry = new THREE.PlaneGeometry(1, 1, size - 1, size - 1);
-    const plane = new THREE.Mesh(geometry, material);
-    planeRef.current = plane;
-    scene.add(plane);
+    const geometry = new THREE.PlaneGeometry(1, 1, size - 1, size - 1)
+    const plane = new THREE.Mesh(geometry, material)
+    planeRef.current = plane
+    scene.add(plane)
 
     const handleResize = () => {
-      if (!container || !renderer || !camera) return;
+      if (!container || !renderer || !camera) return
 
-      const rect = container.getBoundingClientRect();
-      const width = rect.width;
-      const height = rect.height;
+      const rect = container.getBoundingClientRect()
+      const width = rect.width
+      const height = rect.height
 
-      if (width === 0 || height === 0) return;
+      if (width === 0 || height === 0) return
 
-      const containerAspect = width / height;
+      const containerAspect = width / height
 
-      renderer.setSize(width, height);
+      renderer.setSize(width, height)
 
       if (plane) {
-        plane.scale.set(containerAspect, 1, 1);
+        plane.scale.set(containerAspect, 1, 1)
       }
 
-      const frustumHeight = 1;
-      const frustumWidth = frustumHeight * containerAspect;
-      camera.left = -frustumWidth / 2;
-      camera.right = frustumWidth / 2;
-      camera.top = frustumHeight / 2;
-      camera.bottom = -frustumHeight / 2;
-      camera.updateProjectionMatrix();
+      const frustumHeight = 1
+      const frustumWidth = frustumHeight * containerAspect
+      camera.left = -frustumWidth / 2
+      camera.right = frustumWidth / 2
+      camera.top = frustumHeight / 2
+      camera.bottom = -frustumHeight / 2
+      camera.updateProjectionMatrix()
 
-      uniforms.resolution.value.set(width, height, 1, 1);
-    };
+      uniforms.resolution.value.set(width, height, 1, 1)
+    }
 
     if (window.ResizeObserver) {
       const resizeObserver = new ResizeObserver(() => {
-        handleResize();
-      });
-      resizeObserver.observe(container);
-      resizeObserverRef.current = resizeObserver;
+        handleResize()
+      })
+      resizeObserver.observe(container)
+      resizeObserverRef.current = resizeObserver
     } else {
-      window.addEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize)
     }
 
     const mouseState = {
@@ -19851,21 +20108,21 @@ const GridDistortion = ({ grid = 15, mouse = 0.1, strength = 0.15, relaxation = 
       prevX: 0,
       prevY: 0,
       vX: 0,
-      vY: 0
-    };
+      vY: 0,
+    }
 
-    const handleMouseMove = e => {
-      const rect = container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = 1 - (e.clientY - rect.top) / rect.height;
-      mouseState.vX = x - mouseState.prevX;
-      mouseState.vY = y - mouseState.prevY;
-      Object.assign(mouseState, { x, y, prevX: x, prevY: y });
-    };
+    const handleMouseMove = (e) => {
+      const rect = container.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width
+      const y = 1 - (e.clientY - rect.top) / rect.height
+      mouseState.vX = x - mouseState.prevX
+      mouseState.vY = y - mouseState.prevY
+      Object.assign(mouseState, { x, y, prevX: x, prevY: y })
+    }
 
     const handleMouseLeave = () => {
       if (dataTexture) {
-        dataTexture.needsUpdate = true;
+        dataTexture.needsUpdate = true
       }
       Object.assign(mouseState, {
         x: 0,
@@ -19873,113 +20130,113 @@ const GridDistortion = ({ grid = 15, mouse = 0.1, strength = 0.15, relaxation = 
         prevX: 0,
         prevY: 0,
         vX: 0,
-        vY: 0
-      });
-    };
+        vY: 0,
+      })
+    }
 
-    container.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('mouseleave', handleMouseLeave);
+    container.addEventListener("mousemove", handleMouseMove)
+    container.addEventListener("mouseleave", handleMouseLeave)
 
-    handleResize();
+    handleResize()
 
     const animate = () => {
-      animationIdRef.current = requestAnimationFrame(animate);
+      animationIdRef.current = requestAnimationFrame(animate)
 
-      if (!renderer || !scene || !camera) return;
+      if (!renderer || !scene || !camera) return
 
-      uniforms.time.value += 0.05;
+      uniforms.time.value += 0.05
 
-      const data = dataTexture.image.data;
+      const data = dataTexture.image.data
       for (let i = 0; i < size * size; i++) {
-        data[i * 4] *= relaxation;
-        data[i * 4 + 1] *= relaxation;
+        data[i * 4] *= relaxation
+        data[i * 4 + 1] *= relaxation
       }
 
-      const gridMouseX = size * mouseState.x;
-      const gridMouseY = size * mouseState.y;
-      const maxDist = size * mouse;
+      const gridMouseX = size * mouseState.x
+      const gridMouseY = size * mouseState.y
+      const maxDist = size * mouse
 
       for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
-          const distSq = Math.pow(gridMouseX - i, 2) + Math.pow(gridMouseY - j, 2);
+          const distSq = Math.pow(gridMouseX - i, 2) + Math.pow(gridMouseY - j, 2)
           if (distSq < maxDist * maxDist) {
-            const index = 4 * (i + size * j);
-            const power = Math.min(maxDist / Math.sqrt(distSq), 10);
-            data[index] += strength * 100 * mouseState.vX * power;
-            data[index + 1] -= strength * 100 * mouseState.vY * power;
+            const index = 4 * (i + size * j)
+            const power = Math.min(maxDist / Math.sqrt(distSq), 10)
+            data[index] += strength * 100 * mouseState.vX * power
+            data[index + 1] -= strength * 100 * mouseState.vY * power
           }
         }
       }
 
-      dataTexture.needsUpdate = true;
-      renderer.render(scene, camera);
-    };
+      dataTexture.needsUpdate = true
+      renderer.render(scene, camera)
+    }
 
-    animate();
+    animate()
 
     return () => {
       if (animationIdRef.current) {
-        cancelAnimationFrame(animationIdRef.current);
+        cancelAnimationFrame(animationIdRef.current)
       }
 
       if (resizeObserverRef.current) {
-        resizeObserverRef.current.disconnect();
+        resizeObserverRef.current.disconnect()
       } else {
-        window.removeEventListener('resize', handleResize);
+        window.removeEventListener("resize", handleResize)
       }
 
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('mouseleave', handleMouseLeave);
+      container.removeEventListener("mousemove", handleMouseMove)
+      container.removeEventListener("mouseleave", handleMouseLeave)
 
       if (renderer) {
-        renderer.dispose();
-        renderer.forceContextLoss();
+        renderer.dispose()
+        renderer.forceContextLoss()
         if (container.contains(renderer.domElement)) {
-          container.removeChild(renderer.domElement);
+          container.removeChild(renderer.domElement)
         }
       }
 
-      if (geometry) geometry.dispose();
-      if (material) material.dispose();
-      if (dataTexture) dataTexture.dispose();
-      if (uniforms.uTexture.value) uniforms.uTexture.value.dispose();
+      if (geometry) geometry.dispose()
+      if (material) material.dispose()
+      if (dataTexture) dataTexture.dispose()
+      if (uniforms.uTexture.value) uniforms.uTexture.value.dispose()
 
-      sceneRef.current = null;
-      rendererRef.current = null;
-      cameraRef.current = null;
-      planeRef.current = null;
-    };
-  }, [grid, mouse, strength, relaxation, imageSrc]);
+      sceneRef.current = null
+      rendererRef.current = null
+      cameraRef.current = null
+      planeRef.current = null
+    }
+  }, [grid, mouse, strength, relaxation, imageSrc])
 
   return (
     <div
       ref={containerRef}
       className={`distortion-container ${className}`}
       style={{
-        width: '100%',
-        height: '100%',
-        minWidth: '0',
-        minHeight: '0'
+        width: "100%",
+        height: "100%",
+        minWidth: "0",
+        minHeight: "0",
       }}
     />
-  );
-};
+  )
+}
 
-export default GridDistortion;
-
+export default GridDistortion
 ```
 
 ### Component CSS
+
 ```css
 .distortion-container {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -19994,52 +20251,51 @@ code: ## Integrate the <Ballpit /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Ballpit
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: three
 
 ---
 
 ### Usage Example
+
 ```jsx
 //Component inspired by Kevin Levron:
 //https://x.com/soju22/status/1858925191671271801
-  
-import Ballpit from './Ballpit;'
 
-<div style={{position: 'relative', overflow: 'hidden', minHeight: '500px', maxHeight: '500px', width: '100%'}}>
-  <Ballpit
-    count={200}
-    gravity={0.7}
-    friction={0.8}
-    wallBounce={0.95}
-    followCursor={true}
-  />
+import Ballpit from "./Ballpit;"
+
+;<div style={{ position: "relative", overflow: "hidden", minHeight: "500px", maxHeight: "500px", width: "100%" }}>
+  <Ballpit count={200} gravity={0.7} friction={0.8} wallBounce={0.95} followCursor={true} />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| count | number | 200 | Sets the number of balls in the ballpit. |
-| gravity | number | 0.5 | Controls the gravity affecting the balls. |
-| friction | number | 0.9975 | Sets the friction applied to the ball movement. |
-| wallBounce | number | 0.95 | Determines how much balls bounce off walls. |
-| followCursor | boolean | true | Enables or disables the sphere following the cursor. |
-| colors | array | [0, 0, 0] | Defines the colors of the balls. |
-| ambientColor | number | 16777215 | Sets the ambient light color. |
-| ambientIntensity | number | 1 | Controls the intensity of ambient light. |
-| lightIntensity | number | 200 | Sets the intensity of the main light source. |
-| minSize | number | 0.5 | Specifies the minimum size of the balls. |
-| maxSize | number | 1 | Specifies the maximum size of the balls. |
-| size0 | number | 1 | Initial size value for the cursor ball. |
-| maxVelocity | number | 0.15 | Limits the maximum velocity of the balls. |
-| maxX | number | 5 | Defines the maximum X-coordinate boundary. |
-| maxY | number | 5 | Defines the maximum Y-coordinate boundary. |
-| maxZ | number | 2 | Defines the maximum Z-coordinate boundary. |
+
+| Prop             | Type    | Default   | Description                                          |
+| ---------------- | ------- | --------- | ---------------------------------------------------- |
+| count            | number  | 200       | Sets the number of balls in the ballpit.             |
+| gravity          | number  | 0.5       | Controls the gravity affecting the balls.            |
+| friction         | number  | 0.9975    | Sets the friction applied to the ball movement.      |
+| wallBounce       | number  | 0.95      | Determines how much balls bounce off walls.          |
+| followCursor     | boolean | true      | Enables or disables the sphere following the cursor. |
+| colors           | array   | [0, 0, 0] | Defines the colors of the balls.                     |
+| ambientColor     | number  | 16777215  | Sets the ambient light color.                        |
+| ambientIntensity | number  | 1         | Controls the intensity of ambient light.             |
+| lightIntensity   | number  | 200       | Sets the intensity of the main light source.         |
+| minSize          | number  | 0.5       | Specifies the minimum size of the balls.             |
+| maxSize          | number  | 1         | Specifies the maximum size of the balls.             |
+| size0            | number  | 1         | Initial size value for the cursor ball.              |
+| maxVelocity      | number  | 0.15      | Limits the maximum velocity of the balls.            |
+| maxX             | number  | 5         | Defines the maximum X-coordinate boundary.           |
+| maxY             | number  | 5         | Defines the maximum Y-coordinate boundary.           |
+| maxZ             | number  | 2         | Defines the maximum Z-coordinate boundary.           |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react"
 import {
   Vector3 as a,
   MeshPhysicalMaterial as c,
@@ -20060,222 +20316,222 @@ import {
   PointLight as u,
   ACESFilmicToneMapping as v,
   Plane as w,
-  Raycaster as y
-} from 'three';
-import { RoomEnvironment as z } from 'three/examples/jsm/environments/RoomEnvironment.js';
+  Raycaster as y,
+} from "three"
+import { RoomEnvironment as z } from "three/examples/jsm/environments/RoomEnvironment.js"
 
 class x {
-  #e;
-  canvas;
-  camera;
-  cameraMinAspect;
-  cameraMaxAspect;
-  cameraFov;
-  maxPixelRatio;
-  minPixelRatio;
-  scene;
-  renderer;
-  #t;
-  size = { width: 0, height: 0, wWidth: 0, wHeight: 0, ratio: 0, pixelRatio: 0 };
-  render = this.#i;
-  onBeforeRender = () => {};
-  onAfterRender = () => {};
-  onAfterResize = () => {};
-  #s = false;
-  #n = false;
-  isDisposed = false;
-  #o;
-  #r;
-  #a;
-  #c = new e();
-  #h = { elapsed: 0, delta: 0 };
-  #l;
+  #e
+  canvas
+  camera
+  cameraMinAspect
+  cameraMaxAspect
+  cameraFov
+  maxPixelRatio
+  minPixelRatio
+  scene
+  renderer
+  #t
+  size = { width: 0, height: 0, wWidth: 0, wHeight: 0, ratio: 0, pixelRatio: 0 }
+  render = this.#i
+  onBeforeRender = () => {}
+  onAfterRender = () => {}
+  onAfterResize = () => {}
+  #s = false
+  #n = false
+  isDisposed = false
+  #o
+  #r
+  #a
+  #c = new e()
+  #h = { elapsed: 0, delta: 0 }
+  #l
   constructor(e) {
-    this.#e = { ...e };
-    this.#m();
-    this.#d();
-    this.#p();
-    this.resize();
-    this.#g();
+    this.#e = { ...e }
+    this.#m()
+    this.#d()
+    this.#p()
+    this.resize()
+    this.#g()
   }
   #m() {
-    this.camera = new t();
-    this.cameraFov = this.camera.fov;
+    this.camera = new t()
+    this.cameraFov = this.camera.fov
   }
   #d() {
-    this.scene = new i();
+    this.scene = new i()
   }
   #p() {
     if (this.#e.canvas) {
-      this.canvas = this.#e.canvas;
+      this.canvas = this.#e.canvas
     } else if (this.#e.id) {
-      this.canvas = document.getElementById(this.#e.id);
+      this.canvas = document.getElementById(this.#e.id)
     } else {
-      console.error('Three: Missing canvas or id parameter');
+      console.error("Three: Missing canvas or id parameter")
     }
-    this.canvas.style.display = 'block';
+    this.canvas.style.display = "block"
     const e = {
       canvas: this.canvas,
-      powerPreference: 'high-performance',
-      ...(this.#e.rendererOptions ?? {})
-    };
-    this.renderer = new s(e);
-    this.renderer.outputColorSpace = n;
+      powerPreference: "high-performance",
+      ...(this.#e.rendererOptions ?? {}),
+    }
+    this.renderer = new s(e)
+    this.renderer.outputColorSpace = n
   }
   #g() {
     if (!(this.#e.size instanceof Object)) {
-      window.addEventListener('resize', this.#f.bind(this));
-      if (this.#e.size === 'parent' && this.canvas.parentNode) {
-        this.#r = new ResizeObserver(this.#f.bind(this));
-        this.#r.observe(this.canvas.parentNode);
+      window.addEventListener("resize", this.#f.bind(this))
+      if (this.#e.size === "parent" && this.canvas.parentNode) {
+        this.#r = new ResizeObserver(this.#f.bind(this))
+        this.#r.observe(this.canvas.parentNode)
       }
     }
     this.#o = new IntersectionObserver(this.#u.bind(this), {
       root: null,
-      rootMargin: '0px',
-      threshold: 0
-    });
-    this.#o.observe(this.canvas);
-    document.addEventListener('visibilitychange', this.#v.bind(this));
+      rootMargin: "0px",
+      threshold: 0,
+    })
+    this.#o.observe(this.canvas)
+    document.addEventListener("visibilitychange", this.#v.bind(this))
   }
   #y() {
-    window.removeEventListener('resize', this.#f.bind(this));
-    this.#r?.disconnect();
-    this.#o?.disconnect();
-    document.removeEventListener('visibilitychange', this.#v.bind(this));
+    window.removeEventListener("resize", this.#f.bind(this))
+    this.#r?.disconnect()
+    this.#o?.disconnect()
+    document.removeEventListener("visibilitychange", this.#v.bind(this))
   }
   #u(e) {
-    this.#s = e[0].isIntersecting;
-    this.#s ? this.#w() : this.#z();
+    this.#s = e[0].isIntersecting
+    this.#s ? this.#w() : this.#z()
   }
   #v() {
     if (this.#s) {
-      document.hidden ? this.#z() : this.#w();
+      document.hidden ? this.#z() : this.#w()
     }
   }
   #f() {
-    if (this.#a) clearTimeout(this.#a);
-    this.#a = setTimeout(this.resize.bind(this), 100);
+    if (this.#a) clearTimeout(this.#a)
+    this.#a = setTimeout(this.resize.bind(this), 100)
   }
   resize() {
-    let e, t;
+    let e, t
     if (this.#e.size instanceof Object) {
-      e = this.#e.size.width;
-      t = this.#e.size.height;
-    } else if (this.#e.size === 'parent' && this.canvas.parentNode) {
-      e = this.canvas.parentNode.offsetWidth;
-      t = this.canvas.parentNode.offsetHeight;
+      e = this.#e.size.width
+      t = this.#e.size.height
+    } else if (this.#e.size === "parent" && this.canvas.parentNode) {
+      e = this.canvas.parentNode.offsetWidth
+      t = this.canvas.parentNode.offsetHeight
     } else {
-      e = window.innerWidth;
-      t = window.innerHeight;
+      e = window.innerWidth
+      t = window.innerHeight
     }
-    this.size.width = e;
-    this.size.height = t;
-    this.size.ratio = e / t;
-    this.#x();
-    this.#b();
-    this.onAfterResize(this.size);
+    this.size.width = e
+    this.size.height = t
+    this.size.ratio = e / t
+    this.#x()
+    this.#b()
+    this.onAfterResize(this.size)
   }
   #x() {
-    this.camera.aspect = this.size.width / this.size.height;
+    this.camera.aspect = this.size.width / this.size.height
     if (this.camera.isPerspectiveCamera && this.cameraFov) {
       if (this.cameraMinAspect && this.camera.aspect < this.cameraMinAspect) {
-        this.#A(this.cameraMinAspect);
+        this.#A(this.cameraMinAspect)
       } else if (this.cameraMaxAspect && this.camera.aspect > this.cameraMaxAspect) {
-        this.#A(this.cameraMaxAspect);
+        this.#A(this.cameraMaxAspect)
       } else {
-        this.camera.fov = this.cameraFov;
+        this.camera.fov = this.cameraFov
       }
     }
-    this.camera.updateProjectionMatrix();
-    this.updateWorldSize();
+    this.camera.updateProjectionMatrix()
+    this.updateWorldSize()
   }
   #A(e) {
-    const t = Math.tan(o.degToRad(this.cameraFov / 2)) / (this.camera.aspect / e);
-    this.camera.fov = 2 * o.radToDeg(Math.atan(t));
+    const t = Math.tan(o.degToRad(this.cameraFov / 2)) / (this.camera.aspect / e)
+    this.camera.fov = 2 * o.radToDeg(Math.atan(t))
   }
   updateWorldSize() {
     if (this.camera.isPerspectiveCamera) {
-      const e = (this.camera.fov * Math.PI) / 180;
-      this.size.wHeight = 2 * Math.tan(e / 2) * this.camera.position.length();
-      this.size.wWidth = this.size.wHeight * this.camera.aspect;
+      const e = (this.camera.fov * Math.PI) / 180
+      this.size.wHeight = 2 * Math.tan(e / 2) * this.camera.position.length()
+      this.size.wWidth = this.size.wHeight * this.camera.aspect
     } else if (this.camera.isOrthographicCamera) {
-      this.size.wHeight = this.camera.top - this.camera.bottom;
-      this.size.wWidth = this.camera.right - this.camera.left;
+      this.size.wHeight = this.camera.top - this.camera.bottom
+      this.size.wWidth = this.camera.right - this.camera.left
     }
   }
   #b() {
-    this.renderer.setSize(this.size.width, this.size.height);
-    this.#t?.setSize(this.size.width, this.size.height);
-    let e = window.devicePixelRatio;
+    this.renderer.setSize(this.size.width, this.size.height)
+    this.#t?.setSize(this.size.width, this.size.height)
+    let e = window.devicePixelRatio
     if (this.maxPixelRatio && e > this.maxPixelRatio) {
-      e = this.maxPixelRatio;
+      e = this.maxPixelRatio
     } else if (this.minPixelRatio && e < this.minPixelRatio) {
-      e = this.minPixelRatio;
+      e = this.minPixelRatio
     }
-    this.renderer.setPixelRatio(e);
-    this.size.pixelRatio = e;
+    this.renderer.setPixelRatio(e)
+    this.size.pixelRatio = e
   }
   get postprocessing() {
-    return this.#t;
+    return this.#t
   }
   set postprocessing(e) {
-    this.#t = e;
-    this.render = e.render.bind(e);
+    this.#t = e
+    this.render = e.render.bind(e)
   }
   #w() {
-    if (this.#n) return;
+    if (this.#n) return
     const animate = () => {
-      this.#l = requestAnimationFrame(animate);
-      this.#h.delta = this.#c.getDelta();
-      this.#h.elapsed += this.#h.delta;
-      this.onBeforeRender(this.#h);
-      this.render();
-      this.onAfterRender(this.#h);
-    };
-    this.#n = true;
-    this.#c.start();
-    animate();
+      this.#l = requestAnimationFrame(animate)
+      this.#h.delta = this.#c.getDelta()
+      this.#h.elapsed += this.#h.delta
+      this.onBeforeRender(this.#h)
+      this.render()
+      this.onAfterRender(this.#h)
+    }
+    this.#n = true
+    this.#c.start()
+    animate()
   }
   #z() {
     if (this.#n) {
-      cancelAnimationFrame(this.#l);
-      this.#n = false;
-      this.#c.stop();
+      cancelAnimationFrame(this.#l)
+      this.#n = false
+      this.#c.stop()
     }
   }
   #i() {
-    this.renderer.render(this.scene, this.camera);
+    this.renderer.render(this.scene, this.camera)
   }
   clear() {
-    this.scene.traverse(e => {
-      if (e.isMesh && typeof e.material === 'object' && e.material !== null) {
-        Object.keys(e.material).forEach(t => {
-          const i = e.material[t];
-          if (i !== null && typeof i === 'object' && typeof i.dispose === 'function') {
-            i.dispose();
+    this.scene.traverse((e) => {
+      if (e.isMesh && typeof e.material === "object" && e.material !== null) {
+        Object.keys(e.material).forEach((t) => {
+          const i = e.material[t]
+          if (i !== null && typeof i === "object" && typeof i.dispose === "function") {
+            i.dispose()
           }
-        });
-        e.material.dispose();
-        e.geometry.dispose();
+        })
+        e.material.dispose()
+        e.geometry.dispose()
       }
-    });
-    this.scene.clear();
+    })
+    this.scene.clear()
   }
   dispose() {
-    this.#y();
-    this.#z();
-    this.clear();
-    this.#t?.dispose();
-    this.renderer.dispose();
-    this.renderer.forceContextLoss();
-    this.isDisposed = true;
+    this.#y()
+    this.#z()
+    this.clear()
+    this.#t?.dispose()
+    this.renderer.dispose()
+    this.renderer.forceContextLoss()
+    this.isDisposed = true
   }
 }
 
 const b = new Map(),
-  A = new r();
-let R = false;
+  A = new r()
+let R = false
 function S(e) {
   const t = {
     position: new r(),
@@ -20286,102 +20542,102 @@ function S(e) {
     onMove() {},
     onClick() {},
     onLeave() {},
-    ...e
-  };
-  (function (e, t) {
+    ...e,
+  }
+  ;(function (e, t) {
     if (!b.has(e)) {
-      b.set(e, t);
+      b.set(e, t)
       if (!R) {
-        document.body.addEventListener('pointermove', M);
-        document.body.addEventListener('pointerleave', L);
-        document.body.addEventListener('click', C);
+        document.body.addEventListener("pointermove", M)
+        document.body.addEventListener("pointerleave", L)
+        document.body.addEventListener("click", C)
 
-        document.body.addEventListener('touchstart', TouchStart, { passive: false });
-        document.body.addEventListener('touchmove', TouchMove, { passive: false });
-        document.body.addEventListener('touchend', TouchEnd, { passive: false });
-        document.body.addEventListener('touchcancel', TouchEnd, { passive: false });
+        document.body.addEventListener("touchstart", TouchStart, { passive: false })
+        document.body.addEventListener("touchmove", TouchMove, { passive: false })
+        document.body.addEventListener("touchend", TouchEnd, { passive: false })
+        document.body.addEventListener("touchcancel", TouchEnd, { passive: false })
 
-        R = true;
+        R = true
       }
     }
-  })(e.domElement, t);
+  })(e.domElement, t)
   t.dispose = () => {
-    const t = e.domElement;
-    b.delete(t);
+    const t = e.domElement
+    b.delete(t)
     if (b.size === 0) {
-      document.body.removeEventListener('pointermove', M);
-      document.body.removeEventListener('pointerleave', L);
-      document.body.removeEventListener('click', C);
+      document.body.removeEventListener("pointermove", M)
+      document.body.removeEventListener("pointerleave", L)
+      document.body.removeEventListener("click", C)
 
-      document.body.removeEventListener('touchstart', TouchStart);
-      document.body.removeEventListener('touchmove', TouchMove);
-      document.body.removeEventListener('touchend', TouchEnd);
-      document.body.removeEventListener('touchcancel', TouchEnd);
+      document.body.removeEventListener("touchstart", TouchStart)
+      document.body.removeEventListener("touchmove", TouchMove)
+      document.body.removeEventListener("touchend", TouchEnd)
+      document.body.removeEventListener("touchcancel", TouchEnd)
 
-      R = false;
+      R = false
     }
-  };
-  return t;
+  }
+  return t
 }
 
 function M(e) {
-  A.x = e.clientX;
-  A.y = e.clientY;
-  processInteraction();
+  A.x = e.clientX
+  A.y = e.clientY
+  processInteraction()
 }
 
 function processInteraction() {
   for (const [elem, t] of b) {
-    const i = elem.getBoundingClientRect();
+    const i = elem.getBoundingClientRect()
     if (D(i)) {
-      P(t, i);
+      P(t, i)
       if (!t.hover) {
-        t.hover = true;
-        t.onEnter(t);
+        t.hover = true
+        t.onEnter(t)
       }
-      t.onMove(t);
+      t.onMove(t)
     } else if (t.hover && !t.touching) {
-      t.hover = false;
-      t.onLeave(t);
+      t.hover = false
+      t.onLeave(t)
     }
   }
 }
 
 function C(e) {
-  A.x = e.clientX;
-  A.y = e.clientY;
+  A.x = e.clientX
+  A.y = e.clientY
   for (const [elem, t] of b) {
-    const i = elem.getBoundingClientRect();
-    P(t, i);
-    if (D(i)) t.onClick(t);
+    const i = elem.getBoundingClientRect()
+    P(t, i)
+    if (D(i)) t.onClick(t)
   }
 }
 
 function L() {
   for (const t of b.values()) {
     if (t.hover) {
-      t.hover = false;
-      t.onLeave(t);
+      t.hover = false
+      t.onLeave(t)
     }
   }
 }
 
 function TouchStart(e) {
   if (e.touches.length > 0) {
-    e.preventDefault();
-    A.x = e.touches[0].clientX;
-    A.y = e.touches[0].clientY;
+    e.preventDefault()
+    A.x = e.touches[0].clientX
+    A.y = e.touches[0].clientY
 
     for (const [elem, t] of b) {
-      const rect = elem.getBoundingClientRect();
+      const rect = elem.getBoundingClientRect()
       if (D(rect)) {
-        t.touching = true;
-        P(t, rect);
+        t.touching = true
+        P(t, rect)
         if (!t.hover) {
-          t.hover = true;
-          t.onEnter(t);
+          t.hover = true
+          t.onEnter(t)
         }
-        t.onMove(t);
+        t.onMove(t)
       }
     }
   }
@@ -20389,23 +20645,23 @@ function TouchStart(e) {
 
 function TouchMove(e) {
   if (e.touches.length > 0) {
-    e.preventDefault();
-    A.x = e.touches[0].clientX;
-    A.y = e.touches[0].clientY;
+    e.preventDefault()
+    A.x = e.touches[0].clientX
+    A.y = e.touches[0].clientY
 
     for (const [elem, t] of b) {
-      const rect = elem.getBoundingClientRect();
-      P(t, rect);
+      const rect = elem.getBoundingClientRect()
+      P(t, rect)
 
       if (D(rect)) {
         if (!t.hover) {
-          t.hover = true;
-          t.touching = true;
-          t.onEnter(t);
+          t.hover = true
+          t.touching = true
+          t.onEnter(t)
         }
-        t.onMove(t);
+        t.onMove(t)
       } else if (t.hover && t.touching) {
-        t.onMove(t);
+        t.onMove(t)
       }
     }
   }
@@ -20414,180 +20670,180 @@ function TouchMove(e) {
 function TouchEnd() {
   for (const [, t] of b) {
     if (t.touching) {
-      t.touching = false;
+      t.touching = false
       if (t.hover) {
-        t.hover = false;
-        t.onLeave(t);
+        t.hover = false
+        t.onLeave(t)
       }
     }
   }
 }
 
 function P(e, t) {
-  const { position: i, nPosition: s } = e;
-  i.x = A.x - t.left;
-  i.y = A.y - t.top;
-  s.x = (i.x / t.width) * 2 - 1;
-  s.y = (-i.y / t.height) * 2 + 1;
+  const { position: i, nPosition: s } = e
+  i.x = A.x - t.left
+  i.y = A.y - t.top
+  s.x = (i.x / t.width) * 2 - 1
+  s.y = (-i.y / t.height) * 2 + 1
 }
 function D(e) {
-  const { x: t, y: i } = A;
-  const { left: s, top: n, width: o, height: r } = e;
-  return t >= s && t <= s + o && i >= n && i <= n + r;
+  const { x: t, y: i } = A
+  const { left: s, top: n, width: o, height: r } = e
+  return t >= s && t <= s + o && i >= n && i <= n + r
 }
 
-const { randFloat: k, randFloatSpread: E } = o;
-const F = new a();
-const I = new a();
-const O = new a();
-const V = new a();
-const B = new a();
-const N = new a();
-const _ = new a();
-const j = new a();
-const H = new a();
-const T = new a();
+const { randFloat: k, randFloatSpread: E } = o
+const F = new a()
+const I = new a()
+const O = new a()
+const V = new a()
+const B = new a()
+const N = new a()
+const _ = new a()
+const j = new a()
+const H = new a()
+const T = new a()
 
 class W {
   constructor(e) {
-    this.config = e;
-    this.positionData = new Float32Array(3 * e.count).fill(0);
-    this.velocityData = new Float32Array(3 * e.count).fill(0);
-    this.sizeData = new Float32Array(e.count).fill(1);
-    this.center = new a();
-    this.#R();
-    this.setSizes();
+    this.config = e
+    this.positionData = new Float32Array(3 * e.count).fill(0)
+    this.velocityData = new Float32Array(3 * e.count).fill(0)
+    this.sizeData = new Float32Array(e.count).fill(1)
+    this.center = new a()
+    this.#R()
+    this.setSizes()
   }
   #R() {
-    const { config: e, positionData: t } = this;
-    this.center.toArray(t, 0);
+    const { config: e, positionData: t } = this
+    this.center.toArray(t, 0)
     for (let i = 1; i < e.count; i++) {
-      const s = 3 * i;
-      t[s] = E(2 * e.maxX);
-      t[s + 1] = E(2 * e.maxY);
-      t[s + 2] = E(2 * e.maxZ);
+      const s = 3 * i
+      t[s] = E(2 * e.maxX)
+      t[s + 1] = E(2 * e.maxY)
+      t[s + 2] = E(2 * e.maxZ)
     }
   }
   setSizes() {
-    const { config: e, sizeData: t } = this;
-    t[0] = e.size0;
+    const { config: e, sizeData: t } = this
+    t[0] = e.size0
     for (let i = 1; i < e.count; i++) {
-      t[i] = k(e.minSize, e.maxSize);
+      t[i] = k(e.minSize, e.maxSize)
     }
   }
   update(e) {
-    const { config: t, center: i, positionData: s, sizeData: n, velocityData: o } = this;
-    let r = 0;
+    const { config: t, center: i, positionData: s, sizeData: n, velocityData: o } = this
+    let r = 0
     if (t.controlSphere0) {
-      r = 1;
-      F.fromArray(s, 0);
-      F.lerp(i, 0.1).toArray(s, 0);
-      V.set(0, 0, 0).toArray(o, 0);
+      r = 1
+      F.fromArray(s, 0)
+      F.lerp(i, 0.1).toArray(s, 0)
+      V.set(0, 0, 0).toArray(o, 0)
     }
     for (let idx = r; idx < t.count; idx++) {
-      const base = 3 * idx;
-      I.fromArray(s, base);
-      B.fromArray(o, base);
-      B.y -= e.delta * t.gravity * n[idx];
-      B.multiplyScalar(t.friction);
-      B.clampLength(0, t.maxVelocity);
-      I.add(B);
-      I.toArray(s, base);
-      B.toArray(o, base);
+      const base = 3 * idx
+      I.fromArray(s, base)
+      B.fromArray(o, base)
+      B.y -= e.delta * t.gravity * n[idx]
+      B.multiplyScalar(t.friction)
+      B.clampLength(0, t.maxVelocity)
+      I.add(B)
+      I.toArray(s, base)
+      B.toArray(o, base)
     }
     for (let idx = r; idx < t.count; idx++) {
-      const base = 3 * idx;
-      I.fromArray(s, base);
-      B.fromArray(o, base);
-      const radius = n[idx];
+      const base = 3 * idx
+      I.fromArray(s, base)
+      B.fromArray(o, base)
+      const radius = n[idx]
       for (let jdx = idx + 1; jdx < t.count; jdx++) {
-        const otherBase = 3 * jdx;
-        O.fromArray(s, otherBase);
-        N.fromArray(o, otherBase);
-        const otherRadius = n[jdx];
-        _.copy(O).sub(I);
-        const dist = _.length();
-        const sumRadius = radius + otherRadius;
+        const otherBase = 3 * jdx
+        O.fromArray(s, otherBase)
+        N.fromArray(o, otherBase)
+        const otherRadius = n[jdx]
+        _.copy(O).sub(I)
+        const dist = _.length()
+        const sumRadius = radius + otherRadius
         if (dist < sumRadius) {
-          const overlap = sumRadius - dist;
+          const overlap = sumRadius - dist
           j.copy(_)
             .normalize()
-            .multiplyScalar(0.5 * overlap);
-          H.copy(j).multiplyScalar(Math.max(B.length(), 1));
-          T.copy(j).multiplyScalar(Math.max(N.length(), 1));
-          I.sub(j);
-          B.sub(H);
-          I.toArray(s, base);
-          B.toArray(o, base);
-          O.add(j);
-          N.add(T);
-          O.toArray(s, otherBase);
-          N.toArray(o, otherBase);
+            .multiplyScalar(0.5 * overlap)
+          H.copy(j).multiplyScalar(Math.max(B.length(), 1))
+          T.copy(j).multiplyScalar(Math.max(N.length(), 1))
+          I.sub(j)
+          B.sub(H)
+          I.toArray(s, base)
+          B.toArray(o, base)
+          O.add(j)
+          N.add(T)
+          O.toArray(s, otherBase)
+          N.toArray(o, otherBase)
         }
       }
       if (t.controlSphere0) {
-        _.copy(F).sub(I);
-        const dist = _.length();
-        const sumRadius0 = radius + n[0];
+        _.copy(F).sub(I)
+        const dist = _.length()
+        const sumRadius0 = radius + n[0]
         if (dist < sumRadius0) {
-          const diff = sumRadius0 - dist;
-          j.copy(_.normalize()).multiplyScalar(diff);
-          H.copy(j).multiplyScalar(Math.max(B.length(), 2));
-          I.sub(j);
-          B.sub(H);
+          const diff = sumRadius0 - dist
+          j.copy(_.normalize()).multiplyScalar(diff)
+          H.copy(j).multiplyScalar(Math.max(B.length(), 2))
+          I.sub(j)
+          B.sub(H)
         }
       }
       if (Math.abs(I.x) + radius > t.maxX) {
-        I.x = Math.sign(I.x) * (t.maxX - radius);
-        B.x = -B.x * t.wallBounce;
+        I.x = Math.sign(I.x) * (t.maxX - radius)
+        B.x = -B.x * t.wallBounce
       }
       if (t.gravity === 0) {
         if (Math.abs(I.y) + radius > t.maxY) {
-          I.y = Math.sign(I.y) * (t.maxY - radius);
-          B.y = -B.y * t.wallBounce;
+          I.y = Math.sign(I.y) * (t.maxY - radius)
+          B.y = -B.y * t.wallBounce
         }
       } else if (I.y - radius < -t.maxY) {
-        I.y = -t.maxY + radius;
-        B.y = -B.y * t.wallBounce;
+        I.y = -t.maxY + radius
+        B.y = -B.y * t.wallBounce
       }
-      const maxBoundary = Math.max(t.maxZ, t.maxSize);
+      const maxBoundary = Math.max(t.maxZ, t.maxSize)
       if (Math.abs(I.z) + radius > maxBoundary) {
-        I.z = Math.sign(I.z) * (t.maxZ - radius);
-        B.z = -B.z * t.wallBounce;
+        I.z = Math.sign(I.z) * (t.maxZ - radius)
+        B.z = -B.z * t.wallBounce
       }
-      I.toArray(s, base);
-      B.toArray(o, base);
+      I.toArray(s, base)
+      B.toArray(o, base)
     }
   }
 }
 
 class Y extends c {
   constructor(e) {
-    super(e);
+    super(e)
     this.uniforms = {
       thicknessDistortion: { value: 0.1 },
       thicknessAmbient: { value: 0 },
       thicknessAttenuation: { value: 0.1 },
       thicknessPower: { value: 2 },
-      thicknessScale: { value: 10 }
-    };
-    this.defines.USE_UV = '';
-    this.onBeforeCompile = e => {
-      Object.assign(e.uniforms, this.uniforms);
+      thicknessScale: { value: 10 },
+    }
+    this.defines.USE_UV = ""
+    this.onBeforeCompile = (e) => {
+      Object.assign(e.uniforms, this.uniforms)
       e.fragmentShader =
-        '\n        uniform float thicknessPower;\n        uniform float thicknessScale;\n        uniform float thicknessDistortion;\n        uniform float thicknessAmbient;\n        uniform float thicknessAttenuation;\n      ' +
-        e.fragmentShader;
+        "\n        uniform float thicknessPower;\n        uniform float thicknessScale;\n        uniform float thicknessDistortion;\n        uniform float thicknessAmbient;\n        uniform float thicknessAttenuation;\n      " +
+        e.fragmentShader
       e.fragmentShader = e.fragmentShader.replace(
-        'void main() {',
-        '\n        void RE_Direct_Scattering(const in IncidentLight directLight, const in vec2 uv, const in vec3 geometryPosition, const in vec3 geometryNormal, const in vec3 geometryViewDir, const in vec3 geometryClearcoatNormal, inout ReflectedLight reflectedLight) {\n          vec3 scatteringHalf = normalize(directLight.direction + (geometryNormal * thicknessDistortion));\n          float scatteringDot = pow(saturate(dot(geometryViewDir, -scatteringHalf)), thicknessPower) * thicknessScale;\n          #ifdef USE_COLOR\n            vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * vColor;\n          #else\n            vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * diffuse;\n          #endif\n          reflectedLight.directDiffuse += scatteringIllu * thicknessAttenuation * directLight.color;\n        }\n\n        void main() {\n      '
-      );
+        "void main() {",
+        "\n        void RE_Direct_Scattering(const in IncidentLight directLight, const in vec2 uv, const in vec3 geometryPosition, const in vec3 geometryNormal, const in vec3 geometryViewDir, const in vec3 geometryClearcoatNormal, inout ReflectedLight reflectedLight) {\n          vec3 scatteringHalf = normalize(directLight.direction + (geometryNormal * thicknessDistortion));\n          float scatteringDot = pow(saturate(dot(geometryViewDir, -scatteringHalf)), thicknessPower) * thicknessScale;\n          #ifdef USE_COLOR\n            vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * vColor;\n          #else\n            vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * diffuse;\n          #endif\n          reflectedLight.directDiffuse += scatteringIllu * thicknessAttenuation * directLight.color;\n        }\n\n        void main() {\n      ",
+      )
       const t = h.lights_fragment_begin.replaceAll(
-        'RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );',
-        '\n          RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );\n          RE_Direct_Scattering(directLight, vUv, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, reflectedLight);\n        '
-      );
-      e.fragmentShader = e.fragmentShader.replace('#include <lights_fragment_begin>', t);
-      if (this.onBeforeCompile2) this.onBeforeCompile2(e);
-    };
+        "RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );",
+        "\n          RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );\n          RE_Direct_Scattering(directLight, vUv, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, reflectedLight);\n        ",
+      )
+      e.fragmentShader = e.fragmentShader.replace("#include <lights_fragment_begin>", t)
+      if (this.onBeforeCompile2) this.onBeforeCompile2(e)
+    }
   }
 }
 
@@ -20601,7 +20857,7 @@ const X = {
     metalness: 0.5,
     roughness: 0.5,
     clearcoat: 1,
-    clearcoatRoughness: 0.15
+    clearcoatRoughness: 0.15,
   },
   minSize: 0.5,
   maxSize: 1,
@@ -20614,179 +20870,179 @@ const X = {
   maxY: 5,
   maxZ: 2,
   controlSphere0: false,
-  followCursor: true
-};
+  followCursor: true,
+}
 
-const U = new m();
+const U = new m()
 
 class Z extends d {
   constructor(e, t = {}) {
-    const i = { ...X, ...t };
-    const s = new z();
-    const n = new p(e, 0.04).fromScene(s).texture;
-    const o = new g();
-    const r = new Y({ envMap: n, ...i.materialParams });
-    r.envMapRotation.x = -Math.PI / 2;
-    super(o, r, i.count);
-    this.config = i;
-    this.physics = new W(i);
-    this.#S();
-    this.setColors(i.colors);
+    const i = { ...X, ...t }
+    const s = new z()
+    const n = new p(e, 0.04).fromScene(s).texture
+    const o = new g()
+    const r = new Y({ envMap: n, ...i.materialParams })
+    r.envMapRotation.x = -Math.PI / 2
+    super(o, r, i.count)
+    this.config = i
+    this.physics = new W(i)
+    this.#S()
+    this.setColors(i.colors)
   }
   #S() {
-    this.ambientLight = new f(this.config.ambientColor, this.config.ambientIntensity);
-    this.add(this.ambientLight);
-    this.light = new u(this.config.colors[0], this.config.lightIntensity);
-    this.add(this.light);
+    this.ambientLight = new f(this.config.ambientColor, this.config.ambientIntensity)
+    this.add(this.ambientLight)
+    this.light = new u(this.config.colors[0], this.config.lightIntensity)
+    this.add(this.light)
   }
   setColors(e) {
     if (Array.isArray(e) && e.length > 1) {
       const t = (function (e) {
-        let t, i;
+        let t, i
         function setColors(e) {
-          t = e;
-          i = [];
-          t.forEach(col => {
-            i.push(new l(col));
-          });
+          t = e
+          i = []
+          t.forEach((col) => {
+            i.push(new l(col))
+          })
         }
-        setColors(e);
+        setColors(e)
         return {
           setColors,
           getColorAt: function (ratio, out = new l()) {
-            const scaled = Math.max(0, Math.min(1, ratio)) * (t.length - 1);
-            const idx = Math.floor(scaled);
-            const start = i[idx];
-            if (idx >= t.length - 1) return start.clone();
-            const alpha = scaled - idx;
-            const end = i[idx + 1];
-            out.r = start.r + alpha * (end.r - start.r);
-            out.g = start.g + alpha * (end.g - start.g);
-            out.b = start.b + alpha * (end.b - start.b);
-            return out;
-          }
-        };
-      })(e);
+            const scaled = Math.max(0, Math.min(1, ratio)) * (t.length - 1)
+            const idx = Math.floor(scaled)
+            const start = i[idx]
+            if (idx >= t.length - 1) return start.clone()
+            const alpha = scaled - idx
+            const end = i[idx + 1]
+            out.r = start.r + alpha * (end.r - start.r)
+            out.g = start.g + alpha * (end.g - start.g)
+            out.b = start.b + alpha * (end.b - start.b)
+            return out
+          },
+        }
+      })(e)
       for (let idx = 0; idx < this.count; idx++) {
-        this.setColorAt(idx, t.getColorAt(idx / this.count));
+        this.setColorAt(idx, t.getColorAt(idx / this.count))
         if (idx === 0) {
-          this.light.color.copy(t.getColorAt(idx / this.count));
+          this.light.color.copy(t.getColorAt(idx / this.count))
         }
       }
-      this.instanceColor.needsUpdate = true;
+      this.instanceColor.needsUpdate = true
     }
   }
   update(e) {
-    this.physics.update(e);
+    this.physics.update(e)
     for (let idx = 0; idx < this.count; idx++) {
-      U.position.fromArray(this.physics.positionData, 3 * idx);
+      U.position.fromArray(this.physics.positionData, 3 * idx)
       if (idx === 0 && this.config.followCursor === false) {
-        U.scale.setScalar(0);
+        U.scale.setScalar(0)
       } else {
-        U.scale.setScalar(this.physics.sizeData[idx]);
+        U.scale.setScalar(this.physics.sizeData[idx])
       }
-      U.updateMatrix();
-      this.setMatrixAt(idx, U.matrix);
-      if (idx === 0) this.light.position.copy(U.position);
+      U.updateMatrix()
+      this.setMatrixAt(idx, U.matrix)
+      if (idx === 0) this.light.position.copy(U.position)
     }
-    this.instanceMatrix.needsUpdate = true;
+    this.instanceMatrix.needsUpdate = true
   }
 }
 
 function createBallpit(e, t = {}) {
   const i = new x({
     canvas: e,
-    size: 'parent',
-    rendererOptions: { antialias: true, alpha: true }
-  });
-  let s;
-  i.renderer.toneMapping = v;
-  i.camera.position.set(0, 0, 20);
-  i.camera.lookAt(0, 0, 0);
-  i.cameraMaxAspect = 1.5;
-  i.resize();
-  initialize(t);
-  const n = new y();
-  const o = new w(new a(0, 0, 1), 0);
-  const r = new a();
-  let c = false;
+    size: "parent",
+    rendererOptions: { antialias: true, alpha: true },
+  })
+  let s
+  i.renderer.toneMapping = v
+  i.camera.position.set(0, 0, 20)
+  i.camera.lookAt(0, 0, 0)
+  i.cameraMaxAspect = 1.5
+  i.resize()
+  initialize(t)
+  const n = new y()
+  const o = new w(new a(0, 0, 1), 0)
+  const r = new a()
+  let c = false
 
-  e.style.touchAction = 'none';
-  e.style.userSelect = 'none';
-  e.style.webkitUserSelect = 'none';
+  e.style.touchAction = "none"
+  e.style.userSelect = "none"
+  e.style.webkitUserSelect = "none"
 
   const h = S({
     domElement: e,
     onMove() {
-      n.setFromCamera(h.nPosition, i.camera);
-      i.camera.getWorldDirection(o.normal);
-      n.ray.intersectPlane(o, r);
-      s.physics.center.copy(r);
-      s.config.controlSphere0 = true;
+      n.setFromCamera(h.nPosition, i.camera)
+      i.camera.getWorldDirection(o.normal)
+      n.ray.intersectPlane(o, r)
+      s.physics.center.copy(r)
+      s.config.controlSphere0 = true
     },
     onLeave() {
-      s.config.controlSphere0 = false;
-    }
-  });
+      s.config.controlSphere0 = false
+    },
+  })
   function initialize(e) {
     if (s) {
-      i.clear();
-      i.scene.remove(s);
+      i.clear()
+      i.scene.remove(s)
     }
-    s = new Z(i.renderer, e);
-    i.scene.add(s);
+    s = new Z(i.renderer, e)
+    i.scene.add(s)
   }
-  i.onBeforeRender = e => {
-    if (!c) s.update(e);
-  };
-  i.onAfterResize = e => {
-    s.config.maxX = e.wWidth / 2;
-    s.config.maxY = e.wHeight / 2;
-  };
+  i.onBeforeRender = (e) => {
+    if (!c) s.update(e)
+  }
+  i.onAfterResize = (e) => {
+    s.config.maxX = e.wWidth / 2
+    s.config.maxY = e.wHeight / 2
+  }
   return {
     three: i,
     get spheres() {
-      return s;
+      return s
     },
     setCount(e) {
-      initialize({ ...s.config, count: e });
+      initialize({ ...s.config, count: e })
     },
     togglePause() {
-      c = !c;
+      c = !c
     },
     dispose() {
-      h.dispose();
-      i.dispose();
-    }
-  };
+      h.dispose()
+      i.dispose()
+    },
+  }
 }
 
-const Ballpit = ({ className = '', followCursor = true, ...props }) => {
-  const canvasRef = useRef(null);
-  const spheresInstanceRef = useRef(null);
+const Ballpit = ({ className = "", followCursor = true, ...props }) => {
+  const canvasRef = useRef(null)
+  const spheresInstanceRef = useRef(null)
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvas = canvasRef.current
+    if (!canvas) return
 
-    spheresInstanceRef.current = createBallpit(canvas, { followCursor, ...props });
+    spheresInstanceRef.current = createBallpit(canvas, { followCursor, ...props })
 
     return () => {
       if (spheresInstanceRef.current) {
-        spheresInstanceRef.current.dispose();
+        spheresInstanceRef.current.dispose()
       }
-    };
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
-  return <canvas className={className} ref={canvasRef} style={{ width: '100%', height: '100%' }} />;
-};
+  return <canvas className={className} ref={canvasRef} style={{ width: "100%", height: "100%" }} />
+}
 
-export default Ballpit;
-
+export default Ballpit
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import and render the component using the usage example above as a starting point.
@@ -20800,48 +21056,48 @@ code: ## Integrate the <Orb /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Orb
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import Orb from './Orb';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <Orb
-    hoverIntensity={0.5}
-    rotateOnHover={true}
-    hue={0}
-    forceHoverState={false}
-  />
+```jsx
+import Orb from "./Orb"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
+  <Orb hoverIntensity={0.5} rotateOnHover={true} hue={0} forceHoverState={false} />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| hue | number | 0 | The base hue for the orb (in degrees). |
-| hoverIntensity | number | 0.2 | Controls the intensity of the hover distortion effect. |
-| rotateOnHover | boolean | true | Toggle to enable or disable continuous rotation on hover. |
-| forceHoverState | boolean | false | Force hover animations even when the orb is not actually hovered. |
-| backgroundColor | string | #000000 | The background color of the container. |
+
+| Prop            | Type    | Default | Description                                                       |
+| --------------- | ------- | ------- | ----------------------------------------------------------------- |
+| hue             | number  | 0       | The base hue for the orb (in degrees).                            |
+| hoverIntensity  | number  | 0.2     | Controls the intensity of the hover distortion effect.            |
+| rotateOnHover   | boolean | true    | Toggle to enable or disable continuous rotation on hover.         |
+| forceHoverState | boolean | false   | Force hover animations even when the orb is not actually hovered. |
+| backgroundColor | string  | #000000 | The background color of the container.                            |
 
 ### Full Component Source
+
 ```jsx
-import { Mesh, Program, Renderer, Triangle, Vec3 } from 'ogl';
-import { useEffect, useRef } from 'react';
-import './Orb.css';
+import { Mesh, Program, Renderer, Triangle, Vec3 } from "ogl"
+import { useEffect, useRef } from "react"
+import "./Orb.css"
 
 export default function Orb({
   hue = 0,
   hoverIntensity = 0.2,
   rotateOnHover = true,
   forceHoverState = false,
-  backgroundColor = '#000000'
+  backgroundColor = "#000000",
 }) {
-  const ctnDom = useRef(null);
+  const ctnDom = useRef(null)
 
   const vert = /* glsl */ `
     precision highp float;
@@ -20852,7 +21108,7 @@ export default function Orb({
       vUv = uv;
       gl_Position = vec4(position, 0.0, 1.0);
     }
-  `;
+  `
 
   const frag = /* glsl */ `
     precision highp float;
@@ -21013,168 +21269,168 @@ export default function Orb({
       vec4 col = mainImage(fragCoord);
       gl_FragColor = vec4(col.rgb * col.a, col.a);
     }
-  `;
+  `
 
   useEffect(() => {
-    const container = ctnDom.current;
-    if (!container) return;
+    const container = ctnDom.current
+    if (!container) return
 
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
-    container.appendChild(gl.canvas);
+    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false })
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 0)
+    container.appendChild(gl.canvas)
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     const program = new Program(gl, {
       vertex: vert,
       fragment: frag,
       uniforms: {
         iTime: { value: 0 },
         iResolution: {
-          value: new Vec3(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
+          value: new Vec3(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height),
         },
         hue: { value: hue },
         hover: { value: 0 },
         rot: { value: 0 },
         hoverIntensity: { value: hoverIntensity },
-        backgroundColor: { value: hexToVec3(backgroundColor) }
-      }
-    });
+        backgroundColor: { value: hexToVec3(backgroundColor) },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
+    const mesh = new Mesh(gl, { geometry, program })
 
     function resize() {
-      if (!container) return;
-      const dpr = window.devicePixelRatio || 1;
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      renderer.setSize(width * dpr, height * dpr);
-      gl.canvas.style.width = width + 'px';
-      gl.canvas.style.height = height + 'px';
-      program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height);
+      if (!container) return
+      const dpr = window.devicePixelRatio || 1
+      const width = container.clientWidth
+      const height = container.clientHeight
+      renderer.setSize(width * dpr, height * dpr)
+      gl.canvas.style.width = width + "px"
+      gl.canvas.style.height = height + "px"
+      program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
-    let targetHover = 0;
-    let lastTime = 0;
-    let currentRot = 0;
-    const rotationSpeed = 0.3;
+    let targetHover = 0
+    let lastTime = 0
+    let currentRot = 0
+    const rotationSpeed = 0.3
 
-    const handleMouseMove = e => {
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const width = rect.width;
-      const height = rect.height;
-      const size = Math.min(width, height);
-      const centerX = width / 2;
-      const centerY = height / 2;
-      const uvX = ((x - centerX) / size) * 2.0;
-      const uvY = ((y - centerY) / size) * 2.0;
+    const handleMouseMove = (e) => {
+      const rect = container.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      const width = rect.width
+      const height = rect.height
+      const size = Math.min(width, height)
+      const centerX = width / 2
+      const centerY = height / 2
+      const uvX = ((x - centerX) / size) * 2.0
+      const uvY = ((y - centerY) / size) * 2.0
 
       if (Math.sqrt(uvX * uvX + uvY * uvY) < 0.8) {
-        targetHover = 1;
+        targetHover = 1
       } else {
-        targetHover = 0;
+        targetHover = 0
       }
-    };
+    }
 
     const handleMouseLeave = () => {
-      targetHover = 0;
-    };
+      targetHover = 0
+    }
 
-    container.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('mouseleave', handleMouseLeave);
+    container.addEventListener("mousemove", handleMouseMove)
+    container.addEventListener("mouseleave", handleMouseLeave)
 
-    let rafId;
-    const update = t => {
-      rafId = requestAnimationFrame(update);
-      const dt = (t - lastTime) * 0.001;
-      lastTime = t;
-      program.uniforms.iTime.value = t * 0.001;
-      program.uniforms.hue.value = hue;
-      program.uniforms.hoverIntensity.value = hoverIntensity;
-      program.uniforms.backgroundColor.value = hexToVec3(backgroundColor);
+    let rafId
+    const update = (t) => {
+      rafId = requestAnimationFrame(update)
+      const dt = (t - lastTime) * 0.001
+      lastTime = t
+      program.uniforms.iTime.value = t * 0.001
+      program.uniforms.hue.value = hue
+      program.uniforms.hoverIntensity.value = hoverIntensity
+      program.uniforms.backgroundColor.value = hexToVec3(backgroundColor)
 
-      const effectiveHover = forceHoverState ? 1 : targetHover;
-      program.uniforms.hover.value += (effectiveHover - program.uniforms.hover.value) * 0.1;
+      const effectiveHover = forceHoverState ? 1 : targetHover
+      program.uniforms.hover.value += (effectiveHover - program.uniforms.hover.value) * 0.1
 
       if (rotateOnHover && effectiveHover > 0.5) {
-        currentRot += dt * rotationSpeed;
+        currentRot += dt * rotationSpeed
       }
-      program.uniforms.rot.value = currentRot;
+      program.uniforms.rot.value = currentRot
 
-      renderer.render({ scene: mesh });
-    };
-    rafId = requestAnimationFrame(update);
+      renderer.render({ scene: mesh })
+    }
+    rafId = requestAnimationFrame(update)
 
     return () => {
-      cancelAnimationFrame(rafId);
-      window.removeEventListener('resize', resize);
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('mouseleave', handleMouseLeave);
-      container.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
+      cancelAnimationFrame(rafId)
+      window.removeEventListener("resize", resize)
+      container.removeEventListener("mousemove", handleMouseMove)
+      container.removeEventListener("mouseleave", handleMouseLeave)
+      container.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hue, hoverIntensity, rotateOnHover, forceHoverState, backgroundColor]);
+  }, [hue, hoverIntensity, rotateOnHover, forceHoverState, backgroundColor])
 
-  return <div ref={ctnDom} className="orb-container" />;
+  return <div ref={ctnDom} className="orb-container" />
 }
 
 function hslToRgb(h, s, l) {
-  let r, g, b;
+  let r, g, b
 
   if (s === 0) {
-    r = g = b = l;
+    r = g = b = l
   } else {
     const hue2rgb = (p, q, t) => {
-      if (t < 0) t += 1;
-      if (t > 1) t -= 1;
-      if (t < 1 / 6) return p + (q - p) * 6 * t;
-      if (t < 1 / 2) return q;
-      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-      return p;
-    };
+      if (t < 0) t += 1
+      if (t > 1) t -= 1
+      if (t < 1 / 6) return p + (q - p) * 6 * t
+      if (t < 1 / 2) return q
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6
+      return p
+    }
 
-    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-    const p = 2 * l - q;
-    r = hue2rgb(p, q, h + 1 / 3);
-    g = hue2rgb(p, q, h);
-    b = hue2rgb(p, q, h - 1 / 3);
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s
+    const p = 2 * l - q
+    r = hue2rgb(p, q, h + 1 / 3)
+    g = hue2rgb(p, q, h)
+    b = hue2rgb(p, q, h - 1 / 3)
   }
 
-  return new Vec3(r, g, b);
+  return new Vec3(r, g, b)
 }
 
 function hexToVec3(color) {
-  if (color.startsWith('#')) {
-    const r = parseInt(color.slice(1, 3), 16) / 255;
-    const g = parseInt(color.slice(3, 5), 16) / 255;
-    const b = parseInt(color.slice(5, 7), 16) / 255;
-    return new Vec3(r, g, b);
+  if (color.startsWith("#")) {
+    const r = parseInt(color.slice(1, 3), 16) / 255
+    const g = parseInt(color.slice(3, 5), 16) / 255
+    const b = parseInt(color.slice(5, 7), 16) / 255
+    return new Vec3(r, g, b)
   }
 
-  const rgbMatch = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  const rgbMatch = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/)
   if (rgbMatch) {
-    return new Vec3(parseInt(rgbMatch[1]) / 255, parseInt(rgbMatch[2]) / 255, parseInt(rgbMatch[3]) / 255);
+    return new Vec3(parseInt(rgbMatch[1]) / 255, parseInt(rgbMatch[2]) / 255, parseInt(rgbMatch[3]) / 255)
   }
 
-  const hslMatch = color.match(/hsla?\((\d+),\s*(\d+)%,\s*(\d+)%/);
+  const hslMatch = color.match(/hsla?\((\d+),\s*(\d+)%,\s*(\d+)%/)
   if (hslMatch) {
-    const h = parseInt(hslMatch[1]) / 360;
-    const s = parseInt(hslMatch[2]) / 100;
-    const l = parseInt(hslMatch[3]) / 100;
-    return hslToRgb(h, s, l);
+    const h = parseInt(hslMatch[1]) / 360
+    const s = parseInt(hslMatch[2]) / 100
+    const l = parseInt(hslMatch[3]) / 100
+    return hslToRgb(h, s, l)
   }
 
-  return new Vec3(0, 0, 0);
+  return new Vec3(0, 0, 0)
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .orb-container {
   position: relative;
@@ -21182,10 +21438,10 @@ function hexToVec3(color) {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -21200,126 +21456,131 @@ code: ## Integrate the <GridMotion /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: GridMotion
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
+
 ```jsx
-import GridMotion from './GridMotion';
-  
+import GridMotion from "./GridMotion"
+
 // note: you'll need to make sure the parent container of this component is sized properly
 const items = [
-  'Item 1',
-  <div key='jsx-item-1'>Custom JSX Content</div>,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 2',
-  <div key='jsx-item-2'>Custom JSX Content</div>,
-  'Item 4',
-  <div key='jsx-item-2'>Custom JSX Content</div>,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 5',
-  <div key='jsx-item-2'>Custom JSX Content</div>,
-  'Item 7',
-  <div key='jsx-item-2'>Custom JSX Content</div>,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 8',
-  <div key='jsx-item-2'>Custom JSX Content</div>,
-  'Item 10',
-  <div key='jsx-item-3'>Custom JSX Content</div>,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 11',
-  <div key='jsx-item-2'>Custom JSX Content</div>,
-  'Item 13',
-  <div key='jsx-item-4'>Custom JSX Content</div>,
-  'https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'Item 14',
+  "Item 1",
+  <div key="jsx-item-1">Custom JSX Content</div>,
+  "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "Item 2",
+  <div key="jsx-item-2">Custom JSX Content</div>,
+  "Item 4",
+  <div key="jsx-item-2">Custom JSX Content</div>,
+  "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "Item 5",
+  <div key="jsx-item-2">Custom JSX Content</div>,
+  "Item 7",
+  <div key="jsx-item-2">Custom JSX Content</div>,
+  "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "Item 8",
+  <div key="jsx-item-2">Custom JSX Content</div>,
+  "Item 10",
+  <div key="jsx-item-3">Custom JSX Content</div>,
+  "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "Item 11",
+  <div key="jsx-item-2">Custom JSX Content</div>,
+  "Item 13",
+  <div key="jsx-item-4">Custom JSX Content</div>,
+  "https://images.unsplash.com/photo-1723403804231-f4e9b515fe9d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "Item 14",
   // Add more items as needed
-];
+]
 
-<GridMotion items={items} />
+;<GridMotion items={items} />
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| items | array | [] | An array of items to display in the grid. Each item can be a string, JSX element, or an image URL. |
-| gradientColor | string | black | Controls the color of the radial gradient used as the background. |
+
+| Prop          | Type   | Default | Description                                                                                        |
+| ------------- | ------ | ------- | -------------------------------------------------------------------------------------------------- |
+| items         | array  | []      | An array of items to display in the grid. Each item can be a string, JSX element, or an image URL. |
+| gradientColor | string | black   | Controls the color of the radial gradient used as the background.                                  |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import './GridMotion.css';
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+import "./GridMotion.css"
 
-const GridMotion = ({ items = [], gradientColor = 'black' }) => {
-  const gridRef = useRef(null);
-  const rowRefs = useRef([]);
-  const mouseXRef = useRef(window.innerWidth / 2);
+const GridMotion = ({ items = [], gradientColor = "black" }) => {
+  const gridRef = useRef(null)
+  const rowRefs = useRef([])
+  const mouseXRef = useRef(window.innerWidth / 2)
 
-  const totalItems = 28;
-  const defaultItems = Array.from({ length: totalItems }, (_, index) => `Item ${index + 1}`);
-  const combinedItems = items.length > 0 ? items.slice(0, totalItems) : defaultItems;
+  const totalItems = 28
+  const defaultItems = Array.from({ length: totalItems }, (_, index) => `Item ${index + 1}`)
+  const combinedItems = items.length > 0 ? items.slice(0, totalItems) : defaultItems
 
   useEffect(() => {
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(0)
 
-    const handleMouseMove = e => {
-      mouseXRef.current = e.clientX;
-    };
+    const handleMouseMove = (e) => {
+      mouseXRef.current = e.clientX
+    }
 
     const updateMotion = () => {
-      const maxMoveAmount = 300;
-      const baseDuration = 0.8;
-      const inertiaFactors = [0.6, 0.4, 0.3, 0.2];
+      const maxMoveAmount = 300
+      const baseDuration = 0.8
+      const inertiaFactors = [0.6, 0.4, 0.3, 0.2]
 
       rowRefs.current.forEach((row, index) => {
         if (row) {
-          const direction = index % 2 === 0 ? 1 : -1;
-          const moveAmount = ((mouseXRef.current / window.innerWidth) * maxMoveAmount - maxMoveAmount / 2) * direction;
+          const direction = index % 2 === 0 ? 1 : -1
+          const moveAmount = ((mouseXRef.current / window.innerWidth) * maxMoveAmount - maxMoveAmount / 2) * direction
 
           gsap.to(row, {
             x: moveAmount,
             duration: baseDuration + inertiaFactors[index % inertiaFactors.length],
-            ease: 'power3.out',
-            overwrite: 'auto'
-          });
+            ease: "power3.out",
+            overwrite: "auto",
+          })
         }
-      });
-    };
+      })
+    }
 
-    const removeAnimationLoop = gsap.ticker.add(updateMotion);
+    const removeAnimationLoop = gsap.ticker.add(updateMotion)
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove)
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      removeAnimationLoop();
-    };
-  }, []);
+      window.removeEventListener("mousemove", handleMouseMove)
+      removeAnimationLoop()
+    }
+  }, [])
 
   return (
     <div className="noscroll loading" ref={gridRef}>
       <section
         className="intro"
         style={{
-          background: `radial-gradient(circle, ${gradientColor} 0%, transparent 100%)`
+          background: `radial-gradient(circle, ${gradientColor} 0%, transparent 100%)`,
         }}
       >
         <div className="gridMotion-container">
           {[...Array(4)].map((_, rowIndex) => (
-            <div key={rowIndex} className="row" ref={el => (rowRefs.current[rowIndex] = el)}>
+            <div key={rowIndex} className="row" ref={(el) => (rowRefs.current[rowIndex] = el)}>
               {[...Array(7)].map((_, itemIndex) => {
-                const content = combinedItems[rowIndex * 7 + itemIndex];
+                const content = combinedItems[rowIndex * 7 + itemIndex]
                 return (
                   <div key={itemIndex} className="row__item">
-                    <div className="row__item-inner" style={{ backgroundColor: '#111' }}>
-                      {typeof content === 'string' && content.startsWith('http') ? (
+                    <div className="row__item-inner" style={{ backgroundColor: "#111" }}>
+                      {typeof content === "string" && content.startsWith("http") ? (
                         <div
                           className="row__item-img"
                           style={{
-                            backgroundImage: `url(${content})`
+                            backgroundImage: `url(${content})`,
                           }}
                         ></div>
                       ) : (
@@ -21327,7 +21588,7 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
                       )}
                     </div>
                   </div>
-                );
+                )
               })}
             </div>
           ))}
@@ -21335,14 +21596,14 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
         <div className="fullview"></div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default GridMotion;
-
+export default GridMotion
 ```
 
 ### Component CSS
+
 ```css
 .noscroll {
   height: 100%;
@@ -21361,7 +21622,7 @@ export default GridMotion;
 }
 
 .intro::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -21439,10 +21700,10 @@ export default GridMotion;
 .fullview .row__item-inner {
   border-radius: 0px;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -21457,224 +21718,227 @@ code: ## Integrate the <ShapeGrid /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: ShapeGrid
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
+
 ```jsx
-import ShapeGrid from './ShapeGrid';
-  
-<ShapeGrid 
-speed={0.5} 
-squareSize={40}
-direction='diagonal' // up, down, left, right, diagonal
-borderColor='#fff'
-hoverFillColor='#222'
-shape='square' // square, hexagon, circle, triangle
-hoverTrailAmount={5} // number of trailing hovered shapes (0 = no trail)
+import ShapeGrid from "./ShapeGrid"
+
+;<ShapeGrid
+  speed={0.5}
+  squareSize={40}
+  direction="diagonal" // up, down, left, right, diagonal
+  borderColor="#fff"
+  hoverFillColor="#222"
+  shape="square" // square, hexagon, circle, triangle
+  hoverTrailAmount={5} // number of trailing hovered shapes (0 = no trail)
 />
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| direction | string | 'right' | Direction of square animation. Options: 'diagonal', 'up', 'right', 'down', 'left'. |
-| speed | number | 1 | Animation speed multiplier. |
-| borderColor | string | '#999' | Color of the square borders. |
-| squareSize | number | 40 | Size of individual squares in pixels. |
-| hoverFillColor | string | '#222' | Fill color when hovering over squares. |
-| shape | string | 'square' | Shape of the grid tiles. Options: 'square', 'hexagon', 'circle', 'triangle'. |
-| hoverTrailAmount | number | 0 | Number of previously hovered shapes to keep visible as a fading trail. 0 disables the trail. |
+
+| Prop             | Type   | Default  | Description                                                                                  |
+| ---------------- | ------ | -------- | -------------------------------------------------------------------------------------------- |
+| direction        | string | 'right'  | Direction of square animation. Options: 'diagonal', 'up', 'right', 'down', 'left'.           |
+| speed            | number | 1        | Animation speed multiplier.                                                                  |
+| borderColor      | string | '#999'   | Color of the square borders.                                                                 |
+| squareSize       | number | 40       | Size of individual squares in pixels.                                                        |
+| hoverFillColor   | string | '#222'   | Fill color when hovering over squares.                                                       |
+| shape            | string | 'square' | Shape of the grid tiles. Options: 'square', 'hexagon', 'circle', 'triangle'.                 |
+| hoverTrailAmount | number | 0        | Number of previously hovered shapes to keep visible as a fading trail. 0 disables the trail. |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect } from 'react';
-import './ShapeGrid.css';
+import { useRef, useEffect } from "react"
+import "./ShapeGrid.css"
 
 const ShapeGrid = ({
-  direction = 'right',
+  direction = "right",
   speed = 1,
-  borderColor = '#999',
+  borderColor = "#999",
   squareSize = 40,
-  hoverFillColor = '#222',
-  shape = 'square',
+  hoverFillColor = "#222",
+  shape = "square",
   hoverTrailAmount = 0,
-  className = ''
+  className = "",
 }) => {
-  const canvasRef = useRef(null);
-  const requestRef = useRef(null);
-  const numSquaresX = useRef();
-  const numSquaresY = useRef();
-  const gridOffset = useRef({ x: 0, y: 0 });
-  const hoveredSquare = useRef(null);
-  const trailCells = useRef([]);
-  const cellOpacities = useRef(new Map());
+  const canvasRef = useRef(null)
+  const requestRef = useRef(null)
+  const numSquaresX = useRef()
+  const numSquaresY = useRef()
+  const gridOffset = useRef({ x: 0, y: 0 })
+  const hoveredSquare = useRef(null)
+  const trailCells = useRef([])
+  const cellOpacities = useRef(new Map())
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext("2d")
 
-    const isHex = shape === 'hexagon';
-    const isTri = shape === 'triangle';
-    const hexHoriz = squareSize * 1.5;
-    const hexVert = squareSize * Math.sqrt(3);
+    const isHex = shape === "hexagon"
+    const isTri = shape === "triangle"
+    const hexHoriz = squareSize * 1.5
+    const hexVert = squareSize * Math.sqrt(3)
 
     const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      numSquaresX.current = Math.ceil(canvas.width / squareSize) + 1;
-      numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1;
-    };
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+      numSquaresX.current = Math.ceil(canvas.width / squareSize) + 1
+      numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1
+    }
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas)
+    resizeCanvas()
 
     const drawHex = (cx, cy, size) => {
-      ctx.beginPath();
+      ctx.beginPath()
       for (let i = 0; i < 6; i++) {
-        const angle = (Math.PI / 3) * i;
-        const vx = cx + size * Math.cos(angle);
-        const vy = cy + size * Math.sin(angle);
-        if (i === 0) ctx.moveTo(vx, vy);
-        else ctx.lineTo(vx, vy);
+        const angle = (Math.PI / 3) * i
+        const vx = cx + size * Math.cos(angle)
+        const vy = cy + size * Math.sin(angle)
+        if (i === 0) ctx.moveTo(vx, vy)
+        else ctx.lineTo(vx, vy)
       }
-      ctx.closePath();
-    };
+      ctx.closePath()
+    }
 
     const drawCircle = (cx, cy, size) => {
-      ctx.beginPath();
-      ctx.arc(cx, cy, size / 2, 0, Math.PI * 2);
-      ctx.closePath();
-    };
+      ctx.beginPath()
+      ctx.arc(cx, cy, size / 2, 0, Math.PI * 2)
+      ctx.closePath()
+    }
 
     const drawTriangle = (cx, cy, size, flip) => {
-      ctx.beginPath();
+      ctx.beginPath()
       if (flip) {
-        ctx.moveTo(cx, cy + size / 2);
-        ctx.lineTo(cx + size / 2, cy - size / 2);
-        ctx.lineTo(cx - size / 2, cy - size / 2);
+        ctx.moveTo(cx, cy + size / 2)
+        ctx.lineTo(cx + size / 2, cy - size / 2)
+        ctx.lineTo(cx - size / 2, cy - size / 2)
       } else {
-        ctx.moveTo(cx, cy - size / 2);
-        ctx.lineTo(cx + size / 2, cy + size / 2);
-        ctx.lineTo(cx - size / 2, cy + size / 2);
+        ctx.moveTo(cx, cy - size / 2)
+        ctx.lineTo(cx + size / 2, cy + size / 2)
+        ctx.lineTo(cx - size / 2, cy + size / 2)
       }
-      ctx.closePath();
-    };
+      ctx.closePath()
+    }
 
     const drawGrid = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       if (isHex) {
-        const colShift = Math.floor(gridOffset.current.x / hexHoriz);
-        const offsetX = ((gridOffset.current.x % hexHoriz) + hexHoriz) % hexHoriz;
-        const offsetY = ((gridOffset.current.y % hexVert) + hexVert) % hexVert;
+        const colShift = Math.floor(gridOffset.current.x / hexHoriz)
+        const offsetX = ((gridOffset.current.x % hexHoriz) + hexHoriz) % hexHoriz
+        const offsetY = ((gridOffset.current.y % hexVert) + hexVert) % hexVert
 
-        const cols = Math.ceil(canvas.width / hexHoriz) + 3;
-        const rows = Math.ceil(canvas.height / hexVert) + 3;
+        const cols = Math.ceil(canvas.width / hexHoriz) + 3
+        const rows = Math.ceil(canvas.height / hexVert) + 3
 
         for (let col = -2; col < cols; col++) {
           for (let row = -2; row < rows; row++) {
-            const cx = col * hexHoriz + offsetX;
-            const cy = row * hexVert + ((col + colShift) % 2 !== 0 ? hexVert / 2 : 0) + offsetY;
+            const cx = col * hexHoriz + offsetX
+            const cy = row * hexVert + ((col + colShift) % 2 !== 0 ? hexVert / 2 : 0) + offsetY
 
-            const cellKey = `${col},${row}`;
-            const alpha = cellOpacities.current.get(cellKey);
+            const cellKey = `${col},${row}`
+            const alpha = cellOpacities.current.get(cellKey)
             if (alpha) {
-              ctx.globalAlpha = alpha;
-              drawHex(cx, cy, squareSize);
-              ctx.fillStyle = hoverFillColor;
-              ctx.fill();
-              ctx.globalAlpha = 1;
+              ctx.globalAlpha = alpha
+              drawHex(cx, cy, squareSize)
+              ctx.fillStyle = hoverFillColor
+              ctx.fill()
+              ctx.globalAlpha = 1
             }
 
-            drawHex(cx, cy, squareSize);
-            ctx.strokeStyle = borderColor;
-            ctx.stroke();
+            drawHex(cx, cy, squareSize)
+            ctx.strokeStyle = borderColor
+            ctx.stroke()
           }
         }
       } else if (isTri) {
-        const halfW = squareSize / 2;
-        const colShift = Math.floor(gridOffset.current.x / halfW);
-        const rowShift = Math.floor(gridOffset.current.y / squareSize);
-        const offsetX = ((gridOffset.current.x % halfW) + halfW) % halfW;
-        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize;
+        const halfW = squareSize / 2
+        const colShift = Math.floor(gridOffset.current.x / halfW)
+        const rowShift = Math.floor(gridOffset.current.y / squareSize)
+        const offsetX = ((gridOffset.current.x % halfW) + halfW) % halfW
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
 
-        const cols = Math.ceil(canvas.width / halfW) + 4;
-        const rows = Math.ceil(canvas.height / squareSize) + 4;
+        const cols = Math.ceil(canvas.width / halfW) + 4
+        const rows = Math.ceil(canvas.height / squareSize) + 4
 
         for (let col = -2; col < cols; col++) {
           for (let row = -2; row < rows; row++) {
-            const cx = col * halfW + offsetX;
-            const cy = row * squareSize + squareSize / 2 + offsetY;
-            const flip = ((col + colShift + row + rowShift) % 2 + 2) % 2 !== 0;
+            const cx = col * halfW + offsetX
+            const cy = row * squareSize + squareSize / 2 + offsetY
+            const flip = (((col + colShift + row + rowShift) % 2) + 2) % 2 !== 0
 
-            const cellKey = `${col},${row}`;
-            const alpha = cellOpacities.current.get(cellKey);
+            const cellKey = `${col},${row}`
+            const alpha = cellOpacities.current.get(cellKey)
             if (alpha) {
-              ctx.globalAlpha = alpha;
-              drawTriangle(cx, cy, squareSize, flip);
-              ctx.fillStyle = hoverFillColor;
-              ctx.fill();
-              ctx.globalAlpha = 1;
+              ctx.globalAlpha = alpha
+              drawTriangle(cx, cy, squareSize, flip)
+              ctx.fillStyle = hoverFillColor
+              ctx.fill()
+              ctx.globalAlpha = 1
             }
 
-            drawTriangle(cx, cy, squareSize, flip);
-            ctx.strokeStyle = borderColor;
-            ctx.stroke();
+            drawTriangle(cx, cy, squareSize, flip)
+            ctx.strokeStyle = borderColor
+            ctx.stroke()
           }
         }
-      } else if (shape === 'circle') {
-        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize;
-        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize;
+      } else if (shape === "circle") {
+        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
 
-        const cols = Math.ceil(canvas.width / squareSize) + 3;
-        const rows = Math.ceil(canvas.height / squareSize) + 3;
+        const cols = Math.ceil(canvas.width / squareSize) + 3
+        const rows = Math.ceil(canvas.height / squareSize) + 3
 
         for (let col = -2; col < cols; col++) {
           for (let row = -2; row < rows; row++) {
-            const cx = col * squareSize + squareSize / 2 + offsetX;
-            const cy = row * squareSize + squareSize / 2 + offsetY;
+            const cx = col * squareSize + squareSize / 2 + offsetX
+            const cy = row * squareSize + squareSize / 2 + offsetY
 
-            const cellKey = `${col},${row}`;
-            const alpha = cellOpacities.current.get(cellKey);
+            const cellKey = `${col},${row}`
+            const alpha = cellOpacities.current.get(cellKey)
             if (alpha) {
-              ctx.globalAlpha = alpha;
-              drawCircle(cx, cy, squareSize);
-              ctx.fillStyle = hoverFillColor;
-              ctx.fill();
-              ctx.globalAlpha = 1;
+              ctx.globalAlpha = alpha
+              drawCircle(cx, cy, squareSize)
+              ctx.fillStyle = hoverFillColor
+              ctx.fill()
+              ctx.globalAlpha = 1
             }
 
-            drawCircle(cx, cy, squareSize);
-            ctx.strokeStyle = borderColor;
-            ctx.stroke();
+            drawCircle(cx, cy, squareSize)
+            ctx.strokeStyle = borderColor
+            ctx.stroke()
           }
         }
       } else {
-        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize;
-        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize;
+        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
 
-        const cols = Math.ceil(canvas.width / squareSize) + 3;
-        const rows = Math.ceil(canvas.height / squareSize) + 3;
+        const cols = Math.ceil(canvas.width / squareSize) + 3
+        const rows = Math.ceil(canvas.height / squareSize) + 3
 
         for (let col = -2; col < cols; col++) {
           for (let row = -2; row < rows; row++) {
-            const sx = col * squareSize + offsetX;
-            const sy = row * squareSize + offsetY;
+            const sx = col * squareSize + offsetX
+            const sy = row * squareSize + offsetY
 
-            const cellKey = `${col},${row}`;
-            const alpha = cellOpacities.current.get(cellKey);
+            const cellKey = `${col},${row}`
+            const alpha = cellOpacities.current.get(cellKey)
             if (alpha) {
-              ctx.globalAlpha = alpha;
-              ctx.fillStyle = hoverFillColor;
-              ctx.fillRect(sx, sy, squareSize, squareSize);
-              ctx.globalAlpha = 1;
+              ctx.globalAlpha = alpha
+              ctx.fillStyle = hoverFillColor
+              ctx.fillRect(sx, sy, squareSize, squareSize)
+              ctx.globalAlpha = 1
             }
 
-            ctx.strokeStyle = borderColor;
-            ctx.strokeRect(sx, sy, squareSize, squareSize);
+            ctx.strokeStyle = borderColor
+            ctx.strokeRect(sx, sy, squareSize, squareSize)
           }
         }
       }
@@ -21685,202 +21949,186 @@ const ShapeGrid = ({
         0,
         canvas.width / 2,
         canvas.height / 2,
-        Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
-      );
-      gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+        Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2,
+      )
+      gradient.addColorStop(0, "rgba(0, 0, 0, 0)")
 
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    };
+      ctx.fillStyle = gradient
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+    }
 
     const updateAnimation = () => {
-      const effectiveSpeed = Math.max(speed, 0.1);
-      const wrapX = isHex ? hexHoriz * 2 : squareSize;
-      const wrapY = isHex ? hexVert : isTri ? squareSize * 2 : squareSize;
+      const effectiveSpeed = Math.max(speed, 0.1)
+      const wrapX = isHex ? hexHoriz * 2 : squareSize
+      const wrapY = isHex ? hexVert : isTri ? squareSize * 2 : squareSize
 
       switch (direction) {
-        case 'right':
-          gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX;
-          break;
-        case 'left':
-          gridOffset.current.x = (gridOffset.current.x + effectiveSpeed + wrapX) % wrapX;
-          break;
-        case 'up':
-          gridOffset.current.y = (gridOffset.current.y + effectiveSpeed + wrapY) % wrapY;
-          break;
-        case 'down':
-          gridOffset.current.y = (gridOffset.current.y - effectiveSpeed + wrapY) % wrapY;
-          break;
-        case 'diagonal':
-          gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX;
-          gridOffset.current.y = (gridOffset.current.y - effectiveSpeed + wrapY) % wrapY;
-          break;
+        case "right":
+          gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX
+          break
+        case "left":
+          gridOffset.current.x = (gridOffset.current.x + effectiveSpeed + wrapX) % wrapX
+          break
+        case "up":
+          gridOffset.current.y = (gridOffset.current.y + effectiveSpeed + wrapY) % wrapY
+          break
+        case "down":
+          gridOffset.current.y = (gridOffset.current.y - effectiveSpeed + wrapY) % wrapY
+          break
+        case "diagonal":
+          gridOffset.current.x = (gridOffset.current.x - effectiveSpeed + wrapX) % wrapX
+          gridOffset.current.y = (gridOffset.current.y - effectiveSpeed + wrapY) % wrapY
+          break
         default:
-          break;
+          break
       }
 
-      updateCellOpacities();
-      drawGrid();
-      requestRef.current = requestAnimationFrame(updateAnimation);
-    };
+      updateCellOpacities()
+      drawGrid()
+      requestRef.current = requestAnimationFrame(updateAnimation)
+    }
 
     const updateCellOpacities = () => {
-      const targets = new Map();
+      const targets = new Map()
 
       if (hoveredSquare.current) {
-        targets.set(`${hoveredSquare.current.x},${hoveredSquare.current.y}`, 1);
+        targets.set(`${hoveredSquare.current.x},${hoveredSquare.current.y}`, 1)
       }
 
       if (hoverTrailAmount > 0) {
         for (let i = 0; i < trailCells.current.length; i++) {
-          const t = trailCells.current[i];
-          const key = `${t.x},${t.y}`;
+          const t = trailCells.current[i]
+          const key = `${t.x},${t.y}`
           if (!targets.has(key)) {
-            targets.set(key, (trailCells.current.length - i) / (trailCells.current.length + 1));
+            targets.set(key, (trailCells.current.length - i) / (trailCells.current.length + 1))
           }
         }
       }
 
       for (const [key] of targets) {
         if (!cellOpacities.current.has(key)) {
-          cellOpacities.current.set(key, 0);
+          cellOpacities.current.set(key, 0)
         }
       }
 
       for (const [key, opacity] of cellOpacities.current) {
-        const target = targets.get(key) || 0;
-        const next = opacity + (target - opacity) * 0.15;
+        const target = targets.get(key) || 0
+        const next = opacity + (target - opacity) * 0.15
         if (next < 0.005) {
-          cellOpacities.current.delete(key);
+          cellOpacities.current.delete(key)
         } else {
-          cellOpacities.current.set(key, next);
+          cellOpacities.current.set(key, next)
         }
       }
-    };
+    }
 
-    const handleMouseMove = event => {
-      const rect = canvas.getBoundingClientRect();
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
+    const handleMouseMove = (event) => {
+      const rect = canvas.getBoundingClientRect()
+      const mouseX = event.clientX - rect.left
+      const mouseY = event.clientY - rect.top
 
       if (isHex) {
-        const colShift = Math.floor(gridOffset.current.x / hexHoriz);
-        const offsetX = ((gridOffset.current.x % hexHoriz) + hexHoriz) % hexHoriz;
-        const offsetY = ((gridOffset.current.y % hexVert) + hexVert) % hexVert;
-        const adjustedX = mouseX - offsetX;
-        const adjustedY = mouseY - offsetY;
+        const colShift = Math.floor(gridOffset.current.x / hexHoriz)
+        const offsetX = ((gridOffset.current.x % hexHoriz) + hexHoriz) % hexHoriz
+        const offsetY = ((gridOffset.current.y % hexVert) + hexVert) % hexVert
+        const adjustedX = mouseX - offsetX
+        const adjustedY = mouseY - offsetY
 
-        const col = Math.round(adjustedX / hexHoriz);
-        const rowOffset = (col + colShift) % 2 !== 0 ? hexVert / 2 : 0;
-        const row = Math.round((adjustedY - rowOffset) / hexVert);
+        const col = Math.round(adjustedX / hexHoriz)
+        const rowOffset = (col + colShift) % 2 !== 0 ? hexVert / 2 : 0
+        const row = Math.round((adjustedY - rowOffset) / hexVert)
 
-        if (
-          !hoveredSquare.current ||
-          hoveredSquare.current.x !== col ||
-          hoveredSquare.current.y !== row
-        ) {
+        if (!hoveredSquare.current || hoveredSquare.current.x !== col || hoveredSquare.current.y !== row) {
           if (hoveredSquare.current && hoverTrailAmount > 0) {
-            trailCells.current.unshift({ ...hoveredSquare.current });
-            if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount;
+            trailCells.current.unshift({ ...hoveredSquare.current })
+            if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount
           }
-          hoveredSquare.current = { x: col, y: row };
+          hoveredSquare.current = { x: col, y: row }
         }
       } else if (isTri) {
-        const halfW = squareSize / 2;
-        const offsetX = ((gridOffset.current.x % halfW) + halfW) % halfW;
-        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize;
+        const halfW = squareSize / 2
+        const offsetX = ((gridOffset.current.x % halfW) + halfW) % halfW
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
 
-        const adjustedX = mouseX - offsetX;
-        const adjustedY = mouseY - offsetY;
+        const adjustedX = mouseX - offsetX
+        const adjustedY = mouseY - offsetY
 
-        const col = Math.round(adjustedX / halfW);
-        const row = Math.floor(adjustedY / squareSize);
+        const col = Math.round(adjustedX / halfW)
+        const row = Math.floor(adjustedY / squareSize)
 
-        if (
-          !hoveredSquare.current ||
-          hoveredSquare.current.x !== col ||
-          hoveredSquare.current.y !== row
-        ) {
+        if (!hoveredSquare.current || hoveredSquare.current.x !== col || hoveredSquare.current.y !== row) {
           if (hoveredSquare.current && hoverTrailAmount > 0) {
-            trailCells.current.unshift({ ...hoveredSquare.current });
-            if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount;
+            trailCells.current.unshift({ ...hoveredSquare.current })
+            if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount
           }
-          hoveredSquare.current = { x: col, y: row };
+          hoveredSquare.current = { x: col, y: row }
         }
-      } else if (shape === 'circle') {
-        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize;
-        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize;
+      } else if (shape === "circle") {
+        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
 
-        const adjustedX = mouseX - offsetX;
-        const adjustedY = mouseY - offsetY;
+        const adjustedX = mouseX - offsetX
+        const adjustedY = mouseY - offsetY
 
-        const col = Math.round(adjustedX / squareSize);
-        const row = Math.round(adjustedY / squareSize);
+        const col = Math.round(adjustedX / squareSize)
+        const row = Math.round(adjustedY / squareSize)
 
-        if (
-          !hoveredSquare.current ||
-          hoveredSquare.current.x !== col ||
-          hoveredSquare.current.y !== row
-        ) {
+        if (!hoveredSquare.current || hoveredSquare.current.x !== col || hoveredSquare.current.y !== row) {
           if (hoveredSquare.current && hoverTrailAmount > 0) {
-            trailCells.current.unshift({ ...hoveredSquare.current });
-            if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount;
+            trailCells.current.unshift({ ...hoveredSquare.current })
+            if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount
           }
-          hoveredSquare.current = { x: col, y: row };
+          hoveredSquare.current = { x: col, y: row }
         }
       } else {
-        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize;
-        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize;
+        const offsetX = ((gridOffset.current.x % squareSize) + squareSize) % squareSize
+        const offsetY = ((gridOffset.current.y % squareSize) + squareSize) % squareSize
 
-        const adjustedX = mouseX - offsetX;
-        const adjustedY = mouseY - offsetY;
+        const adjustedX = mouseX - offsetX
+        const adjustedY = mouseY - offsetY
 
-        const col = Math.floor(adjustedX / squareSize);
-        const row = Math.floor(adjustedY / squareSize);
+        const col = Math.floor(adjustedX / squareSize)
+        const row = Math.floor(adjustedY / squareSize)
 
-        if (
-          !hoveredSquare.current ||
-          hoveredSquare.current.x !== col ||
-          hoveredSquare.current.y !== row
-        ) {
+        if (!hoveredSquare.current || hoveredSquare.current.x !== col || hoveredSquare.current.y !== row) {
           if (hoveredSquare.current && hoverTrailAmount > 0) {
-            trailCells.current.unshift({ ...hoveredSquare.current });
-            if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount;
+            trailCells.current.unshift({ ...hoveredSquare.current })
+            if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount
           }
-          hoveredSquare.current = { x: col, y: row };
+          hoveredSquare.current = { x: col, y: row }
         }
       }
-    };
+    }
 
     const handleMouseLeave = () => {
       if (hoveredSquare.current && hoverTrailAmount > 0) {
-        trailCells.current.unshift({ ...hoveredSquare.current });
-        if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount;
+        trailCells.current.unshift({ ...hoveredSquare.current })
+        if (trailCells.current.length > hoverTrailAmount) trailCells.current.length = hoverTrailAmount
       }
-      hoveredSquare.current = null;
-    };
+      hoveredSquare.current = null
+    }
 
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseleave', handleMouseLeave);
+    canvas.addEventListener("mousemove", handleMouseMove)
+    canvas.addEventListener("mouseleave", handleMouseLeave)
 
-    requestRef.current = requestAnimationFrame(updateAnimation);
+    requestRef.current = requestAnimationFrame(updateAnimation)
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(requestRef.current);
-      canvas.removeEventListener('mousemove', handleMouseMove);
-      canvas.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, [direction, speed, borderColor, hoverFillColor, squareSize, shape, hoverTrailAmount]);
+      window.removeEventListener("resize", resizeCanvas)
+      cancelAnimationFrame(requestRef.current)
+      canvas.removeEventListener("mousemove", handleMouseMove)
+      canvas.removeEventListener("mouseleave", handleMouseLeave)
+    }
+  }, [direction, speed, borderColor, hoverFillColor, squareSize, shape, hoverTrailAmount])
 
-  return <canvas ref={canvasRef} className={`shapegrid-canvas ${className}`}></canvas>;
-};
+  return <canvas ref={canvasRef} className={`shapegrid-canvas ${className}`}></canvas>
+}
 
-export default ShapeGrid;
-
+export default ShapeGrid
 ```
 
 ### Component CSS
+
 ```css
 .shapegrid-canvas {
   width: 100%;
@@ -21888,10 +22136,10 @@ export default ShapeGrid;
   border: none;
   display: block;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -21906,41 +22154,41 @@ code: ## Integrate the <LiquidChrome /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: LiquidChrome
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
-```jsx
-import LiquidChrome from './LiquidChrome';
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <LiquidChrome
-    baseColor={[0.1, 0.1, 0.1]}
-    speed={1}
-    amplitude={0.6}
-    interactive={true}
-  />
+```jsx
+import LiquidChrome from "./LiquidChrome"
+
+;<div style={{ width: "100%", height: "600px", position: "relative" }}>
+  <LiquidChrome baseColor={[0.1, 0.1, 0.1]} speed={1} amplitude={0.6} interactive={true} />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| baseColor | RGB array (number[3]) | [0.1, 0.1, 0.1] | Base color of the component. Specify as an RGB array. |
-| speed | number | 1.0 | Animation speed multiplier. |
-| amplitude | number | 0.6 | Amplitude of the distortion. |
-| frequencyX | number | 2.5 | Frequency modifier for the x distortion. |
-| frequencyY | number | 1.5 | Frequency modifier for the y distortion. |
-| interactive | boolean | true | Enable mouse/touch interaction. |
+
+| Prop        | Type                  | Default         | Description                                           |
+| ----------- | --------------------- | --------------- | ----------------------------------------------------- |
+| baseColor   | RGB array (number[3]) | [0.1, 0.1, 0.1] | Base color of the component. Specify as an RGB array. |
+| speed       | number                | 1.0             | Animation speed multiplier.                           |
+| amplitude   | number                | 0.6             | Amplitude of the distortion.                          |
+| frequencyX  | number                | 2.5             | Frequency modifier for the x distortion.              |
+| frequencyY  | number                | 1.5             | Frequency modifier for the y distortion.              |
+| interactive | boolean               | true            | Enable mouse/touch interaction.                       |
 
 ### Full Component Source
-```jsx
-import { useRef, useEffect } from 'react';
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
 
-import './LiquidChrome.css';
+```jsx
+import { useRef, useEffect } from "react"
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+
+import "./LiquidChrome.css"
 
 export const LiquidChrome = ({
   baseColor = [0.1, 0.1, 0.1],
@@ -21951,15 +22199,15 @@ export const LiquidChrome = ({
   interactive = true,
   ...props
 }) => {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current) return
 
-    const container = containerRef.current;
-    const renderer = new Renderer({ antialias: true });
-    const gl = renderer.gl;
-    gl.clearColor(1, 1, 1, 1);
+    const container = containerRef.current
+    const renderer = new Renderer({ antialias: true })
+    const gl = renderer.gl
+    gl.clearColor(1, 1, 1, 1)
 
     const vertexShader = `
       attribute vec2 position;
@@ -21969,7 +22217,7 @@ export const LiquidChrome = ({
         vUv = uv;
         gl_Position = vec4(position, 0.0, 1.0);
       }
-    `;
+    `
 
     const fragmentShader = `
       precision highp float;
@@ -22013,104 +22261,104 @@ export const LiquidChrome = ({
           }
           gl_FragColor = col / float(samples);
       }
-    `;
+    `
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     const program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
       uniforms: {
         uTime: { value: 0 },
         uResolution: {
-          value: new Float32Array([gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height])
+          value: new Float32Array([gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height]),
         },
         uBaseColor: { value: new Float32Array(baseColor) },
         uAmplitude: { value: amplitude },
         uFrequencyX: { value: frequencyX },
         uFrequencyY: { value: frequencyY },
-        uMouse: { value: new Float32Array([0, 0]) }
-      }
-    });
-    const mesh = new Mesh(gl, { geometry, program });
+        uMouse: { value: new Float32Array([0, 0]) },
+      },
+    })
+    const mesh = new Mesh(gl, { geometry, program })
 
     function resize() {
-      const scale = 1;
-      renderer.setSize(container.offsetWidth * scale, container.offsetHeight * scale);
-      const resUniform = program.uniforms.uResolution.value;
-      resUniform[0] = gl.canvas.width;
-      resUniform[1] = gl.canvas.height;
-      resUniform[2] = gl.canvas.width / gl.canvas.height;
+      const scale = 1
+      renderer.setSize(container.offsetWidth * scale, container.offsetHeight * scale)
+      const resUniform = program.uniforms.uResolution.value
+      resUniform[0] = gl.canvas.width
+      resUniform[1] = gl.canvas.height
+      resUniform[2] = gl.canvas.width / gl.canvas.height
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
     function handleMouseMove(event) {
-      const rect = container.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = 1 - (event.clientY - rect.top) / rect.height;
-      const mouseUniform = program.uniforms.uMouse.value;
-      mouseUniform[0] = x;
-      mouseUniform[1] = y;
+      const rect = container.getBoundingClientRect()
+      const x = (event.clientX - rect.left) / rect.width
+      const y = 1 - (event.clientY - rect.top) / rect.height
+      const mouseUniform = program.uniforms.uMouse.value
+      mouseUniform[0] = x
+      mouseUniform[1] = y
     }
 
     function handleTouchMove(event) {
       if (event.touches.length > 0) {
-        const touch = event.touches[0];
-        const rect = container.getBoundingClientRect();
-        const x = (touch.clientX - rect.left) / rect.width;
-        const y = 1 - (touch.clientY - rect.top) / rect.height;
-        const mouseUniform = program.uniforms.uMouse.value;
-        mouseUniform[0] = x;
-        mouseUniform[1] = y;
+        const touch = event.touches[0]
+        const rect = container.getBoundingClientRect()
+        const x = (touch.clientX - rect.left) / rect.width
+        const y = 1 - (touch.clientY - rect.top) / rect.height
+        const mouseUniform = program.uniforms.uMouse.value
+        mouseUniform[0] = x
+        mouseUniform[1] = y
       }
     }
 
     if (interactive) {
-      container.addEventListener('mousemove', handleMouseMove);
-      container.addEventListener('touchmove', handleTouchMove);
+      container.addEventListener("mousemove", handleMouseMove)
+      container.addEventListener("touchmove", handleTouchMove)
     }
 
-    let animationId;
+    let animationId
     function update(t) {
-      animationId = requestAnimationFrame(update);
-      program.uniforms.uTime.value = t * 0.001 * speed;
-      renderer.render({ scene: mesh });
+      animationId = requestAnimationFrame(update)
+      program.uniforms.uTime.value = t * 0.001 * speed
+      renderer.render({ scene: mesh })
     }
-    animationId = requestAnimationFrame(update);
+    animationId = requestAnimationFrame(update)
 
-    container.appendChild(gl.canvas);
+    container.appendChild(gl.canvas)
 
     return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(animationId)
+      window.removeEventListener("resize", resize)
       if (interactive) {
-        container.removeEventListener('mousemove', handleMouseMove);
-        container.removeEventListener('touchmove', handleTouchMove);
+        container.removeEventListener("mousemove", handleMouseMove)
+        container.removeEventListener("touchmove", handleTouchMove)
       }
       if (gl.canvas.parentElement) {
-        gl.canvas.parentElement.removeChild(gl.canvas);
+        gl.canvas.parentElement.removeChild(gl.canvas)
       }
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
-  }, [baseColor, speed, amplitude, frequencyX, frequencyY, interactive]);
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
+  }, [baseColor, speed, amplitude, frequencyX, frequencyY, interactive])
 
-  return <div ref={containerRef} className="liquidChrome-container" {...props} />;
-};
+  return <div ref={containerRef} className="liquidChrome-container" {...props} />
+}
 
-export default LiquidChrome;
-
+export default LiquidChrome
 ```
 
 ### Component CSS
+
 ```css
 .liquidChrome-container {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -22125,63 +22373,64 @@ code: ## Integrate the <Balatro /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Balatro
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: ogl
 
 ---
 
 ### Usage Example
+
 ```jsx
-import Balatro from './Balatro';
-  
-<Balatro
-  isRotate={false}
-  mouseInteraction={true}
-  pixelFilter={700}
-/>
+import Balatro from "./Balatro"
+
+;<Balatro isRotate={false} mouseInteraction={true} pixelFilter={700} />
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| spinRotation | number | -2.0 | Base rotation amount affecting the shader effect. |
-| spinSpeed | number | 7.0 | Speed of the spin animation. |
-| offset | [number, number] | [0.0, 0.0] | Offset for the shader effect. |
-| color1 | string | "#DE443B" | Primary color in HEX format. |
-| color2 | string | "#006BB4" | Secondary color in HEX format. |
-| color3 | string | "#162325" | Tertiary color in HEX format. |
-| contrast | number | 3.5 | Contrast value affecting color blending. |
-| lighting | number | 0.4 | Lighting factor affecting brightness. |
-| spinAmount | number | 0.25 | Amount of spin influence based on UV length. |
-| pixelFilter | number | 745.0 | Pixel filter factor determining pixelation. |
-| spinEase | number | 1.0 | Ease factor for spin. |
-| isRotate | boolean | false | Determines if the shader rotates continuously. |
-| mouseInteraction | boolean | true | Enables or disables mouse interaction for rotation. |
+
+| Prop             | Type             | Default    | Description                                         |
+| ---------------- | ---------------- | ---------- | --------------------------------------------------- |
+| spinRotation     | number           | -2.0       | Base rotation amount affecting the shader effect.   |
+| spinSpeed        | number           | 7.0        | Speed of the spin animation.                        |
+| offset           | [number, number] | [0.0, 0.0] | Offset for the shader effect.                       |
+| color1           | string           | "#DE443B"  | Primary color in HEX format.                        |
+| color2           | string           | "#006BB4"  | Secondary color in HEX format.                      |
+| color3           | string           | "#162325"  | Tertiary color in HEX format.                       |
+| contrast         | number           | 3.5        | Contrast value affecting color blending.            |
+| lighting         | number           | 0.4        | Lighting factor affecting brightness.               |
+| spinAmount       | number           | 0.25       | Amount of spin influence based on UV length.        |
+| pixelFilter      | number           | 745.0      | Pixel filter factor determining pixelation.         |
+| spinEase         | number           | 1.0        | Ease factor for spin.                               |
+| isRotate         | boolean          | false      | Determines if the shader rotates continuously.      |
+| mouseInteraction | boolean          | true       | Enables or disables mouse interaction for rotation. |
 
 ### Full Component Source
-```jsx
-import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
 
-import './Balatro.css';
+```jsx
+import { Renderer, Program, Mesh, Triangle } from "ogl"
+import { useEffect, useRef } from "react"
+
+import "./Balatro.css"
 
 function hexToVec4(hex) {
-  let hexStr = hex.replace('#', '');
+  let hexStr = hex.replace("#", "")
   let r = 0,
     g = 0,
     b = 0,
-    a = 1;
+    a = 1
   if (hexStr.length === 6) {
-    r = parseInt(hexStr.slice(0, 2), 16) / 255;
-    g = parseInt(hexStr.slice(2, 4), 16) / 255;
-    b = parseInt(hexStr.slice(4, 6), 16) / 255;
+    r = parseInt(hexStr.slice(0, 2), 16) / 255
+    g = parseInt(hexStr.slice(2, 4), 16) / 255
+    b = parseInt(hexStr.slice(4, 6), 16) / 255
   } else if (hexStr.length === 8) {
-    r = parseInt(hexStr.slice(0, 2), 16) / 255;
-    g = parseInt(hexStr.slice(2, 4), 16) / 255;
-    b = parseInt(hexStr.slice(4, 6), 16) / 255;
-    a = parseInt(hexStr.slice(6, 8), 16) / 255;
+    r = parseInt(hexStr.slice(0, 2), 16) / 255
+    g = parseInt(hexStr.slice(2, 4), 16) / 255
+    b = parseInt(hexStr.slice(4, 6), 16) / 255
+    a = parseInt(hexStr.slice(6, 8), 16) / 255
   }
-  return [r, g, b, a];
+  return [r, g, b, a]
 }
 
 const vertexShader = `
@@ -22192,7 +22441,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0, 1);
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -22264,51 +22513,51 @@ void main() {
     vec2 uv = vUv * iResolution.xy;
     gl_FragColor = effect(iResolution.xy, uv);
 }
-`;
+`
 
 export default function Balatro({
   spinRotation = -2.0,
   spinSpeed = 7.0,
   offset = [0.0, 0.0],
-  color1 = '#DE443B',
-  color2 = '#006BB4',
-  color3 = '#162325',
+  color1 = "#DE443B",
+  color2 = "#006BB4",
+  color3 = "#162325",
   contrast = 3.5,
   lighting = 0.4,
   spinAmount = 0.25,
   pixelFilter = 745.0,
   spinEase = 1.0,
   isRotate = false,
-  mouseInteraction = true
+  mouseInteraction = true,
 }) {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    if (!containerRef.current) return;
-    const container = containerRef.current;
-    const renderer = new Renderer();
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 1);
+    if (!containerRef.current) return
+    const container = containerRef.current
+    const renderer = new Renderer()
+    const gl = renderer.gl
+    gl.clearColor(0, 0, 0, 1)
 
-    let program;
+    let program
 
     function resize() {
-      renderer.setSize(container.offsetWidth, container.offsetHeight);
+      renderer.setSize(container.offsetWidth, container.offsetHeight)
       if (program) {
-        program.uniforms.iResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height];
+        program.uniforms.iResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height]
       }
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener("resize", resize)
+    resize()
 
-    const geometry = new Triangle(gl);
+    const geometry = new Triangle(gl)
     program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
       uniforms: {
         iTime: { value: 0 },
         iResolution: {
-          value: [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height]
+          value: [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height],
         },
         uSpinRotation: { value: spinRotation },
         uSpinSpeed: { value: spinSpeed },
@@ -22322,37 +22571,37 @@ export default function Balatro({
         uPixelFilter: { value: pixelFilter },
         uSpinEase: { value: spinEase },
         uIsRotate: { value: isRotate },
-        uMouse: { value: [0.5, 0.5] }
-      }
-    });
+        uMouse: { value: [0.5, 0.5] },
+      },
+    })
 
-    const mesh = new Mesh(gl, { geometry, program });
-    let animationFrameId;
+    const mesh = new Mesh(gl, { geometry, program })
+    let animationFrameId
 
     function update(time) {
-      animationFrameId = requestAnimationFrame(update);
-      program.uniforms.iTime.value = time * 0.001;
-      renderer.render({ scene: mesh });
+      animationFrameId = requestAnimationFrame(update)
+      program.uniforms.iTime.value = time * 0.001
+      renderer.render({ scene: mesh })
     }
-    animationFrameId = requestAnimationFrame(update);
-    container.appendChild(gl.canvas);
+    animationFrameId = requestAnimationFrame(update)
+    container.appendChild(gl.canvas)
 
     function handleMouseMove(e) {
-      if (!mouseInteraction) return;
-      const rect = container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = 1.0 - (e.clientY - rect.top) / rect.height;
-      program.uniforms.uMouse.value = [x, y];
+      if (!mouseInteraction) return
+      const rect = container.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width
+      const y = 1.0 - (e.clientY - rect.top) / rect.height
+      program.uniforms.uMouse.value = [x, y]
     }
-    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener("mousemove", handleMouseMove)
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
-    };
+      cancelAnimationFrame(animationFrameId)
+      window.removeEventListener("resize", resize)
+      container.removeEventListener("mousemove", handleMouseMove)
+      container.removeChild(gl.canvas)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    }
   }, [
     spinRotation,
     spinSpeed,
@@ -22367,24 +22616,24 @@ export default function Balatro({
     spinEase,
     isRotate,
     mouseInteraction,
-    containerRef
-  ]);
+    containerRef,
+  ])
 
-  return <div ref={containerRef} className="balatro-container" />;
+  return <div ref={containerRef} className="balatro-container" />
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .balatro-container {
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -22392,4 +22641,3 @@ export default function Balatro({
 5. Adjust props as needed for the specific use case — refer to the props table for all available options.
 
 ---
-

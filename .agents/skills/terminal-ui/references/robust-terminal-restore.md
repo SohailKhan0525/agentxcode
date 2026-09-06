@@ -18,7 +18,7 @@ async function interactiveMode() {
   process.stdin.resume()
 
   // Hide cursor
-  process.stdout.write('\x1b[?25l')
+  process.stdout.write("\x1b[?25l")
 
   await runInteractiveSession()
 
@@ -36,19 +36,19 @@ async function interactiveMode() {
   // Setup terminal
   process.stdin.setRawMode(true)
   process.stdin.resume()
-  process.stdout.write('\x1b[?25l')  // Hide cursor
+  process.stdout.write("\x1b[?25l") // Hide cursor
 
   function restore() {
-    process.stdout.write('\x1b[?25h')  // Show cursor
+    process.stdout.write("\x1b[?25h") // Show cursor
     process.stdin.setRawMode(originalRawMode ?? false)
     process.stdin.pause()
   }
 
   // Restore on normal exit
-  process.on('exit', restore)
+  process.on("exit", restore)
 
   // Restore on signals
-  process.on('SIGINT', () => {
+  process.on("SIGINT", () => {
     restore()
     process.exit(130)
   })
@@ -78,8 +78,8 @@ async function main() {
 **Alternate screen buffer:**
 
 ```typescript
-const ALTERNATE_SCREEN_ON = '\x1b[?1049h'
-const ALTERNATE_SCREEN_OFF = '\x1b[?1049l'
+const ALTERNATE_SCREEN_ON = "\x1b[?1049h"
+const ALTERNATE_SCREEN_OFF = "\x1b[?1049l"
 
 async function fullscreenApp() {
   process.stdout.write(ALTERNATE_SCREEN_ON)
@@ -88,12 +88,12 @@ async function fullscreenApp() {
     process.stdout.write(ALTERNATE_SCREEN_OFF)
   }
 
-  process.on('exit', cleanup)
-  process.on('SIGINT', () => {
+  process.on("exit", cleanup)
+  process.on("SIGINT", () => {
     cleanup()
     process.exit(130)
   })
-  process.on('uncaughtException', (error) => {
+  process.on("uncaughtException", (error) => {
     cleanup()
     console.error(error)
     process.exit(1)

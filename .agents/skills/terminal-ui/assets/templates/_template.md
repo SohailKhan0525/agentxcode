@@ -24,6 +24,7 @@ Brief explanation of WHY this matters (1-3 sentences).
 ```
 
 **When NOT to use this pattern:**
+
 - Exception 1
 - Exception 2
 

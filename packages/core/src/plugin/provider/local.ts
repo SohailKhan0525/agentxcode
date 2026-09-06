@@ -13,7 +13,8 @@ export const LocalPlugin = define({
         const detection = yield* Effect.promise(() => detectAllLocalProviders())
 
         for (const running of detection.runningProviders) {
-          const providerId = running.kind === "ollama" ? ProviderV2.ID.make("ollama") : ProviderV2.ID.make(`local-${running.kind}`)
+          const providerId =
+            running.kind === "ollama" ? ProviderV2.ID.make("ollama") : ProviderV2.ID.make(`local-${running.kind}`)
           const v1Url = `${running.endpoint}/v1`
 
           catalog.provider.update(providerId, (provider) => {

@@ -16,7 +16,7 @@ try {
   await runCommand()
 } catch (error) {
   console.error(error.message)
-  process.exit(1)  // Same code for all errors
+  process.exit(1) // Same code for all errors
 }
 ```
 
@@ -27,11 +27,11 @@ try {
 const EXIT = {
   SUCCESS: 0,
   GENERAL_ERROR: 1,
-  MISUSE: 2,           // Invalid arguments, bad usage
-  CANNOT_EXECUTE: 126,  // Permission denied
-  NOT_FOUND: 127,       // Command not found
-  SIGINT: 130,          // 128 + 2 (Ctrl+C)
-  SIGTERM: 143          // 128 + 15
+  MISUSE: 2, // Invalid arguments, bad usage
+  CANNOT_EXECUTE: 126, // Permission denied
+  NOT_FOUND: 127, // Command not found
+  SIGINT: 130, // 128 + 2 (Ctrl+C)
+  SIGTERM: 143, // 128 + 15
 } as const
 
 async function main() {
@@ -44,14 +44,13 @@ async function main() {
     }
 
     if (!args.command) {
-      console.error('Error: No command specified')
-      console.error('Run with --help for usage')
+      console.error("Error: No command specified")
+      console.error("Run with --help for usage")
       process.exit(EXIT.MISUSE)
     }
 
     await runCommand(args)
     process.exit(EXIT.SUCCESS)
-
   } catch (error) {
     if (error instanceof ValidationError) {
       console.error(`Invalid input: ${error.message}`)
@@ -93,7 +92,7 @@ const APP_EXIT = {
   AUTH_ERROR: 12,
   BUILD_FAILED: 20,
   TEST_FAILED: 21,
-  DEPLOY_FAILED: 22
+  DEPLOY_FAILED: 22,
 }
 ```
 

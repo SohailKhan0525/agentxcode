@@ -7,7 +7,7 @@ description: Designs and builds real, production-ready websites — landing page
 
 Design and build a real website end-to-end — not a mockup, not a template with the logo swapped — then prove it works: build passes clean, it's pushed to GitHub, and it's actually live.
 
-Style inspiration can come from references the user gives (e.g. "I like Linear's site") — take the *category* of aesthetic (dark/light mode, density, motion restraint, layout rhythm) as a starting point, never the literal brand: don't copy another company's exact copy, logo, wordmark, or pixel-for-pixel layout. "Inspired by," not "cloned from."
+Style inspiration can come from references the user gives (e.g. "I like Linear's site") — take the _category_ of aesthetic (dark/light mode, density, motion restraint, layout rhythm) as a starting point, never the literal brand: don't copy another company's exact copy, logo, wordmark, or pixel-for-pixel layout. "Inspired by," not "cloned from."
 
 ## No stand-ins, ever
 
@@ -22,7 +22,7 @@ Style inspiration can come from references the user gives (e.g. "I like Linear's
 Before designing anything, ask the user for:
 
 1. **What the site is for** — product/brand, target audience, the core thing a visitor should do or feel.
-2. **Mood/direction** — a few words (minimal, bold, playful, technical, warm, luxury, etc.), and any reference sites they like the *feel* of (see the inspiration note above on how to use these).
+2. **Mood/direction** — a few words (minimal, bold, playful, technical, warm, luxury, etc.), and any reference sites they like the _feel_ of (see the inspiration note above on how to use these).
 3. **Color preferences** — if they have specific colors/brand colors, use them. If not, propose a palette based on the mood/industry and explain the reasoning (not just "here's blue").
 4. **Framework** — ask which they want. If they don't know, recommend **Next.js + React** by default and explain why (production-ready, deploys cleanly to Vercel/similar, pairs with real backend integration) — but build in whatever they actually choose.
 
@@ -59,9 +59,9 @@ Store these as an actual file the code imports/references (`tailwind.config`, CS
 ## Step 3 — Font pairing, done deliberately
 
 - Curate a **distinct pairing of real, properly licensed fonts** (Google Fonts, Fontshare, or the user's own licensed fonts) — a heading face and a body face that contrast in a considered way (e.g. a distinctive display serif/grotesk against a clean, highly readable body sans), not the same 1–2 "safe" defaults reused on autopilot.
-- Base the specific pairing on *this* project's inputs (industry, mood words, chosen colors) — a fintech brand and a kids' app shouldn't land on the same pairing by default.
+- Base the specific pairing on _this_ project's inputs (industry, mood words, chosen colors) — a fintech brand and a kids' app shouldn't land on the same pairing by default.
 - **Explain the choice to the user**: why this pairing, what personality it signals, why the contrast works.
-- **Be honest about uniqueness**: there's no way to see what other, unrelated users of this skill have chosen — there's no shared visibility across separate users/sessions. What this does do: draw from a wide pool of real pairings driven by project-specific inputs (not a fixed default), and if the user's session has memory of their own past projects, avoid repeating a pairing *they've* already used. That meaningfully reduces accidental repeats; it isn't a guarantee of global uniqueness, and the skill shouldn't claim otherwise.
+- **Be honest about uniqueness**: there's no way to see what other, unrelated users of this skill have chosen — there's no shared visibility across separate users/sessions. What this does do: draw from a wide pool of real pairings driven by project-specific inputs (not a fixed default), and if the user's session has memory of their own past projects, avoid repeating a pairing _they've_ already used. That meaningfully reduces accidental repeats; it isn't a guarantee of global uniqueness, and the skill shouldn't claim otherwise.
 - Record the chosen pairing (and the rest of the design tokens) in the project's own files, so it's consistent across the build and persists for that project even without cross-session memory.
 
 ## Step 4 — Build the real thing

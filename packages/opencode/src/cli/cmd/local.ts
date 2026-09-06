@@ -66,10 +66,14 @@ export const LocalCommand = effectCmd({
     if (detection.runningProviders.length > 0) {
       prompts.log.success(`${detection.runningProviders.length} local provider(s) active:`)
       for (const p of detection.runningProviders) {
-        prompts.log.message(`  ● ${UI.Style.TEXT_NORMAL_BOLD}${p.name}${UI.Style.TEXT_NORMAL} on ${p.endpoint} (${p.models.length} model(s) available)`)
+        prompts.log.message(
+          `  ● ${UI.Style.TEXT_NORMAL_BOLD}${p.name}${UI.Style.TEXT_NORMAL} on ${p.endpoint} (${p.models.length} model(s) available)`,
+        )
         for (const m of p.models) {
           const details = [m.parameterCount, m.quantization, m.sizeFormatted].filter(Boolean).join(" • ")
-          prompts.log.message(`      ↳ ${UI.Style.TEXT_HIGHLIGHT}${m.name}${UI.Style.TEXT_NORMAL} ${details ? `(${details})` : ""}`)
+          prompts.log.message(
+            `      ↳ ${UI.Style.TEXT_HIGHLIGHT}${m.name}${UI.Style.TEXT_NORMAL} ${details ? `(${details})` : ""}`,
+          )
         }
       }
     } else {
@@ -89,9 +93,13 @@ export const LocalCommand = effectCmd({
 
     // Model Recommendations based on detected hardware
     prompts.log.message("")
-    prompts.log.info(`${UI.Style.TEXT_NORMAL_BOLD}Recommended Models for Your Hardware (${hw.recommendedTier.toUpperCase()} Tier):${UI.Style.TEXT_NORMAL}`)
+    prompts.log.info(
+      `${UI.Style.TEXT_NORMAL_BOLD}Recommended Models for Your Hardware (${hw.recommendedTier.toUpperCase()} Tier):${UI.Style.TEXT_NORMAL}`,
+    )
     for (const rec of detection.recommendations) {
-      prompts.log.message(`  ★ ${UI.Style.TEXT_HIGHLIGHT_BOLD}${rec.name}${UI.Style.TEXT_NORMAL} [${rec.parameters}, ${rec.quantization}, ~${rec.sizeGb}GB]`)
+      prompts.log.message(
+        `  ★ ${UI.Style.TEXT_HIGHLIGHT_BOLD}${rec.name}${UI.Style.TEXT_NORMAL} [${rec.parameters}, ${rec.quantization}, ~${rec.sizeGb}GB]`,
+      )
       prompts.log.message(`    ${rec.description}`)
     }
 
@@ -157,7 +165,9 @@ export const LocalCommand = effectCmd({
 
         if (result.success) {
           pullSpinner.stop(`Model ${selectedTag} installed successfully!`)
-          prompts.outro(UI.Style.TEXT_SUCCESS_BOLD + `Ready! You can now use ${selectedTag} in AgentX Code.` + UI.Style.TEXT_NORMAL)
+          prompts.outro(
+            UI.Style.TEXT_SUCCESS_BOLD + `Ready! You can now use ${selectedTag} in AgentX Code.` + UI.Style.TEXT_NORMAL,
+          )
         } else {
           pullSpinner.stop(`Failed to download ${selectedTag}`)
           prompts.log.error(result.error || "Unknown download error.")

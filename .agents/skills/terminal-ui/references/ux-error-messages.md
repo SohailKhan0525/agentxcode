@@ -15,7 +15,7 @@ Error messages should explain what went wrong and how to fix it. Avoid technical
 try {
   await connectToDatabase()
 } catch (error) {
-  console.error('Error:', error.message)
+  console.error("Error:", error.message)
   // "Error: ECONNREFUSED"
   process.exit(1)
 }
@@ -24,23 +24,23 @@ try {
 **Correct (actionable errors):**
 
 ```typescript
-import * as p from '@clack/prompts'
+import * as p from "@clack/prompts"
 
 try {
   await connectToDatabase()
 } catch (error) {
-  if (error.code === 'ECONNREFUSED') {
-    p.log.error('Could not connect to database')
-    p.log.info('Make sure the database is running:')
-    p.log.message('  docker compose up -d postgres')
-    p.log.message('')
-    p.log.info('Or update DATABASE_URL in .env')
-  } else if (error.code === 'EACCES') {
-    p.log.error('Permission denied accessing database')
-    p.log.info('Check your database credentials in .env')
+  if (error.code === "ECONNREFUSED") {
+    p.log.error("Could not connect to database")
+    p.log.info("Make sure the database is running:")
+    p.log.message("  docker compose up -d postgres")
+    p.log.message("")
+    p.log.info("Or update DATABASE_URL in .env")
+  } else if (error.code === "EACCES") {
+    p.log.error("Permission denied accessing database")
+    p.log.info("Check your database credentials in .env")
   } else {
     p.log.error(`Database error: ${error.message}`)
-    p.log.info('See logs at: ./logs/db-error.log')
+    p.log.info("See logs at: ./logs/db-error.log")
   }
   process.exit(1)
 }
@@ -60,13 +60,13 @@ function formatError(error: AppError): void {
 
   // 3. How to fix it
   if (error.suggestions.length > 0) {
-    p.log.info('Try:')
-    error.suggestions.forEach(s => p.log.message(`  • ${s}`))
+    p.log.info("Try:")
+    error.suggestions.forEach((s) => p.log.message(`  • ${s}`))
   }
 
   // 4. Where to get help
-  p.log.message('')
-  p.log.message(color.dim('Need help? https://github.com/org/repo/issues'))
+  p.log.message("")
+  p.log.message(color.dim("Need help? https://github.com/org/repo/issues"))
 }
 ```
 
@@ -74,9 +74,7 @@ function formatError(error: AppError): void {
 
 ```typescript
 function suggestCommand(input: string, commands: string[]): string | null {
-  const matches = commands.filter(cmd =>
-    levenshtein(input, cmd) <= 2
-  )
+  const matches = commands.filter((cmd) => levenshtein(input, cmd) <= 2)
   return matches[0] || null
 }
 

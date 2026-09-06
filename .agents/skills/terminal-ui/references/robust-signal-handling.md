@@ -40,20 +40,17 @@ async function server() {
     httpServer.close()
 
     // Finish pending requests (with timeout)
-    await Promise.race([
-      waitForPendingRequests(),
-      new Promise(resolve => setTimeout(resolve, 10000))
-    ])
+    await Promise.race([waitForPendingRequests(), new Promise((resolve) => setTimeout(resolve, 10000))])
 
     // Clean up resources
     await db.close()
 
-    console.log('Shutdown complete')
+    console.log("Shutdown complete")
     process.exit(0)
   }
 
-  process.on('SIGINT', () => shutdown('SIGINT'))
-  process.on('SIGTERM', () => shutdown('SIGTERM'))
+  process.on("SIGINT", () => shutdown("SIGINT"))
+  process.on("SIGTERM", () => shutdown("SIGTERM"))
 }
 ```
 
@@ -93,14 +90,14 @@ async function main() {
 **Immediate feedback on interrupt:**
 
 ```typescript
-process.on('SIGINT', () => {
+process.on("SIGINT", () => {
   // Give immediate feedback
-  console.log('\nInterrupted, cleaning up...')
+  console.log("\nInterrupted, cleaning up...")
 
   // Then do cleanup with timeout
   const cleanup = async () => {
     await closeConnections()
-    process.exit(130)  // 128 + signal number (2 for SIGINT)
+    process.exit(130) // 128 + signal number (2 for SIGINT)
   }
 
   // Force exit if cleanup takes too long

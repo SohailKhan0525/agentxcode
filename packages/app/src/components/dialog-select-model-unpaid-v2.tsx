@@ -29,8 +29,7 @@ export const DialogSelectModelUnpaidV2: Component<{ model?: ModelState }> = (pro
     const c = model.current()
     return c ? `${c.provider.id}:${c.id}` : undefined
   })
-  const isFree = (item: ReturnType<ModelState["list"]>[number]) =>
-    (!item.cost || item.cost.input === 0)
+  const isFree = (item: ReturnType<ModelState["list"]>[number]) => !item.cost || item.cost.input === 0
   const freeModels = createMemo(() => model.list().filter(isFree))
 
   const openProviders = (provider?: string) => {

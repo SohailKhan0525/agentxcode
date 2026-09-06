@@ -302,8 +302,7 @@ async function cleanShellConfig(file: string) {
     }
 
     if (
-      (trimmed.startsWith("export PATH=") &&
-        (trimmed.includes(".agentx/bin") || trimmed.includes(".opencode/bin"))) ||
+      (trimmed.startsWith("export PATH=") && (trimmed.includes(".agentx/bin") || trimmed.includes(".opencode/bin"))) ||
       (trimmed.startsWith("fish_add_path") && (trimmed.includes(".agentx") || trimmed.includes(".opencode")))
     ) {
       continue

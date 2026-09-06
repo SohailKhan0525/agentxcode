@@ -8,34 +8,36 @@ name: popover notifications
 code: You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
+
 ```tsx
 popover.tsx
-"use client";
+;("use client")
 
-import * as PopoverPrimitive from "@radix-ui/react-popover";
-import * as React from "react";
+import * as PopoverPrimitive from "@radix-ui/react-popover"
+import * as React from "react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-const Popover = PopoverPrimitive.Root;
+const Popover = PopoverPrimitive.Root
 
-const PopoverTrigger = PopoverPrimitive.Trigger;
+const PopoverTrigger = PopoverPrimitive.Trigger
 
-const PopoverAnchor = PopoverPrimitive.Anchor;
+const PopoverAnchor = PopoverPrimitive.Anchor
 
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & {
-    showArrow?: boolean;
+    showArrow?: boolean
   }
 >(({ className, align = "center", sideOffset = 4, showArrow = false, ...props }, ref) => (
   <PopoverPrimitive.Portal>
@@ -50,25 +52,22 @@ const PopoverContent = React.forwardRef<
       {...props}
     >
       {props.children}
-      {showArrow && (
-        <PopoverPrimitive.Arrow className="-my-px fill-popover drop-shadow-[0_1px_0_hsl(var(--border))]" />
-      )}
+      {showArrow && <PopoverPrimitive.Arrow className="-my-px fill-popover drop-shadow-[0_1px_0_hsl(var(--border))]" />}
     </PopoverPrimitive.Content>
   </PopoverPrimitive.Portal>
-));
-PopoverContent.displayName = PopoverPrimitive.Content.displayName;
+))
+PopoverContent.displayName = PopoverPrimitive.Content.displayName
 
-export { Popover, PopoverAnchor, PopoverContent, PopoverTrigger };
-
+export { Popover, PopoverAnchor, PopoverContent, PopoverTrigger }
 
 demo.tsx
-"use client";
+;("use client")
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Bell } from "lucide-react";
-import { useState } from "react";
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Bell } from "lucide-react"
+import { useState } from "react"
 
 const initialNotifications = [
   {
@@ -119,7 +118,7 @@ const initialNotifications = [
     timestamp: "2 weeks ago",
     unread: false,
   },
-];
+]
 
 function Dot({ className }: { className?: string }) {
   return (
@@ -134,12 +133,12 @@ function Dot({ className }: { className?: string }) {
     >
       <circle cx="3" cy="3" r="3" />
     </svg>
-  );
+  )
 }
 
 function Component() {
-  const [notifications, setNotifications] = useState(initialNotifications);
-  const unreadCount = notifications.filter((n) => n.unread).length;
+  const [notifications, setNotifications] = useState(initialNotifications)
+  const unreadCount = notifications.filter((n) => n.unread).length
 
   const handleMarkAllAsRead = () => {
     setNotifications(
@@ -147,16 +146,14 @@ function Component() {
         ...notification,
         unread: false,
       })),
-    );
-  };
+    )
+  }
 
   const handleNotificationClick = (id: number) => {
     setNotifications(
-      notifications.map((notification) =>
-        notification.id === id ? { ...notification, unread: false } : notification,
-      ),
-    );
-  };
+      notifications.map((notification) => (notification.id === id ? { ...notification, unread: false } : notification)),
+    )
+  }
 
   return (
     <Popover>
@@ -179,30 +176,18 @@ function Component() {
             </button>
           )}
         </div>
-        <div
-          role="separator"
-          aria-orientation="horizontal"
-          className="-mx-1 my-1 h-px bg-border"
-        ></div>
+        <div role="separator" aria-orientation="horizontal" className="-mx-1 my-1 h-px bg-border"></div>
         {notifications.map((notification) => (
-          <div
-            key={notification.id}
-            className="rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent"
-          >
+          <div key={notification.id} className="rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent">
             <div className="relative flex items-start pe-3">
               <div className="flex-1 space-y-1">
                 <button
                   className="text-left text-foreground/80 after:absolute after:inset-0"
                   onClick={() => handleNotificationClick(notification.id)}
                 >
-                  <span className="font-medium text-foreground hover:underline">
-                    {notification.user}
-                  </span>{" "}
+                  <span className="font-medium text-foreground hover:underline">{notification.user}</span>{" "}
                   {notification.action}{" "}
-                  <span className="font-medium text-foreground hover:underline">
-                    {notification.target}
-                  </span>
-                  .
+                  <span className="font-medium text-foreground hover:underline">{notification.target}</span>.
                 </button>
                 <div className="text-xs text-muted-foreground">{notification.timestamp}</div>
               </div>
@@ -217,16 +202,16 @@ function Component() {
         ))}
       </PopoverContent>
     </Popover>
-  );
+  )
 }
 
-export { Component };
-
+export { Component }
 ```
 
 Copy-paste these files for dependencies:
+
 ```tsx
-shadcn/badge
+shadcn / badge
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
@@ -237,12 +222,9 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+        default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+        secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
       },
     },
@@ -252,26 +234,22 @@ const badgeVariants = cva(
   },
 )
 
-export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {}
 
 function Badge({ className, variant, ...props }: BadgeProps) {
-  return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
-  )
+  return <div className={cn(badgeVariants({ variant }), className)} {...props} />
 }
 
 export { Badge, badgeVariants }
-
 ```
-```tsx
-originui/button
-import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
 
-import { cn } from "@/lib/utils";
+```tsx
+originui / button
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -279,12 +257,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground shadow-sm shadow-black/5 hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-sm shadow-black/5 hover:bg-destructive/90",
+        destructive: "bg-destructive text-destructive-foreground shadow-sm shadow-black/5 hover:bg-destructive/90",
         outline:
           "border border-input bg-background shadow-sm shadow-black/5 hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-sm shadow-black/5 hover:bg-secondary/80",
+        secondary: "bg-secondary text-secondary-foreground shadow-sm shadow-black/5 hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
@@ -300,49 +276,49 @@ const buttonVariants = cva(
       size: "default",
     },
   },
-);
+)
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
+  asChild?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
-    );
+    const Comp = asChild ? Slot : "button"
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
   },
-);
-Button.displayName = "Button";
+)
+Button.displayName = "Button"
 
-export { Button, buttonVariants };
-
+export { Button, buttonVariants }
 ```
 
 Install NPM dependencies:
+
 ```bash
 @radix-ui/react-popover, class-variance-authority, @radix-ui/react-slot
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -350,120 +326,117 @@ name: team invitation
 code: You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
+
 ```tsx
-team-invitation.tsx
-import { cn } from "@/lib/utils";
-import { Check, X } from "lucide-react";
-import Image from "next/image";
+team - invitation.tsx
+import { cn } from "@/lib/utils"
+import { Check, X } from "lucide-react"
+import Image from "next/image"
 
 export function TeamInvitation() {
-    return (
-        <div className="w-full max-w-xl mx-auto">
-            <div className="relative bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-[0_1px_6px_0_rgba(0,0,0,0.02)] rounded-xl p-4">
-                <div className="flex items-center gap-4">
-                    <div className="relative h-10 w-10 flex-shrink-0">
-                        <Image
-                            src="https://ferf1mheo22r9ira.public.blob.vercel-storage.com/avatar-01-n0x8HFv8EUetf9z6ht0wScJKoTHqf8.png"
-                            alt="Sarah Chen"
-                            sizes="40px"
-                            fill
-                            className="rounded-full object-cover"
-                        />
-                        <div className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-zinc-950" />
-                    </div>
+  return (
+    <div className="w-full max-w-xl mx-auto">
+      <div className="relative bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-[0_1px_6px_0_rgba(0,0,0,0.02)] rounded-xl p-4">
+        <div className="flex items-center gap-4">
+          <div className="relative h-10 w-10 flex-shrink-0">
+            <Image
+              src="https://ferf1mheo22r9ira.public.blob.vercel-storage.com/avatar-01-n0x8HFv8EUetf9z6ht0wScJKoTHqf8.png"
+              alt="Sarah Chen"
+              sizes="40px"
+              fill
+              className="rounded-full object-cover"
+            />
+            <div className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-zinc-950" />
+          </div>
 
-                    <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-4">
-                            <div>
-                                <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                                    Team Invitation
-                                </p>
-                                <p className="text-[13px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-                                    Kokonut invited you to join{" "}
-                                    <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                                        Design Team
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <button
-                            type="button"
-                            className="rounded-lg flex items-center justify-center h-8 w-8 p-0 hover:bg-red-50 dark:hover:bg-red-950/50 text-zinc-400 hover:text-red-600 dark:text-zinc-500 dark:hover:text-red-400 transition-colors"
-                        >
-                            <X className="h-4 w-4" />
-                        </button>
-                        <button
-                            type="button"
-                            className={cn(
-                                "rounded-lg flex items-center justify-center h-8 w-8 p-0",
-                                "hover:bg-emerald-50 dark:hover:bg-emerald-950/50",
-                                "text-zinc-400 hover:text-emerald-600",
-                                "dark:text-zinc-500 dark:hover:text-emerald-400",
-                                "transition-colors"
-                            )}
-                        >
-                            <Check className="h-4 w-4" />
-                        </button>
-                    </div>
-                </div>
-
-                <div className="mt-2 ml-14">
-                    <p className="text-[12px] text-zinc-400 dark:text-zinc-500">
-                        Invited 5 minutes ago
-                    </p>
-                </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Team Invitation</p>
+                <p className="text-[13px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                  Kokonut invited you to join{" "}
+                  <span className="font-medium text-zinc-700 dark:text-zinc-300">Design Team</span>
+                </p>
+              </div>
             </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              className="rounded-lg flex items-center justify-center h-8 w-8 p-0 hover:bg-red-50 dark:hover:bg-red-950/50 text-zinc-400 hover:text-red-600 dark:text-zinc-500 dark:hover:text-red-400 transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              className={cn(
+                "rounded-lg flex items-center justify-center h-8 w-8 p-0",
+                "hover:bg-emerald-50 dark:hover:bg-emerald-950/50",
+                "text-zinc-400 hover:text-emerald-600",
+                "dark:text-zinc-500 dark:hover:text-emerald-400",
+                "transition-colors",
+              )}
+            >
+              <Check className="h-4 w-4" />
+            </button>
+          </div>
         </div>
-    );
+
+        <div className="mt-2 ml-14">
+          <p className="text-[12px] text-zinc-400 dark:text-zinc-500">Invited 5 minutes ago</p>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export { TeamInvitation }
 
-
 demo.tsx
-import { TeamInvitation } from "@/components/ui/team-invitation";
-import { LucideIcon } from "lucide-react";
-
+import { TeamInvitation } from "@/components/ui/team-invitation"
+import { LucideIcon } from "lucide-react"
 
 export function DemoTeamInvitation() {
-    return <TeamInvitation />
+  return <TeamInvitation />
 }
 
 export { DemoTeamInvitation }
 ```
 
 Install NPM dependencies:
+
 ```bash
 lucide-react
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -471,15 +444,17 @@ name: sign flow
 code: You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
+
 ```tsx
 sign-in-flow-1.tsx
 "use client";
@@ -513,7 +488,7 @@ interface ShaderProps {
 interface SignInPageProps {
   className?: string;
 }
-      
+
 export const CanvasRevealEffect = ({
   animationSpeed = 10,
   opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
@@ -557,7 +532,7 @@ export const CanvasRevealEffect = ({
   );
 };
 
-    
+
 interface DotMatrixProps {
   colors?: number[][];
   opacities?: number[];
@@ -1004,24 +979,24 @@ export const SignInPage = ({ className }: SignInPageProps) => {
       const newCode = [...code];
       newCode[index] = value;
       setCode(newCode);
-      
+
       // Focus next input if value is entered
       if (value && index < 5) {
         codeInputRefs.current[index + 1]?.focus();
       }
-      
+
       // Check if code is complete
       if (index === 5 && value) {
         const isComplete = newCode.every(digit => digit.length === 1);
         if (isComplete) {
           // First show the new reverse canvas
           setReverseCanvasVisible(true);
-          
+
           // Then hide the original canvas after a small delay
           setTimeout(() => {
             setInitialCanvasVisible(false);
           }, 50);
-          
+
           // Transition to success screen after animation
           setTimeout(() => {
             setStep("success");
@@ -1063,7 +1038,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
             />
           </div>
         )}
-        
+
         {/* Reverse canvas (appears when code is complete) */}
         {reverseCanvasVisible && (
           <div className="absolute inset-0">
@@ -1079,11 +1054,11 @@ export const SignInPage = ({ className }: SignInPageProps) => {
             />
           </div>
         )}
-        
+
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,1)_0%,_transparent_100%)]" />
         <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black to-transparent" />
       </div>
-      
+
       {/* Content Layer */}
       <div className="relative z-10 flex flex-col flex-1">
         {/* Top navigation */}
@@ -1096,7 +1071,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
             <div className="w-full mt-[150px] max-w-sm">
               <AnimatePresence mode="wait">
                 {step === "email" ? (
-                  <motion.div 
+                  <motion.div
                     key="email-step"
                     initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -1108,31 +1083,31 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tight text-white">Welcome Developer</h1>
                       <p className="text-[1.8rem] text-white/70 font-light">Your sign in component</p>
                     </div>
-                    
-                    
+
+
                     <div className="space-y-4">
                       <button className="backdrop-blur-[2px] w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full py-3 px-4 transition-colors">
                         <span className="text-lg">G</span>
                         <span>Sign in with Google</span>
                       </button>
-                      
+
                       <div className="flex items-center gap-4">
                         <div className="h-px bg-white/10 flex-1" />
                         <span className="text-white/40 text-sm">or</span>
                         <div className="h-px bg-white/10 flex-1" />
                       </div>
-                      
+
                       <form onSubmit={handleEmailSubmit}>
                         <div className="relative">
-                          <input 
-                            type="email" 
+                          <input
+                            type="email"
                             placeholder="info@gmail.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="w-full backdrop-blur-[1px] text-white border-1 border-white/10 rounded-full py-3 px-4 focus:outline-none focus:border focus:border-white/30 text-center"
                             required
                           />
-                          <button 
+                          <button
                             type="submit"
                             className="absolute right-1.5 top-1.5 text-white w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors group overflow-hidden"
                           >
@@ -1148,13 +1123,13 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                         </div>
                       </form>
                     </div>
-                    
+
                     <p className="text-xs text-white/40 pt-10">
                       By signing up, you agree to the <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">MSA</Link>, <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">Product Terms</Link>, <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">Policies</Link>, <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">Privacy Notice</Link>, and <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">Cookie Notice</Link>.
                     </p>
                   </motion.div>
                 ) : step === "code" ? (
-                  <motion.div 
+                  <motion.div
                     key="code-step"
                     initial={{ opacity: 0, x: 100 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -1166,7 +1141,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tight text-white">We sent you a code</h1>
                       <p className="text-[1.25rem] text-white/50 font-light">Please enter it</p>
                     </div>
-                    
+
                     <div className="w-full">
                       <div className="relative rounded-full py-4 px-5 border border-white/10 bg-transparent">
                         <div className="flex items-center justify-center">
@@ -1199,9 +1174,9 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div>
-                      <motion.p 
+                      <motion.p
                         className="text-white/50 hover:text-white/70 transition-colors cursor-pointer text-sm"
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.2 }}
@@ -1209,9 +1184,9 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                         Resend code
                       </motion.p>
                     </div>
-                    
+
                     <div className="flex w-full gap-3">
-                      <motion.button 
+                      <motion.button
                         onClick={handleBackClick}
                         className="rounded-full bg-white text-black font-medium px-8 py-3 hover:bg-white/90 transition-colors w-[30%]"
                         whileHover={{ scale: 1.02 }}
@@ -1220,10 +1195,10 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       >
                         Back
                       </motion.button>
-                      <motion.button 
+                      <motion.button
                         className={`flex-1 rounded-full font-medium py-3 border transition-all duration-300 ${
-                          code.every(d => d !== "") 
-                          ? "bg-white text-black border-transparent hover:bg-white/90 cursor-pointer" 
+                          code.every(d => d !== "")
+                          ? "bg-white text-black border-transparent hover:bg-white/90 cursor-pointer"
                           : "bg-[#111] text-white/50 border-white/10 cursor-not-allowed"
                         }`}
                         disabled={!code.every(d => d !== "")}
@@ -1231,7 +1206,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                         Continue
                       </motion.button>
                     </div>
-                    
+
                     <div className="pt-16">
                       <p className="text-xs text-white/40">
                         By signing up, you agree to the <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">MSA</Link>, <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">Product Terms</Link>, <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">Policies</Link>, <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">Privacy Notice</Link>, and <Link href="#" className="underline text-white/40 hover:text-white/60 transition-colors">Cookie Notice</Link>.
@@ -1239,7 +1214,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                     </div>
                   </motion.div>
                 ) : (
-                  <motion.div 
+                  <motion.div
                     key="success-step"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1250,8 +1225,8 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tight text-white">You're in!</h1>
                       <p className="text-[1.25rem] text-white/50 font-light">Welcome</p>
                     </div>
-                    
-                    <motion.div 
+
+                    <motion.div
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.5 }}
@@ -1263,8 +1238,8 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                         </svg>
                       </div>
                     </motion.div>
-                    
-                    <motion.button 
+
+                    <motion.button
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1 }}
@@ -1277,7 +1252,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
               </AnimatePresence>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -1302,26 +1277,29 @@ export { DemoOne };
 ```
 
 Install NPM dependencies:
+
 ```bash
 next, three, framer-motion, @react-three/fiber
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -1329,22 +1307,24 @@ name: loader
 code: You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
+
 ```tsx
 loader.tsx
-"use client";
+;("use client")
 
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
 
 const loaderVariants = cva("inline-block", {
   variants: {
@@ -1366,60 +1346,45 @@ const loaderVariants = cva("inline-block", {
     size: "md",
     variant: "default",
   },
-});
+})
 
-export interface LoaderProps
-  extends React.SVGAttributes<SVGSVGElement>,
-    VariantProps<typeof loaderVariants> {}
+export interface LoaderProps extends React.SVGAttributes<SVGSVGElement>, VariantProps<typeof loaderVariants> {}
 
-const Loader = React.forwardRef<SVGSVGElement, LoaderProps>(
-  ({ className, size, variant, ...props }, ref) => {
-    const [isMounted, setIsMounted] = React.useState(false);
+const Loader = React.forwardRef<SVGSVGElement, LoaderProps>(({ className, size, variant, ...props }, ref) => {
+  const [isMounted, setIsMounted] = React.useState(false)
 
-    React.useEffect(() => {
-      setIsMounted(true);
-    }, []);
+  React.useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
-    return (
-      <svg
-        ref={ref}
-        className={cn(
-          loaderVariants({ size, variant }),
-          isMounted && "animate-spin",
-          className,
-        )}
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        role="status"
-        aria-label="Loading"
-        suppressHydrationWarning
-        {...props}
-      >
-        <circle
-          className="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="4"
-        />{" "}
-        <path
-          className="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-        />
-      </svg>
-    );
-  },
-);
+  return (
+    <svg
+      ref={ref}
+      className={cn(loaderVariants({ size, variant }), isMounted && "animate-spin", className)}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      role="status"
+      aria-label="Loading"
+      suppressHydrationWarning
+      {...props}
+    >
+      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />{" "}
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      />
+    </svg>
+  )
+})
 
-Loader.displayName = "Loader";
+Loader.displayName = "Loader"
 
-export { Loader, loaderVariants };
+export { Loader, loaderVariants }
 
 demo.tsx
-import { Loader } from "@/components/ui/loader";
+import { Loader } from "@/components/ui/loader"
 
 export default function DemoOne() {
   return (
@@ -1432,17 +1397,18 @@ export default function DemoOne() {
         <Loader size="xl" />
       </div>
     </>
-  );
+  )
 }
-
 ```
 
 Install NPM dependencies:
+
 ```bash
 class-variance-authority
 ```
 
 Extend existing Tailwind 4 index.css with this code (or if project uses Tailwind 3, extend tailwind.config.js or globals.css):
+
 ```css
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -1494,25 +1460,26 @@ Extend existing Tailwind 4 index.css with this code (or if project uses Tailwind
   --color-fd-background: hsl(var(--hu-background));
   --color-fd-card: hsl(var(--hu-background));
 }
-
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -1520,176 +1487,180 @@ name: footer section
 code: You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
+
 ```tsx
-footer-section.tsx
-'use client';
-import React from 'react';
-import type { ComponentProps, ReactNode } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
-import { FacebookIcon, FrameIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from 'lucide-react';
+footer - section.tsx
+;("use client")
+import React from "react"
+import type { ComponentProps, ReactNode } from "react"
+import { motion, useReducedMotion } from "motion/react"
+import { FacebookIcon, FrameIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from "lucide-react"
 
 interface FooterLink {
-	title: string;
-	href: string;
-	icon?: React.ComponentType<{ className?: string }>;
+  title: string
+  href: string
+  icon?: React.ComponentType<{ className?: string }>
 }
 
 interface FooterSection {
-	label: string;
-	links: FooterLink[];
+  label: string
+  links: FooterLink[]
 }
 
 const footerLinks: FooterSection[] = [
-	{
-		label: 'Product',
-		links: [
-			{ title: 'Features', href: '#features' },
-			{ title: 'Pricing', href: '#pricing' },
-			{ title: 'Testimonials', href: '#testimonials' },
-			{ title: 'Integration', href: '/' },
-		],
-	},
-	{
-		label: 'Company',
-		links: [
-			{ title: 'FAQs', href: '/faqs' },
-			{ title: 'About Us', href: '/about' },
-			{ title: 'Privacy Policy', href: '/privacy' },
-			{ title: 'Terms of Services', href: '/terms' },
-		],
-	},
-	{
-		label: 'Resources',
-		links: [
-			{ title: 'Blog', href: '/blog' },
-			{ title: 'Changelog', href: '/changelog' },
-			{ title: 'Brand', href: '/brand' },
-			{ title: 'Help', href: '/help' },
-		],
-	},
-	{
-		label: 'Social Links',
-		links: [
-			{ title: 'Facebook', href: '#', icon: FacebookIcon },
-			{ title: 'Instagram', href: '#', icon: InstagramIcon },
-			{ title: 'Youtube', href: '#', icon: YoutubeIcon },
-			{ title: 'LinkedIn', href: '#', icon: LinkedinIcon },
-		],
-	},
-];
+  {
+    label: "Product",
+    links: [
+      { title: "Features", href: "#features" },
+      { title: "Pricing", href: "#pricing" },
+      { title: "Testimonials", href: "#testimonials" },
+      { title: "Integration", href: "/" },
+    ],
+  },
+  {
+    label: "Company",
+    links: [
+      { title: "FAQs", href: "/faqs" },
+      { title: "About Us", href: "/about" },
+      { title: "Privacy Policy", href: "/privacy" },
+      { title: "Terms of Services", href: "/terms" },
+    ],
+  },
+  {
+    label: "Resources",
+    links: [
+      { title: "Blog", href: "/blog" },
+      { title: "Changelog", href: "/changelog" },
+      { title: "Brand", href: "/brand" },
+      { title: "Help", href: "/help" },
+    ],
+  },
+  {
+    label: "Social Links",
+    links: [
+      { title: "Facebook", href: "#", icon: FacebookIcon },
+      { title: "Instagram", href: "#", icon: InstagramIcon },
+      { title: "Youtube", href: "#", icon: YoutubeIcon },
+      { title: "LinkedIn", href: "#", icon: LinkedinIcon },
+    ],
+  },
+]
 
 export function Footer() {
-	return (
-		<footer className="md:rounded-t-6xl relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-12 lg:py-16">
-			<div className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
+  return (
+    <footer className="md:rounded-t-6xl relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-12 lg:py-16">
+      <div className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
-			<div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
-				<AnimatedContainer className="space-y-4">
-					<FrameIcon className="size-8" />
-					<p className="text-muted-foreground mt-8 text-sm md:mt-0">
-						© {new Date().getFullYear()} Asme. All rights reserved.
-					</p>
-				</AnimatedContainer>
+      <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
+        <AnimatedContainer className="space-y-4">
+          <FrameIcon className="size-8" />
+          <p className="text-muted-foreground mt-8 text-sm md:mt-0">
+            © {new Date().getFullYear()} Asme. All rights reserved.
+          </p>
+        </AnimatedContainer>
 
-				<div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
-					{footerLinks.map((section, index) => (
-						<AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
-							<div className="mb-10 md:mb-0">
-								<h3 className="text-xs">{section.label}</h3>
-								<ul className="text-muted-foreground mt-4 space-y-2 text-sm">
-									{section.links.map((link) => (
-										<li key={link.title}>
-											<a
-												href={link.href}
-												className="hover:text-foreground inline-flex items-center transition-all duration-300"
-											>
-												{link.icon && <link.icon className="me-1 size-4" />}
-												{link.title}
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-						</AnimatedContainer>
-					))}
-				</div>
-			</div>
-		</footer>
-	);
-};
-
-type ViewAnimationProps = {
-	delay?: number;
-	className?: ComponentProps<typeof motion.div>['className'];
-	children: ReactNode;
-};
-
-function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationProps) {
-	const shouldReduceMotion = useReducedMotion();
-
-	if (shouldReduceMotion) {
-		return children;
-	}
-
-	return (
-		<motion.div
-			initial={{ filter: 'blur(4px)', translateY: -8, opacity: 0 }}
-			whileInView={{ filter: 'blur(0px)', translateY: 0, opacity: 1 }}
-			viewport={{ once: true }}
-			transition={{ delay, duration: 0.8 }}
-			className={className}
-		>
-			{children}
-		</motion.div>
-	);
-};
-
-demo.tsx
-import { Footer } from '@/components/ui/footer-section';
-
-export default function DemoOne() {
-	return (
-		<div className="relative flex min-h-svh flex-col">
-			<div className="min-h-screen flex items-center justify-center">
-				<h1 className='font-mono text-2xl font-bold'>Scrool Down!</h1>
-			</div>
-			<Footer />
-		</div>
-	);
+        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
+          {footerLinks.map((section, index) => (
+            <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
+              <div className="mb-10 md:mb-0">
+                <h3 className="text-xs">{section.label}</h3>
+                <ul className="text-muted-foreground mt-4 space-y-2 text-sm">
+                  {section.links.map((link) => (
+                    <li key={link.title}>
+                      <a
+                        href={link.href}
+                        className="hover:text-foreground inline-flex items-center transition-all duration-300"
+                      >
+                        {link.icon && <link.icon className="me-1 size-4" />}
+                        {link.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </AnimatedContainer>
+          ))}
+        </div>
+      </div>
+    </footer>
+  )
 }
 
+type ViewAnimationProps = {
+  delay?: number
+  className?: ComponentProps<typeof motion.div>["className"]
+  children: ReactNode
+}
+
+function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationProps) {
+  const shouldReduceMotion = useReducedMotion()
+
+  if (shouldReduceMotion) {
+    return children
+  }
+
+  return (
+    <motion.div
+      initial={{ filter: "blur(4px)", translateY: -8, opacity: 0 }}
+      whileInView={{ filter: "blur(0px)", translateY: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.8 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+demo.tsx
+import { Footer } from "@/components/ui/footer-section"
+
+export default function DemoOne() {
+  return (
+    <div className="relative flex min-h-svh flex-col">
+      <div className="min-h-screen flex items-center justify-center">
+        <h1 className="font-mono text-2xl font-bold">Scrool Down!</h1>
+      </div>
+      <Footer />
+    </div>
+  )
+}
 ```
 
 Install NPM dependencies:
+
 ```bash
 motion, lucide-react
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -1697,15 +1668,17 @@ name: pricing section
 code: You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
+
 ```tsx
 pricing.tsx
 "use client";
@@ -1991,7 +1964,7 @@ const demoPlans = [
 function PricingBasic() {
   return (
     <div className="h-[800px] overflow-y-auto rounded-lg">
-      <Pricing 
+      <Pricing
         plans={demoPlans}
         title="Simple, Transparent Pricing"
         description="Choose the plan that works for you
@@ -2006,8 +1979,9 @@ export { PricingBasic };
 ```
 
 Copy-paste these files for dependencies:
+
 ```tsx
-shadcn/button
+shadcn / button
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -2020,12 +1994,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
@@ -2052,23 +2023,17 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
   },
 )
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
-
 ```
+
 ```tsx
-shadcn/label
-"use client"
+shadcn / label
+;("use client")
 
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
@@ -2076,26 +2041,19 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-const labelVariants = cva(
-  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-)
+const labelVariants = cva("text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70")
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
-    VariantProps<typeof labelVariants>
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & VariantProps<typeof labelVariants>
 >(({ className, ...props }, ref) => (
-  <LabelPrimitive.Root
-    ref={ref}
-    className={cn(labelVariants(), className)}
-    {...props}
-  />
+  <LabelPrimitive.Root ref={ref} className={cn(labelVariants(), className)} {...props} />
 ))
 Label.displayName = LabelPrimitive.Root.displayName
 
 export { Label }
-
 ```
+
 ```tsx
 shadcn/switch
 "use client"
@@ -2131,26 +2089,29 @@ export { Switch }
 ```
 
 Install NPM dependencies:
+
 ```bash
 lucide-react, framer-motion, canvas-confetti, @number-flow/react, @radix-ui/react-slot, class-variance-authority, @radix-ui/react-label, @radix-ui/react-switch
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -2158,30 +2119,34 @@ name: shiny border button
 code: You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
-```tsx
-shiny-borders-button.tsx
-import React from 'react';
 
-const RealismButton = ({text}) => {
+```tsx
+shiny - borders - button.tsx
+import React from "react"
+
+const RealismButton = ({ text }) => {
   return (
     <button className="group relative p-[2px] rounded-[16px] text-[1.4rem] border-none cursor-pointer bg-[radial-gradient(circle_80px_at_80%_-10%,_#ffffff,_#181b1b)] transition-all">
       {/* Glow behind button */}
       <div className="absolute top-0 right-0 w-[65%] h-[60%] rounded-[120px] shadow-[0_0_20px_#ffffff38] group-hover:shadow-[0_0_40px_#ffffff60] transition-all duration-300 ease-out -z-10" />
 
       {/* Bottom-left green blob */}
-      <div className="absolute bottom-0 left-0 w-[50px] h-[50%] rounded-[17px] transition-all duration-300 ease-out 
+      <div
+        className="absolute bottom-0 left-0 w-[50px] h-[50%] rounded-[17px] transition-all duration-300 ease-out 
         bg-[radial-gradient(circle_60px_at_0%_100%,_#3fff75,_#00ff8050,_transparent)] 
         shadow-[-2px_9px_40px_#00ff2d40] 
-        group-hover:w-[90px] group-hover:shadow-[-4px_1px_45px_#00ff2d60]" />
+        group-hover:w-[90px] group-hover:shadow-[-4px_1px_45px_#00ff2d60]"
+      />
 
       {/* Inner content */}
       <div className="relative px-[25px] py-[14px] group-hover:scale-110 rounded-[14px] text-white bg-[radial-gradient(circle_80px_at_80%_-50%,_#777777,_#0f1111)] z-10 transition-all duration-300">
@@ -2191,40 +2156,41 @@ const RealismButton = ({text}) => {
         <div className="absolute inset-0 rounded-[14px] bg-[radial-gradient(circle_60px_at_0%_100%,_#00e1ff1a,_#0000ff11,_transparent)] z-[-1]" />
       </div>
     </button>
-  );
-};
-
-export default RealismButton;
-
-
-
-demo.tsx
-import RealismButton from "@/components/ui/shiny-borders-button";
-
-export default function DemoOne() {
-  return <div className="flex items-center justify-center min-h-screen dark:bg-black bg-white w-full">
-      <RealismButton text={"See Projects"} />
-    </div>
+  )
 }
 
+export default RealismButton
+
+demo.tsx
+import RealismButton from "@/components/ui/shiny-borders-button"
+
+export default function DemoOne() {
+  return (
+    <div className="flex items-center justify-center min-h-screen dark:bg-black bg-white w-full">
+      <RealismButton text={"See Projects"} />
+    </div>
+  )
+}
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -2232,148 +2198,151 @@ name: sliding testimonial
 code : You are given a task to integrate an existing React component in the codebase
 
 The codebase should support:
-- shadcn project structure  
+
+- shadcn project structure
 - Tailwind CSS
 - Typescript
 
 If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
 
-Determine the default path for components and styles. 
+Determine the default path for components and styles.
 If default path for components is not /components/ui, provide instructions on why it's important to create this folder
 Copy-paste this component to /components/ui folder:
-```tsx
-sliding-testimonial.tsx
-import Image from 'next/image'
-const testimonials = [
-    {
-        name: "Alena Zhukova",
-        profession: "Software Engineer",
-        description: "Simple is the perfect tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
-        avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
-        image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
-    },
-    {
-        name: "Aiko",
-        profession: "Design Engineer",
-        description:
-            "Simple is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
-        avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
-        image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
-    },
-    {
-        name: "kinpe Zhukova",
-        profession: "Software Engineer",
-        description:
-            "Simple is the perfect tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results..",
-        avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
-        image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
-    },
 
-    {
-        name: "Lisa Kemp",
-        profession: "Frontend Developer",
-        description:
-            "Simple is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results..",
-        avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
-        image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
-    },
-    {
-        name: "Saud",
-        profession: "Game Developer",
-        description:
-            "Simple is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
-        avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
-        image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
-    },
-    {
-        name: "Paula Smith",
-        profession: "UX Designer",
-        description:
-            "Simple is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
-        avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
-        image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
-    },
-];
-const duplicatedTestimonials = [...testimonials, ...testimonials];
+```tsx
+sliding - testimonial.tsx
+import Image from "next/image"
+const testimonials = [
+  {
+    name: "Alena Zhukova",
+    profession: "Software Engineer",
+    description:
+      "Simple is the perfect tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
+    avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
+    image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
+  },
+  {
+    name: "Aiko",
+    profession: "Design Engineer",
+    description:
+      "Simple is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
+    avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
+    image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
+  },
+  {
+    name: "kinpe Zhukova",
+    profession: "Software Engineer",
+    description:
+      "Simple is the perfect tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results..",
+    avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
+    image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
+  },
+
+  {
+    name: "Lisa Kemp",
+    profession: "Frontend Developer",
+    description:
+      "Simple is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results..",
+    avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
+    image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
+  },
+  {
+    name: "Saud",
+    profession: "Game Developer",
+    description:
+      "Simple is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
+    avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
+    image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
+  },
+  {
+    name: "Paula Smith",
+    profession: "UX Designer",
+    description:
+      "Simple is a great tool for building user interfaces. It's easy to use and has a lot of features. I've been using it for a while now and I'm really happy with the results.",
+    avatar: "https://assets.basehub.com/fa068a12/uXVXN7g1Fc2EjO8OWn0HG/09.png?width=64&quality=90&format=auto",
+    image: "https://res.cloudinary.com/dfhp33ufc/image/upload/v1715881430/vercel_wordmark_dark_mhv8u8.svg",
+  },
+]
+const duplicatedTestimonials = [...testimonials, ...testimonials]
 
 const FUITestimonialWithSlide = () => {
-    return (
-        <div className='max-w-8xl mx-auto border-2 border-black w-screen'>
-            <div className="w-full mx-auto px-10">
-                <div className='mb-10'>
-
-                    <p className="mt-8 max-w-2xl mx-auto  font-geist text-center text-5xl font-normal tracking-tight text-gray-800 dark:text-gray-200">
-                        What clients says
-                    </p>
-                    <p className="mt-4 max-w-xl mx-auto  text-lg text-center tracking-tight text-zinc-600">
-                        Design assets, icon teardowns, and a community of fellow icon
-                        designers where you can ask questions.
-                    </p>
-
-                </div>
-                <div style={{
-                    maskImage:
-                        'linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)',
-                }}  className="flex relative overflow-hidden  shrink-0   max-w-full  overflow-hidden ">
-                  <div className="flex animate-x-slider gap-5 w-max">
-                    {duplicatedTestimonials.map((testimonial, indx) => {
-                        return (
-
-                            <div key={indx} className="border-[1.2px]  flex flex-col bg-page-gradient border-black/20  dark:border-white/10  rounded-lg shrink-0 grow-0 w-[600px] h-full">
-                                <p className="px-5 py-5 text-pretty text-xl font-extralight  text-text-primary dark:text-dark-text-primary sm:text-2xl md:text-3xl tracking-tighter">
-                                    &quot;{testimonial.description}.&quot;
-
-
-                                </p>
-                                <div className="border-t-[1.2px]  w-full flex gap-1 overflow-hidden">
-                                    <div className="w-3/4 flex gap-3 items-center px-4 py-3">
-                                        <img src={testimonial.avatar} alt='avatar' />
-                                        <div className='flex flex-col flex-1 gap-0 justify-start items-start'>
-                                            <h5 className='text-base font-medium md:text-lg'>{testimonial.name}</h5>
-                                            <p className='text-black/30 dark:text-white/50 mt-[-4px] text-sm text-text-tertiary dark:text-dark-text-tertiary md:text-base'>{testimonial.profession}</p>
-
-                                        </div>
-
-                                    </div>
-                                    <div className='w-[1px] bg-black/20 dark:bg-white/20' />
-
-                                    <div className='max-w-full self-center pl-2'>
-                                        <img src={testimonial.image} className='h-10 w-28 px-2 flex-none brightness-0  dark:invert' alt='company_logo' />
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        )
-                    })}
-                 </div>
-                </div>
-            </div>
+  return (
+    <div className="max-w-8xl mx-auto border-2 border-black w-screen">
+      <div className="w-full mx-auto px-10">
+        <div className="mb-10">
+          <p className="mt-8 max-w-2xl mx-auto  font-geist text-center text-5xl font-normal tracking-tight text-gray-800 dark:text-gray-200">
+            What clients says
+          </p>
+          <p className="mt-4 max-w-xl mx-auto  text-lg text-center tracking-tight text-zinc-600">
+            Design assets, icon teardowns, and a community of fellow icon designers where you can ask questions.
+          </p>
         </div>
-    )
+        <div
+          style={{
+            maskImage: "linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)",
+          }}
+          className="flex relative overflow-hidden  shrink-0   max-w-full  overflow-hidden "
+        >
+          <div className="flex animate-x-slider gap-5 w-max">
+            {duplicatedTestimonials.map((testimonial, indx) => {
+              return (
+                <div
+                  key={indx}
+                  className="border-[1.2px]  flex flex-col bg-page-gradient border-black/20  dark:border-white/10  rounded-lg shrink-0 grow-0 w-[600px] h-full"
+                >
+                  <p className="px-5 py-5 text-pretty text-xl font-extralight  text-text-primary dark:text-dark-text-primary sm:text-2xl md:text-3xl tracking-tighter">
+                    &quot;{testimonial.description}.&quot;
+                  </p>
+                  <div className="border-t-[1.2px]  w-full flex gap-1 overflow-hidden">
+                    <div className="w-3/4 flex gap-3 items-center px-4 py-3">
+                      <img src={testimonial.avatar} alt="avatar" />
+                      <div className="flex flex-col flex-1 gap-0 justify-start items-start">
+                        <h5 className="text-base font-medium md:text-lg">{testimonial.name}</h5>
+                        <p className="text-black/30 dark:text-white/50 mt-[-4px] text-sm text-text-tertiary dark:text-dark-text-tertiary md:text-base">
+                          {testimonial.profession}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="w-[1px] bg-black/20 dark:bg-white/20" />
+
+                    <div className="max-w-full self-center pl-2">
+                      <img
+                        src={testimonial.image}
+                        className="h-10 w-28 px-2 flex-none brightness-0  dark:invert"
+                        alt="company_logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 export default FUITestimonialWithSlide
 
 demo.tsx
-import FUITestimonialWithSlide from "@/components/ui/sliding-testimonial";
+import FUITestimonialWithSlide from "@/components/ui/sliding-testimonial"
 
 export default function DemoOne() {
-  return <FUITestimonialWithSlide />;
+  return <FUITestimonialWithSlide />
 }
-
 ```
 
 Install NPM dependencies:
+
 ```bash
 next
 ```
 
 Extend existing Tailwind 4 index.css with this code (or if project uses Tailwind 3, extend tailwind.config.js or globals.css):
+
 ```css
 @import "tailwindcss";
 @import "tw-animate-css";
-
 
 @keyframes x-slider {
   0% {
@@ -2386,21 +2355,23 @@ Extend existing Tailwind 4 index.css with this code (or if project uses Tailwind
 ```
 
 Implementation Guidelines
- 1. Analyze the component structure and identify all required dependencies
- 2. Review the component's argumens and state
- 3. Identify any required context providers or hooks and install them
- 4. Questions to Ask
- - What data/props will be passed to this component?
- - Are there any specific state management requirements?
- - Are there any required assets (images, icons, etc.)?
- - What is the expected responsive behavior?
- - What is the best place to use this component in the app?
 
-Steps to integrate
- 0. Copy paste all the code above in the correct directories
- 1. Install external dependencies
- 2. Fill image assets with Unsplash stock images you know exist
- 3. Use lucide-react icons for svgs or logos if component requires them
+1.  Analyze the component structure and identify all required dependencies
+2.  Review the component's argumens and state
+3.  Identify any required context providers or hooks and install them
+4.  Questions to Ask
+
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+Steps to integrate 0. Copy paste all the code above in the correct directories
+
+1.  Install external dependencies
+2.  Fill image assets with Unsplash stock images you know exist
+3.  Use lucide-react icons for svgs or logos if component requires them
 
 ---
 
@@ -2410,16 +2381,19 @@ code: ## Integrate the <AnimatedContent /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: AnimatedContent
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
-```jsx
-import AnimatedContent from './AnimatedContent'
 
-<AnimatedContent
+```jsx
+import AnimatedContent from "./AnimatedContent"
+
+;<AnimatedContent
   distance={150}
   direction="horizontal"
   reverse={false}
@@ -2436,43 +2410,45 @@ import AnimatedContent from './AnimatedContent'
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | ReactNode | — | The content to be animated. |
-| container | string | HTMLElement | null | The scroll container to use for ScrollTrigger. Can be a selector string or an HTMLElement. Defaults to main container. Uses auto-detection (for snap-main-container id) if not provided. |
-| distance | number | 100 | Distance (in pixels) the component moves during animation. |
-| direction | string | "vertical" | Animation direction. Can be "vertical" or "horizontal". |
-| reverse | boolean | false | Whether the animation moves in the reverse direction. |
-| duration | number | 0.8 | Duration of the animation in seconds. |
-| ease | string | "power3.out" | GSAP easing function for the animation. |
-| initialOpacity | number | 0 | Initial opacity before animation begins. |
-| animateOpacity | boolean | true | Whether to animate opacity during transition. |
-| scale | number | 1 | Initial scale of the component. |
-| threshold | number | 0.1 | Intersection threshold to trigger animation (0-1). |
-| delay | number | 0 | Delay before animation starts (in seconds). |
-| onComplete | function | undefined | Callback function called when animation completes. |
-| dissappearAfter | number | 0 | Time in seconds after which the content will disappear. Disabled if set to 0. |
-| disappearDuration | number | 0.5 | Duration of the disappearance animation in seconds. |
-| disappearEase | string | "power3.in" | GSAP easing function for the disappearance animation. |
-| onDisappearanceComplete | function | undefined | Callback function called when disappearance animation completes. |
-| className | string | '' | Additional CSS classes to apply to the animated component. |
+
+| Prop                    | Type      | Default      | Description                                                                   |
+| ----------------------- | --------- | ------------ | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| children                | ReactNode | —            | The content to be animated.                                                   |
+| container               | string    | HTMLElement  | null                                                                          | The scroll container to use for ScrollTrigger. Can be a selector string or an HTMLElement. Defaults to main container. Uses auto-detection (for snap-main-container id) if not provided. |
+| distance                | number    | 100          | Distance (in pixels) the component moves during animation.                    |
+| direction               | string    | "vertical"   | Animation direction. Can be "vertical" or "horizontal".                       |
+| reverse                 | boolean   | false        | Whether the animation moves in the reverse direction.                         |
+| duration                | number    | 0.8          | Duration of the animation in seconds.                                         |
+| ease                    | string    | "power3.out" | GSAP easing function for the animation.                                       |
+| initialOpacity          | number    | 0            | Initial opacity before animation begins.                                      |
+| animateOpacity          | boolean   | true         | Whether to animate opacity during transition.                                 |
+| scale                   | number    | 1            | Initial scale of the component.                                               |
+| threshold               | number    | 0.1          | Intersection threshold to trigger animation (0-1).                            |
+| delay                   | number    | 0            | Delay before animation starts (in seconds).                                   |
+| onComplete              | function  | undefined    | Callback function called when animation completes.                            |
+| dissappearAfter         | number    | 0            | Time in seconds after which the content will disappear. Disabled if set to 0. |
+| disappearDuration       | number    | 0.5          | Duration of the disappearance animation in seconds.                           |
+| disappearEase           | string    | "power3.in"  | GSAP easing function for the disappearance animation.                         |
+| onDisappearanceComplete | function  | undefined    | Callback function called when disappearance animation completes.              |
+| className               | string    | ''           | Additional CSS classes to apply to the animated component.                    |
 
 ### Full Component Source
-```jsx
-import { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+```jsx
+import { useRef, useEffect } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const AnimatedContent = ({
   children,
   container,
   distance = 100,
-  direction = 'vertical',
+  direction = "vertical",
   reverse = false,
   duration = 0.8,
-  ease = 'power3.out',
+  ease = "power3.out",
   initialOpacity = 0,
   animateOpacity = true,
   scale = 1,
@@ -2480,40 +2456,40 @@ const AnimatedContent = ({
   delay = 0,
   disappearAfter = 0,
   disappearDuration = 0.5,
-  disappearEase = 'power3.in',
+  disappearEase = "power3.in",
   onComplete,
   onDisappearanceComplete,
-  className = '',
+  className = "",
   ...props
 }) => {
-  const ref = useRef(null);
+  const ref = useRef(null)
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const el = ref.current
+    if (!el) return
 
-    let scrollerTarget = container || document.getElementById('snap-main-container') || null;
+    let scrollerTarget = container || document.getElementById("snap-main-container") || null
 
-    if (typeof scrollerTarget === 'string') {
-      scrollerTarget = document.querySelector(scrollerTarget);
+    if (typeof scrollerTarget === "string") {
+      scrollerTarget = document.querySelector(scrollerTarget)
     }
 
-    const axis = direction === 'horizontal' ? 'x' : 'y';
-    const offset = reverse ? -distance : distance;
-    const startPct = (1 - threshold) * 100;
+    const axis = direction === "horizontal" ? "x" : "y"
+    const offset = reverse ? -distance : distance
+    const startPct = (1 - threshold) * 100
 
     gsap.set(el, {
       [axis]: offset,
       scale,
       opacity: animateOpacity ? initialOpacity : 1,
-      visibility: 'visible'
-    });
+      visibility: "visible",
+    })
 
     const tl = gsap.timeline({
       paused: true,
       delay,
       onComplete: () => {
-        if (onComplete) onComplete();
+        if (onComplete) onComplete()
         if (disappearAfter > 0) {
           gsap.to(el, {
             [axis]: reverse ? distance : -distance,
@@ -2522,32 +2498,32 @@ const AnimatedContent = ({
             delay: disappearAfter,
             duration: disappearDuration,
             ease: disappearEase,
-            onComplete: () => onDisappearanceComplete?.()
-          });
+            onComplete: () => onDisappearanceComplete?.(),
+          })
         }
-      }
-    });
+      },
+    })
 
     tl.to(el, {
       [axis]: 0,
       scale: 1,
       opacity: 1,
       duration,
-      ease
-    });
+      ease,
+    })
 
     const st = ScrollTrigger.create({
       trigger: el,
       scroller: scrollerTarget,
       start: `top ${startPct}%`,
       once: true,
-      onEnter: () => tl.play()
-    });
+      onEnter: () => tl.play(),
+    })
 
     return () => {
-      st.kill();
-      tl.kill();
-    };
+      st.kill()
+      tl.kill()
+    }
   }, [
     container,
     distance,
@@ -2564,21 +2540,21 @@ const AnimatedContent = ({
     disappearDuration,
     disappearEase,
     onComplete,
-    onDisappearanceComplete
-  ]);
+    onDisappearanceComplete,
+  ])
 
   return (
-    <div ref={ref} className={className} style={{ visibility: 'hidden' }} {...props}>
+    <div ref={ref} className={className} style={{ visibility: "hidden" }} {...props}>
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default AnimatedContent;
-
+export default AnimatedContent
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import and render the component using the usage example above as a starting point.
@@ -2592,135 +2568,138 @@ code: ## Integrate the <FadeContent /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: FadeContent
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
+
 ```jsx
-import FadeContent from './FadeContent'
-  
-<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+import FadeContent from "./FadeContent"
+
+;<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
   {/* Anything placed inside this container will be fade into view */}
 </FadeContent>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | ReactNode | — | The content to be animated. |
-| blur | boolean | false | Enables a blur effect during the animation. |
-| duration | number | 1000 | Specifies the duration of the fade animation in seconds. |
-| delay | number | 0 | Adds a delay in seconds before triggering the animation. |
-| ease | string | power2.out | GSAP easing function for the fade animation. |
-| threshold | number | 0.1 | IntersectionObserver threshold for triggering the fade animation. |
-| initialOpacity | number | — | The starting opacity of the component before it enters the viewport. |
-| className | string | — | Custom class(es) to be added to the container. |
-| disappearAfter | number | — | Time in seconds after which the content will start to disappear. Disables if set to 0. |
-| disappearDuration | number | 0.5 | Duration of the disappearance animation in seconds. |
-| disappearEase | string | power2.in | GSAP easing function for the disappearance animation. |
+
+| Prop              | Type      | Default    | Description                                                                            |
+| ----------------- | --------- | ---------- | -------------------------------------------------------------------------------------- |
+| children          | ReactNode | —          | The content to be animated.                                                            |
+| blur              | boolean   | false      | Enables a blur effect during the animation.                                            |
+| duration          | number    | 1000       | Specifies the duration of the fade animation in seconds.                               |
+| delay             | number    | 0          | Adds a delay in seconds before triggering the animation.                               |
+| ease              | string    | power2.out | GSAP easing function for the fade animation.                                           |
+| threshold         | number    | 0.1        | IntersectionObserver threshold for triggering the fade animation.                      |
+| initialOpacity    | number    | —          | The starting opacity of the component before it enters the viewport.                   |
+| className         | string    | —          | Custom class(es) to be added to the container.                                         |
+| disappearAfter    | number    | —          | Time in seconds after which the content will start to disappear. Disables if set to 0. |
+| disappearDuration | number    | 0.5        | Duration of the disappearance animation in seconds.                                    |
+| disappearEase     | string    | power2.in  | GSAP easing function for the disappearance animation.                                  |
 
 ### Full Component Source
-```jsx
-import { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+```jsx
+import { useRef, useEffect } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const FadeContent = ({
   children,
   container,
   blur = false,
   duration = 1000,
-  ease = 'power2.out',
+  ease = "power2.out",
   delay = 0,
   threshold = 0.1,
   initialOpacity = 0,
   disappearAfter = 0,
   disappearDuration = 0.5,
-  disappearEase = 'power2.in',
+  disappearEase = "power2.in",
   onComplete,
   onDisappearanceComplete,
-  className = '',
+  className = "",
   style,
   ...props
 }) => {
-  const ref = useRef(null);
+  const ref = useRef(null)
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const el = ref.current
+    if (!el) return
 
-    let scrollerTarget = container || document.getElementById('snap-main-container') || null;
-    if (typeof scrollerTarget === 'string') {
-      scrollerTarget = document.querySelector(scrollerTarget);
+    let scrollerTarget = container || document.getElementById("snap-main-container") || null
+    if (typeof scrollerTarget === "string") {
+      scrollerTarget = document.querySelector(scrollerTarget)
     }
 
-    const startPct = (1 - threshold) * 100;
+    const startPct = (1 - threshold) * 100
 
-    const getSeconds = val => (typeof val === 'number' && val > 10 ? val / 1000 : val);
+    const getSeconds = (val) => (typeof val === "number" && val > 10 ? val / 1000 : val)
 
     gsap.set(el, {
       autoAlpha: initialOpacity,
-      filter: blur ? 'blur(10px)' : 'blur(0px)',
-      willChange: 'opacity, filter, transform'
-    });
+      filter: blur ? "blur(10px)" : "blur(0px)",
+      willChange: "opacity, filter, transform",
+    })
 
     const tl = gsap.timeline({
       paused: true,
       delay: getSeconds(delay),
       onComplete: () => {
-        if (onComplete) onComplete();
+        if (onComplete) onComplete()
         if (disappearAfter > 0) {
           gsap.to(el, {
             autoAlpha: initialOpacity,
-            filter: blur ? 'blur(10px)' : 'blur(0px)',
+            filter: blur ? "blur(10px)" : "blur(0px)",
             delay: getSeconds(disappearAfter),
             duration: getSeconds(disappearDuration),
             ease: disappearEase,
-            onComplete: () => onDisappearanceComplete?.()
-          });
+            onComplete: () => onDisappearanceComplete?.(),
+          })
         }
-      }
-    });
+      },
+    })
 
     tl.to(el, {
       autoAlpha: 1,
-      filter: 'blur(0px)',
+      filter: "blur(0px)",
       duration: getSeconds(duration),
-      ease: ease
-    });
+      ease: ease,
+    })
 
     const st = ScrollTrigger.create({
       trigger: el,
       scroller: scrollerTarget || window,
       start: `top ${startPct}%`,
       once: true,
-      onEnter: () => tl.play()
-    });
+      onEnter: () => tl.play(),
+    })
 
     return () => {
-      st.kill();
-      tl.kill();
-      gsap.killTweensOf(el);
-    };
+      st.kill()
+      tl.kill()
+      gsap.killTweensOf(el)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <div ref={ref} className={className} style={style} {...props}>
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default FadeContent;
-
+export default FadeContent
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import and render the component using the usage example above as a starting point.
@@ -2734,18 +2713,21 @@ code: ## Integrate the <AnimatedList /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: AnimatedList
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: motion
 
 ---
 
 ### Usage Example
-```jsx
-import AnimatedList from './AnimatedList'
 
-const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10']; 
-  
-<AnimatedList
+```jsx
+import AnimatedList from "./AnimatedList"
+
+const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"]
+
+;<AnimatedList
   items={items}
   onItemSelect={(item, index) => console.log(item, index)}
   showGradients={true}
@@ -2755,26 +2737,28 @@ const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| items | string[] | ['Item 1', 'Item 2', ...] | An array of items to display in the scrollable list. |
-| onItemSelect | function | undefined | Callback function triggered when an item is selected. Receives the selected item and its index. |
-| showGradients | boolean | true | Toggle to display the top and bottom gradient overlays. |
-| enableArrowNavigation | boolean | true | Toggle to enable keyboard navigation via arrow and tab keys. |
-| className | string | '' | Additional CSS class names for the main container. |
-| itemClassName | string | '' | Additional CSS class names for each list item. |
-| displayScrollbar | boolean | true | Toggle to display or hide the custom scrollbar. |
-| initialSelectedIndex | number | -1 | Initial index of the selected item. Set to -1 for no selection. |
+
+| Prop                  | Type     | Default                   | Description                                                                                     |
+| --------------------- | -------- | ------------------------- | ----------------------------------------------------------------------------------------------- |
+| items                 | string[] | ['Item 1', 'Item 2', ...] | An array of items to display in the scrollable list.                                            |
+| onItemSelect          | function | undefined                 | Callback function triggered when an item is selected. Receives the selected item and its index. |
+| showGradients         | boolean  | true                      | Toggle to display the top and bottom gradient overlays.                                         |
+| enableArrowNavigation | boolean  | true                      | Toggle to enable keyboard navigation via arrow and tab keys.                                    |
+| className             | string   | ''                        | Additional CSS class names for the main container.                                              |
+| itemClassName         | string   | ''                        | Additional CSS class names for each list item.                                                  |
+| displayScrollbar      | boolean  | true                      | Toggle to display or hide the custom scrollbar.                                                 |
+| initialSelectedIndex  | number   | -1                        | Initial index of the selected item. Set to -1 for no selection.                                 |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useState, useEffect, useCallback } from 'react';
-import { motion, useInView } from 'motion/react';
-import './AnimatedList.css';
+import { useRef, useState, useEffect, useCallback } from "react"
+import { motion, useInView } from "motion/react"
+import "./AnimatedList.css"
 
 const AnimatedItem = ({ children, delay = 0, index, onMouseEnter, onClick }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { amount: 0.5, triggerOnce: false });
+  const ref = useRef(null)
+  const inView = useInView(ref, { amount: 0.5, triggerOnce: false })
   return (
     <motion.div
       ref={ref}
@@ -2784,116 +2768,116 @@ const AnimatedItem = ({ children, delay = 0, index, onMouseEnter, onClick }) => 
       initial={{ scale: 0.7, opacity: 0 }}
       animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.7, opacity: 0 }}
       transition={{ duration: 0.2, delay }}
-      style={{ marginBottom: '1rem', cursor: 'pointer' }}
+      style={{ marginBottom: "1rem", cursor: "pointer" }}
     >
       {children}
     </motion.div>
-  );
-};
+  )
+}
 
 const AnimatedList = ({
   items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
-    'Item 8',
-    'Item 9',
-    'Item 10',
-    'Item 11',
-    'Item 12',
-    'Item 13',
-    'Item 14',
-    'Item 15'
+    "Item 1",
+    "Item 2",
+    "Item 3",
+    "Item 4",
+    "Item 5",
+    "Item 6",
+    "Item 7",
+    "Item 8",
+    "Item 9",
+    "Item 10",
+    "Item 11",
+    "Item 12",
+    "Item 13",
+    "Item 14",
+    "Item 15",
   ],
   onItemSelect,
   showGradients = true,
   enableArrowNavigation = true,
-  className = '',
-  itemClassName = '',
+  className = "",
+  itemClassName = "",
   displayScrollbar = true,
-  initialSelectedIndex = -1
+  initialSelectedIndex = -1,
 }) => {
-  const listRef = useRef(null);
-  const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex);
-  const [keyboardNav, setKeyboardNav] = useState(false);
-  const [topGradientOpacity, setTopGradientOpacity] = useState(0);
-  const [bottomGradientOpacity, setBottomGradientOpacity] = useState(1);
+  const listRef = useRef(null)
+  const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex)
+  const [keyboardNav, setKeyboardNav] = useState(false)
+  const [topGradientOpacity, setTopGradientOpacity] = useState(0)
+  const [bottomGradientOpacity, setBottomGradientOpacity] = useState(1)
 
-  const handleItemMouseEnter = useCallback(index => {
-    setSelectedIndex(index);
-  }, []);
+  const handleItemMouseEnter = useCallback((index) => {
+    setSelectedIndex(index)
+  }, [])
 
   const handleItemClick = useCallback(
     (item, index) => {
-      setSelectedIndex(index);
+      setSelectedIndex(index)
       if (onItemSelect) {
-        onItemSelect(item, index);
+        onItemSelect(item, index)
       }
     },
-    [onItemSelect]
-  );
+    [onItemSelect],
+  )
 
-  const handleScroll = useCallback(e => {
-    const { scrollTop, scrollHeight, clientHeight } = e.target;
-    setTopGradientOpacity(Math.min(scrollTop / 50, 1));
-    const bottomDistance = scrollHeight - (scrollTop + clientHeight);
-    setBottomGradientOpacity(scrollHeight <= clientHeight ? 0 : Math.min(bottomDistance / 50, 1));
-  }, []);
+  const handleScroll = useCallback((e) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.target
+    setTopGradientOpacity(Math.min(scrollTop / 50, 1))
+    const bottomDistance = scrollHeight - (scrollTop + clientHeight)
+    setBottomGradientOpacity(scrollHeight <= clientHeight ? 0 : Math.min(bottomDistance / 50, 1))
+  }, [])
 
   useEffect(() => {
-    if (!enableArrowNavigation) return;
-    const handleKeyDown = e => {
-      if (e.key === 'ArrowDown' || (e.key === 'Tab' && !e.shiftKey)) {
-        e.preventDefault();
-        setKeyboardNav(true);
-        setSelectedIndex(prev => Math.min(prev + 1, items.length - 1));
-      } else if (e.key === 'ArrowUp' || (e.key === 'Tab' && e.shiftKey)) {
-        e.preventDefault();
-        setKeyboardNav(true);
-        setSelectedIndex(prev => Math.max(prev - 1, 0));
-      } else if (e.key === 'Enter') {
+    if (!enableArrowNavigation) return
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowDown" || (e.key === "Tab" && !e.shiftKey)) {
+        e.preventDefault()
+        setKeyboardNav(true)
+        setSelectedIndex((prev) => Math.min(prev + 1, items.length - 1))
+      } else if (e.key === "ArrowUp" || (e.key === "Tab" && e.shiftKey)) {
+        e.preventDefault()
+        setKeyboardNav(true)
+        setSelectedIndex((prev) => Math.max(prev - 1, 0))
+      } else if (e.key === "Enter") {
         if (selectedIndex >= 0 && selectedIndex < items.length) {
-          e.preventDefault();
+          e.preventDefault()
           if (onItemSelect) {
-            onItemSelect(items[selectedIndex], selectedIndex);
+            onItemSelect(items[selectedIndex], selectedIndex)
           }
         }
       }
-    };
+    }
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [items, selectedIndex, onItemSelect, enableArrowNavigation]);
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [items, selectedIndex, onItemSelect, enableArrowNavigation])
 
   useEffect(() => {
-    if (!keyboardNav || selectedIndex < 0 || !listRef.current) return;
-    const container = listRef.current;
-    const selectedItem = container.querySelector(`[data-index="${selectedIndex}"]`);
+    if (!keyboardNav || selectedIndex < 0 || !listRef.current) return
+    const container = listRef.current
+    const selectedItem = container.querySelector(`[data-index="${selectedIndex}"]`)
     if (selectedItem) {
-      const extraMargin = 50;
-      const containerScrollTop = container.scrollTop;
-      const containerHeight = container.clientHeight;
-      const itemTop = selectedItem.offsetTop;
-      const itemBottom = itemTop + selectedItem.offsetHeight;
+      const extraMargin = 50
+      const containerScrollTop = container.scrollTop
+      const containerHeight = container.clientHeight
+      const itemTop = selectedItem.offsetTop
+      const itemBottom = itemTop + selectedItem.offsetHeight
       if (itemTop < containerScrollTop + extraMargin) {
-        container.scrollTo({ top: itemTop - extraMargin, behavior: 'smooth' });
+        container.scrollTo({ top: itemTop - extraMargin, behavior: "smooth" })
       } else if (itemBottom > containerScrollTop + containerHeight - extraMargin) {
         container.scrollTo({
           top: itemBottom - containerHeight + extraMargin,
-          behavior: 'smooth'
-        });
+          behavior: "smooth",
+        })
       }
     }
-    setKeyboardNav(false);
-  }, [selectedIndex, keyboardNav]);
+    setKeyboardNav(false)
+  }, [selectedIndex, keyboardNav])
 
   return (
     <div className={`scroll-list-container ${className}`}>
-      <div ref={listRef} className={`scroll-list ${!displayScrollbar ? 'no-scrollbar' : ''}`} onScroll={handleScroll}>
+      <div ref={listRef} className={`scroll-list ${!displayScrollbar ? "no-scrollbar" : ""}`} onScroll={handleScroll}>
         {items.map((item, index) => (
           <AnimatedItem
             key={index}
@@ -2902,7 +2886,7 @@ const AnimatedList = ({
             onMouseEnter={() => handleItemMouseEnter(index)}
             onClick={() => handleItemClick(item, index)}
           >
-            <div className={`item ${selectedIndex === index ? 'selected' : ''} ${itemClassName}`}>
+            <div className={`item ${selectedIndex === index ? "selected" : ""} ${itemClassName}`}>
               <p className="item-text">{item}</p>
             </div>
           </AnimatedItem>
@@ -2915,14 +2899,14 @@ const AnimatedList = ({
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default AnimatedList;
-
+export default AnimatedList
 ```
 
 ### Component CSS
+
 ```css
 .scroll-list-container {
   position: relative;
@@ -2940,11 +2924,11 @@ export default AnimatedList;
 }
 
 .scroll-list::-webkit-scrollbar-track {
-  background: #120F17;
+  background: #120f17;
 }
 
 .scroll-list::-webkit-scrollbar-thumb {
-  background: #2F293A;
+  background: #2f293a;
   border-radius: 4px;
 }
 
@@ -2959,13 +2943,13 @@ export default AnimatedList;
 
 .item {
   padding: 16px;
-  background-color: #2F293A;
+  background-color: #2f293a;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
 
 .item.selected {
-  background-color: #2F293A;
+  background-color: #2f293a;
 }
 
 .item-text {
@@ -2979,7 +2963,7 @@ export default AnimatedList;
   left: 0;
   right: 0;
   height: 50px;
-  background: linear-gradient(to bottom, #120F17, transparent);
+  background: linear-gradient(to bottom, #120f17, transparent);
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
@@ -2990,14 +2974,14 @@ export default AnimatedList;
   left: 0;
   right: 0;
   height: 100px;
-  background: linear-gradient(to top, #120F17, transparent);
+  background: linear-gradient(to top, #120f17, transparent);
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -3005,4 +2989,3 @@ export default AnimatedList;
 5. Adjust props as needed for the specific use case — refer to the props table for all available options.
 
 ---
-

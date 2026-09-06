@@ -14,10 +14,10 @@ Check modifier key states explicitly using the key object properties. Don't rely
 ```typescript
 useInput((input) => {
   // Ctrl+C sends character code 3, but this is fragile
-  if (input === '\x03') handleCancel()
+  if (input === "\x03") handleCancel()
 
   // This won't detect Ctrl+S (no character for it)
-  if (input === '\x13') handleSave()  // Won't work reliably
+  if (input === "\x13") handleSave() // Won't work reliably
 })
 ```
 
@@ -26,13 +26,13 @@ useInput((input) => {
 ```typescript
 useInput((input, key) => {
   // Ctrl+C with explicit modifier check
-  if (key.ctrl && input === 'c') {
+  if (key.ctrl && input === "c") {
     handleCancel()
     return
   }
 
   // Ctrl+S with explicit modifier check
-  if (key.ctrl && input === 's') {
+  if (key.ctrl && input === "s") {
     handleSave()
     return
   }
@@ -44,7 +44,7 @@ useInput((input, key) => {
   }
 
   // Meta/Cmd key (macOS)
-  if (key.meta && input === 'k') {
+  if (key.meta && input === "k") {
     handleCommandPalette()
     return
   }
@@ -57,6 +57,7 @@ useInput((input, key) => {
 ```
 
 **Note:** The `key` object provides:
+
 - `key.ctrl` - Control key pressed
 - `key.meta` - Meta/Cmd key pressed
 - `key.shift` - Shift key pressed

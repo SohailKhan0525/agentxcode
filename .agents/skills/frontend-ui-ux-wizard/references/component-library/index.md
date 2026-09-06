@@ -4,7 +4,6 @@ Search this list for a component name, then open the matching category file — 
 
 **Source:** components adapted from [React Bits](https://reactbits.dev) and [Svelte Bits](https://sveltebits.xyz) (both by DavidHDev). React Bits is licensed **MIT + Commons Clause** — free to use, modify, and distribute in your own projects (personal or commercial), but the library itself cannot be resold as a standalone product. Svelte Bits is built incrementally from React Bits by the same author and is presumed to carry similar terms; verify at the source if that matters for your use case. This reference bundle is included here for free, under Qofeno's own MIT-licensed repo, as build material for websites, not as a resold library.
 
-
 ## Backgrounds (`backgrounds.md`)
 
 - aurora

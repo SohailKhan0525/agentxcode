@@ -55,16 +55,16 @@ pnpm validate
 
 ### Category Prefixes
 
-| Prefix | Category | Impact |
-|--------|----------|--------|
-| `render-` | Rendering & Output | CRITICAL |
-| `input-` | Input & Keyboard | CRITICAL |
-| `comp-` | Component Patterns | HIGH |
-| `state-` | State & Lifecycle | HIGH |
-| `prompt-` | Prompt Design | MEDIUM-HIGH |
-| `ux-` | UX & Feedback | MEDIUM |
-| `config-` | Configuration & CLI | MEDIUM |
-| `robust-` | Robustness & Compatibility | LOW-MEDIUM |
+| Prefix    | Category                   | Impact      |
+| --------- | -------------------------- | ----------- |
+| `render-` | Rendering & Output         | CRITICAL    |
+| `input-`  | Input & Keyboard           | CRITICAL    |
+| `comp-`   | Component Patterns         | HIGH        |
+| `state-`  | State & Lifecycle          | HIGH        |
+| `prompt-` | Prompt Design              | MEDIUM-HIGH |
+| `ux-`     | UX & Feedback              | MEDIUM      |
+| `config-` | Configuration & CLI        | MEDIUM      |
+| `robust-` | Robustness & Compatibility | LOW-MEDIUM  |
 
 ## Rule File Structure
 
@@ -103,20 +103,21 @@ Rules follow the pattern: `{prefix}-{description}.md`
 - `description`: Kebab-case description of the rule
 
 Examples:
+
 - `render-single-write.md`
 - `input-useinput-hook.md`
 - `prompt-group-flow.md`
 
 ## Impact Levels
 
-| Level | Description |
-|-------|-------------|
-| CRITICAL | Must fix - causes major performance or UX issues |
-| HIGH | Should fix - significant improvement opportunity |
-| MEDIUM-HIGH | Recommended - noticeable improvement |
-| MEDIUM | Good practice - incremental improvement |
-| LOW-MEDIUM | Nice to have - polish and edge cases |
-| LOW | Optional - advanced optimization |
+| Level       | Description                                      |
+| ----------- | ------------------------------------------------ |
+| CRITICAL    | Must fix - causes major performance or UX issues |
+| HIGH        | Should fix - significant improvement opportunity |
+| MEDIUM-HIGH | Recommended - noticeable improvement             |
+| MEDIUM      | Good practice - incremental improvement          |
+| LOW-MEDIUM  | Nice to have - polish and edge cases             |
+| LOW         | Optional - advanced optimization                 |
 
 ## Scripts
 

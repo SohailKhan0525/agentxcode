@@ -8,9 +8,9 @@ const TIMEOUT_MS = 2000
 
 function formatBytes(bytes?: number): string | undefined {
   if (!bytes || bytes <= 0) return undefined
-  const gb = bytes / (1024 ** 3)
+  const gb = bytes / 1024 ** 3
   if (gb >= 1) return `${gb.toFixed(1)} GB`
-  const mb = bytes / (1024 ** 2)
+  const mb = bytes / 1024 ** 2
   return `${mb.toFixed(0)} MB`
 }
 

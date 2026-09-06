@@ -53,8 +53,8 @@ function Spinner() {
 // Event listeners
 useEffect(() => {
   const handler = () => handleResize()
-  process.stdout.on('resize', handler)
-  return () => process.stdout.off('resize', handler)
+  process.stdout.on("resize", handler)
+  return () => process.stdout.off("resize", handler)
 }, [])
 
 // Abort controller for fetch
@@ -63,8 +63,8 @@ useEffect(() => {
 
   fetch(url, { signal: controller.signal })
     .then(setData)
-    .catch(err => {
-      if (err.name !== 'AbortError') setError(err)
+    .catch((err) => {
+      if (err.name !== "AbortError") setError(err)
     })
 
   return () => controller.abort()

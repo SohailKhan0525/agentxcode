@@ -10,54 +10,57 @@ code: ## Integrate the <BubbleMenu /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: BubbleMenu
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
+
 ```jsx
-import BubbleMenu from './BubbleMenu'
+import BubbleMenu from "./BubbleMenu"
 
 const items = [
   {
-    label: 'home',
-    href: '#',
-    ariaLabel: 'Home',
+    label: "home",
+    href: "#",
+    ariaLabel: "Home",
     rotation: -8,
-    hoverStyles: { bgColor: '#3b82f6', textColor: '#ffffff' }
+    hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
   },
   {
-    label: 'about',
-    href: '#',
-    ariaLabel: 'About',
+    label: "about",
+    href: "#",
+    ariaLabel: "About",
     rotation: 8,
-    hoverStyles: { bgColor: '#10b981', textColor: '#ffffff' }
+    hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
   },
   {
-    label: 'projects',
-    href: '#',
-    ariaLabel: 'Projects',
+    label: "projects",
+    href: "#",
+    ariaLabel: "Projects",
     rotation: 8,
-    hoverStyles: { bgColor: '#f59e0b', textColor: '#ffffff' }
+    hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
   },
   {
-    label: 'blog',
-    href: '#',
-    ariaLabel: 'Blog',
+    label: "blog",
+    href: "#",
+    ariaLabel: "Blog",
     rotation: 8,
-    hoverStyles: { bgColor: '#ef4444', textColor: '#ffffff' }
+    hoverStyles: { bgColor: "#ef4444", textColor: "#ffffff" },
   },
   {
-    label: 'contact',
-    href: '#',
-    ariaLabel: 'Contact',
+    label: "contact",
+    href: "#",
+    ariaLabel: "Contact",
     rotation: -8,
-    hoverStyles: { bgColor: '#8b5cf6', textColor: '#ffffff' }
-  }
-];
+    hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+  },
+]
 
-<BubbleMenu
+;<BubbleMenu
   logo={<span style={{ fontWeight: 700 }}>RB</span>}
   items={items}
   menuAriaLabel="Toggle navigation"
@@ -71,121 +74,123 @@ const items = [
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| logo | ReactNode | string | — | Logo content shown in the central bubble (string src or JSX). |
-| onMenuClick | (open: boolean) => void | — | Callback fired whenever the menu toggle changes; receives open state. |
-| className | string | — | Additional class names for the root nav wrapper. |
-| style | CSSProperties | — | Inline styles applied to the root nav wrapper. |
-| menuAriaLabel | string | "Toggle menu" | Accessible aria-label for the toggle button. |
-| menuBg | string | "#fff" | Background color for the logo & toggle bubbles and base pill background. |
-| menuContentColor | string | "#111" | Color for the menu icon lines and default pill text. |
-| useFixedPosition | boolean | false | If true positions the menu with fixed instead of absolute (follows viewport). |
-| items | MenuItem[] | DEFAULT_ITEMS | Custom menu items; each = { label, href, ariaLabel?, rotation?, hoverStyles?: { bgColor?, textColor? } }. |
-| animationEase | string | "back.out(1.5)" | GSAP ease string used for bubble scale-in animation. |
-| animationDuration | number | 0.5 | Duration (s) for each bubble & label animation. |
-| staggerDelay | number | 0.12 | Base stagger (s) between bubble animations (with slight random variance). |
+
+| Prop              | Type                    | Default         | Description                                                                                               |
+| ----------------- | ----------------------- | --------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| logo              | ReactNode               | string          | —                                                                                                         | Logo content shown in the central bubble (string src or JSX). |
+| onMenuClick       | (open: boolean) => void | —               | Callback fired whenever the menu toggle changes; receives open state.                                     |
+| className         | string                  | —               | Additional class names for the root nav wrapper.                                                          |
+| style             | CSSProperties           | —               | Inline styles applied to the root nav wrapper.                                                            |
+| menuAriaLabel     | string                  | "Toggle menu"   | Accessible aria-label for the toggle button.                                                              |
+| menuBg            | string                  | "#fff"          | Background color for the logo & toggle bubbles and base pill background.                                  |
+| menuContentColor  | string                  | "#111"          | Color for the menu icon lines and default pill text.                                                      |
+| useFixedPosition  | boolean                 | false           | If true positions the menu with fixed instead of absolute (follows viewport).                             |
+| items             | MenuItem[]              | DEFAULT_ITEMS   | Custom menu items; each = { label, href, ariaLabel?, rotation?, hoverStyles?: { bgColor?, textColor? } }. |
+| animationEase     | string                  | "back.out(1.5)" | GSAP ease string used for bubble scale-in animation.                                                      |
+| animationDuration | number                  | 0.5             | Duration (s) for each bubble & label animation.                                                           |
+| staggerDelay      | number                  | 0.12            | Base stagger (s) between bubble animations (with slight random variance).                                 |
 
 ### Full Component Source
-```jsx
-import { useState, useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
 
-import './BubbleMenu.css';
+```jsx
+import { useState, useRef, useEffect } from "react"
+import { gsap } from "gsap"
+
+import "./BubbleMenu.css"
 
 const DEFAULT_ITEMS = [
   {
-    label: 'home',
-    href: '#',
-    ariaLabel: 'Home',
+    label: "home",
+    href: "#",
+    ariaLabel: "Home",
     rotation: -8,
-    hoverStyles: { bgColor: '#3b82f6', textColor: '#ffffff' }
+    hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
   },
   {
-    label: 'about',
-    href: '#',
-    ariaLabel: 'About',
+    label: "about",
+    href: "#",
+    ariaLabel: "About",
     rotation: 8,
-    hoverStyles: { bgColor: '#10b981', textColor: '#ffffff' }
+    hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
   },
   {
-    label: 'projects',
-    href: '#',
-    ariaLabel: 'Documentation',
+    label: "projects",
+    href: "#",
+    ariaLabel: "Documentation",
     rotation: 8,
-    hoverStyles: { bgColor: '#f59e0b', textColor: '#ffffff' }
+    hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
   },
   {
-    label: 'blog',
-    href: '#',
-    ariaLabel: 'Blog',
+    label: "blog",
+    href: "#",
+    ariaLabel: "Blog",
     rotation: 8,
-    hoverStyles: { bgColor: '#ef4444', textColor: '#ffffff' }
+    hoverStyles: { bgColor: "#ef4444", textColor: "#ffffff" },
   },
   {
-    label: 'contact',
-    href: '#',
-    ariaLabel: 'Contact',
+    label: "contact",
+    href: "#",
+    ariaLabel: "Contact",
     rotation: -8,
-    hoverStyles: { bgColor: '#8b5cf6', textColor: '#ffffff' }
-  }
-];
+    hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+  },
+]
 
 export default function BubbleMenu({
   logo,
   onMenuClick,
   className,
   style,
-  menuAriaLabel = 'Toggle menu',
-  menuBg = '#fff',
-  menuContentColor = '#111',
+  menuAriaLabel = "Toggle menu",
+  menuBg = "#fff",
+  menuContentColor = "#111",
   useFixedPosition = false,
   items,
-  animationEase = 'back.out(1.5)',
+  animationEase = "back.out(1.5)",
   animationDuration = 0.5,
-  staggerDelay = 0.12
+  staggerDelay = 0.12,
 }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showOverlay, setShowOverlay] = useState(false)
 
-  const overlayRef = useRef(null);
-  const bubblesRef = useRef([]);
-  const labelRefs = useRef([]);
+  const overlayRef = useRef(null)
+  const bubblesRef = useRef([])
+  const labelRefs = useRef([])
 
-  const menuItems = items?.length ? items : DEFAULT_ITEMS;
-  const containerClassName = ['bubble-menu', useFixedPosition ? 'fixed' : 'absolute', className]
+  const menuItems = items?.length ? items : DEFAULT_ITEMS
+  const containerClassName = ["bubble-menu", useFixedPosition ? "fixed" : "absolute", className]
     .filter(Boolean)
-    .join(' ');
+    .join(" ")
 
   const handleToggle = () => {
-    const nextState = !isMenuOpen;
-    if (nextState) setShowOverlay(true);
-    setIsMenuOpen(nextState);
-    onMenuClick?.(nextState);
-  };
+    const nextState = !isMenuOpen
+    if (nextState) setShowOverlay(true)
+    setIsMenuOpen(nextState)
+    onMenuClick?.(nextState)
+  }
 
   useEffect(() => {
-    const overlay = overlayRef.current;
-    const bubbles = bubblesRef.current.filter(Boolean);
-    const labels = labelRefs.current.filter(Boolean);
+    const overlay = overlayRef.current
+    const bubbles = bubblesRef.current.filter(Boolean)
+    const labels = labelRefs.current.filter(Boolean)
 
-    if (!overlay || !bubbles.length) return;
+    if (!overlay || !bubbles.length) return
 
     if (isMenuOpen) {
-      gsap.set(overlay, { display: 'flex' });
-      gsap.killTweensOf([...bubbles, ...labels]);
-      gsap.set(bubbles, { scale: 0, transformOrigin: '50% 50%' });
-      gsap.set(labels, { y: 24, autoAlpha: 0 });
+      gsap.set(overlay, { display: "flex" })
+      gsap.killTweensOf([...bubbles, ...labels])
+      gsap.set(bubbles, { scale: 0, transformOrigin: "50% 50%" })
+      gsap.set(labels, { y: 24, autoAlpha: 0 })
 
       bubbles.forEach((bubble, i) => {
-        const delay = i * staggerDelay + gsap.utils.random(-0.05, 0.05);
-        const tl = gsap.timeline({ delay });
+        const delay = i * staggerDelay + gsap.utils.random(-0.05, 0.05)
+        const tl = gsap.timeline({ delay })
 
         tl.to(bubble, {
           scale: 1,
           duration: animationDuration,
-          ease: animationEase
-        });
+          ease: animationEase,
+        })
         if (labels[i]) {
           tl.to(
             labels[i],
@@ -193,64 +198,64 @@ export default function BubbleMenu({
               y: 0,
               autoAlpha: 1,
               duration: animationDuration,
-              ease: 'power3.out'
+              ease: "power3.out",
             },
-            `-=${animationDuration * 0.9}`
-          );
+            `-=${animationDuration * 0.9}`,
+          )
         }
-      });
+      })
     } else if (showOverlay) {
-      gsap.killTweensOf([...bubbles, ...labels]);
+      gsap.killTweensOf([...bubbles, ...labels])
       gsap.to(labels, {
         y: 24,
         autoAlpha: 0,
         duration: 0.2,
-        ease: 'power3.in'
-      });
+        ease: "power3.in",
+      })
       gsap.to(bubbles, {
         scale: 0,
         duration: 0.2,
-        ease: 'power3.in',
+        ease: "power3.in",
         onComplete: () => {
-          gsap.set(overlay, { display: 'none' });
-          setShowOverlay(false);
-        }
-      });
+          gsap.set(overlay, { display: "none" })
+          setShowOverlay(false)
+        },
+      })
     }
-  }, [isMenuOpen, showOverlay, animationEase, animationDuration, staggerDelay]);
+  }, [isMenuOpen, showOverlay, animationEase, animationDuration, staggerDelay])
 
   useEffect(() => {
     const handleResize = () => {
       if (isMenuOpen) {
-        const bubbles = bubblesRef.current.filter(Boolean);
-        const isDesktop = window.innerWidth >= 900;
+        const bubbles = bubblesRef.current.filter(Boolean)
+        const isDesktop = window.innerWidth >= 900
 
         bubbles.forEach((bubble, i) => {
-          const item = menuItems[i];
+          const item = menuItems[i]
           if (bubble && item) {
-            const rotation = isDesktop ? (item.rotation ?? 0) : 0;
-            gsap.set(bubble, { rotation });
+            const rotation = isDesktop ? (item.rotation ?? 0) : 0
+            gsap.set(bubble, { rotation })
           }
-        });
+        })
       }
-    };
+    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isMenuOpen, menuItems]);
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [isMenuOpen, menuItems])
 
   return (
     <>
       <nav className={containerClassName} style={style} aria-label="Main navigation">
         <div className="bubble logo-bubble" aria-label="Logo" style={{ background: menuBg }}>
           <span className="logo-content">
-            {typeof logo === 'string' ? <img src={logo} alt="Logo" className="bubble-logo" /> : logo}
+            {typeof logo === "string" ? <img src={logo} alt="Logo" className="bubble-logo" /> : logo}
           </span>
         </div>
 
         <button
           type="button"
-          className={`bubble toggle-bubble menu-btn ${isMenuOpen ? 'open' : ''}`}
+          className={`bubble toggle-bubble menu-btn ${isMenuOpen ? "open" : ""}`}
           onClick={handleToggle}
           aria-label={menuAriaLabel}
           aria-pressed={isMenuOpen}
@@ -263,7 +268,7 @@ export default function BubbleMenu({
       {showOverlay && (
         <div
           ref={overlayRef}
-          className={`bubble-menu-items ${useFixedPosition ? 'fixed' : 'absolute'}`}
+          className={`bubble-menu-items ${useFixedPosition ? "fixed" : "absolute"}`}
           aria-hidden={!isMenuOpen}
         >
           <ul className="pill-list" role="menu" aria-label="Menu links">
@@ -275,20 +280,20 @@ export default function BubbleMenu({
                   aria-label={item.ariaLabel || item.label}
                   className="pill-link"
                   style={{
-                    '--item-rot': `${item.rotation ?? 0}deg`,
-                    '--pill-bg': menuBg,
-                    '--pill-color': menuContentColor,
-                    '--hover-bg': item.hoverStyles?.bgColor || '#f3f4f6',
-                    '--hover-color': item.hoverStyles?.textColor || menuContentColor
+                    "--item-rot": `${item.rotation ?? 0}deg`,
+                    "--pill-bg": menuBg,
+                    "--pill-color": menuContentColor,
+                    "--hover-bg": item.hoverStyles?.bgColor || "#f3f4f6",
+                    "--hover-color": item.hoverStyles?.textColor || menuContentColor,
                   }}
-                  ref={el => {
-                    if (el) bubblesRef.current[idx] = el;
+                  ref={(el) => {
+                    if (el) bubblesRef.current[idx] = el
                   }}
                 >
                   <span
                     className="pill-label"
-                    ref={el => {
-                      if (el) labelRefs.current[idx] = el;
+                    ref={(el) => {
+                      if (el) labelRefs.current[idx] = el
                     }}
                   >
                     {item.label}
@@ -300,12 +305,12 @@ export default function BubbleMenu({
         </div>
       )}
     </>
-  );
+  )
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .bubble-menu {
   left: 0;
@@ -575,10 +580,10 @@ export default function BubbleMenu({
     transform: scale(0.94);
   }
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -593,15 +598,18 @@ code: ## Integrate the <CardNav /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: CardNav
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
+
 ```jsx
-import CardNav from './CardNav'
-import logo from './logo.svg';
+import CardNav from "./CardNav"
+import logo from "./logo.svg"
 
 const App = () => {
   const items = [
@@ -611,29 +619,29 @@ const App = () => {
       textColor: "#fff",
       links: [
         { label: "Company", ariaLabel: "About Company" },
-        { label: "Careers", ariaLabel: "About Careers" }
-      ]
+        { label: "Careers", ariaLabel: "About Careers" },
+      ],
     },
     {
-      label: "Projects", 
+      label: "Projects",
       bgColor: "#2F293A",
       textColor: "#fff",
       links: [
         { label: "Featured", ariaLabel: "Featured Projects" },
-        { label: "Case Studies", ariaLabel: "Project Case Studies" }
-      ]
+        { label: "Case Studies", ariaLabel: "Project Case Studies" },
+      ],
     },
     {
       label: "Contact",
-      bgColor: "#2F293A", 
+      bgColor: "#2F293A",
       textColor: "#fff",
       links: [
         { label: "Email", ariaLabel: "Email us" },
         { label: "Twitter", ariaLabel: "Twitter" },
-        { label: "LinkedIn", ariaLabel: "LinkedIn" }
-      ]
-    }
-  ];
+        { label: "LinkedIn", ariaLabel: "LinkedIn" },
+      ],
+    },
+  ]
 
   return (
     <CardNav
@@ -646,171 +654,173 @@ const App = () => {
       buttonTextColor="#fff"
       ease="power3.out"
     />
-  );
-};
+  )
+}
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| logo | string | - | URL for the logo image |
-| logoAlt | string | Logo | Alt text for the logo image |
-| items | CardNavItem[] | - | Array of navigation items with label, bgColor, textColor, and links |
-| className | string | '' | Additional CSS classes for the navigation container |
-| ease | string | power3.out | GSAP easing function for animations |
-| baseColor | string | #fff | Background color for the navigation container |
-| menuColor | string | undefined | Color for the hamburger menu lines |
-| buttonBgColor | string | #111 | Background color for the CTA button |
-| buttonTextColor | string | white | Text color for the CTA button |
+
+| Prop            | Type          | Default    | Description                                                         |
+| --------------- | ------------- | ---------- | ------------------------------------------------------------------- |
+| logo            | string        | -          | URL for the logo image                                              |
+| logoAlt         | string        | Logo       | Alt text for the logo image                                         |
+| items           | CardNavItem[] | -          | Array of navigation items with label, bgColor, textColor, and links |
+| className       | string        | ''         | Additional CSS classes for the navigation container                 |
+| ease            | string        | power3.out | GSAP easing function for animations                                 |
+| baseColor       | string        | #fff       | Background color for the navigation container                       |
+| menuColor       | string        | undefined  | Color for the hamburger menu lines                                  |
+| buttonBgColor   | string        | #111       | Background color for the CTA button                                 |
+| buttonTextColor | string        | white      | Text color for the CTA button                                       |
 
 ### Full Component Source
+
 ```jsx
-import { useLayoutEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
+import { useLayoutEffect, useRef, useState } from "react"
+import { gsap } from "gsap"
 // use your own icon import if react-icons is not available
-import { GoArrowUpRight } from 'react-icons/go';
-import './CardNav.css';
+import { GoArrowUpRight } from "react-icons/go"
+import "./CardNav.css"
 
 const CardNav = ({
   logo,
-  logoAlt = 'Logo',
+  logoAlt = "Logo",
   items,
-  className = '',
-  ease = 'power3.out',
-  baseColor = '#fff',
+  className = "",
+  ease = "power3.out",
+  baseColor = "#fff",
   menuColor,
   buttonBgColor,
-  buttonTextColor
+  buttonTextColor,
 }) => {
-  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const navRef = useRef(null);
-  const cardsRef = useRef([]);
-  const tlRef = useRef(null);
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
+  const navRef = useRef(null)
+  const cardsRef = useRef([])
+  const tlRef = useRef(null)
 
   const calculateHeight = () => {
-    const navEl = navRef.current;
-    if (!navEl) return 260;
+    const navEl = navRef.current
+    if (!navEl) return 260
 
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches
     if (isMobile) {
-      const contentEl = navEl.querySelector('.card-nav-content');
+      const contentEl = navEl.querySelector(".card-nav-content")
       if (contentEl) {
-        const wasVisible = contentEl.style.visibility;
-        const wasPointerEvents = contentEl.style.pointerEvents;
-        const wasPosition = contentEl.style.position;
-        const wasHeight = contentEl.style.height;
+        const wasVisible = contentEl.style.visibility
+        const wasPointerEvents = contentEl.style.pointerEvents
+        const wasPosition = contentEl.style.position
+        const wasHeight = contentEl.style.height
 
-        contentEl.style.visibility = 'visible';
-        contentEl.style.pointerEvents = 'auto';
-        contentEl.style.position = 'static';
-        contentEl.style.height = 'auto';
+        contentEl.style.visibility = "visible"
+        contentEl.style.pointerEvents = "auto"
+        contentEl.style.position = "static"
+        contentEl.style.height = "auto"
 
-        contentEl.offsetHeight;
+        contentEl.offsetHeight
 
-        const topBar = 60;
-        const padding = 16;
-        const contentHeight = contentEl.scrollHeight;
+        const topBar = 60
+        const padding = 16
+        const contentHeight = contentEl.scrollHeight
 
-        contentEl.style.visibility = wasVisible;
-        contentEl.style.pointerEvents = wasPointerEvents;
-        contentEl.style.position = wasPosition;
-        contentEl.style.height = wasHeight;
+        contentEl.style.visibility = wasVisible
+        contentEl.style.pointerEvents = wasPointerEvents
+        contentEl.style.position = wasPosition
+        contentEl.style.height = wasHeight
 
-        return topBar + contentHeight + padding;
+        return topBar + contentHeight + padding
       }
     }
-    return 260;
-  };
+    return 260
+  }
 
   const createTimeline = () => {
-    const navEl = navRef.current;
-    if (!navEl) return null;
+    const navEl = navRef.current
+    if (!navEl) return null
 
-    gsap.set(navEl, { height: 60, overflow: 'hidden' });
-    gsap.set(cardsRef.current, { y: 50, opacity: 0 });
+    gsap.set(navEl, { height: 60, overflow: "hidden" })
+    gsap.set(cardsRef.current, { y: 50, opacity: 0 })
 
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused: true })
 
     tl.to(navEl, {
       height: calculateHeight,
       duration: 0.4,
-      ease
-    });
+      ease,
+    })
 
-    tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 }, '-=0.1');
+    tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 }, "-=0.1")
 
-    return tl;
-  };
+    return tl
+  }
 
   useLayoutEffect(() => {
-    const tl = createTimeline();
-    tlRef.current = tl;
+    const tl = createTimeline()
+    tlRef.current = tl
 
     return () => {
-      tl?.kill();
-      tlRef.current = null;
-    };
+      tl?.kill()
+      tlRef.current = null
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ease, items]);
+  }, [ease, items])
 
   useLayoutEffect(() => {
     const handleResize = () => {
-      if (!tlRef.current) return;
+      if (!tlRef.current) return
 
       if (isExpanded) {
-        const newHeight = calculateHeight();
-        gsap.set(navRef.current, { height: newHeight });
+        const newHeight = calculateHeight()
+        gsap.set(navRef.current, { height: newHeight })
 
-        tlRef.current.kill();
-        const newTl = createTimeline();
+        tlRef.current.kill()
+        const newTl = createTimeline()
         if (newTl) {
-          newTl.progress(1);
-          tlRef.current = newTl;
+          newTl.progress(1)
+          tlRef.current = newTl
         }
       } else {
-        tlRef.current.kill();
-        const newTl = createTimeline();
+        tlRef.current.kill()
+        const newTl = createTimeline()
         if (newTl) {
-          tlRef.current = newTl;
+          tlRef.current = newTl
         }
       }
-    };
+    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isExpanded]);
+  }, [isExpanded])
 
   const toggleMenu = () => {
-    const tl = tlRef.current;
-    if (!tl) return;
+    const tl = tlRef.current
+    if (!tl) return
     if (!isExpanded) {
-      setIsHamburgerOpen(true);
-      setIsExpanded(true);
-      tl.play(0);
+      setIsHamburgerOpen(true)
+      setIsExpanded(true)
+      tl.play(0)
     } else {
-      setIsHamburgerOpen(false);
-      tl.eventCallback('onReverseComplete', () => setIsExpanded(false));
-      tl.reverse();
+      setIsHamburgerOpen(false)
+      tl.eventCallback("onReverseComplete", () => setIsExpanded(false))
+      tl.reverse()
     }
-  };
+  }
 
-  const setCardRef = i => el => {
-    if (el) cardsRef.current[i] = el;
-  };
+  const setCardRef = (i) => (el) => {
+    if (el) cardsRef.current[i] = el
+  }
 
   return (
     <div className={`card-nav-container ${className}`}>
-      <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
+      <nav ref={navRef} className={`card-nav ${isExpanded ? "open" : ""}`} style={{ backgroundColor: baseColor }}>
         <div className="card-nav-top">
           <div
-            className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
+            className={`hamburger-menu ${isHamburgerOpen ? "open" : ""}`}
             onClick={toggleMenu}
             role="button"
-            aria-label={isExpanded ? 'Close menu' : 'Open menu'}
+            aria-label={isExpanded ? "Close menu" : "Open menu"}
             tabIndex={0}
-            style={{ color: menuColor || '#000' }}
+            style={{ color: menuColor || "#000" }}
           >
             <div className="hamburger-line" />
             <div className="hamburger-line" />
@@ -851,14 +861,14 @@ const CardNav = ({
         </div>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default CardNav;
-
+export default CardNav
 ```
 
 ### Component CSS
+
 ```css
 .card-nav-container {
   position: absolute;
@@ -1069,10 +1079,10 @@ export default CardNav;
     font-size: 15px;
   }
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -1087,24 +1097,27 @@ code: ## Integrate the <PillNav /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: PillNav
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
-```jsx
-import PillNav from './PillNav';
-import logo from '/path/to/logo.svg';
 
-<PillNav
+```jsx
+import PillNav from "./PillNav"
+import logo from "/path/to/logo.svg"
+
+;<PillNav
   logo={logo}
   logoAlt="Company Logo"
   items={[
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Services', href: '/services' },
-    { label: 'Contact', href: '/contact' }
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Contact", href: "/contact" },
   ]}
   activeHref="/"
   className="custom-nav"
@@ -1117,200 +1130,202 @@ import logo from '/path/to/logo.svg';
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| logo | string | - | URL for the logo image |
-| logoAlt | string | Logo | Alt text for the logo image |
-| items | PillNavItem[] | - | Array of navigation items with label, href, and optional ariaLabel |
-| activeHref | string | undefined | The href of the currently active navigation item |
-| className | string | '' | Additional CSS classes for the navigation container |
-| ease | string | power3.easeOut | GSAP easing function for animations |
-| baseColor | string | #fff | Base background color for the navigation |
-| pillColor | string | #120F17 | Background color for navigation pills |
-| hoveredPillTextColor | string | #120F17 | Text color when hovering over pills |
-| pillTextColor | string | baseColor | Text color for navigation pills |
-| onMobileMenuClick | () => void | undefined | Callback function triggered when mobile menu button is clicked |
-| initialLoadAnimation | boolean | false | Enable initial load animation for logo scale and nav items reveal |
+
+| Prop                 | Type          | Default        | Description                                                        |
+| -------------------- | ------------- | -------------- | ------------------------------------------------------------------ |
+| logo                 | string        | -              | URL for the logo image                                             |
+| logoAlt              | string        | Logo           | Alt text for the logo image                                        |
+| items                | PillNavItem[] | -              | Array of navigation items with label, href, and optional ariaLabel |
+| activeHref           | string        | undefined      | The href of the currently active navigation item                   |
+| className            | string        | ''             | Additional CSS classes for the navigation container                |
+| ease                 | string        | power3.easeOut | GSAP easing function for animations                                |
+| baseColor            | string        | #fff           | Base background color for the navigation                           |
+| pillColor            | string        | #120F17        | Background color for navigation pills                              |
+| hoveredPillTextColor | string        | #120F17        | Text color when hovering over pills                                |
+| pillTextColor        | string        | baseColor      | Text color for navigation pills                                    |
+| onMobileMenuClick    | () => void    | undefined      | Callback function triggered when mobile menu button is clicked     |
+| initialLoadAnimation | boolean       | false          | Enable initial load animation for logo scale and nav items reveal  |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { gsap } from 'gsap';
-import './PillNav.css';
+import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
+import { gsap } from "gsap"
+import "./PillNav.css"
 
 const PillNav = ({
   logo,
-  logoAlt = 'Logo',
+  logoAlt = "Logo",
   items,
   activeHref,
-  className = '',
-  ease = 'power3.easeOut',
-  baseColor = '#fff',
-  pillColor = '#120F17',
-  hoveredPillTextColor = '#120F17',
+  className = "",
+  ease = "power3.easeOut",
+  baseColor = "#fff",
+  pillColor = "#120F17",
+  hoveredPillTextColor = "#120F17",
   pillTextColor,
   onMobileMenuClick,
-  initialLoadAnimation = true
+  initialLoadAnimation = true,
 }) => {
-  const resolvedPillTextColor = pillTextColor ?? baseColor;
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const circleRefs = useRef([]);
-  const tlRefs = useRef([]);
-  const activeTweenRefs = useRef([]);
-  const logoImgRef = useRef(null);
-  const logoTweenRef = useRef(null);
-  const hamburgerRef = useRef(null);
-  const mobileMenuRef = useRef(null);
-  const navItemsRef = useRef(null);
-  const logoRef = useRef(null);
+  const resolvedPillTextColor = pillTextColor ?? baseColor
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const circleRefs = useRef([])
+  const tlRefs = useRef([])
+  const activeTweenRefs = useRef([])
+  const logoImgRef = useRef(null)
+  const logoTweenRef = useRef(null)
+  const hamburgerRef = useRef(null)
+  const mobileMenuRef = useRef(null)
+  const navItemsRef = useRef(null)
+  const logoRef = useRef(null)
 
   useEffect(() => {
     const layout = () => {
-      circleRefs.current.forEach(circle => {
-        if (!circle?.parentElement) return;
+      circleRefs.current.forEach((circle) => {
+        if (!circle?.parentElement) return
 
-        const pill = circle.parentElement;
-        const rect = pill.getBoundingClientRect();
-        const { width: w, height: h } = rect;
-        const R = ((w * w) / 4 + h * h) / (2 * h);
-        const D = Math.ceil(2 * R) + 2;
-        const delta = Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 1;
-        const originY = D - delta;
+        const pill = circle.parentElement
+        const rect = pill.getBoundingClientRect()
+        const { width: w, height: h } = rect
+        const R = ((w * w) / 4 + h * h) / (2 * h)
+        const D = Math.ceil(2 * R) + 2
+        const delta = Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 1
+        const originY = D - delta
 
-        circle.style.width = `${D}px`;
-        circle.style.height = `${D}px`;
-        circle.style.bottom = `-${delta}px`;
+        circle.style.width = `${D}px`
+        circle.style.height = `${D}px`
+        circle.style.bottom = `-${delta}px`
 
         gsap.set(circle, {
           xPercent: -50,
           scale: 0,
-          transformOrigin: `50% ${originY}px`
-        });
+          transformOrigin: `50% ${originY}px`,
+        })
 
-        const label = pill.querySelector('.pill-label');
-        const white = pill.querySelector('.pill-label-hover');
+        const label = pill.querySelector(".pill-label")
+        const white = pill.querySelector(".pill-label-hover")
 
-        if (label) gsap.set(label, { y: 0 });
-        if (white) gsap.set(white, { y: h + 12, opacity: 0 });
+        if (label) gsap.set(label, { y: 0 })
+        if (white) gsap.set(white, { y: h + 12, opacity: 0 })
 
-        const index = circleRefs.current.indexOf(circle);
-        if (index === -1) return;
+        const index = circleRefs.current.indexOf(circle)
+        if (index === -1) return
 
-        tlRefs.current[index]?.kill();
-        const tl = gsap.timeline({ paused: true });
+        tlRefs.current[index]?.kill()
+        const tl = gsap.timeline({ paused: true })
 
-        tl.to(circle, { scale: 1.2, xPercent: -50, duration: 2, ease, overwrite: 'auto' }, 0);
+        tl.to(circle, { scale: 1.2, xPercent: -50, duration: 2, ease, overwrite: "auto" }, 0)
 
         if (label) {
-          tl.to(label, { y: -(h + 8), duration: 2, ease, overwrite: 'auto' }, 0);
+          tl.to(label, { y: -(h + 8), duration: 2, ease, overwrite: "auto" }, 0)
         }
 
         if (white) {
-          gsap.set(white, { y: Math.ceil(h + 100), opacity: 0 });
-          tl.to(white, { y: 0, opacity: 1, duration: 2, ease, overwrite: 'auto' }, 0);
+          gsap.set(white, { y: Math.ceil(h + 100), opacity: 0 })
+          tl.to(white, { y: 0, opacity: 1, duration: 2, ease, overwrite: "auto" }, 0)
         }
 
-        tlRefs.current[index] = tl;
-      });
-    };
-
-    layout();
-
-    const onResize = () => layout();
-    window.addEventListener('resize', onResize);
-
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(layout).catch(() => {});
+        tlRefs.current[index] = tl
+      })
     }
 
-    const menu = mobileMenuRef.current;
+    layout()
+
+    const onResize = () => layout()
+    window.addEventListener("resize", onResize)
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(layout).catch(() => {})
+    }
+
+    const menu = mobileMenuRef.current
     if (menu) {
-      gsap.set(menu, { visibility: 'hidden', opacity: 0, scaleY: 1 });
+      gsap.set(menu, { visibility: "hidden", opacity: 0, scaleY: 1 })
     }
 
     if (initialLoadAnimation) {
-      const logo = logoRef.current;
-      const navItems = navItemsRef.current;
+      const logo = logoRef.current
+      const navItems = navItemsRef.current
 
       if (logo) {
-        gsap.set(logo, { scale: 0 });
+        gsap.set(logo, { scale: 0 })
         gsap.to(logo, {
           scale: 1,
           duration: 0.6,
-          ease
-        });
+          ease,
+        })
       }
 
       if (navItems) {
-        gsap.set(navItems, { width: 0, overflow: 'hidden' });
+        gsap.set(navItems, { width: 0, overflow: "hidden" })
         gsap.to(navItems, {
-          width: 'auto',
+          width: "auto",
           duration: 0.6,
-          ease
-        });
+          ease,
+        })
       }
     }
 
-    return () => window.removeEventListener('resize', onResize);
-  }, [items, ease, initialLoadAnimation]);
+    return () => window.removeEventListener("resize", onResize)
+  }, [items, ease, initialLoadAnimation])
 
-  const handleEnter = i => {
-    const tl = tlRefs.current[i];
-    if (!tl) return;
-    activeTweenRefs.current[i]?.kill();
+  const handleEnter = (i) => {
+    const tl = tlRefs.current[i]
+    if (!tl) return
+    activeTweenRefs.current[i]?.kill()
     activeTweenRefs.current[i] = tl.tweenTo(tl.duration(), {
       duration: 0.3,
       ease,
-      overwrite: 'auto'
-    });
-  };
+      overwrite: "auto",
+    })
+  }
 
-  const handleLeave = i => {
-    const tl = tlRefs.current[i];
-    if (!tl) return;
-    activeTweenRefs.current[i]?.kill();
+  const handleLeave = (i) => {
+    const tl = tlRefs.current[i]
+    if (!tl) return
+    activeTweenRefs.current[i]?.kill()
     activeTweenRefs.current[i] = tl.tweenTo(0, {
       duration: 0.2,
       ease,
-      overwrite: 'auto'
-    });
-  };
+      overwrite: "auto",
+    })
+  }
 
   const handleLogoEnter = () => {
-    const img = logoImgRef.current;
-    if (!img) return;
-    logoTweenRef.current?.kill();
-    gsap.set(img, { rotate: 0 });
+    const img = logoImgRef.current
+    if (!img) return
+    logoTweenRef.current?.kill()
+    gsap.set(img, { rotate: 0 })
     logoTweenRef.current = gsap.to(img, {
       rotate: 360,
       duration: 0.2,
       ease,
-      overwrite: 'auto'
-    });
-  };
+      overwrite: "auto",
+    })
+  }
 
   const toggleMobileMenu = () => {
-    const newState = !isMobileMenuOpen;
-    setIsMobileMenuOpen(newState);
+    const newState = !isMobileMenuOpen
+    setIsMobileMenuOpen(newState)
 
-    const hamburger = hamburgerRef.current;
-    const menu = mobileMenuRef.current;
+    const hamburger = hamburgerRef.current
+    const menu = mobileMenuRef.current
 
     if (hamburger) {
-      const lines = hamburger.querySelectorAll('.hamburger-line');
+      const lines = hamburger.querySelectorAll(".hamburger-line")
       if (newState) {
-        gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease });
+        gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease })
+        gsap.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease })
       } else {
-        gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
+        gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease })
+        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease })
       }
     }
 
     if (menu) {
       if (newState) {
-        gsap.set(menu, { visibility: 'visible' });
+        gsap.set(menu, { visibility: "visible" })
         gsap.fromTo(
           menu,
           { opacity: 0, y: 10, scaleY: 1 },
@@ -1320,9 +1335,9 @@ const PillNav = ({
             scaleY: 1,
             duration: 0.3,
             ease,
-            transformOrigin: 'top center'
-          }
-        );
+            transformOrigin: "top center",
+          },
+        )
       } else {
         gsap.to(menu, {
           opacity: 0,
@@ -1330,33 +1345,33 @@ const PillNav = ({
           scaleY: 1,
           duration: 0.2,
           ease,
-          transformOrigin: 'top center',
+          transformOrigin: "top center",
           onComplete: () => {
-            gsap.set(menu, { visibility: 'hidden' });
-          }
-        });
+            gsap.set(menu, { visibility: "hidden" })
+          },
+        })
       }
     }
 
-    onMobileMenuClick?.();
-  };
+    onMobileMenuClick?.()
+  }
 
-  const isExternalLink = href =>
-    href.startsWith('http://') ||
-    href.startsWith('https://') ||
-    href.startsWith('//') ||
-    href.startsWith('mailto:') ||
-    href.startsWith('tel:') ||
-    href.startsWith('#');
+  const isExternalLink = (href) =>
+    href.startsWith("http://") ||
+    href.startsWith("https://") ||
+    href.startsWith("//") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("tel:") ||
+    href.startsWith("#")
 
-  const isRouterLink = href => href && !isExternalLink(href);
+  const isRouterLink = (href) => href && !isExternalLink(href)
 
   const cssVars = {
-    ['--base']: baseColor,
-    ['--pill-bg']: pillColor,
-    ['--hover-text']: hoveredPillTextColor,
-    ['--pill-text']: resolvedPillTextColor
-  };
+    ["--base"]: baseColor,
+    ["--pill-bg"]: pillColor,
+    ["--hover-text"]: hoveredPillTextColor,
+    ["--pill-text"]: resolvedPillTextColor,
+  }
 
   return (
     <div className="pill-nav-container">
@@ -1368,8 +1383,8 @@ const PillNav = ({
             aria-label="Home"
             onMouseEnter={handleLogoEnter}
             role="menuitem"
-            ref={el => {
-              logoRef.current = el;
+            ref={(el) => {
+              logoRef.current = el
             }}
           >
             <img src={logo} alt={logoAlt} ref={logoImgRef} />
@@ -1377,11 +1392,11 @@ const PillNav = ({
         ) : (
           <a
             className="pill-logo"
-            href={items?.[0]?.href || '#'}
+            href={items?.[0]?.href || "#"}
             aria-label="Home"
             onMouseEnter={handleLogoEnter}
-            ref={el => {
-              logoRef.current = el;
+            ref={(el) => {
+              logoRef.current = el
             }}
           >
             <img src={logo} alt={logoAlt} ref={logoImgRef} />
@@ -1396,7 +1411,7 @@ const PillNav = ({
                   <Link
                     role="menuitem"
                     to={item.href}
-                    className={`pill${activeHref === item.href ? ' is-active' : ''}`}
+                    className={`pill${activeHref === item.href ? " is-active" : ""}`}
                     aria-label={item.ariaLabel || item.label}
                     onMouseEnter={() => handleEnter(i)}
                     onMouseLeave={() => handleLeave(i)}
@@ -1404,8 +1419,8 @@ const PillNav = ({
                     <span
                       className="hover-circle"
                       aria-hidden="true"
-                      ref={el => {
-                        circleRefs.current[i] = el;
+                      ref={(el) => {
+                        circleRefs.current[i] = el
                       }}
                     />
                     <span className="label-stack">
@@ -1419,7 +1434,7 @@ const PillNav = ({
                   <a
                     role="menuitem"
                     href={item.href}
-                    className={`pill${activeHref === item.href ? ' is-active' : ''}`}
+                    className={`pill${activeHref === item.href ? " is-active" : ""}`}
                     aria-label={item.ariaLabel || item.label}
                     onMouseEnter={() => handleEnter(i)}
                     onMouseLeave={() => handleLeave(i)}
@@ -1427,8 +1442,8 @@ const PillNav = ({
                     <span
                       className="hover-circle"
                       aria-hidden="true"
-                      ref={el => {
-                        circleRefs.current[i] = el;
+                      ref={(el) => {
+                        circleRefs.current[i] = el
                       }}
                     />
                     <span className="label-stack">
@@ -1462,7 +1477,7 @@ const PillNav = ({
               {isRouterLink(item.href) ? (
                 <Link
                   to={item.href}
-                  className={`mobile-menu-link${activeHref === item.href ? ' is-active' : ''}`}
+                  className={`mobile-menu-link${activeHref === item.href ? " is-active" : ""}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
@@ -1470,7 +1485,7 @@ const PillNav = ({
               ) : (
                 <a
                   href={item.href}
-                  className={`mobile-menu-link${activeHref === item.href ? ' is-active' : ''}`}
+                  className={`mobile-menu-link${activeHref === item.href ? " is-active" : ""}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
@@ -1481,14 +1496,14 @@ const PillNav = ({
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PillNav;
-
+export default PillNav
 ```
 
 ### Component CSS
+
 ```css
 .pill-nav-container {
   position: absolute;
@@ -1626,7 +1641,7 @@ export default PillNav;
 }
 
 .pill.is-active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -6px;
   left: 50%;
@@ -1727,10 +1742,10 @@ export default PillNav;
   background-color: var(--base);
   color: var(--hover-text, #fff);
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -1745,29 +1760,32 @@ code: ## Integrate the <StaggeredMenu /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: StaggeredMenu
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
+
 ```jsx
-import StaggeredMenu from './StaggeredMenu';
+import StaggeredMenu from "./StaggeredMenu"
 
 const menuItems = [
-  { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
-  { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
-  { label: 'Services', ariaLabel: 'View our services', link: '/services' },
-  { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
-];
+  { label: "Home", ariaLabel: "Go to home page", link: "/" },
+  { label: "About", ariaLabel: "Learn about us", link: "/about" },
+  { label: "Services", ariaLabel: "View our services", link: "/services" },
+  { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
+]
 
 const socialItems = [
-  { label: 'Twitter', link: 'https://twitter.com' },
-  { label: 'GitHub', link: 'https://github.com' },
-  { label: 'LinkedIn', link: 'https://linkedin.com' }
-];
+  { label: "Twitter", link: "https://twitter.com" },
+  { label: "GitHub", link: "https://github.com" },
+  { label: "LinkedIn", link: "https://linkedin.com" },
+]
 
-<div style={{ height: '100vh', background: '#1a1a1a' }}>
+;<div style={{ height: "100vh", background: "#1a1a1a" }}>
   <StaggeredMenu
     position="right"
     items={menuItems}
@@ -1777,198 +1795,200 @@ const socialItems = [
     menuButtonColor="#fff"
     openMenuButtonColor="#fff"
     changeMenuColorOnOpen={true}
-    colors={['#B497CF', '#5227FF']}
+    colors={["#B497CF", "#5227FF"]}
     logoUrl="/path-to-your-logo.svg"
     accentColor="#ff6b6b"
-    onMenuOpen={() => console.log('Menu opened')}
-    onMenuClose={() => console.log('Menu closed')}
+    onMenuOpen={() => console.log("Menu opened")}
+    onMenuClose={() => console.log("Menu closed")}
   />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| position | "left" | "right" | "right" | Anchor position for the menu panel (left or right side). |
-| colors | string[] | ["#B497CF", "#5227FF"] | Colors used for staggered underlay layers. |
-| items | StaggeredMenuItem[] | [] | Menu items rendered inside the panel. |
-| socialItems | StaggeredMenuSocialItem[] | [] | Social links displayed in the menu panel. |
-| displaySocials | boolean | false | Whether to display the social links section. |
-| displayItemNumbering | boolean | true | Whether to show numbering for menu items. |
-| className | string | undefined | Optional extra class names. |
-| logoUrl | string | — | Path to the logo image. |
-| menuButtonColor | string | "#fff" | Color of the menu toggle button when closed. |
-| openMenuButtonColor | string | "#fff" | Color of the menu toggle button when open. |
-| accentColor | string | undefined | Hover accent color for menu items. |
-| changeMenuColorOnOpen | boolean | true | Whether to animate the button color when opening/closing. |
-| onMenuOpen | () => void | undefined | Callback function called when menu opens. |
-| onMenuClose | () => void | undefined | Callback function called when menu closes. |
-| closeOnClickAway | boolean | true | Whether to close the menu when clicking outside. |
+
+| Prop                  | Type                      | Default                | Description                                               |
+| --------------------- | ------------------------- | ---------------------- | --------------------------------------------------------- | -------------------------------------------------------- |
+| position              | "left"                    | "right"                | "right"                                                   | Anchor position for the menu panel (left or right side). |
+| colors                | string[]                  | ["#B497CF", "#5227FF"] | Colors used for staggered underlay layers.                |
+| items                 | StaggeredMenuItem[]       | []                     | Menu items rendered inside the panel.                     |
+| socialItems           | StaggeredMenuSocialItem[] | []                     | Social links displayed in the menu panel.                 |
+| displaySocials        | boolean                   | false                  | Whether to display the social links section.              |
+| displayItemNumbering  | boolean                   | true                   | Whether to show numbering for menu items.                 |
+| className             | string                    | undefined              | Optional extra class names.                               |
+| logoUrl               | string                    | —                      | Path to the logo image.                                   |
+| menuButtonColor       | string                    | "#fff"                 | Color of the menu toggle button when closed.              |
+| openMenuButtonColor   | string                    | "#fff"                 | Color of the menu toggle button when open.                |
+| accentColor           | string                    | undefined              | Hover accent color for menu items.                        |
+| changeMenuColorOnOpen | boolean                   | true                   | Whether to animate the button color when opening/closing. |
+| onMenuOpen            | () => void                | undefined              | Callback function called when menu opens.                 |
+| onMenuClose           | () => void                | undefined              | Callback function called when menu closes.                |
+| closeOnClickAway      | boolean                   | true                   | Whether to close the menu when clicking outside.          |
 
 ### Full Component Source
+
 ```jsx
-import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import './StaggeredMenu.css';
+import React, { useCallback, useLayoutEffect, useRef, useState } from "react"
+import { gsap } from "gsap"
+import "./StaggeredMenu.css"
 
 export const StaggeredMenu = ({
-  position = 'right',
-  colors = ['#B497CF', '#5227FF'],
+  position = "right",
+  colors = ["#B497CF", "#5227FF"],
   items = [],
   socialItems = [],
   displaySocials = true,
   displayItemNumbering = true,
   className,
-  logoUrl = '/src/assets/logos/reactbits-gh-white.svg',
-  menuButtonColor = '#fff',
-  openMenuButtonColor = '#fff',
-  accentColor = '#5227FF',
+  logoUrl = "/src/assets/logos/reactbits-gh-white.svg",
+  menuButtonColor = "#fff",
+  openMenuButtonColor = "#fff",
+  accentColor = "#5227FF",
   changeMenuColorOnOpen = true,
   isFixed = false,
   closeOnClickAway = true,
   onMenuOpen,
-  onMenuClose
+  onMenuClose,
 }) => {
-  const [open, setOpen] = useState(false);
-  const openRef = useRef(false);
-  const panelRef = useRef(null);
-  const preLayersRef = useRef(null);
-  const preLayerElsRef = useRef([]);
-  const plusHRef = useRef(null);
-  const plusVRef = useRef(null);
-  const iconRef = useRef(null);
-  const textInnerRef = useRef(null);
-  const textWrapRef = useRef(null);
-  const [textLines, setTextLines] = useState(['Menu', 'Close']);
+  const [open, setOpen] = useState(false)
+  const openRef = useRef(false)
+  const panelRef = useRef(null)
+  const preLayersRef = useRef(null)
+  const preLayerElsRef = useRef([])
+  const plusHRef = useRef(null)
+  const plusVRef = useRef(null)
+  const iconRef = useRef(null)
+  const textInnerRef = useRef(null)
+  const textWrapRef = useRef(null)
+  const [textLines, setTextLines] = useState(["Menu", "Close"])
 
-  const openTlRef = useRef(null);
-  const closeTweenRef = useRef(null);
-  const spinTweenRef = useRef(null);
-  const textCycleAnimRef = useRef(null);
-  const colorTweenRef = useRef(null);
-  const toggleBtnRef = useRef(null);
-  const busyRef = useRef(false);
-  const itemEntranceTweenRef = useRef(null);
+  const openTlRef = useRef(null)
+  const closeTweenRef = useRef(null)
+  const spinTweenRef = useRef(null)
+  const textCycleAnimRef = useRef(null)
+  const colorTweenRef = useRef(null)
+  const toggleBtnRef = useRef(null)
+  const busyRef = useRef(false)
+  const itemEntranceTweenRef = useRef(null)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const panel = panelRef.current;
-      const preContainer = preLayersRef.current;
-      const plusH = plusHRef.current;
-      const plusV = plusVRef.current;
-      const icon = iconRef.current;
-      const textInner = textInnerRef.current;
-      if (!panel || !plusH || !plusV || !icon || !textInner) return;
+      const panel = panelRef.current
+      const preContainer = preLayersRef.current
+      const plusH = plusHRef.current
+      const plusV = plusVRef.current
+      const icon = iconRef.current
+      const textInner = textInnerRef.current
+      if (!panel || !plusH || !plusV || !icon || !textInner) return
 
-      let preLayers = [];
+      let preLayers = []
       if (preContainer) {
-        preLayers = Array.from(preContainer.querySelectorAll('.sm-prelayer'));
+        preLayers = Array.from(preContainer.querySelectorAll(".sm-prelayer"))
       }
-      preLayerElsRef.current = preLayers;
+      preLayerElsRef.current = preLayers
 
-      const offscreen = position === 'left' ? -100 : 100;
-      gsap.set([panel, ...preLayers], { xPercent: offscreen, opacity: 1 });
+      const offscreen = position === "left" ? -100 : 100
+      gsap.set([panel, ...preLayers], { xPercent: offscreen, opacity: 1 })
       if (preContainer) {
-        gsap.set(preContainer, { xPercent: 0, opacity: 1 });
+        gsap.set(preContainer, { xPercent: 0, opacity: 1 })
       }
-      gsap.set(plusH, { transformOrigin: '50% 50%', rotate: 0 });
-      gsap.set(plusV, { transformOrigin: '50% 50%', rotate: 90 });
-      gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' });
-      gsap.set(textInner, { yPercent: 0 });
-      if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, { color: menuButtonColor });
-    });
-    return () => ctx.revert();
-  }, [menuButtonColor, position]);
+      gsap.set(plusH, { transformOrigin: "50% 50%", rotate: 0 })
+      gsap.set(plusV, { transformOrigin: "50% 50%", rotate: 90 })
+      gsap.set(icon, { rotate: 0, transformOrigin: "50% 50%" })
+      gsap.set(textInner, { yPercent: 0 })
+      if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, { color: menuButtonColor })
+    })
+    return () => ctx.revert()
+  }, [menuButtonColor, position])
 
   const buildOpenTimeline = useCallback(() => {
-    const panel = panelRef.current;
-    const layers = preLayerElsRef.current;
-    if (!panel) return null;
+    const panel = panelRef.current
+    const layers = preLayerElsRef.current
+    if (!panel) return null
 
-    openTlRef.current?.kill();
+    openTlRef.current?.kill()
     if (closeTweenRef.current) {
-      closeTweenRef.current.kill();
-      closeTweenRef.current = null;
+      closeTweenRef.current.kill()
+      closeTweenRef.current = null
     }
-    itemEntranceTweenRef.current?.kill();
+    itemEntranceTweenRef.current?.kill()
 
-    const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
-    const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
-    const socialTitle = panel.querySelector('.sm-socials-title');
-    const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
+    const itemEls = Array.from(panel.querySelectorAll(".sm-panel-itemLabel"))
+    const numberEls = Array.from(panel.querySelectorAll(".sm-panel-list[data-numbering] .sm-panel-item"))
+    const socialTitle = panel.querySelector(".sm-socials-title")
+    const socialLinks = Array.from(panel.querySelectorAll(".sm-socials-link"))
 
-    const offscreen = position === 'left' ? -100 : 100;
-    const layerStates = layers.map(el => ({ el, start: offscreen }));
-    const panelStart = offscreen;
+    const offscreen = position === "left" ? -100 : 100
+    const layerStates = layers.map((el) => ({ el, start: offscreen }))
+    const panelStart = offscreen
 
     if (itemEls.length) {
-      gsap.set(itemEls, { yPercent: 140, rotate: 10 });
+      gsap.set(itemEls, { yPercent: 140, rotate: 10 })
     }
     if (numberEls.length) {
-      gsap.set(numberEls, { '--sm-num-opacity': 0 });
+      gsap.set(numberEls, { "--sm-num-opacity": 0 })
     }
     if (socialTitle) {
-      gsap.set(socialTitle, { opacity: 0 });
+      gsap.set(socialTitle, { opacity: 0 })
     }
     if (socialLinks.length) {
-      gsap.set(socialLinks, { y: 25, opacity: 0 });
+      gsap.set(socialLinks, { y: 25, opacity: 0 })
     }
 
-    const tl = gsap.timeline({ paused: true });
+    const tl = gsap.timeline({ paused: true })
 
     layerStates.forEach((ls, i) => {
-      tl.fromTo(ls.el, { xPercent: ls.start }, { xPercent: 0, duration: 0.5, ease: 'power4.out' }, i * 0.07);
-    });
-    const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
-    const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0);
-    const panelDuration = 0.65;
+      tl.fromTo(ls.el, { xPercent: ls.start }, { xPercent: 0, duration: 0.5, ease: "power4.out" }, i * 0.07)
+    })
+    const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0
+    const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0)
+    const panelDuration = 0.65
     tl.fromTo(
       panel,
       { xPercent: panelStart },
-      { xPercent: 0, duration: panelDuration, ease: 'power4.out' },
-      panelInsertTime
-    );
+      { xPercent: 0, duration: panelDuration, ease: "power4.out" },
+      panelInsertTime,
+    )
 
     if (itemEls.length) {
-      const itemsStartRatio = 0.15;
-      const itemsStart = panelInsertTime + panelDuration * itemsStartRatio;
+      const itemsStartRatio = 0.15
+      const itemsStart = panelInsertTime + panelDuration * itemsStartRatio
       tl.to(
         itemEls,
         {
           yPercent: 0,
           rotate: 0,
           duration: 1,
-          ease: 'power4.out',
-          stagger: { each: 0.1, from: 'start' }
+          ease: "power4.out",
+          stagger: { each: 0.1, from: "start" },
         },
-        itemsStart
-      );
+        itemsStart,
+      )
       if (numberEls.length) {
         tl.to(
           numberEls,
           {
             duration: 0.6,
-            ease: 'power2.out',
-            '--sm-num-opacity': 1,
-            stagger: { each: 0.08, from: 'start' }
+            ease: "power2.out",
+            "--sm-num-opacity": 1,
+            stagger: { each: 0.08, from: "start" },
           },
-          itemsStart + 0.1
-        );
+          itemsStart + 0.1,
+        )
       }
     }
 
     if (socialTitle || socialLinks.length) {
-      const socialsStart = panelInsertTime + panelDuration * 0.4;
+      const socialsStart = panelInsertTime + panelDuration * 0.4
       if (socialTitle) {
         tl.to(
           socialTitle,
           {
             opacity: 1,
             duration: 0.5,
-            ease: 'power2.out'
+            ease: "power2.out",
           },
-          socialsStart
-        );
+          socialsStart,
+        )
       }
       if (socialLinks.length) {
         tl.to(
@@ -1977,210 +1997,210 @@ export const StaggeredMenu = ({
             y: 0,
             opacity: 1,
             duration: 0.55,
-            ease: 'power3.out',
-            stagger: { each: 0.08, from: 'start' },
+            ease: "power3.out",
+            stagger: { each: 0.08, from: "start" },
             onComplete: () => {
-              gsap.set(socialLinks, { clearProps: 'opacity' });
-            }
+              gsap.set(socialLinks, { clearProps: "opacity" })
+            },
           },
-          socialsStart + 0.04
-        );
+          socialsStart + 0.04,
+        )
       }
     }
 
-    openTlRef.current = tl;
-    return tl;
-  }, []);
+    openTlRef.current = tl
+    return tl
+  }, [])
 
   const playOpen = useCallback(() => {
-    if (busyRef.current) return;
-    busyRef.current = true;
-    const tl = buildOpenTimeline();
+    if (busyRef.current) return
+    busyRef.current = true
+    const tl = buildOpenTimeline()
     if (tl) {
-      tl.eventCallback('onComplete', () => {
-        busyRef.current = false;
-      });
-      tl.play(0);
+      tl.eventCallback("onComplete", () => {
+        busyRef.current = false
+      })
+      tl.play(0)
     } else {
-      busyRef.current = false;
+      busyRef.current = false
     }
-  }, [buildOpenTimeline]);
+  }, [buildOpenTimeline])
 
   const playClose = useCallback(() => {
-    openTlRef.current?.kill();
-    openTlRef.current = null;
-    itemEntranceTweenRef.current?.kill();
+    openTlRef.current?.kill()
+    openTlRef.current = null
+    itemEntranceTweenRef.current?.kill()
 
-    const panel = panelRef.current;
-    const layers = preLayerElsRef.current;
-    if (!panel) return;
+    const panel = panelRef.current
+    const layers = preLayerElsRef.current
+    if (!panel) return
 
-    const all = [...layers, panel];
-    closeTweenRef.current?.kill();
-    const offscreen = position === 'left' ? -100 : 100;
+    const all = [...layers, panel]
+    closeTweenRef.current?.kill()
+    const offscreen = position === "left" ? -100 : 100
     closeTweenRef.current = gsap.to(all, {
       xPercent: offscreen,
       duration: 0.32,
-      ease: 'power3.in',
-      overwrite: 'auto',
+      ease: "power3.in",
+      overwrite: "auto",
       onComplete: () => {
-        const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+        const itemEls = Array.from(panel.querySelectorAll(".sm-panel-itemLabel"))
         if (itemEls.length) {
-          gsap.set(itemEls, { yPercent: 140, rotate: 10 });
+          gsap.set(itemEls, { yPercent: 140, rotate: 10 })
         }
-        const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
+        const numberEls = Array.from(panel.querySelectorAll(".sm-panel-list[data-numbering] .sm-panel-item"))
         if (numberEls.length) {
-          gsap.set(numberEls, { '--sm-num-opacity': 0 });
+          gsap.set(numberEls, { "--sm-num-opacity": 0 })
         }
-        const socialTitle = panel.querySelector('.sm-socials-title');
-        const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
-        if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
-        if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
-        busyRef.current = false;
-      }
-    });
-  }, [position]);
+        const socialTitle = panel.querySelector(".sm-socials-title")
+        const socialLinks = Array.from(panel.querySelectorAll(".sm-socials-link"))
+        if (socialTitle) gsap.set(socialTitle, { opacity: 0 })
+        if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 })
+        busyRef.current = false
+      },
+    })
+  }, [position])
 
-  const animateIcon = useCallback(opening => {
-    const icon = iconRef.current;
-    if (!icon) return;
-    spinTweenRef.current?.kill();
+  const animateIcon = useCallback((opening) => {
+    const icon = iconRef.current
+    if (!icon) return
+    spinTweenRef.current?.kill()
     if (opening) {
-      spinTweenRef.current = gsap.to(icon, { rotate: 225, duration: 0.8, ease: 'power4.out', overwrite: 'auto' });
+      spinTweenRef.current = gsap.to(icon, { rotate: 225, duration: 0.8, ease: "power4.out", overwrite: "auto" })
     } else {
-      spinTweenRef.current = gsap.to(icon, { rotate: 0, duration: 0.35, ease: 'power3.inOut', overwrite: 'auto' });
+      spinTweenRef.current = gsap.to(icon, { rotate: 0, duration: 0.35, ease: "power3.inOut", overwrite: "auto" })
     }
-  }, []);
+  }, [])
 
   const animateColor = useCallback(
-    opening => {
-      const btn = toggleBtnRef.current;
-      if (!btn) return;
-      colorTweenRef.current?.kill();
+    (opening) => {
+      const btn = toggleBtnRef.current
+      if (!btn) return
+      colorTweenRef.current?.kill()
       if (changeMenuColorOnOpen) {
-        const targetColor = opening ? openMenuButtonColor : menuButtonColor;
+        const targetColor = opening ? openMenuButtonColor : menuButtonColor
         colorTweenRef.current = gsap.to(btn, {
           color: targetColor,
           delay: 0.18,
           duration: 0.3,
-          ease: 'power2.out'
-        });
+          ease: "power2.out",
+        })
       } else {
-        gsap.set(btn, { color: menuButtonColor });
+        gsap.set(btn, { color: menuButtonColor })
       }
     },
-    [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen]
-  );
+    [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen],
+  )
 
   React.useEffect(() => {
     if (toggleBtnRef.current) {
       if (changeMenuColorOnOpen) {
-        const targetColor = openRef.current ? openMenuButtonColor : menuButtonColor;
-        gsap.set(toggleBtnRef.current, { color: targetColor });
+        const targetColor = openRef.current ? openMenuButtonColor : menuButtonColor
+        gsap.set(toggleBtnRef.current, { color: targetColor })
       } else {
-        gsap.set(toggleBtnRef.current, { color: menuButtonColor });
+        gsap.set(toggleBtnRef.current, { color: menuButtonColor })
       }
     }
-  }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
+  }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor])
 
-  const animateText = useCallback(opening => {
-    const inner = textInnerRef.current;
-    if (!inner) return;
-    textCycleAnimRef.current?.kill();
+  const animateText = useCallback((opening) => {
+    const inner = textInnerRef.current
+    if (!inner) return
+    textCycleAnimRef.current?.kill()
 
-    const currentLabel = opening ? 'Menu' : 'Close';
-    const targetLabel = opening ? 'Close' : 'Menu';
-    const cycles = 3;
-    const seq = [currentLabel];
-    let last = currentLabel;
+    const currentLabel = opening ? "Menu" : "Close"
+    const targetLabel = opening ? "Close" : "Menu"
+    const cycles = 3
+    const seq = [currentLabel]
+    let last = currentLabel
     for (let i = 0; i < cycles; i++) {
-      last = last === 'Menu' ? 'Close' : 'Menu';
-      seq.push(last);
+      last = last === "Menu" ? "Close" : "Menu"
+      seq.push(last)
     }
-    if (last !== targetLabel) seq.push(targetLabel);
-    seq.push(targetLabel);
-    setTextLines(seq);
+    if (last !== targetLabel) seq.push(targetLabel)
+    seq.push(targetLabel)
+    setTextLines(seq)
 
-    gsap.set(inner, { yPercent: 0 });
-    const lineCount = seq.length;
-    const finalShift = ((lineCount - 1) / lineCount) * 100;
+    gsap.set(inner, { yPercent: 0 })
+    const lineCount = seq.length
+    const finalShift = ((lineCount - 1) / lineCount) * 100
     textCycleAnimRef.current = gsap.to(inner, {
       yPercent: -finalShift,
       duration: 0.5 + lineCount * 0.07,
-      ease: 'power4.out'
-    });
-  }, []);
+      ease: "power4.out",
+    })
+  }, [])
 
   const toggleMenu = useCallback(() => {
-    const target = !openRef.current;
-    openRef.current = target;
-    setOpen(target);
+    const target = !openRef.current
+    openRef.current = target
+    setOpen(target)
     if (target) {
-      onMenuOpen?.();
-      playOpen();
+      onMenuOpen?.()
+      playOpen()
     } else {
-      onMenuClose?.();
-      playClose();
+      onMenuClose?.()
+      playClose()
     }
-    animateIcon(target);
-    animateColor(target);
-    animateText(target);
-  }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
+    animateIcon(target)
+    animateColor(target)
+    animateText(target)
+  }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose])
 
   const closeMenu = useCallback(() => {
     if (openRef.current) {
-      openRef.current = false;
-      setOpen(false);
-      onMenuClose?.();
-      playClose();
-      animateIcon(false);
-      animateColor(false);
-      animateText(false);
+      openRef.current = false
+      setOpen(false)
+      onMenuClose?.()
+      playClose()
+      animateIcon(false)
+      animateColor(false)
+      animateText(false)
     }
-  }, [playClose, animateIcon, animateColor, animateText, onMenuClose]);
+  }, [playClose, animateIcon, animateColor, animateText, onMenuClose])
 
   React.useEffect(() => {
-    if (!closeOnClickAway || !open) return;
+    if (!closeOnClickAway || !open) return
 
-    const handleClickOutside = event => {
+    const handleClickOutside = (event) => {
       if (
         panelRef.current &&
         !panelRef.current.contains(event.target) &&
         toggleBtnRef.current &&
         !toggleBtnRef.current.contains(event.target)
       ) {
-        closeMenu();
+        closeMenu()
       }
-    };
+    }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside)
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [closeOnClickAway, open, closeMenu]);
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [closeOnClickAway, open, closeMenu])
 
   return (
     <div
-      className={(className ? className + ' ' : '') + 'staggered-menu-wrapper' + (isFixed ? ' fixed-wrapper' : '')}
-      style={accentColor ? { ['--sm-accent']: accentColor } : undefined}
+      className={(className ? className + " " : "") + "staggered-menu-wrapper" + (isFixed ? " fixed-wrapper" : "")}
+      style={accentColor ? { ["--sm-accent"]: accentColor } : undefined}
       data-position={position}
       data-open={open || undefined}
     >
       <div ref={preLayersRef} className="sm-prelayers" aria-hidden="true">
         {(() => {
-          const raw = colors && colors.length ? colors.slice(0, 4) : ['#1e1e22', '#35353c'];
-          let arr = [...raw];
+          const raw = colors && colors.length ? colors.slice(0, 4) : ["#1e1e22", "#35353c"]
+          let arr = [...raw]
           if (arr.length >= 3) {
-            const mid = Math.floor(arr.length / 2);
-            arr.splice(mid, 1);
+            const mid = Math.floor(arr.length / 2)
+            arr.splice(mid, 1)
           }
-          return arr.map((c, i) => <div key={i} className="sm-prelayer" style={{ background: c }} />);
+          return arr.map((c, i) => <div key={i} className="sm-prelayer" style={{ background: c }} />)
         })()}
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
         <div className="sm-logo" aria-label="Logo">
           <img
-            src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
+            src={logoUrl || "/src/assets/logos/reactbits-gh-white.svg"}
             alt="Logo"
             className="sm-logo-img"
             draggable={false}
@@ -2191,7 +2211,7 @@ export const StaggeredMenu = ({
         <button
           ref={toggleBtnRef}
           className="sm-toggle"
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="staggered-menu-panel"
           onClick={toggleMenu}
@@ -2249,14 +2269,14 @@ export const StaggeredMenu = ({
         </div>
       </aside>
     </div>
-  );
-};
+  )
+}
 
-export default StaggeredMenu;
-
+export default StaggeredMenu
 ```
 
 ### Component CSS
+
 ```css
 .staggered-menu-wrapper {
   position: relative;
@@ -2404,7 +2424,7 @@ export default StaggeredMenu;
   opacity: 0;
 }
 
-[data-position='left'] .staggered-menu-panel {
+[data-position="left"] .staggered-menu-panel {
   right: auto;
   left: 0;
 }
@@ -2420,7 +2440,7 @@ export default StaggeredMenu;
   opacity: 0;
 }
 
-[data-position='left'] .sm-prelayers {
+[data-position="left"] .sm-prelayers {
   right: auto;
   left: 0;
 }
@@ -2614,10 +2634,10 @@ export default StaggeredMenu;
     filter: invert(100%);
   }
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -2632,79 +2652,79 @@ code: ## Integrate the <Dock /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: Dock
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: motion
 
 ---
 
 ### Usage Example
+
 ```jsx
-import Dock from './Dock';
+import Dock from "./Dock"
 
-  const items = [
-    { icon: <VscHome size={18} />, label: 'Home', onClick: () => alert('Home!') },
-    { icon: <VscArchive size={18} />, label: 'Archive', onClick: () => alert('Archive!') },
-    { icon: <VscAccount size={18} />, label: 'Profile', onClick: () => alert('Profile!') },
-    { icon: <VscSettingsGear size={18} />, label: 'Settings', onClick: () => alert('Settings!') },
-  ];
+const items = [
+  { icon: <VscHome size={18} />, label: "Home", onClick: () => alert("Home!") },
+  { icon: <VscArchive size={18} />, label: "Archive", onClick: () => alert("Archive!") },
+  { icon: <VscAccount size={18} />, label: "Profile", onClick: () => alert("Profile!") },
+  { icon: <VscSettingsGear size={18} />, label: "Settings", onClick: () => alert("Settings!") },
+]
 
-  <Dock 
-    items={items}
-    panelHeight={68}
-    baseItemSize={50}
-    magnification={70}
-  />
+;<Dock items={items} panelHeight={68} baseItemSize={50} magnification={70} />
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| items | DockItemData[] | [] | Array of dock items. Each item should include an icon, label, onClick handler, and an optional className. |
-| className | string | "" | Additional CSS classes for the dock panel. |
-| distance | number | 200 | Pixel distance used to calculate the magnification effect based on mouse proximity. |
-| panelHeight | number | 68 | Height (in pixels) of the dock panel. |
-| baseItemSize | number | 50 | The base size (in pixels) for each dock item. |
-| dockHeight | number | 256 | Maximum height (in pixels) of the dock container. |
-| magnification | number | 70 | The magnified size (in pixels) applied to a dock item when hovered. |
-| spring | SpringOptions | { mass: 0.1, stiffness: 150, damping: 12 } | Configuration options for the spring animation. |
+
+| Prop          | Type           | Default                                    | Description                                                                                               |
+| ------------- | -------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| items         | DockItemData[] | []                                         | Array of dock items. Each item should include an icon, label, onClick handler, and an optional className. |
+| className     | string         | ""                                         | Additional CSS classes for the dock panel.                                                                |
+| distance      | number         | 200                                        | Pixel distance used to calculate the magnification effect based on mouse proximity.                       |
+| panelHeight   | number         | 68                                         | Height (in pixels) of the dock panel.                                                                     |
+| baseItemSize  | number         | 50                                         | The base size (in pixels) for each dock item.                                                             |
+| dockHeight    | number         | 256                                        | Maximum height (in pixels) of the dock container.                                                         |
+| magnification | number         | 70                                         | The magnified size (in pixels) applied to a dock item when hovered.                                       |
+| spring        | SpringOptions  | { mass: 0.1, stiffness: 150, damping: 12 } | Configuration options for the spring animation.                                                           |
 
 ### Full Component Source
+
 ```jsx
-'use client';
+"use client"
 
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'motion/react';
-import { Children, cloneElement, useEffect, useMemo, useRef, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "motion/react"
+import { Children, cloneElement, useEffect, useMemo, useRef, useState } from "react"
 
-import './Dock.css';
+import "./Dock.css"
 
-function DockItem({ children, className = '', onClick, mouseX, spring, distance, magnification, baseItemSize, label }) {
-  const ref = useRef(null);
-  const isHovered = useMotionValue(0);
+function DockItem({ children, className = "", onClick, mouseX, spring, distance, magnification, baseItemSize, label }) {
+  const ref = useRef(null)
+  const isHovered = useMotionValue(0)
 
-  const mouseDistance = useTransform(mouseX, val => {
+  const mouseDistance = useTransform(mouseX, (val) => {
     const rect = ref.current?.getBoundingClientRect() ?? {
       x: 0,
-      width: baseItemSize
-    };
-    return val - rect.x - baseItemSize / 2;
-  });
-
-  const targetSize = useTransform(mouseDistance, [-distance, 0, distance], [baseItemSize, magnification, baseItemSize]);
-  const size = useSpring(targetSize, spring);
-
-  const handleKeyDown = e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      onClick?.();
+      width: baseItemSize,
     }
-  };
+    return val - rect.x - baseItemSize / 2
+  })
+
+  const targetSize = useTransform(mouseDistance, [-distance, 0, distance], [baseItemSize, magnification, baseItemSize])
+  const size = useSpring(targetSize, spring)
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      onClick?.()
+    }
+  }
 
   return (
     <motion.div
       ref={ref}
       style={{
         width: size,
-        height: size
+        height: size,
       }}
       onHoverStart={() => isHovered.set(1)}
       onHoverEnd={() => isHovered.set(0)}
@@ -2718,21 +2738,21 @@ function DockItem({ children, className = '', onClick, mouseX, spring, distance,
       aria-label={label}
       onKeyDown={handleKeyDown}
     >
-      {Children.map(children, child => cloneElement(child, { isHovered }))}
+      {Children.map(children, (child) => cloneElement(child, { isHovered }))}
     </motion.div>
-  );
+  )
 }
 
-function DockLabel({ children, className = '', ...rest }) {
-  const { isHovered } = rest;
-  const [isVisible, setIsVisible] = useState(false);
+function DockLabel({ children, className = "", ...rest }) {
+  const { isHovered } = rest
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const unsubscribe = isHovered.on('change', latest => {
-      setIsVisible(latest === 1);
-    });
-    return () => unsubscribe();
-  }, [isHovered]);
+    const unsubscribe = isHovered.on("change", (latest) => {
+      setIsVisible(latest === 1)
+    })
+    return () => unsubscribe()
+  }, [isHovered])
 
   return (
     <AnimatePresence>
@@ -2744,49 +2764,49 @@ function DockLabel({ children, className = '', ...rest }) {
           transition={{ duration: 0.2 }}
           className={`dock-label ${className}`}
           role="tooltip"
-          style={{ x: '-50%' }}
+          style={{ x: "-50%" }}
         >
           {children}
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  )
 }
 
-function DockIcon({ children, className = '' }) {
-  return <div className={`dock-icon ${className}`}>{children}</div>;
+function DockIcon({ children, className = "" }) {
+  return <div className={`dock-icon ${className}`}>{children}</div>
 }
 
 export default function Dock({
   items,
-  className = '',
+  className = "",
   spring = { mass: 0.1, stiffness: 150, damping: 12 },
   magnification = 70,
   distance = 200,
   panelHeight = 68,
   dockHeight = 256,
-  baseItemSize = 50
+  baseItemSize = 50,
 }) {
-  const mouseX = useMotionValue(Infinity);
-  const isHovered = useMotionValue(0);
+  const mouseX = useMotionValue(Infinity)
+  const isHovered = useMotionValue(0)
 
   const maxHeight = useMemo(
     () => Math.max(dockHeight, magnification + magnification / 2 + 4),
-    [magnification, dockHeight]
-  );
-  const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
-  const height = useSpring(heightRow, spring);
+    [magnification, dockHeight],
+  )
+  const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight])
+  const height = useSpring(heightRow, spring)
 
   return (
-    <motion.div style={{ height, scrollbarWidth: 'none' }} className="dock-outer">
+    <motion.div style={{ height, scrollbarWidth: "none" }} className="dock-outer">
       <motion.div
         onMouseMove={({ pageX }) => {
-          isHovered.set(1);
-          mouseX.set(pageX);
+          isHovered.set(1)
+          mouseX.set(pageX)
         }}
         onMouseLeave={() => {
-          isHovered.set(0);
-          mouseX.set(Infinity);
+          isHovered.set(0)
+          mouseX.set(Infinity)
         }}
         className={`dock-panel ${className}`}
         style={{ height: panelHeight }}
@@ -2811,12 +2831,12 @@ export default function Dock({
         ))}
       </motion.div>
     </motion.div>
-  );
+  )
 }
-
 ```
 
 ### Component CSS
+
 ```css
 .dock-outer {
   margin: 0 0.5rem;
@@ -2835,7 +2855,7 @@ export default function Dock({
   width: fit-content;
   gap: 1rem;
   border-radius: 1rem;
-  background-color: #120F17;
+  background-color: #120f17;
   border: 1px solid #222;
   padding: 0 0.5rem 0.5rem;
 }
@@ -2846,7 +2866,7 @@ export default function Dock({
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background-color: #120F17;
+  background-color: #120f17;
   border: 1px solid #222;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -2869,16 +2889,16 @@ export default function Dock({
   white-space: pre;
   border-radius: 0.375rem;
   border: 1px solid #222;
-  background-color: #120F17;
+  background-color: #120f17;
   padding: 0.125rem 0.5rem;
   font-size: 0.75rem;
   color: #fff;
   transform: translateX(-50%);
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -2893,23 +2913,24 @@ code: ## Integrate the <GooeyNav /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: GooeyNav
-### Variant: JavaScript + CSS
 
+### Variant: JavaScript + CSS
 
 ---
 
 ### Usage Example
+
 ```jsx
-import GooeyNav from './GooeyNav'
+import GooeyNav from "./GooeyNav"
 
 // update with your own items
 const items = [
   { label: "Home", href: "#" },
   { label: "About", href: "#" },
   { label: "Contact", href: "#" },
-];
+]
 
-<div style={{ height: '600px', position: 'relative' }}>
+;<div style={{ height: "600px", position: "relative" }}>
   <GooeyNav
     items={items}
     particleCount={15}
@@ -2924,21 +2945,23 @@ const items = [
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| items | GooeyNavItem[] | [] | Array of navigation items. |
-| animationTime | number | 600 | Duration (ms) of the main animation. |
-| particleCount | number | 15 | Number of bubble particles per transition. |
-| particleDistances | [number, number] | [90, 10] | Outer and inner distances of bubble spread. |
-| particleR | number | 100 | Radius factor influencing random particle rotation. |
-| timeVariance | number | 300 | Random time variance (ms) for particle animations. |
-| colors | number[] | [1, 2, 3, 1, 2, 3, 1, 4] | Color indices used when creating bubble particles. |
-| initialActiveIndex | number | 0 | Which item is selected on mount. |
+
+| Prop               | Type             | Default                  | Description                                         |
+| ------------------ | ---------------- | ------------------------ | --------------------------------------------------- |
+| items              | GooeyNavItem[]   | []                       | Array of navigation items.                          |
+| animationTime      | number           | 600                      | Duration (ms) of the main animation.                |
+| particleCount      | number           | 15                       | Number of bubble particles per transition.          |
+| particleDistances  | [number, number] | [90, 10]                 | Outer and inner distances of bubble spread.         |
+| particleR          | number           | 100                      | Radius factor influencing random particle rotation. |
+| timeVariance       | number           | 300                      | Random time variance (ms) for particle animations.  |
+| colors             | number[]         | [1, 2, 3, 1, 2, 3, 1, 4] | Color indices used when creating bubble particles.  |
+| initialActiveIndex | number           | 0                        | Which item is selected on mount.                    |
 
 ### Full Component Source
+
 ```jsx
-import { useRef, useEffect, useState } from 'react';
-import './GooeyNav.css';
+import { useRef, useEffect, useState } from "react"
+import "./GooeyNav.css"
 
 const GooeyNav = ({
   items,
@@ -2948,150 +2971,150 @@ const GooeyNav = ({
   particleR = 100,
   timeVariance = 300,
   colors = [1, 2, 3, 1, 2, 3, 1, 4],
-  initialActiveIndex = 0
+  initialActiveIndex = 0,
 }) => {
-  const containerRef = useRef(null);
-  const navRef = useRef(null);
-  const filterRef = useRef(null);
-  const textRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const containerRef = useRef(null)
+  const navRef = useRef(null)
+  const filterRef = useRef(null)
+  const textRef = useRef(null)
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex)
 
-  const noise = (n = 1) => n / 2 - Math.random() * n;
+  const noise = (n = 1) => n / 2 - Math.random() * n
 
   const getXY = (distance, pointIndex, totalPoints) => {
-    const angle = ((360 + noise(8)) / totalPoints) * pointIndex * (Math.PI / 180);
-    return [distance * Math.cos(angle), distance * Math.sin(angle)];
-  };
+    const angle = ((360 + noise(8)) / totalPoints) * pointIndex * (Math.PI / 180)
+    return [distance * Math.cos(angle), distance * Math.sin(angle)]
+  }
 
   const createParticle = (i, t, d, r) => {
-    let rotate = noise(r / 10);
+    let rotate = noise(r / 10)
     return {
       start: getXY(d[0], particleCount - i, particleCount),
       end: getXY(d[1] + noise(7), particleCount - i, particleCount),
       time: t,
       scale: 1 + noise(0.2),
       color: colors[Math.floor(Math.random() * colors.length)],
-      rotate: rotate > 0 ? (rotate + r / 20) * 10 : (rotate - r / 20) * 10
-    };
-  };
+      rotate: rotate > 0 ? (rotate + r / 20) * 10 : (rotate - r / 20) * 10,
+    }
+  }
 
-  const makeParticles = element => {
-    const d = particleDistances;
-    const r = particleR;
-    const bubbleTime = animationTime * 2 + timeVariance;
-    element.style.setProperty('--time', `${bubbleTime}ms`);
+  const makeParticles = (element) => {
+    const d = particleDistances
+    const r = particleR
+    const bubbleTime = animationTime * 2 + timeVariance
+    element.style.setProperty("--time", `${bubbleTime}ms`)
 
     for (let i = 0; i < particleCount; i++) {
-      const t = animationTime * 2 + noise(timeVariance * 2);
-      const p = createParticle(i, t, d, r);
-      element.classList.remove('active');
+      const t = animationTime * 2 + noise(timeVariance * 2)
+      const p = createParticle(i, t, d, r)
+      element.classList.remove("active")
 
       setTimeout(() => {
-        const particle = document.createElement('span');
-        const point = document.createElement('span');
-        particle.classList.add('particle');
-        particle.style.setProperty('--start-x', `${p.start[0]}px`);
-        particle.style.setProperty('--start-y', `${p.start[1]}px`);
-        particle.style.setProperty('--end-x', `${p.end[0]}px`);
-        particle.style.setProperty('--end-y', `${p.end[1]}px`);
-        particle.style.setProperty('--time', `${p.time}ms`);
-        particle.style.setProperty('--scale', `${p.scale}`);
-        particle.style.setProperty('--color', `var(--color-${p.color}, white)`);
-        particle.style.setProperty('--rotate', `${p.rotate}deg`);
+        const particle = document.createElement("span")
+        const point = document.createElement("span")
+        particle.classList.add("particle")
+        particle.style.setProperty("--start-x", `${p.start[0]}px`)
+        particle.style.setProperty("--start-y", `${p.start[1]}px`)
+        particle.style.setProperty("--end-x", `${p.end[0]}px`)
+        particle.style.setProperty("--end-y", `${p.end[1]}px`)
+        particle.style.setProperty("--time", `${p.time}ms`)
+        particle.style.setProperty("--scale", `${p.scale}`)
+        particle.style.setProperty("--color", `var(--color-${p.color}, white)`)
+        particle.style.setProperty("--rotate", `${p.rotate}deg`)
 
-        point.classList.add('point');
-        particle.appendChild(point);
-        element.appendChild(particle);
+        point.classList.add("point")
+        particle.appendChild(point)
+        element.appendChild(particle)
         requestAnimationFrame(() => {
-          element.classList.add('active');
-        });
+          element.classList.add("active")
+        })
         setTimeout(() => {
           try {
-            element.removeChild(particle);
+            element.removeChild(particle)
           } catch {
             // Do nothing
           }
-        }, t);
-      }, 30);
+        }, t)
+      }, 30)
     }
-  };
+  }
 
-  const updateEffectPosition = element => {
-    if (!containerRef.current || !filterRef.current || !textRef.current) return;
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const pos = element.getBoundingClientRect();
+  const updateEffectPosition = (element) => {
+    if (!containerRef.current || !filterRef.current || !textRef.current) return
+    const containerRect = containerRef.current.getBoundingClientRect()
+    const pos = element.getBoundingClientRect()
 
     const styles = {
       left: `${pos.x - containerRect.x}px`,
       top: `${pos.y - containerRect.y}px`,
       width: `${pos.width}px`,
-      height: `${pos.height}px`
-    };
-    Object.assign(filterRef.current.style, styles);
-    Object.assign(textRef.current.style, styles);
-    textRef.current.innerText = element.innerText;
-  };
+      height: `${pos.height}px`,
+    }
+    Object.assign(filterRef.current.style, styles)
+    Object.assign(textRef.current.style, styles)
+    textRef.current.innerText = element.innerText
+  }
 
   const handleClick = (e, index) => {
-    const liEl = e.currentTarget;
-    if (activeIndex === index) return;
+    const liEl = e.currentTarget
+    if (activeIndex === index) return
 
-    setActiveIndex(index);
-    updateEffectPosition(liEl);
+    setActiveIndex(index)
+    updateEffectPosition(liEl)
 
     if (filterRef.current) {
-      const particles = filterRef.current.querySelectorAll('.particle');
-      particles.forEach(p => filterRef.current.removeChild(p));
+      const particles = filterRef.current.querySelectorAll(".particle")
+      particles.forEach((p) => filterRef.current.removeChild(p))
     }
 
     if (textRef.current) {
-      textRef.current.classList.remove('active');
+      textRef.current.classList.remove("active")
 
-      void textRef.current.offsetWidth;
-      textRef.current.classList.add('active');
+      void textRef.current.offsetWidth
+      textRef.current.classList.add("active")
     }
 
     if (filterRef.current) {
-      makeParticles(filterRef.current);
+      makeParticles(filterRef.current)
     }
-  };
+  }
 
   const handleKeyDown = (e, index) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      const liEl = e.currentTarget.parentElement;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      const liEl = e.currentTarget.parentElement
       if (liEl) {
-        handleClick({ currentTarget: liEl }, index);
+        handleClick({ currentTarget: liEl }, index)
       }
     }
-  };
+  }
 
   useEffect(() => {
-    if (!navRef.current || !containerRef.current) return;
-    const activeLi = navRef.current.querySelectorAll('li')[activeIndex];
+    if (!navRef.current || !containerRef.current) return
+    const activeLi = navRef.current.querySelectorAll("li")[activeIndex]
     if (activeLi) {
-      updateEffectPosition(activeLi);
-      textRef.current?.classList.add('active');
+      updateEffectPosition(activeLi)
+      textRef.current?.classList.add("active")
     }
 
     const resizeObserver = new ResizeObserver(() => {
-      const currentActiveLi = navRef.current?.querySelectorAll('li')[activeIndex];
+      const currentActiveLi = navRef.current?.querySelectorAll("li")[activeIndex]
       if (currentActiveLi) {
-        updateEffectPosition(currentActiveLi);
+        updateEffectPosition(currentActiveLi)
       }
-    });
+    })
 
-    resizeObserver.observe(containerRef.current);
-    return () => resizeObserver.disconnect();
-  }, [activeIndex]);
+    resizeObserver.observe(containerRef.current)
+    return () => resizeObserver.disconnect()
+  }, [activeIndex])
 
   return (
     <div className="gooey-nav-container" ref={containerRef}>
       <nav>
         <ul ref={navRef}>
           {items.map((item, index) => (
-            <li key={index} className={activeIndex === index ? 'active' : ''}>
-              <a href={item.href} onClick={e => handleClick(e, index)} onKeyDown={e => handleKeyDown(e, index)}>
+            <li key={index} className={activeIndex === index ? "active" : ""}>
+              <a href={item.href} onClick={(e) => handleClick(e, index)} onKeyDown={(e) => handleKeyDown(e, index)}>
                 {item.label}
               </a>
             </li>
@@ -3101,14 +3124,14 @@ const GooeyNav = ({
       <span className="effect filter" ref={filterRef} />
       <span className="effect text" ref={textRef} />
     </div>
-  );
-};
+  )
+}
 
-export default GooeyNav;
-
+export default GooeyNav
 ```
 
 ### Component CSS
+
 ```css
 :root {
   --linear-ease: linear(
@@ -3183,7 +3206,7 @@ export default GooeyNav;
 }
 
 .gooey-nav-container nav ul li::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: 10px;
@@ -3232,7 +3255,7 @@ export default GooeyNav;
 }
 
 .gooey-nav-container .effect.filter::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -75px;
   z-index: -2;
@@ -3240,7 +3263,7 @@ export default GooeyNav;
 }
 
 .gooey-nav-container .effect.filter::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: white;
@@ -3340,10 +3363,10 @@ export default GooeyNav;
     opacity: 0;
   }
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -3358,135 +3381,144 @@ code: ## Integrate the <DecayCard /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: DecayCard
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gsap
 
 ---
 
 ### Usage Example
-```jsx
-import DecayCard from './DecayCard';
 
-<DecayCard width={200} height={300} image="https://picsum.photos/300/400?grayscale">
-  <h2>Decay<br/>Card</h2>
+```jsx
+import DecayCard from "./DecayCard"
+
+;<DecayCard width={200} height={300} image="https://picsum.photos/300/400?grayscale">
+  <h2>
+    Decay
+    <br />
+    Card
+  </h2>
 </DecayCard>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | ReactNode | — | The content (JSX) to be rendered inside the card. |
-| width | number | 300 | The width of the card in pixels. |
-| height | number | 400 | The height of the card in pixels. |
-| image | string | — | Allows setting the background image of the card. |
-| baseFrequency | number | 0.015 | Base frequency for the turbulence filter. Lower values create larger, smoother patterns. |
-| numOctaves | number | 5 | Number of octaves for the turbulence filter. Higher values add finer detail. |
-| seed | number | 4 | Seed value for the turbulence random number generator. |
-| maxDisplacement | number | 400 | Maximum displacement scale applied when the cursor moves. Controls the intensity of the decay effect. |
-| movementBound | number | 50 | Maximum pixel distance the card can translate from its origin when following the cursor. |
+
+| Prop            | Type      | Default | Description                                                                                           |
+| --------------- | --------- | ------- | ----------------------------------------------------------------------------------------------------- |
+| children        | ReactNode | —       | The content (JSX) to be rendered inside the card.                                                     |
+| width           | number    | 300     | The width of the card in pixels.                                                                      |
+| height          | number    | 400     | The height of the card in pixels.                                                                     |
+| image           | string    | —       | Allows setting the background image of the card.                                                      |
+| baseFrequency   | number    | 0.015   | Base frequency for the turbulence filter. Lower values create larger, smoother patterns.              |
+| numOctaves      | number    | 5       | Number of octaves for the turbulence filter. Higher values add finer detail.                          |
+| seed            | number    | 4       | Seed value for the turbulence random number generator.                                                |
+| maxDisplacement | number    | 400     | Maximum displacement scale applied when the cursor moves. Controls the intensity of the decay effect. |
+| movementBound   | number    | 50      | Maximum pixel distance the card can translate from its origin when following the cursor.              |
 
 ### Full Component Source
-```jsx
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 
-import './DecayCard.css';
+```jsx
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+
+import "./DecayCard.css"
 
 const DecayCard = ({
   width = 300,
   height = 400,
-  image = 'https://picsum.photos/300/400?grayscale',
+  image = "https://picsum.photos/300/400?grayscale",
   baseFrequency = 0.015,
   numOctaves = 5,
   seed = 4,
   maxDisplacement = 400,
   movementBound = 50,
-  children
+  children,
 }) => {
-  const svgRef = useRef(null);
-  const displacementMapRef = useRef(null);
-  const cursor = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
-  const cachedCursor = useRef({ ...cursor.current });
-  const winsize = useRef({ width: window.innerWidth, height: window.innerHeight });
+  const svgRef = useRef(null)
+  const displacementMapRef = useRef(null)
+  const cursor = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
+  const cachedCursor = useRef({ ...cursor.current })
+  const winsize = useRef({ width: window.innerWidth, height: window.innerHeight })
 
   useEffect(() => {
-    const lerp = (a, b, n) => (1 - n) * a + n * b;
+    const lerp = (a, b, n) => (1 - n) * a + n * b
 
-    const map = (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c;
+    const map = (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c
 
     const distance = (x1, x2, y1, y2) => {
-      const a = x1 - x2;
-      const b = y1 - y2;
-      return Math.hypot(a, b);
-    };
+      const a = x1 - x2
+      const b = y1 - y2
+      return Math.hypot(a, b)
+    }
 
     const handleResize = () => {
-      winsize.current = { width: window.innerWidth, height: window.innerHeight };
-    };
+      winsize.current = { width: window.innerWidth, height: window.innerHeight }
+    }
 
-    const handleMouseMove = ev => {
-      cursor.current = { x: ev.clientX, y: ev.clientY };
-    };
+    const handleMouseMove = (ev) => {
+      cursor.current = { x: ev.clientX, y: ev.clientY }
+    }
 
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("resize", handleResize)
+    window.addEventListener("mousemove", handleMouseMove)
 
     const imgValues = {
       imgTransforms: { x: 0, y: 0, rz: 0 },
-      displacementScale: 0
-    };
+      displacementScale: 0,
+    }
 
     const render = () => {
-      let targetX = lerp(imgValues.imgTransforms.x, map(cursor.current.x, 0, winsize.current.width, -120, 120), 0.1);
-      let targetY = lerp(imgValues.imgTransforms.y, map(cursor.current.y, 0, winsize.current.height, -120, 120), 0.1);
-      let targetRz = lerp(imgValues.imgTransforms.rz, map(cursor.current.x, 0, winsize.current.width, -10, 10), 0.1);
+      let targetX = lerp(imgValues.imgTransforms.x, map(cursor.current.x, 0, winsize.current.width, -120, 120), 0.1)
+      let targetY = lerp(imgValues.imgTransforms.y, map(cursor.current.y, 0, winsize.current.height, -120, 120), 0.1)
+      let targetRz = lerp(imgValues.imgTransforms.rz, map(cursor.current.x, 0, winsize.current.width, -10, 10), 0.1)
 
-      if (targetX > movementBound) targetX = movementBound + (targetX - movementBound) * 0.2;
-      if (targetX < -movementBound) targetX = -movementBound + (targetX + movementBound) * 0.2;
-      if (targetY > movementBound) targetY = movementBound + (targetY - movementBound) * 0.2;
-      if (targetY < -movementBound) targetY = -movementBound + (targetY + movementBound) * 0.2;
+      if (targetX > movementBound) targetX = movementBound + (targetX - movementBound) * 0.2
+      if (targetX < -movementBound) targetX = -movementBound + (targetX + movementBound) * 0.2
+      if (targetY > movementBound) targetY = movementBound + (targetY - movementBound) * 0.2
+      if (targetY < -movementBound) targetY = -movementBound + (targetY + movementBound) * 0.2
 
-      imgValues.imgTransforms.x = targetX;
-      imgValues.imgTransforms.y = targetY;
-      imgValues.imgTransforms.rz = targetRz;
+      imgValues.imgTransforms.x = targetX
+      imgValues.imgTransforms.y = targetY
+      imgValues.imgTransforms.rz = targetRz
 
       if (svgRef.current) {
         gsap.set(svgRef.current, {
           x: imgValues.imgTransforms.x,
           y: imgValues.imgTransforms.y,
-          rotateZ: imgValues.imgTransforms.rz
-        });
+          rotateZ: imgValues.imgTransforms.rz,
+        })
       }
 
       const cursorTravelledDistance = distance(
         cachedCursor.current.x,
         cursor.current.x,
         cachedCursor.current.y,
-        cursor.current.y
-      );
+        cursor.current.y,
+      )
       imgValues.displacementScale = lerp(
         imgValues.displacementScale,
         map(cursorTravelledDistance, 0, 200, 0, maxDisplacement),
-        0.06
-      );
+        0.06,
+      )
 
       if (displacementMapRef.current) {
-        gsap.set(displacementMapRef.current, { attr: { scale: imgValues.displacementScale } });
+        gsap.set(displacementMapRef.current, { attr: { scale: imgValues.displacementScale } })
       }
 
-      cachedCursor.current = { ...cursor.current };
+      cachedCursor.current = { ...cursor.current }
 
-      rafId = requestAnimationFrame(render);
-    };
+      rafId = requestAnimationFrame(render)
+    }
 
-    let rafId = requestAnimationFrame(render);
+    let rafId = requestAnimationFrame(render)
 
     return () => {
-      cancelAnimationFrame(rafId);
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [maxDisplacement, movementBound]);
+      cancelAnimationFrame(rafId)
+      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [maxDisplacement, movementBound])
 
   return (
     <div className="content" style={{ width: `${width}px`, height: `${height}px` }} ref={svgRef}>
@@ -3532,14 +3564,14 @@ const DecayCard = ({
       </svg>
       <div className="card-text">{children}</div>
     </div>
-  );
-};
+  )
+}
 
-export default DecayCard;
-
+export default DecayCard
 ```
 
 ### Component CSS
+
 ```css
 .content {
   position: relative;
@@ -3566,10 +3598,10 @@ export default DecayCard;
 .card-text::first-line {
   font-size: 4rem;
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -3584,58 +3616,63 @@ code: ## Integrate the <InfiniteMenu /> component from React Bits
 You are helping integrate an open-source React component into an existing application.
 
 ### Component: InfiniteMenu
+
 ### Variant: JavaScript + CSS
+
 ### Dependencies: gl-matrix
 
 ---
 
 ### Usage Example
+
 ```jsx
-import InfiniteMenu from './InfiniteMenu'
+import InfiniteMenu from "./InfiniteMenu"
 
 const items = [
   {
-    image: 'https://picsum.photos/300/300?grayscale',
-    link: 'https://google.com/',
-    title: 'Item 1',
-    description: 'This is pretty cool, right?'
+    image: "https://picsum.photos/300/300?grayscale",
+    link: "https://google.com/",
+    title: "Item 1",
+    description: "This is pretty cool, right?",
   },
   {
-    image: 'https://picsum.photos/400/400?grayscale',
-    link: 'https://google.com/',
-    title: 'Item 2',
-    description: 'This is pretty cool, right?'
+    image: "https://picsum.photos/400/400?grayscale",
+    link: "https://google.com/",
+    title: "Item 2",
+    description: "This is pretty cool, right?",
   },
   {
-    image: 'https://picsum.photos/500/500?grayscale',
-    link: 'https://google.com/',
-    title: 'Item 3',
-    description: 'This is pretty cool, right?'
+    image: "https://picsum.photos/500/500?grayscale",
+    link: "https://google.com/",
+    title: "Item 3",
+    description: "This is pretty cool, right?",
   },
   {
-    image: 'https://picsum.photos/600/600?grayscale',
-    link: 'https://google.com/',
-    title: 'Item 4',
-    description: 'This is pretty cool, right?'
-  }
-];
+    image: "https://picsum.photos/600/600?grayscale",
+    link: "https://google.com/",
+    title: "Item 4",
+    description: "This is pretty cool, right?",
+  },
+]
 
-<div style={{ height: '600px', position: 'relative' }}>
-  <InfiniteMenu items={items}/>
+;<div style={{ height: "600px", position: "relative" }}>
+  <InfiniteMenu items={items} />
 </div>
 ```
 
 ### Props
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
+
+| Prop  | Type     | Default | Description                                                                                  |
+| ----- | -------- | ------- | -------------------------------------------------------------------------------------------- |
 | items | object[] | [{...}] | List of items containing an image, link, title, and description - or just add what you need. |
-| scale | number | 1.0 | Controls camera zoom |
+| scale | number   | 1.0     | Controls camera zoom                                                                         |
 
 ### Full Component Source
+
 ```jsx
-import { useEffect, useRef, useState } from 'react';
-import { mat4, quat, vec2, vec3 } from 'gl-matrix';
-import './InfiniteMenu.css';
+import { useEffect, useRef, useState } from "react"
+import { mat4, quat, vec2, vec3 } from "gl-matrix"
+import "./InfiniteMenu.css"
 
 const discVertShaderSource = `#version 300 es
 
@@ -3681,7 +3718,7 @@ void main() {
     vUvs = aModelUvs;
     vInstanceId = gl_InstanceID;
 }
-`;
+`
 
 const discFragShaderSource = `#version 300 es
 precision highp float;
@@ -3721,80 +3758,80 @@ void main() {
     outColor = texture(uTex, st);
     outColor.a *= vAlpha;
 }
-`;
+`
 
 class Face {
   constructor(a, b, c) {
-    this.a = a;
-    this.b = b;
-    this.c = c;
+    this.a = a
+    this.b = b
+    this.c = c
   }
 }
 
 class Vertex {
   constructor(x, y, z) {
-    this.position = vec3.fromValues(x, y, z);
-    this.normal = vec3.create();
-    this.uv = vec2.create();
+    this.position = vec3.fromValues(x, y, z)
+    this.normal = vec3.create()
+    this.uv = vec2.create()
   }
 }
 
 class Geometry {
   constructor() {
-    this.vertices = [];
-    this.faces = [];
+    this.vertices = []
+    this.faces = []
   }
 
   addVertex(...args) {
     for (let i = 0; i < args.length; i += 3) {
-      this.vertices.push(new Vertex(args[i], args[i + 1], args[i + 2]));
+      this.vertices.push(new Vertex(args[i], args[i + 1], args[i + 2]))
     }
-    return this;
+    return this
   }
 
   addFace(...args) {
     for (let i = 0; i < args.length; i += 3) {
-      this.faces.push(new Face(args[i], args[i + 1], args[i + 2]));
+      this.faces.push(new Face(args[i], args[i + 1], args[i + 2]))
     }
-    return this;
+    return this
   }
 
   get lastVertex() {
-    return this.vertices[this.vertices.length - 1];
+    return this.vertices[this.vertices.length - 1]
   }
 
   subdivide(divisions = 1) {
-    const midPointCache = {};
-    let f = this.faces;
+    const midPointCache = {}
+    let f = this.faces
 
     for (let div = 0; div < divisions; ++div) {
-      const newFaces = new Array(f.length * 4);
+      const newFaces = new Array(f.length * 4)
 
       f.forEach((face, ndx) => {
-        const mAB = this.getMidPoint(face.a, face.b, midPointCache);
-        const mBC = this.getMidPoint(face.b, face.c, midPointCache);
-        const mCA = this.getMidPoint(face.c, face.a, midPointCache);
+        const mAB = this.getMidPoint(face.a, face.b, midPointCache)
+        const mBC = this.getMidPoint(face.b, face.c, midPointCache)
+        const mCA = this.getMidPoint(face.c, face.a, midPointCache)
 
-        const i = ndx * 4;
-        newFaces[i + 0] = new Face(face.a, mAB, mCA);
-        newFaces[i + 1] = new Face(face.b, mBC, mAB);
-        newFaces[i + 2] = new Face(face.c, mCA, mBC);
-        newFaces[i + 3] = new Face(mAB, mBC, mCA);
-      });
+        const i = ndx * 4
+        newFaces[i + 0] = new Face(face.a, mAB, mCA)
+        newFaces[i + 1] = new Face(face.b, mBC, mAB)
+        newFaces[i + 2] = new Face(face.c, mCA, mBC)
+        newFaces[i + 3] = new Face(mAB, mBC, mCA)
+      })
 
-      f = newFaces;
+      f = newFaces
     }
 
-    this.faces = f;
-    return this;
+    this.faces = f
+    return this
   }
 
   spherize(radius = 1) {
-    this.vertices.forEach(vertex => {
-      vec3.normalize(vertex.normal, vertex.position);
-      vec3.scale(vertex.position, vertex.normal, radius);
-    });
-    return this;
+    this.vertices.forEach((vertex) => {
+      vec3.normalize(vertex.normal, vertex.position)
+      vec3.scale(vertex.position, vertex.normal, radius)
+    })
+    return this
   }
 
   get data() {
@@ -3802,44 +3839,44 @@ class Geometry {
       vertices: this.vertexData,
       indices: this.indexData,
       normals: this.normalData,
-      uvs: this.uvData
-    };
+      uvs: this.uvData,
+    }
   }
 
   get vertexData() {
-    return new Float32Array(this.vertices.flatMap(v => Array.from(v.position)));
+    return new Float32Array(this.vertices.flatMap((v) => Array.from(v.position)))
   }
 
   get normalData() {
-    return new Float32Array(this.vertices.flatMap(v => Array.from(v.normal)));
+    return new Float32Array(this.vertices.flatMap((v) => Array.from(v.normal)))
   }
 
   get uvData() {
-    return new Float32Array(this.vertices.flatMap(v => Array.from(v.uv)));
+    return new Float32Array(this.vertices.flatMap((v) => Array.from(v.uv)))
   }
 
   get indexData() {
-    return new Uint16Array(this.faces.flatMap(f => [f.a, f.b, f.c]));
+    return new Uint16Array(this.faces.flatMap((f) => [f.a, f.b, f.c]))
   }
 
   getMidPoint(ndxA, ndxB, cache) {
-    const cacheKey = ndxA < ndxB ? `k_${ndxB}_${ndxA}` : `k_${ndxA}_${ndxB}`;
+    const cacheKey = ndxA < ndxB ? `k_${ndxB}_${ndxA}` : `k_${ndxA}_${ndxB}`
     if (Object.prototype.hasOwnProperty.call(cache, cacheKey)) {
-      return cache[cacheKey];
+      return cache[cacheKey]
     }
-    const a = this.vertices[ndxA].position;
-    const b = this.vertices[ndxB].position;
-    const ndx = this.vertices.length;
-    cache[cacheKey] = ndx;
-    this.addVertex((a[0] + b[0]) * 0.5, (a[1] + b[1]) * 0.5, (a[2] + b[2]) * 0.5);
-    return ndx;
+    const a = this.vertices[ndxA].position
+    const b = this.vertices[ndxB].position
+    const ndx = this.vertices.length
+    cache[cacheKey] = ndx
+    this.addVertex((a[0] + b[0]) * 0.5, (a[1] + b[1]) * 0.5, (a[2] + b[2]) * 0.5)
+    return ndx
   }
 }
 
 class IcosahedronGeometry extends Geometry {
   constructor() {
-    super();
-    const t = Math.sqrt(5) * 0.5 + 0.5;
+    super()
+    const t = Math.sqrt(5) * 0.5 + 0.5
     this.addVertex(
       -1,
       t,
@@ -3876,7 +3913,7 @@ class IcosahedronGeometry extends Geometry {
       -1,
       -t,
       0,
-      1
+      1,
     ).addFace(
       0,
       11,
@@ -3937,279 +3974,279 @@ class IcosahedronGeometry extends Geometry {
       7,
       9,
       8,
-      1
-    );
+      1,
+    )
   }
 }
 
 class DiscGeometry extends Geometry {
   constructor(steps = 4, radius = 1) {
-    super();
-    steps = Math.max(4, steps);
+    super()
+    steps = Math.max(4, steps)
 
-    const alpha = (2 * Math.PI) / steps;
+    const alpha = (2 * Math.PI) / steps
 
-    this.addVertex(0, 0, 0);
-    this.lastVertex.uv[0] = 0.5;
-    this.lastVertex.uv[1] = 0.5;
+    this.addVertex(0, 0, 0)
+    this.lastVertex.uv[0] = 0.5
+    this.lastVertex.uv[1] = 0.5
 
     for (let i = 0; i < steps; ++i) {
-      const x = Math.cos(alpha * i);
-      const y = Math.sin(alpha * i);
-      this.addVertex(radius * x, radius * y, 0);
-      this.lastVertex.uv[0] = x * 0.5 + 0.5;
-      this.lastVertex.uv[1] = y * 0.5 + 0.5;
+      const x = Math.cos(alpha * i)
+      const y = Math.sin(alpha * i)
+      this.addVertex(radius * x, radius * y, 0)
+      this.lastVertex.uv[0] = x * 0.5 + 0.5
+      this.lastVertex.uv[1] = y * 0.5 + 0.5
 
       if (i > 0) {
-        this.addFace(0, i, i + 1);
+        this.addFace(0, i, i + 1)
       }
     }
-    this.addFace(0, steps, 1);
+    this.addFace(0, steps, 1)
   }
 }
 
 function createShader(gl, type, source) {
-  const shader = gl.createShader(type);
-  gl.shaderSource(shader, source);
-  gl.compileShader(shader);
-  const success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+  const shader = gl.createShader(type)
+  gl.shaderSource(shader, source)
+  gl.compileShader(shader)
+  const success = gl.getShaderParameter(shader, gl.COMPILE_STATUS)
 
   if (success) {
-    return shader;
+    return shader
   }
 
-  console.error(gl.getShaderInfoLog(shader));
-  gl.deleteShader(shader);
-  return null;
+  console.error(gl.getShaderInfoLog(shader))
+  gl.deleteShader(shader)
+  return null
 }
 
 function createProgram(gl, shaderSources, transformFeedbackVaryings, attribLocations) {
-  const program = gl.createProgram();
+  const program = gl.createProgram()
 
-  [gl.VERTEX_SHADER, gl.FRAGMENT_SHADER].forEach((type, ndx) => {
-    const shader = createShader(gl, type, shaderSources[ndx]);
-    if (shader) gl.attachShader(program, shader);
-  });
+  ;[gl.VERTEX_SHADER, gl.FRAGMENT_SHADER].forEach((type, ndx) => {
+    const shader = createShader(gl, type, shaderSources[ndx])
+    if (shader) gl.attachShader(program, shader)
+  })
 
   if (transformFeedbackVaryings) {
-    gl.transformFeedbackVaryings(program, transformFeedbackVaryings, gl.SEPARATE_ATTRIBS);
+    gl.transformFeedbackVaryings(program, transformFeedbackVaryings, gl.SEPARATE_ATTRIBS)
   }
 
   if (attribLocations) {
     for (const attrib in attribLocations) {
-      gl.bindAttribLocation(program, attribLocations[attrib], attrib);
+      gl.bindAttribLocation(program, attribLocations[attrib], attrib)
     }
   }
 
-  gl.linkProgram(program);
-  const success = gl.getProgramParameter(program, gl.LINK_STATUS);
+  gl.linkProgram(program)
+  const success = gl.getProgramParameter(program, gl.LINK_STATUS)
 
   if (success) {
-    return program;
+    return program
   }
 
-  console.error(gl.getProgramInfoLog(program));
-  gl.deleteProgram(program);
-  return null;
+  console.error(gl.getProgramInfoLog(program))
+  gl.deleteProgram(program)
+  return null
 }
 
 function makeVertexArray(gl, bufLocNumElmPairs, indices) {
-  const va = gl.createVertexArray();
-  gl.bindVertexArray(va);
+  const va = gl.createVertexArray()
+  gl.bindVertexArray(va)
 
   for (const [buffer, loc, numElem] of bufLocNumElmPairs) {
-    if (loc === -1) continue;
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.enableVertexAttribArray(loc);
-    gl.vertexAttribPointer(loc, numElem, gl.FLOAT, false, 0, 0);
+    if (loc === -1) continue
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
+    gl.enableVertexAttribArray(loc)
+    gl.vertexAttribPointer(loc, numElem, gl.FLOAT, false, 0, 0)
   }
 
   if (indices) {
-    const indexBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
+    const indexBuffer = gl.createBuffer()
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW)
   }
 
-  gl.bindVertexArray(null);
-  return va;
+  gl.bindVertexArray(null)
+  return va
 }
 
 function resizeCanvasToDisplaySize(canvas) {
-  const dpr = Math.min(2, window.devicePixelRatio);
-  const displayWidth = Math.round(canvas.clientWidth * dpr);
-  const displayHeight = Math.round(canvas.clientHeight * dpr);
-  const needResize = canvas.width !== displayWidth || canvas.height !== displayHeight;
+  const dpr = Math.min(2, window.devicePixelRatio)
+  const displayWidth = Math.round(canvas.clientWidth * dpr)
+  const displayHeight = Math.round(canvas.clientHeight * dpr)
+  const needResize = canvas.width !== displayWidth || canvas.height !== displayHeight
   if (needResize) {
-    canvas.width = displayWidth;
-    canvas.height = displayHeight;
+    canvas.width = displayWidth
+    canvas.height = displayHeight
   }
-  return needResize;
+  return needResize
 }
 
 function makeBuffer(gl, sizeOrData, usage) {
-  const buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, sizeOrData, usage);
-  gl.bindBuffer(gl.ARRAY_BUFFER, null);
-  return buf;
+  const buf = gl.createBuffer()
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf)
+  gl.bufferData(gl.ARRAY_BUFFER, sizeOrData, usage)
+  gl.bindBuffer(gl.ARRAY_BUFFER, null)
+  return buf
 }
 
 function createAndSetupTexture(gl, minFilter, magFilter, wrapS, wrapT) {
-  const texture = gl.createTexture();
-  gl.bindTexture(gl.TEXTURE_2D, texture);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, wrapS);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, wrapT);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, minFilter);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, magFilter);
-  return texture;
+  const texture = gl.createTexture()
+  gl.bindTexture(gl.TEXTURE_2D, texture)
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, wrapS)
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, wrapT)
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, minFilter)
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, magFilter)
+  return texture
 }
 
 class ArcballControl {
-  isPointerDown = false;
-  orientation = quat.create();
-  pointerRotation = quat.create();
-  rotationVelocity = 0;
-  rotationAxis = vec3.fromValues(1, 0, 0);
-  snapDirection = vec3.fromValues(0, 0, -1);
-  snapTargetDirection;
-  EPSILON = 0.1;
-  IDENTITY_QUAT = quat.create();
+  isPointerDown = false
+  orientation = quat.create()
+  pointerRotation = quat.create()
+  rotationVelocity = 0
+  rotationAxis = vec3.fromValues(1, 0, 0)
+  snapDirection = vec3.fromValues(0, 0, -1)
+  snapTargetDirection
+  EPSILON = 0.1
+  IDENTITY_QUAT = quat.create()
 
   constructor(canvas, updateCallback) {
-    this.canvas = canvas;
-    this.updateCallback = updateCallback || (() => null);
+    this.canvas = canvas
+    this.updateCallback = updateCallback || (() => null)
 
-    this.pointerPos = vec2.create();
-    this.previousPointerPos = vec2.create();
-    this._rotationVelocity = 0;
-    this._combinedQuat = quat.create();
+    this.pointerPos = vec2.create()
+    this.previousPointerPos = vec2.create()
+    this._rotationVelocity = 0
+    this._combinedQuat = quat.create()
 
-    canvas.addEventListener('pointerdown', e => {
-      vec2.set(this.pointerPos, e.clientX, e.clientY);
-      vec2.copy(this.previousPointerPos, this.pointerPos);
-      this.isPointerDown = true;
-    });
-    canvas.addEventListener('pointerup', () => {
-      this.isPointerDown = false;
-    });
-    canvas.addEventListener('pointerleave', () => {
-      this.isPointerDown = false;
-    });
-    canvas.addEventListener('pointermove', e => {
+    canvas.addEventListener("pointerdown", (e) => {
+      vec2.set(this.pointerPos, e.clientX, e.clientY)
+      vec2.copy(this.previousPointerPos, this.pointerPos)
+      this.isPointerDown = true
+    })
+    canvas.addEventListener("pointerup", () => {
+      this.isPointerDown = false
+    })
+    canvas.addEventListener("pointerleave", () => {
+      this.isPointerDown = false
+    })
+    canvas.addEventListener("pointermove", (e) => {
       if (this.isPointerDown) {
-        vec2.set(this.pointerPos, e.clientX, e.clientY);
+        vec2.set(this.pointerPos, e.clientX, e.clientY)
       }
-    });
+    })
 
-    canvas.style.touchAction = 'none';
+    canvas.style.touchAction = "none"
   }
 
   update(deltaTime, targetFrameDuration = 16) {
-    const timeScale = deltaTime / targetFrameDuration + 0.00001;
-    let angleFactor = timeScale;
-    let snapRotation = quat.create();
+    const timeScale = deltaTime / targetFrameDuration + 0.00001
+    let angleFactor = timeScale
+    let snapRotation = quat.create()
 
     if (this.isPointerDown) {
-      const INTENSITY = 0.3 * timeScale;
-      const ANGLE_AMPLIFICATION = 5 / timeScale;
+      const INTENSITY = 0.3 * timeScale
+      const ANGLE_AMPLIFICATION = 5 / timeScale
 
-      const midPointerPos = vec2.sub(vec2.create(), this.pointerPos, this.previousPointerPos);
-      vec2.scale(midPointerPos, midPointerPos, INTENSITY);
+      const midPointerPos = vec2.sub(vec2.create(), this.pointerPos, this.previousPointerPos)
+      vec2.scale(midPointerPos, midPointerPos, INTENSITY)
 
       if (vec2.sqrLen(midPointerPos) > this.EPSILON) {
-        vec2.add(midPointerPos, this.previousPointerPos, midPointerPos);
+        vec2.add(midPointerPos, this.previousPointerPos, midPointerPos)
 
-        const p = this.#project(midPointerPos);
-        const q = this.#project(this.previousPointerPos);
-        const a = vec3.normalize(vec3.create(), p);
-        const b = vec3.normalize(vec3.create(), q);
+        const p = this.#project(midPointerPos)
+        const q = this.#project(this.previousPointerPos)
+        const a = vec3.normalize(vec3.create(), p)
+        const b = vec3.normalize(vec3.create(), q)
 
-        vec2.copy(this.previousPointerPos, midPointerPos);
+        vec2.copy(this.previousPointerPos, midPointerPos)
 
-        angleFactor *= ANGLE_AMPLIFICATION;
+        angleFactor *= ANGLE_AMPLIFICATION
 
-        this.quatFromVectors(a, b, this.pointerRotation, angleFactor);
+        this.quatFromVectors(a, b, this.pointerRotation, angleFactor)
       } else {
-        quat.slerp(this.pointerRotation, this.pointerRotation, this.IDENTITY_QUAT, INTENSITY);
+        quat.slerp(this.pointerRotation, this.pointerRotation, this.IDENTITY_QUAT, INTENSITY)
       }
     } else {
-      const INTENSITY = 0.1 * timeScale;
-      quat.slerp(this.pointerRotation, this.pointerRotation, this.IDENTITY_QUAT, INTENSITY);
+      const INTENSITY = 0.1 * timeScale
+      quat.slerp(this.pointerRotation, this.pointerRotation, this.IDENTITY_QUAT, INTENSITY)
 
       if (this.snapTargetDirection) {
-        const SNAPPING_INTENSITY = 0.2;
-        const a = this.snapTargetDirection;
-        const b = this.snapDirection;
-        const sqrDist = vec3.squaredDistance(a, b);
-        const distanceFactor = Math.max(0.1, 1 - sqrDist * 10);
-        angleFactor *= SNAPPING_INTENSITY * distanceFactor;
-        this.quatFromVectors(a, b, snapRotation, angleFactor);
+        const SNAPPING_INTENSITY = 0.2
+        const a = this.snapTargetDirection
+        const b = this.snapDirection
+        const sqrDist = vec3.squaredDistance(a, b)
+        const distanceFactor = Math.max(0.1, 1 - sqrDist * 10)
+        angleFactor *= SNAPPING_INTENSITY * distanceFactor
+        this.quatFromVectors(a, b, snapRotation, angleFactor)
       }
     }
 
-    const combinedQuat = quat.multiply(quat.create(), snapRotation, this.pointerRotation);
-    this.orientation = quat.multiply(quat.create(), combinedQuat, this.orientation);
-    quat.normalize(this.orientation, this.orientation);
+    const combinedQuat = quat.multiply(quat.create(), snapRotation, this.pointerRotation)
+    this.orientation = quat.multiply(quat.create(), combinedQuat, this.orientation)
+    quat.normalize(this.orientation, this.orientation)
 
-    const RA_INTENSITY = 0.8 * timeScale;
-    quat.slerp(this._combinedQuat, this._combinedQuat, combinedQuat, RA_INTENSITY);
-    quat.normalize(this._combinedQuat, this._combinedQuat);
+    const RA_INTENSITY = 0.8 * timeScale
+    quat.slerp(this._combinedQuat, this._combinedQuat, combinedQuat, RA_INTENSITY)
+    quat.normalize(this._combinedQuat, this._combinedQuat)
 
-    const rad = Math.acos(this._combinedQuat[3]) * 2.0;
-    const s = Math.sin(rad / 2.0);
-    let rv = 0;
+    const rad = Math.acos(this._combinedQuat[3]) * 2.0
+    const s = Math.sin(rad / 2.0)
+    let rv = 0
     if (s > 0.000001) {
-      rv = rad / (2 * Math.PI);
-      this.rotationAxis[0] = this._combinedQuat[0] / s;
-      this.rotationAxis[1] = this._combinedQuat[1] / s;
-      this.rotationAxis[2] = this._combinedQuat[2] / s;
+      rv = rad / (2 * Math.PI)
+      this.rotationAxis[0] = this._combinedQuat[0] / s
+      this.rotationAxis[1] = this._combinedQuat[1] / s
+      this.rotationAxis[2] = this._combinedQuat[2] / s
     }
 
-    const RV_INTENSITY = 0.5 * timeScale;
-    this._rotationVelocity += (rv - this._rotationVelocity) * RV_INTENSITY;
-    this.rotationVelocity = this._rotationVelocity / timeScale;
+    const RV_INTENSITY = 0.5 * timeScale
+    this._rotationVelocity += (rv - this._rotationVelocity) * RV_INTENSITY
+    this.rotationVelocity = this._rotationVelocity / timeScale
 
-    this.updateCallback(deltaTime);
+    this.updateCallback(deltaTime)
   }
 
   quatFromVectors(a, b, out, angleFactor = 1) {
-    const axis = vec3.cross(vec3.create(), a, b);
-    vec3.normalize(axis, axis);
-    const d = Math.max(-1, Math.min(1, vec3.dot(a, b)));
-    const angle = Math.acos(d) * angleFactor;
-    quat.setAxisAngle(out, axis, angle);
-    return { q: out, axis, angle };
+    const axis = vec3.cross(vec3.create(), a, b)
+    vec3.normalize(axis, axis)
+    const d = Math.max(-1, Math.min(1, vec3.dot(a, b)))
+    const angle = Math.acos(d) * angleFactor
+    quat.setAxisAngle(out, axis, angle)
+    return { q: out, axis, angle }
   }
 
   #project(pos) {
-    const r = 2;
-    const w = this.canvas.clientWidth;
-    const h = this.canvas.clientHeight;
-    const s = Math.max(w, h) - 1;
+    const r = 2
+    const w = this.canvas.clientWidth
+    const h = this.canvas.clientHeight
+    const s = Math.max(w, h) - 1
 
-    const x = (2 * pos[0] - w - 1) / s;
-    const y = (2 * pos[1] - h - 1) / s;
-    let z = 0;
-    const xySq = x * x + y * y;
-    const rSq = r * r;
+    const x = (2 * pos[0] - w - 1) / s
+    const y = (2 * pos[1] - h - 1) / s
+    let z = 0
+    const xySq = x * x + y * y
+    const rSq = r * r
 
     if (xySq <= rSq / 2.0) {
-      z = Math.sqrt(rSq - xySq);
+      z = Math.sqrt(rSq - xySq)
     } else {
-      z = rSq / Math.sqrt(xySq);
+      z = rSq / Math.sqrt(xySq)
     }
-    return vec3.fromValues(-x, y, z);
+    return vec3.fromValues(-x, y, z)
   }
 }
 
 class InfiniteGridMenu {
-  TARGET_FRAME_DURATION = 1000 / 60;
-  SPHERE_RADIUS = 2;
+  TARGET_FRAME_DURATION = 1000 / 60
+  SPHERE_RADIUS = 2
 
-  #time = 0;
-  #deltaTime = 0;
-  #deltaFrames = 0;
-  #frames = 0;
+  #time = 0
+  #deltaTime = 0
+  #deltaFrames = 0
+  #frames = 0
 
   camera = {
     matrix: mat4.create(),
@@ -4222,342 +4259,342 @@ class InfiniteGridMenu {
     matrices: {
       view: mat4.create(),
       projection: mat4.create(),
-      inversProjection: mat4.create()
-    }
-  };
+      inversProjection: mat4.create(),
+    },
+  }
 
-  nearestVertexIndex = null;
-  smoothRotationVelocity = 0;
-  scaleFactor = 1.0;
-  movementActive = false;
+  nearestVertexIndex = null
+  smoothRotationVelocity = 0
+  scaleFactor = 1.0
+  movementActive = false
 
   constructor(canvas, items, onActiveItemChange, onMovementChange, onInit = null, scale = 1.0) {
-    this.canvas = canvas;
-    this.items = items || [];
-    this.onActiveItemChange = onActiveItemChange || (() => {});
-    this.onMovementChange = onMovementChange || (() => {});
-    this.scaleFactor = scale;
-    this.camera.position[2] = 3 * scale;
-    this.#init(onInit);
+    this.canvas = canvas
+    this.items = items || []
+    this.onActiveItemChange = onActiveItemChange || (() => {})
+    this.onMovementChange = onMovementChange || (() => {})
+    this.scaleFactor = scale
+    this.camera.position[2] = 3 * scale
+    this.#init(onInit)
   }
 
   resize() {
-    this.viewportSize = vec2.set(this.viewportSize || vec2.create(), this.canvas.clientWidth, this.canvas.clientHeight);
+    this.viewportSize = vec2.set(this.viewportSize || vec2.create(), this.canvas.clientWidth, this.canvas.clientHeight)
 
-    const gl = this.gl;
-    const needsResize = resizeCanvasToDisplaySize(gl.canvas);
+    const gl = this.gl
+    const needsResize = resizeCanvasToDisplaySize(gl.canvas)
     if (needsResize) {
-      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
     }
 
-    this.#updateProjectionMatrix(gl);
+    this.#updateProjectionMatrix(gl)
   }
 
   run(time = 0) {
-    this.#deltaTime = Math.min(32, time - this.#time);
-    this.#time = time;
-    this.#deltaFrames = this.#deltaTime / this.TARGET_FRAME_DURATION;
-    this.#frames += this.#deltaFrames;
+    this.#deltaTime = Math.min(32, time - this.#time)
+    this.#time = time
+    this.#deltaFrames = this.#deltaTime / this.TARGET_FRAME_DURATION
+    this.#frames += this.#deltaFrames
 
-    this.#animate(this.#deltaTime);
-    this.#render();
+    this.#animate(this.#deltaTime)
+    this.#render()
 
-    requestAnimationFrame(t => this.run(t));
+    requestAnimationFrame((t) => this.run(t))
   }
 
   #init(onInit) {
-    this.gl = this.canvas.getContext('webgl2', { antialias: true, alpha: false });
-    const gl = this.gl;
+    this.gl = this.canvas.getContext("webgl2", { antialias: true, alpha: false })
+    const gl = this.gl
     if (!gl) {
-      throw new Error('No WebGL 2 context!');
+      throw new Error("No WebGL 2 context!")
     }
 
-    this.viewportSize = vec2.fromValues(this.canvas.clientWidth, this.canvas.clientHeight);
-    this.drawBufferSize = vec2.clone(this.viewportSize);
+    this.viewportSize = vec2.fromValues(this.canvas.clientWidth, this.canvas.clientHeight)
+    this.drawBufferSize = vec2.clone(this.viewportSize)
 
     this.discProgram = createProgram(gl, [discVertShaderSource, discFragShaderSource], null, {
       aModelPosition: 0,
       aModelNormal: 1,
       aModelUvs: 2,
-      aInstanceMatrix: 3
-    });
+      aInstanceMatrix: 3,
+    })
 
     this.discLocations = {
-      aModelPosition: gl.getAttribLocation(this.discProgram, 'aModelPosition'),
-      aModelUvs: gl.getAttribLocation(this.discProgram, 'aModelUvs'),
-      aInstanceMatrix: gl.getAttribLocation(this.discProgram, 'aInstanceMatrix'),
-      uWorldMatrix: gl.getUniformLocation(this.discProgram, 'uWorldMatrix'),
-      uViewMatrix: gl.getUniformLocation(this.discProgram, 'uViewMatrix'),
-      uProjectionMatrix: gl.getUniformLocation(this.discProgram, 'uProjectionMatrix'),
-      uCameraPosition: gl.getUniformLocation(this.discProgram, 'uCameraPosition'),
-      uScaleFactor: gl.getUniformLocation(this.discProgram, 'uScaleFactor'),
-      uRotationAxisVelocity: gl.getUniformLocation(this.discProgram, 'uRotationAxisVelocity'),
-      uTex: gl.getUniformLocation(this.discProgram, 'uTex'),
-      uFrames: gl.getUniformLocation(this.discProgram, 'uFrames'),
-      uItemCount: gl.getUniformLocation(this.discProgram, 'uItemCount'),
-      uAtlasSize: gl.getUniformLocation(this.discProgram, 'uAtlasSize')
-    };
+      aModelPosition: gl.getAttribLocation(this.discProgram, "aModelPosition"),
+      aModelUvs: gl.getAttribLocation(this.discProgram, "aModelUvs"),
+      aInstanceMatrix: gl.getAttribLocation(this.discProgram, "aInstanceMatrix"),
+      uWorldMatrix: gl.getUniformLocation(this.discProgram, "uWorldMatrix"),
+      uViewMatrix: gl.getUniformLocation(this.discProgram, "uViewMatrix"),
+      uProjectionMatrix: gl.getUniformLocation(this.discProgram, "uProjectionMatrix"),
+      uCameraPosition: gl.getUniformLocation(this.discProgram, "uCameraPosition"),
+      uScaleFactor: gl.getUniformLocation(this.discProgram, "uScaleFactor"),
+      uRotationAxisVelocity: gl.getUniformLocation(this.discProgram, "uRotationAxisVelocity"),
+      uTex: gl.getUniformLocation(this.discProgram, "uTex"),
+      uFrames: gl.getUniformLocation(this.discProgram, "uFrames"),
+      uItemCount: gl.getUniformLocation(this.discProgram, "uItemCount"),
+      uAtlasSize: gl.getUniformLocation(this.discProgram, "uAtlasSize"),
+    }
 
-    this.discGeo = new DiscGeometry(56, 1);
-    this.discBuffers = this.discGeo.data;
+    this.discGeo = new DiscGeometry(56, 1)
+    this.discBuffers = this.discGeo.data
     this.discVAO = makeVertexArray(
       gl,
       [
         [makeBuffer(gl, this.discBuffers.vertices, gl.STATIC_DRAW), this.discLocations.aModelPosition, 3],
-        [makeBuffer(gl, this.discBuffers.uvs, gl.STATIC_DRAW), this.discLocations.aModelUvs, 2]
+        [makeBuffer(gl, this.discBuffers.uvs, gl.STATIC_DRAW), this.discLocations.aModelUvs, 2],
       ],
-      this.discBuffers.indices
-    );
+      this.discBuffers.indices,
+    )
 
-    this.icoGeo = new IcosahedronGeometry();
-    this.icoGeo.subdivide(1).spherize(this.SPHERE_RADIUS);
-    this.instancePositions = this.icoGeo.vertices.map(v => v.position);
-    this.DISC_INSTANCE_COUNT = this.icoGeo.vertices.length;
-    this.#initDiscInstances(this.DISC_INSTANCE_COUNT);
+    this.icoGeo = new IcosahedronGeometry()
+    this.icoGeo.subdivide(1).spherize(this.SPHERE_RADIUS)
+    this.instancePositions = this.icoGeo.vertices.map((v) => v.position)
+    this.DISC_INSTANCE_COUNT = this.icoGeo.vertices.length
+    this.#initDiscInstances(this.DISC_INSTANCE_COUNT)
 
-    this.worldMatrix = mat4.create();
-    this.#initTexture();
+    this.worldMatrix = mat4.create()
+    this.#initTexture()
 
-    this.control = new ArcballControl(this.canvas, deltaTime => this.#onControlUpdate(deltaTime));
+    this.control = new ArcballControl(this.canvas, (deltaTime) => this.#onControlUpdate(deltaTime))
 
-    this.#updateCameraMatrix();
-    this.#updateProjectionMatrix(gl);
-    this.resize();
+    this.#updateCameraMatrix()
+    this.#updateProjectionMatrix(gl)
+    this.resize()
 
-    if (onInit) onInit(this);
+    if (onInit) onInit(this)
   }
 
   #initTexture() {
-    const gl = this.gl;
-    this.tex = createAndSetupTexture(gl, gl.LINEAR, gl.LINEAR, gl.CLAMP_TO_EDGE, gl.CLAMP_TO_EDGE);
+    const gl = this.gl
+    this.tex = createAndSetupTexture(gl, gl.LINEAR, gl.LINEAR, gl.CLAMP_TO_EDGE, gl.CLAMP_TO_EDGE)
 
-    const itemCount = Math.max(1, this.items.length);
-    this.atlasSize = Math.ceil(Math.sqrt(itemCount));
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    const cellSize = 512;
+    const itemCount = Math.max(1, this.items.length)
+    this.atlasSize = Math.ceil(Math.sqrt(itemCount))
+    const canvas = document.createElement("canvas")
+    const ctx = canvas.getContext("2d")
+    const cellSize = 512
 
-    canvas.width = this.atlasSize * cellSize;
-    canvas.height = this.atlasSize * cellSize;
+    canvas.width = this.atlasSize * cellSize
+    canvas.height = this.atlasSize * cellSize
 
     Promise.all(
       this.items.map(
-        item =>
-          new Promise(resolve => {
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.onload = () => resolve(img);
-            img.src = item.image;
-          })
-      )
-    ).then(images => {
+        (item) =>
+          new Promise((resolve) => {
+            const img = new Image()
+            img.crossOrigin = "anonymous"
+            img.onload = () => resolve(img)
+            img.src = item.image
+          }),
+      ),
+    ).then((images) => {
       images.forEach((img, i) => {
-        const x = (i % this.atlasSize) * cellSize;
-        const y = Math.floor(i / this.atlasSize) * cellSize;
-        ctx.drawImage(img, x, y, cellSize, cellSize);
-      });
+        const x = (i % this.atlasSize) * cellSize
+        const y = Math.floor(i / this.atlasSize) * cellSize
+        ctx.drawImage(img, x, y, cellSize, cellSize)
+      })
 
-      gl.bindTexture(gl.TEXTURE_2D, this.tex);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
-      gl.generateMipmap(gl.TEXTURE_2D);
-    });
+      gl.bindTexture(gl.TEXTURE_2D, this.tex)
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas)
+      gl.generateMipmap(gl.TEXTURE_2D)
+    })
   }
 
   #initDiscInstances(count) {
-    const gl = this.gl;
+    const gl = this.gl
     this.discInstances = {
       matricesArray: new Float32Array(count * 16),
       matrices: [],
-      buffer: gl.createBuffer()
-    };
+      buffer: gl.createBuffer(),
+    }
     for (let i = 0; i < count; ++i) {
-      const instanceMatrixArray = new Float32Array(this.discInstances.matricesArray.buffer, i * 16 * 4, 16);
-      instanceMatrixArray.set(mat4.create());
-      this.discInstances.matrices.push(instanceMatrixArray);
+      const instanceMatrixArray = new Float32Array(this.discInstances.matricesArray.buffer, i * 16 * 4, 16)
+      instanceMatrixArray.set(mat4.create())
+      this.discInstances.matrices.push(instanceMatrixArray)
     }
-    gl.bindVertexArray(this.discVAO);
-    gl.bindBuffer(gl.ARRAY_BUFFER, this.discInstances.buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, this.discInstances.matricesArray.byteLength, gl.DYNAMIC_DRAW);
-    const mat4AttribSlotCount = 4;
-    const bytesPerMatrix = 16 * 4;
+    gl.bindVertexArray(this.discVAO)
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.discInstances.buffer)
+    gl.bufferData(gl.ARRAY_BUFFER, this.discInstances.matricesArray.byteLength, gl.DYNAMIC_DRAW)
+    const mat4AttribSlotCount = 4
+    const bytesPerMatrix = 16 * 4
     for (let j = 0; j < mat4AttribSlotCount; ++j) {
-      const loc = this.discLocations.aInstanceMatrix + j;
-      gl.enableVertexAttribArray(loc);
-      gl.vertexAttribPointer(loc, 4, gl.FLOAT, false, bytesPerMatrix, j * 4 * 4);
-      gl.vertexAttribDivisor(loc, 1);
+      const loc = this.discLocations.aInstanceMatrix + j
+      gl.enableVertexAttribArray(loc)
+      gl.vertexAttribPointer(loc, 4, gl.FLOAT, false, bytesPerMatrix, j * 4 * 4)
+      gl.vertexAttribDivisor(loc, 1)
     }
-    gl.bindBuffer(gl.ARRAY_BUFFER, null);
-    gl.bindVertexArray(null);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null)
+    gl.bindVertexArray(null)
   }
 
   #animate(deltaTime) {
-    const gl = this.gl;
-    this.control.update(deltaTime, this.TARGET_FRAME_DURATION);
+    const gl = this.gl
+    this.control.update(deltaTime, this.TARGET_FRAME_DURATION)
 
-    let positions = this.instancePositions.map(p => vec3.transformQuat(vec3.create(), p, this.control.orientation));
-    const scale = 0.25;
-    const SCALE_INTENSITY = 0.6;
+    let positions = this.instancePositions.map((p) => vec3.transformQuat(vec3.create(), p, this.control.orientation))
+    const scale = 0.25
+    const SCALE_INTENSITY = 0.6
     positions.forEach((p, ndx) => {
-      const s = (Math.abs(p[2]) / this.SPHERE_RADIUS) * SCALE_INTENSITY + (1 - SCALE_INTENSITY);
-      const finalScale = s * scale;
-      const matrix = mat4.create();
-      mat4.multiply(matrix, matrix, mat4.fromTranslation(mat4.create(), vec3.negate(vec3.create(), p)));
-      mat4.multiply(matrix, matrix, mat4.targetTo(mat4.create(), [0, 0, 0], p, [0, 1, 0]));
-      mat4.multiply(matrix, matrix, mat4.fromScaling(mat4.create(), [finalScale, finalScale, finalScale]));
-      mat4.multiply(matrix, matrix, mat4.fromTranslation(mat4.create(), [0, 0, -this.SPHERE_RADIUS]));
+      const s = (Math.abs(p[2]) / this.SPHERE_RADIUS) * SCALE_INTENSITY + (1 - SCALE_INTENSITY)
+      const finalScale = s * scale
+      const matrix = mat4.create()
+      mat4.multiply(matrix, matrix, mat4.fromTranslation(mat4.create(), vec3.negate(vec3.create(), p)))
+      mat4.multiply(matrix, matrix, mat4.targetTo(mat4.create(), [0, 0, 0], p, [0, 1, 0]))
+      mat4.multiply(matrix, matrix, mat4.fromScaling(mat4.create(), [finalScale, finalScale, finalScale]))
+      mat4.multiply(matrix, matrix, mat4.fromTranslation(mat4.create(), [0, 0, -this.SPHERE_RADIUS]))
 
-      mat4.copy(this.discInstances.matrices[ndx], matrix);
-    });
+      mat4.copy(this.discInstances.matrices[ndx], matrix)
+    })
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, this.discInstances.buffer);
-    gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.discInstances.matricesArray);
-    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.discInstances.buffer)
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.discInstances.matricesArray)
+    gl.bindBuffer(gl.ARRAY_BUFFER, null)
 
-    this.smoothRotationVelocity = this.control.rotationVelocity;
+    this.smoothRotationVelocity = this.control.rotationVelocity
   }
 
   #render() {
-    const gl = this.gl;
-    gl.useProgram(this.discProgram);
+    const gl = this.gl
+    gl.useProgram(this.discProgram)
 
-    gl.enable(gl.CULL_FACE);
-    gl.enable(gl.DEPTH_TEST);
+    gl.enable(gl.CULL_FACE)
+    gl.enable(gl.DEPTH_TEST)
 
-    gl.clearColor(0, 0, 0, 0);
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.clearColor(0, 0, 0, 0)
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 
-    gl.uniformMatrix4fv(this.discLocations.uWorldMatrix, false, this.worldMatrix);
-    gl.uniformMatrix4fv(this.discLocations.uViewMatrix, false, this.camera.matrices.view);
-    gl.uniformMatrix4fv(this.discLocations.uProjectionMatrix, false, this.camera.matrices.projection);
+    gl.uniformMatrix4fv(this.discLocations.uWorldMatrix, false, this.worldMatrix)
+    gl.uniformMatrix4fv(this.discLocations.uViewMatrix, false, this.camera.matrices.view)
+    gl.uniformMatrix4fv(this.discLocations.uProjectionMatrix, false, this.camera.matrices.projection)
     gl.uniform3f(
       this.discLocations.uCameraPosition,
       this.camera.position[0],
       this.camera.position[1],
-      this.camera.position[2]
-    );
+      this.camera.position[2],
+    )
     gl.uniform4f(
       this.discLocations.uRotationAxisVelocity,
       this.control.rotationAxis[0],
       this.control.rotationAxis[1],
       this.control.rotationAxis[2],
-      this.smoothRotationVelocity * 1.1
-    );
+      this.smoothRotationVelocity * 1.1,
+    )
 
-    gl.uniform1i(this.discLocations.uItemCount, this.items.length);
-    gl.uniform1i(this.discLocations.uAtlasSize, this.atlasSize);
+    gl.uniform1i(this.discLocations.uItemCount, this.items.length)
+    gl.uniform1i(this.discLocations.uAtlasSize, this.atlasSize)
 
-    gl.uniform1f(this.discLocations.uFrames, this.#frames);
-    gl.uniform1f(this.discLocations.uScaleFactor, this.scaleFactor);
-    gl.uniform1i(this.discLocations.uTex, 0);
-    gl.activeTexture(gl.TEXTURE0);
-    gl.bindTexture(gl.TEXTURE_2D, this.tex);
+    gl.uniform1f(this.discLocations.uFrames, this.#frames)
+    gl.uniform1f(this.discLocations.uScaleFactor, this.scaleFactor)
+    gl.uniform1i(this.discLocations.uTex, 0)
+    gl.activeTexture(gl.TEXTURE0)
+    gl.bindTexture(gl.TEXTURE_2D, this.tex)
 
-    gl.bindVertexArray(this.discVAO);
+    gl.bindVertexArray(this.discVAO)
     gl.drawElementsInstanced(
       gl.TRIANGLES,
       this.discBuffers.indices.length,
       gl.UNSIGNED_SHORT,
       0,
-      this.DISC_INSTANCE_COUNT
-    );
+      this.DISC_INSTANCE_COUNT,
+    )
   }
 
   #updateCameraMatrix() {
-    mat4.targetTo(this.camera.matrix, this.camera.position, [0, 0, 0], this.camera.up);
-    mat4.invert(this.camera.matrices.view, this.camera.matrix);
+    mat4.targetTo(this.camera.matrix, this.camera.position, [0, 0, 0], this.camera.up)
+    mat4.invert(this.camera.matrices.view, this.camera.matrix)
   }
 
   #updateProjectionMatrix(gl) {
-    this.camera.aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
-    const height = this.SPHERE_RADIUS * 0.35;
-    const distance = this.camera.position[2];
+    this.camera.aspect = gl.canvas.clientWidth / gl.canvas.clientHeight
+    const height = this.SPHERE_RADIUS * 0.35
+    const distance = this.camera.position[2]
     if (this.camera.aspect > 1) {
-      this.camera.fov = 2 * Math.atan(height / distance);
+      this.camera.fov = 2 * Math.atan(height / distance)
     } else {
-      this.camera.fov = 2 * Math.atan(height / this.camera.aspect / distance);
+      this.camera.fov = 2 * Math.atan(height / this.camera.aspect / distance)
     }
     mat4.perspective(
       this.camera.matrices.projection,
       this.camera.fov,
       this.camera.aspect,
       this.camera.near,
-      this.camera.far
-    );
-    mat4.invert(this.camera.matrices.inversProjection, this.camera.matrices.projection);
+      this.camera.far,
+    )
+    mat4.invert(this.camera.matrices.inversProjection, this.camera.matrices.projection)
   }
 
   #onControlUpdate(deltaTime) {
-    const timeScale = deltaTime / this.TARGET_FRAME_DURATION + 0.0001;
-    let damping = 5 / timeScale;
-    let cameraTargetZ = 3 * this.scaleFactor;
+    const timeScale = deltaTime / this.TARGET_FRAME_DURATION + 0.0001
+    let damping = 5 / timeScale
+    let cameraTargetZ = 3 * this.scaleFactor
 
-    const isMoving = this.control.isPointerDown || Math.abs(this.smoothRotationVelocity) > 0.01;
+    const isMoving = this.control.isPointerDown || Math.abs(this.smoothRotationVelocity) > 0.01
 
     if (isMoving !== this.movementActive) {
-      this.movementActive = isMoving;
-      this.onMovementChange(isMoving);
+      this.movementActive = isMoving
+      this.onMovementChange(isMoving)
     }
 
     if (!this.control.isPointerDown) {
-      const nearestVertexIndex = this.#findNearestVertexIndex();
-      const itemIndex = nearestVertexIndex % Math.max(1, this.items.length);
-      this.onActiveItemChange(itemIndex);
-      const snapDirection = vec3.normalize(vec3.create(), this.#getVertexWorldPosition(nearestVertexIndex));
-      this.control.snapTargetDirection = snapDirection;
+      const nearestVertexIndex = this.#findNearestVertexIndex()
+      const itemIndex = nearestVertexIndex % Math.max(1, this.items.length)
+      this.onActiveItemChange(itemIndex)
+      const snapDirection = vec3.normalize(vec3.create(), this.#getVertexWorldPosition(nearestVertexIndex))
+      this.control.snapTargetDirection = snapDirection
     } else {
-      cameraTargetZ += this.control.rotationVelocity * 80 + 2.5;
-      damping = 7 / timeScale;
+      cameraTargetZ += this.control.rotationVelocity * 80 + 2.5
+      damping = 7 / timeScale
     }
 
-    this.camera.position[2] += (cameraTargetZ - this.camera.position[2]) / damping;
-    this.#updateCameraMatrix();
+    this.camera.position[2] += (cameraTargetZ - this.camera.position[2]) / damping
+    this.#updateCameraMatrix()
   }
 
   #findNearestVertexIndex() {
-    const n = this.control.snapDirection;
-    const inversOrientation = quat.conjugate(quat.create(), this.control.orientation);
-    const nt = vec3.transformQuat(vec3.create(), n, inversOrientation);
+    const n = this.control.snapDirection
+    const inversOrientation = quat.conjugate(quat.create(), this.control.orientation)
+    const nt = vec3.transformQuat(vec3.create(), n, inversOrientation)
 
-    let maxD = -1;
-    let nearestVertexIndex;
+    let maxD = -1
+    let nearestVertexIndex
     for (let i = 0; i < this.instancePositions.length; ++i) {
-      const d = vec3.dot(nt, this.instancePositions[i]);
+      const d = vec3.dot(nt, this.instancePositions[i])
       if (d > maxD) {
-        maxD = d;
-        nearestVertexIndex = i;
+        maxD = d
+        nearestVertexIndex = i
       }
     }
-    return nearestVertexIndex;
+    return nearestVertexIndex
   }
 
   #getVertexWorldPosition(index) {
-    const nearestVertexPos = this.instancePositions[index];
-    return vec3.transformQuat(vec3.create(), nearestVertexPos, this.control.orientation);
+    const nearestVertexPos = this.instancePositions[index]
+    return vec3.transformQuat(vec3.create(), nearestVertexPos, this.control.orientation)
   }
 }
 
 const defaultItems = [
   {
-    image: 'https://picsum.photos/900/900?grayscale',
-    link: 'https://google.com/',
-    title: '',
-    description: ''
-  }
-];
+    image: "https://picsum.photos/900/900?grayscale",
+    link: "https://google.com/",
+    title: "",
+    description: "",
+  },
+]
 
 export default function InfiniteMenu({ items = [], scale = 1.0 }) {
-  const canvasRef = useRef(null);
-  const [activeItem, setActiveItem] = useState(null);
-  const [isMoving, setIsMoving] = useState(false);
+  const canvasRef = useRef(null)
+  const [activeItem, setActiveItem] = useState(null)
+  const [isMoving, setIsMoving] = useState(false)
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    let sketch;
+    const canvas = canvasRef.current
+    let sketch
 
-    const handleActiveItem = index => {
-      const itemIndex = index % items.length;
-      setActiveItem(items[itemIndex]);
-    };
+    const handleActiveItem = (index) => {
+      const itemIndex = index % items.length
+      setActiveItem(items[itemIndex])
+    }
 
     if (canvas) {
       sketch = new InfiniteGridMenu(
@@ -4565,56 +4602,56 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
         items.length ? items : defaultItems,
         handleActiveItem,
         setIsMoving,
-        sk => sk.run(),
-        scale
-      );
+        (sk) => sk.run(),
+        scale,
+      )
     }
 
     const handleResize = () => {
       if (sketch) {
-        sketch.resize();
+        sketch.resize()
       }
-    };
+    }
 
-    window.addEventListener('resize', handleResize);
-    handleResize();
+    window.addEventListener("resize", handleResize)
+    handleResize()
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [items, scale]);
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [items, scale])
 
   const handleButtonClick = () => {
-    if (!activeItem?.link) return;
-    if (activeItem.link.startsWith('http')) {
-      window.open(activeItem.link, '_blank');
+    if (!activeItem?.link) return
+    if (activeItem.link.startsWith("http")) {
+      window.open(activeItem.link, "_blank")
     } else {
-      console.log('Internal route:', activeItem.link);
+      console.log("Internal route:", activeItem.link)
     }
-  };
+  }
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
       <canvas id="infinite-grid-menu-canvas" ref={canvasRef} />
 
       {activeItem && (
         <>
-          <h2 className={`face-title ${isMoving ? 'inactive' : 'active'}`}>{activeItem.title}</h2>
+          <h2 className={`face-title ${isMoving ? "inactive" : "active"}`}>{activeItem.title}</h2>
 
-          <p className={`face-description ${isMoving ? 'inactive' : 'active'}`}> {activeItem.description}</p>
+          <p className={`face-description ${isMoving ? "inactive" : "active"}`}> {activeItem.description}</p>
 
-          <div onClick={handleButtonClick} className={`action-button ${isMoving ? 'inactive' : 'active'}`}>
+          <div onClick={handleButtonClick} className={`action-button ${isMoving ? "inactive" : "active"}`}>
             <p className="action-button-icon">&#x2197;</p>
           </div>
         </>
       )}
     </div>
-  );
+  )
 }
-
 ```
 
 ### Component CSS
+
 ```css
 /* Note: this CSS is only an example, you can overlay whatever you want using the activeItem logic */
 
@@ -4733,10 +4770,10 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
     display: none;
   }
 }
-
 ```
 
 ### Integration Instructions
+
 1. Install any listed dependencies.
 2. Copy the component source into the appropriate directory in the project.
 3. Import the CSS file alongside the component.
@@ -4744,4 +4781,3 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
 5. Adjust props as needed for the specific use case — refer to the props table for all available options.
 
 ---
-

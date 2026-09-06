@@ -10,7 +10,10 @@ export type PullProgress = {
 
 export type PullCallback = (progress: PullProgress) => void
 
-export async function pullOllamaModel(modelTag: string, onProgress?: PullCallback): Promise<{ success: boolean; error?: string }> {
+export async function pullOllamaModel(
+  modelTag: string,
+  onProgress?: PullCallback,
+): Promise<{ success: boolean; error?: string }> {
   const ollamaConfig = LOCAL_PROVIDERS.find((p) => p.kind === "ollama")
   const endpoint = ollamaConfig?.endpoint || "http://127.0.0.1:11434"
 

@@ -15,8 +15,8 @@ Provide a `--json` flag for machine-readable output. This enables scripting, pip
 async function listProjects() {
   const projects = await getProjects()
 
-  console.log('Projects:')
-  projects.forEach(p => {
+  console.log("Projects:")
+  projects.forEach((p) => {
     console.log(`  • ${p.name} (${p.status})`)
   })
   console.log(`\nTotal: ${projects.length}`)
@@ -37,25 +37,29 @@ async function listProjects(options: OutputOptions) {
 
   if (options.json) {
     // Machine-readable output
-    console.log(JSON.stringify({
-      projects,
-      total: projects.length
-    }, null, 2))
+    console.log(
+      JSON.stringify(
+        {
+          projects,
+          total: projects.length,
+        },
+        null,
+        2,
+      ),
+    )
     return
   }
 
   if (options.quiet) {
     // Just names, one per line (for piping)
-    projects.forEach(p => console.log(p.name))
+    projects.forEach((p) => console.log(p.name))
     return
   }
 
   // Human-readable output
-  console.log(color.bold('Projects:'))
-  projects.forEach(p => {
-    const status = p.status === 'active'
-      ? color.green('●')
-      : color.dim('○')
+  console.log(color.bold("Projects:"))
+  projects.forEach((p) => {
+    const status = p.status === "active" ? color.green("●") : color.dim("○")
     console.log(`  ${status} ${p.name}`)
   })
   console.log(color.dim(`\nTotal: ${projects.length}`))
@@ -85,8 +89,8 @@ function outputJson<T>(data: T): void {
     data,
     meta: {
       timestamp: new Date().toISOString(),
-      version: packageJson.version
-    }
+      version: packageJson.version,
+    },
   }
   console.log(JSON.stringify(output, null, 2))
 }
@@ -94,7 +98,7 @@ function outputJson<T>(data: T): void {
 function outputJsonError(code: string, message: string): void {
   const output: JsonOutput<never> = {
     success: false,
-    error: { code, message }
+    error: { code, message },
   }
   console.log(JSON.stringify(output, null, 2))
   process.exit(1)

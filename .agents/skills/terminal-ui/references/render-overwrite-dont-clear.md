@@ -13,7 +13,7 @@ Overwrite terminal content in place rather than clearing the screen first. Clear
 
 ```typescript
 function updateProgress(percent: number) {
-  console.clear()  // Creates visible blank frame
+  console.clear() // Creates visible blank frame
   console.log(`Progress: ${percent}%`)
   console.log(renderProgressBar(percent))
 }
@@ -24,8 +24,8 @@ function updateProgress(percent: number) {
 ```typescript
 function updateProgress(percent: number) {
   // Move cursor to start without clearing
-  process.stdout.write('\x1b[H')
-  process.stdout.write(`Progress: ${percent}%\x1b[K\n`)  // \x1b[K clears to end of line
+  process.stdout.write("\x1b[H")
+  process.stdout.write(`Progress: ${percent}%\x1b[K\n`) // \x1b[K clears to end of line
   process.stdout.write(`${renderProgressBar(percent)}\x1b[K`)
 }
 ```
