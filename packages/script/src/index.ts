@@ -75,7 +75,7 @@ export const Script = {
     return IS_PREVIEW
   },
   get release(): boolean {
-    return !!env.OPENCODE_RELEASE
+    return !!env.AGENTX_RELEASE
   },
   get team() {
     return team

@@ -8,6 +8,7 @@ const here = path.dirname(fileURLToPath(import.meta.url))
 const ui = path.resolve(here, "../../ui")
 const sessionUi = path.resolve(here, "../../session-ui")
 const app = path.resolve(here, "../../app/src")
+const core = path.resolve(here, "../../core/src")
 const mocks = path.resolve(here, "./mocks")
 
 export default defineMain({
@@ -58,6 +59,7 @@ export default defineMain({
             find: /^@\/components\/dialog-select-model-unpaid$/,
             replacement: path.resolve(mocks, "app/components/dialog-select-model-unpaid.tsx"),
           },
+          { find: "@opencode-ai/core", replacement: core },
           { find: "@", replacement: app },
         ],
       },
@@ -66,7 +68,7 @@ export default defineMain({
       },
       server: {
         fs: {
-          allow: [searchForWorkspaceRoot(process.cwd()), ui, sessionUi, app, mocks],
+          allow: [searchForWorkspaceRoot(process.cwd()), ui, sessionUi, app, core, mocks],
         },
       },
     })

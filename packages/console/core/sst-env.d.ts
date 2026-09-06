@@ -4,7 +4,15 @@
 /* deno-fmt-ignore-file */
 /* biome-ignore-all lint: auto-generated */
 
-/// <reference path="../../../sst-env.d.ts" />
-
-import "sst"
+declare module "sst" {
+  export namespace Resource {
+    export const Database: {
+      database: string
+      host: string
+      username: string
+      password: string
+      port: number
+    }
+  }
+}
 export {}

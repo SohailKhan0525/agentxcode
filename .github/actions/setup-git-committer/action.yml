@@ -44,6 +44,7 @@ runs:
       shell: bash
 
     - name: Clear checkout auth
+      if: inputs.agentx-app-id != ''
       run: |
         git config --local --unset-all http.https://github.com/.extraheader || true
       shell: bash
