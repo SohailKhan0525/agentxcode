@@ -33,7 +33,7 @@ import { LocalPlugin } from "./provider/local"
 import type { PluginInternal } from "./internal"
 import type { Scope } from "effect"
 
-export const ProviderPlugins: PluginInternal.Plugin<PluginInternal.Requirements | Scope.Scope>[] = [
+export const getProviderPlugins = (): PluginInternal.Plugin<PluginInternal.Requirements | Scope.Scope>[] => [
   AlibabaPlugin,
   AmazonBedrockPlugin,
   AnthropicPlugin,
@@ -69,3 +69,14 @@ export const ProviderPlugins: PluginInternal.Plugin<PluginInternal.Requirements 
   LocalPlugin,
   DynamicProviderPlugin,
 ]
+
+export const ProviderPlugins: PluginInternal.Plugin<PluginInternal.Requirements | Scope.Scope>[] = new Proxy(
+  [] as PluginInternal.Plugin<PluginInternal.Requirements | Scope.Scope>[],
+  {
+    get(_, prop) {
+      const plugins = getProviderPlugins()
+      const val = Reflect.get(plugins, prop)
+      return typeof val === "function" ? val.bind(plugins) : val
+    },
+  },
+)

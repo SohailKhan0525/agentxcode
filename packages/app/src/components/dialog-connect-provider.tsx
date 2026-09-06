@@ -540,7 +540,7 @@ function ProviderConnection(props: {
         })
         .then((x) => {
           if (!alive.value) return
-          if (platform().platform === "desktop") {
+          if (platform.platform === "desktop") {
             const url = new URL(x.data.url)
             url.searchParams.set("client_id", "agentx-desktop")
             x.data.url = url.href

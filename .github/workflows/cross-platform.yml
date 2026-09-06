@@ -51,15 +51,20 @@ jobs:
         if: runner.os != 'Windows' && steps.build.outcome == 'success'
         shell: bash
         run: |
-          BIN=$(find packages/opencode/dist -name "agentx" -not -name "*.exe" -type f 2>/dev/null | head -1)
+          BIN=""
+          for b in packages/opencode/dist/*/bin/agentx; do
+            if [ -f "$b" ]; then
+              BIN="$b"
+              break
+            fi
+          done
           if [ -z "$BIN" ]; then
-            echo "::warning::agentx binary not found in dist — build may have skipped output"
+            echo "::warning::agentx binary not found in dist"
             exit 0
           fi
           chmod +x "$BIN"
-          OUTPUT=$("$BIN" --version 2>&1 || true)
-          echo "Binary output: $OUTPUT"
-          echo "Binary verified at: $BIN"
+          echo "Verifying binary at: $BIN"
+          "$BIN" --version || true
 
       - name: Verify binary (Windows)
         if: runner.os == 'Windows' && steps.build.outcome == 'success'
@@ -70,6 +75,6 @@ jobs:
             Write-Warning "agentx.exe not found in dist"
             exit 0
           }
-          $output = & $bin.FullName --version 2>&1
-          Write-Host "Binary output: $output"
-          Write-Host "Binary verified at: $($bin.FullName)"
+          Write-Host "Verifying binary at: $($bin.FullName)"
+          & $bin.FullName --version
+
