@@ -3,6 +3,10 @@
   "name": "agentx",
   "description": "AgentX Code — The open source AI coding agent built for the terminal",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SohailKhan0525/agentxcode"
+  },
   "type": "module",
   "packageManager": "bun@1.3.14",
   "scripts": {

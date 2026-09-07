@@ -231,9 +231,14 @@ for (const item of targets) {
       {
         name,
         version: Script.version,
+        license: pkg.license,
         preferUnplugged: true,
         os: [item.os],
         cpu: [item.arch],
+        repository: {
+          type: "git",
+          url: "https://github.com/SohailKhan0525/agentxcode",
+        },
         ...(item.abi ? { libc: [item.abi] } : {}),
       },
       null,

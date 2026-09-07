@@ -65,10 +65,9 @@ await Bun.file(`./dist/${pkg.name}/package.json`).write(
   ),
 )
 
-const tasks = Object.entries(binaries).map(async ([name]) => {
-  await publish(`./dist/${name}`, name, binaries[name])
-})
-await Promise.all(tasks)
+for (const [name, ver] of Object.entries(binaries)) {
+  await publish(`./dist/${name}`, name, ver)
+}
 await publish(`./dist/${pkg.name}`, pkg.name, version)
 
 const image = "ghcr.io/sohailkhan0525/agentx"
@@ -87,16 +86,16 @@ if (!Script.preview) {
   }
 
   // Calculate SHA values if archives exist
-  const arm64Sha = (await Bun.file("./dist/agentx-linux-arm64.tar.gz").exists())
+  const arm64Sha = await Bun.file("./dist/agentx-linux-arm64.tar.gz").exists()
     ? await $`sha256sum ./dist/agentx-linux-arm64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
     : ""
-  const x64Sha = (await Bun.file("./dist/agentx-linux-x64.tar.gz").exists())
+  const x64Sha = await Bun.file("./dist/agentx-linux-x64.tar.gz").exists()
     ? await $`sha256sum ./dist/agentx-linux-x64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
     : ""
-  const macX64Sha = (await Bun.file("./dist/agentx-darwin-x64.tar.gz").exists())
+  const macX64Sha = await Bun.file("./dist/agentx-darwin-x64.tar.gz").exists()
     ? await $`sha256sum ./dist/agentx-darwin-x64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
     : ""
-  const macArm64Sha = (await Bun.file("./dist/agentx-darwin-arm64.tar.gz").exists())
+  const macArm64Sha = await Bun.file("./dist/agentx-darwin-arm64.tar.gz").exists()
     ? await $`sha256sum ./dist/agentx-darwin-arm64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
     : ""
 
