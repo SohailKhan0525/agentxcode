@@ -24,7 +24,7 @@ const archMap = {
 
 const platform = platformMap[os.platform()] ?? os.platform()
 const arch = archMap[os.arch()] ?? os.arch()
-const base = `agentx-${platform}-${arch}`
+const base = `${packageJson.name}-${platform}-${arch}`
 const sourceBinary = platform === "windows" ? "agentx.exe" : "agentx"
 const targetBinary = path.join(__dirname, "bin", platform === "windows" ? "agentx.exe" : "agentx")
 

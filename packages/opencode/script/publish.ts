@@ -25,50 +25,40 @@ async function publish(dir: string, name: string, version: string) {
 }
 
 const binaries: Record<string, string> = {}
-for (const filepath of new Bun.Glob("*/package.json").scanSync({ cwd: "./dist" })) {
-  const pkg = await Bun.file(`./dist/${filepath}`).json()
-  binaries[pkg.name] = pkg.version
+for (const filepath of new Bun.Glob("*/*/package.json").scanSync({ cwd: "./dist" })) {
+  const p = await Bun.file(`./dist/${filepath}`).json()
+  binaries[p.name] = p.version
 }
 console.log("binaries", binaries)
-const version = Object.values(binaries)[0]
+const version = Object.values(binaries)[0] || Script.version || pkg.version
 
 await $`mkdir -p ./dist/${pkg.name}`
-await $`mkdir -p ./dist/${pkg.name}/bin`
+await $`cp -r ./bin ./dist/${pkg.name}/bin`
 await $`cp ./script/postinstall.mjs ./dist/${pkg.name}/postinstall.mjs`
 await Bun.file(`./dist/${pkg.name}/LICENSE`).write(await Bun.file("../../LICENSE").text())
-await Bun.file(`./dist/${pkg.name}/bin/agentx.exe`).write(
-  [
-    `echo "Error: ${pkg.name}'s postinstall script was not run." >&2`,
-    'echo "" >&2',
-    'echo "This occurs when using --ignore-scripts during installation, or when using a" >&2',
-    'echo "package manager like pnpm that does not run postinstall scripts by default." >&2',
-    'echo "" >&2',
-    'echo "To fix this, run the postinstall script manually:" >&2',
-    `echo "  cd node_modules/${pkg.name} && node postinstall.mjs" >&2`,
-    'echo "" >&2',
-    `echo "Or reinstall ${pkg.name} without the --ignore-scripts flag." >&2`,
-    "exit 1",
-    "",
-  ].join("\n"),
-)
-await Bun.file(`./dist/${pkg.name}/bin/agentx`).write(await Bun.file(`./dist/${pkg.name}/bin/agentx.exe`).text())
+await Bun.file(`./dist/${pkg.name}/README.md`).write(await Bun.file("./README.md").text())
 
 await Bun.file(`./dist/${pkg.name}/package.json`).write(
   JSON.stringify(
     {
       name: pkg.name,
       bin: {
-        agentx: "./bin/agentx.exe",
-        opencode: "./bin/agentx.exe",
+        agentx: "./bin/agentx",
+        opencode: "./bin/agentx",
       },
       scripts: {
         postinstall: "node ./postinstall.mjs",
       },
       version: version,
       license: pkg.license,
+      keywords: ["ai", "cli", "agent", "coding", "typescript", "terminal", "bun", "agentx"],
       os: ["darwin", "linux", "win32"],
       cpu: ["arm64", "x64"],
       optionalDependencies: binaries,
+      repository: {
+        type: "git",
+        url: "https://github.com/SohailKhan0525/agentxcode",
+      },
     },
     null,
     2,
@@ -88,63 +78,27 @@ const tagFlags = tags.flatMap((t) => ["-t", t])
 
 // registries
 if (!Script.preview) {
-  await $`docker buildx build --platform ${platforms} ${tagFlags} --push .`
-  // Calculate SHA values
-  const arm64Sha = await $`sha256sum ./dist/agentx-linux-arm64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
-  const x64Sha = await $`sha256sum ./dist/agentx-linux-x64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
-  const macX64Sha = await $`sha256sum ./dist/agentx-darwin-x64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
-  const macArm64Sha = await $`sha256sum ./dist/agentx-darwin-arm64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
-
-  const [pkgver, _subver = ""] = Script.version.split(/(-.*)/, 2)
-
-  // arch
-  const binaryPkgbuild = [
-    "# Maintainer: Sohail Khan <sohailkhan0525>",
-    "",
-    "pkgname='agentx-bin'",
-    `pkgver=${pkgver}`,
-    `_subver=${_subver}`,
-    "options=('!debug' '!strip')",
-    "pkgrel=1",
-    "pkgdesc='AgentX Code - The autonomous AI coding agent built for the terminal.'",
-    "url='https://agentx.js.org'",
-    "arch=('aarch64' 'x86_64')",
-    "license=('MIT')",
-    "provides=('agentx' 'opencode')",
-    "conflicts=('agentx')",
-    "depends=('ripgrep')",
-    "",
-    `source_aarch64=("\${pkgname}_\${pkgver}_aarch64.tar.gz::https://github.com/SohailKhan0525/agentxcode/releases/download/v\${pkgver}\${_subver}/agentx-linux-arm64.tar.gz")`,
-    `sha256sums_aarch64=('${arm64Sha}')`,
-    "",
-    `source_x86_64=("\${pkgname}_\${pkgver}_x86_64.tar.gz::https://github.com/SohailKhan0525/agentxcode/releases/download/v\${pkgver}\${_subver}/agentx-linux-x64.tar.gz")`,
-    `sha256sums_x86_64=('${x64Sha}')`,
-    "",
-    "package() {",
-    '  install -Dm755 ./agentx "${pkgdir}/usr/bin/agentx"',
-    '  ln -sf "${pkgdir}/usr/bin/agentx" "${pkgdir}/usr/bin/opencode"',
-    "}",
-    "",
-  ].join("\n")
-
-  for (const [pkg, pkgbuild] of [["opencode-bin", binaryPkgbuild]]) {
-    for (let i = 0; i < 30; i++) {
-      try {
-        await $`rm -rf ./dist/aur-${pkg}`
-        await $`git clone ssh://aur@aur.archlinux.org/${pkg}.git ./dist/aur-${pkg}`
-        await $`cd ./dist/aur-${pkg} && git checkout master`
-        await Bun.file(`./dist/aur-${pkg}/PKGBUILD`).write(pkgbuild)
-        await $`cd ./dist/aur-${pkg} && makepkg --printsrcinfo > .SRCINFO`
-        await $`cd ./dist/aur-${pkg} && git add PKGBUILD .SRCINFO`
-        if ((await $`cd ./dist/aur-${pkg} && git diff --cached --quiet`.nothrow()).exitCode === 0) break
-        await $`cd ./dist/aur-${pkg} && git commit -m "Update to v${Script.version}"`
-        await $`cd ./dist/aur-${pkg} && git push`
-        break
-      } catch {
-        continue
-      }
+  if (process.env.DOCKER_BUILD === "true") {
+    try {
+      await $`docker buildx build --platform ${platforms} ${tagFlags} --push .`
+    } catch (e) {
+      console.warn("Docker build skipped or failed:", e)
     }
   }
+
+  // Calculate SHA values if archives exist
+  const arm64Sha = await Bun.file("./dist/agentx-linux-arm64.tar.gz").exists()
+    ? await $`sha256sum ./dist/agentx-linux-arm64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
+    : ""
+  const x64Sha = await Bun.file("./dist/agentx-linux-x64.tar.gz").exists()
+    ? await $`sha256sum ./dist/agentx-linux-x64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
+    : ""
+  const macX64Sha = await Bun.file("./dist/agentx-darwin-x64.tar.gz").exists()
+    ? await $`sha256sum ./dist/agentx-darwin-x64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
+    : ""
+  const macArm64Sha = await Bun.file("./dist/agentx-darwin-arm64.tar.gz").exists()
+    ? await $`sha256sum ./dist/agentx-darwin-arm64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
+    : ""
 
   // Homebrew formula
   const homebrewFormula = [

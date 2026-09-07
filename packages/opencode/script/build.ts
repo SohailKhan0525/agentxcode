@@ -144,7 +144,7 @@ if (!skipInstall && !singleFlag) {
 }
 for (const item of targets) {
   const name = [
-    "agentx",
+    pkg.name,
     // changing to win32 flags npm for some reason
     item.os === "win32" ? "windows" : item.os,
     item.arch,
@@ -176,7 +176,7 @@ for (const item of targets) {
       autoloadDotenv: false,
       autoloadTsconfig: true,
       autoloadPackageJson: true,
-      target: name.replace("agentx", "bun") as any,
+      target: name.replace(pkg.name, "bun") as any,
       outfile: `dist/${name}/bin/${binName}`,
       execArgv: [`--user-agent=agentx/${Script.version}`, "--use-system-ca", "--"],
       windows: {},
@@ -244,15 +244,21 @@ for (const item of targets) {
 }
 
 if (Script.release) {
+  const archives: string[] = []
   for (const key of Object.keys(binaries)) {
+    const archive = key.replace(pkg.name, "agentx")
     if (key.includes("windows")) {
+      const out = path.resolve("dist", `${archive}.zip`)
       if (process.platform === "win32") {
-        await $`powershell -Command "Compress-Archive -Path dist/${key}/bin/* -DestinationPath dist/${key}.zip -Force"`
+        await $`powershell -Command "Compress-Archive -Path dist/${key}/bin/* -DestinationPath ${out} -Force"`
       } else {
-        await $`zip -r ../../${key}.zip *`.cwd(`dist/${key}/bin`)
+        await $`zip -r ${out} *`.cwd(`dist/${key}/bin`)
       }
+      archives.push(out)
     } else {
-      await $`tar -czf ../../${key}.tar.gz *`.cwd(`dist/${key}/bin`)
+      const out = path.resolve("dist", `${archive}.tar.gz`)
+      await $`tar -czf ${out} *`.cwd(`dist/${key}/bin`)
+      archives.push(out)
     }
   }
 
@@ -268,7 +274,9 @@ if (Script.release) {
     await Bun.file("dist/SHA256SUMS.txt").write(checksums.sort().join("\n") + "\n")
   }
 
-  await $`gh release upload v${Script.version} ./dist/*.zip ./dist/*.tar.gz ./dist/SHA256SUMS.txt --clobber --repo ${process.env.GH_REPO}`
+  if (process.env.GH_REPO) {
+    await $`gh release upload v${Script.version} ./dist/*.zip ./dist/*.tar.gz ./dist/SHA256SUMS.txt --clobber --repo ${process.env.GH_REPO}`.nothrow()
+  }
 }
 
 export { binaries }

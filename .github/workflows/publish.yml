@@ -57,17 +57,25 @@ jobs:
         env:
           AGENTX_VERSION: ${{ env.AGENTX_VERSION }}
           OPENCODE_VERSION: ${{ env.AGENTX_VERSION }}
+          AGENTX_RELEASE: "true"
           GH_REPO: ${{ github.repository }}
 
       - name: Package Archives & Checksums
         run: |
           cd packages/opencode/dist
-          for d in agentx-*/; do
+          for d in @agent-qofeno/agentx-cli-*/; do
+            [ -d "$d" ] || continue
             target="${d%/}"
-            if [[ "$target" == *"windows"* ]]; then
-              zip -r "${target}.zip" "${target}/bin"
+            target_name="${target#@agent-qofeno/agentx-cli-}"
+            archive="agentx-${target_name}"
+            if [[ "$archive" == *"windows"* ]]; then
+              if [ ! -f "${archive}.zip" ]; then
+                zip -r "${archive}.zip" "${target}/bin"
+              fi
             else
-              tar -czf "${target}.tar.gz" -C "${target}/bin" .
+              if [ ! -f "${archive}.tar.gz" ]; then
+                tar -czf "${archive}.tar.gz" -C "${target}/bin" .
+              fi
             fi
           done
           sha256sum *.zip *.tar.gz > SHA256SUMS.txt
@@ -77,19 +85,14 @@ jobs:
         run: |
           cd sdks/vscode
           bun install --ignore-scripts
-          bun run package || true
-          npx --yes @vscode/vsce package -o ../../packages/opencode/dist/agentx-vscode.vsix --no-dependencies || true
-        continue-on-error: true
+          bun run package
+          npx --yes @vscode/vsce package -o ../../packages/opencode/dist/agentx-vscode.vsix --no-dependencies
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: release-assets
-          path: |
-            packages/opencode/dist/*.zip
-            packages/opencode/dist/*.tar.gz
-            packages/opencode/dist/SHA256SUMS.txt
-            packages/opencode/dist/*.vsix
+          path: packages/opencode/dist/
 
   release:
     name: github release & publish
@@ -114,27 +117,34 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: release-assets
-          path: dist
+          path: packages/opencode/dist
 
       - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/v')
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: |
           tag="${{ github.ref_name }}"
-          gh release create "$tag" dist/*.zip dist/*.tar.gz dist/SHA256SUMS.txt dist/*.vsix \
+          if [[ "$tag" == "dev" || "$tag" == "main" || "$tag" != v* ]]; then
+            tag="v${{ env.AGENTX_VERSION }}"
+          fi
+          cd packages/opencode/dist
+          gh release view "$tag" --repo ${{ github.repository }} || gh release create "$tag" *.zip *.tar.gz SHA256SUMS.txt agentx-vscode.vsix \
             --title "AgentX Code $tag" \
             --notes "AgentX Code Release $tag — Autonomous AI coding agent built for the terminal." \
-            --repo ${{ github.repository }} || gh release upload "$tag" dist/* --clobber --repo ${{ github.repository }}
+            --repo ${{ github.repository }}
+          gh release upload "$tag" *.zip *.tar.gz SHA256SUMS.txt agentx-vscode.vsix --clobber --repo ${{ github.repository }} || true
 
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN || secrets.NODE_AUTH_TOKEN }}
+          NPM_CONFIG_PROVENANCE: "true"
         run: |
           if [ -n "$NODE_AUTH_TOKEN" ]; then
-            bun ./packages/opencode/script/publish.ts || true
+            echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+            bun ./packages/opencode/script/publish.ts
+          else
+            echo "NODE_AUTH_TOKEN is not set; skipping npm publish"
           fi
-        continue-on-error: true
 
       - name: Publish to JSR
         env:
@@ -149,6 +159,28 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
-          echo "@SohailKhan0525:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          cd packages/opencode
+          if [ -d "dist/@agent-qofeno/agentx-cli" ]; then
+            mkdir -p "dist/@SohailKhan0525/agentx-cli"
+            cp -r dist/@agent-qofeno/agentx-cli/* dist/@SohailKhan0525/agentx-cli/
+            node -e '
+              const fs = require("fs");
+              const p = "dist/@SohailKhan0525/agentx-cli/package.json";
+              const pkg = JSON.parse(fs.readFileSync(p, "utf8"));
+              pkg.name = "@SohailKhan0525/agentx-cli";
+              pkg.publishConfig = { registry: "https://npm.pkg.github.com" };
+              fs.writeFileSync(p, JSON.stringify(pkg, null, 2));
+            '
+            echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
+            echo "@SohailKhan0525:registry=https://npm.pkg.github.com" >> ~/.npmrc
+            cd dist/@SohailKhan0525/agentx-cli
+            bun pm pack
+            npm publish *.tgz --registry=https://npm.pkg.github.com || true
+          fi
         continue-on-error: true
+
+      - name: Trigger Homebrew Tap Update
+        env:
+          GH_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN || secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run homebrew.yml --repo ${{ github.repository }} -f tag="v${{ env.AGENTX_VERSION }}" || true

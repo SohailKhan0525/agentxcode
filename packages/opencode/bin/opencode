@@ -71,7 +71,7 @@ let arch = archMap[os.arch()]
 if (!arch) {
   arch = os.arch()
 }
-const base = "agentx-" + platform + "-" + arch
+const base = "@agent-qofeno/agentx-cli-" + platform + "-" + arch
 const binary = platform === "windows" ? "agentx.exe" : "agentx"
 
 function supportsAvx2() {
