@@ -124,10 +124,6 @@
     "terminal-image": "5.0.1",
     "typescript": "catalog:"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/SohailKhan0525/agentxcode"
-  },
   "license": "MIT",
   "prettier": {
     "semi": false,
