@@ -170,6 +170,7 @@ const layer = Layer.effect(
                 },
                 edit: {
                   "*": "deny",
+                  [path.join(".agentxcode", "plans", "*.md")]: "allow",
                   [path.join(".agentx", "plans", "*.md")]: "allow",
                   [path.join(".opencode", "plans", "*.md")]: "allow",
                   [path.relative(ctx.worktree, path.join(Global.Path.data, path.join("plans", "*.md")))]: "allow",

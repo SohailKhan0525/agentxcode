@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - 'v*'
-    branches:
-      - dev
   workflow_dispatch:
     inputs:
       version:
@@ -22,11 +20,47 @@ permissions:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  AGENTX_VERSION: ${{ github.ref_name != 'dev' && startsWith(github.ref_name, 'v') && github.ref_name || inputs.version || '3.0.0' }}
+  AGENTX_VERSION: ${{ startsWith(github.ref_name, 'v') && github.ref_name || inputs.version || '3.0.0' }}
 
 jobs:
+  validate-secrets:
+    name: validate release secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check required secrets
+        shell: bash
+        run: |
+          echo "=== Validating Required Secrets for AgentX Code Release ==="
+          missing_critical=0
+
+          if [ -z "${{ secrets.NPM_TOKEN }}" ] && [ -z "${{ secrets.NODE_AUTH_TOKEN }}" ]; then
+            echo "::error::Missing secret: NPM_TOKEN is required to publish @agent-qofeno/agentx-cli to the npm registry."
+            missing_critical=1
+          else
+            echo "✓ NPM_TOKEN is configured"
+          fi
+
+          if [ -z "${{ secrets.HOMEBREW_TAP_TOKEN }}" ] && [ -z "${{ secrets.GH_PAT }}" ]; then
+            echo "::warning::Missing secret: HOMEBREW_TAP_TOKEN (or GH_PAT) is needed to update the SohailKhan0525/homebrew-agentx tap formula."
+          else
+            echo "✓ HOMEBREW_TAP_TOKEN (or GH_PAT) is configured"
+          fi
+
+          if [ -z "${{ secrets.JSR_TOKEN }}" ]; then
+            echo "::warning::Missing secret: JSR_TOKEN is needed to publish to JSR registry (jsr.io)."
+          else
+            echo "✓ JSR_TOKEN is configured"
+          fi
+
+          if [ $missing_critical -eq 1 ]; then
+            echo "Critical release secrets are missing. Please add them in GitHub repository Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          echo "All critical release secrets validated successfully."
+
   build:
     name: build binaries & vsix
+    needs: validate-secrets
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

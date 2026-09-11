@@ -38,7 +38,11 @@ const themeSource: ThemeSource = {
   async discover() {
     const directories = [Global.Path.config]
     for (let current = process.cwd(); ; current = path.dirname(current)) {
-      directories.push(path.join(current, ".agentx"), path.join(current, ".opencode"))
+      directories.push(
+        path.join(current, ".agentxcode"),
+        path.join(current, ".agentx"),
+        path.join(current, ".opencode"),
+      )
       if (path.dirname(current) === current) break
     }
     return discoverThemes(directories)

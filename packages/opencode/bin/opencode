@@ -48,9 +48,11 @@ const envPath = process.env.AGENTX_BIN_PATH || process.env.OPENCODE_BIN_PATH
 const scriptPath = fs.realpathSync(__filename)
 const scriptDir = path.dirname(scriptPath)
 
-const cached = fs.existsSync(path.join(scriptDir, ".agentx"))
-  ? path.join(scriptDir, ".agentx")
-  : path.join(scriptDir, ".opencode")
+const cached = fs.existsSync(path.join(scriptDir, ".agentxcode"))
+  ? path.join(scriptDir, ".agentxcode")
+  : fs.existsSync(path.join(scriptDir, ".agentx"))
+    ? path.join(scriptDir, ".agentx")
+    : path.join(scriptDir, ".opencode")
 
 const platformMap = {
   darwin: "darwin",

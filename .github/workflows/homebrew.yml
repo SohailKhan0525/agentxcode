@@ -1,4 +1,4 @@
-﻿name: homebrew
+name: homebrew
 
 on:
   release:
@@ -15,13 +15,23 @@ jobs:
     name: Update homebrew-agentx formula
     runs-on: ubuntu-latest
     steps:
+      - name: Validate Secrets
+        shell: bash
+        run: |
+          if [ -z "${{ secrets.HOMEBREW_TAP_TOKEN }}" ] && [ -z "${{ secrets.GH_PAT }}" ]; then
+            echo "::error::Missing secret: HOMEBREW_TAP_TOKEN (or GH_PAT) with write access to SohailKhan0525/homebrew-agentx is required."
+            echo "Please add HOMEBREW_TAP_TOKEN in GitHub repository Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          echo "Secret validation passed for Homebrew tap update."
+
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Compute SHA256 of release tarball
         id: sha
         env:
-          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN || secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: |
           TAG="${{ github.event.release.tag_name || inputs.tag }}"
           TARBALL_URL="https://registry.npmjs.org/@agent-qofeno/agentx-cli/-/agentx-cli-${TAG#v}.tgz"

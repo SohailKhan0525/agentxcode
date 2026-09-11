@@ -201,11 +201,21 @@ const loadState = Effect.fn("TuiConfig.loadState")(function* (ctx: { directory: 
   // walking up the tree. Also returned below so callers can install plugin
   // dependencies from each location.
   const dirs = unique(directories).filter(
-    (dir) => dir.endsWith(".agentx") || dir.endsWith(".opencode") || dir === Flag.OPENCODE_CONFIG_DIR,
+    (dir) =>
+      dir.endsWith(".agentxcode") ||
+      dir.endsWith(".agentx") ||
+      dir.endsWith(".opencode") ||
+      dir === Flag.OPENCODE_CONFIG_DIR,
   )
 
   for (const dir of dirs) {
-    if (!dir.endsWith(".agentx") && !dir.endsWith(".opencode") && dir !== Flag.OPENCODE_CONFIG_DIR) continue
+    if (
+      !dir.endsWith(".agentxcode") &&
+      !dir.endsWith(".agentx") &&
+      !dir.endsWith(".opencode") &&
+      dir !== Flag.OPENCODE_CONFIG_DIR
+    )
+      continue
     for (const file of ConfigPaths.fileInDirectory(dir, "tui")) {
       yield* mergeFile(acc, file)
     }

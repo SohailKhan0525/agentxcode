@@ -402,8 +402,8 @@ async function resolveConfigPath(baseDir: string, global = false) {
 
   if (!global) {
     candidates.push(
-      path.join(baseDir, ".agentx", "agentx.json"),
-      path.join(baseDir, ".agentx", "agentx.jsonc"),
+      path.join(baseDir, ".agentxcode", "agentx.json"),
+      path.join(baseDir, ".agentxcode", "agentx.jsonc"),
       path.join(baseDir, ".agentx", "agentx.json"),
       path.join(baseDir, ".agentx", "agentx.jsonc"),
       path.join(baseDir, ".opencode", "opencode.json"),

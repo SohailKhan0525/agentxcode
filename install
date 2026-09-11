@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 # AgentX Code Installer
@@ -6,7 +6,7 @@ set -euo pipefail
 # Repository: https://github.com/SohailKhan0525/agentxcode
 
 REPO="SohailKhan0525/agentxcode"
-INSTALL_DIR="${AGENTX_INSTALL_DIR:-$HOME/.agentx/bin}"
+INSTALL_DIR="${AGENTX_INSTALL_DIR:-$HOME/.agentxcode/bin}"
 
 CYAN='\033[96m'
 GREEN='\033[92m'
@@ -144,14 +144,14 @@ case "$SHELL_NAME" in
   *)    RC_FILE="$HOME/.profile" ;;
 esac
 
-PATH_STR="export PATH=\"\$HOME/.agentx/bin:\$PATH\""
+PATH_STR="export PATH=\"\$HOME/.agentxcode/bin:\$PATH\""
 if [ "$SHELL_NAME" = "fish" ]; then
-  PATH_STR="fish_add_path \$HOME/.agentx/bin"
+  PATH_STR="fish_add_path \$HOME/.agentxcode/bin"
 fi
 
 if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
   if [ -n "$RC_FILE" ] && [ -f "$RC_FILE" ]; then
-    if ! grep -qs "\.agentx/bin" "$RC_FILE"; then
+    if ! grep -qs "\.agentxcode/bin" "$RC_FILE"; then
       echo "" >> "$RC_FILE"
       echo "# AgentX Code" >> "$RC_FILE"
       echo "$PATH_STR" >> "$RC_FILE"
@@ -162,7 +162,7 @@ fi
 
 echo -e "\n${GREEN}${BOLD}AgentX Code installed successfully!${NC}\n"
 echo -e "To get started, restart your shell or run:"
-echo -e "  ${CYAN}export PATH=\"\$HOME/.agentx/bin:\$PATH\"${NC}\n"
+echo -e "  ${CYAN}export PATH=\"\$HOME/.agentxcode/bin:\$PATH\"${NC}\n"
 echo -e "Run AgentX Code:"
 echo -e "  ${CYAN}agentx${NC}                Start interactive terminal TUI"
 echo -e "  ${CYAN}agentx local --scan${NC}   Detect local hardware & AI models (Ollama, LM Studio)"

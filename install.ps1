@@ -1,11 +1,11 @@
-﻿# AgentX Code Windows PowerShell Installer
+# AgentX Code Windows PowerShell Installer
 # https://agentx.js.org
 # Repository: https://github.com/SohailKhan0525/agentxcode
 
 $ErrorActionPreference = "Stop"
 
 $Repo = "SohailKhan0525/agentxcode"
-$InstallDir = if ($env:AGENTX_INSTALL_DIR) { $env:AGENTX_INSTALL_DIR } else { "$HOME\.agentx\bin" }
+$InstallDir = if ($env:AGENTX_INSTALL_DIR) { $env:AGENTX_INSTALL_DIR } else { "$HOME\.agentxcode\bin" }
 
 Write-Host @"
 `e[96m`e[1m
