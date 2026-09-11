@@ -145,7 +145,9 @@ export function PermissionPrompt(props: { request: PermissionRequest; directory?
               </Match>
               <Match when={true}>
                 <box paddingLeft={1} gap={1}>
-                  <text fg={theme.textMuted}>This will allow the following patterns until AgentX Code is restarted</text>
+                  <text fg={theme.textMuted}>
+                    This will allow the following patterns until AgentX Code is restarted
+                  </text>
                   <box>
                     <For each={props.request.always}>
                       {(pattern) => (

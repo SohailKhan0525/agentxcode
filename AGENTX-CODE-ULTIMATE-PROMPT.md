@@ -1,15 +1,27 @@
 # AgentX Code — Complete Transformation Prompt
+
 # Tool: Antigravity CLI
+
 # Base: opencode clone already in working directory
+
 # Reference: Clone Kilocode separately to study and copy from
+
 # Target: github.com/SohailKhan0525/agentxcode (new repo)
+
 # Display name: AgentX Code
+
 # Binary command: agentx
+
 # Config folder: .agentxcode
+
 # Repo name: agentxcode
+
 # npm package name: @agent-qofeno/agentx-cli (DO NOT CHANGE — already published)
+
 # Version: 3.0.0 everywhere
+
 # Logo: agentx_icon.png (provided) — use PNG everywhere except TUI
+
 # TUI brand: AGENTX CODE in yellow color text since TUI cannot render PNG
 
 ---
