@@ -39,6 +39,13 @@ jobs:
       run:
         shell: bash
     steps:
+      - name: Configure Git for Windows runner
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          git config --global core.longpaths true
+          git config --global core.autocrlf false
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -71,12 +78,16 @@ jobs:
 
       - name: Smoke test (agentx --version, agentx local --scan)
         run: |
+          BIN=""
           if [ "${{ runner.os }}" = "Windows" ]; then
-            BIN=$(find packages/opencode/dist/agentx-windows-*/bin -name "agentx.exe" | head -n 1)
-          elif [ "${{ runner.os }}" = "macOS" ]; then
-            BIN=$(find packages/opencode/dist/agentx-darwin-*/bin -name "agentx" -type f | head -n 1)
+            BIN=$(find packages/opencode/dist -name "agentx.exe" -type f | head -n 1)
           else
-            BIN=$(find packages/opencode/dist/agentx-linux-*/bin -name "agentx" -type f | head -n 1)
+            BIN=$(find packages/opencode/dist -name "agentx" -type f | head -n 1)
+          fi
+          if [ -z "$BIN" ]; then
+            echo "::error::agentx binary not found in packages/opencode/dist"
+            find packages/opencode/dist || true
+            exit 1
           fi
           echo "Found binary at: $BIN"
           chmod +x "$BIN" || true
