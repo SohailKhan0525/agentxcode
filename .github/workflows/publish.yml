@@ -1,0 +1,212 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish (e.g. 3.0.1)"
+        required: false
+        type: string
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  id-token: write
+  packages: write
+
+jobs:
+  validate-secrets:
+    name: validate release secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check required tokens
+        run: |
+          missing=()
+          if [ -z "${{ secrets.NPM_TOKEN }}" ]; then
+            missing+=("NPM_TOKEN")
+          fi
+          if [ -z "${{ secrets.HOMEBREW_TAP_TOKEN }}" ]; then
+            missing+=("HOMEBREW_TAP_TOKEN")
+          fi
+          if [ -z "${{ secrets.JSR_TOKEN }}" ]; then
+            missing+=("JSR_TOKEN")
+          fi
+          if [ ${#missing[@]} -ne 0 ]; then
+            echo "::error::Missing required repository secrets: ${missing[*]}"
+            exit 1
+          fi
+          echo "All required release secrets are present."
+
+  build:
+    name: build binaries & vsix
+    needs: validate-secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Setup git committer
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build Web UI
+        run: |
+          if [ -d "packages/app" ]; then
+            bun run --cwd packages/app build || true
+          fi
+
+      - name: Build Multi-Target Binaries
+        run: |
+          cd packages/opencode
+          bun run script/build.ts
+
+      - name: Package Archives & Checksums
+        run: |
+          cd packages/opencode
+          mkdir -p dist/packages
+          for dir in dist/*; do
+            if [ -d "$dir" ] && [ "$(basename "$dir")" != "packages" ]; then
+              base=$(basename "$dir")
+              # If directory contains scoped name like @agent-qofeno/agentx-cli-*
+              if [[ "$base" == *"@"* ]]; then
+                for sub in "$dir"/*; do
+                  if [ -d "$sub" ]; then
+                    subname=$(basename "$sub")
+                    target="${subname#agentx-cli-}"
+                    if [ -d "$sub/bin" ]; then
+                      if [[ "$target" == *"windows"* ]]; then
+                        (cd "$sub/bin" && zip -r "../../../packages/agentx-${target}.zip" *)
+                      else
+                        (cd "$sub/bin" && tar -czf "../../../packages/agentx-${target}.tar.gz" *)
+                      fi
+                    fi
+                  fi
+                done
+              else
+                target="${base#agentx-cli-}"
+                if [ -d "$dir/bin" ]; then
+                  if [[ "$target" == *"windows"* ]]; then
+                    (cd "$dir/bin" && zip -r "../../packages/agentx-${target}.zip" *)
+                  else
+                    (cd "$dir/bin" && tar -czf "../../packages/agentx-${target}.tar.gz" *)
+                  fi
+                fi
+              fi
+            fi
+          done
+          cd dist/packages
+          sha256sum * > SHA256SUMS.txt || shasum -a 256 * > SHA256SUMS.txt
+
+      - name: Build VS Code Extension (.vsix)
+        run: |
+          if [ -d "sdks/vscode" ]; then
+            cd sdks/vscode
+            bun install
+            npx @vscode/vsce package --no-dependencies -o ../../packages/opencode/dist/packages/agentx-vscode.vsix || true
+          fi
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-assets
+          path: packages/opencode/dist/packages/*
+          if-no-files-found: error
+
+  release:
+    name: github release & publish
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: release-assets
+          path: release-assets
+
+      - name: Determine Version Tag
+        id: version
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            TAG="v${{ github.event.inputs.version }}"
+          elif [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            TAG="${GITHUB_REF#refs/tags/}"
+          else
+            TAG="v3.0.1"
+          fi
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.version.outputs.tag }}"
+          gh release create "$TAG" release-assets/* \
+            --title "AgentX Code $TAG" \
+            --notes "AgentX Code Release $TAG — Autonomous AI coding agent built for the terminal." \
+            --repo ${{ github.repository }} \
+            --clobber || true
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          cd packages/opencode
+          npm publish --access public --provenance || true
+
+      - name: Publish to JSR
+        env:
+          JSR_TOKEN: ${{ secrets.JSR_TOKEN }}
+        run: |
+          if [ -f "jsr.json" ]; then
+            npx jsr publish --allow-dirty || true
+          fi
+
+      - name: Publish to GitHub Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+          cd packages/opencode
+          npm publish --registry=https://npm.pkg.github.com || true
+
+      - name: Trigger Homebrew Tap Update
+        env:
+          GH_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+        run: |
+          gh workflow run homebrew.yml \
+            --ref dev \
+            --repo ${{ github.repository }} || true

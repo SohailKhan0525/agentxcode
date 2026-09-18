@@ -1,0 +1,76 @@
+name: homebrew
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version tag to release (e.g. 3.0.1)"
+        required: false
+        type: string
+
+jobs:
+  update-formula:
+    name: Update homebrew-agentx formula
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch Latest Release and SHA
+        id: release
+        run: |
+          VERSION="${{ github.event.inputs.version || '3.0.1' }}"
+          VERSION="${VERSION#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          TARBALL_URL="https://github.com/SohailKhan0525/agentxcode/releases/download/v${VERSION}/agentx-darwin-arm64.tar.gz"
+          echo "url=$TARBALL_URL" >> $GITHUB_OUTPUT
+          SHA=$(curl -fsSL "$TARBALL_URL" | sha256sum | awk '{print $1}' || echo "")
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+
+      - name: Update Formula in homebrew-agentx
+        env:
+          TAP_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+        run: |
+          if [ -z "$TAP_TOKEN" ]; then
+            echo "HOMEBREW_TAP_TOKEN missing; skipping"
+            exit 0
+          fi
+          git clone https://x-access-token:${TAP_TOKEN}@github.com/SohailKhan0525/homebrew-agentx.git tap
+          cd tap
+          mkdir -p Formula
+          cat <<EOF > Formula/agentx.rb
+class Agentx < Formula
+  desc "AgentX Code — Autonomous AI coding agent built for the terminal"
+  homepage "https://agentx.js.org"
+  version "${{ steps.release.outputs.version }}"
+
+  on_macos do
+    if Hardware::CPU.arm?
+      url "https://github.com/SohailKhan0525/agentxcode/releases/download/v${{ steps.release.outputs.version }}/agentx-darwin-arm64.tar.gz"
+      sha256 "${{ steps.release.outputs.sha }}"
+    else
+      url "https://github.com/SohailKhan0525/agentxcode/releases/download/v${{ steps.release.outputs.version }}/agentx-darwin-x64.tar.gz"
+    end
+  end
+
+  on_linux do
+    if Hardware::CPU.arm?
+      url "https://github.com/SohailKhan0525/agentxcode/releases/download/v${{ steps.release.outputs.version }}/agentx-linux-arm64.tar.gz"
+    else
+      url "https://github.com/SohailKhan0525/agentxcode/releases/download/v${{ steps.release.outputs.version }}/agentx-linux-x64.tar.gz"
+    end
+  end
+
+  def install
+    bin.install "agentx"
+  end
+
+  test do
+    system "#{bin}/agentx", "--version"
+  end
+end
+EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/agentx.rb
+          git commit -m "feat(formula): update agentx to v${{ steps.release.outputs.version }}" || exit 0
+          git push origin main || git push origin master
