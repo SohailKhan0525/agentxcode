@@ -208,7 +208,56 @@ function findBun() {
   return null
 }
 
-const resolved = envPath || findBinary()
+async function ensureBinary() {
+  const binary = findBinary()
+  if (binary) return binary
+
+  const target = path.join(scriptDir, "agentx" + exeExt)
+  if (fs.existsSync(target)) return target
+
+  const platform = platformMap[os.platform()]
+  const arch = archMap[os.arch()]
+  if (!platform || !arch) return null
+
+  console.log(`\x1b[93;1mAgentX Code\x1b[0m: Initializing ${platform}-${arch} binary...`)
+  const releaseTag = "v3.0.1"
+  const archiveExt = isWin ? ".zip" : ".tar.gz"
+  const archiveName = `agentx-${platform}-${arch}${archiveExt}`
+  const downloadUrl = `https://github.com/SohailKhan0525/agentxcode/releases/download/${releaseTag}/${archiveName}`
+
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "agentx-init-"))
+  const archivePath = path.join(tempDir, archiveName)
+
+  try {
+    const res = await fetch(downloadUrl, { redirect: "follow" })
+    if (!res.ok) return null
+    const arrayBuffer = await res.arrayBuffer()
+    fs.writeFileSync(archivePath, Buffer.from(arrayBuffer))
+
+    childProcess.spawnSync("tar", ["-xf", archivePath, "-C", tempDir], {
+      windowsHide: true,
+      stdio: "ignore",
+    })
+
+    const extracted = path.join(tempDir, "agentx" + exeExt)
+    if (fs.existsSync(extracted)) {
+      fs.copyFileSync(extracted, target)
+      if (!isWin) fs.chmodSync(target, 0o755)
+      return target
+    }
+  } catch {
+    return null
+  } finally {
+    try {
+      fs.rmSync(tempDir, { recursive: true, force: true })
+    } catch {
+      // ignore
+    }
+  }
+  return null
+}
+
+const resolved = envPath || (await ensureBinary())
 
 if (resolved) {
   run(resolved, process.argv.slice(2))
@@ -223,8 +272,8 @@ if (resolved) {
       [
         "\x1b[93;1mAgentX Code\x1b[0m",
         "",
-        "Unable to find the AgentX Code runtime.",
-        "Please install Bun to run AgentX Code:",
+        "Unable to find or initialize the AgentX Code runtime.",
+        "Please check your internet connection or install Bun:",
         "",
         "  Linux / macOS:",
         "    curl -fsSL https://bun.sh/install | bash",

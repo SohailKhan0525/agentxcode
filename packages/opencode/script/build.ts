@@ -138,9 +138,10 @@ await $`rm -rf dist`
 
 const binaries: Record<string, string> = {}
 if (!skipInstall) {
-  await $`bun install --os="*" --cpu="*" @opentui/core@${pkg.dependencies["@opentui/core"]}`
-  await $`bun install --os="*" --cpu="*" @parcel/watcher@${pkg.dependencies["@parcel/watcher"]}`
-  await $`bun install --os="*" --cpu="*" @ff-labs/fff-bun@${pkg.dependencies["@ff-labs/fff-bun"]}`
+  const deps: Record<string, string> = { ...pkg.devDependencies, ...pkg.dependencies }
+  await $`bun install --os="*" --cpu="*" @opentui/core@${deps["@opentui/core"]}`
+  await $`bun install --os="*" --cpu="*" @parcel/watcher@${deps["@parcel/watcher"]}`
+  await $`bun install --os="*" --cpu="*" @ff-labs/fff-bun@${deps["@ff-labs/fff-bun"]}`
 }
 for (const item of targets) {
   const name = [
