@@ -11,6 +11,32 @@ const scriptPath = fs.realpathSync(__filename)
 const scriptDir = path.dirname(scriptPath)
 const packageDir = path.resolve(scriptDir, "..")
 
+function getVersion() {
+  try {
+    const pkg = JSON.parse(fs.readFileSync(path.join(packageDir, "package.json"), "utf8"))
+    if (pkg.version) return pkg.version
+  } catch {
+    // ignore
+  }
+  return "3.0.4"
+}
+
+const currentVersion = getVersion()
+process.env.AGENTX_VERSION = process.env.AGENTX_VERSION || currentVersion
+process.env.OPENCODE_VERSION = process.env.OPENCODE_VERSION || currentVersion
+
+const cliArgs = process.argv.slice(2)
+if (
+  cliArgs.length === 1 &&
+  (cliArgs[0] === "--version" ||
+    cliArgs[0] === "-v" ||
+    cliArgs[0] === "version" ||
+    cliArgs[0] === "-version")
+) {
+  console.log(currentVersion)
+  process.exit(0)
+}
+
 const forwardedSignals = ["SIGINT", "SIGTERM", "SIGHUP"]
 
 function run(target, args) {

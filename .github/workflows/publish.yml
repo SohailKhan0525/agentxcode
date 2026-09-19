@@ -37,6 +37,7 @@ jobs:
         run: bun run ./packages/opencode/script/build.ts --single
         env:
           NODE_ENV: production
+          OPENCODE_VERSION: ${{ github.ref_name }}
 
       - name: Publish to npm
         run: |
