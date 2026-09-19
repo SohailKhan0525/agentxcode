@@ -1,721 +1,438 @@
 ---
-import { Image } from 'astro:assets';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import config from "virtual:starlight/user-config";
+import { getRelativeLocaleUrl } from "astro:i18n"
+import config from "../../config.mjs"
 
-import CopyIcon from "../assets/lander/copy.svg";
-import CheckIcon from "../assets/lander/check.svg";
-import TuiScreenshot from "../assets/lander/screenshot-splash.png";
-import VscodeScreenshot from "../assets/lander/screenshot-vscode.png";
-import GithubScreenshot from "../assets/lander/screenshot-github.png";
-
-const { data } = Astro.locals.starlightRoute.entry;
-const { title = data.title, tagline, image, actions = [] } = data.hero || {};
-
-const imageAttrs = {
-    loading: 'eager' as const,
-    decoding: 'async' as const,
-    width: 400,
-    alt: image?.alt || '',
-};
-
-const github = (config.social || []).filter(s => s.icon === 'github')[0];
-const discord = (config.social || []).filter(s => s.icon === 'discord')[0];
-const locale = Astro.currentLocale || 'root';
-const t = Astro.locals.t as (key: string) => string;
+const locale = Astro.currentLocale || "root"
 const docsHref = getRelativeLocaleUrl(locale, "")
-const docsCliHref = getRelativeLocaleUrl(locale, "cli")
-const docsIdeHref = getRelativeLocaleUrl(locale, "ide")
-const docsGithubHref = getRelativeLocaleUrl(locale, "github")
+const cliHref = getRelativeLocaleUrl(locale, "cli")
+const agentsHref = getRelativeLocaleUrl(locale, "agents")
+const providersHref = getRelativeLocaleUrl(locale, "providers")
 
-const command = "curl -fsSL"
-const protocol = "https://"
-const url = "opencode.ai/install"
-const bash = "| bash"
-
-let darkImage: ImageMetadata | undefined;
-let lightImage: ImageMetadata | undefined;
-let rawHtml: string | undefined;
-if (image) {
-    if ('file' in image) {
-        darkImage = image.file;
-    } else if ('dark' in image) {
-        darkImage = image.dark;
-        lightImage = image.light;
-    } else {
-        rawHtml = image.html;
-  }
-}
+const installCommand = "npm i -g @agent-qofeno/agentx-cli@latest"
 ---
-<div class="hero">
-    <section class="top">
-      <div class="logo">
-        {darkImage && (
-          <Image
-            src={darkImage}
-            {...imageAttrs}
-            class:list={{ 'light:sl-hidden': Boolean(lightImage) }}
-          />
-        )}
-        {lightImage && <Image src={lightImage} {...imageAttrs} class="dark:sl-hidden" />}
-      </div>
-      <h1>{t('app.lander.hero.title')}</h1>
-    </section>
 
-    <section class="cta">
-      <div class="col1">
-        <a href={docsHref}>{t('app.lander.cta.getStarted')}</a>
-      </div>
-      <div class="col2">
-      <button class="command" data-command={`${command} ${protocol}${url} ${bash}`}>
-          <code>
-            <span>{command}&nbsp;</span><span class="protocol">{protocol}</span><span class="highlight">{url}</span>&nbsp;{bash}
-          </code>
-          <span class="copy">
-            <CopyIcon />
-            <CheckIcon />
-          </span>
-        </button>
-      </div>
-    </section>
+<div class="agentx-lander">
+  <header class="site-nav">
+    <a class="brand" href={docsHref} aria-label="AgentX Code home">
+      <span class="brand-mark" aria-hidden="true">X</span>
+      <span>AgentX <em>Code</em></span>
+    </a>
 
-    <section class="content">
-      <ul>
-        <li><b>{t('app.lander.features.native_tui.title')}</b>: {t('app.lander.features.native_tui.description')}</li>
-        <li><b>{t('app.lander.features.lsp_enabled.title')}</b>: {t('app.lander.features.lsp_enabled.description')}</li>
-        <li><b>{t('app.lander.features.multi_session.title')}</b>: {t('app.lander.features.multi_session.description')}</li>
-        <li><b>{t('app.lander.features.shareable_links.title')}</b>: {t('app.lander.features.shareable_links.description')}</li>
-        <li><b>GitHub Copilot</b>: {t('app.lander.features.github_copilot.description')}</li>
-        <li><b>ChatGPT Plus/Pro</b>: {t('app.lander.features.chatgpt_plus_pro.description')}</li>
-        <li><b>{t('app.lander.features.use_any_model.title')}</b>: {t('app.lander.features.use_any_model.prefix')} <a href="https://models.dev">Models.dev</a>, {t('app.lander.features.use_any_model.suffix')}</li>
-      </ul>
-    </section>
+    <nav aria-label="Primary navigation">
+      <a href={docsHref}>Docs</a>
+      <a href={agentsHref}>Agents</a>
+      <a href={providersHref}>Providers</a>
+      <a class="nav-github" href={config.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
 
-    <section class="alternatives">
-      <div class="col1">
-        <h3>npm</h3>
-        <button class="command" data-command="npm install -g opencode-ai">
-          <code>
-            <span>npm install -g</span> <span class="highlight">opencode-ai</span>
-          </code>
-          <span class="copy">
-            <CopyIcon />
-            <CheckIcon />
-          </span>
-        </button>
-      </div>
-      <div class="col2">
-        <h3>Bun</h3>
-        <button class="command" data-command="bun install -g opencode-ai">
-          <code>
-            <span>bun install -g</span> <span class="highlight">opencode-ai</span>
-          </code>
-          <span class="copy">
-            <CopyIcon />
-            <CheckIcon />
-          </span>
-        </button>
-      </div>
-      <div class="col3">
-        <h3>Homebrew</h3>
-        <button class="command" data-command="brew install opencode">
-          <code>
-            <span>brew install</span> <span class="highlight">opencode</span>
-          </code>
-          <span class="copy">
-            <CopyIcon />
-            <CheckIcon />
-          </span>
-        </button>
-      </div>
-      <div class="col4">
-        <h3>Paru</h3>
-        <button class="command" data-command="paru -S opencode-bin">
-          <code>
-            <span>paru -S</span> <span class="highlight">opencode-bin</span>
-          </code>
-          <span class="copy">
-            <CopyIcon />
-            <CheckIcon />
-          </span>
-        </button>
-      </div>
-      <div class="col4">
-        <h3>Mise</h3>
-        <button class="command" data-command="mise use -g github:anomalyco/opencode">
-          <code>
-            <span>mise use -g</span> <span class="highlight">github:anomalyco/opencode</span>
-          </code>
-          <span class="copy">
-            <CopyIcon />
-            <CheckIcon />
-          </span>
-        </button>
-      </div>
-    </section>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse"></span> OPEN SOURCE · TERMINAL FIRST</p>
+        <h1>Build with an agent that can see the <span>whole project.</span></h1>
+        <p class="lede">
+          AgentX Code reads the repository, plans the work, changes the right files,
+          and keeps the workflow close to your terminal.
+        </p>
 
-    <section class="images">
-      <div class="left">
-        <figure>
-          <figcaption>{t('app.lander.images.tui.caption')}</figcaption>
-          <a href={docsCliHref}>
-            <Image src={TuiScreenshot} alt={t('app.lander.images.tui.alt')} />
-          </a>
-        </figure>
-      </div>
-      <div class="right">
-        <div class="row1">
-          <figure>
-            <figcaption>{t('app.lander.images.vscode.caption')}</figcaption>
-            <a href={docsIdeHref}>
-              <Image src={VscodeScreenshot} alt={t('app.lander.images.vscode.alt')} />
-            </a>
-          </figure>
+        <div class="actions">
+          <a class="button primary" href={cliHref}>Install AgentX</a>
+          <a class="button secondary" href={docsHref}>Read the docs</a>
         </div>
-        <div class="row2">
-          <figure>
-            <figcaption>{t('app.lander.images.github.caption')}</figcaption>
-            <a href={docsGithubHref}>
-              <Image src={GithubScreenshot} alt={t('app.lander.images.github.alt')} />
-            </a>
-          </figure>
+
+        <div class="install">
+          <span class="prompt">$</span>
+          <code>{installCommand}</code>
+          <button class="copy" type="button" data-command={installCommand} aria-label="Copy install command">Copy</button>
+        </div>
+        <p class="install-note">Then run <code>agentx</code> in any repository.</p>
+      </div>
+
+      <div class="terminal-card" aria-label="AgentX terminal preview">
+        <div class="terminal-top">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <span>agentx · ~/project</span>
+          <span class="live">● live</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line dim">$ agentx</div>
+          <div class="terminal-line"><span class="green">›</span> Inspecting repository</div>
+          <div class="terminal-line"><span class="green">›</span> Reading architecture and project rules</div>
+          <div class="terminal-line"><span class="green">›</span> Building an implementation plan</div>
+          <div class="plan-box">
+            <div><span>01</span> Update auth flow</div>
+            <div><span>02</span> Add session coverage</div>
+            <div><span>03</span> Run checks</div>
+          </div>
+          <div class="terminal-line ready"><span class="green">✓</span> Plan ready <span class="cursor"></span></div>
+        </div>
+        <div class="terminal-footer">
+          <span>Tab</span> switch agent <span>·</span> <span>Enter</span> approve
         </div>
       </div>
     </section>
 
-    <section class="footer">
-      <div class="col1">
-        <a href={github.href} target="_blank" rel="noopener noreferrer">GitHub</a>
+    <section class="proof">
+      <div>
+        <span class="proof-kicker">01</span>
+        <h2>Understand before you edit.</h2>
+        <p>AgentX is built around repository context instead of isolated prompts. It explores the project first, then proposes a concrete path forward.</p>
       </div>
-      <div class="col2">
-        <a href={discord.href} target="_blank" rel="noopener noreferrer">Discord</a>
+      <div>
+        <span class="proof-kicker">02</span>
+        <h2>Plan without touching files.</h2>
+        <p>The built-in plan agent is read-only, so you can inspect an unfamiliar codebase and review the approach before execution.</p>
       </div>
-      <div class="col3">
-      <span>&copy;2025 <a href="https://anoma.ly" target="_blank" rel="noopener noreferrer">Anomaly Innovations</a></span>
+      <div>
+        <span class="proof-kicker">03</span>
+        <h2>Keep control of execution.</h2>
+        <p>Switch back to the build agent when the plan is right. Your terminal remains the source of truth for the work.</p>
       </div>
     </section>
+
+    <section class="feature-section">
+      <div class="section-heading">
+        <p class="eyebrow">THE WORKFLOW</p>
+        <h2>One agent. Four deliberate steps.</h2>
+      </div>
+
+      <div class="feature-grid">
+        <a class="feature" href={docsHref}>
+          <span class="number">01</span>
+          <strong>Read</strong>
+          <p>Map the repository, conventions, dependencies, and relevant files.</p>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="feature" href={agentsHref}>
+          <span class="number">02</span>
+          <strong>Plan</strong>
+          <p>Use a read-only agent to turn context into an actionable implementation plan.</p>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="feature" href={cliHref}>
+          <span class="number">03</span>
+          <strong>Execute</strong>
+          <p>Let the build agent make focused changes from inside the project.</p>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="feature" href={cliHref}>
+          <span class="number">04</span>
+          <strong>Verify</strong>
+          <p>Run the project checks that prove the change works before you call it done.</p>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="agents-strip">
+      <div>
+        <p class="eyebrow">BUILT-IN AGENTS</p>
+        <h2>Plan or build. Stay in the same session.</h2>
+      </div>
+      <div class="agent-pill"><span class="agent-dot plan"></span><div><b>plan</b><small>read-only exploration</small></div></div>
+      <div class="agent-pill"><span class="agent-dot build"></span><div><b>build</b><small>full development access</small></div></div>
+      <div class="agent-pill"><span class="agent-dot general"></span><div><b>general</b><small>deep search &amp; multistep work</small></div></div>
+    </section>
+
+    <section class="closing">
+      <p class="eyebrow">START WITH YOUR REPOSITORY</p>
+      <h2>Give the codebase a seat at the table.</h2>
+      <div class="actions">
+        <a class="button primary" href={cliHref}>Get AgentX</a>
+        <a class="button secondary" href={config.github} target="_blank" rel="noopener noreferrer">View source ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>AgentX Code · open source</span>
+    <div>
+      <a href={config.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href={config.discord} target="_blank" rel="noopener noreferrer">Discussions</a>
+    </div>
+  </footer>
 </div>
 
-<style>
-.hero {
-  --padding: 3rem;
-  --vertical-padding: 1.5rem;
-  --heading-font-size: var(--sl-text-3xl);
-
-  margin: 1rem;
-  border: 2px solid var(--sl-color-border);
-}
-@media (max-width: 30rem) {
-  .hero {
-    --padding: 1rem;
-    --vertical-padding: 0.75rem;
-    --heading-font-size: var(--sl-text-2xl);
-
-    margin: 0.5rem;
-  }
-}
-
-section.top {
-  padding: var(--padding);
-
-  h1 {
-    margin-top: calc(var(--vertical-padding) / 8);
-    font-size: var(--heading-font-size);
-    line-height: 1.25;
-    text-transform: uppercase;
-  }
-
-  img {
-    height: auto;
-    width: clamp(200px, 70vw, 400px);
-  }
-}
-
-section.cta {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: stretch;
-  border-top: 2px solid var(--sl-color-border);
-
-  @media (max-width: 50rem) {
-    flex-direction: column;
-  }
-
-  & > div {
-    line-height: 1.4;
-    padding: var(--vertical-padding) var(--padding);
-
-    a {
-      font-size: 1rem;
-    }
-  }
-  & > div.col1 {
-    flex: 0 0 auto;
-    text-align: center;
-    text-transform: uppercase;
-
-    @media (max-width: 50rem) {
-      padding-bottom: calc(var(--vertical-padding) + 4px);
-    }
-  }
-  & > div.col2 {
-    flex: 1;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  & > div + div {
-    border-left: 2px solid var(--sl-color-border);
-
-    @media (max-width: 50rem) {
-      border-left: none;
-      border-top: 2px solid var(--sl-color-border);
-    }
-  }
-
-  .command {
-    all: unset;
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    justify-content: center;
-    cursor: pointer;
-    width: 100%;
-
-    code {
-      color: var(--sl-color-text-secondary);
-      font-size: 1.125rem;
-
-      @media (max-width: 24rem) {
-        font-size: 0.875rem;
-      }
-      @media (max-width: 30rem) {
-        span.protocol {
-          display: none;
-        }
-      }
-      @media (max-width: 43rem) {
-        text-align: center;
-        span:first-child {
-          display: block;
-        }
-      }
-    }
-    code .highlight {
-      color: var(--sl-color-text);
-      font-weight: 500;
-    }
-
-    .copy {
-      line-height: 1;
-      padding: 0;
-      @media (max-width: 43rem) {
-        display: none;
-      }
-    }
-    .copy svg {
-      width: 1rem;
-      height: 1rem;
-      vertical-align: middle;
-    }
-    .copy svg:first-child {
-      color: var(--sl-color-text-dimmed);
-    }
-    .copy svg:last-child {
-      color: var(--sl-color-text);
-      display: none;
-    }
-    &.success .copy {
-      pointer-events: none;
-    }
-    &.success .copy svg:first-child {
-      display: none;
-    }
-    &.success .copy svg:last-child {
-      display: inline;
-    }
-  }
-}
-
-section.content {
-  border-top: 2px solid var(--sl-color-border);
-  padding: var(--padding);
-
-  ul {
-    padding-left: 1rem;
-
-    li + li {
-      margin-top: calc(var(--vertical-padding) / 2);
-    }
-
-    li b {
-      text-transform: uppercase;
-    }
-  }
-}
-
-section.images {
-  --images-height: 600px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: var(--images-height);
-  border-top: 2px solid var(--sl-color-border);
-
-  & > div.left {
-    display: flex;
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  & > div.right {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-row: 1;
-    grid-column: 2;
-    border-left: 2px solid var(--sl-color-border);
-
-    & > div.row1 {
-      display: flex;
-      grid-row: 1;
-      border-bottom: 2px solid var(--sl-color-border);
-      height: calc(var(--images-height) / 2);
-    }
-
-    & > div.row2 {
-      display: flex;
-      grid-row: 2;
-      height: calc(var(--images-height) / 2);
-    }
-  }
-
-  figure {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--padding) / 4);
-    padding: calc(var(--padding) / 2);
-    border-width: 0;
-    border-style: solid;
-    border-color: var(--sl-color-border);
-    min-height: 0;
-    overflow: hidden;
-
-    & > div, figcaption {
-      display: flex;
-      align-items: center;
-    }
-
-    & > div {
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    a {
-      display: flex;
-      flex: 1;
-      min-height: 0;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-    }
-
-    figcaption {
-      letter-spacing: -0.03125rem;
-      text-transform: uppercase;
-      color: var(--sl-color-text-dimmed);
-      flex-shrink: 0;
-
-      @media (max-width: 30rem) {
-        font-size: 0.75rem;
-      }
-    }
-  }
-
-  & > div.left figure {
-    height: var(--images-height);
-    box-sizing: border-box;
-  }
-
-  & > div.right figure {
-    height: calc(var(--images-height) / 2);
-    box-sizing: border-box;
-  }
-
-  & > div.left img {
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-    object-fit: contain;
-  }
-
-  & > div.right img {
-    width: 100%;
-    height: calc(100% - 2rem);
-    object-fit: contain;
-    display: block;
-  }
-
-  @media (max-width: 30rem) {
-    & {
-      --images-height: auto;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto;
-    }
-
-    & > div.left {
-      grid-row: 1;
-      grid-column: 1;
-    }
-
-    & > div.right {
-      grid-row: 2;
-      grid-column: 1;
-      border-left: none;
-      border-top: 2px solid var(--sl-color-border);
-
-      & > div.row1,
-      & > div.row2 {
-        height: auto;
-      }
-    }
-
-    & > div.left figure,
-    & > div.right figure {
-      height: auto;
-    }
-
-    & > div.left img,
-    & > div.right img {
-      width: 100%;
-      height: auto;
-      max-height: none;
-    }
-  }
-}
-
-section.alternatives {
-  border-top: 2px solid var(--sl-color-border);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-
-  @media (max-width: 40rem) {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  & > div {
-    display: flex;
-    flex-direction: column;
-    padding: calc(var(--vertical-padding) / 2) calc(var(--padding) / 2) calc(var(--vertical-padding) / 2 + 0.125rem);
-    text-align: left;
-    gap: 0.5rem;
-
-    @media (max-width: 30rem) {
-      gap: 0.3125rem;
-    }
-
-    @media (max-width: 40rem) {
-      text-align: left;
-    }
-  }
-
-  & > div.col1 {
-    border-bottom: 2px solid var(--sl-color-border);
-
-    @media (max-width: 40rem) {
-      border-bottom: none;
-    }
-  }
-
-  & > div.col2 {
-    border-left: 2px solid var(--sl-color-border);
-    border-bottom: 2px solid var(--sl-color-border);
-
-    @media (max-width: 40rem) {
-      border-left: none;
-      border-bottom: none;
-      border-top: 2px solid var(--sl-color-border);
-    }
-  }
-
-  & > div.col3 {
-    @media (max-width: 40rem) {
-      border-top: 2px solid var(--sl-color-border);
-    }
-  }
-
-  & > div.col4 {
-    border-left: 2px solid var(--sl-color-border);
-    @media (max-width: 40rem) {
-      border-left: none;
-      border-top: 2px solid var(--sl-color-border);
-    }
-  }
-
-  h3 {
-    letter-spacing: -0.03125rem;
-    text-transform: uppercase;
-    color: var(--sl-color-text-dimmed);
-    font-weight: normal;
-    font-size: 1rem;
-    flex-shrink: 0;
-
-    @media (max-width: 30rem) {
-      font-size: 0.75rem;
-    }
-  }
-
-  .command {
-    all: unset;
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    justify-content: flex-start;
-    cursor: pointer;
-    width: 100%;
-
-    @media (max-width: 40rem) {
-      justify-content: flex-start;
-    }
-
-    @media (max-width: 30rem) {
-      justify-content: center;
-    }
-
-    code {
-      color: var(--sl-color-text-secondary);
-      font-size: 1rem;
-
-      @media (max-width: 24rem) {
-        font-size: 0.875rem;
-      }
-    }
-
-    code .highlight {
-      color: var(--sl-color-text);
-      font-weight: 500;
-    }
-
-    .copy {
-      line-height: 1;
-      padding: 0;
-
-      @media (max-width: 40rem) {
-        display: none;
-      }
-    }
-
-    .copy svg {
-      width: 1rem;
-      height: 1rem;
-      vertical-align: middle;
-    }
-
-    .copy svg:first-child {
-      color: var(--sl-color-text-dimmed);
-    }
-
-    .copy svg:last-child {
-      color: var(--sl-color-text);
-      display: none;
-    }
-
-    &.success .copy {
-      pointer-events: none;
-    }
-
-    &.success .copy svg:first-child {
-      display: none;
-    }
-
-    &.success .copy svg:last-child {
-      display: inline;
-    }
-  }
-}
-
-section.footer {
-  border-top: 2px solid var(--sl-color-border);
-  display: flex;
-  flex-direction: row;
-
-  & > div {
-    flex: 1;
-    text-align: center;
-    text-transform: uppercase;
-    padding: var(--vertical-padding) 0.5rem;
-  }
-
-  & > div + div {
-    border-left: 2px solid var(--sl-color-border);
-  }
-
-  /* Below 800px: first two columns shrink to content, third expands */
-  @media (max-width: 50rem) {
-    & > div.col1,
-    & > div.col2 {
-      flex: 0 0 auto;
-      padding-left: calc(var(--padding) / 2);
-      padding-right: calc(var(--padding) / 2);
-    }
-
-    & > div.col3 {
-      flex: 1;
-    }
-  }
-
-  /* Mobile: third column on its own row */
-  @media (max-width: 30rem) {
-    flex-wrap: wrap;
-
-    & > div.col1,
-    & > div.col2 {
-      flex: 1;
-    }
-
-    & > div.col3 {
-      flex: 1 0 100%;
-      border-left: none;
-      border-top: 2px solid var(--sl-color-border);
-    }
-  }
-}
-</style>
-
-<style is:global>
-:root[data-has-hero] {
-  header.header {
-    display: none;
-  }
-  .main-frame {
-    padding-top: 0;
-
-    .main-pane > main {
-      padding: 0;
-    }
-  }
-  main > .content-panel .sl-markdown-content {
-    margin-top: 0;
-  }
-}
-</style>
-
 <script>
-  const buttons = document.querySelectorAll("button.command") as NodeListOf<HTMLButtonElement>
-
-  buttons.forEach(button => {
-    button.addEventListener("click", () => {
-      navigator.clipboard.writeText(button.dataset.command!)
-      button.classList.toggle("success")
-      setTimeout(() => {
-        button.classList.toggle("success");
-      }, 1500)
-    })
+  const button = document.querySelector<HTMLButtonElement>(".copy")
+  button?.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(button.dataset.command || "")
+    button.textContent = "Copied"
+    setTimeout(() => (button.textContent = "Copy"), 1400)
   })
 </script>
+
+<style>
+  .agentx-lander {
+    --ink: #11110f;
+    --paper: #f5f5f0;
+    --muted: #6c6c64;
+    --line: #d8d8d0;
+    --panel: #181816;
+    --green: #b7f34a;
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow: hidden;
+  }
+
+  .site-nav,
+  main > section,
+  .site-footer {
+    width: min(1180px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+
+  .site-nav {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink) !important;
+    text-decoration: none !important;
+    font-weight: 750;
+    letter-spacing: -0.04em;
+    font-size: 17px;
+  }
+
+  .brand em { font-style: normal; color: #77776f; font-weight: 500; }
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--ink);
+    font-weight: 900;
+    font-size: 13px;
+    transform: rotate(45deg);
+  }
+
+  .brand-mark::first-letter { transform: rotate(-45deg); }
+
+  .site-nav nav { display: flex; align-items: center; gap: 28px; }
+  .site-nav nav a { color: #55554e !important; text-decoration: none !important; font-size: 14px; }
+  .site-nav nav a:hover { color: var(--ink) !important; }
+  .site-nav .nav-github { color: var(--ink) !important; }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, .92fr);
+    gap: 76px;
+    align-items: center;
+    padding: 100px 0 110px;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 20px;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .16em;
+    font-weight: 800;
+    color: #707068;
+  }
+
+  .pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #5b8f00;
+    box-shadow: 0 0 0 4px rgba(183,243,74,.35);
+  }
+
+  h1 {
+    max-width: 680px;
+    margin: 0;
+    font-size: clamp(52px, 6vw, 84px) !important;
+    line-height: .96;
+    letter-spacing: -.065em;
+    font-weight: 720 !important;
+    color: var(--ink) !important;
+  }
+
+  h1 span { color: #74746c; }
+
+  .lede {
+    max-width: 610px;
+    margin: 28px 0 0;
+    color: #5f5f58;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 30px; }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 18px;
+    border: 1px solid #bdbdb5;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none !important;
+    transition: transform .16s ease, background .16s ease, border-color .16s ease;
+  }
+  .button:hover { transform: translateY(-1px); }
+  .button.primary { background: var(--ink); border-color: var(--ink); color: var(--paper) !important; }
+  .button.secondary { color: var(--ink) !important; background: transparent; }
+
+  .install {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    max-width: 610px;
+    margin-top: 34px;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    background: #ededE6;
+    border-radius: 6px;
+  }
+  .install .prompt { color: #5d8b12; font-weight: 800; }
+  .install code { flex: 1; overflow: auto; white-space: nowrap; font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; color: #2d2d29; }
+  .copy { border: 0; background: transparent; color: #707068; font-size: 12px; font-weight: 700; cursor: pointer; }
+  .install-note { margin: 9px 0 0 3px; color: #8a8a81; font-size: 12px; }
+  .install-note code { font: inherit; color: #4d4d46; }
+
+  .terminal-card {
+    background: var(--panel);
+    color: #f4f4ed;
+    border-radius: 10px;
+    box-shadow: 0 28px 70px rgba(18,18,15,.18);
+    overflow: hidden;
+    transform: rotate(.6deg);
+  }
+
+  .terminal-top, .terminal-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-bottom: 1px solid #2e2e2a;
+    color: #7f7f77;
+    font-size: 11px;
+  }
+  .terminal-footer { border-top: 1px solid #2e2e2a; border-bottom: 0; }
+  .dots { display: flex; gap: 5px; margin-right: 6px; }
+  .dots i { width: 7px; height: 7px; border-radius: 50%; background: #4a4a44; }
+  .live { margin-left: auto; color: var(--green); }
+  .terminal-body { padding: 28px 22px 34px; min-height: 320px; font: 13px/1.85 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .terminal-line { color: #d8d8d0; }
+  .terminal-line.dim { color: #6f6f68; margin-bottom: 8px; }
+  .terminal-line.ready { margin-top: 16px; color: #f2f2eb; }
+  .green { color: var(--green); }
+  .plan-box { margin: 16px 0 4px 17px; padding: 13px 15px; border: 1px solid #363630; background: #1d1d1a; }
+  .plan-box div + div { margin-top: 3px; }
+  .plan-box span { display: inline-block; width: 25px; color: #6f6f68; }
+  .cursor { display: inline-block; width: 7px; height: 14px; margin-left: 3px; vertical-align: -2px; background: var(--green); animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .proof {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .proof > div { padding: 32px 28px 36px 0; }
+  .proof > div + div { padding-left: 28px; border-left: 1px solid var(--line); }
+  .proof-kicker, .number { color: #898980; font: 11px ui-monospace, monospace; }
+  .proof h2, .feature-section h2, .agents-strip h2, .closing h2 {
+    margin: 12px 0 9px;
+    font-size: 22px !important;
+    line-height: 1.15;
+    letter-spacing: -.035em;
+    font-weight: 650 !important;
+    color: var(--ink) !important;
+  }
+  .proof p, .feature p { margin: 0; color: #6a6a62; line-height: 1.6; font-size: 14px; }
+
+  .feature-section { padding: 115px 0; }
+  .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 38px; }
+  .section-heading .eyebrow { margin: 0; }
+  .section-heading h2 { max-width: 520px; margin: 0; font-size: 40px !important; }
+
+  .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .feature { position: relative; min-height: 230px; padding: 24px 22px 24px 0; color: var(--ink) !important; text-decoration: none !important; }
+  .feature + .feature { padding-left: 22px; border-left: 1px solid var(--line); }
+  .feature strong { display: block; margin: 48px 0 10px; font-size: 21px; letter-spacing: -.03em; }
+  .feature .arrow { position: absolute; right: 0; top: 23px; color: #8b8b82; }
+  .feature:hover .arrow { color: var(--ink); }
+
+  .agents-strip {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+    gap: 14px;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .agents-strip h2 { margin-bottom: 0; }
+  .agent-pill { display: flex; align-items: center; gap: 12px; padding: 13px 14px; border: 1px solid var(--line); border-radius: 6px; background: #efefe8; }
+  .agent-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .agent-dot.plan { background: #9d9d95; }
+  .agent-dot.build { background: #7eae25; }
+  .agent-dot.general { background: #34342f; }
+  .agent-pill b { display: block; font-size: 13px; }
+  .agent-pill small { display: block; margin-top: 2px; color: #808078; font-size: 10px; }
+
+  .closing { text-align: center; padding: 135px 0 120px; }
+  .closing .eyebrow { justify-content: center; }
+  .closing h2 { max-width: 760px; margin: 0 auto; font-size: clamp(42px, 5vw, 68px) !important; letter-spacing: -.055em; }
+  .closing .actions { justify-content: center; }
+
+  .site-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 0 34px;
+    color: #88887f;
+    font-size: 12px;
+  }
+  .site-footer div { display: flex; gap: 22px; }
+  .site-footer a { color: #66665f !important; text-decoration: none !important; }
+  .site-footer a:hover { color: var(--ink) !important; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; padding: 72px 0 80px; }
+    .terminal-card { max-width: 720px; transform: none; }
+    .proof { grid-template-columns: 1fr; }
+    .proof > div, .proof > div + div { padding: 28px 0; border-left: 0; }
+    .proof > div + div { border-top: 1px solid var(--line); }
+    .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    .feature:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+    .feature:nth-child(4) { border-top: 1px solid var(--line); }
+    .agents-strip { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .site-nav, main > section, .site-footer { width: min(100% - 28px, 1180px); }
+    .site-nav { min-height: 66px; }
+    .site-nav nav { gap: 14px; }
+    .site-nav nav a:nth-child(2), .site-nav nav a:nth-child(3) { display: none; }
+    .hero { padding: 58px 0 66px; }
+    h1 { font-size: clamp(46px, 14vw, 64px) !important; }
+    .lede { font-size: 16px; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .feature, .feature + .feature { padding: 22px 0; border-left: 0; }
+    .feature + .feature { border-top: 1px solid var(--line); }
+    .feature strong { margin-top: 34px; }
+    .section-heading { display: block; }
+    .section-heading h2 { margin-top: 18px; font-size: 34px !important; }
+    .closing { padding: 90px 0 80px; }
+    .site-footer { display: block; }
+    .site-footer div { margin-top: 12px; }
+  }
+</style>
